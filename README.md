@@ -1,4 +1,3 @@
-artoo
-=====
+# artoo
 
-artoo
+Micro-framework for robotics using Ruby

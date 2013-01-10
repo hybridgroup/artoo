@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    artoo (0.0.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    celluloid (0.12.4)
+      facter (>= 1.6.12)
+      timers (>= 1.0.0)
+    facter (1.6.17)
+    metaclass (0.0.1)
+    minitest (4.4.0)
+    mocha (0.13.1)
+      metaclass (~> 0.0.1)
+    rake (10.0.3)
+    timers (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  artoo!
+  celluloid
+  minitest
+  mocha
+  rake
