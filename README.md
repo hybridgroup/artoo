@@ -9,7 +9,7 @@ Micro-framework for robotics using Ruby
 ```
 require 'artoo'
 
-connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+connection :arduino, :connector => :firmata, :port => '/dev/tty.usbmodemxxxxx'
 
 device :collision_detect, :driver => :switch, :pin => 3
 device :motor, :driver => :l293_motor, :pin => 4
@@ -27,7 +27,7 @@ end
 require 'artoo/robot'
  
 class Huey < Artoo::Robot
-  connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+  connection :arduino, :connector => :firmata, :port => '/dev/tty.usbmodemxxxxx'
 
   device :motion_detect, :driver => :motion_detector, :pin => 7
   device :temp, :driver => :thermometer, :pin => 8
@@ -73,5 +73,17 @@ class Huey < Artoo::Robot
     right 10, 3.seconds
   end
 end
+```
+
+## Installing:
+
+```
+gem install artoo
+```
+
+## Running:
+
+```
+ruby myrobot.rb
 ```
 

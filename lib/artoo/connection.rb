@@ -1,13 +1,23 @@
 module Artoo
 	class Connection
 		include Celluloid
-		attr_reader :parent, :name, :protocol, :port
+		attr_reader :parent, :name, :type, :port
 
 		def initialize(params={})
 			@name = params[:name].to_s
-			@protocol = params[:protocol]
+			@type = params[:type]
 			@port = params[:port]
 			@parent = params[:parent]
+
+			connect
+		end
+
+		def connect
+			# TODO: require the needed connector file based on type
+		end
+
+		def disconnect
+			
 		end
 	end
 end
