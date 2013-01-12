@@ -8,8 +8,3 @@ Rake::TestTask.new do |t|
 end
 
 task :default => :test
-
-
-# task :test do
-#   ruby "test/artoo_test.rb test/delegator_test.rb"
-# end
