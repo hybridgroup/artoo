@@ -13,9 +13,9 @@ module Artoo
       super(*extensions, &block)
     end
   end
-
-	# Artoo delegation mixin that acts like Sinatra. 
-	# Mixing this module into an object causes all
+  
+  # Artoo delegation mixin that acts like Sinatra. 
+  # Mixing this module into an object causes all
   # methods to be delegated to the Artoo::MainRobot class. 
   # Used primarily at the top-level.
   module Delegator #:nodoc:
