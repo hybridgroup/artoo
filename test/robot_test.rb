@@ -29,4 +29,8 @@ describe Artoo::Robot do
   it 'Artoo::Robot#devices' do
     @robot.devices.first.name.must_equal 'test_device'
   end
+
+  it 'connects to Artoo::Connector::Loopback' do
+    @robot.default_connection.connector.must_be_kind_of Artoo::Connector::Loopback
+  end
 end

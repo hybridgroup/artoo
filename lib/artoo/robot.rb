@@ -21,7 +21,7 @@ module Artoo
 
     # connection to some hardware that has one or more devices via some specific protocol
     # Example:
-    #   connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+    #   connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
     def self.connection(name, params = {})
       Logger.info "Registering connection #{name.to_s}..."
       self.connection_types ||= []
