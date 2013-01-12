@@ -8,12 +8,16 @@ Micro-framework for robotics using Ruby
 
 ```
 require 'artoo'
- 
-device :collision_detect, :driver => :switch
-device :motor, :driver => :l293_motor
+
+connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+
+device :collision_detect, :driver => :switch, :pin => 3
+device :motor, :driver => :l293_motor, :pin => 4
   
 work do
-  motor.forward until collision_detect?
+  every 10.seconds do
+    motor.forward until collision_detect?
+  end
 end
 ```
 
@@ -23,8 +27,10 @@ end
 require 'artoo'
  
 class Huey < Artoo::Robot
-  device :motion_detect, :driver => :motion_detector
-  device :temp, :driver => :thermometer
+  connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+
+  device :motion_detect, :driver => :motion_detector, :pin => 7
+  device :temp, :driver => :thermometer, :pin => 8
   
   device :motor_1, :driver => :l293_motor, :pin => 3
   device :motor_2, :driver => :l293_motor, :pin => 4

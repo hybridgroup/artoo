@@ -1,5 +1,7 @@
 require 'celluloid'
 require File.dirname(__FILE__) + '/robot.rb'
+require File.dirname(__FILE__) + '/connection.rb'
+require File.dirname(__FILE__) + '/device.rb'
 
 module Artoo
   # Execution context for top-level robots
@@ -32,7 +34,7 @@ module Artoo
       end
     end
 
-    delegate :device, :work
+    delegate :connection, :device, :work
 
     class << self
       attr_accessor :target
@@ -43,9 +45,9 @@ module Artoo
 
   # Create a new Artoo robot. The block is evaluated
   # in the new robot's class scope.
-  def self.new(base=Robot, options={}, &block)
-    base = Class.new(base)
-    base.class_eval(&block) if block_given?
-    base
+  def self.new(robot=Robot, options={}, &block)
+    robot = Class.new(robot)
+    robot.class_eval(&block) if block_given?
+    robot
   end
 end
