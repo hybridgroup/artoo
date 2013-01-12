@@ -2,6 +2,7 @@ require 'celluloid'
 
 require 'artoo/connection'
 require 'artoo/device'
+require 'artoo/utility'
 
 module Artoo
 	class Robot
@@ -46,10 +47,12 @@ module Artoo
 		end
 
 		def connection_types
+			self.class.connection_types ||= []
 			self.class.connection_types
 		end
 
 		def device_types
+			self.class.device_types ||= []
 			self.class.device_types
 		end
 
