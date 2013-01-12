@@ -1,8 +1,3 @@
-require 'celluloid'
-require File.dirname(__FILE__) + '/robot.rb'
-require File.dirname(__FILE__) + '/connection.rb'
-require File.dirname(__FILE__) + '/device.rb'
-
 module Artoo
   # Execution context for top-level robots
   # DSL methods executed on main are delegated to this class like Sinatra

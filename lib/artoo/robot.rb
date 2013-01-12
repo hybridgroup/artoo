@@ -1,3 +1,8 @@
+require 'celluloid'
+
+require 'artoo/connection'
+require 'artoo/device'
+
 module Artoo
 	class Robot
 		include Celluloid
@@ -17,7 +22,7 @@ module Artoo
 		# Example:
 		# 	connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'
 		def self.connection(name, params = {})
-			#puts "Registering connection #{name.to_s}..."
+			Logger.info "Registering connection #{name.to_s}..."
 			self.connection_types ||= []
 			self.connection_types << {:name => name}.merge(params)
 		end
@@ -26,7 +31,7 @@ module Artoo
 		# Example:
 		# 	device :collision_detect, :driver => :switch, :pin => 3
 		def self.device(name, params = {})
-			#puts "Registering device #{name.to_s}..."
+			Logger.info "Registering device #{name.to_s}..."
 			self.device_types ||= []
 			self.device_types << {:name => name}.merge(params)
 		end
@@ -53,7 +58,7 @@ module Artoo
 		def initialize_connections
 			@connections = []
 			connection_types.each {|c|
-				#puts "Initializing connection #{c[:name].to_s}..."
+				Logger.info "Initializing connection #{c[:name].to_s}..."
 				@connections << Connection.new(c.merge(:parent => Actor.current))
 			}
 		end
@@ -61,7 +66,7 @@ module Artoo
 		def initialize_devices
 			@devices = []
 			device_types.each {|d|
-				#puts "Initializing device #{d[:name].to_s}..."
+				Logger.info "Initializing device #{d[:name].to_s}..."
 				@devices << Device.new(d.merge(:parent => Actor.current))
 			}
 		end

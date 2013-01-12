@@ -24,7 +24,7 @@ end
 ### Modular
 
 ```
-require 'artoo'
+require 'artoo/robot'
  
 class Huey < Artoo::Robot
   connection :arduino, :protocol => :firmata, :port => '/dev/tty.usbmodemxxxxx'

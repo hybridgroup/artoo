@@ -1,1 +1,2 @@
-require File.dirname(__FILE__) + '/artoo/artoo.rb'
+require 'artoo/robot'
+require 'artoo/main'
