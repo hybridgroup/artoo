@@ -73,6 +73,8 @@ class Huey < Artoo::Robot
     right 10, 3.seconds
   end
 end
+
+Huey.work!
 ```
 
 ## Installing:
