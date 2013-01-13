@@ -63,30 +63,34 @@ module Artoo
           String === content ? class_eval("def #{name}() #{content}; end") : define_method(name, &content)
         end
       end
-    end
 
-    # connection to some hardware that has one or more devices via some specific protocol
-    # Example:
-    #   connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
-    def self.connection(name, params = {})
-      Logger.info "Registering connection '#{name}'..."
-      self.connection_types ||= []
-      self.connection_types << {:name => name}.merge(params)
-    end
+      # connection to some hardware that has one or more devices via some specific protocol
+      # Example:
+      #   connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+      def connection(name, params = {})
+        Celluloid::Logger.info "Registering connection '#{name}'..."
+        self.connection_types ||= []
+        self.connection_types << {:name => name}.merge(params)
+      end
 
-    # device that uses a connection to communicate
-    # Example:
-    #   device :collision_detect, :driver => :switch, :pin => 3
-    def self.device(name, params = {})
-      Logger.info "Registering device '#{name}'..."
-      self.device_types ||= []
-      self.device_types << {:name => name}.merge(params)
-    end
+      # device that uses a connection to communicate
+      # Example:
+      #   device :collision_detect, :driver => :switch, :pin => 3
+      def device(name, params = {})
+        Celluloid::Logger.info "Registering device '#{name}'..."
+        self.device_types ||= []
+        self.device_types << {:name => name}.merge(params)
+      end
 
-    # the work that needs to be performed
-    def self.work(&block)
-      Logger.info "Preparing work..."
-      self.working_code = block if block_given?
+      # the work that needs to be performed
+      def work(&block)
+        Celluloid::Logger.info "Preparing work..."
+        self.working_code = block if block_given?
+      end
+
+      def test?
+        ENV["ARTOO_TEST"] == 'true'
+      end
     end
 
     # start doing the work
@@ -116,10 +120,6 @@ module Artoo
       Actor.current.class.working_code ||= proc {puts "No work defined."} 
     end
     
-    def self.test?
-      ENV["ARTOO_TEST"] == 'true'
-    end
-
     private
 
     def initialize_connections
