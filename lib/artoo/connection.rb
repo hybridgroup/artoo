@@ -1,6 +1,9 @@
 require 'artoo/utility'
 
 module Artoo
+  # The Connection class represents the interface to 
+  # a specific group of hardware devices. Examples would be an
+  # Arduino, a Sphero, or an ARDrone.
   class Connection
     include Celluloid
     include Artoo::Utility

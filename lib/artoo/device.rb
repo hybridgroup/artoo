@@ -1,4 +1,7 @@
 module Artoo
+  # The Artoo::Device class represents the interface to 
+  # a specific individual hardware devices. Examples would be a digital
+  # thermometer connected to an Arduino, or a Sphero's accelerometer.
   class Device
     include Celluloid
     attr_reader :parent, :name, :driver, :pin, :connection

@@ -2,6 +2,8 @@ require 'artoo/delegator'
 require 'artoo/robot'
 
 module Artoo
+  # Execution context for top-level robots
+  # DSL methods executed on main are delegated to this class like Sinatra
   class MainRobot < Artoo::Robot
 
     # we assume that the first file that requires 'artoo' is the
@@ -9,7 +11,7 @@ module Artoo
     # on this path by default.
     #set :app_file, caller_files.first || $0
 
-    #set :run, Proc.new { File.expand_path($0) == File.expand_path(app_file) }
+    set :start_work, true #proc {!test?} #Proc.new { File.expand_path($0) == File.expand_path(app_file) }
 
     # if run? && ARGV.any?
     #   require 'optparse'
@@ -23,9 +25,16 @@ module Artoo
     # end
   end
 
-  at_exit { MainRobot.run! if $!.nil? && MainRobot.run? }
+  #at_exit { MainRobot.run if $!.nil? && MainRobot.run? }
 end
 
 # include would include the module in Object
 # extend only extends the `main` object
 extend Artoo::Delegator
+
+at_exit {
+  if $!.nil? && Artoo::MainRobot.start_work?
+    Artoo::MainRobot.new.work
+    sleep # sleep main thread, and let the work commence!
+  end
+}

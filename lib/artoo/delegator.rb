@@ -5,14 +5,14 @@ module Artoo
   class MainRobot < Robot
     #set :logging, Proc.new { ! test? }
     #set :method_override, true
-    #set :run, Proc.new { ! test? }
+    set :start_work, false #Proc.new { ! test? }
     #set :app_file, nil
 
-    def self.register(*extensions, &block) #:nodoc:
-      added_methods = extensions.map {|m| m.public_instance_methods }.flatten
-      Delegator.delegate(*added_methods)
-      super(*extensions, &block)
-    end
+    # def self.register(*extensions, &block) #:nodoc:
+    #   added_methods = extensions.map {|m| m.public_instance_methods }.flatten
+    #   Delegator.delegate(*added_methods)
+    #   super(*extensions, &block)
+    # end
   end
   
   # Artoo delegation mixin that acts like Sinatra. 
@@ -30,13 +30,13 @@ module Artoo
       end
     end
 
-    delegate :connection, :device, :work
+    delegate :connection, :device, :work, :set, :test?
 
     class << self
       attr_accessor :target
     end
 
-    self.target = MainRobot
+    self.target = Artoo::MainRobot
   end
 
   # Create a new Artoo robot. The block is evaluated
