@@ -49,6 +49,15 @@ module Artoo
         self.working_code = block if block_given?
       end
 
+      def work!
+        self.new.work
+        sleep # sleep main thread, and let the work commence!
+      end
+
+      def test?
+        ENV["ARTOO_TEST"] == 'true'
+      end
+
       # Taken from Sinatra codebase
       # Sets an option to the given value.  If the value is a proc,
       # the proc will be called every time the option is accessed.
@@ -87,8 +96,22 @@ module Artoo
         self
       end
 
-      def test?
-        ENV["ARTOO_TEST"] == 'true'
+      # Taken from Sinatra codebase
+      CALLERS_TO_IGNORE = [ # :nodoc:
+        /lib\/artoo.*\.rb$/,                             # artoo code
+        /^\(.*\)$/,                                      # generated code
+        /rubygems\/custom_require\.rb$/,                 # rubygems require hacks
+        /active_support/,                                # active_support require hacks
+        /bundler(\/runtime)?\.rb/,                       # bundler require hacks
+        /<internal:/,                                    # internal in ruby >= 1.9.2
+        /src\/kernel\/bootstrap\/[A-Z]/                  # maglev kernel files
+      ]
+
+      # Taken from Sinatra codebase
+      # Like Kernel#caller but excluding certain magic entries and without
+      # line / method information; the resulting array contains filenames only.
+      def caller_files
+        cleaned_caller(1).flatten
       end
 
       private
@@ -100,6 +123,14 @@ module Artoo
           undef_method(name) if method_defined? name
           String === content ? class_eval("def #{name}() #{content}; end") : define_method(name, &content)
         end
+      end
+
+      # Taken from Sinatra codebase
+      # Like Kernel#caller but excluding certain magic entries
+      def cleaned_caller(keep = 3)
+        caller(1).
+          map    { |line| line.split(/:(?=\d|in )/, 3)[0,keep] }.
+          reject { |file, *_| CALLERS_TO_IGNORE.any? { |pattern| file =~ pattern } }
       end
     end
 
