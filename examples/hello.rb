@@ -6,10 +6,10 @@ connection :loop
 #device :motor, :driver => :l293_motor, :pin => 4
   
 work do
-  every(3) do
+  every(3.seconds) do
      puts "hello"
   end
-  after(10) do
+  after(10.seconds) do
   	puts "wow"
   end
 end

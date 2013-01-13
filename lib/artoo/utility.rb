@@ -13,3 +13,17 @@ module Artoo
     end
   end
 end
+
+# just a bit of syntactic sugar, actually does nothing
+# Example:
+#  20.seconds => 20
+#  1.second => 1
+class Integer < Numeric
+  def seconds
+    return self
+  end
+
+  def second
+    return self
+  end
+end
