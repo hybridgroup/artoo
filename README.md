@@ -1,6 +1,8 @@
 # artoo
 
-Micro-framework for robotics using Ruby
+Artoo is a micro-framework for robotics using Ruby.
+
+Artoo provides a simple, yet powerful domain-specific language (DSL) for robotics and physical computing.
 
 ## Examples:
 
@@ -76,6 +78,10 @@ end
 
 Huey.work!
 ```
+
+Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
+
+Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded modes, as long as it is supported by the Ruby version in which it is executing. This is due to being built on top of Celluloid (https://github.com/celluloid/celluloid).
 
 ## Installing:
 
