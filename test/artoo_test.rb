@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/test_helper")
+require 'artoo'
 
 describe Artoo do
   it 'must create a new Artoo::Robot subclass on new' do

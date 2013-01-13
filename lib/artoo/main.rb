@@ -1,48 +1,31 @@
+require 'artoo/delegator'
+require 'artoo/robot'
+
 module Artoo
-  # Execution context for top-level robots
-  # DSL methods executed on main are delegated to this class like Sinatra
-  class MainRobot < Robot
-    #set :logging, Proc.new { ! test? }
-    #set :method_override, true
-    #set :run, Proc.new { ! test? }
-    #set :app_file, nil
+  class MainRobot < Artoo::Robot
 
-    def self.register(*extensions, &block) #:nodoc:
-      added_methods = extensions.map {|m| m.public_instance_methods }.flatten
-      Delegator.delegate(*added_methods)
-      super(*extensions, &block)
-    end
-  end
-  
-  # Artoo delegation mixin that acts like Sinatra. 
-  # Mixing this module into an object causes all
-  # methods to be delegated to the Artoo::MainRobot class. 
-  # Used primarily at the top-level.
-  module Delegator #:nodoc:
-    def self.delegate(*methods)
-      methods.each do |method_name|
-        define_method(method_name) do |*args, &block|
-          return super(*args, &block) if respond_to? method_name
-          Delegator.target.send(method_name, *args, &block)
-        end
-        private method_name
-      end
-    end
+    # we assume that the first file that requires 'artoo' is the
+    # app_file. all other path related options are calculated based
+    # on this path by default.
+    #set :app_file, caller_files.first || $0
 
-    delegate :connection, :device, :work
+    #set :run, Proc.new { File.expand_path($0) == File.expand_path(app_file) }
 
-    class << self
-      attr_accessor :target
-    end
-
-    self.target = MainRobot
+    # if run? && ARGV.any?
+    #   require 'optparse'
+    #   OptionParser.new { |op|
+    #     op.on('-p port',   'set the port (default is 4567)')                { |val| set :port, Integer(val) }
+    #     op.on('-o addr',   'set the host (default is 0.0.0.0)')             { |val| set :bind, val }
+    #     op.on('-e env',    'set the environment (default is development)')  { |val| set :environment, val.to_sym }
+    #     op.on('-s server', 'specify rack server/handler (default is thin)') { |val| set :server, val }
+    #     op.on('-x',        'turn on the mutex lock (default is off)')       {       set :lock, true }
+    #   }.parse!(ARGV.dup)
+    # end
   end
 
-  # Create a new Artoo robot. The block is evaluated
-  # in the new robot's class scope.
-  def self.new(robot=Robot, options={}, &block)
-    robot = Class.new(robot)
-    robot.class_eval(&block) if block_given?
-    robot
-  end
+  at_exit { MainRobot.run! if $!.nil? && MainRobot.run? }
 end
+
+# include would include the module in Object
+# extend only extends the `main` object
+extend Artoo::Delegator

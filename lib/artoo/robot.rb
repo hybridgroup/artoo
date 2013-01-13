@@ -42,6 +42,15 @@ module Artoo
       puts "Working..."
     end
 
+    # start doing the work
+    def self.run!
+      
+    end
+
+    def self.run?
+      false
+    end
+
     def default_connection
       connections.first
     end
