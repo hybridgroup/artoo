@@ -137,10 +137,19 @@ module Artoo
     # start doing the work
     def work
       Logger.info "Starting work..."
+      connect
       Actor.current.instance_eval(&working_code)
     rescue Exception => e  
       Logger.info e.message  
       Logger.info e.backtrace.inspect    
+    end
+
+    def connect
+      connections.each {|c| c.connect}
+    end
+
+    def disconnect
+      connections.each {|c| c.disconnect}
     end
 
     def default_connection

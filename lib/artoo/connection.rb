@@ -19,22 +19,21 @@ module Artoo
       require_connector
     end
 
-    def connector
-      @connector ||= constantize("Artoo::Connector::#{@type.to_s.capitalize}").new({:port => port})
-    end
-
     def connect
+      Logger.info "Connecting to '#{name}' on port '#{port}'..."
       connector.connect
     end
 
     def disconnect
+      Logger.info "Disconnecting from '#{name}' on port '#{port}'..."
       connector.disconnect
     end
 
     private
 
     def require_connector
-      require "artoo/connector/#{@type}"
+      require "artoo/connector/#{type.to_s}"
+      @connector = constantize("Artoo::Connector::#{type.to_s.capitalize}").new(:port => port, :parent => Actor.current)
     end
   end
 end
