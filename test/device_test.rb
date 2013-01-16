@@ -12,7 +12,7 @@ describe Artoo::Device do
   end
 
   it 'Artoo::Device#default_connection' do
-    @robot.devices.first.default_connection.must_equal @robot.default_connection
-    @robot.devices.last.default_connection.must_equal @robot.default_connection
+    @robot.devices[:test_device_1].default_connection.must_equal @robot.default_connection
+    @robot.devices[:test_device_2].default_connection.must_equal @robot.default_connection
   end
 end

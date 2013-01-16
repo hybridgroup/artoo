@@ -14,6 +14,10 @@ module Artoo
       @connection = params[:connection] || default_connection
     end
 
+    def method_missing(method_name, *arguments, &block)
+      connection.send(method_name, *arguments, &block)
+    end
+
     def default_connection
       @connection = parent.default_connection
     end

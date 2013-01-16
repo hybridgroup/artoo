@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/test_helper")
 class TestRobot < Artoo::Robot
   connection :test_connection
   device :test_device
+  device :another_test_device
 end
 
 describe Artoo::Robot do
@@ -27,7 +28,12 @@ describe Artoo::Robot do
   end
 
   it 'Artoo::Robot#devices' do
-    @robot.devices.first.name.must_equal 'test_device'
+    @robot.devices[:test_device].name.must_equal 'test_device'
+  end
+
+  it 'Artoo::Robot#test_device' do
+    @robot.test_device.name.must_equal 'test_device'
+    @robot.another_test_device.name.must_equal 'another_test_device'
   end
 
   it 'connects to Artoo::Connector::Loopback' do

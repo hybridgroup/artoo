@@ -181,10 +181,12 @@ module Artoo
     end
 
     def initialize_devices
-      @devices = []
+      @devices = {}
       device_types.each {|d|
         Logger.info "Initializing device #{d[:name].to_s}..."
-        @devices << Device.new(d.merge(:parent => Actor.current))
+        d = Device.new(d.merge(:parent => Actor.current))
+        instance_eval("def #{d.name}; return devices[:#{d.name}]; end")
+        @devices[d.name.intern] = d
       }
     end
   end
