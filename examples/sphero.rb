@@ -7,9 +7,6 @@ connection :sphero, :type => :sphero, :port => '/dev/tty.Sphero-YBW-RN-SPP'
   
 work do
   every(3.seconds) do
-     puts "hello"
-  end
-  after(10.seconds) do
-  	puts "wow"
+    default_connection.roll 60, rand(360)
   end
 end

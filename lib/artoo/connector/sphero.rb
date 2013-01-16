@@ -13,7 +13,10 @@ module Artoo
       end
 
       def finalize
-        sphero.close if sphero
+        if connected?
+          sphero.stop
+          sphero.close
+        end
       end
 
       def connect
@@ -36,6 +39,10 @@ module Artoo
       def disconnect
         sphero.close
         super
+      end
+
+      def method_missing(method_name, *arguments, &block)
+        sphero.send(method_name, *arguments, &block)
       end
     end
   end

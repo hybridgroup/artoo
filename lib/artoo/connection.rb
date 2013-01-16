@@ -29,6 +29,10 @@ module Artoo
       connector.disconnect
     end
 
+    def method_missing(method_name, *arguments, &block)
+      connector.send(method_name, *arguments, &block)
+    end
+
     private
 
     def require_connector
