@@ -9,9 +9,10 @@ module Artoo
   # interface for interacting with a collection of physical computing capabilities.
   class Robot
     include Celluloid
-    attr_reader :connections, :devices
+    attr_reader :connections, :devices, :name
 
     def initialize(params={})
+      @name = params[:name] || "Robot"
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})
     end

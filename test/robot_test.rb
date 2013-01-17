@@ -8,7 +8,7 @@ end
 
 describe Artoo::Robot do
   before do
-    @robot = TestRobot.new(:connections => {:test_connection => {:port => '1234'}})
+    @robot = TestRobot.new(:name => "testme", :connections => {:test_connection => {:port => '1234'}})
   end
 
   it 'Artoo::Robot.connection_types' do
@@ -17,6 +17,10 @@ describe Artoo::Robot do
 
   it 'Artoo::Robot.device_types' do
     @robot.device_types.first[:name].must_equal :test_device
+  end
+
+  it 'Artoo::Robot#name' do
+    @robot.name.must_equal 'testme'
   end
 
   it 'Artoo::Robot#connections' do
