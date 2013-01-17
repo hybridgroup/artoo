@@ -11,9 +11,9 @@ module Artoo
     include Celluloid
     attr_reader :connections, :devices
 
-    def initialize
-      initialize_connections
-      initialize_devices
+    def initialize(params={})
+      initialize_connections(params[:connections] || {})
+      initialize_devices(params[:devices] || {})
     end
     
     class << self
@@ -145,15 +145,15 @@ module Artoo
     end
 
     def connect
-      connections.each {|c| c.connect}
+      connections.each {|k, c| c.connect}
     end
 
     def disconnect
-      connections.each {|c| c.disconnect}
+      connections.each {|k, c| c.disconnect}
     end
 
     def default_connection
-      connections.first
+      connections[connections.keys.first]
     end
 
     def connection_types
@@ -172,15 +172,17 @@ module Artoo
     
     private
 
-    def initialize_connections
-      @connections = []
-      connection_types.each {|c|
-        Logger.info "Initializing connection #{c[:name].to_s}..."
-        @connections << Connection.new(c.merge(:parent => Actor.current))
+    def initialize_connections(params={})
+      @connections = {}
+      connection_types.each {|ct|
+        Logger.info "Initializing connection #{ct[:name].to_s}..."
+        cp = params[ct[:name]] || {}
+        c = Connection.new(ct.merge(cp).merge(:parent => Actor.current))
+        @connections[ct[:name]] = c
       }
     end
 
-    def initialize_devices
+    def initialize_devices(params={})
       @devices = {}
       device_types.each {|d|
         Logger.info "Initializing device #{d[:name].to_s}..."

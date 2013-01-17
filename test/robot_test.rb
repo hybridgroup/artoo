@@ -8,7 +8,7 @@ end
 
 describe Artoo::Robot do
   before do
-    @robot = TestRobot.new
+    @robot = TestRobot.new(:connections => {:test_connection => {:port => '1234'}})
   end
 
   it 'Artoo::Robot.connection_types' do
@@ -20,11 +20,15 @@ describe Artoo::Robot do
   end
 
   it 'Artoo::Robot#connections' do
-    @robot.connections.first.name.must_equal 'test_connection'
+    @robot.connections[:test_connection].name.must_equal 'test_connection'
   end
 
   it 'Artoo::Robot#default_connection' do
     @robot.default_connection.name.must_equal 'test_connection'
+  end
+
+  it 'Artoo::Robot#connections initialized with params' do
+    @robot.connections[:test_connection].port.must_equal '1234'
   end
 
   it 'Artoo::Robot#devices' do
