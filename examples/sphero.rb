@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :sphero, :type => :sphero, :port => '/dev/tty.Sphero-YBW-RN-SPP'
+connection :sphero, :type => :sphero, :port => '/dev/tty.Sphero-BWY-RN-SPP'
 device :sphero
   
 work do

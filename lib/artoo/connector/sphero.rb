@@ -2,15 +2,10 @@ require 'artoo/connector/connect'
 
 module Artoo
   module Connector
-    # The Sphero class is the subclass of the Connect class that represents   
-    # how to connect to a Sphero (http://gosphero.com)
+    # Connect to a Sphero (http://gosphero.com)
     class Sphero < Connect
       RETRY_COUNT = 5
       attr_reader :sphero
-
-      def initialize(params={})
-        super
-      end
 
       def finalize
         if connected?

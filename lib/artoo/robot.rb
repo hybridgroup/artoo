@@ -51,7 +51,7 @@ module Artoo
       end
 
       def work!
-        self.new.work
+        self.new.async.work
         sleep # sleep main thread, and let the work commence!
       end
 
@@ -146,11 +146,11 @@ module Artoo
     end
 
     def connect
-      connections.each {|k, c| c.connect}
+      connections.each {|k, c| c.async.connect}
     end
 
     def disconnect
-      connections.each {|k, c| c.disconnect}
+      connections.each {|k, c| c.async.disconnect}
     end
 
     def default_connection

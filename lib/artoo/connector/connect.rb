@@ -1,6 +1,6 @@
 module Artoo
   module Connector
-    # The Connect class is the base class that represents how to  
+    # The Connect class is the base class used to  
     # connect to a specific group of hardware devices. Examples 
     # would be an Arduino, a Sphero, or an ARDrone.
     #
