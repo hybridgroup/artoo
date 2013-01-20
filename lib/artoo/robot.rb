@@ -50,8 +50,14 @@ module Artoo
         self.working_code = block if block_given?
       end
 
-      def work!
-        self.new.async.work
+      def work!(val=nil)
+        if val.respond_to?(:work)
+          val.async.work
+        elsif val.kind_of?(Array)
+          val.each {|r| r.async.work}
+        else
+          self.new.async.work
+        end
         sleep # sleep main thread, and let the work commence!
       end
 

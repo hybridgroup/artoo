@@ -1,6 +1,4 @@
 require 'artoo'
-gem 'argus'
-require 'argus'
 
 connection :ardrone, :type => :ardrone
 device :drone

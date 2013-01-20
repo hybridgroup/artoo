@@ -47,4 +47,34 @@ describe Artoo::Robot do
   it 'connects to Artoo::Connector::Loopback' do
     @robot.default_connection.connector.must_be_kind_of Artoo::Connector::Loopback
   end
+
+  it 'Artoo::Robot.work! with single object' do
+    TestRobot.stubs(:sleep)
+
+    @asm = mock("async_method")
+    @asm.expects(:work)
+    @robot.expects(:async).returns(@asm)
+    TestRobot.work!(@robot)
+  end
+
+  it 'Artoo::Robot.work! with array of objects' do
+    @robot2 = TestRobot.new(:name => "too", :connections => {:test_connection => {:port => '1234'}})
+    TestRobot.stubs(:sleep)
+
+    @asm = mock("async_method")
+    @asm.expects(:work).times(2)
+    @robot.expects(:async).returns(@asm)
+    @robot2.expects(:async).returns(@asm)
+    TestRobot.work!([@robot, @robot2])
+  end
+
+  it 'Artoo::Robot.work! without object' do
+    TestRobot.stubs(:sleep)
+
+    @asm = mock("async_method")
+    @asm.expects(:work).at_least_once
+    TestRobot.expects(:new).returns(@robot)
+    @robot.expects(:async).returns(@asm)
+    TestRobot.work!
+  end
 end
