@@ -145,14 +145,19 @@ module Artoo
     def work
       Logger.info "Starting work..."
       connect
-      Actor.current.instance_eval(&working_code)
-    rescue Exception => e  
-      Logger.info e.message  
-      Logger.info e.backtrace.inspect    
+      current_instance.instance_eval(&working_code)
+    rescue Exception => e
+      Logger.error e.message
+      Logger.error e.backtrace.inspect
     end
 
     def connect
-      connections.each {|k, c| c.async.connect}
+      result = false
+      future_connections = []
+      # block until all connections done
+      connections.each {|k, c| future_connections << c.future.connect}
+      future_connections.each {|v| result = v.value}
+      result
     end
 
     def disconnect
@@ -164,17 +169,17 @@ module Artoo
     end
 
     def connection_types
-      Actor.current.class.connection_types ||= []
-      Actor.current.class.connection_types
+      current_class.connection_types ||= []
+      current_class.connection_types
     end
 
     def device_types
-      Actor.current.class.device_types ||= []
-      Actor.current.class.device_types
+      current_class.device_types ||= []
+      current_class.device_types
     end
 
     def working_code
-      Actor.current.class.working_code ||= proc {puts "No work defined."} 
+      current_class.working_code ||= proc {puts "No work defined."}
     end
     
     private
@@ -197,6 +202,14 @@ module Artoo
         instance_eval("def #{d.name}; return devices[:#{d.name}]; end")
         @devices[d.name.intern] = d
       }
+    end
+
+    def current_instance
+      Actor.current
+    end
+
+    def current_class
+      Actor.current.class
     end
   end
 end
