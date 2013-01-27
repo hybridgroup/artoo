@@ -5,14 +5,14 @@ device :sphero
   
 work do
   puts "Configuring..."
-  sphero.configure_collision_detection 0x01, 0x50, 0x50, 0x50, 0x50, 0x50
+  sphero.configure_collision_detection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
 
   every(3.seconds) do
     puts "Rolling..."
     sphero.roll 60, rand(360)
-    if sphero.read_async_messages
+    unless sphero.async_messages.empty?
       puts "----------"
-      while m = sphero.async_responses.shift do
+      while m = sphero.async_messages.shift do
         puts m
       end
       puts "=========="
