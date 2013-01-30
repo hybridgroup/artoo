@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/hybridgroup/firmata.git
+  revision: 4eae64c487f4979b2ddfab5cb2c376f039d0866b
+  specs:
+    firmata (0.1.1)
+      event_spitter
+      hybridgroup-serialport
+
 PATH
   remote: .
   specs:
@@ -9,7 +17,9 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
+    event_spitter (0.5.0)
     facter (1.6.17)
+    hybridgroup-serialport (1.2.1)
     metaclass (0.0.1)
     minitest (4.4.0)
     mocha (0.13.1)
@@ -23,6 +33,7 @@ PLATFORMS
 DEPENDENCIES
   artoo!
   celluloid
+  firmata!
   minitest
   mocha
   rake

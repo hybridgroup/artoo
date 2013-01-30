@@ -7,3 +7,5 @@ gem 'rake'
 gem 'minitest'
 gem 'mocha'
 gem 'celluloid'
+
+gem 'firmata', :git => "git://github.com/hybridgroup/firmata.git"
