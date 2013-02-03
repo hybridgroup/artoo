@@ -11,15 +11,19 @@ module Artoo
       @driver = params[:driver]
       @pin = params[:pin]
       @parent = params[:parent]
-      @connection = params[:connection] || default_connection
+      @connection = connect(params[:connection]) || default_connection
     end
 
     def method_missing(method_name, *arguments, &block)
       connection.send(method_name, *arguments, &block)
     end
 
+    def connect(c)
+      parent.connections[c] unless c.nil?
+    end
+
     def default_connection
-      @connection = parent.default_connection
+      parent.default_connection
     end
   end
 end
