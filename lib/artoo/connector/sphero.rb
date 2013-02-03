@@ -16,7 +16,7 @@ module Artoo
 
       def connect
         @retries_left = RETRY_COUNT
-        require 'sphero'
+        require 'sphero' unless defined?(::Sphero)
         begin
           @sphero = ::Sphero.new port
           super

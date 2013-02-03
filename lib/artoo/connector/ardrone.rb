@@ -14,7 +14,7 @@ module Artoo
       end
 
       def connect
-        require 'argus'
+        require 'argus' unless defined?(::Argus)
         @ardrone = Argus::Drone.new
         super
       end

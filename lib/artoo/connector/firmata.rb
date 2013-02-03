@@ -6,7 +6,7 @@ module Artoo
       attr_reader :firmata
 
       def connect
-        require 'firmata'
+        require 'firmata' unless defined?(::Firmata)
         @firmata ||= ::Firmata::Board.new port
         @firmata.connect
         super

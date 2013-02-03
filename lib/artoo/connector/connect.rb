@@ -26,6 +26,10 @@ module Artoo
         true
       end
 
+      def reconnect
+        connect unless connected?
+      end
+
       def connected?
         @connected == true
       end

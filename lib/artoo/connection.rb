@@ -38,7 +38,8 @@ module Artoo
 
     def method_missing(method_name, *arguments, &block)
       unless connector.connected?
-        Logger.warn "Cannot call unopened connection '#{name}'"
+        Logger.warn "Cannot call unopened connection '#{name}', attempting reconnect..."
+        connector.reconnect
         return nil
       end
       connector.send(method_name, *arguments, &block)
