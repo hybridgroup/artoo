@@ -22,11 +22,13 @@ module Artoo
           super
           return true
         rescue Errno::EBUSY => e
-          @retries_left = @retries_left - 1
+          @retries_left -= 1
           if @retries_left > 0
             retry
           else
-            raise e  
+            Logger.error e.message
+            Logger.error e.backtrace.inspect
+            return false
           end
         end
       end

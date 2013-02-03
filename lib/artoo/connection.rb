@@ -22,6 +22,9 @@ module Artoo
     def connect
       Logger.info "Connecting to '#{name}' on port '#{port}'..."
       connector.connect
+    rescue Exception => e
+      Logger.error e.message
+      Logger.error e.backtrace.inspect
     end
 
     def disconnect
@@ -29,8 +32,20 @@ module Artoo
       connector.disconnect
     end
 
+    def connected?
+      connector.connected?
+    end
+
     def method_missing(method_name, *arguments, &block)
+      unless connector.connected?
+        Logger.warn "Cannot call unopened connection '#{name}'"
+        return nil
+      end
       connector.send(method_name, *arguments, &block)
+    rescue Exception => e
+      Logger.error e.message
+      Logger.error e.backtrace.inspect
+      return nil
     end
 
     private
