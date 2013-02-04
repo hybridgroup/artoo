@@ -1,8 +1,8 @@
-require 'artoo/connector/connect'
+require 'artoo/adaptors/adaptor'
 
 module Artoo
-  module Connector
-    class Firmata < Connect
+  module Adaptors
+    class Firmata < Adaptor
       attr_reader :firmata
 
       def connect

@@ -50,8 +50,8 @@ describe Artoo::Robot do
     @robot.another_test_device.name.must_equal 'another_test_device'
   end
 
-  it 'connects to Artoo::Connector::Loopback' do
-    @robot.default_connection.connector.must_be_kind_of Artoo::Connector::Loopback
+  it 'connects to Artoo::Adaptors::Loopback' do
+    @robot.default_connection.adaptor.must_be_kind_of Artoo::Adaptors::Loopback
   end
 
   it 'Artoo::Robot.work! with single object' do

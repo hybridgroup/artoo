@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
-require 'artoo/connector/sphero'
+require 'artoo/adaptors/sphero'
 
 class SpheroConnectorRobot < Artoo::Robot
   connection :test_connection
@@ -7,11 +7,11 @@ class SpheroConnectorRobot < Artoo::Robot
   device :test_device_2
 end
 
-describe Artoo::Connector::Sphero do
+describe Artoo::Adaptors::Sphero do
   before do
     @robot = SpheroConnectorRobot.new
   end
 
-  it 'Artoo::Connector::Sphero#connect'
-  it 'Artoo::Connector::Sphero#disconnect'
+  it 'Artoo::Adaptors::Sphero#connect'
+  it 'Artoo::Adaptors::Sphero#disconnect'
 end

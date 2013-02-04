@@ -1,9 +1,9 @@
-require 'artoo/connector/connect'
+require 'artoo/adaptors/adaptor'
 
 module Artoo
-  module Connector
+  module Adaptors
     # Connect to a Sphero (http://gosphero.com)
-    class Sphero < Connect
+    class Sphero < Adaptor
       RETRY_COUNT = 5
       attr_reader :sphero
 

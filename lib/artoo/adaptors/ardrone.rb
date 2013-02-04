@@ -1,9 +1,9 @@
-require 'artoo/connector/connect'
+require 'artoo/adaptors/adaptor'
 
 module Artoo
-  module Connector
+  module Adaptors
     # Connect to a ARDrone 2.0 (http://ardrone2.parrot.com/)
-    class Ardrone < Connect
+    class Ardrone < Adaptor
       attr_reader :ardrone
 
       def finalize

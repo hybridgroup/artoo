@@ -8,20 +8,20 @@ module Artoo
     include Celluloid
     include Artoo::Utility
 
-    attr_reader :parent, :name, :type, :port, :connector
+    attr_reader :parent, :name, :type, :port, :adaptor
 
     def initialize(params={})
       @name = params[:name].to_s
-      @type = params[:type] || :loopback
+      @type = params[:adaptor] || :loopback
       @port = params[:port]
       @parent = params[:parent]
 
-      require_connector
+      require_adaptor
     end
 
     def connect
       Logger.info "Connecting to '#{name}' on port '#{port}'..."
-      connector.connect
+      adaptor.connect
     rescue Exception => e
       Logger.error e.message
       Logger.error e.backtrace.inspect
@@ -29,20 +29,20 @@ module Artoo
 
     def disconnect
       Logger.info "Disconnecting from '#{name}' on port '#{port}'..."
-      connector.disconnect
+      adaptor.disconnect
     end
 
     def connected?
-      connector.connected?
+      adaptor.connected?
     end
 
     def method_missing(method_name, *arguments, &block)
-      unless connector.connected?
-        Logger.warn "Cannot call unopened connection '#{name}', attempting reconnect..."
-        connector.reconnect
+      unless adaptor.connected?
+        Logger.warn "Cannot call unconnected adaptor '#{name}', attempting to reconnect..."
+        adaptor.reconnect
         return nil
       end
-      connector.send(method_name, *arguments, &block)
+      adaptor.send(method_name, *arguments, &block)
     rescue Exception => e
       Logger.error e.message
       Logger.error e.backtrace.inspect
@@ -51,9 +51,9 @@ module Artoo
 
     private
 
-    def require_connector
-      require "artoo/connector/#{type.to_s}"
-      @connector = constantize("Artoo::Connector::#{type.to_s.capitalize}").new(:port => port, :parent => Actor.current)
+    def require_adaptor
+      require "artoo/adaptors/#{type.to_s}"
+      @adaptor = constantize("Artoo::Adaptors::#{type.to_s.capitalize}").new(:port => port, :parent => Actor.current)
     end
   end
 end

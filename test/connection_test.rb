@@ -12,7 +12,7 @@ describe Artoo::Connection do
 
   it 'Artoo::Connection#connect' do
     @connection.connect
-    @connection.connector.must_be_kind_of Artoo::Connector::Loopback
+    @connection.adaptor.must_be_kind_of Artoo::Adaptors::Loopback
   end
 
   it 'Artoo::Connection#disconnect'

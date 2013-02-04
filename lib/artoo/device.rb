@@ -8,10 +8,12 @@ module Artoo
 
     def initialize(params={})
       @name = params[:name].to_s
-      @driver = params[:driver]
+      @driver = params[:driver] || :passthru
       @pin = params[:pin]
       @parent = params[:parent]
       @connection = connect(params[:connection]) || default_connection
+
+      require_driver
     end
 
     def method_missing(method_name, *arguments, &block)
@@ -24,6 +26,13 @@ module Artoo
 
     def default_connection
       parent.default_connection
+    end
+
+    private
+
+    def require_driver
+      require "artoo/drivers/#{driver.to_s}"
+      @driver = constantize("Artoo::Drivers::#{driver.to_s.capitalize}").new(:parent => Actor.current)
     end
   end
 end
