@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :ardrone, :type => :ardrone
+connection :ardrone, :adaptor => :ardrone
 device :drone
   
 work do

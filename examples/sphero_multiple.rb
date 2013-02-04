@@ -1,7 +1,7 @@
 require 'artoo/robot'
 
 class SpheroRobot < Artoo::Robot
-  connection :sphero, :type => :sphero
+  connection :sphero, :adaptor => :sphero
   device :sphero
   
   work do

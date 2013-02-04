@@ -1,9 +1,9 @@
 require 'artoo'
 
-connection :sphero, :type => :sphero, :port => '/dev/tty.Sphero-BWY-RN-SPP'
+connection :sphero, :adaptor => :sphero, :port => '/dev/tty.Sphero-BWY-RN-SPP'
 device :sphero, :connection => :sphero
 
-connection :firmata, :type => :firmata, :port => '/dev/tty.usbserial-A700636n'
+connection :firmata, :adaptor => :firmata, :port => '/dev/tty.usbserial-A700636n'
 device :arduino, :connection => :firmata
 
 work do
