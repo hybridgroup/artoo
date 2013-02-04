@@ -14,6 +14,10 @@ module Artoo
       def initialize(params={})
         @parent = params[:parent]
       end
+
+      def connection
+        parent.connection
+      end
     end
   end
 end

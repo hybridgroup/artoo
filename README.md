@@ -11,7 +11,7 @@ Artoo provides a simple, yet powerful domain-specific language (DSL) for robotic
 ```
 require 'artoo'
 
-connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
 
 device :collision_detect, :driver => :switch, :pin => 3
 device :motor, :driver => :l293_motor, :pin => 4
@@ -29,7 +29,7 @@ end
 require 'artoo/robot'
  
 class Huey < Artoo::Robot
-  connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+  connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
 
   device :motion_detect, :driver => :motion_detector, :pin => 7
   device :temp, :driver => :thermometer, :pin => 8
