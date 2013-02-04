@@ -8,15 +8,14 @@ module Artoo
     include Celluloid
     include Artoo::Utility
 
-    attr_reader :parent, :name, :type, :port, :adaptor
+    attr_reader :parent, :name, :port, :adaptor
 
     def initialize(params={})
       @name = params[:name].to_s
-      @type = params[:adaptor] || :loopback
       @port = params[:port]
       @parent = params[:parent]
 
-      require_adaptor
+      require_adaptor(params[:adaptor] || :loopback)
     end
 
     def connect
@@ -51,7 +50,7 @@ module Artoo
 
     private
 
-    def require_adaptor
+    def require_adaptor(type)
       require "artoo/adaptors/#{type.to_s}"
       @adaptor = constantize("Artoo::Adaptors::#{type.to_s.capitalize}").new(:port => port, :parent => Actor.current)
     end
