@@ -52,7 +52,7 @@ module Artoo
 
     def require_adaptor(type)
       require "artoo/adaptors/#{type.to_s}"
-      @adaptor = constantize("Artoo::Adaptors::#{type.to_s.capitalize}").new(:port => port, :parent => Actor.current)
+      @adaptor = constantize("Artoo::Adaptors::#{type.to_s.capitalize}").new(:port => port, :parent => current_instance)
     end
   end
 end

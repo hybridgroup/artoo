@@ -33,7 +33,7 @@ module Artoo
 
     def require_driver(d)
       require "artoo/drivers/#{d.to_s}"
-      @driver = constantize("Artoo::Drivers::#{d.to_s.capitalize}").new(:parent => Actor.current)
+      @driver = constantize("Artoo::Drivers::#{d.to_s.capitalize}").new(:parent => current_instance)
     end
   end
 end

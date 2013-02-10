@@ -191,7 +191,7 @@ module Artoo
       connection_types.each {|ct|
         Logger.info "Initializing connection #{ct[:name].to_s}..."
         cp = params[ct[:name]] || {}
-        c = Connection.new(ct.merge(cp).merge(:parent => Actor.current))
+        c = Connection.new(ct.merge(cp).merge(:parent => current_instance))
         @connections[ct[:name]] = c
       }
     end
@@ -200,18 +200,10 @@ module Artoo
       @devices = {}
       device_types.each {|d|
         Logger.info "Initializing device #{d[:name].to_s}..."
-        d = Device.new(d.merge(:parent => Actor.current))
+        d = Device.new(d.merge(:parent => current_instance))
         instance_eval("def #{d.name}; return devices[:#{d.name}]; end")
         @devices[d.name.intern] = d
       }
-    end
-
-    def current_instance
-      Actor.current
-    end
-
-    def current_class
-      Actor.current.class
     end
   end
 end

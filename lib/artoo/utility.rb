@@ -15,6 +15,14 @@ module Artoo
     def random_string
       (0...8).map{65.+(rand(26)).chr}.join
     end
+
+    def current_instance
+      Celluloid::Actor.current
+    end
+
+    def current_class
+      Celluloid::Actor.current.class
+    end
   end
 end
 
