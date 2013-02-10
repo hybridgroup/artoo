@@ -1,24 +1,34 @@
 require 'artoo/robot'
 
+# SPHEROS = ["/dev/tty.Sphero-BRG-RN-SPP",
+#            "/dev/tty.Sphero-YBW-RN-SPP",
+#            "/dev/tty.Sphero-BWY-RN-SPP",
+#            "/dev/tty.Sphero-YRR-RN-SPP",
+#            "/dev/tty.Sphero-WRW-RN-SPP",
+#            "/dev/tty.Sphero-GBP-RN-SPP"]
+
+SPHEROS = ["4567",
+           "4568",
+           "4569",
+           "4570",
+           "4571"]
+
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero
   
   work do
     every(3.seconds) do
-      sphero.roll 60, rand(360)
+      sphero.roll 90, rand(360)
     end
   end
 end
 
 robots = []
-robots << SpheroRobot.new(:name => "Number 1", 
-                          :connections => 
-                            {:sphero => 
-                              {:port => "/dev/tty.Sphero-YBW-RN-SPP"}})
-robots << SpheroRobot.new(:name => "Number 2", 
-                          :connections => 
-                            {:sphero => 
-                              {:port => "/dev/tty.Sphero-BWY-RN-SPP"}})
+SPHEROS.each {|p|
+  robots << SpheroRobot.new(:connections => 
+                              {:sphero => 
+                                {:port => p}})
+}
 
 SpheroRobot.work!(robots)
