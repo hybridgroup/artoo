@@ -18,7 +18,7 @@ module Artoo
         @retries_left = RETRY_COUNT
         require 'sphero' unless defined?(::Sphero)
         begin
-          @sphero = ::Sphero.new port
+          @sphero = ::Sphero.new(connect_to)
           super
           return true
         rescue Errno::EBUSY => e

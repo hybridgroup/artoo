@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 require 'artoo/adaptors/firmata'
 
 class FirmataConnectorRobot < Artoo::Robot
-  connection :test_connection, :type => :firmata
+  connection :test_connection, :type => :firmata, :port => '5678'
 end
 
 describe Artoo::Adaptors::Firmata do

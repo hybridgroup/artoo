@@ -7,8 +7,12 @@ module Artoo
 
       def connect
         require 'firmata' unless defined?(::Firmata)
-        @firmata ||= ::Firmata::Board.new port
+        c = connect_to
+        Logger.info c
+        @firmata = ::Firmata::Board.new(c)
+        Logger.info 'connecting...'
         @firmata.connect
+        Logger.info 'connected'
         super
         return true
       end

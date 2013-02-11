@@ -1,3 +1,5 @@
+require 'socket'
+
 module Artoo
   module Adaptors
     # The Adaptor class is the base class used to  
@@ -32,6 +34,14 @@ module Artoo
 
       def connected?
         @connected == true
+      end
+
+      def connect_to
+        if port.is_tcp?
+          @socket ||= TCPSocket.open(port.host, port.port)
+        else
+          port.port
+        end
       end
     end
   end

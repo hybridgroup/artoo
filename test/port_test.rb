@@ -7,9 +7,6 @@ describe Artoo::Port do
     @serial_port = Artoo::Port.new("/dev/tty.usb12345")
   end
 
-
-#/^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3}):([0-9]{1,5})$/
-
   it 'Artoo::Port#port' do
     @remote_tcp_port.port.must_equal "8080"
     @local_tcp_port.port.must_equal "5678"
@@ -28,5 +25,9 @@ describe Artoo::Port do
     @serial_port.is_serial?.must_equal true
   end
 
-  it 'Artoo::Port#to_s'
+  it 'Artoo::Port#to_s' do
+    @remote_tcp_port.to_s.must_equal "192.168.0.1:8080"
+    @local_tcp_port.to_s.must_equal "localhost:5678"
+    @serial_port.to_s.must_equal "/dev/tty.usb12345"
+  end
 end
