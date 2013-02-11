@@ -38,7 +38,8 @@ describe Artoo::Robot do
   end
 
   it 'Artoo::Robot#connections initialized with params' do
-    @robot.connections[:test_connection].port.must_equal '1234'
+    @robot.connections[:test_connection].port.host.must_equal 'localhost'
+    @robot.connections[:test_connection].port.port.must_equal '1234'
   end
 
   it 'Artoo::Robot#devices' do

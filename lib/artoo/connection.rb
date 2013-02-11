@@ -12,7 +12,7 @@ module Artoo
 
     def initialize(params={})
       @name = params[:name].to_s
-      @port = params[:port]
+      @port = Port.new(params[:port])
       @parent = params[:parent]
 
       require_adaptor(params[:adaptor] || :loopback)

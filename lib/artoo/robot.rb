@@ -2,6 +2,7 @@ require 'celluloid'
 
 require 'artoo/connection'
 require 'artoo/device'
+require 'artoo/port'
 require 'artoo/utility'
 
 module Artoo
