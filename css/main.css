@@ -195,7 +195,9 @@ a {
 /* line 217, main.css.scss */
 a:active,
 a:hover {
-  text-decoration: underline; }
+  text-decoration: none;
+  background-color: rgb(233, 68, 75);
+  }
 
 /* line 221, main.css.scss */
 body {
