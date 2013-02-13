@@ -15,5 +15,9 @@ describe Artoo::Connection do
     @connection.adaptor.must_be_kind_of Artoo::Adaptors::Loopback
   end
 
-  it 'Artoo::Connection#disconnect'
+  it 'Artoo::Connection#disconnect' do
+    @connection.connect
+    @connection.disconnect
+    @connection.connected?.must_equal false
+  end
 end

@@ -1,19 +1,24 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 require 'artoo/adaptors/ardrone'
-
-class ArdroneConnectorRobot < Artoo::Robot
-  connection :test_connection, :adaptor => :ardrone
-end
+require 'argus'
 
 describe Artoo::Adaptors::Ardrone do
   before do
-    @robot = ArdroneConnectorRobot.new
+    @port = Artoo::Port.new('/dev/awesome')
+    @adaptor = Artoo::Adaptors::Ardrone.new(:port => @port)
+    @ardrone = mock('ardrone')
+    Argus::Drone.stubs(:new).returns(@ardrone)
   end
 
-  it 'connects to Artoo::Adaptors::Ardrone' do
-		@robot.default_connection.adaptor.must_be_kind_of Artoo::Adaptors::Ardrone
+  it 'Artoo::Adaptors::Ardrone#connect' do
+    @adaptor.connect.must_equal true
   end
 
-  it 'Artoo::Adaptors::Ardrone#connect'
-  it 'Artoo::Adaptors::Ardrone#disconnect'
+  it 'Artoo::Adaptors::Ardrone#disconnect' do
+    @adaptor.connect
+
+    @ardrone.expects(:stop)
+    @adaptor.disconnect
+    @adaptor.connected?.must_equal false
+  end
 end

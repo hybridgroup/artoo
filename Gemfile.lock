@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/hybridgroup/argus.git
+  revision: e1f9aeea4c0cc565dbb190d0de065c858a0487c0
+  specs:
+    argus (0.0.0)
+
+GIT
+  remote: https://github.com/hybridgroup/firmata.git
+  revision: d30d9e0559804b77a7f864e5da0d223977839fa7
+  specs:
+    hybridgroup-firmata (0.2.1)
+      event_spitter
+
 PATH
   remote: .
   specs:
@@ -9,7 +22,9 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
+    event_spitter (0.5.0)
     facter (1.6.17)
+    hybridgroup-sphero (1.1.6)
     metaclass (0.0.1)
     minitest (4.5.0)
     mocha (0.13.2)
@@ -22,8 +37,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  argus!
   artoo!
   celluloid
+  hybridgroup-firmata!
+  hybridgroup-sphero
   minitest
   mocha
   rake

@@ -7,5 +7,9 @@ describe Artoo::Drivers::Driver do
     @driver = Artoo::Drivers::Driver.new(:parent => @device)
   end
 
-  it 'Artoo::Drivers::Driver'
+  it 'Driver#connection' do
+    @connection = mock('connection')
+    @device.expects(:connection).returns(@connection)
+    @driver.connection.must_equal @connection
+  end
 end
