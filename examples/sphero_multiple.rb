@@ -1,21 +1,14 @@
 require 'artoo/robot'
 
-# SPHEROS = ["/dev/tty.Sphero-BRG-RN-SPP",
-#            "/dev/tty.Sphero-YBW-RN-SPP",
-#            "/dev/tty.Sphero-BWY-RN-SPP",
-#            "/dev/tty.Sphero-YRR-RN-SPP",
-#            "/dev/tty.Sphero-WRW-RN-SPP",
-#            "/dev/tty.Sphero-GBP-RN-SPP"]
-
-SPHEROS = ["4567",
-           "4568",
-           "4569",
-           "4570",
-           "4571"]
+SPHEROS = ["4567", #"/dev/tty.Sphero-BRG-RN-SPP"
+           "4568", #"/dev/tty.Sphero-YBW-RN-SPP"
+           "4569", #"/dev/tty.Sphero-BWY-RN-SPP"
+           "4570", #"/dev/tty.Sphero-YRR-RN-SPP"
+           "4571"] #"/dev/tty.Sphero-WRW-RN-SPP"
 
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
-  device :sphero
+  device :sphero, :driver => :sphero
   
   work do
     every(3.seconds) do
