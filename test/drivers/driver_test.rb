@@ -12,4 +12,10 @@ describe Artoo::Drivers::Driver do
     @device.expects(:connection).returns(@connection)
     @driver.connection.must_equal @connection
   end
+
+  it 'Driver#pin' do
+    @pin = 13
+    @device.expects(:pin).returns(@pin)
+    @driver.pin.must_equal @pin
+  end
 end

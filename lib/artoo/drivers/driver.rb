@@ -19,6 +19,10 @@ module Artoo
         parent.connection
       end
 
+      def pin
+        parent.pin
+      end
+
       def method_missing(method_name, *arguments, &block)
         connection.send(method_name, *arguments, &block)
       rescue Exception => e
