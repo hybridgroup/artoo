@@ -9,7 +9,7 @@ module Artoo
     # Derive a class from this class, in order to implement communication
     # with a new type of hardware device.
     class Adaptor
-      include Celluloid
+      include Celluloid::IO
 
       attr_reader :parent, :port
 

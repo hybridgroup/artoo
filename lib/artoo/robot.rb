@@ -1,4 +1,4 @@
-require 'celluloid'
+require 'celluloid/io'
 
 require 'artoo/connection'
 require 'artoo/device'

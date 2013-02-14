@@ -5,7 +5,7 @@ gemspec
 
 gem 'rake'
 gem 'mocha'
-gem 'celluloid'
+gem 'celluloid-io'
 
 group :development, :test do
   gem 'minitest'

@@ -22,6 +22,9 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
+    celluloid-io (0.12.1)
+      celluloid (~> 0.12.0)
+      nio4r (>= 0.4.0)
     event_spitter (0.5.0)
     facter (1.6.17)
     hybridgroup-sphero (1.1.6)
@@ -29,6 +32,7 @@ GEM
     minitest (4.5.0)
     mocha (0.13.2)
       metaclass (~> 0.0.1)
+    nio4r (0.4.3)
     rake (10.0.3)
     timers (1.1.0)
 
@@ -39,7 +43,7 @@ PLATFORMS
 DEPENDENCIES
   argus!
   artoo!
-  celluloid
+  celluloid-io
   hybridgroup-firmata!
   hybridgroup-sphero
   minitest
