@@ -15,14 +15,6 @@ module Artoo
       def sensor_data
         connection.async_messages.select {|m| m.is_a?(::Sphero::Response::SensorData)}
       end
-
-      def method_missing(method_name, *arguments, &block)
-        connection.send(method_name, *arguments, &block)
-      rescue Exception => e
-        Logger.error e.message
-        Logger.error e.backtrace.inspect
-        return nil
-      end
     end
   end
 end

@@ -18,6 +18,14 @@ module Artoo
       def connection
         parent.connection
       end
+
+      def method_missing(method_name, *arguments, &block)
+        connection.send(method_name, *arguments, &block)
+      rescue Exception => e
+        Logger.error e.message
+        Logger.error e.backtrace.inspect
+        return nil
+      end
     end
   end
 end
