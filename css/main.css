@@ -85,125 +85,25 @@ textarea {
 /* ==========================================================================
  Author's custom styles
  ========================================================================== */
-@font-face {
-  font-family: 'titillium_webblack';
-  src: url("../fonts/titilliumweb-black-webfont.eot");
-  src: url("../fonts/titilliumweb-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titilliumweb-black-webfont.woff") format("woff"), url("../fonts/titilliumweb-black-webfont.ttf") format("truetype"), url("../fonts/titilliumweb-black-webfont.svg#titillium_webblack") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-/* line 108, main.css.scss */
-.artoo {
-  left: 762px;
-  position: absolute;
-  top: 42px;
-  z-index: 10; }
-
-/* line 115, main.css.scss */
-.container {
-  margin: 0px auto;
-  overflow: hidden;
-  width: 1020px; }
-
-/* line 121, main.css.scss */
-.content-box {
-  background-color: white;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 15px;
-  padding-top: 5px;
-  width: 850px; }
-
-/* line 133, main.css.scss */
-.content-container {
-  clear: both;
-  margin: 0px auto;
-  overflow: hidden;
-  padding-top: 20px;
-  padding-left: 40px;
-  padding-right: 90px;
-  position: relative;
-  width: 890px;
-  z-index: 1px; }
-
-/* line 145, main.css.scss */
-.footer {
-  padding-top: 40px;
-  padding-left: 40px; }
-
-/* line 150, main.css.scss */
-.header {
-  margin: 0px auto;
-  overflow: hidden;
-  padding-top: 20px;
-  padding-left: 40px;
-  padding-right: 40px;
-  width: 940px; }
-
-/* line 159, main.css.scss */
-.logo {
-  margin-bottom: -1px; }
-
-/* line 163, main.css.scss */
-.share-buttons {
-  float: left;
-  padding-left: 330px;
-  padding-top: 20px; }
-
-/* line 169, main.css.scss */
-.social-media-button {
-  background-color: #e9575d;
-  -webkit-box-shadow: 1px 1px 0px #d23f45, 2px 2px 0px #d23f45, 3px 3px 0px #d23f45;
-  -moz-box-shadow: 3px 3px 0px #d23f45, 2px 2px 0px #d23f45, 1px 1px 0px #d23f45;
-  box-shadow: 1px 1px 0px #d23f45, 2px 2px 0px #d23f45, 3px 3px 0px #d23f45;
-  color: white;
-  display: block;
-  /*  font-family: 'titillium_webblack', Helvetica,arial, sans-serif;*/
-  font-size: 18px;
-  line-height: 0px;
-  margin-right: 30px;
-  margin-top: 25px;
-  padding: 15px 15px 15px 15px;
-  float: right;
-  font-weight: bold; }
-
-/* line 195, main.css.scss */
-.social-media-button.twitter {
-  margin-right: 0px; }
-
-/* line 198, main.css.scss */
-.top-divider {
-  background: #ce3230;
-  height: 5px;
-  margin-right: 60px;
-  width: 1020px; }
-
-/* line 205, main.css.scss */
+/* line 97, main.css.scss */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0px;
   padding: 0px;
   border: 0px none; }
 
-/* line 211, main.css.scss */
+/* line 102, main.css.scss */
 a {
-  color: #4183c4;
   text-decoration: none; }
 
-/* line 217, main.css.scss */
-a:active,
-a:hover {
-  text-decoration: none;
-  background-color: rgb(233, 68, 75);
-  }
-
-/* line 221, main.css.scss */
+/*a:active, a:hover {
+  background-color: #e8f5fa;
+  text-decoration: underline;
+}*/
+/* line 111, main.css.scss */
 body {
   background-color: #e8f5fa; }
 
-/* line 228, main.css.scss */
+/* line 118, main.css.scss */
 code,
 kbd,
 pre,
@@ -212,14 +112,14 @@ samp {
   _font-family: "courier new", monospace;
   font-size: 12px; }
 
-/* line 234, main.css.scss */
+/* line 124, main.css.scss */
 h1, h2, h3, h4, h5, h6 {
   margin: 20px 0px 10px;
   padding: 0px;
   font-weight: bold;
   position: relative; }
 
-/* line 242, main.css.scss */
+/* line 132, main.css.scss */
 h1 {
   font-size: 28px;
   margin-top: 0px;
@@ -228,39 +128,39 @@ h1 {
   position: relative;
   color: black; }
 
-/* line 251, main.css.scss */
+/* line 141, main.css.scss */
 h2 {
   font-size: 24px;
   border-bottom: 1px solid #cccccc;
   color: black; }
 
-/* line 257, main.css.scss */
+/* line 147, main.css.scss */
 h3 {
   font-size: 18px;
   margin: 1em 0; }
 
-/* line 262, main.css.scss */
+/* line 152, main.css.scss */
 h4 {
   font-size: 1em;
   margin: 1.33em 0; }
 
-/* line 267, main.css.scss */
+/* line 157, main.css.scss */
 h5 {
   font-size: 0.83em;
   margin: 1.67em 0; }
 
-/* line 272, main.css.scss */
+/* line 162, main.css.scss */
 h6 {
   font-size: 0.75em;
   margin: 2.33em 0; }
 
-/* line 278, main.css.scss */
+/* line 168, main.css.scss */
 p,
 pre {
   font-size: 14px;
   margin: 0px 0px 15px 0px; }
 
-/* line 283, main.css.scss */
+/* line 173, main.css.scss */
 pre {
   background-color: #f8f8f8;
   border: 1px solid #cccccc;
@@ -271,7 +171,7 @@ pre {
   border-radius: 3px 3px 3px 3px;
   margin: 15px 0px; }
 
-/* line 294, main.css.scss */
+/* line 184, main.css.scss */
 pre > code {
   margin: 0px;
   padding: 0px;
@@ -279,13 +179,104 @@ pre > code {
   border: medium none;
   background: none repeat scroll 0% 0% transparent; }
 
+/* line 192, main.css.scss */
+.artoo {
+  right: -10px;
+  position: absolute;
+  top: 42px;
+  z-index: 10; }
+
+/* line 199, main.css.scss */
+.container {
+  margin: 0px auto;
+  width: 1020px; }
+
+/* line 204, main.css.scss */
+.content-box {
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding: 5px 20px 15px 20px;
+  width: 900px; }
+
+/* line 213, main.css.scss */
+.content-container {
+  clear: both;
+  margin: 0px auto;
+  padding: 20px 90px 0px 40px;
+  position: relative;
+  width: 890px;
+  z-index: 1px; }
+
+/* line 222, main.css.scss */
+.footer {
+  padding: 40px 0px 0px 40px; }
+
+/* line 226, main.css.scss */
+.footer a:visited {
+  background-color: #e8f5fa;
+  text-decoration: underline; }
+
+/* line 231, main.css.scss */
+.footer a:hover {
+  background-color: #e8f5fa;
+  text-decoration: underline; }
+
+/* line 236, main.css.scss */
+.header {
+  margin: 0px auto;
+  padding: 20px 40px 0px 40px;
+  width: 940px; }
+
+/* line 242, main.css.scss */
+.logo {
+  margin-bottom: -1px; }
+
+/* line 246, main.css.scss */
+.share-buttons {
+  float: left;
+  padding: 20px 0px 0px 330px; }
+
+/* line 251, main.css.scss */
+.social-media-button {
+  background-color: #e9575d;
+  -webkit-box-shadow: 1px 1px 0px #d23f45, 2px 2px 0px #d23f45, 3px 3px 0px #d23f45;
+  -moz-box-shadow: 3px 3px 0px #d23f45, 2px 2px 0px #d23f45, 1px 1px 0px #d23f45;
+  box-shadow: 1px 1px 0px #d23f45, 2px 2px 0px #d23f45, 3px 3px 0px #d23f45;
+  color: white;
+  display: block;
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 0px;
+  margin-right: 30px;
+  margin-top: 25px;
+  padding: 15px 15px 15px 15px; }
+
+/* line 276, main.css.scss */
+.header.social-media-button a:visited, a:hover {
+  background-color: #e9444b;
+  text-decoration: none; }
+
+/* line 281, main.css.scss */
+.social-media-button.twitter {
+  margin-right: 0px; }
+
+/* line 284, main.css.scss */
+.top-divider {
+  background: #ce3230;
+  height: 5px;
+  margin-right: 60px;
+  width: 1020px; }
+
 /* ==========================================================================
  Helper classes
  ========================================================================== */
 /*
 * Image replacement
 */
-/* line 325, main.css.scss */
+/* line 299, main.css.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -293,7 +284,7 @@ pre > code {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 333, main.css.scss */
+/* line 307, main.css.scss */
 .ir:before {
   content: "";
   display: block;
@@ -303,7 +294,7 @@ pre > code {
 /*
 * Hide from both screenreaders and browsers: h5bp.com/u
 */
-/* line 344, main.css.scss */
+/* line 318, main.css.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -311,7 +302,7 @@ pre > code {
 /*
 * Hide only visually, but have it available for screenreaders: h5bp.com/v
 */
-/* line 353, main.css.scss */
+/* line 327, main.css.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -326,7 +317,7 @@ pre > code {
 * Extends the .visuallyhidden class to allow the element to be focusable
 * when navigated to via the keyboard: h5bp.com/p
 */
-/* line 370, main.css.scss */
+/* line 344, main.css.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -339,7 +330,7 @@ pre > code {
 /*
 * Hide visually and from screenreaders, but maintain layout
 */
-/* line 383, main.css.scss */
+/* line 357, main.css.scss */
 .invisible {
   visibility: hidden; }
 
@@ -354,7 +345,7 @@ pre > code {
 * 2. The use of `table` rather than `block` is only necessary if using
 *    `:before` to contain the top-margins of child elements.
 */
-/* line 400, main.css.scss */
+/* line 374, main.css.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -362,7 +353,7 @@ pre > code {
   display: table;
   /* 2 */ }
 
-/* line 405, main.css.scss */
+/* line 379, main.css.scss */
 .clearfix:after {
   clear: both; }
 
@@ -370,7 +361,7 @@ pre > code {
 * For IE 6/7 only
 * Include this rule to trigger hasLayout and contain floats.
 */
-/* line 414, main.css.scss */
+/* line 388, main.css.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -388,7 +379,7 @@ pre > code {
  Inlined to avoid required HTTP connection: h5bp.com/r
  ========================================================================== */
 @media print {
-  /* line 439, main.css.scss */
+  /* line 413, main.css.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -396,59 +387,59 @@ pre > code {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 447, main.css.scss */
+  /* line 421, main.css.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 451, main.css.scss */
+  /* line 425, main.css.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 455, main.css.scss */
+  /* line 429, main.css.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 465, main.css.scss */
+  /* line 439, main.css.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 470, main.css.scss */
+  /* line 444, main.css.scss */
   pre,
   blockquote {
     border: 1px solid #999999;
     page-break-inside: avoid; }
 
-  /* line 475, main.css.scss */
+  /* line 449, main.css.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 480, main.css.scss */
+  /* line 454, main.css.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 484, main.css.scss */
+  /* line 458, main.css.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 494, main.css.scss */
+  /* line 468, main.css.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 500, main.css.scss */
+  /* line 474, main.css.scss */
   h2,
   h3 {
     page-break-after: avoid; } }
