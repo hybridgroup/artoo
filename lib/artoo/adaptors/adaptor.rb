@@ -38,7 +38,7 @@ module Artoo
 
       def connect_to
         if port.is_tcp?
-          @socket ||= TCPSocket.open(port.host, port.port)
+          @socket ||= TCPSocket.new(port.host, port.port)
         else
           port.port
         end

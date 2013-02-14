@@ -81,7 +81,7 @@ Huey.work!
 
 Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
 
-Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded modes, as long as it is supported by the Ruby version in which it is executing. This is due to being built on top of Celluloid (https://github.com/celluloid/celluloid).
+Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid) and Celluloid::IO (https://github.com/celluloid/celluloid-io).
 
 ## Installing:
 
