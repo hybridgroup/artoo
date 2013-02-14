@@ -2,7 +2,7 @@ require 'artoo/drivers/driver'
 
 module Artoo
   module Drivers
-    # The Sphero driver with special behaviors
+    # The Sphero driver behaviors
     class Sphero < Driver
       def collisions
         connection.async_messages.select {|m| m.is_a?(::Sphero::Response::CollisionDetected)}

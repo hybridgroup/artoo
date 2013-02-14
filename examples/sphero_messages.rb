@@ -10,12 +10,13 @@ work do
   every(3.seconds) do
     puts "Rolling..."
     sphero.roll 60, rand(360)
-    unless sphero.async_messages.empty?
+    unless sphero.collisions.empty?
       puts "----------"
-      while m = sphero.async_messages.shift do
-        puts m
+      sphero.collisions.each do |c|
+        puts c
       end
       puts "=========="
+      sphero.async_messages.clear
     end
   end
 end

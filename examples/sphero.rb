@@ -1,7 +1,7 @@
 require 'artoo'
 
 connection :sphero, :adaptor => :sphero, :port => '4567' #/dev/tty.Sphero-YRR-RN-SPP'
-device :sphero
+device :sphero, :driver => :sphero
   
 work do
   every(3.seconds) do
