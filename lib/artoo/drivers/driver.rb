@@ -23,6 +23,10 @@ module Artoo
         parent.pin
       end
 
+      def start
+        Logger.info "Starting driver '#{self.class.name}'..."
+      end
+
       def method_missing(method_name, *arguments, &block)
         connection.send(method_name, *arguments, &block)
       rescue Exception => e

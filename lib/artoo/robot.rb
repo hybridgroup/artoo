@@ -147,19 +147,28 @@ module Artoo
     # start doing the work
     def work
       Logger.info "Starting work..."
-      connect
+      make_connections
       current_instance.instance_eval(&working_code)
     rescue Exception => e
       Logger.error e.message
       Logger.error e.backtrace.inspect
     end
 
-    def connect
+    def make_connections
       result = false
       future_connections = []
       # block until all connections done
       connections.each {|k, c| future_connections << c.future.connect}
       future_connections.each {|v| result = v.value}
+      result
+    end
+
+    def start_devices
+      result = false
+      future_devices = []
+      # block until all devices done
+      devices.each {|k, d| future_devices << d.future.start}
+      future_devices.each {|v| result = v.value}
       result
     end
 
