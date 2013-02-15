@@ -95,3 +95,4 @@ gem install artoo
 ruby myrobot.rb
 ```
 
+[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo)
