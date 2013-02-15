@@ -185,6 +185,12 @@ module Artoo
       current_class.working_code ||= proc {puts "No work defined."}
     end
     
+    def on(device, events={})
+      events.each do |k, v|
+        subscribe("#{device.name}_#{k}", v)
+      end
+    end
+
     private
 
     def initialize_connections(params={})
