@@ -148,6 +148,7 @@ module Artoo
     def work
       Logger.info "Starting work..."
       make_connections
+      start_devices
       current_instance.instance_eval(&working_code)
     rescue Exception => e
       Logger.error e.message
