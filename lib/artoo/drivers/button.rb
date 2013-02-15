@@ -9,8 +9,8 @@ module Artoo
       end
 
       def start
-        every(0.2) do
-          puts "yo"  
+        every(1) do
+          Logger.info "yo"  
         end
 
         super
