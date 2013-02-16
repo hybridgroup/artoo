@@ -10,6 +10,7 @@ module Artoo
   # interface for interacting with a collection of physical computing capabilities.
   class Robot
     include Celluloid
+    include Celluloid::Notifications
     include Artoo::Utility
 
     attr_reader :connections, :devices, :name

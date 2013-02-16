@@ -6,13 +6,14 @@ module Artoo
     include Celluloid
     include Artoo::Utility
     
-    attr_reader :parent, :name, :driver, :pin, :connection
+    attr_reader :parent, :name, :driver, :pin, :connection, :interval
 
     def initialize(params={})
       @name = params[:name].to_s
       @pin = params[:pin]
       @parent = params[:parent]
       @connection = determine_connection(params[:connection]) || default_connection
+      @interval = params[:interval] || 0.5
 
       require_driver(params[:driver] || :passthru)
     end

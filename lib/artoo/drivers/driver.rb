@@ -8,7 +8,8 @@ module Artoo
     # for a new type of hardware device.
     class Driver
       include Celluloid
-
+      include Celluloid::Notifications
+      
       attr_reader :parent
 
       def initialize(params={})
@@ -21,6 +22,10 @@ module Artoo
 
       def pin
         parent.pin
+      end
+
+      def interval
+        parent.interval
       end
 
       def start
