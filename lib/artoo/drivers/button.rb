@@ -26,12 +26,8 @@ module Artoo
 
       def update(value)
         if value == DOWN
-          if is_pressed?
-            publish("#{parent.name}_hold", value)
-          else
-            @is_pressed = true
-            publish("#{parent.name}_push", value)
-          end
+          @is_pressed = true
+          publish("#{parent.name}_push", value)
         else
           @is_pressed = false
           publish("#{parent.name}_release", value)
