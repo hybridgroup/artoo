@@ -199,14 +199,14 @@ module Artoo
     # Subscribe to an event from a device
     def on(device, events={})
       events.each do |k, v|
-        subscribe("#{device.name}_#{k}", proxy_method(k, v))
+        subscribe("#{device.name}_#{k}", create_proxy_method(k, v))
       end
     end
 
     # Create an anonymous subscription method so we can wrap the
     # subscription method fire into a valid method regardless
     # of where it is defined
-    def proxy_method(k, v)
+    def create_proxy_method(k, v)
       proxy_method_name(k).tap do |name|
         self.class.send :define_method, name do |*args|
           self.send v, *args
@@ -219,6 +219,7 @@ module Artoo
       begin
         meth = "#{k}_#{Random.rand(999)}"
       end while respond_to?(meth)
+      meth
     end
 
     private
