@@ -196,10 +196,31 @@ module Artoo
       current_class.working_code ||= proc {puts "No work defined."}
     end
     
+    # Subscribe to an event from a device
     def on(device, events={})
       events.each do |k, v|
-        subscribe("#{device.name}_#{k}", v)
+        subscribe("#{device.name}_#{k}", anonymous_sub_method(k, v))
       end
+    end
+
+    # Create an anonymous subscription method so we can wrap the
+    # subscription method fire into a valid method regardless
+    # of where it is defined
+    def anonymous_sub_method(k, v)
+      anonymous_sub_method_name(k).tap do |name|
+        self.class.send :define_method, name do |*args|
+          self.send v, *args
+        end
+      end
+    end
+
+    # A simple loop to create a 'fake' anonymous method
+    # on this class
+    def anonymous_sub_method_name(k)
+      begin
+        m = "#{k}_#{Random.rand(9999)}_#{Random.rand(999)}"
+      end while respond_to?(m)
+      m
     end
 
     private
