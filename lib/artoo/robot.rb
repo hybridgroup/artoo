@@ -196,9 +196,10 @@ module Artoo
       current_class.working_code ||= proc {puts "No work defined."}
     end
     
+    # Subscribe to an event from a device
     def on(device, events={})
       events.each do |k, v|
-        subscribe("#{device.name}_#{k}", v)
+        subscribe("#{device.name}_#{k}", create_proxy_method(k, v))
       end
     end
 
