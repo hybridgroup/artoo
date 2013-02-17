@@ -209,7 +209,12 @@ module Artoo
     def create_proxy_method(k, v)
       proxy_method_name(k).tap do |name|
         self.class.send :define_method, name do |*args|
-          self.send v, *args
+          case v
+          when Symbol
+            self.send v.to_sym, *args
+          when Proc
+            v.call(*args)
+          end
         end
       end
     end
@@ -221,7 +226,7 @@ module Artoo
       end while respond_to?(meth)
       meth
     end
-
+    
     private
 
     def initialize_connections(params={})
