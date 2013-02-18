@@ -2,25 +2,19 @@ require 'artoo/adaptors/adaptor'
 
 module Artoo
   module Adaptors
-    # Connect to a ARDrone 2.0 (http://ardrone2.parrot.com/)
-    class Ardrone < Adaptor
+    # Connect to a ARDrone 2.0 (http://ardrone2.parrot.com/) navigation data stream
+    class ArdroneNavigation < Adaptor
       attr_reader :ardrone
-
-      def finalize
-        if connected?
-          ardrone.land
-          ardrone.stop
-        end
-      end
 
       def connect
         require 'argus' unless defined?(::Argus)
-        @ardrone = Argus::Drone.new(connect_to_udp, port.host, port.port)
+        @ardrone = Argus::NavStreamer.new(connect_to_udp, port.host, port.port)
+        @ardrone.start
         super
       end
 
       def disconnect
-        ardrone.stop
+        ardrone.close
         super
       end
 

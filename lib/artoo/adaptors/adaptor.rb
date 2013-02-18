@@ -38,10 +38,18 @@ module Artoo
 
       def connect_to
         if port.is_tcp?
-          @socket ||= TCPSocket.new(port.host, port.port)
+          connect_to_tcp
         else
           port.port
         end
+      end
+
+      def connect_to_tcp
+        @socket ||= TCPSocket.new(port.host, port.port)
+      end
+
+      def connect_to_udp
+        @socket ||= UDPSocket.new
       end
     end
   end
