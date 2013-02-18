@@ -4,11 +4,12 @@ source "http://rubygems.org"
 gemspec
 
 gem 'rake'
-gem 'mocha'
 gem 'celluloid-io'
+gem 'active_support'
 
 group :development, :test do
   gem 'minitest'
+  gem 'mocha'
   gem 'hybridgroup-firmata', :git => 'https://github.com/hybridgroup/firmata.git'
   gem 'hybridgroup-sphero'
   gem 'argus', :git => 'https://github.com/hybridgroup/argus.git'

@@ -1,15 +1,13 @@
+require 'active_support/inflector'
+
 module Artoo
   module Utility
-    # from http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize
     def constantize(camel_cased_word)
-      names = camel_cased_word.split('::')
-      names.shift if names.empty? || names.first.empty?
+      ActiveSupport::Inflector.constantize(camel_cased_word)
+    end
 
-      constant = Object
-      names.each do |name|
-        constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
-      end
-      constant
+    def classify(underscored)
+      ActiveSupport::Inflector.classify(underscored)
     end
 
     def random_string

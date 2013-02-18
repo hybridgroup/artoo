@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
-require 'artoo/drivers/driver'
+require 'artoo/drivers/ardrone_video'
 
 describe Artoo::Drivers::ArdroneVideo do
   before do
