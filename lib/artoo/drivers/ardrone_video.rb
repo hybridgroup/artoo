@@ -4,7 +4,7 @@ module Artoo
   module Drivers
     # Ardrone video driver behaviors
     class ArdroneVideo < Driver
-      def start
+      def start_driver
         every(interval) do
           handle_frame
         end

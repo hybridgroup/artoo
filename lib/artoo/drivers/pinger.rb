@@ -4,7 +4,7 @@ module Artoo
   module Drivers
     # Pings itself
     class Pinger < Driver
-      def start
+      def start_driver
         every(interval) do
           Logger.info "#{parent.name}_alive"
           publish("#{parent.name}_alive", 'yes')

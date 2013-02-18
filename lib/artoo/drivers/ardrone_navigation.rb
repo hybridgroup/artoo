@@ -4,7 +4,7 @@ module Artoo
   module Drivers
     # Ardrone navigation driver behaviors
     class ArdroneNavigation < Driver
-      def start
+      def start_driver
         every(interval) do
           handle_update
         end

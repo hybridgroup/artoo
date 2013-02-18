@@ -26,8 +26,8 @@ module Artoo
       parent.default_connection
     end
 
-    def start
-      driver.start  
+    def start_device
+      driver.start_driver
     end
 
     def method_missing(method_name, *arguments, &block)

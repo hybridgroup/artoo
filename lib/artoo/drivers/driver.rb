@@ -28,7 +28,7 @@ module Artoo
         parent.interval
       end
 
-      def start
+      def start_driver
         Logger.info "Starting driver '#{self.class.name}'..."
       end
 

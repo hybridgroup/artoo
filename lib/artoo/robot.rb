@@ -169,7 +169,7 @@ module Artoo
       result = false
       future_devices = []
       # block until all devices done
-      devices.each {|k, d| future_devices << d.future.start}
+      devices.each {|k, d| future_devices << d.future.start_device}
       future_devices.each {|v| result = v.value}
       result
     end

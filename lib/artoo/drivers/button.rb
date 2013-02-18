@@ -11,7 +11,7 @@ module Artoo
         (@is_pressed ||= false) == true
       end
 
-      def start
+      def start_driver
         listener = ->(value) { update(value) }
         connection.on("digital-read-#{pin}", listener)
         connection.set_pin_mode(pin, Firmata::Board::INPUT)
