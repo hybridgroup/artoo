@@ -7,17 +7,17 @@ connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5
 device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
 work do
-	on nav, :update => :nav_update
-	drone.start
-	drone.take_off
-	sleep 10
-	drone.hover.land
-	sleep 10
-	drone.stop
+  on nav, :update => :nav_update
+  drone.start
+  drone.take_off
+  sleep 10
+  drone.hover.land
+  sleep 10
+  drone.stop
 end
 
-def nav_update(data)
-	data.drone_state.each do |name, val|
-  	p "#{name}: #{val}"
-	end
+def nav_update(*data)
+  data[1].drone_state.each do |name, val|
+    p "#{name}: #{val}"
+  end
 end

@@ -1,5 +1,3 @@
-require 'socket'
-
 module Artoo
   module Adaptors
     # The Adaptor class is the base class used to  

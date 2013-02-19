@@ -13,7 +13,7 @@ module Artoo
       end
 
       def handle_update
-        navdata = connection.receive
+        navdata = connection.receive_data
         publish("#{parent.name}_update", navdata)
       end
     end

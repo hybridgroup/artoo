@@ -8,7 +8,7 @@ module Artoo
 
       def connect
         require 'argus' unless defined?(::Argus)
-        @ardrone = Argus::NavStreamer.new(connect_to_udp, port.host, port.port)
+        @ardrone = Argus::NavStreamer.new(connect_to_udp, port.host, port.port.to_i)
         @ardrone.start
         super
       end
