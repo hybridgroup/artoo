@@ -84,7 +84,7 @@ module Artoo
           robot.async.work
         end
         self.api = Api.new(self.api_host, self.api_port) if self.use_api
-        Actor[:master] = Master.new(robots)
+        Celluloid::Actor[:master] = Master.new(robots)
         sleep # sleep main thread, and let the work commence!
       end
 

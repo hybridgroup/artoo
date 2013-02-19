@@ -4,9 +4,9 @@ module Artoo
   class Master
     include Celluloid
 		attr_reader :robots
-		
-    def initialize(robots)
-      @robots = robot
+
+    def initialize(bots)
+      @robots = bots
     end
   end
 end
