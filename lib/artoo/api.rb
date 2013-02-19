@@ -37,7 +37,7 @@ module Artoo
     end
 
     def render_robots(connection, request)
-      request.respond :ok, "List of robots goes here..."
+      request.respond :ok, "Robots: #{Actor[:master].robots.size}"
     end
   end
 end
