@@ -23,7 +23,7 @@ module Artoo
     end
     
     class << self
-      attr_accessor :connection_types, :device_types, :working_code
+      attr_accessor :connection_types, :device_types, :working_code, :use_api, :api, :api_host, :api_port
       
       # connection to some hardware that has one or more devices via some specific protocol
       # Example:
@@ -55,6 +55,16 @@ module Artoo
         self.working_code = block if block_given?
       end
 
+      # activate RESTful api
+      # Example:
+      #   api :host => '127.0.0.1', :port => '1234'
+      def api(params = {})
+        Celluloid::Logger.info "Registering api..."
+        self.use_api = true
+        self.api_host = params[:host] || '127.0.0.1'
+        self.api_port = params[:port] || '4321'
+      end
+
       # work can be performed by either:
       #  an existing instance
       #  an array of existing instances
@@ -67,7 +77,7 @@ module Artoo
         else
           self.new.async.work
         end
-        @api = Api.new('127.0.0.1', 1234)
+        self.api = Api.new('127.0.0.1', 1234) if self.use_api
         sleep # sleep main thread, and let the work commence!
       end
 
