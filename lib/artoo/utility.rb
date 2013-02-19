@@ -7,7 +7,7 @@ module Artoo
     end
 
     def classify(underscored)
-      ActiveSupport::Inflector.classify(underscored)
+      ActiveSupport::Inflector.camelize(underscored)
     end
 
     def random_string
