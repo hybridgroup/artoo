@@ -47,7 +47,7 @@ module Artoo
       end
 
       def connect_to_udp
-        @socket ||= UDPSocket.new
+        @udp_socket ||= UDPSocket.new
       end
     end
   end

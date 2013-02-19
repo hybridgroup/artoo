@@ -12,8 +12,8 @@ module Artoo
         super
       end
 
-      def handle_frame
-        frame = parser.get_frame
+      def handle_frame(*params)
+        frame = connection.video_parser.get_frame
         publish("#{parent.name}_frame", frame)
       end
     end
