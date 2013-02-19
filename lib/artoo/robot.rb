@@ -25,7 +25,7 @@ module Artoo
     
     class << self
       attr_accessor :connection_types, :device_types, :working_code,
-                    :use_api, :api, :api_host, :api_port
+                    :use_api, :api_host, :api_port
       
       # connection to some hardware that has one or more devices via some specific protocol
       # Example:
@@ -74,17 +74,17 @@ module Artoo
       def work!(robot=nil)
         if robot.respond_to?(:work)
           robots = [robot]
-          robot.async.work
         elsif robot.kind_of?(Array)
           robots = robot
-          robot.each {|r| r.async.work}
         else
-          robot = self.new
-          robots = [robot]
-          robot.async.work
+          robots = [self.new]
         end
-        self.api = Api.new(self.api_host, self.api_port) if self.use_api
+
+        robots.each {|r| r.async.work}
+
         Celluloid::Actor[:master] = Master.new(robots)
+        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+
         sleep # sleep main thread, and let the work commence!
       end
 
