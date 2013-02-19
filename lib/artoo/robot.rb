@@ -26,7 +26,7 @@ module Artoo
       
       # connection to some hardware that has one or more devices via some specific protocol
       # Example:
-      #   connection :arduino, :type => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+      #   connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
       def connection(name, params = {})
         Celluloid::Logger.info "Registering connection '#{name}'..."
         self.connection_types ||= []
@@ -54,6 +54,10 @@ module Artoo
         self.working_code = block if block_given?
       end
 
+      # work can be performed by either:
+      #  an existing instance
+      #  an array of existing instances
+      #  or, a new instance can be created
       def work!(val=nil)
         if val.respond_to?(:work)
           val.async.work
