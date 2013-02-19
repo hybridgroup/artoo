@@ -36,13 +36,13 @@ module Artoo
         return ( x ^ 0x17 ) + 0x17
       end
 
-      def parse_wiiclassic(data)
-        return classic_data{
+      def parse_wiiclassic(value)
+        return {
           :lx => decode(value[:data][0]) & 0x3f,
           :ly => decode(value[:data][1]) & 0x3f,
           :rx => ((decode(value[:data][0]) & 0xC0) >> 2)  | ((decode(value[:data][1]) & 0xC0) >> 4) | (decode(value[:data][2])[7]),
           :ry => decode(value[:data][2]) & 0x1f,
-          :lt = ((decode(value[:data][2]) & 0x60) >> 3) | ((decode(value[:data][3]) & 0xE0) >> 6),
+          :lt => ((decode(value[:data][2]) & 0x60) >> 3) | ((decode(value[:data][3]) & 0xE0) >> 6),
           :rt => decode(value[:data][3]) & 0x1f,
           :d_up => decode(value[:data][5])[0],
           :d_down => decode(value[:data][4])[6],
