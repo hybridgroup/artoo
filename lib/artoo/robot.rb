@@ -77,7 +77,7 @@ module Artoo
         else
           self.new.async.work
         end
-        self.api = Api.new('127.0.0.1', 1234) if self.use_api
+        self.api = Api.new(self.api_host, self.api_port) if self.use_api
         sleep # sleep main thread, and let the work commence!
       end
 
