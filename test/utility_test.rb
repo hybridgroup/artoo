@@ -16,4 +16,12 @@ describe Artoo::Utility do
     string.must_be_kind_of String
     string.size.must_equal 8
   end
+
+  it 'Artoo::Utility#classify' do
+    string = @robot.classify('firmata')
+    string.must_equal 'Firmata'
+
+    string = @robot.classify('ardrone_awesome')
+    string.must_equal 'ArdroneAwesome'
+  end
 end
