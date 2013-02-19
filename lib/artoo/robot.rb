@@ -2,6 +2,7 @@ require 'celluloid/io'
 
 require 'artoo/connection'
 require 'artoo/device'
+require 'artoo/api'
 require 'artoo/port'
 require 'artoo/utility'
 
@@ -66,6 +67,7 @@ module Artoo
         else
           self.new.async.work
         end
+        @api = Api.new('127.0.0.1', 1234)
         sleep # sleep main thread, and let the work commence!
       end
 
