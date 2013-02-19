@@ -7,6 +7,9 @@ module Artoo
       def address; 0x52; end
 
       def start_driver
+        @ly_offset = 20
+        @lx_offset = 20
+  
         listener = ->(value) { update(value) }
         connection.on("i2c_reply", listener)
 
@@ -23,11 +26,31 @@ module Artoo
       end
 
       def update(value)
-        data = parse_wiiclassic(value)
-        publish("#{parent.name}_a") if data[:a] == 0
-        publish("#{parent.name}_b") if data[:b] == 0
-        publish("#{parent.name}_x") if data[:x] == 0
-        publish("#{parent.name}_y") if data[:y] == 0
+        begin
+          data = parse_wiiclassic(value)
+          publish("#{parent.name}_a_button") if data[:a] == 0
+          publish("#{parent.name}_b_button") if data[:b] == 0
+          publish("#{parent.name}_x_button") if data[:x] == 0
+          publish("#{parent.name}_y_button") if data[:y] == 0
+          publish("#{parent.name}_home_button") if data[:h] == 0
+          @ly_origin = data[:ly] if @ly_origin.nil?
+          @lx_origin = data[:lx] if @lx_origin.nil?
+
+          if data[:ly] > (@ly_origin + @ly_offset)
+            publish("#{parent.name}_ly_up")
+          elsif data[:ly] < (@ly_origin - @ly_offset)
+            publish("#{parent.name}_ly_down")
+          end
+
+          if data[:lx] > (@lx_origin + @lx_offset)
+            publish("#{parent.name}_lx_right")
+          elsif data[:lx] < (@lx_origin - @lx_offset)
+            publish("#{parent.name}_lx_left")
+          end
+        rescue Exception => e
+          p e.messages
+          p e.backtrace.inspect
+        end
       end
 
       private 
