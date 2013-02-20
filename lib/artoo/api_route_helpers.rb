@@ -1,7 +1,13 @@
 # route helpers used within the Artoo::Api class
 module Artoo
   module ApiRouteHelpers
+    class ResponseHandled < StandardError; end
     module ClassMethods
+
+      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "public"))
+        @static_path ||= default
+      end
+
       def routes
         @routes ||= {}
       end
@@ -100,6 +106,36 @@ module Artoo
     module InstanceMethods
       ## Handle the request
       def dispatch!(connection, req)
+        resp = catch(:halt) do
+          try_static! connection, req
+          route!      connection, req
+        end
+        if resp && !resp.nil?
+          status, body = resp
+          req.respond status, body
+        else
+          req.respond :not_found, "NOT FOUND"
+        end
+      end
+
+      # Exit the current block, halts any further processing
+      # of the request, and returns the specified response.
+      def halt(*response)
+        response = response.first if response.length == 1
+        throw :halt, response
+      end
+
+      def try_static!(connection, req)
+        fpath = req.url == '/' ? 'index.html' : req.url[1..-1]
+        filepath = File.expand_path(fpath, self.class.static_path)
+        if File.file?(filepath)
+          # TODO: stream this?
+          data = open(filepath).read
+          halt :ok, data
+        end
+      end
+
+      def route!(connection, req)
         if routes = self.class.routes[req.method]
           routes.each do |pattern, keys, conditions, block|
             route = req.url
@@ -113,16 +149,13 @@ module Artoo
 
             begin
               body = block ? block[self, values] : yield(self, values)
-              req.respond(:ok, body)
+              halt [:ok, body]
             rescue Exception => e
               p [:e, e]
-              req.respond :not_found, e.inspect
             end
           end
-        else
-          connection.respond :not_found, "Not found"
-          # raise StandardError.new("Route not found")
         end
+        nil
       end
 
       # Fixes encoding issues by
