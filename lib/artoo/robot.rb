@@ -2,6 +2,8 @@ require 'celluloid/io'
 
 require 'artoo/connection'
 require 'artoo/device'
+require 'artoo/api'
+require 'artoo/master'
 require 'artoo/port'
 require 'artoo/utility'
 
@@ -22,7 +24,8 @@ module Artoo
     end
     
     class << self
-      attr_accessor :connection_types, :device_types, :working_code
+      attr_accessor :connection_types, :device_types, :working_code,
+                    :use_api, :api_host, :api_port
       
       # connection to some hardware that has one or more devices via some specific protocol
       # Example:
@@ -54,18 +57,34 @@ module Artoo
         self.working_code = block if block_given?
       end
 
+      # activate RESTful api
+      # Example:
+      #   api :host => '127.0.0.1', :port => '1234'
+      def api(params = {})
+        Celluloid::Logger.info "Registering api..."
+        self.use_api = true
+        self.api_host = params[:host] || '127.0.0.1'
+        self.api_port = params[:port] || '4321'
+      end
+
       # work can be performed by either:
       #  an existing instance
       #  an array of existing instances
       #  or, a new instance can be created
-      def work!(val=nil)
-        if val.respond_to?(:work)
-          val.async.work
-        elsif val.kind_of?(Array)
-          val.each {|r| r.async.work}
+      def work!(robot=nil)
+        if robot.respond_to?(:work)
+          robots = [robot]
+        elsif robot.kind_of?(Array)
+          robots = robot
         else
-          self.new.async.work
+          robots = [self.new]
         end
+
+        robots.each {|r| r.async.work}
+
+        Celluloid::Actor[:master] = Master.new(robots)
+        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+
         sleep # sleep main thread, and let the work commence!
       end
 

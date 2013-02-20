@@ -5,6 +5,7 @@ gemspec
 
 gem 'rake'
 gem 'celluloid-io'
+gem 'reel'
 gem 'active_support'
 
 group :development, :test do
