@@ -84,4 +84,8 @@ describe Artoo::Robot do
     @robot.expects(:async).returns(@asm)
     TestRobot.work!
   end
+
+  it 'Artoo::Robot#as_json' do
+    MultiJson.load(@robot.as_json, :symbolize_keys => true)[:name].must_equal "testme"
+  end
 end
