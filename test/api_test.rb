@@ -35,10 +35,10 @@ class ExampleRequest
 end
 
 describe Artoo::Api do
-	describe ApiRouteHelpers do
+	describe Artoo::ApiRouteHelpers do
 
 		class DummyClass
-			include ApiRouteHelpers
+			include Artoo::ApiRouteHelpers
 		end
 
 		it "should have a list of routes" do
