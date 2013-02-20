@@ -28,4 +28,9 @@ describe Artoo::Device do
     @robot2.devices[:test_device_1].connection.must_equal @robot2.connections[:test_connection]
     @robot2.devices[:test_device_2].connection.must_equal @robot2.connections[:test_connection2]
   end
+
+  it 'Artoo::Device#as_json' do
+    @device = @robot.devices[:test_device_1]
+    MultiJson.load(@device.as_json, :symbolize_keys => true)[:name].must_equal "test_device_1"
+  end
 end

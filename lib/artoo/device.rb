@@ -30,6 +30,19 @@ module Artoo
       driver.start_driver
     end
 
+    def to_hash
+      {:name => name,
+       :driver => driver,
+       :pin => pin,
+       :connection => connection.to_hash,
+       :interval => interval
+      }
+    end
+
+    def as_json
+      MultiJson.dump(to_hash)
+    end
+
     def method_missing(method_name, *arguments, &block)
       driver.send(method_name, *arguments, &block)
     end
