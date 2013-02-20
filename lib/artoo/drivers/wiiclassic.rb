@@ -7,9 +7,13 @@ module Artoo
       def address; 0x52; end
 
       def start_driver
-        @ly_offset = 20
-        @lx_offset = 20
-  
+        begin
+        @joystick = {
+          :ly_offset => 20,
+          :lx_offset => 20,
+          :ly_origin => nil,
+          :lx_origin => nil
+        }
         listener = ->(value) { update(value) }
         connection.on("i2c_reply", listener)
 
@@ -18,11 +22,19 @@ module Artoo
 
         every(interval) do
           connection.i2c_write_request(address, 0x00, 0x00)
+          p
           connection.i2c_read_request(address, 6)
+          p
           connection.read_and_process
         end
-
+        
         super
+        rescue Exception => e
+          p "start driver"
+          p e.messages
+          p e.backtrace.inspect
+        end
+
       end
 
       def update(value)
@@ -33,21 +45,25 @@ module Artoo
           publish("#{parent.name}_x_button") if data[:x] == 0
           publish("#{parent.name}_y_button") if data[:y] == 0
           publish("#{parent.name}_home_button") if data[:h] == 0
-          @ly_origin = data[:ly] if @ly_origin.nil?
-          @lx_origin = data[:lx] if @lx_origin.nil?
+          publish("#{parent.name}_start_button") if data[:+] == 0
+          publish("#{parent.name}_select_button") if data[:-] == 0
 
-          if data[:ly] > (@ly_origin + @ly_offset)
+          @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
+          @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
+
+          if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
             publish("#{parent.name}_ly_up")
-          elsif data[:ly] < (@ly_origin - @ly_offset)
+          elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
             publish("#{parent.name}_ly_down")
-          end
-
-          if data[:lx] > (@lx_origin + @lx_offset)
+          elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
             publish("#{parent.name}_lx_right")
-          elsif data[:lx] < (@lx_origin - @lx_offset)
+          elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
             publish("#{parent.name}_lx_left")
+          else
+            publish("#{parent.name}_hover")
           end
         rescue Exception => e
+          p "update ex"
           p e.messages
           p e.backtrace.inspect
         end
