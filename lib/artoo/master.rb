@@ -8,5 +8,9 @@ module Artoo
     def initialize(bots)
       @robots = bots
     end
+
+    def get_robot_by_name(name)
+    	robots.find_all {|r| r.name == name}.first
+    end
   end
 end

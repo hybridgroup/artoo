@@ -21,22 +21,46 @@ module Artoo
     end
 
     get '/' do
-      "Hello, World"
+      "Hello, World. The single page app goes here..."
     end
 
     get '/robots' do
-      "Robots: #{Actor[:master].robots.size}"
+      result = "{"
+      Actor[:master].robots.each { |r|
+        result << r.as_json
+      }
+      result << "}"
+      result
     end
 
     get '/robots/:robotid' do
-      "yay #{@params['robotid']}"
+      Actor[:master].get_robot_by_name(@params['robotid']).as_json
     end
 
     get '/robots/:robotid/devices' do
+      result = "{"
+      Actor[:master].get_robot_by_name(@params['robotid']).devices.each_value { |d|
+        result << d.as_json
+      }
+      result << "}"
+      result
     end
 
     get '/robots/:robotid/devices/:deviceid' do
-      "YES #{@params}"
+      Actor[:master].get_robot_by_name(@params['robotid']).devices[@params['deviceid'].intern].as_json
+    end
+
+    get '/robots/:robotid/connections' do
+      result = "{"
+      Actor[:master].get_robot_by_name(@params['robotid']).connections.each_value { |c|
+        result << c.as_json
+      }
+      result << "}"
+      result
+    end
+
+    get '/robots/:robotid/connections/:connectionid' do
+      Actor[:master].get_robot_by_name(@params['robotid']).connections[@params['connectionid'].intern].as_json
     end
 
     def handle_websocket(connection, sock)

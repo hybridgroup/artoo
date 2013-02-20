@@ -35,6 +35,17 @@ module Artoo
       adaptor.connected?
     end
 
+    def to_hash
+      {:name => name,
+       :port => port,
+       :adaptor => adaptor.to_s
+      }
+    end
+
+    def as_json
+      MultiJson.dump(to_hash)
+    end
+
     def method_missing(method_name, *arguments, &block)
       unless adaptor.connected?
         Logger.warn "Cannot call unconnected adaptor '#{name}', attempting to reconnect..."

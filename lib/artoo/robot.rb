@@ -1,4 +1,5 @@
 require 'celluloid/io'
+require 'multi_json'
 
 require 'artoo/connection'
 require 'artoo/device'
@@ -250,6 +251,17 @@ module Artoo
       meth
     end
     
+    def to_hash
+      {:name => name,
+       :connections => [connections.each_value {|c|c.to_hash}],
+       :devices => [devices.each_value {|d|d.to_hash}]
+      }
+    end
+
+    def as_json
+      MultiJson.dump(to_hash)
+    end
+
     private
 
     def initialize_connections(params={})

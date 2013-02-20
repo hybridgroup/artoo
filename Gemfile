@@ -7,6 +7,7 @@ gem 'rake'
 gem 'celluloid-io'
 gem 'reel'
 gem 'active_support'
+gem 'multi_json'
 
 group :development, :test do
   gem 'minitest'
