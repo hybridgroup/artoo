@@ -1,10 +1,6 @@
 require 'artoo/robot'
 
-SPHEROS = ["4567", #"/dev/tty.Sphero-BRG-RN-SPP"
-           "4568", #"/dev/tty.Sphero-YBW-RN-SPP"
-           "4569", #"/dev/tty.Sphero-BWY-RN-SPP"
-           "4570", #"/dev/tty.Sphero-YRR-RN-SPP"
-           "4571"] #"/dev/tty.Sphero-WRW-RN-SPP"
+SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
 
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
