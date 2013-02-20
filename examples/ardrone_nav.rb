@@ -10,10 +10,9 @@ work do
   on nav, :update => :nav_update
   drone.start
   drone.take_off
-  sleep 10
-  drone.hover.land
-  sleep 10
-  drone.stop
+  
+  after(25.seconds) { drone.hover.land }
+  after(30.seconds) { drone.stop }
 end
 
 def nav_update(*data)
