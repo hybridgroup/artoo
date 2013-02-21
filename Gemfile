@@ -15,4 +15,15 @@ group :development, :test do
   gem 'hybridgroup-firmata', :git => 'https://github.com/hybridgroup/firmata.git'
   gem 'hybridgroup-sphero'
   gem 'argus', :git => 'https://github.com/hybridgroup/argus.git'
+
+  # For Front-End
+  gem 'sass'
+  gem 'coffee-script'
+  gem 'sprockets'
+  gem 'compass'
+  gem 'zurb-foundation'
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-sprockets'
+  gem 'guard-compass'
 end
