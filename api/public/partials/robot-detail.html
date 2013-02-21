@@ -1,0 +1,40 @@
+<div class="container">
+
+	<div class="container device">
+		<div class="row-fluid">
+			<div class="span2">
+				<div class="display">
+					ronot-type
+				</div>
+			</div>
+			<div class="span10">
+				<b>
+					<span class="name">{{robot.name}}</span>
+					<dl class="controls">
+						<dt><i class="icon-fighter-jet"></i> devices: </dt>
+							<dd>{{robot.connections.length}}</dd>
+						<dt><i class="icon-exchange"></i> connections: </dt>
+							<dd>{{robot.connections.length}}</dd>
+					</dl>
+				</b>
+			</div>
+		</div>
+	</div>
+
+	<div class="container device">
+		<div class="row-fluid">
+			<div class="span6">
+				<h3>Devices</h3>
+				<ul>
+					<li ng-repeat="device in robot.devices"><b> <span class="name">{{device}}</span> </b> </li>
+				</ul>
+			</div>
+			<div class="span6">
+				<h3>Devices</h3>
+				<ul>
+					<li ng-repeat="connection in robot.connections"><b> <span class="name">{{connection}}</span> </b> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
