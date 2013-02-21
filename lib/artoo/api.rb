@@ -25,13 +25,7 @@ module Artoo
     # end
 
     get '/robots' do
-      result = "["
-      Actor[:master].robots.each { |r|
-        result << r.as_json
-        result << "," unless r == Actor[:master].robots.last
-      }
-      result << "]"
-      result
+      MultiJson.dump(Actor[:master].robots.collect {|r|r.to_hash})
     end
 
     get '/robots/:robotid' do
@@ -39,12 +33,7 @@ module Artoo
     end
 
     get '/robots/:robotid/devices' do
-      result = "{"
-      Actor[:master].get_robot_by_name(@params['robotid']).devices.each_value { |d|
-        result << d.as_json
-      }
-      result << "}"
-      result
+      MultiJson.dump(Actor[:master].get_robot_by_name(@params['robotid']).devices.each_value.collect {|d| d.to_hash})
     end
 
     get '/robots/:robotid/devices/:deviceid' do
@@ -52,12 +41,7 @@ module Artoo
     end
 
     get '/robots/:robotid/connections' do
-      result = "{"
-      Actor[:master].get_robot_by_name(@params['robotid']).connections.each_value { |c|
-        result << c.as_json
-      }
-      result << "}"
-      result
+      MultiJson.dump(Actor[:master].get_robot_by_name(@params['robotid']).connections.each_value.collect {|c| c.to_hash})
     end
 
     get '/robots/:robotid/connections/:connectionid' do
