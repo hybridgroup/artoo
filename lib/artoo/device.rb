@@ -32,8 +32,8 @@ module Artoo
 
     def to_hash
       {:name => name,
-       :driver => driver,
-       :pin => pin,
+       :driver => driver.class.name,
+       :pin => pin.to_s,
        :connection => connection.to_hash,
        :interval => interval
       }
