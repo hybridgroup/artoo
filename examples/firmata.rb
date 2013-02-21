@@ -8,10 +8,6 @@ work do
   puts "Firmware name #{board.firmware_name}"
   puts "Firmata version #{board.version}"
   every 1.second do
-    led.on
-    board.delay 1
-
-    led.off
-    board.delay 1
+    led.toggle
   end
 end
