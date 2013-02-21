@@ -20,9 +20,9 @@ module Artoo
       end
     end
 
-    get '/' do
-      "Hello, World. The single page app goes here..."
-    end
+    # get '/' do
+    #   "Hello, World. The single page app goes here..."
+    # end
 
     get '/robots' do
       result = "{"
