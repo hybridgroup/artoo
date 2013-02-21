@@ -9,10 +9,16 @@ module Artoo
       def start_driver
         begin
         @joystick = {
+          :ry_offset => 8,
+          :ry_origin => nil,
           :ly_offset => 20,
           :lx_offset => 20,
           :ly_origin => nil,
-          :lx_origin => nil
+          :lx_origin => nil,
+          :rt_origin => nil,
+          :lt_origin => nil,
+          :rt_offset => 5,
+          :lt_offset => 5
         }
         listener = ->(value) { update(value) }
         connection.on("i2c_reply", listener)
@@ -31,7 +37,7 @@ module Artoo
         super
         rescue Exception => e
           p "start driver"
-          p e.messages
+          p e.message
           p e.backtrace.inspect
         end
 
@@ -51,6 +57,11 @@ module Artoo
           @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
           @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
 
+          @joystick[:ry_origin] = data[:ry] if @joystick[:ry_origin].nil?
+
+          @joystick[:rt_origin] = data[:rt] if @joystick[:rt_origin].nil?
+          @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
+
           if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
             publish("#{parent.name}_ly_up")
           elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
@@ -60,11 +71,26 @@ module Artoo
           elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
             publish("#{parent.name}_lx_left")
           else
-            publish("#{parent.name}_hover")
+            publish("#{parent.name}_reset_pitch_roll")
           end
+
+          if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
+            publish("#{parent.name}_ry_up")
+          elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
+            publish("#{parent.name}_ry_down")
+          end
+
+          if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
+            publish("#{parent.name}_rotate_right")
+          elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
+            publish("#{parent.name}_rotate_left")
+          else
+            publish("#{parent.name}_reset_rotate")
+          end
+
         rescue Exception => e
           p "update ex"
-          p e.messages
+          p e.message
           p e.backtrace.inspect
         end
       end
