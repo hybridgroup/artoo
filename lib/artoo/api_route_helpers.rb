@@ -4,7 +4,7 @@ module Artoo
     class ResponseHandled < StandardError; end
     module ClassMethods
 
-      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "public"))
+      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api"))
         @static_path ||= default
       end
 
@@ -102,7 +102,7 @@ module Artoo
         route 'PUT', path, &block
       end
     end
-    
+
     module InstanceMethods
       ## Handle the request
       def dispatch!(connection, req)
@@ -181,7 +181,7 @@ module Artoo
         def self.force_encoding(data, *) data end
       end
     end
-    
+
     def self.included(receiver)
       receiver.extend         ClassMethods
       receiver.send :include, InstanceMethods
