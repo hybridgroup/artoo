@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
 	<title>Artoo</title>
-	<script type="text/javascript"  src="angular.min.js"></script>
-	<script type="text/javascript"  src="jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
 	<script type="text/javascript"  src="core.js"></script>
-	<link rel="stylesheet" href="core.css">
+	<link rel="stylesheet" href="core.css" rel="stylesheet" media="screen">
 </head>
 <body>
-	The Application o
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">Artoo</a>
+
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li class="active"><a href="#">Devices</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+		</div>
+	</div>
+
+	<div class="container" ng-controller="RobotsCtrl">
+
+		<h1>Listing all Robots</h1>
+		<p>Hello World</p>
+
+		<div class="container device" ng-repeat="robot in robots">
+			<div class="row-fluid">
+				<div class="span2">
+					<div class="display">
+						Display
+					</div>
+				</div>
+				<div class="span10">
+					<b>
+						<span class="name">{{robot.name}}</span>
+						<dl class="controls">
+							<dt><i class="icon-fighter-jet"></i> Devices: </dt>
+								<dd>{{robot.connections.length}}</dd>
+							<dt><i class="icon-exchange"></i> Connections: </dt>
+								<dd>{{robot.connections.length}}</dd>
+						</dl>
+					</b>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </body>
-</html;>
+</html>

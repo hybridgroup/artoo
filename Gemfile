@@ -21,7 +21,7 @@ group :development, :test do
   gem 'coffee-script'
   gem 'sprockets'
   gem 'compass'
-  gem 'zurb-foundation'
+  gem 'bootstrap-sass'
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-sprockets'
