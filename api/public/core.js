@@ -180,6 +180,9 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
       return $routeProvider.when("/robots", {
         templateUrl: "/partials/robot-index.html",
         controller: RobotIndexCtrl
+      }).when("/robots/:robotId", {
+        templateUrl: "/partials/robot-detail.html",
+        controller: RobotDetailCtrl
       }).otherwise({
         redirectTo: "/robots"
       });
@@ -192,6 +195,12 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
   this.RobotIndexCtrl = function($scope, $http) {
     return $http.get('/robots').success(function(data) {
       return $scope.robots = data;
+    });
+  };
+
+  this.RobotDetailCtrl = function($scope, $http, $routeParams) {
+    return $http.get('/robots/' + $routeParams.robotId).success(function(data) {
+      return $scope.robot = data;
     });
   };
 
