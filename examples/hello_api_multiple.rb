@@ -1,8 +1,13 @@
 require 'artoo/robot'
 
 class HelloRobot < Artoo::Robot
-	connection :loop
-	device :passthru
+	connection :loopback1
+	connection :loopback2
+	connection :loopback3
+	device :passthru1
+	device :passthru2
+	device :passthru3
+
 	api :host => '127.0.0.1', :port => '4321'
 
 	work do
