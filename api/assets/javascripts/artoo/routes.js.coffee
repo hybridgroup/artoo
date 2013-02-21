@@ -1,5 +1,5 @@
 # Routes
-angular.module("artoo", []).config ["$routeProvider", ($routeProvider) ->
+angular.module("artoo", []).config(["$routeProvider", ($routeProvider) ->
   $routeProvider.when("/robots",
     templateUrl: "/partials/robot-index.html"
     controller: RobotIndexCtrl
@@ -7,5 +7,17 @@ angular.module("artoo", []).config ["$routeProvider", ($routeProvider) ->
     templateUrl: "/partials/robot-detail.html"
     controller: RobotDetailCtrl
   ).otherwise redirectTo: "/robots"
-]
+]).directive("activeLink", ["$location", (location) ->
+  restrict: "A"
+  link: (scope, element, attrs, controller) ->
+    clazz = attrs.activeLink
+    path = attrs.$$element.find('a').attr('href')
+    path = path.substring(1)
+    scope.location = location
+    scope.$watch "location.path()", (newPath) ->
+      if path is newPath
+        element.addClass clazz
+      else
+        element.removeClass clazz
+])
 

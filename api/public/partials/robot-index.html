@@ -3,7 +3,7 @@
 	<h1>Listing all Robots</h1>
 	<p>Hello World</p>
 
-	<div class="container device" ng-repeat="robot in robots">
+	<div class="container device clickable" ng-repeat="robot in robots" ng-click="robotDetail(robot.name)">
 		<div class="row-fluid">
 			<div class="span2">
 				<div class="display">

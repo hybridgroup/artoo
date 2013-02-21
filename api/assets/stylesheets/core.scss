@@ -32,6 +32,9 @@ body {
       color: #B4B4B4;
     }
   }
+  &.clickable {
+    cursor: pointer;
+  }
 }
 
 .display {

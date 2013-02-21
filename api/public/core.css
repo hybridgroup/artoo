@@ -9811,8 +9811,12 @@ body {
 .container.device .controls [class^="icon-"] {
   color: #B4B4B4;
 }
+/* line 35, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+.container.device.clickable {
+  cursor: pointer;
+}
 
-/* line 37, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 40, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 .display {
   background: #ECECEC;
   font-weight: bold;

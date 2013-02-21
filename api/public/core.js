@@ -187,15 +187,38 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
         redirectTo: "/robots"
       });
     }
+  ]).directive("activeLink", [
+    "$location", function(location) {
+      return {
+        restrict: "A",
+        link: function(scope, element, attrs, controller) {
+          var clazz, path;
+          clazz = attrs.activeLink;
+          path = attrs.$$element.find('a').attr('href');
+          path = path.substring(1);
+          scope.location = location;
+          return scope.$watch("location.path()", function(newPath) {
+            if (path === newPath) {
+              return element.addClass(clazz);
+            } else {
+              return element.removeClass(clazz);
+            }
+          });
+        }
+      };
+    }
   ]);
 
 }).call(this);
 (function() {
 
   this.RobotIndexCtrl = function($scope, $http) {
-    return $http.get('/robots').success(function(data) {
+    $http.get('/robots').success(function(data) {
       return $scope.robots = data;
     });
+    return $scope.robotDetail = function(robotId) {
+      return window.location = "#/robots/" + robotId;
+    };
   };
 
   this.RobotDetailCtrl = function($scope, $http, $routeParams) {
@@ -207,6 +230,26 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
 }).call(this);
 (function() {
 
-
+  angular.module("link", []).directive("activeLink", [
+    "$location", function(location) {
+      return {
+        restrict: "A",
+        link: function(scope, element, attrs, controller) {
+          var clazz, path;
+          clazz = attrs.activeLink;
+          path = attrs.href;
+          path = path.substring(1);
+          scope.location = location;
+          return scope.$watch("location.path()", function(newPath) {
+            if (path === newPath) {
+              return element.addClass(clazz);
+            } else {
+              return element.removeClass(clazz);
+            }
+          });
+        }
+      };
+    }
+  ]);
 
 }).call(this);
