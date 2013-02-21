@@ -169,6 +169,14 @@ module Artoo
       end
     end
 
+    def api_host
+      self.class.api_host
+    end
+
+    def api_port
+      self.class.api_port
+    end
+
     # start doing the work
     def work
       Logger.info "Starting work..."
