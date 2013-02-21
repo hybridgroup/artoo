@@ -37,8 +37,8 @@ module Artoo
 
     def to_hash
       {:name => name,
-       :port => port,
-       :adaptor => adaptor.to_s
+       :port => port.to_s,
+       :adaptor => adaptor.class.name
       }
     end
 
