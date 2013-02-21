@@ -25,11 +25,12 @@ module Artoo
     # end
 
     get '/robots' do
-      result = "{"
+      result = "["
       Actor[:master].robots.each { |r|
         result << r.as_json
+        result << "," unless r == Actor[:master].robots.last
       }
-      result << "}"
+      result << "]"
       result
     end
 
