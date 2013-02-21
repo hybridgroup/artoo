@@ -21,20 +21,56 @@
 		</div>
 	</div>
 
-	<div class="container device">
-		<div class="row-fluid">
-			<div class="span6">
-				<h3>Devices</h3>
-				<ul>
-					<li ng-repeat="device in robot.devices"><b> <span class="name">{{device}}</span> </b> </li>
-				</ul>
-			</div>
-			<div class="span6">
-				<h3>Connections</h3>
-				<ul>
-					<li ng-repeat="connection in robot.connections"><b> <span class="name">{{connection}}</span> </b> </li>
-				</ul>
+	<div class="row">
+
+		<div class="span6">
+			<div class="device" ng-repeat="device in robot.devices">
+				<div class="row-fluid">
+					<div class="span2">
+						<div class="display">
+							D
+						</div>
+					</div>
+					<div class="span10">
+						<b>
+							<span class="name">{{device.name}}</span>
+							<dl class="controls">
+								<span  ng-show="device.pin">
+									<dt ><i class="icon-bolt"></i> pin: </dt>
+									<dd>{{device.pin}}</dd>
+								</span>
+								<dt><i class="icon-exchange"></i> </dt>
+								<dd>{{device.connection.name}}</dd>
+							</dl>
+						</b>
+					</div>
+				</div>
 			</div>
 		</div>
+
+
+		<div class="span6">
+			<div class="device" ng-repeat="connection in robot.connections">
+				<div class="row-fluid">
+					<div class="span2">
+						<div class="display">
+							<i class="icon-exchange"></i>
+						</div>
+					</div>
+					<div class="span10">
+						<b>
+							<span class="name">{{connection.name}}</span>
+							<dl class="controls">
+								<dt><i class="icon-circle-blank"></i> </dt>
+								<dd>{{connection.port}}</dd>
+							</dl>
+						</b>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+
 </div>
