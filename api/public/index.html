@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="artoo">
 <head>
 	<title>Artoo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,32 +27,6 @@
 		</div>
 	</div>
 
-	<div class="container" ng-controller="RobotsCtrl">
-
-		<h1>Listing all Robots</h1>
-		<p>Hello World</p>
-
-		<div class="container device" ng-repeat="robot in robots">
-			<div class="row-fluid">
-				<div class="span2">
-					<div class="display">
-						Display
-					</div>
-				</div>
-				<div class="span10">
-					<b>
-						<span class="name">{{robot.name}}</span>
-						<dl class="controls">
-							<dt><i class="icon-fighter-jet"></i> Devices: </dt>
-								<dd>{{robot.connections.length}}</dd>
-							<dt><i class="icon-exchange"></i> Connections: </dt>
-								<dd>{{robot.connections.length}}</dd>
-						</dl>
-					</b>
-				</div>
-			</div>
-		</div>
-
-	</div>
+	<div ng-view></div>
 </body>
 </html>
