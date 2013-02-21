@@ -24,7 +24,7 @@
 	<div class="row">
 
 		<div class="span6">
-			<div class="device" ng-repeat="device in robot.devices">
+			<div class="device" ng-repeat="device in robot.devices" ng-click="deviceDetail(robot.name, device.name)">
 				<div class="row-fluid">
 					<div class="span2">
 						<div class="display">

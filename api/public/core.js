@@ -183,6 +183,9 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
       }).when("/robots/:robotId", {
         templateUrl: "/partials/robot-detail.html",
         controller: RobotDetailCtrl
+      }).when("/robots/:robotId/devices/:deviceId", {
+        templateUrl: "/partials/robot-device-detail.html",
+        controller: RobotDeviceDetailCtrl
       }).otherwise({
         redirectTo: "/robots"
       });
@@ -221,35 +224,25 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
     };
   };
 
-  this.RobotDetailCtrl = function($scope, $http, $routeParams) {
-    return $http.get('/robots/' + $routeParams.robotId).success(function(data) {
+  this.RobotDetailCtrl = function($scope, $http, $routeParams, $location) {
+    $http.get('/robots/' + $routeParams.robotId).success(function(data) {
       return $scope.robot = data;
+    });
+    return $scope.deviceDetail = function(robotId, deviceId) {
+      return $location.path("/robots/" + robotId + "/devices/" + deviceId);
+    };
+  };
+
+  this.RobotDeviceDetailCtrl = function($scope, $http, $routeParams) {
+    return $http.get('/robots/' + $routeParams.robotId + "/devices/" + $routeParams.deviceId).success(function(data) {
+      console.log(data);
+      return $scope.deviceDetail = data;
     });
   };
 
 }).call(this);
 (function() {
 
-  angular.module("link", []).directive("activeLink", [
-    "$location", function(location) {
-      return {
-        restrict: "A",
-        link: function(scope, element, attrs, controller) {
-          var clazz, path;
-          clazz = attrs.activeLink;
-          path = attrs.href;
-          path = path.substring(1);
-          scope.location = location;
-          return scope.$watch("location.path()", function(newPath) {
-            if (path === newPath) {
-              return element.addClass(clazz);
-            } else {
-              return element.removeClass(clazz);
-            }
-          });
-        }
-      };
-    }
-  ]);
+
 
 }).call(this);
