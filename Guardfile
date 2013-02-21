@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'sprockets', :destination => 'api/public/', :asset_paths => ['api/assets/javascripts'] do
+guard 'sprockets', :destination => 'api/public/', :asset_paths => ['api/assets/javascripts'], :root_file => "core.js" do
   watch(%r{api(/assets/javascripts/(.+\.(js))).*})
 end
 
