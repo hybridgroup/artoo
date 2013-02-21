@@ -20,10 +20,6 @@ module Artoo
       end
     end
 
-    # get '/' do
-    #   "Hello, World. The single page app goes here..."
-    # end
-
     get '/robots' do
       MultiJson.dump(Actor[:master].robots.collect {|r|r.to_hash})
     end
