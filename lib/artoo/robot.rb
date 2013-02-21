@@ -261,8 +261,8 @@ module Artoo
     
     def to_hash
       {:name => name,
-       :connections => [connections.each_value {|c|c.to_hash}],
-       :devices => [devices.each_value {|d|d.to_hash}]
+       :connections => connections.each_value.collect {|c|c.to_hash},
+       :devices => devices.each_value.collect {|d|d.to_hash}
       }
     end
 
