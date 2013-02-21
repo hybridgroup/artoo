@@ -168,14 +168,6 @@ Zc)}ta("ng",["ngLocale"],["$provide",function(a){a.provider("$compile",Cb).direc
 ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a.provider({$anchorScroll:uc,$browser:wc,$cacheFactory:xc,$controller:Bc,$document:Cc,$exceptionHandler:Dc,$filter:Qb,$interpolate:Ec,$http:Vc,$httpBackend:Wc,$location:Ic,$log:Jc,$parse:Nc,$route:Qc,$routeParams:Rc,$rootScope:Sc,$q:Oc,$sniffer:Tc,$templateCache:yc,$timeout:$c,$window:Uc})}])})(Zb);u(Y).ready(function(){jc(Y,qb)})})(window,document);angular.element(document).find("head").append('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\\:form{display:block;}</style>');
 (function() {
 
-  console.log("yeah");
 
-  console.log("yeah");
-
-  console.log("yeah");
-
-  console.log("yeah");
-
-  console.log("yeah");
 
 }).call(this);
