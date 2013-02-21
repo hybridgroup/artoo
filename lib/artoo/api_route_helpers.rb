@@ -4,7 +4,7 @@ module Artoo
     class ResponseHandled < StandardError; end
     module ClassMethods
 
-      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api"))
+      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api/public"))
         @static_path ||= default
       end
 
