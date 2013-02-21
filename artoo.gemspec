@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "artoo"
   s.version     = Artoo::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Ron Evans"]
+  s.authors     = ["Ron Evans", "Adrian Zankich", "Ari Lerner", "Mario Ricalde"]
   s.email       = ["artoo@hybridgroup.com"]
   s.homepage    = "https://github.com/hybridgroup/artoo"
   s.summary     = %q{Ruby-based microframework for robotics}
