@@ -78,6 +78,8 @@ module Artoo
             publish("#{parent.name}_ry_up")
           elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
             publish("#{parent.name}_ry_down")
+          else
+            publish("#{parent.name}_reset_altitude")
           end
 
           if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
