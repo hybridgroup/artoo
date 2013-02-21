@@ -2,14 +2,11 @@ require 'artoo/robot'
 
 class HelloRobot < Artoo::Robot
 	connection :loop
-  
+	device :passthru
+	api :host => '127.0.0.1', :port => '4321'
+
 	work do
-	  every(3.seconds) do
-	     puts "Hello from #{name}"
-	  end
-	  after(10.seconds) do
-	  	puts "#{name} is alive!" if name == 'Number 5'
-	  end
+		puts "Hello from '#{name}' attached to API running at #{api_host}:#{api_port}..."
 	end
 end
 
