@@ -9,8 +9,8 @@ device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0
 
 work do
   @rotate_pitch = 0.5
-  @fly_pitch = 0.2
-  @altitude_pitch = 0.5
+  @fly_pitch = 0.7
+  @altitude_pitch = 1
   @toggle_camera = 0
   on classic, :a_button => proc { 
     puts "Take Off" 
@@ -49,20 +49,20 @@ work do
     drone.stop
   }
   on classic, :ry_up => proc {
-    puts "Down"
-    drone.down(@altitude_pitch)
-  }
-  on classic, :ry_down => proc {
     puts "Up"
     drone.up(@altitude_pitch)
   }
-  on classic, :ly_up => proc {
-    puts "Backward"
-    drone.backward(@fly_pitch)
+  on classic, :ry_down => proc {
+    puts "Down"
+    drone.down(@altitude_pitch)
   }
-  on classic, :ly_down => proc {
+  on classic, :ly_up => proc {
     puts "Forward"
     drone.forward(@fly_pitch)
+  }
+  on classic, :ly_down => proc {
+    puts "Backward"
+    drone.backward(@fly_pitch)
   }
   on classic, :lx_right => proc {
     puts "Right"
@@ -84,8 +84,10 @@ work do
     puts "rotate right"
     drone.turn_right(@rotate_pitch)
   }
-  on classic, :reset_rotate => proc{
+  on classic, :reset_rotate => proc {
     drone.turn_left(0.0)
   }
-  
+  on classic, :reset_altitude => proc {
+    drone.up(0.0)
+  } 
 end
