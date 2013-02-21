@@ -212,12 +212,12 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
 }).call(this);
 (function() {
 
-  this.RobotIndexCtrl = function($scope, $http) {
+  this.RobotIndexCtrl = function($scope, $http, $location) {
     $http.get('/robots').success(function(data) {
       return $scope.robots = data;
     });
     return $scope.robotDetail = function(robotId) {
-      return window.location = "#/robots/" + robotId;
+      return $location.path("/robots/" + robotId);
     };
   };
 
