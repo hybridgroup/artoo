@@ -53,7 +53,7 @@
       <p>Arduino with an LED and a button, using the Firmata protocol.</p>
       <pre><code>require 'artoo'&#x000A;&#x000A;connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'&#x000A;device :led, :driver => :led, :pin => 13&#x000A;device :button, :driver => :button, :pin => 2&#x000A;&#x000A;work do&#x000A;  on button, :push => proc {led.toggle}&#x000A;end</code></pre>
       <p>Parrot ARDrone 2.0</p>
-      <pre><code>require 'artoo'&#x000A;&#x000A;connection :ardrone, :adaptor => :ardrone&#x000A;device :drone, :driver => :ardrone</code></pre>
+      <pre><code>require 'artoo'&#x000A;&#x000A;connection :ardrone, :adaptor => :ardrone&#x000A;device :drone, :driver => :ardrone&#x000A;&#x000A;work do&#x000A;  drone.start&#x000A;  drone.take_off&#x000A;&#x000A;  after(25.seconds) { drone.hover.land }&#x000A;  after(30.seconds) { drone.stop }&#x000A;end</code></pre>
       <h3>Modular</h3>
       <pre><code>require 'artoo/robot'&#x000A;&#x000A;SPHEROS = ["4567", "4568", "4569", "4570", "4571"]&#x000A;&#x000A;class SpheroRobot < Artoo::Robot&#x000A;  connection :sphero, :adaptor => :sphero&#x000A;  device :sphero, :driver => :sphero&#x000A;&#x000A;  work do&#x000A;    every(3.seconds) do&#x000A;      sphero.roll 90, rand(360)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;robots = []&#x000A;SPHEROS.each {|p|&#x000A;  robots << SpheroRobot.new(:connections => &#x000A;                              {:sphero => &#x000A;                                {:port => p}})&#x000A;}&#x000A;&#x000A;SpheroRobot.work!(robots)</code></pre>
     </div>
