@@ -98,6 +98,9 @@ module Artoo
       def get(path, &block)
         route 'GET', path, &block
       end
+      def get_ws(path, &block)
+        route 'GET', path, &block
+      end
       def put(path, &block)
         route 'PUT', path, &block
       end
@@ -147,6 +150,9 @@ module Artoo
               @params = params
             end
 
+            @connection = connection
+            @req = req
+            
             begin
               body = block ? block[self, values] : yield(self, values)
               halt [:ok, body]

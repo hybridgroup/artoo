@@ -32,6 +32,10 @@ module Artoo
         Logger.info "Starting driver '#{self.class.name}'..."
       end
 
+      def event_topic_name(event)
+        parent.event_topic_name(event)
+      end
+
       def method_missing(method_name, *arguments, &block)
         connection.send(method_name, *arguments, &block)
       rescue Exception => e

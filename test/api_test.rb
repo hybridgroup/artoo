@@ -49,9 +49,12 @@ describe Artoo::Api do
 			DummyClass.instance_eval <<-EOE
 				get '/' do
 				end
+
+        get_ws '/sock' do
+        end
 			EOE
 
-			DummyClass.routes['GET'].length.must_equal 1
+			DummyClass.routes['GET'].length.must_equal 2
 		end
 	end
 

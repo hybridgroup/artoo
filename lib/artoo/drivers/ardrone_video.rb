@@ -14,7 +14,7 @@ module Artoo
 
       def handle_frame(*params)
         frame = connection.video_parser.get_frame
-        publish("#{parent.name}_frame", frame)
+        publish(event_topic_name("frame"), frame)
       end
     end
   end
