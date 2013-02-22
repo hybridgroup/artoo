@@ -4,16 +4,31 @@ module Artoo
   module Drivers
     # The Sphero driver behaviors
     class Sphero < Driver
+      def detect_collisions(params={})
+        connection.configure_collision_detection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
+      end
+
+      def clear_collisions
+        messages = connection.async_messages
+        messages.clear if messages
+      end
+
       def collisions
-        connection.async_messages.select {|m| m.is_a?(::Sphero::Response::CollisionDetected)}
+        messages = connection.async_messages
+        return nil unless messages
+        messages.select {|m| m.is_a?(::Sphero::Response::CollisionDetected)}
       end
 
       def power_notifications
-        connection.async_messages.select {|m| m.is_a?(::Sphero::Response::PowerNotification)}
+        messages = connection.async_messages
+        return nil unless messages
+        messages.select {|m| m.is_a?(::Sphero::Response::PowerNotification)}
       end
 
       def sensor_data
-        connection.async_messages.select {|m| m.is_a?(::Sphero::Response::SensorData)}
+        messages = connection.async_messages
+        return nil unless messages
+        messages.select {|m| m.is_a?(::Sphero::Response::SensorData)}
       end
 
       def set_color(r, g=nil, b=nil)
