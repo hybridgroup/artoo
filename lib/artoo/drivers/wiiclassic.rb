@@ -24,9 +24,9 @@ module Artoo
         connection.on("i2c_reply", listener)
 
         connection.i2c_config(0)
-        connection.i2c_write_request(address, 0x40, 0x00)
-
         every(interval) do
+          connection.i2c_write_request(address, 0x40, 0x00)
+          p
           connection.i2c_write_request(address, 0x00, 0x00)
           p
           connection.i2c_read_request(address, 6)
