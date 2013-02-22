@@ -169,6 +169,10 @@ module Artoo
       end
     end
 
+    def safe_name
+      name.gsub(' ', '_').downcase
+    end
+
     def api_host
       self.class.api_host
     end
@@ -231,7 +235,7 @@ module Artoo
     # Subscribe to an event from a device
     def on(device, events={})
       events.each do |k, v|
-        subscribe("#{device.name}_#{k}", create_proxy_method(k, v))
+        subscribe("#{safe_name}_#{device.name}_#{k}", create_proxy_method(k, v))
       end
     end
 

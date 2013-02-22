@@ -30,9 +30,13 @@ module Artoo
       driver.start_driver
     end
 
+    def event_topic_name(event)
+      "#{parent.safe_name}_#{name}_#{event}"  
+    end
+
     def to_hash
       {:name => name,
-       :driver => driver.class.name,
+       :driver => driver.class.name.demodulize,
        :pin => pin.to_s,
        :connection => connection.to_hash,
        :interval => interval
