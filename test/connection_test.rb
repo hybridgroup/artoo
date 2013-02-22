@@ -23,5 +23,6 @@ describe Artoo::Connection do
 
   it 'Artoo::Connection#as_json' do
     MultiJson.load(@connection.as_json, :symbolize_keys => true)[:name].must_equal "test_connection"
+    MultiJson.load(@connection.as_json, :symbolize_keys => true)[:connected].must_equal false
   end
 end

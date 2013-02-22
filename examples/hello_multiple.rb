@@ -14,11 +14,9 @@ class HelloRobot < Artoo::Robot
 end
 
 robots = []
-robots << HelloRobot.new(:name => "Number 1")
-robots << HelloRobot.new(:name => "Number 2")
-robots << HelloRobot.new(:name => "Number 3")
-robots << HelloRobot.new(:name => "Number 4")
-robots << HelloRobot.new(:name => "Number 5")
+5.times do |i|
+	robots << HelloRobot.new(:name => "Number #{i}")
+end
 
-robots.each {|r| r.work}
+HelloRobot.work!(robots)
 sleep

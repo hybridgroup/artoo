@@ -19,3 +19,6 @@ doc/
 
 # RVM
 .rvmrc
+
+# Sass
+.sass-cache
