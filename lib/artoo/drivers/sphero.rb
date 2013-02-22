@@ -16,24 +16,25 @@ module Artoo
         connection.async_messages.select {|m| m.is_a?(::Sphero::Response::SensorData)}
       end
 
-      def set_color(*rgb)
-        connection.rgb(color(rgb))
+      def set_color(r, g=nil, b=nil)
+        r, g, b = color(r, g, b)
+        connection.rgb(r, g, b)
       end
 
-      def color(*rgb)
-        r, g, b = case rgb[0]
+      def color(r, g=nil, b=nil)
+        case r
         when :red
-          [255, 0, 0]
+          return 255, 0, 0
         when :green
-          [0, 255, 0]
+          return 0, 255, 0
         when :yellow
-          [255, 255, 0]
+          return 255, 255, 0
         when :blue
-          [0, 0, 255]
+          return 0, 0, 255
         when :white
-          [255, 255, 255]
+          return 255, 255, 255
         else
-          rgb
+          return r, g, b
         end
       end
     end
