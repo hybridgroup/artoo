@@ -27,9 +27,11 @@ module Artoo
       def update(value)
         if value == DOWN
           @is_pressed = true
+          publish(event_topic_name("update"), "push", value)
           publish(event_topic_name("push"), value)
         else
           @is_pressed = false
+          publish(event_topic_name("update"), "release", value)
           publish(event_topic_name("release"), value)
         end
       end

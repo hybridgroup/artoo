@@ -6,7 +6,7 @@ class HelloRobot < Artoo::Robot
 	connection :loopback3
 	device :passthru1
 	device :passthru2
-	device :passthru3
+	device :pinger, :driver => :pinger
 
 	api :host => '127.0.0.1', :port => '4321'
 

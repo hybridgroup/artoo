@@ -7,17 +7,20 @@ module Artoo
     include Celluloid::Notifications
     include Celluloid::Logger
 
+    attr_reader :topic
+
     def initialize(websocket, topic)
-      info "Streaming device event notifications to websocket..."
+      @topic = topic
+      info "Streaming #{@topic} to websocket..."
       @socket = websocket
-      subscribe(topic, :notify_event)
+      subscribe(@topic, :notify_event)
     end
 
-    def notify_event(topic, data)
+    def notify_event(topic, *data)
       # TODO: send which topic sent the notification
-      @socket << data
-    rescue Reel::SocketError
-      error "Device event notification websocket disconnected"
+      @socket << data.last.to_s
+    rescue Reel::SocketError, Errno::EPIPE
+      info "Device event notification #{topic} websocket disconnected"
       terminate
     end
   end

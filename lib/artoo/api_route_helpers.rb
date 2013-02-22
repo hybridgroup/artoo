@@ -114,6 +114,7 @@ module Artoo
           route!      connection, req
         end
         if resp && !resp.nil?
+          return if req.is_a?(Reel::WebSocket)
           status, body = resp
           req.respond status, body
         else
@@ -152,7 +153,7 @@ module Artoo
 
             @connection = connection
             @req = req
-            
+
             begin
               body = block ? block[self, values] : yield(self, values)
               halt [:ok, body]
