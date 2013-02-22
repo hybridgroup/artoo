@@ -1,5 +1,6 @@
 require 'reel'
 require 'artoo/api_route_helpers'
+require 'artoo/device_event_client'
 
 module Artoo
   class Api < Reel::Server
@@ -12,12 +13,6 @@ module Artoo
     def on_connection(connection)
       while request = connection.request
         dispatch!(connection, request)
-        # case request
-        # when Reel::Request
-        #   dispatch!(connection, request)
-        # when Reel::WebSocket
-        #   handle_websocket(connection, request)
-        # end
       end
     end
 
@@ -38,7 +33,8 @@ module Artoo
     end
 
     get_ws '/robots/:robotid/devices/:deviceid/events' do
-      DeviceEventClient.new(@req, Actor[:master].get_robot_by_name(@params['robotid']).devices[@params['deviceid'].intern].event_topic_name('event'))
+      DeviceEventClient.new(@req, Actor[:master].get_robot_by_name(@params['robotid']).devices[@params['deviceid'].intern].event_topic_name('update'))
+      return nil
     end
 
     get '/robots/:robotid/connections' do
@@ -48,16 +44,5 @@ module Artoo
     get '/robots/:robotid/connections/:connectionid' do
       Actor[:master].get_robot_by_name(@params['robotid']).connections[@params['connectionid'].intern].as_json
     end
-
-    # def handle_websocket(connection, socket)
-    #   path, keys = compile(socket.url)
-    #   if  == "/robots"
-    #     #Actor[:master].robots.collect {|r|r.to_hash}.first
-    #     TimeClient.new(socket)
-    #   else
-    #     info "Received invalid WebSocket request for: #{socket.url}"
-    #     socket.close
-    #   end
-    # end
   end
 end
