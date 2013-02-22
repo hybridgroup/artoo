@@ -45,6 +45,10 @@ module Artoo
 
       def update(value)
         begin
+          if value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
+            Logger.error "Encrypted bytes from wiiclassic"
+            break
+          end
           data = parse_wiiclassic(value)
           publish("#{parent.name}_a_button") if data[:a] == 0
           publish("#{parent.name}_b_button") if data[:b] == 0
