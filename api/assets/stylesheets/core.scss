@@ -31,6 +31,9 @@ div.device {
     [class^="icon-"] {
       color: #B4B4B4;
     }
+    .connected {
+      color: #468847;
+    }
   }
   &.clickable {
     cursor: pointer;
@@ -44,3 +47,4 @@ div.device {
   text-align: center;
   color: #868686;
 }
+

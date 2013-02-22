@@ -61,8 +61,8 @@
 						<b>
 							<span class="name">{{connection.name}}</span>
 							<dl class="controls">
-								<dt><i class="icon-circle-blank"></i> </dt>
-								<dd>{{connection.port}}</dd>
+								<dt><i class="icon-circle" ng-class="isConnected(connection)"></i> </dt>
+								<dd ng-show="connection.port">{{connection.port}}</dd>
 							</dl>
 						</b>
 					</div>

@@ -228,8 +228,13 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
     $http.get('/robots/' + $routeParams.robotId).success(function(data) {
       return $scope.robot = data;
     });
-    return $scope.deviceDetail = function(robotId, deviceId) {
+    $scope.deviceDetail = function(robotId, deviceId) {
       return $location.path("/robots/" + robotId + "/devices/" + deviceId);
+    };
+    return $scope.isConnected = function(connection) {
+      if (connection.connected) {
+        return "connected";
+      }
     };
   };
 

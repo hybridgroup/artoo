@@ -9,6 +9,8 @@
     $scope.robot = data
   $scope.deviceDetail = (robotId, deviceId) ->
     $location.path "/robots/" + robotId + "/devices/" + deviceId
+  $scope.isConnected = (connection) ->
+    "connected" if connection.connected
 
 @RobotDeviceDetailCtrl = ($scope, $http, $routeParams) ->
   $http.get('/robots/' + $routeParams.robotId + "/devices/" + $routeParams.deviceId).success (data)->
