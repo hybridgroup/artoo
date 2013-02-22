@@ -1,11 +1,12 @@
 require 'artoo'
 
 connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+#connection :ardrone, :adaptor => :ardrone, :port => '192.168.0.100:5556'
 device :drone, :driver => :ardrone, :connection => :ardrone
 
 #connection :arduino, :adaptor => :firmata, :port => "/dev/ttyACM0"
-connection :arduino, :adaptor => :firmata, :port => "4567"
-device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.2
+connection :arduino, :adaptor => :firmata, :port => "8023"
+device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
 work do
   @rotate_pitch = 0.5
