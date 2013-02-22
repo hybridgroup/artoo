@@ -1,0 +1,85 @@
+@import 'barebones';
+
+$red: hsl(355, 100%, 33%);
+
+header {
+  border-bottom: 5px solid $red;
+  height: 75px;
+
+  @media only screen and (max-width: 767px) {
+    height: 150px;
+    border: none;
+  }
+
+  h1, .social {
+    height: 75px;
+  }
+
+  h1 {
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    float: left;
+    color: $red;
+    width: 75%;
+    font-size: 75px;
+    margin: 0;
+    margin-left: 1px;
+    line-height: 95px;
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      width: 60%;
+    }
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      text-align: center;
+      border-bottom: 5px solid $red;
+    }
+  }
+
+  .social {
+    text-align: center;
+    float: right;
+    display: block;
+    width: 24%;
+    line-height: 75px;
+
+    .button {
+      background: lighten($red, 30%);
+      color: white;
+      font-size: 18px;
+      font-weight: normal;
+      border: none;
+      margin: 10px;
+      padding: 8px 10px;
+      box-shadow: 3px 3px 0 lighten($red, 10%);
+      text-shadow-color: #efefef;
+      border-radius: 0;
+      &:hover {
+        background: lighten($red, 25%);
+        box-shadow-color: lighten($red, 5%);
+      }
+      &:active {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        box-shadow: 2px 2px 0 lighten($red, 5%);
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      width: 39%;
+
+      .button {
+        font-size: 22px;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+
+      .button {
+        width: 40%;
+      }
+    }
+  }
+}
