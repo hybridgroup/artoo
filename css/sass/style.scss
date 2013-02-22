@@ -1,6 +1,19 @@
 @import 'barebones';
+@import 'pygments';
 
 $red: hsl(355, 100%, 33%);
+
+body {
+  margin-bottom: 75px;
+}
+
+@media only screen and (max-width: 767px) {
+  pre {
+    white-space: pre;
+    overflow: scroll;
+    word-wrap: normal;
+  }
+}
 
 header {
   border-bottom: 5px solid $red;
@@ -22,8 +35,7 @@ header {
     width: 75%;
     font-size: 75px;
     margin: 0;
-    margin-left: 1px;
-    line-height: 95px;
+    line-height: 93px;
 
     @media only screen and (min-width: 768px) and (max-width: 959px) {
       width: 60%;
@@ -79,6 +91,37 @@ header {
 
       .button {
         width: 40%;
+      }
+    }
+  }
+}
+
+#main {
+  .aside.right {
+    float: right;
+    @media only screen and (max-width: 767px) {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+      float: right;
+    }
+  }
+
+  section:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  #examples {
+    .example {
+      &:not(:last-child) {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #eee;
+      }
+      h3 {
+        font-weight: normal;
       }
     }
   }
