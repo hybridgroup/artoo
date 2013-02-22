@@ -45,18 +45,20 @@ module Artoo
 
       def update(value)
         begin
+          #Logger.info "value[:data] #{value[:data].inspect}"
           if value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
-            Logger.error "Encrypted bytes from wiiclassic"
+          #  Logger.error "Encrypted bytes from wiiclassic"
             break
           end
           data = parse_wiiclassic(value)
-          publish("#{parent.name}_a_button") if data[:a] == 0
-          publish("#{parent.name}_b_button") if data[:b] == 0
-          publish("#{parent.name}_x_button") if data[:x] == 0
-          publish("#{parent.name}_y_button") if data[:y] == 0
-          publish("#{parent.name}_home_button") if data[:h] == 0
-          publish("#{parent.name}_start_button") if data[:+] == 0
-          publish("#{parent.name}_select_button") if data[:-] == 0
+          #publish(event_topic_name("_a_button") if data[:a] == 0
+          publish(event_topic_name("a_button")) if data[:a] == 0
+          publish(event_topic_name("b_button")) if data[:b] == 0
+          publish(event_topic_name("x_button")) if data[:x] == 0
+          publish(event_topic_name("y_button")) if data[:y] == 0
+          publish(event_topic_name("home_button")) if data[:h] == 0
+          publish(event_topic_name("start_button")) if data[:+] == 0
+          publish(event_topic_name("select_button")) if data[:-] == 0
 
           @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
           @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
@@ -67,35 +69,35 @@ module Artoo
           @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
 
           if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
-            publish("#{parent.name}_ly_up")
+            publish(event_topic_name("ly_up"))
           elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
-            publish("#{parent.name}_ly_down")
+            publish(event_topic_name("ly_down"))
           elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
-            publish("#{parent.name}_lx_right")
+            publish(event_topic_name("lx_right"))
           elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
-            publish("#{parent.name}_lx_left")
+            publish(event_topic_name("lx_left"))
           else
-            publish("#{parent.name}_reset_pitch_roll")
+            publish(event_topic_name("reset_pitch_roll"))
           end
 
           if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
-            publish("#{parent.name}_ry_up")
+            publish(event_topic_name("ry_up"))
           elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
-            publish("#{parent.name}_ry_down")
+            publish(event_topic_name("ry_down"))
           else
-            publish("#{parent.name}_reset_altitude")
+            publish(event_topic_name("reset_altitude"))
           end
 
           if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
-            publish("#{parent.name}_rotate_right")
+            publish(event_topic_name("rotate_right"))
           elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
-            publish("#{parent.name}_rotate_left")
+            publish(event_topic_name("rotate_left"))
           else
-            publish("#{parent.name}_reset_rotate")
+            publish(event_topic_name("reset_rotate"))
           end
 
         rescue Exception => e
-          p "update ex"
+          p "wiiclassic update exception!"
           p e.message
           p e.backtrace.inspect
         end
