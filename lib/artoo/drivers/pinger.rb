@@ -5,9 +5,11 @@ module Artoo
     # Pings itself
     class Pinger < Driver
       def start_driver
+        @count = 1
         every(interval) do
-          Logger.info "#{parent.name}_alive"
-          publish("#{parent.name}_alive", 'yes')
+          publish(event_topic_name("update"), "alive", @count)
+          publish(event_topic_name("alive"), @count)
+          @count += 1
         end
 
         super

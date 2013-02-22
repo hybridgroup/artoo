@@ -1,0 +1,46 @@
+@import "compass";
+@import "artoo/variables";
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "artoo/font-awesome";
+
+body {
+  @media(max-width: $navbarCollapseWidth) {
+    padding-top: 0;
+  }
+  padding-top: 60px;
+}
+
+div.device {
+  background: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+  b {
+    @extend h5;
+    display: block;
+  }
+  .controls {
+    float: right;
+    margin: 0;
+    @media(max-width: 480px) {
+      float: left;
+    }
+    dt, dd { display: inline }
+    dd { margin: 0 10px 0 0; }
+    [class^="icon-"] {
+      color: #B4B4B4;
+    }
+  }
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+.display {
+  background: #ECECEC;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  color: #868686;
+}

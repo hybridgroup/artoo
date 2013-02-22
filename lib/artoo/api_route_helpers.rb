@@ -4,7 +4,7 @@ module Artoo
     class ResponseHandled < StandardError; end
     module ClassMethods
 
-      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "public"))
+      def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api/public"))
         @static_path ||= default
       end
 
@@ -98,11 +98,14 @@ module Artoo
       def get(path, &block)
         route 'GET', path, &block
       end
+      def get_ws(path, &block)
+        route 'GET', path, &block
+      end
       def put(path, &block)
         route 'PUT', path, &block
       end
     end
-    
+
     module InstanceMethods
       ## Handle the request
       def dispatch!(connection, req)
@@ -111,6 +114,7 @@ module Artoo
           route!      connection, req
         end
         if resp && !resp.nil?
+          return if req.is_a?(Reel::WebSocket)
           status, body = resp
           req.respond status, body
         else
@@ -147,6 +151,9 @@ module Artoo
               @params = params
             end
 
+            @connection = connection
+            @req = req
+
             begin
               body = block ? block[self, values] : yield(self, values)
               halt [:ok, body]
@@ -181,7 +188,7 @@ module Artoo
         def self.force_encoding(data, *) data end
       end
     end
-    
+
     def self.included(receiver)
       receiver.extend         ClassMethods
       receiver.send :include, InstanceMethods

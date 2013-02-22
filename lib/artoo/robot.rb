@@ -169,6 +169,18 @@ module Artoo
       end
     end
 
+    def safe_name
+      name.gsub(' ', '_').downcase
+    end
+
+    def api_host
+      self.class.api_host
+    end
+
+    def api_port
+      self.class.api_port
+    end
+
     # start doing the work
     def work
       Logger.info "Starting work..."
@@ -223,7 +235,7 @@ module Artoo
     # Subscribe to an event from a device
     def on(device, events={})
       events.each do |k, v|
-        subscribe("#{device.name}_#{k}", create_proxy_method(k, v))
+        subscribe("#{safe_name}_#{device.name}_#{k}", create_proxy_method(k, v))
       end
     end
 
@@ -253,8 +265,8 @@ module Artoo
     
     def to_hash
       {:name => name,
-       :connections => [connections.each_value {|c|c.to_hash}],
-       :devices => [devices.each_value {|d|d.to_hash}]
+       :connections => connections.each_value.collect {|c|c.to_hash},
+       :devices => devices.each_value.collect {|d|d.to_hash}
       }
     end
 

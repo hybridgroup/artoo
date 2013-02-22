@@ -23,6 +23,11 @@ describe Artoo::Robot do
     @robot.name.must_equal 'testme'
   end
 
+  it 'Artoo::Robot#safe_name' do
+    robotina = TestRobot.new(:name => "I Am A Robot")
+    robotina.safe_name.must_equal 'i_am_a_robot'
+  end
+
   it 'Artoo::Robot#name random when not provided' do
     TestRobot.any_instance.stubs(:random_string).returns("RANDOM")
     @robot3 = TestRobot.new(:connections => {:test_connection => {:port => '1234'}})

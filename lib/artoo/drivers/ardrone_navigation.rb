@@ -14,7 +14,7 @@ module Artoo
 
       def handle_update
         navdata = connection.receive_data
-        publish("#{parent.name}_update", navdata)
+        publish(event_topic_name("update"), navdata)
       end
     end
   end
