@@ -81,6 +81,14 @@ Artoo provides a robust actor-based messaging architecture, that can support ful
 gem install artoo
 ```
 
+Then install the gems required by your specific supported hardware:
+
+```ruby
+gem install hybridgroup-firmata
+gem install hybridgroup-argus
+gem install hybridgroup-sphero
+```
+
 ## Running:
 
 ```ruby

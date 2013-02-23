@@ -13,11 +13,6 @@ group :development, :test do
   gem 'minitest'
   gem 'mocha'
 
-  # these are for specific hardware, should they even be here?
-  gem 'hybridgroup-firmata', :git => 'https://github.com/hybridgroup/firmata.git'
-  gem 'hybridgroup-sphero'
-  gem 'argus', :git => 'https://github.com/hybridgroup/argus.git'
-
   # For Front-End
   gem 'sass'
   gem 'coffee-script'
