@@ -6,8 +6,8 @@
 	<div class="container device clickable" ng-repeat="robot in robots" ng-click="robotDetail(robot.name)">
 		<div class="row-fluid">
 			<div class="span2">
-				<div class="display">
-					robot-types
+				<div class="display sphero">
+					{{robot.type || "Robot"}}
 				</div>
 			</div>
 			<div class="span10">
