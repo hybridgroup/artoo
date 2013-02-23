@@ -116,7 +116,11 @@ module Artoo
         if resp && !resp.nil?
           return if req.is_a?(Reel::WebSocket)
           status, body = resp
-          req.respond status, body
+          begin
+            req.respond status, body
+          rescue Errno::EAGAIN
+            retry
+          end
         else
           req.respond :not_found, "NOT FOUND"
         end
