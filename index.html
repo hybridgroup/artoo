@@ -1,80 +1,139 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]> ><! <![endif]-->
-<html class='no-js'>
-  <!-- <![endif] -->
-  <head></head>
-  <meta charset='utf-8'>
-    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
-    <!-- Use title if it's in the page YAML frontmatter -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+
     <title>Artoo</title>
-    <meta content='' name='description'>
-      <meta content='width=device-width' name='viewport' />
-      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-      <link href='css/normalize.css' rel='stylesheet'>
-        <link href='css/main.css' rel='stylesheet' />
-        <script src='js/vendor/modernizr-2.6.1.min.js'></script>
-      </link>
-    </meta>
-  </meta>
-  <body></body>
-  <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-  <![endif]-->
-  <div class='container'>
-  <a href='https://github.com/hybridgroup/artoo'>
-    <img alt='Fork me on GitHub' src='https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png' style='position: absolute; top: 0; left: 0; border: 0;' />
-  </a>
-  <div class='header'>
-    <img class='logo' src='img/artoo-header.png' />
-    <a class='social-media-button twitter' href='https://twitter.com/hybrid_group'>Twitter</a>
-    <a class='social-media-button' href='https://github.com/hybridgroup/artoo'>Github</a>
-  </div>
-  <div class='top-divider'></div>
-  <div class='share-buttons'>
-    <div class='addthis_toolbox addthis_default_style'>
-      <a class='addthis_button_facebook_like' fb:like:layout='button_count' fb:like:width='115'></a>
-      <a class='addthis_button_tweet'></a>
-      <a class='addthis_button_pinterest_pinit'></a>
-      <a class='addthis_counter addthis_pill_style'></a>
-      <script src='//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5119ab7f37015a19' type='text/javascript'></script>
+    <meta name="author" content="The Hybrid Group">
+    <meta name="description" content="Artoo is a micro-framework for robotics using Ruby.">
+
+    <link href="http://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>artoo</h1>
+        <span class="social">
+          <a class="twitter button" href="https://twitter.com/hybrid_group">Twitter</a>
+          <a class="github button" href="https://github.com/hybridgroup/artoo">Github</a>
+        </span>
+      </header>
+      <div id="main" role="main">
+        <div class="aside right">
+          <img src="img/artoo.png">
+        </div>
+        <section id="intro">
+          <h2>artoo is a micro-framework for robotics</h2>
+          <p>
+            It provides a simple, but powerful DSL (domain-specific logic) for
+            robots and physical computing.
+          </p>
+        </section>
+
+        <section id="support">
+          <h2>artoo supports:</h2>
+          <ul>
+            <li>Arduino</li>
+            <li>Parrot AR.Drone 2.0</li>
+            <li>Sphero</li>
+            <li>and more to come!</li>
+          </ul>
+          </section>
+
+        <section id="dsl">
+          <h2>The DSL</h2>
+
+          <p>Artoo’s simple DSL makes telling robots what to do incredibly simple and fun.</p>
+
+          <p>All you need to get started is the <code>artoo</code> gem:</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">'artoo'</span>
+</code></pre></div>
+
+          <p>Then hook it up to your robot (in this case, a <a href="http://www.gosphero.com/">Sphero</a>):</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">connection</span> <span class="ss">:sphero</span><span class="p">,</span> <span class="ss">:adaptor</span> <span class="o">=&gt;</span> <span class="ss">:sphero</span><span class="p">,</span> <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="s1">'4560'</span>
+<span class="n">device</span> <span class="ss">:sphero</span><span class="p">,</span> <span class="ss">:driver</span> <span class="o">=&gt;</span> <span class="ss">:sphero</span>
+</code></pre></div>
+
+          <p>And tell it what to do!</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">work</span> <span class="k">do</span>
+  <span class="n">every</span><span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s2">"Rolling..."</span>
+    <span class="n">sphero</span><span class="o">.</span><span class="n">roll</span> <span class="mi">60</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+        </section>
+
+        <section id="examples">
+          <h2>Examples!</h2>
+          <div class="example arduino">
+            <h3>Arduino</h3>
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">'artoo'</span>
+
+<span class="n">connection</span> <span class="ss">:arduino</span><span class="p">,</span> <span class="ss">:adaptor</span> <span class="o">=&gt;</span> <span class="ss">:firmata</span><span class="p">,</span> <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="s1">'/dev/tty.usbmodemxxxxx'</span>
+<span class="n">device</span> <span class="ss">:led</span><span class="p">,</span> <span class="ss">:driver</span> <span class="o">=&gt;</span> <span class="ss">:led</span><span class="p">,</span> <span class="ss">:pin</span> <span class="o">=&gt;</span> <span class="mi">13</span>
+<span class="n">device</span> <span class="ss">:button</span><span class="p">,</span> <span class="ss">:driver</span> <span class="o">=&gt;</span> <span class="ss">:button</span><span class="p">,</span> <span class="ss">:pin</span> <span class="o">=&gt;</span> <span class="mi">2</span>
+
+<span class="n">work</span> <span class="k">do</span>
+  <span class="n">on</span> <span class="n">button</span><span class="p">,</span> <span class="ss">:push</span> <span class="o">=&gt;</span> <span class="nb">proc</span> <span class="p">{</span><span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div>
+          </div>
+
+          <div class="example ardrone">
+            <h3>AR.Drone 2.0</h3>
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">'artoo'</span>
+
+<span class="n">connection</span> <span class="ss">:ardrone</span><span class="p">,</span> <span class="ss">:adaptor</span> <span class="o">=&gt;</span> <span class="ss">:ardrone</span>
+<span class="n">device</span> <span class="ss">:drone</span><span class="p">,</span> <span class="ss">:driver</span> <span class="o">=&gt;</span> <span class="ss">:ardrone</span>
+
+<span class="n">work</span> <span class="k">do</span>
+  <span class="n">drone</span><span class="o">.</span><span class="n">start</span>
+  <span class="n">drone</span><span class="o">.</span><span class="n">take_off</span>
+
+  <span class="n">after</span><span class="p">(</span><span class="mi">25</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="p">{</span> <span class="n">drone</span><span class="o">.</span><span class="n">hover</span><span class="o">.</span><span class="n">land</span> <span class="p">}</span>
+  <span class="n">after</span><span class="p">(</span><span class="mi">30</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="p">{</span> <span class="n">drone</span><span class="o">.</span><span class="n">stop</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div>
+          </div>
+
+          <div class="example sphero">
+            <h3>Sphero - Modular</h3>
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">'artoo/robot'</span>
+
+<span class="no">SPHEROS</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"4567"</span><span class="p">,</span> <span class="s2">"4568"</span><span class="p">,</span> <span class="s2">"4569"</span><span class="p">,</span> <span class="s2">"4570"</span><span class="p">,</span> <span class="s2">"4571"</span><span class="o">]</span>
+
+<span class="k">class</span> <span class="nc">SpheroRobot</span> <span class="o">&lt;</span> <span class="ss">Artoo</span><span class="p">:</span><span class="ss">:Robot</span>
+  <span class="n">connection</span> <span class="ss">:sphero</span><span class="p">,</span> <span class="ss">:adaptor</span> <span class="o">=&gt;</span> <span class="ss">:sphero</span>
+  <span class="n">device</span> <span class="ss">:sphero</span><span class="p">,</span> <span class="ss">:driver</span> <span class="o">=&gt;</span> <span class="ss">:sphero</span>
+
+  <span class="n">work</span> <span class="k">do</span>
+    <span class="n">every</span><span class="p">(</span><span class="mi">3</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">sphero</span><span class="o">.</span><span class="n">roll</span> <span class="mi">90</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">robots</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="no">SPHEROS</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span>
+  <span class="n">robots</span> <span class="o">&lt;&lt;</span> <span class="no">SpheroRobot</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:connections</span> <span class="o">=&gt;</span> 
+                              <span class="p">{</span><span class="ss">:sphero</span> <span class="o">=&gt;</span> 
+                                <span class="p">{</span><span class="ss">:port</span> <span class="o">=&gt;</span> <span class="nb">p</span><span class="p">}})</span>
+<span class="p">}</span>
+
+<span class="no">SpheroRobot</span><span class="o">.</span><span class="n">work!</span><span class="p">(</span><span class="n">robots</span><span class="p">)</span>
+</code></pre></div>
+          </div>
+        </section>
+      </div>
+      <div class="footer">
+        &copy; Copyright 2013 <a href="http://www.hybridgroup.com">The Hybrid Group</a>. See LICENSE for details.
     </div>
-  </div>
-  <div class='content-container'>
-    <img class='artoo' src='img/artoo.png' />
-    <div class='content-box'>
-      <h1>artoo</h1>
-      <p>Artoo is a micro-framework for robotics using Ruby.</p>
-      <p>Artoo provides a simple, yet powerful domain-specific language (DSL) for robotics and physical computing.</p>
-      <h2>Examples:</h2>
-      <h3>Basic</h3>
-      <p>Arduino with an LED and a button, using the Firmata protocol.</p>
-      <pre><code>require 'artoo'&#x000A;&#x000A;connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'&#x000A;device :led, :driver => :led, :pin => 13&#x000A;device :button, :driver => :button, :pin => 2&#x000A;&#x000A;work do&#x000A;  on button, :push => proc {led.toggle}&#x000A;end</code></pre>
-      <p>Parrot ARDrone 2.0</p>
-      <pre><code>require 'artoo'&#x000A;&#x000A;connection :ardrone, :adaptor => :ardrone&#x000A;device :drone, :driver => :ardrone&#x000A;&#x000A;work do&#x000A;  drone.start&#x000A;  drone.take_off&#x000A;&#x000A;  after(25.seconds) { drone.hover.land }&#x000A;  after(30.seconds) { drone.stop }&#x000A;end</code></pre>
-      <h3>Modular</h3>
-      <pre><code>require 'artoo/robot'&#x000A;&#x000A;SPHEROS = ["4567", "4568", "4569", "4570", "4571"]&#x000A;&#x000A;class SpheroRobot < Artoo::Robot&#x000A;  connection :sphero, :adaptor => :sphero&#x000A;  device :sphero, :driver => :sphero&#x000A;&#x000A;  work do&#x000A;    every(3.seconds) do&#x000A;      sphero.roll 90, rand(360)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;robots = []&#x000A;SPHEROS.each {|p|&#x000A;  robots << SpheroRobot.new(:connections => &#x000A;                              {:sphero => &#x000A;                                {:port => p}})&#x000A;}&#x000A;&#x000A;SpheroRobot.work!(robots)</code></pre>
-    </div>
-  </div>
-  <div class='footer'>
-    <p>&copy; 2012-2013 <a class="footer-link" href="http://hybridgroup.com/">The Hybrid Group</a> All Rights Reserved</p>
-  </div>
-</div>
-  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></script>
-  <script type='text/javascript'>
-    //<![CDATA[
-      window.jQuery || document.write('<\/script>')
-          
-          
-      
-          
-          
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-    //]]>
-  </script>
+  </body>
 </html>
