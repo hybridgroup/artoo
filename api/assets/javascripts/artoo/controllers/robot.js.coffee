@@ -1,4 +1,4 @@
-window.driversWithOutput = ["Pinger", "Pinger2"]
+window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclassic"]
 
 @RobotIndexCtrl = ($scope, $http, $location, $route) ->
   $http.get('/robots').success (data)->

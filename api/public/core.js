@@ -212,7 +212,7 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
 }).call(this);
 (function() {
 
-  window.driversWithOutput = ["Pinger", "Pinger2"];
+  window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclassic"];
 
   this.RobotIndexCtrl = function($scope, $http, $location, $route) {
     $http.get('/robots').success(function(data) {
