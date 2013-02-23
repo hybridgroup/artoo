@@ -1,11 +1,11 @@
 require 'artoo'
 
-connection :sphero, :adaptor => :sphero, :port => '4567' #'/dev/tty.Sphero-BWY-RN-SPP'
+connection :sphero, :adaptor => :sphero, :port => '4560' #'/dev/tty.Sphero-BWY-RN-SPP'
 device :sphero, :driver => :sphero
   
 work do
   puts "Configuring..."
-  sphero.configure_collision_detection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
+  sphero.detect_collisions
 
   every(3.seconds) do
     puts "Rolling..."
