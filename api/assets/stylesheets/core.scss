@@ -20,6 +20,7 @@ div.device {
     @extend h5;
     display: block;
   }
+
   .controls {
     float: right;
     margin: 0;
@@ -31,9 +32,28 @@ div.device {
     [class^="icon-"] {
       color: #B4B4B4;
     }
+    .connected {
+      color: #468847;
+    }
   }
   &.clickable {
     cursor: pointer;
+  }
+}
+
+.details {
+  .content {
+    padding: 19px 0 0 0;
+    border-top: 1px solid #E1E1E8;
+    overflow: hidden;
+  }
+  .console {
+    code {
+      display: block;
+      height: 150px;
+      overflow: scroll;
+      white-space: pre;
+    }
   }
 }
 
@@ -43,4 +63,8 @@ div.device {
   line-height: 40px;
   text-align: center;
   color: #868686;
+  &.sphiro {
+    background: transparent url('/images/devices/sphero.png') center center no-repeat;
+  }
 }
+
