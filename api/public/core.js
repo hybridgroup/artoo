@@ -212,6 +212,8 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
 }).call(this);
 (function() {
 
+  window.driversWithOutput = ["Pinger", "Pinger2"];
+
   this.RobotIndexCtrl = function($scope, $http, $location, $route) {
     $http.get('/robots').success(function(data) {
       return $scope.robots = data;
@@ -231,6 +233,11 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
         $scope.deviceDetail = data;
         return device.console();
       });
+    };
+    $scope.driverHasOutput = function(driverId) {
+      if ($.inArray(driverId, window.driversWithOutput) !== -1) {
+        return true;
+      }
     };
     device = {
       console: function() {

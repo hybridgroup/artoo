@@ -1,3 +1,5 @@
+window.driversWithOutput = ["Pinger", "Pinger2"]
+
 @RobotIndexCtrl = ($scope, $http, $location, $route) ->
   $http.get('/robots').success (data)->
     $scope.robots = data
@@ -13,13 +15,15 @@
       $scope.deviceDetail = data
       device.console()
 
+  $scope.driverHasOutput = (driverId)->
+    true if $.inArray(driverId, window.driversWithOutput) != -1
+
   device = console: ->
     window.ws.close() if window.ws
     window.ws = new WebSocket("ws://localhost:4321/robots/" + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events")
     $(".console code").empty()
     ws.onmessage = (evt)->
       $(".console code").prepend(evt.data + "\n")
-
 
   $scope.isConnected = (connection) ->
     "connected" if  connection && connection.connected
