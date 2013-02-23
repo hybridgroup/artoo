@@ -1,4 +1,4 @@
-@RobotIndexCtrl = ($scope, $http, $location) ->
+@RobotIndexCtrl = ($scope, $http, $location, $route) ->
   $http.get('/robots').success (data)->
     $scope.robots = data
   $scope.robotDetail = (robotId) ->
@@ -7,13 +7,21 @@
 @RobotDetailCtrl = ($scope, $http, $routeParams, $location) ->
   $http.get('/robots/' + $routeParams.robotId).success (data)->
     $scope.robot = data
-  $scope.deviceDetail = (robotId, deviceId) ->
-    $location.path "/robots/" + robotId + "/devices/" + deviceId
-  $scope.isConnected = (connection) ->
-    "connected" if connection.connected
 
-@RobotDeviceDetailCtrl = ($scope, $http, $routeParams) ->
-  $http.get('/robots/' + $routeParams.robotId + "/devices/" + $routeParams.deviceId).success (data)->
-    console.log data
-    $scope.deviceDetail = data
+  $scope.getDeviceDetail = (deviceId) ->
+    $http.get('/robots/' + $scope.robot.name + "/devices/" + deviceId).success (data)->
+      $scope.deviceDetail = data
+      device.console()
+
+  device = console: ->
+    window.ws.close() if window.ws
+    window.ws = new WebSocket("ws://localhost:4321/robots/" + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events")
+    $(".console code").empty()
+    ws.onmessage = (evt)->
+      $(".console code").prepend(evt.data + "\n")
+
+
+  $scope.isConnected = (connection) ->
+    "connected" if  connection && connection.connected
+
 

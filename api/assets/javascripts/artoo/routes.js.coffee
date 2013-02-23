@@ -6,9 +6,6 @@ angular.module("artoo", []).config(["$routeProvider", ($routeProvider) ->
   ).when("/robots/:robotId",
     templateUrl: "/partials/robot-detail.html"
     controller: RobotDetailCtrl
-  ).when("/robots/:robotId/devices/:deviceId",
-    templateUrl: "/partials/robot-device-detail.html"
-    controller: RobotDeviceDetailCtrl
   ).otherwise redirectTo: "/robots"
 ]).directive("activeLink", ["$location", (location) ->
   restrict: "A"

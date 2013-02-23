@@ -183,9 +183,6 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
       }).when("/robots/:robotId", {
         templateUrl: "/partials/robot-detail.html",
         controller: RobotDetailCtrl
-      }).when("/robots/:robotId/devices/:deviceId", {
-        templateUrl: "/partials/robot-device-detail.html",
-        controller: RobotDeviceDetailCtrl
       }).otherwise({
         redirectTo: "/robots"
       });
@@ -215,7 +212,7 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
 }).call(this);
 (function() {
 
-  this.RobotIndexCtrl = function($scope, $http, $location) {
+  this.RobotIndexCtrl = function($scope, $http, $location, $route) {
     $http.get('/robots').success(function(data) {
       return $scope.robots = data;
     });
@@ -225,24 +222,33 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
   };
 
   this.RobotDetailCtrl = function($scope, $http, $routeParams, $location) {
+    var device;
     $http.get('/robots/' + $routeParams.robotId).success(function(data) {
       return $scope.robot = data;
     });
-    $scope.deviceDetail = function(robotId, deviceId) {
-      return $location.path("/robots/" + robotId + "/devices/" + deviceId);
+    $scope.getDeviceDetail = function(deviceId) {
+      return $http.get('/robots/' + $scope.robot.name + "/devices/" + deviceId).success(function(data) {
+        $scope.deviceDetail = data;
+        return device.console();
+      });
+    };
+    device = {
+      console: function() {
+        if (window.ws) {
+          window.ws.close();
+        }
+        window.ws = new WebSocket("ws://localhost:4321/robots/" + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events");
+        $(".console code").empty();
+        return ws.onmessage = function(evt) {
+          return $(".console code").prepend(evt.data + "\n");
+        };
+      }
     };
     return $scope.isConnected = function(connection) {
-      if (connection.connected) {
+      if (connection && connection.connected) {
         return "connected";
       }
     };
-  };
-
-  this.RobotDeviceDetailCtrl = function($scope, $http, $routeParams) {
-    return $http.get('/robots/' + $routeParams.robotId + "/devices/" + $routeParams.deviceId).success(function(data) {
-      console.log(data);
-      return $scope.deviceDetail = data;
-    });
   };
 
 }).call(this);

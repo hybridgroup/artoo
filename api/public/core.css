@@ -9788,43 +9788,61 @@ div.device {
 div.device b {
   display: block;
 }
-/* line 23, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 24, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device .controls {
   float: right;
   margin: 0;
 }
 @media (max-width: 480px) {
-  /* line 23, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+  /* line 24, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
   div.device .controls {
     float: left;
   }
 }
-/* line 29, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 30, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device .controls dt, div.device .controls dd {
   display: inline;
 }
-/* line 30, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 31, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device .controls dd {
   margin: 0 10px 0 0;
 }
-/* line 31, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 32, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device .controls [class^="icon-"] {
   color: #B4B4B4;
 }
-/* line 34, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 35, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device .controls .connected {
   color: #468847;
 }
-/* line 38, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 39, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 div.device.clickable {
   cursor: pointer;
 }
 
-/* line 43, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+/* line 45, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+.details .content {
+  padding: 19px 0 0 0;
+  border-top: 1px solid #e1e1e8;
+  overflow: hidden;
+}
+/* line 51, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+.details .console code {
+  display: block;
+  height: 150px;
+  overflow: scroll;
+  white-space: pre;
+}
+
+/* line 60, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
 .display {
   background: #ECECEC;
   font-weight: bold;
   line-height: 40px;
   text-align: center;
   color: #868686;
+}
+/* line 66, /Users/kuroir/Dev/hybridgroup/artoo/api/assets/stylesheets/core.scss */
+.display.sphiro {
+  background: transparent url("/images/devices/sphero.png") center center no-repeat;
 }
