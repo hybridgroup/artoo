@@ -1,8 +1,12 @@
 # artoo
 
+http://artoo.io/
+
 Artoo is a micro-framework for robotics using Ruby.
 
 Artoo provides a simple, yet powerful domain-specific language (DSL) for robotics and physical computing.
+
+[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo)
 
 ## Examples:
 
@@ -10,7 +14,7 @@ Artoo provides a simple, yet powerful domain-specific language (DSL) for robotic
 
 Arduino with an LED and a button, using the Firmata protocol.
 
-```
+```ruby
 require 'artoo'
 
 connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
@@ -24,7 +28,7 @@ end
 
 Parrot ARDrone 2.0
 
-```
+```ruby
 require 'artoo'
 
 connection :ardrone, :adaptor => :ardrone
@@ -41,7 +45,7 @@ end
 
 ### Modular
 
-```
+```ruby
 require 'artoo/robot'
 
 SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
@@ -73,14 +77,13 @@ Artoo provides a robust actor-based messaging architecture, that can support ful
 
 ## Installing:
 
-```
+```ruby
 gem install artoo
 ```
 
 ## Running:
 
-```
+```ruby
 ruby myrobot.rb
 ```
 
-[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo)
