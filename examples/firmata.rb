@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :firmata, :adaptor => :firmata, :port => '4567' #/dev/tty.usbserial-A700636n'
+connection :firmata, :adaptor => :firmata, :port => '4567'
 device :board
 device :led, :driver => :led, :pin => 13
 

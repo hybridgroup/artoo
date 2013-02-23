@@ -9,7 +9,6 @@ module Artoo
 
       def finalize
         if connected?
-          #sphero.stop
           sphero.close
         end
       end

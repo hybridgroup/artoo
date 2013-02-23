@@ -9,7 +9,7 @@ class HelloRobot < Artoo::Robot
 	device :pinger, :driver => :pinger
 	device :pinger2, :driver => :pinger2
 
-	api :host => '127.0.0.1', :port => '4321'
+	api :host => '127.0.0.1', :port => '8080'
 
 	work do
 		puts "Hello from '#{name}' attached to API running at #{api_host}:#{api_port}..."
