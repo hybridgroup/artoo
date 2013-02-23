@@ -13,6 +13,11 @@ group :development, :test do
   gem 'minitest'
   gem 'mocha'
 
+  # these are for specific hardware, they have to be here for tests
+  gem 'hybridgroup-firmata'
+  gem 'hybridgroup-sphero'
+  gem 'hybridgroup-argus'
+
   # For Front-End
   gem 'sass'
   gem 'coffee-script'
