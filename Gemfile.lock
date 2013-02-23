@@ -1,20 +1,7 @@
-GIT
-  remote: https://github.com/hybridgroup/argus.git
-  revision: e1f9aeea4c0cc565dbb190d0de065c858a0487c0
-  specs:
-    argus (0.0.0)
-
-GIT
-  remote: https://github.com/hybridgroup/firmata.git
-  revision: d30d9e0559804b77a7f864e5da0d223977839fa7
-  specs:
-    hybridgroup-firmata (0.2.1)
-      event_spitter
-
 PATH
   remote: .
   specs:
-    artoo (0.0.1)
+    artoo (0.1.1)
 
 GEM
   remote: http://rubygems.org/
@@ -74,6 +61,9 @@ GEM
       http_parser.rb
     http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-java)
+    hybridgroup-argus (0.2.0)
+    hybridgroup-firmata (0.3.0)
+      event_spitter
     hybridgroup-sphero (1.1.6)
     listen (0.7.2)
     lumberjack (1.0.2)
@@ -123,7 +113,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_support
-  argus!
   artoo!
   bootstrap-sass
   celluloid-io
@@ -133,7 +122,8 @@ DEPENDENCIES
   guard-compass
   guard-livereload
   guard-sprockets
-  hybridgroup-firmata!
+  hybridgroup-argus
+  hybridgroup-firmata
   hybridgroup-sphero
   minitest
   mocha
