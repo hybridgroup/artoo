@@ -15,26 +15,19 @@ module Artoo
       end
 
       def clear_collisions
-        messages = connection.async_messages
-        messages.clear if messages
+        responses.clear if responses = messages
       end
 
       def collisions
-        messages = connection.async_messages
-        return nil unless messages
-        messages.select {|m| m.is_a?(::Sphero::Response::CollisionDetected)}
+        matching_response_types messages, ::Sphero::Response::CollisionDetected
       end
 
       def power_notifications
-        messages = connection.async_messages
-        return nil unless messages
-        messages.select {|m| m.is_a?(::Sphero::Response::PowerNotification)}
+        matching_response_types messages, ::Sphero::Response::PowerNotification
       end
 
       def sensor_data
-        messages = connection.async_messages
-        return nil unless messages
-        messages.select {|m| m.is_a?(::Sphero::Response::SensorData)}
+        matching_response_types messages, ::Sphero::Response::SensorData
       end
 
       def set_color(r, g=nil, b=nil)
@@ -51,6 +44,16 @@ module Artoo
         when :white  then WHITE
         else colors
         end
+      end
+
+      private
+
+      def matching_response_types(responses, respone_klass)
+        responses.select { |m| m.is_a? respone_klass } if responses
+      end
+
+      def messages
+        connection.async_messages
       end
     end
   end
