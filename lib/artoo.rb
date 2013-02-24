@@ -1,6 +1,5 @@
 require 'celluloid/io'
 require 'multi_json'
-require 'reel'
 
 require 'artoo/utility'
 require 'artoo/robot'
