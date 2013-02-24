@@ -4,7 +4,7 @@ require 'multi_json'
 require 'reel'
 
 require 'artoo/robot'
-require 'artoo/main'require 'artoo/connection'
+require 'artoo/connection'
 require 'artoo/device'
 require 'artoo/api'
 require 'artoo/api_route_helpers'
