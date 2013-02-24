@@ -3,6 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/setup'
 
-require 'artoo/robot'
+require 'artoo'
 
 Celluloid.logger = nil
