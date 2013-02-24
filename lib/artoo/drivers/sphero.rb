@@ -30,9 +30,8 @@ module Artoo
         matching_response_types messages, ::Sphero::Response::SensorData
       end
 
-      def set_color(r, g=nil, b=nil)
-        r, g, b = color(r, g, b)
-        connection.rgb(r, g, b)
+      def set_color(*colors)
+        connection.rgb(*color(colors))
       end
 
       def color(*colors)
