@@ -1,3 +1,7 @@
+require 'reel'
+require 'artoo/api_route_helpers'
+require 'artoo/device_event_client'
+
 module Artoo
   class Api < Reel::Server
     include Artoo::ApiRouteHelpers
