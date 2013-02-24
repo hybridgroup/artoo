@@ -42,15 +42,14 @@ module Artoo
         connection.rgb(r, g, b)
       end
 
-      def color(r, g=nil, b=nil)
-        case r
+      def color(*colors)
+        case colors.first
         when :red    then RED
         when :green  then GREEN
         when :yellow then YELLOW
         when :blue   then BLUE
         when :white  then WHITE
-        else
-          return r, g, b
+        else colors
         end
       end
     end
