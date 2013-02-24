@@ -1,4 +1,3 @@
-$:.unshift(File.dirname(__FILE__))
 require 'celluloid/io'
 require 'multi_json'
 require 'reel'
