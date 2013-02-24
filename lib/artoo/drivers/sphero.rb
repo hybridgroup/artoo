@@ -4,6 +4,12 @@ module Artoo
   module Drivers
     # The Sphero driver behaviors
     class Sphero < Driver
+      RED = [255, 0, 0]
+      GREEN = [0, 255, 0]
+      YELLOW = [255, 255, 0]
+      BLUE = [0, 0, 255]
+      WHITE = [255, 255, 255]
+
       def detect_collisions(params={})
         connection.configure_collision_detection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
       end
@@ -38,16 +44,11 @@ module Artoo
 
       def color(r, g=nil, b=nil)
         case r
-        when :red
-          return 255, 0, 0
-        when :green
-          return 0, 255, 0
-        when :yellow
-          return 255, 255, 0
-        when :blue
-          return 0, 0, 255
-        when :white
-          return 255, 255, 255
+        when :red    then RED
+        when :green  then GREEN
+        when :yellow then YELLOW
+        when :blue   then BLUE
+        when :white  then WHITE
         else
           return r, g, b
         end
