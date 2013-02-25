@@ -1,13 +1,3 @@
-require 'celluloid/io'
-require 'multi_json'
-
-require 'artoo/connection'
-require 'artoo/device'
-require 'artoo/api'
-require 'artoo/master'
-require 'artoo/port'
-require 'artoo/utility'
-
 module Artoo
   # The most important class used by Artoo is Robot. This represents the primary
   # interface for interacting with a collection of physical computing capabilities.

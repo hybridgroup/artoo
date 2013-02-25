@@ -1,8 +1,7 @@
-gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/setup'
 
-require 'artoo/robot'
+require 'artoo/base'
 
 Celluloid.logger = nil
