@@ -1,4 +1,4 @@
-require 'artoo/robot'
+require 'artoo/base'
 
 class HelloRobot < Artoo::Robot
 	connection :loopback1
