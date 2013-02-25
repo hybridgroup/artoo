@@ -4,13 +4,10 @@ class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
   
-  #api :host => '127.0.0.1', :port => '8080'
-
   work do
     @count = 1
-    
     every(3.seconds) do
-      sphero.set_color(@count % 2 == 0 ? :white : :blue)
+      sphero.set_color(@count % 2 == 0 ? :green : :blue)
       @count += 1
       sphero.roll 90, rand(360)
     end
@@ -18,12 +15,7 @@ class SpheroRobot < Artoo::Robot
 end
 
 SPHEROS = {"127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
-           "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP",
-           "127.0.0.1:4562" => "/dev/tty.Sphero-BWY-RN-SPP",
-           "127.0.0.1:4563" => "/dev/tty.Sphero-YRR-RN-SPP",
-           "127.0.0.1:4564" => "/dev/tty.Sphero-OBG-RN-SPP",
-           "127.0.0.1:4565" => "/dev/tty.Sphero-GOB-RN-SPP",
-           "127.0.0.1:4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
+           "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
   robots << SpheroRobot.new(:connections => 

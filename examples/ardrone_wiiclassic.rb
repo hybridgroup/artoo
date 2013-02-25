@@ -1,0 +1,48 @@
+require 'artoo'
+
+connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+device :drone, :driver => :ardrone, :connection => :ardrone
+
+connection :arduino, :adaptor => :firmata, :port => "8023"
+device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
+
+work do
+  init_settings
+
+  on classic, :a_button => proc { drone.take_off }
+  on classic, :b_button => proc { drone.hover }
+  on classic, :x_button => proc { drone.land }
+  on classic, :y_button => proc { 
+    if @toggle_camera == 0
+      drone.bottom_camera
+      @toggle_camera = 1
+    else
+      drone.front_camera
+      @toggle_camera = 0
+    end
+  }
+  on classic, :home_button => proc { drone.emergency }
+  on classic, :start_button => proc { drone.start }
+  on classic, :select_button => proc { drone.stop }
+  on classic, :ry_up => proc { drone.up(@altitude_pitch) }
+  on classic, :ry_down => proc { drone.down(@altitude_pitch) }
+  on classic, :ly_up => proc { drone.forward(@fly_pitch) }
+  on classic, :ly_down => proc { drone.backward(@fly_pitch) }
+  on classic, :lx_right => proc { drone.right(@fly_pitch) }
+  on classic, :lx_left => proc { drone.left(@fly_pitch) }
+  on classic, :reset_pitch_roll => proc {
+    drone.left(0.0)
+    drone.forward(0.0)
+  }
+  on classic, :rotate_left => proc { drone.turn_left(@rotate_pitch) }
+  on classic, :rotate_right => proc { drone.turn_right(@rotate_pitch) }
+  on classic, :reset_rotate => proc { drone.turn_left(0.0) }
+  on classic, :reset_altitude => proc { drone.up(0.0) } 
+end
+
+def init_settings
+  @rotate_pitch = 0.5
+  @fly_pitch = 0.7
+  @altitude_pitch = 1
+  @toggle_camera = 0
+end

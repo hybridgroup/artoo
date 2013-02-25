@@ -1,8 +1,8 @@
 require 'artoo'
 
-connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.43:5556'
 device :drone, :driver => :ardrone, :connection => :ardrone
-  
+
 work do
   drone.start
   drone.take_off
