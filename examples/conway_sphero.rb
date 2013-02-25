@@ -4,6 +4,8 @@ class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
   
+  #api :host => '127.0.0.1', :port => '8080'
+
   work do
     birth
 
@@ -48,13 +50,13 @@ class SpheroRobot < Artoo::Robot
   end
 end
 
-SPHEROS = {"4560" => "/dev/tty.Sphero-BRG-RN-SPP",
-           "4561" => "/dev/tty.Sphero-YBW-RN-SPP",
-           "4562" => "/dev/tty.Sphero-BWY-RN-SPP",
-           "4563" => "/dev/tty.Sphero-YRR-RN-SPP",
-           "4564" => "/dev/tty.Sphero-OBG-RN-SPP",
-           "4565" => "/dev/tty.Sphero-GOB-RN-SPP",
-           "4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
+SPHEROS = {"127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
+           "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP",
+           "127.0.0.1:4562" => "/dev/tty.Sphero-BWY-RN-SPP",
+           "127.0.0.1:4563" => "/dev/tty.Sphero-YRR-RN-SPP",
+           "127.0.0.1:4564" => "/dev/tty.Sphero-OBG-RN-SPP",
+           "127.0.0.1:4565" => "/dev/tty.Sphero-GOB-RN-SPP",
+           "127.0.0.1:4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
   robots << SpheroRobot.new(:connections => 
