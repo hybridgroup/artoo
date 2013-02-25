@@ -3,7 +3,7 @@ require 'artoo/base'
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
-  
+
   work do
     birth
 
@@ -37,7 +37,7 @@ class SpheroRobot < Artoo::Robot
     @age += 1
     contacts = sphero.collisions.size
     sphero.clear_collisions
-    
+
     puts "Happy birthday, #{name}, you are #{@age} and had #{contacts} contacts."
     #return if @age <= 3
     death unless contacts >= 3 && contacts < 5
@@ -57,8 +57,8 @@ SPHEROS = {"4560" => "/dev/tty.Sphero-BRG-RN-SPP",
            "4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
-  robots << SpheroRobot.new(:connections => 
-                              {:sphero => 
+  robots << SpheroRobot.new(:connections =>
+                              {:sphero =>
                                 {:port => p}})
 }
 

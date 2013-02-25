@@ -1,12 +1,12 @@
-           
 require 'artoo/base'
+
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
-  
+
   work do
     @count = 1
-    
+
     every(1.second) do
       sphero.set_color(@count % 2 == 0 ? :white : :blue)
       @count += 1
@@ -31,8 +31,8 @@ SPHEROS = {"4560" => "/dev/tty.Sphero-BRG-RN-SPP",
            "4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
-  robots << SpheroRobot.new(:connections => 
-                              {:sphero => 
+  robots << SpheroRobot.new(:connections =>
+                              {:sphero =>
                                 {:port => p}})
 }
 

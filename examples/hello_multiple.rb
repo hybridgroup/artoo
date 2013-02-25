@@ -2,7 +2,7 @@ require 'artoo/base'
 
 class HelloRobot < Artoo::Robot
 	connection :loop
-  
+
 	work do
 	  every(3.seconds) do
 	     puts "Hello from #{name}"
