@@ -75,6 +75,26 @@ Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) 
 
 Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid) and Celluloid::IO (https://github.com/celluloid/celluloid-io).
 
+## API:
+
+Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.
+
+To activate the API, use the `api` command like this:
+
+```ruby
+require 'artoo'
+
+connection :loop
+device :passthru
+api :host => '127.0.0.1', :port => '4321'
+
+work do
+  puts "Hello from the API running at #{api_host}:#{api_port}..."
+end
+```
+
+Once the robot or group is working, you can view the main API page at the host and port specified.
+
 ## Installing:
 
 ```ruby
