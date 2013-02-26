@@ -6,9 +6,7 @@ module Artoo
     class Wiiclassic < Driver
       def address; 0x52; end
 
-      def start_driver
-        begin
-        @joystick = {
+      INITIAL_DEFAULTS = {
           :ry_offset => 8,
           :ry_origin => nil,
           :ly_offset => 20,
@@ -20,6 +18,10 @@ module Artoo
           :rt_offset => 5,
           :lt_offset => 5
         }
+
+      def start_driver
+        begin
+        @joystick = INITIAL_DEFAULTS
         listener = ->(value) { update(value) }
         connection.on("i2c_reply", listener)
 
@@ -45,13 +47,13 @@ module Artoo
 
       def update(value)
         begin
-          #Logger.info "value[:data] #{value[:data].inspect}"
           if value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
-          #  Logger.error "Encrypted bytes from wiiclassic"
-            break
+            Logger.error "Encrypted bytes from wiiclassic!"
+            return
           end
+
           data = parse_wiiclassic(value)
-          #publish(event_topic_name("_a_button") if data[:a] == 0
+          
           publish(event_topic_name("a_button")) if data[:a] == 0
           publish(event_topic_name("b_button")) if data[:b] == 0
           publish(event_topic_name("x_button")) if data[:x] == 0
@@ -68,17 +70,7 @@ module Artoo
           @joystick[:rt_origin] = data[:rt] if @joystick[:rt_origin].nil?
           @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
 
-          if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
-            publish(event_topic_name("ly_up"))
-          elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
-            publish(event_topic_name("ly_down"))
-          elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
-            publish(event_topic_name("lx_right"))
-          elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
-            publish(event_topic_name("lx_left"))
-          else
-            publish(event_topic_name("reset_pitch_roll"))
-          end
+          update_left_joystick
 
           if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
             publish(event_topic_name("ry_up"))
@@ -103,33 +95,51 @@ module Artoo
         end
       end
 
+      def update_left_joystick
+        if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
+          publish(event_topic_name("ly_up"))
+        elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
+          publish(event_topic_name("ly_down"))
+        elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
+          publish(event_topic_name("lx_right"))
+        elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
+          publish(event_topic_name("lx_left"))
+        else
+          publish(event_topic_name("reset_pitch_roll")) # TODO: rename something not so drone specfic
+        end
+      end
+
       private 
 
       def decode( x )
         return ( x ^ 0x17 ) + 0x17
       end
 
+      def get_value(value, index)
+        decode(value[:data][index])
+      end
+
       def parse_wiiclassic(value)
         return {
-          :lx => decode(value[:data][0]) & 0x3f,
-          :ly => decode(value[:data][1]) & 0x3f,
-          :rx => ((decode(value[:data][0]) & 0xC0) >> 2)  | ((decode(value[:data][1]) & 0xC0) >> 4) | (decode(value[:data][2])[7]),
-          :ry => decode(value[:data][2]) & 0x1f,
-          :lt => ((decode(value[:data][2]) & 0x60) >> 3) | ((decode(value[:data][3]) & 0xE0) >> 6),
-          :rt => decode(value[:data][3]) & 0x1f,
-          :d_up => decode(value[:data][5])[0],
-          :d_down => decode(value[:data][4])[6],
-          :D_left => decode(value[:data][5])[1],
-          :D_right => decode(value[:data][4])[7],
-          :zr => decode(value[:data][5])[2],
-          :zl => decode(value[:data][5])[7],
-          :a => decode(value[:data][5])[4],
-          :b => decode(value[:data][5])[6],
-          :x => decode(value[:data][5])[3],
-          :y => decode(value[:data][5])[5],
-          :+ => decode(value[:data][4])[2],
-          :- => decode(value[:data][4])[4],
-          :h => decode(value[:data][4])[3],
+          :lx => get_value(value, 0) & 0x3f,
+          :ly => get_value(value, 1) & 0x3f,
+          :rx => ((get_value(value, 0) & 0xC0) >> 2)  | ((get_value(value, 1) & 0xC0) >> 4) | (get_value(value, 2)[7]),
+          :ry => get_value(value, 2) & 0x1f,
+          :lt => ((get_value(value, 2) & 0x60) >> 3) | ((get_value(value, 3) & 0xE0) >> 6),
+          :rt => get_value(value, 3) & 0x1f,
+          :d_up => get_value(value, 5)[0],
+          :d_down => get_value(value, 4)[6],
+          :D_left => get_value(value, 5)[1],
+          :D_right => get_value(value, 4)[7],
+          :zr => get_value(value, 5)[2],
+          :zl => get_value(value, 5)[7],
+          :a => get_value(value, 5)[4],
+          :b => get_value(value, 5)[6],
+          :x => get_value(value, 5)[3],
+          :y => get_value(value, 5)[5],
+          :+ => get_value(value, 4)[2],
+          :- => get_value(value, 4)[4],
+          :h => get_value(value, 4)[3],
         }
       end
     end
