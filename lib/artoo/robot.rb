@@ -133,13 +133,13 @@ module Artoo
 
       # Taken from Sinatra codebase
       CALLERS_TO_IGNORE = [ # :nodoc:
-        /lib\/artoo.*\.rb$/,                             # artoo code
-        /^\(.*\)$/,                                      # generated code
-        /rubygems\/custom_require\.rb$/,                 # rubygems require hacks
-        /active_support/,                                # active_support require hacks
-        /bundler(\/runtime)?\.rb/,                       # bundler require hacks
-        /<internal:/,                                    # internal in ruby >= 1.9.2
-        /src\/kernel\/bootstrap\/[A-Z]/                  # maglev kernel files
+        /lib\/artoo.*\.rb$/,                                # artoo code
+        /^\(.*\)$/,                                         # generated code
+        /rubygems\/(custom|core_ext\/kernel)_require\.rb$/, # rubygems require hacks
+        /active_support/,                                   # active_support require hacks
+        /bundler(\/runtime)?\.rb/,                          # bundler require hacks
+        /<internal:/,                                       # internal in ruby >= 1.9.2
+        /src\/kernel\/bootstrap\/[A-Z]/                     # maglev kernel files
       ]
 
       # Taken from Sinatra codebase
