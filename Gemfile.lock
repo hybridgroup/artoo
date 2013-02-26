@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (0.1.1)
+    artoo (0.1.2)
 
 GEM
   remote: http://rubygems.org/
@@ -64,7 +64,7 @@ GEM
     hybridgroup-argus (0.2.0)
     hybridgroup-firmata (0.3.0)
       event_spitter
-    hybridgroup-sphero (1.1.6)
+    hybridgroup-sphero (1.2.0)
     listen (0.7.2)
     lumberjack (1.0.2)
     metaclass (0.0.1)
