@@ -71,9 +71,14 @@ SPHEROS.each {|p|
 SpheroRobot.work!(robots)
 ```
 
+Ruby versions supported: Ruby 1.9.2, 1.9.2, JRuby 1.7.2, and Rubinius 2.0
+
+
 Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
 
-Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid) and Celluloid::IO (https://github.com/celluloid/celluloid-io).
+Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency. 
+
+To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid), Celluloid::IO (https://github.com/celluloid/celluloid-io), and Reel (https://github.com/celluloid/reel).
 
 ## API:
 
