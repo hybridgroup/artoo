@@ -25,15 +25,18 @@ module Artoo
     end
     
     class << self
-      attr_accessor :connection_types, :device_types, :working_code,
+      attr_accessor :device_types, :working_code,
                     :use_api, :api_host, :api_port
       
+      def connection_types
+        @@connection_types ||= []
+      end
+
       # connection to some hardware that has one or more devices via some specific protocol
       # Example:
       #   connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
       def connection(name, params = {})
         Celluloid::Logger.info "Registering connection '#{name}'..."
-        self.connection_types ||= []
         self.connection_types << {:name => name}.merge(params)
       end
 
@@ -219,7 +222,6 @@ module Artoo
     end
 
     def connection_types
-      current_class.connection_types ||= []
       current_class.connection_types
     end
 
