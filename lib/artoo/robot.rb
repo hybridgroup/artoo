@@ -189,24 +189,9 @@ module Artoo
     # start doing the work
     def work
       Logger.info "Starting work..."
-      start_connections
-      start_devices
-      current_instance.instance_eval(&working_code)
-    rescue Exception => e
-      Logger.error e.message
-      Logger.error e.backtrace.inspect
-    end
-
-    def start_connections
-      # block until all connections done
-      future_connections = connections.each_value.collect {|c| c.future.connect}
-      future_connections.each {|v| result = v.value}
-    end
-
-    def start_devices
-      # block until all devices done
-      future_devices = devices.each_value.collect {|d| d.future.start_device}
-      future_devices.each {|v| result = v.value}
+      execute_startup(connections) {|c| c.future.connect}
+      execute_startup(devices) {|d| d.future.start_device}
+      execute_working_code
     end
 
     def disconnect
@@ -261,6 +246,18 @@ module Artoo
         instance_eval("def #{d.name}; return devices[:#{d.name}]; end")
         @devices[d.name.intern] = d
       }
+    end
+
+    def execute_startup(things, &block)
+      future_things = things.each_value.collect {|t| yield(t)}
+      future_things.each {|v| result = v.value}
+    end
+
+    def execute_working_code
+      current_instance.instance_eval(&working_code)
+    rescue Exception => e
+      Logger.error e.message
+      Logger.error e.backtrace.inspect
     end
   end
 end
