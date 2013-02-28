@@ -47,46 +47,18 @@ module Artoo
 
       def update(value)
         begin
-          if value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
+          if encrypted?(value)
             Logger.error "Encrypted bytes from wiiclassic!"
             return
           end
 
           data = parse_wiiclassic(value)
           
-          publish(event_topic_name("a_button")) if data[:a] == 0
-          publish(event_topic_name("b_button")) if data[:b] == 0
-          publish(event_topic_name("x_button")) if data[:x] == 0
-          publish(event_topic_name("y_button")) if data[:y] == 0
-          publish(event_topic_name("home_button")) if data[:h] == 0
-          publish(event_topic_name("start_button")) if data[:+] == 0
-          publish(event_topic_name("select_button")) if data[:-] == 0
-
-          @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
-          @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
-
-          @joystick[:ry_origin] = data[:ry] if @joystick[:ry_origin].nil?
-
-          @joystick[:rt_origin] = data[:rt] if @joystick[:rt_origin].nil?
-          @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
-
-          update_left_joystick
-
-          if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
-            publish(event_topic_name("ry_up"))
-          elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
-            publish(event_topic_name("ry_down"))
-          else
-            publish(event_topic_name("reset_altitude"))
-          end
-
-          if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
-            publish(event_topic_name("rotate_right"))
-          elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
-            publish(event_topic_name("rotate_left"))
-          else
-            publish(event_topic_name("reset_rotate"))
-          end
+          adjust_origins(data)
+          update_buttons(data)
+          update_left_joystick(data)
+          update_right_joystick(data)
+          update_rotate(data)
 
         rescue Exception => e
           p "wiiclassic update exception!"
@@ -95,7 +67,27 @@ module Artoo
         end
       end
 
-      def update_left_joystick
+      def adjust_origins(data)
+        @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
+        @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
+
+        @joystick[:ry_origin] = data[:ry] if @joystick[:ry_origin].nil?
+
+        @joystick[:rt_origin] = data[:rt] if @joystick[:rt_origin].nil?
+        @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
+      end
+
+      def update_buttons(data)
+        publish(event_topic_name("a_button")) if data[:a] == 0
+        publish(event_topic_name("b_button")) if data[:b] == 0
+        publish(event_topic_name("x_button")) if data[:x] == 0
+        publish(event_topic_name("y_button")) if data[:y] == 0
+        publish(event_topic_name("home_button")) if data[:h] == 0
+        publish(event_topic_name("start_button")) if data[:+] == 0
+        publish(event_topic_name("select_button")) if data[:-] == 0
+      end
+
+      def update_left_joystick(data)
         if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
           publish(event_topic_name("ly_up"))
         elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
@@ -109,7 +101,31 @@ module Artoo
         end
       end
 
+      def update_right_joystick(data)
+        if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
+          publish(event_topic_name("ry_up"))
+        elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
+          publish(event_topic_name("ry_down"))
+        else
+          publish(event_topic_name("reset_altitude"))
+        end
+      end
+
+      def update_rotate(data)
+        if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
+          publish(event_topic_name("rotate_right"))
+        elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
+          publish(event_topic_name("rotate_left"))
+        else
+          publish(event_topic_name("reset_rotate"))
+        end
+      end
+
       private 
+
+      def encrypted?(value)
+        value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
+      end
 
       def decode( x )
         return ( x ^ 0x17 ) + 0x17
