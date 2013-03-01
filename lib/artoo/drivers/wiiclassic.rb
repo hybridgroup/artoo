@@ -2,15 +2,15 @@ require 'artoo/drivers/driver'
 
 module Artoo
   module Drivers
-    # Wiichuck driver behaviors for Firmata
+    # Wiiclassic driver behaviors for Firmata
     class Wiiclassic < Driver
       def address; 0x52; end
 
       INITIAL_DEFAULTS = {
           :ry_offset => 8,
           :ry_origin => nil,
-          :ly_offset => 20,
-          :lx_offset => 20,
+          :ly_offset => 27.0,
+          :lx_offset => 27.0,
           :ly_origin => nil,
           :lx_origin => nil,
           :rt_origin => nil,
@@ -88,17 +88,22 @@ module Artoo
       end
 
       def update_left_joystick(data)
-        if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
-          publish(event_topic_name("ly_up"))
-        elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
-          publish(event_topic_name("ly_down"))
-        elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
-          publish(event_topic_name("lx_right"))
-        elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
-          publish(event_topic_name("lx_left"))
+        if data[:ly] > @joystick[:ly_origin]
+          publish(event_topic_name("ly_up"), validate_pitch((data[:ly] - @joystick[:ly_origin]) / @joystick[:ly_offset]))
+        elsif data[:ly] < @joystick[:ly_origin]
+          publish(event_topic_name("ly_down"), validate_pitch((@joystick[:ly_origin] - data[:ly]) / @joystick[:ly_offset]))
         else
-          publish(event_topic_name("reset_pitch_roll")) # TODO: rename something not so drone specfic
+          publish(event_topic_name("ly_up"), 0.0)
         end
+
+        if data[:lx] > @joystick[:lx_origin]
+          publish(event_topic_name("lx_right"), validate_pitch((data[:lx] - @joystick[:lx_origin]) / @joystick[:lx_offset]))
+        elsif data[:lx] < @joystick[:lx_origin]
+          publish(event_topic_name("lx_left"), validate_pitch((@joystick[:lx_origin] - data[:lx]) / @joystick[:lx_offset]))
+        else
+          publish(event_topic_name("lx_right"), 0.0)
+        end
+
       end
 
       def update_right_joystick(data)
@@ -122,6 +127,10 @@ module Artoo
       end
 
       private 
+
+      def validate_pitch(value)
+        value >= 0.1 ? (value <= 1.0 ? value.round(2) : 1.0) : 0.0
+      end
 
       def encrypted?(value)
         value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
