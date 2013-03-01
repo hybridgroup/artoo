@@ -23,3 +23,6 @@ doc/
 
 # Sass
 .sass-cache
+
+# rubinius
+.rbx
