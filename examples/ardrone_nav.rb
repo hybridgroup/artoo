@@ -1,9 +1,9 @@
 require 'artoo'
 
-connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.43:5556'
+connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
 device :drone, :driver => :ardrone, :connection => :ardrone
 
-connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.43:5554'
+connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
 device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
 work do
