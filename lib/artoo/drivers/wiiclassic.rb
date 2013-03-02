@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # Wiichuck driver behaviors for Firmata
     class Wiiclassic < Driver
+      attr_reader :joystick
+
       def address; 0x52; end
 
       INITIAL_DEFAULTS = {
@@ -19,9 +21,13 @@ module Artoo
           :lt_offset => 5
         }
 
+      def initialize(params={})
+        @joystick = INITIAL_DEFAULTS
+        super
+      end
+
       def start_driver
         begin
-        @joystick = INITIAL_DEFAULTS
         listener = ->(value) { update(value) }
         connection.on("i2c_reply", listener)
 
@@ -61,20 +67,22 @@ module Artoo
           update_rotate(data)
 
         rescue Exception => e
-          p "wiiclassic update exception!"
-          p e.message
-          p e.backtrace.inspect
+          Logger.error "wiiclassic update exception!"
+          Logger.error e.message
+          Logger.error e.backtrace.inspect
         end
       end
 
       def adjust_origins(data)
-        @joystick[:ly_origin] = data[:ly] if @joystick[:ly_origin].nil?
-        @joystick[:lx_origin] = data[:lx] if @joystick[:lx_origin].nil?
+        set_joystick_default_value(:ly_origin, data[:ly])
+        set_joystick_default_value(:lx_origin, data[:lx])
+        set_joystick_default_value(:ry_origin, data[:ry])
+        set_joystick_default_value(:rt_origin, data[:rt])
+        set_joystick_default_value(:lt_origin, data[:lt])
+      end
 
-        @joystick[:ry_origin] = data[:ry] if @joystick[:ry_origin].nil?
-
-        @joystick[:rt_origin] = data[:rt] if @joystick[:rt_origin].nil?
-        @joystick[:lt_origin] = data[:lt] if @joystick[:lt_origin].nil?
+      def set_joystick_default_value(joystick_axis, default_value)     
+        joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
       end
 
       def update_buttons(data)
@@ -88,13 +96,13 @@ module Artoo
       end
 
       def update_left_joystick(data)
-        if data[:ly] > (@joystick[:ly_origin] + @joystick[:ly_offset])
+        if data[:ly] > (joystick[:ly_origin] + joystick[:ly_offset])
           publish(event_topic_name("ly_up"))
-        elsif data[:ly] < (@joystick[:ly_origin] - @joystick[:ly_offset])
+        elsif data[:ly] < (joystick[:ly_origin] - joystick[:ly_offset])
           publish(event_topic_name("ly_down"))
-        elsif data[:lx] > (@joystick[:lx_origin] + @joystick[:lx_offset])
+        elsif data[:lx] > (joystick[:lx_origin] + joystick[:lx_offset])
           publish(event_topic_name("lx_right"))
-        elsif data[:lx] < (@joystick[:lx_origin] - @joystick[:lx_offset])
+        elsif data[:lx] < (joystick[:lx_origin] - joystick[:lx_offset])
           publish(event_topic_name("lx_left"))
         else
           publish(event_topic_name("reset_pitch_roll")) # TODO: rename something not so drone specfic
@@ -102,9 +110,9 @@ module Artoo
       end
 
       def update_right_joystick(data)
-        if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
+        if data[:ry] > (joystick[:ry_origin] + joystick[:ry_offset])
           publish(event_topic_name("ry_up"))
-        elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
+        elsif data[:ry] < (joystick[:ry_origin] - joystick[:ry_offset])
           publish(event_topic_name("ry_down"))
         else
           publish(event_topic_name("reset_altitude"))
@@ -112,9 +120,9 @@ module Artoo
       end
 
       def update_rotate(data)
-        if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
+        if data[:rt] > (joystick[:rt_origin] + joystick[:rt_offset])
           publish(event_topic_name("rotate_right"))
-        elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
+        elsif data[:lt] > (joystick[:lt_origin] + joystick[:lt_offset])
           publish(event_topic_name("rotate_left"))
         else
           publish(event_topic_name("reset_rotate"))
