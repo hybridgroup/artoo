@@ -39,7 +39,7 @@ module Artoo
       end
 
       def speed(s)
-        raise "Motor speed must be an integer between 0-127" unless (s.is_a?(Numeric) && s >= 0 && s <= 127)
+        raise "Motor speed must be an integer between 0-255" unless (s.is_a?(Numeric) && s >= 0 && s <= 255)
         @current_speed = s
         connection.set_pin_mode(speed_pin, Firmata::Board::PWM)
         connection.analog_write(speed_pin, s)
