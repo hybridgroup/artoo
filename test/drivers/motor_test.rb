@@ -18,7 +18,7 @@ describe Artoo::Drivers::Motor do
     invalid_speed = lambda { @motor2 = Artoo::Drivers::Motor.new(:parent => @device); @motor2.speed("ads") }
     invalid_speed.must_raise RuntimeError
     error = invalid_speed.call rescue $!
-    error.message.must_equal 'Motor speed must be an integer between 0-127'
+    error.message.must_equal 'Motor speed must be an integer between 0-255'
   end
 
   it 'Motor#forward' do
