@@ -15,8 +15,8 @@ module Artoo
           :lx_origin => nil,
           :rt_origin => nil,
           :lt_origin => nil,
-          :rt_offset => 5,
-          :lt_offset => 5
+          :rt_offset => 27.0,
+          :lt_offset => 12.0
         }
 
       def start_driver
@@ -117,12 +117,12 @@ module Artoo
       end
 
       def update_rotate(data)
-        if data[:rt] > (@joystick[:rt_origin] + @joystick[:rt_offset])
-          publish(event_topic_name("rotate_right"))
-        elsif data[:lt] > (@joystick[:lt_origin] + @joystick[:lt_offset])
-          publish(event_topic_name("rotate_left"))
+        if data[:rt] > @joystick[:rt_origin]
+          publish(event_topic_name("rotate_right"), validate_pitch((data[:rt] - @joystick[:rt_origin]) / @joystick[:rt_offset]))
+        elsif data[:lt] > @joystick[:lt_origin]
+          publish(event_topic_name("rotate_left"), validate_pitch((data[:lt] - @joystick[:lt_origin]) / @joystick[:lt_offset]))
         else
-          publish(event_topic_name("reset_rotate"))
+          publish(event_topic_name("rotate_right"), 0.0)
         end
       end
 
