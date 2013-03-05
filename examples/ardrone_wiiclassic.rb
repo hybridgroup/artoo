@@ -24,25 +24,32 @@ work do
   on classic, :home_button => proc { drone.emergency }
   on classic, :start_button => proc { drone.start }
   on classic, :select_button => proc { drone.stop }
-  on classic, :ry_up => proc { drone.up(@altitude_pitch) }
-  on classic, :ry_down => proc { drone.down(@altitude_pitch) }
-  on classic, :ly_up => proc { drone.forward(@fly_pitch) }
-  on classic, :ly_down => proc { drone.backward(@fly_pitch) }
-  on classic, :lx_right => proc { drone.right(@fly_pitch) }
-  on classic, :lx_left => proc { drone.left(@fly_pitch) }
-  on classic, :reset_pitch_roll => proc {
-    drone.left(0.0)
-    drone.forward(0.0)
+  on classic, :ry_up => proc { |*value|
+    drone.up(value[1]) 
   }
-  on classic, :rotate_left => proc { drone.turn_left(@rotate_pitch) }
-  on classic, :rotate_right => proc { drone.turn_right(@rotate_pitch) }
-  on classic, :reset_rotate => proc { drone.turn_left(0.0) }
-  on classic, :reset_altitude => proc { drone.up(0.0) } 
+  on classic, :ry_down => proc { |*value|
+    drone.down(value[1]) 
+  }
+  on classic, :ly_up => proc { |*value|
+    drone.forward(value[1]) 
+  }
+  on classic, :ly_down =>proc { |*value| 
+    drone.backward(value[1]) 
+  }
+  on classic, :lx_right => proc { |*value|
+    drone.right(value[1]) 
+  }
+  on classic, :lx_left => proc { |*value|
+    drone.left(value[1]) 
+  }
+  on classic, :rotate_left => proc { |*value|
+    drone.turn_left(value[1]) 
+  }
+  on classic, :rotate_right => proc { |*value|
+    drone.turn_right(value[1]) 
+  }
 end
 
 def init_settings
-  @rotate_pitch = 0.5
-  @fly_pitch = 0.7
-  @altitude_pitch = 1
   @toggle_camera = 0
 end
