@@ -1,5 +1,4 @@
 module Artoo
-  
   module Events
     # Subscribe to an event from a device
     def on(device, events={})

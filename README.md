@@ -71,7 +71,7 @@ SPHEROS.each {|p|
 SpheroRobot.work!(robots)
 ```
 
-Ruby versions supported: Ruby 1.9.2, 1.9.2, JRuby 1.7.2, and Rubinius 2.0
+Ruby versions supported: Ruby 2.0, 1.9.3, JRuby 1.7.2, and Rubinius 2.0
 
 
 Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
