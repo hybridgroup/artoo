@@ -27,13 +27,13 @@ work do
   on classic, :ry_up => proc { |*value|
     drone.up(value[1]) 
   }
-  on classic, :ry_down => proc {  |*value|
+  on classic, :ry_down => proc { |*value|
     drone.down(value[1]) 
   }
   on classic, :ly_up => proc { |*value|
     drone.forward(value[1]) 
   }
-  on classic, :ly_down =>proc {  |*value| 
+  on classic, :ly_down =>proc { |*value| 
     drone.backward(value[1]) 
   }
   on classic, :lx_right => proc { |*value|
@@ -42,13 +42,14 @@ work do
   on classic, :lx_left => proc { |*value|
     drone.left(value[1]) 
   }
-  on classic, :rotate_left => proc { drone.turn_left(@rotate_pitch) }
-  on classic, :rotate_right => proc { drone.turn_right(@rotate_pitch) }
-  on classic, :reset_rotate => proc { drone.turn_left(0.0) }
+  on classic, :rotate_left => proc { |*value|
+    drone.turn_left(value[1]) 
+  }
+  on classic, :rotate_right => proc { |*value|
+    drone.turn_right(value[1]) 
+  }
 end
 
 def init_settings
-  @rotate_pitch = 0.5
-  @altitude_pitch = 1
   @toggle_camera = 0
 end
