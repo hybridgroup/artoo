@@ -7,7 +7,7 @@ module Artoo
       def address; 0x52; end
 
       INITIAL_DEFAULTS = {
-          :ry_offset => 8,
+          :ry_offset => 12.0,
           :ry_origin => nil,
           :ly_offset => 27.0,
           :lx_offset => 27.0,
@@ -107,12 +107,12 @@ module Artoo
       end
 
       def update_right_joystick(data)
-        if data[:ry] > (@joystick[:ry_origin] + @joystick[:ry_offset])
-          publish(event_topic_name("ry_up"))
-        elsif data[:ry] < (@joystick[:ry_origin] - @joystick[:ry_offset])
-          publish(event_topic_name("ry_down"))
+        if data[:ry] > @joystick[:ry_origin]
+          publish(event_topic_name("ry_up"), validate_pitch((data[:ry] - @joystick[:ry_origin]) / @joystick[:ry_offset]))
+        elsif data[:ry] < @joystick[:ry_origin]
+          publish(event_topic_name("ry_down"), validate_pitch((@joystick[:ry_origin] - data[:ry]) / @joystick[:ry_offset]))
         else
-          publish(event_topic_name("reset_altitude"))
+          publish(event_topic_name("ry_down"), 0.0)
         end
       end
 

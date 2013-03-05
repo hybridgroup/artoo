@@ -24,8 +24,12 @@ work do
   on classic, :home_button => proc { drone.emergency }
   on classic, :start_button => proc { drone.start }
   on classic, :select_button => proc { drone.stop }
-  on classic, :ry_up => proc { drone.up(@altitude_pitch) }
-  on classic, :ry_down => proc { drone.down(@altitude_pitch) }
+  on classic, :ry_up => proc { |*value|
+    drone.up(value[1]) 
+  }
+  on classic, :ry_down => proc {  |*value|
+    drone.down(value[1]) 
+  }
   on classic, :ly_up => proc { |*value|
     drone.forward(value[1]) 
   }
@@ -41,7 +45,6 @@ work do
   on classic, :rotate_left => proc { drone.turn_left(@rotate_pitch) }
   on classic, :rotate_right => proc { drone.turn_right(@rotate_pitch) }
   on classic, :reset_rotate => proc { drone.turn_left(0.0) }
-  on classic, :reset_altitude => proc { drone.up(0.0) }
 end
 
 def init_settings
