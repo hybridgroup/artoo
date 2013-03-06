@@ -5,12 +5,6 @@ module Artoo
     # Connect to a Roomba (http://www.irobot.com/en/us/robots/Educators/Create.aspx)
     class Roomba < Adaptor
       
-      START = 128
-      
-      module Modes
-        FULL = 132
-      end
-      
       attr_reader :sp
 
       def finalize
@@ -19,33 +13,28 @@ module Artoo
         end
       end
 
-      def connect(dev)
+      def connect
         require 'serialport'
-        @sp = SerialPort.new(dev, 57600)
+        @sp = SerialPort.new(self.port.to_s, 57600, 8, 1, SerialPort::NONE)
         @sp.dtr = 0
-        @sp.rts = 0
-
-        send_bytes(START.chr)
-        send_bytes(Modes::FULL.chr)
-        
+        @sp.rts = 0        
         super
       rescue LoadError
-        puts "Please 'gem install hybridgroup-serialport' for serial port support."
+        Logger.error "Please 'gem install hybridgroup-serialport' for serial port support."
       end
       
       def send_bytes(bytes)
-        Logger.info "sending: #{bytes.inspect}"
-        res = @sp.write(bytes)
-        Logger.info "returned: #{res}"
+        bytes = [bytes] unless bytes.respond_to?(:map)
+        bytes.map!(&:chr)
+        Logger.debug "sending: #{bytes.inspect}"
+        res = []
+        bytes.each{|b| res << @sp.write(b) }
+        Logger.debug "returned: #{res.inspect}"
       end
 
       def disconnect
         @sp.close
         super
-      end
-
-      def method_missing(method_name, *arguments, &block)
-        send_bytes(method_name, *arguments, &block)
       end
       
     end
