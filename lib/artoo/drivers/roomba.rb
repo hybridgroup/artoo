@@ -13,18 +13,39 @@ module Artoo
       NEG = (65536 - 250)
       ZERO = 0
   
-      B = 95.chr
-      D = 98.chr
-      G = 91.chr
-      C = 96.chr
-      A = 93.chr
-      QUART = 16.chr
-      HALF = 57.chr
-      WHOLE = 114.chr
+      B = 95
+      D = 98
+      G = 91
+      C = 96
+      A = 93
+      QUART = 16
+      HALF = 57
+      WHOLE = 114
+      START = 128
       
-      def forward(args)
-        seconds = args[0].to_i
-        velocity = (args[1]) ? args[1].to_i : SLOW
+      module Modes
+        FULL = 132
+        SAFE = 131
+      end
+      
+      def start
+        send_bytes(START)
+        sleep 0.2
+      end
+      
+      def safe_mode
+        start
+        send_bytes(Modes::SAFE)
+        sleep 0.1
+      end
+      
+      def full_mode
+        start
+        send_bytes(Modes::FULL)
+        sleep 0.1
+      end
+      
+      def forward(seconds, velocity = SLOW)
         drive(velocity,STRAIGHT,seconds)
         stop if seconds > 0
       end
@@ -33,14 +54,12 @@ module Artoo
         drive(ZERO,STRAIGHT)
       end
   
-      def fast_forward(args)
-        seconds = args[0].to_i
+      def fast_forward(seconds)
         drive(MAX,STRAIGHT,seconds)
         stop if seconds > 0
       end
   
-      def backwards(args)
-        seconds = args[0].to_i
+      def backwards(seconds)
         drive(NEG,STRAIGHT,seconds)
         stop if seconds > 0
       end
@@ -49,13 +68,13 @@ module Artoo
         turn_left(0.25)
       end
   
-      def turn_left(s = 1)
-        drive(SLOW,COUNTERCLOCKWISE,s)
+      def turn_left(seconds = 1)
+        drive(SLOW,COUNTERCLOCKWISE,seconds)
         stop if seconds > 0
       end
   
-      def turn_right(s = 1)
-        drive(SLOW,CLOCKWISE,s)
+      def turn_right(seconds = 1)
+        drive(SLOW,CLOCKWISE,seconds)
         stop if seconds > 0
       end
   
@@ -68,9 +87,9 @@ module Artoo
       end
   
       def beep
-        notes = [140.chr,0.chr,1.chr,G,WHOLE]
+        notes = [140,0,1,G,WHOLE]
         connection.send_bytes(notes)
-        connection.send_bytes([141.chr,0.chr])
+        connection.send_bytes([141,0])
       end
   
       def sing_jingle_bells
@@ -93,48 +112,38 @@ module Artoo
             
         note_group = song0.flatten.compact
         l = note_group.length / 2
-        notes = [140.chr,0.chr,l.chr] + note_group
+        notes = [140,0,l] + note_group
         connection.send_bytes(notes)
     
         note_group = song1.flatten.compact
         l = note_group.length / 2
-        notes = [140.chr,1.chr,l.chr] + note_group
+        notes = [140,1,l] + note_group
         connection.send_bytes(notes)
     
         note_group = song2.flatten.compact
         l = note_group.length / 2
-        notes = [140.chr,2.chr,l.chr] + note_group
+        notes = [140,2,l] + note_group
         connection.send_bytes(notes)
     
         note_group = song3.flatten.compact
         l = note_group.length / 2
-        notes = [140.chr,3.chr,l.chr] + note_group
+        notes = [140,3,l] + note_group
         connection.send_bytes(notes)
     
-        connection.send_bytes([141.chr,0.chr])
+        connection.send_bytes([141,0])
         sleep(7)
-        connection.send_bytes([141.chr,1.chr])
+        connection.send_bytes([141,1])
         sleep(7)
-        connection.send_bytes([141.chr,2.chr])
+        connection.send_bytes([141,2])
         sleep(7)
-        connection.send_bytes([141.chr,3.chr])
+        connection.send_bytes([141,3])
       end
       
       def drive(v,r,s = 0)
         vH,vL = split_bytes(v)
         rH,rL = split_bytes(r)
-        connection.send_bytes([137.chr,vH.chr,vL.chr,rH.chr,rL.chr])
+        connection.send_bytes([137,vH,vL,rH,rL])
         sleep(s) if s > 0
-      end
-      
-      def execute(data)
-        args = data.split(" ")
-        cmd = args.shift
-        unless args.empty?
-          connection.send(cmd,args)
-        else
-          connection.send(cmd)
-        end
       end
       
       def split_bytes(num)
