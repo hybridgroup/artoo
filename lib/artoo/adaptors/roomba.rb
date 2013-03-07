@@ -14,13 +14,14 @@ module Artoo
       end
 
       def connect
-        require 'serialport'
-        @sp = SerialPort.new(self.port.to_s, 57600, 8, 1, SerialPort::NONE)
-        @sp.dtr = 0
-        @sp.rts = 0        
+        if port.is_serial?
+          @sp = connect_to_serial
+          @sp.dtr = 0
+          @sp.rts = 0
+        else
+          @sp = connect_to_tcp
+        end
         super
-      rescue LoadError
-        Logger.error "Please 'gem install hybridgroup-serialport' for serial port support."
       end
       
       def send_bytes(bytes)
