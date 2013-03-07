@@ -49,6 +49,13 @@ module Artoo
       def connect_to_udp
         @udp_socket ||= UDPSocket.new
       end
+
+      def connect_to_serial(speed=57600, data_bits=8, stop_bits=1, parity=SerialPort::NONE)
+        require 'serialport'
+        @sp = SerialPort.new(port.port, speed, data_bits, stop_bits, parity)
+      rescue LoadError
+        Logger.error "Please 'gem install hybridgroup-serialport' for serial port support."
+      end
     end
   end
 end
