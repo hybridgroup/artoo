@@ -24,32 +24,66 @@ work do
   on classic, :home_button => proc { drone.emergency }
   on classic, :start_button => proc { drone.start }
   on classic, :select_button => proc { drone.stop }
-  on classic, :ry_up => proc { |*value|
-    drone.up(value[1]) 
+
+  on classic, :left_joystick => proc { |*value|
+    pair = value[1]
+    if pair[:y] > 0
+      drone.forward(validate_pitch(pair[:y], @offsets[:ly]))
+    elsif pair[:y] < 0
+      drone.backward(validate_pitch(pair[:y], @offsets[:ly]))
+    else
+      drone.forward(0.0)
+    end
+
+    if pair[:x] > 0
+      drone.right(validate_pitch(pair[:x], @offsets[:lx]))
+    elsif pair[:x] < 0
+      drone.left(validate_pitch(pair[:x], @offsets[:lx]))
+    else
+      drone.right(0.0)
+    end
   }
-  on classic, :ry_down => proc { |*value|
-    drone.down(value[1]) 
+
+  on classic, :right_joystick => proc { |*value|
+    pair = value[1]
+    if pair[:y] > 0
+      drone.up(validate_pitch(pair[:y], @offsets[:ry]))
+    elsif pair[:y] < 0
+      drone.down(validate_pitch(pair[:y], @offsets[:ry]))
+    else
+      drone.up(0.0)
+    end
   }
-  on classic, :ly_up => proc { |*value|
-    drone.forward(value[1]) 
+
+  on classic, :right_trigger => proc { |*value|
+    if value[1] > 0
+      drone.turn_right(validate_pitch(value[1], @offsets[:rt]))
+    else
+      drone.turn_right(0.0)
+    end
   }
-  on classic, :ly_down =>proc { |*value| 
-    drone.backward(value[1]) 
-  }
-  on classic, :lx_right => proc { |*value|
-    drone.right(value[1]) 
-  }
-  on classic, :lx_left => proc { |*value|
-    drone.left(value[1]) 
-  }
-  on classic, :rotate_left => proc { |*value|
-    drone.turn_left(value[1]) 
-  }
-  on classic, :rotate_right => proc { |*value|
-    drone.turn_right(value[1]) 
+
+  on classic, :left_trigger => proc { |*value|
+    if value[1] > 0
+      drone.turn_left(validate_pitch(value[1], @offsets[:lt]))
+    else
+      drone.turn_left(0.0)
+    end
   }
 end
 
 def init_settings
   @toggle_camera = 0
+  @offsets = {
+    :ry => 12.0,
+    :ly => 27.0,
+    :lx => 27.0,
+    :rt => 27.0,
+    :lt => 12.0
+  }
+end
+
+def validate_pitch(data, offset)
+  value = data.abs / offset
+  value >= 0.1 ? (value <= 1.0 ? value.round(2) : 1.0) : 0.0
 end
