@@ -17,7 +17,7 @@ module Artoo
     end
 
     get '/robots' do
-      MultiJson.dump(Actor[:master].robots.collect {|r|r.to_hash})
+      MultiJson.dump(master.robots.collect {|r|r.to_hash})
     end
 
     get '/robots/:robotid' do
@@ -29,11 +29,11 @@ module Artoo
     end
 
     get '/robots/:robotid/devices/:deviceid' do
-      master.get_robot_devices(@params['robotid'])[@params['deviceid'].intern].as_json
+      device(@params['robotid'], @params['deviceid']).as_json
     end
 
     get_ws '/robots/:robotid/devices/:deviceid/events' do
-      DeviceEventClient.new(@req, master.get_robot_device(@params['robotid'], @params['deviceid']).event_topic_name('update'))
+      DeviceEventClient.new(@req, device(@params['robotid'], @params['deviceid']).event_topic_name('update'))
       return nil
     end
 
@@ -49,6 +49,10 @@ module Artoo
 
     def master
       Actor[:master]
+    end
+
+    def device(robot_id, device_id)
+      master.get_robot_device(robot_id, device_id)
     end
   end
 end
