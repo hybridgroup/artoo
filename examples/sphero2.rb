@@ -1,6 +1,6 @@
 require 'artoo/robot'
            
-class SpheroRobot < Artoo::Robot
+class DoubleSpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
   
@@ -18,9 +18,9 @@ SPHEROS = {"127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
            "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
-  robots << SpheroRobot.new(:connections => 
+  robots << DoubleSpheroRobot.new(:connections => 
                               {:sphero => 
                                 {:port => p}})
 }
 
-SpheroRobot.work!(robots)
+DoubleSpheroRobot.work!(robots)
