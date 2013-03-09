@@ -43,11 +43,17 @@ module Artoo
           Logger.error "Encrypted bytes from wii device!"
           raise "Encrypted bytes from wii device!"
         end
+
+        @data = parse(value)
       end
 
       protected 
 
       def get_defaults
+        {}
+      end
+
+      def parse
         {}
       end
 
