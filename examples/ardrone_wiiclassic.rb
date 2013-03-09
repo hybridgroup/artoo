@@ -66,8 +66,6 @@ work do
   on classic, :left_trigger => proc { |*value|
     if value[1] > 0
       drone.turn_left(validate_pitch(value[1], @offsets[:lt]))
-    else
-      drone.turn_left(0.0)
     end
   }
 end
