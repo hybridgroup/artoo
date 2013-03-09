@@ -33,7 +33,7 @@ module Artoo
     end
 
     get_ws '/robots/:robotid/devices/:deviceid/events' do
-      DeviceEventClient.new(@req, get_robot_devices(@params['robotid'])[@params['deviceid'].intern].event_topic_name('update'))
+      DeviceEventClient.new(@req, get_robot_device(@params['robotid'], @params['deviceid']).event_topic_name('update'))
       return nil
     end
 
@@ -42,7 +42,7 @@ module Artoo
     end
 
     get '/robots/:robotid/connections/:connectionid' do
-      get_robot_connections(@params['robotid'])[@params['connectionid'].intern].as_json
+      get_robot_connection(@params['robotid'], @params['connectionid']).as_json
     end
 
     def get_robot(robot_id)
@@ -50,11 +50,19 @@ module Artoo
     end
 
     def get_robot_devices(robot_id)
-      Actor[:master].get_robot_by_name(robot_id).devices
+      get_robot(robot_id).devices
+    end
+
+    def get_robot_device(robot_id, device_id)
+      get_robot_devices(robot_id)[device_id.intern]
     end
 
     def get_robot_connections(robot_id)
-      Actor[:master].get_robot_by_name(robot_id).connections
+      get_robot(robot_id).connections
+    end
+
+    def get_robot_connection(robot_id, connection_id)
+      get_robot_connections(robot_id)[connection_id.intern]
     end
   end
 end
