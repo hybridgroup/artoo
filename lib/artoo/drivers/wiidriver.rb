@@ -10,6 +10,7 @@ module Artoo
 
       def initialize(params={})
         @joystick = get_defaults
+        @data = {}
         super
       end
 
@@ -44,14 +45,14 @@ module Artoo
         end
       end
 
-      def set_joystick_default_value(joystick_axis, default_value)
-        joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
-      end
-
-      private 
+      protected 
 
       def get_defaults
         {}
+      end
+
+      def set_joystick_default_value(joystick_axis, default_value)
+        joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
       end
 
       def calculate_joystick_value(axis, origin)
