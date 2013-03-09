@@ -4,7 +4,7 @@ module Artoo
   module Drivers
     # Wiichuck driver behaviors for Firmata
     class Wiichuck < Driver
-      attr_reader :joystick
+      attr_reader :joystick, :data
 
       def address; 0x52; end
 
@@ -50,11 +50,11 @@ module Artoo
             return
           end
 
-          data = parse_wiichuck(value)
+          @data = parse_wiichuck(value)
           
-          adjust_origins(data)
-          update_buttons(data)
-          update_joystick(data)
+          adjust_origins
+          update_buttons
+          update_joystick
 
         rescue Exception => e
           Logger.error "wiichuck update exception!"
@@ -63,7 +63,7 @@ module Artoo
         end
       end
 
-      def adjust_origins(data)
+      def adjust_origins
         set_joystick_default_value(:sy_origin, data[:sy])
         set_joystick_default_value(:sx_origin, data[:sx])
       end
@@ -72,35 +72,43 @@ module Artoo
         joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
       end
 
-      def update_buttons(data)
+      def update_buttons
         publish(event_topic_name("c_button")) if data[:c] == true
         publish(event_topic_name("z_button")) if data[:z] == true
       end
 
-      def update_joystick(data)
-        publish(event_topic_name("joystick"), {:x => data[:sx] - @joystick[:sx_origin], :y => data[:sy] - @joystick[:sy_origin]})
+      def update_joystick
+        publish(event_topic_name("joystick"), {:x => calculate_joystick_value(:sx, :sx_origin), :y => calculate_joystick_value(:sy, :sy_origin)})
       end
 
       private 
 
-      def encrypted?(value)
-        value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
+      def calculate_joystick_value(axis, origin)
+        data[axis] - joystick[origin]
       end
 
-      def decode( x )
+      def encrypted?(value)
+        [[0, 1], [2, 3], [4, 5]].all? {|a| get_value(value, a[0]) == get_value(value, a[1]) }
+      end
+
+      def decode(x)
         return ( x ^ 0x17 ) + 0x17
       end
 
+      def decode_value(value, index)
+        decode(get_value(value, index))
+      end
+
       def get_value(value, index)
-        decode(value[:data][index])
+        value[:data][index]
       end
 
       def parse_wiichuck(value)
         return {
-          :sx => get_value(value, 0),
-          :sy => get_value(value, 1),
-          :z => (get_value(value, 5) & 0x01 == 0 ? true : false ),
-          :c => (get_value(value, 5) & 0x02 == 0 ? true : false )
+          :sx => decode_value(value, 0),
+          :sy => decode_value(value, 1),
+          :z => (decode_value(value, 5) & 0x01 == 0 ? true : false ),
+          :c => (decode_value(value, 5) & 0x02 == 0 ? true : false )
         }
       end
     end

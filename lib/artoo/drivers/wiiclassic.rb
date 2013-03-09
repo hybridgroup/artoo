@@ -4,7 +4,7 @@ module Artoo
   module Drivers
     # Wiiclassic driver behaviors for Firmata
     class Wiiclassic < Driver
-      attr_reader :joystick
+      attr_reader :joystick, :data
 
       def address; 0x52; end
 
@@ -54,13 +54,13 @@ module Artoo
             return
           end
 
-          data = parse_wiiclassic(value)
+          @data = parse_wiiclassic(value)
           
-          adjust_origins(data)
-          update_buttons(data)
-          update_left_joystick(data)
-          update_right_joystick(data)
-          update_triggers(data)
+          adjust_origins
+          update_buttons
+          update_left_joystick
+          update_right_joystick
+          update_triggers
 
         rescue Exception => e
           Logger.error "wiiclassic update exception!"
@@ -69,7 +69,7 @@ module Artoo
         end
       end
 
-      def adjust_origins(data)
+      def adjust_origins
         set_joystick_default_value(:ly_origin, data[:ly])
         set_joystick_default_value(:lx_origin, data[:lx])
         set_joystick_default_value(:ry_origin, data[:ry])
@@ -82,7 +82,7 @@ module Artoo
         joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
       end
 
-      def update_buttons(data)
+      def update_buttons
         publish(event_topic_name("a_button")) if data[:a] == true
         publish(event_topic_name("b_button")) if data[:b] == true
         publish(event_topic_name("x_button")) if data[:x] == true
@@ -92,54 +92,62 @@ module Artoo
         publish(event_topic_name("select_button")) if data[:-] == true
       end
 
-      def update_left_joystick(data)
-        publish(event_topic_name("left_joystick"), {:x => data[:lx] - @joystick[:lx_origin], :y => data[:ly] - @joystick[:ly_origin]}) 
+      def update_left_joystick
+        publish(event_topic_name("left_joystick"), {:x => calculate_joystick_value(:lx, :lx_origin), :y => calculate_joystick_value(:ly, :ly_origin)})
       end
 
-      def update_right_joystick(data)
-        publish(event_topic_name("right_joystick"), {:x => data[:rx] - @joystick[:rx_origin], :y => data[:ry] - @joystick[:ry_origin]}) 
+      def update_right_joystick
+        publish(event_topic_name("right_joystick"), {:x => calculate_joystick_value(:rx, :rx_origin), :y => calculate_joystick_value(:ry, :ry_origin)})
       end
 
-      def update_triggers(data)
-        publish(event_topic_name("right_trigger"), data[:rt] - @joystick[:rt_origin])
-        publish(event_topic_name("left_trigger"), data[:lt] - @joystick[:lt_origin])
+      def update_triggers
+        publish(event_topic_name("right_trigger"), calculate_joystick_value(:rt, :rt_origin))
+        publish(event_topic_name("left_trigger"), calculate_joystick_value(:lt, :lt_origin))
       end
 
       private 
 
-      def encrypted?(value)
-        value[:data][0] == value[:data][1] && value[:data][2] == value[:data][3] && value[:data][4] == value[:data][5]
+      def calculate_joystick_value(axis, origin)
+        data[axis] - joystick[origin]
       end
 
-      def decode( x )
+      def encrypted?(value)
+        [[0, 1], [2, 3], [4, 5]].all? {|a| get_value(value, a[0]) == get_value(value, a[1]) }
+      end
+
+      def decode(x)
         return ( x ^ 0x17 ) + 0x17
       end
 
+      def decode_value(value, index)
+        decode(get_value(value, index))
+      end
+
       def get_value(value, index)
-        decode(value[:data][index])
+        value[:data][index]
       end
 
       def parse_wiiclassic(value)
         return {
-          :lx => get_value(value, 0) & 0x3f,
-          :ly => get_value(value, 1) & 0x3f,
-          :rx => ((get_value(value, 0) & 0xC0) >> 2)  | ((get_value(value, 1) & 0xC0) >> 4) | (get_value(value, 2)[7]),
-          :ry => get_value(value, 2) & 0x1f,
-          :lt => ((get_value(value, 2) & 0x60) >> 3) | ((get_value(value, 3) & 0xC0) >> 6),
-          :rt => get_value(value, 3) & 0x1f,
-          :d_up => generate_bool(get_value(value, 5)[0]),
-          :d_down => generate_bool(get_value(value, 4)[6]),
-          :d_left => generate_bool(get_value(value, 5)[1]),
-          :d_right => generate_bool(get_value(value, 4)[7]),
-          :zr => generate_bool(get_value(value, 5)[2]),
-          :zl => generate_bool(get_value(value, 5)[7]),
-          :a => generate_bool(get_value(value, 5)[4]),
-          :b => generate_bool(get_value(value, 5)[6]),
-          :x => generate_bool(get_value(value, 5)[3]),
-          :y => generate_bool(get_value(value, 5)[5]),
-          :+ => generate_bool(get_value(value, 4)[2]),
-          :- => generate_bool(get_value(value, 4)[4]),
-          :h => generate_bool(get_value(value, 4)[3]),
+          :lx => decode_value(value, 0) & 0x3f,
+          :ly => decode_value(value, 1) & 0x3f,
+          :rx => ((decode_value(value, 0) & 0xC0) >> 2)  | ((decode_value(value, 1) & 0xC0) >> 4) | (decode_value(value, 2)[7]),
+          :ry => decode_value(value, 2) & 0x1f,
+          :lt => ((decode_value(value, 2) & 0x60) >> 3) | ((decode_value(value, 3) & 0xC0) >> 6),
+          :rt => decode_value(value, 3) & 0x1f,
+          :d_up => generate_bool(decode_value(value, 5)[0]),
+          :d_down => generate_bool(decode_value(value, 4)[6]),
+          :d_left => generate_bool(decode_value(value, 5)[1]),
+          :d_right => generate_bool(decode_value(value, 4)[7]),
+          :zr => generate_bool(decode_value(value, 5)[2]),
+          :zl => generate_bool(decode_value(value, 5)[7]),
+          :a => generate_bool(decode_value(value, 5)[4]),
+          :b => generate_bool(decode_value(value, 5)[6]),
+          :x => generate_bool(decode_value(value, 5)[3]),
+          :y => generate_bool(decode_value(value, 5)[5]),
+          :+ => generate_bool(decode_value(value, 4)[2]),
+          :- => generate_bool(decode_value(value, 4)[4]),
+          :h => generate_bool(decode_value(value, 4)[3]),
         }
       end
 
