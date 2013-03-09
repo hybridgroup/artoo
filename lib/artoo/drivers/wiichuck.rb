@@ -8,8 +8,6 @@ module Artoo
         begin
           super
 
-          @data = parse_wiichuck(value)
-          
           adjust_origins
           update_buttons
           update_joystick
@@ -44,12 +42,12 @@ module Artoo
         }
       end
 
-      def parse_wiichuck(value)
+      def parse(value)
         return {
           :sx => decode_value(value, 0),
           :sy => decode_value(value, 1),
-          :z => (decode_value(value, 5) & 0x01 == 0 ? true : false ),
-          :c => (decode_value(value, 5) & 0x02 == 0 ? true : false )
+          :z => generate_bool(decode_value(value, 5) & 0x01),
+          :c => generate_bool(decode_value(value, 5) & 0x02)
         }
       end
     end

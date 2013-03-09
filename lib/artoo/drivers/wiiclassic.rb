@@ -7,8 +7,6 @@ module Artoo
       def update(value)
         begin
           super
-
-          @data = parse_wiiclassic(value)
           
           adjust_origins
           update_buttons
@@ -68,7 +66,7 @@ module Artoo
         }  
       end      
 
-      def parse_wiiclassic(value)
+      def parse(value)
         return {
           :lx => decode_value(value, 0) & 0x3f,
           :ly => decode_value(value, 1) & 0x3f,

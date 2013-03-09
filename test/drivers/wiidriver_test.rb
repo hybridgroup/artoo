@@ -3,7 +3,7 @@ require 'artoo/drivers/wiidriver'
 
 class Artoo::Drivers::Wiidriver
   public :set_joystick_default_value, :calculate_joystick_value, :encrypted?,
-         :decode, :generate_bool
+         :decode, :get_value, :generate_bool
 end
 
 describe Artoo::Drivers::Wiidriver do
@@ -30,10 +30,21 @@ describe Artoo::Drivers::Wiidriver do
     @driver.encrypted?(value).must_equal true
   end
 
+  it 'not Artoo::Drivers::Wiidriver#encrypted?' do
+    value = {:data => [1, 2, 3, 4, 5, 6]}
+    @driver.encrypted?(value).must_equal false
+  end
+
   it 'must Artoo::Drivers::Wiidriver#decode' do
     @driver.decode(22).must_equal 24
     @driver.decode(0).must_equal 46
     @driver.decode(16).must_equal 30
+  end
+
+  it 'must Artoo::Drivers::Wiidriver#get_value' do
+    value = {:data => [1, 2, 3, 4, 5, 6], :other_data => [10, 20, 30, 40, 50, 60]}
+    @driver.get_value(value, 1).must_equal 2
+    @driver.get_value(value, 5).must_equal 6
   end
 
   it 'must Artoo::Drivers::Wiidriver#generate_bool' do
