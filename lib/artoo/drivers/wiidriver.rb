@@ -15,27 +15,26 @@ module Artoo
 
       def start_driver
         begin
-        listener = ->(value) { update(value) }
-        connection.on("i2c_reply", listener)
+          listener = ->(value) { update(value) }
+          connection.on("i2c_reply", listener)
 
-        connection.i2c_config(0)
-        every(interval) do
-          connection.i2c_write_request(address, 0x40, 0x00)
-          p
-          connection.i2c_write_request(address, 0x00, 0x00)
-          p
-          connection.i2c_read_request(address, 6)
-          p
-          connection.read_and_process
-        end
-        
-        super
+          connection.i2c_config(0)
+          every(interval) do
+            connection.i2c_write_request(address, 0x40, 0x00)
+            p
+            connection.i2c_write_request(address, 0x00, 0x00)
+            p
+            connection.i2c_read_request(address, 6)
+            p
+            connection.read_and_process
+          end
+
+          super
         rescue Exception => e
           p "start driver"
           p e.message
           p e.backtrace.inspect
         end
-
       end
 
       def update(value)
@@ -45,7 +44,7 @@ module Artoo
         end
       end
 
-      def set_joystick_default_value(joystick_axis, default_value)     
+      def set_joystick_default_value(joystick_axis, default_value)
         joystick[joystick_axis] = default_value if joystick[joystick_axis].nil?
       end
 
