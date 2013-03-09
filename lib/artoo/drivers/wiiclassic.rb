@@ -71,19 +71,24 @@ module Artoo
       end      
 
       def parse(value)
-        return {
+        return parse_joysticks(value).
+          merge(parse_buttons(value)).
+          merge(parse_triggers(value)).
+          merge(parse_dpad(value)).
+          merge(parse_zbuttons(value))
+      end
+
+      def parse_joysticks(value)
+        {
           :lx => decode_value(value, 0) & 0x3f,
           :ly => decode_value(value, 1) & 0x3f,
           :rx => ((decode_value(value, 0) & 0xC0) >> 2)  | ((decode_value(value, 1) & 0xC0) >> 4) | (decode_value(value, 2)[7]),
-          :ry => decode_value(value, 2) & 0x1f,
-          :lt => ((decode_value(value, 2) & 0x60) >> 3) | ((decode_value(value, 3) & 0xC0) >> 6),
-          :rt => decode_value(value, 3) & 0x1f,
-          :d_up => get_bool_decoded_value(value, 5, 0),
-          :d_down => get_bool_decoded_value(value, 4, 6),
-          :d_left => get_bool_decoded_value(value, 5, 1),
-          :d_right => get_bool_decoded_value(value, 4, 7),
-          :zr => get_bool_decoded_value(value, 5, 2),
-          :zl => get_bool_decoded_value(value, 5, 7),
+          :ry => decode_value(value, 2) & 0x1f
+        }
+      end
+
+      def parse_buttons(value)
+        {
           :a => get_bool_decoded_value(value, 5, 4),
           :b => get_bool_decoded_value(value, 5, 6),
           :x => get_bool_decoded_value(value, 5, 3),
@@ -91,6 +96,29 @@ module Artoo
           :+ => get_bool_decoded_value(value, 4, 2),
           :- => get_bool_decoded_value(value, 4, 4),
           :h => get_bool_decoded_value(value, 4, 3)
+        }
+      end
+
+      def parse_triggers(value)
+        {
+          :lt => ((decode_value(value, 2) & 0x60) >> 3) | ((decode_value(value, 3) & 0xC0) >> 6),
+          :rt => decode_value(value, 3) & 0x1f
+        }
+      end
+
+      def parse_dpad(value)
+        {
+          :d_up => get_bool_decoded_value(value, 5, 0),
+          :d_down => get_bool_decoded_value(value, 4, 6),
+          :d_left => get_bool_decoded_value(value, 5, 1),
+          :d_right => get_bool_decoded_value(value, 4, 7)
+        }
+      end
+
+      def parse_zbuttons(value)
+        {
+          :zr => get_bool_decoded_value(value, 5, 2),
+          :zl => get_bool_decoded_value(value, 5, 7)
         }
       end
 
