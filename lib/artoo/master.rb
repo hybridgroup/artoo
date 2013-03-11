@@ -10,7 +10,7 @@ module Artoo
     end
 
     def get_robot(name)
-    	robots.find_all {|r| r.name == name}.first
+      robots.find {|r| r.name == name}
     end
 
     def get_robot_devices(name)
