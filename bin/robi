@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'pry'
 
-Pry::Commands.block_command "work", "Start all robots working" do
+Pry::Commands.block_command "start", "Start all robots working" do
   Artoo::MainRobot.work! unless Artoo::MainRobot.is_running?
   Celluloid::Actor[:master].start_work
 end
@@ -10,12 +10,16 @@ Pry::Commands.block_command "pause", "Pause all robots" do
   Celluloid::Actor[:master].pause_work
 end
 
-Pry::Commands.block_command "continue", "Continue all robots working" do
+Pry::Commands.block_command "continue", "Continue all robots" do
   Celluloid::Actor[:master].continue_work
 end
 
-Pry::Commands.block_command "stop", "Stop all robots working" do
+Pry::Commands.block_command "stop", "Stop all robots" do
   Celluloid::Actor[:master].stop_work
+end
+
+Pry::Commands.block_command "list", "List all robots" do
+  output.puts Celluloid::Actor[:master].robots
 end
 
 ENV["ARTOO_CLI"] = 'true'
