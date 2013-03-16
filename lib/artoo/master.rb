@@ -28,5 +28,9 @@ module Artoo
     def get_robot_connection(robot_id, connection_id)
       get_robot_connections(robot_id)[connection_id.intern]
     end
+
+    def start_work
+      robots.each {|r| r.async.work} unless Artoo::Robot.is_running?
+    end
   end
 end

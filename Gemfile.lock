@@ -5,6 +5,7 @@ PATH
       active_support (~> 3.0)
       celluloid-io (~> 0.12)
       multi_json (~> 1.6)
+      pry
       rake (~> 10.0)
       reel (~> 0.3)
 

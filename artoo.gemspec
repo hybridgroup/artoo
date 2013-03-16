@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'multi_json', '~> 1.6'
   s.add_runtime_dependency 'active_support', '~> 3.0'
   s.add_runtime_dependency 'rake', '~> 10.0'
+  s.add_runtime_dependency 'pry'
   s.add_development_dependency 'minitest', '~> 4.6'
   s.add_development_dependency 'mocha', '~> 0.13'
 end

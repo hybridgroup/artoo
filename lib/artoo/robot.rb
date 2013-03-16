@@ -29,7 +29,7 @@ module Artoo
     end
     
     class << self
-      attr_accessor :device_types, :working_code,
+      attr_accessor :device_types, :working_code, :running,
                     :use_api, :api_host, :api_port
       
       def connection_types
@@ -80,6 +80,18 @@ module Artoo
       #  an array of existing instances
       #  or, a new instance can be created
       def work!(robot=nil)
+        return if is_running?
+        prepare_robots(robot)
+        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+
+        unless test? || cli?
+          Celluloid::Actor[:master].start_work
+          self.running = true
+          sleep # sleep main thread, and let the work commence!
+        end
+      end
+
+      def prepare_robots(robot=nil)
         if robot.respond_to?(:work)
           robots = [robot]
         elsif robot.kind_of?(Array)
@@ -88,16 +100,20 @@ module Artoo
           robots = [self.new]
         end
 
-        robots.each {|r| r.async.work}
-
         Celluloid::Actor[:master] = Master.new(robots)
-        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
-
-        sleep # sleep main thread, and let the work commence!
       end
 
       def test?
         ENV["ARTOO_TEST"] == 'true'
+      end
+
+      def cli?
+        ENV["ARTOO_CLI"] == 'true'
+      end
+
+      def is_running?
+        self.running ||= false
+        self.running == true
       end
     end
 
