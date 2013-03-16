@@ -80,11 +80,11 @@ module Artoo
       #  an array of existing instances
       #  or, a new instance can be created
       def work!(robot=nil)
-        return if is_running?
+        return if !test? && is_running?
         prepare_robots(robot)
-        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
 
-        unless test? || cli?
+        unless cli?
+          Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
           Celluloid::Actor[:master].start_work
           self.running = true
           sleep # sleep main thread, and let the work commence!
