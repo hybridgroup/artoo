@@ -19,4 +19,3 @@ robots = []
 end
 
 HelloRobot.work!(robots)
-sleep
