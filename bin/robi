@@ -4,19 +4,22 @@ require 'pry'
 command_set = Pry::CommandSet.new do
   block_command "start", "Start all robots working" do
     if defined?(Artoo::MainRobot)
+      output.puts "Starting main robot..."
       Artoo::MainRobot.work! unless Artoo::MainRobot.is_running?
+    else
+      output.puts "Starting robots..."
     end
 
     Celluloid::Actor[:master].start_work
   end
 
   block_command "pause", "Pause all robots" do
-    output.puts "Not yet implemented..."
+    output.puts "Pausing robots..."
     Celluloid::Actor[:master].pause_work
   end
 
   block_command "continue", "Continue all robots" do
-    output.puts "Not yet implemented..."
+    output.puts "Continuing robots..."
     Celluloid::Actor[:master].continue_work
   end
 
