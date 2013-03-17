@@ -2,7 +2,10 @@
 require 'pry'
 
 Pry::Commands.block_command "start", "Start all robots working" do
-  Artoo::MainRobot.work! unless Artoo::MainRobot.is_running?
+  if defined?(Artoo::MainRobot)
+    Artoo::MainRobot.work! unless Artoo::MainRobot.is_running?
+  end
+
   Celluloid::Actor[:master].start_work
 end
 
