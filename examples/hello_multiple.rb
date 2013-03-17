@@ -5,7 +5,7 @@ class HelloRobot < Artoo::Robot
   
 	work do
 	  every(3.seconds) do
-	     puts "Hello from #{name}"
+	    puts "Hello from #{name}"
 	  end
 	  after(10.seconds) do
 	  	puts "#{name} is alive!" if name == 'Number 5'
