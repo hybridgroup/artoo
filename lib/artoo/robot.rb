@@ -9,6 +9,8 @@ require 'artoo/api'
 require 'artoo/master'
 require 'artoo/port'
 require 'artoo/utility'
+require 'artoo/ext/timers'
+require 'artoo/ext/actor'
 
 module Artoo
   # The most important class used by Artoo is Robot. This represents the primary
@@ -135,6 +137,14 @@ module Artoo
       execute_startup(connections) {|c| c.future.connect}
       execute_startup(devices) {|d| d.future.start_device}
       execute_working_code
+    end
+
+    def pause_work
+      pause_timers
+    end
+
+    def continue_work
+      continue_timers
     end
 
     def disconnect
