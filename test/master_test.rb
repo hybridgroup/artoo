@@ -31,15 +31,15 @@ describe Artoo::Master do
     @master = Artoo::Master.new(@robots)
   end
 
-  it 'Artoo::Master#get_robot' do
-    @master.get_robot("robot2").must_equal @robot2
+  it 'Artoo::Master#robot' do
+    @master.robot("robot2").must_equal @robot2
   end
 
-  it 'Artoo::Master#get_robot_devices' do
-    @master.get_robot_devices("robot2").first.must_equal "robot2-device1"
+  it 'Artoo::Master#robot_devices' do
+    @master.robot_devices("robot2").first.must_equal "robot2-device1"
   end
 
-  it 'Artoo::Master#get_robot_connections' do
-    @master.get_robot_connections("robot2").last.must_equal "robot2-connection3"
+  it 'Artoo::Master#robot_connections' do
+    @master.robot_connections("robot2").last.must_equal "robot2-connection3"
   end
 end

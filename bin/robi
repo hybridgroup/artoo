@@ -7,14 +7,17 @@ Pry::Commands.block_command "start", "Start all robots working" do
 end
 
 Pry::Commands.block_command "pause", "Pause all robots" do
+  output.puts "Not yet implemented..."
   Celluloid::Actor[:master].pause_work
 end
 
 Pry::Commands.block_command "continue", "Continue all robots" do
+  output.puts "Not yet implemented..."
   Celluloid::Actor[:master].continue_work
 end
 
 Pry::Commands.block_command "stop", "Stop all robots" do
+  output.puts "Not yet implemented..."
   Celluloid::Actor[:master].stop_work
 end
 
