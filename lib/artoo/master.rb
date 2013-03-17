@@ -9,28 +9,40 @@ module Artoo
       @robots = bots
     end
 
-    def get_robot(name)
+    def robot(name)
       robots.find {|r| r.name == name}
     end
 
-    def get_robot_devices(name)
-      get_robot(name).devices
+    def robot_devices(name)
+      robot(name).devices
     end
 
-    def get_robot_device(name, device_id)
-      get_robot_devices(name)[device_id.intern]
+    def robot_device(name, device_id)
+      robot_devices(name)[device_id.intern]
     end
 
-    def get_robot_connections(name)
-      get_robot(name).connections
+    def robot_connections(name)
+      robot(name).connections
     end
 
-    def get_robot_connection(robot_id, connection_id)
-      get_robot_connections(robot_id)[connection_id.intern]
+    def robot_connection(robot_id, connection_id)
+      robot_connections(robot_id)[connection_id.intern]
     end
 
     def start_work
       robots.each {|r| r.async.work} unless Artoo::Robot.is_running?
+    end
+
+    def pause_work
+      #robots.each {|r| r.async.pause_work}
+    end
+
+    def continue_work
+      #robots.each {|r| r.async.continue_work}
+    end
+
+    def stop_work
+      #robots.each {|r| r.async.stop_work} unless !Artoo::Robot.is_running?
     end
   end
 end
