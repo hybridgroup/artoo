@@ -100,6 +100,23 @@ end
 
 Once the robot or group is working, you can view the main API page at the host and port specified.
 
+## CLI:
+
+Artoo includes Robi, a Command Line Interface (CLI) based on Pry () to allow you to interactively control your robot.
+
+```
+robi ./examples/hello.rb
+I, [2013-03-16T18:14:22.281462 #61513]  INFO -- : Registering connection 'loop'...
+I, [2013-03-16T18:14:22.283027 #61513]  INFO -- : Preparing work...
+[1] pry(main)> start
+I, [2013-03-16T18:14:23.836523 #61513]  INFO -- : Initializing connection loop...
+I, [2013-03-16T18:14:23.842265 #61513]  INFO -- : Starting work...
+I, [2013-03-16T18:14:23.842879 #61513]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0xe3c0>'...
+[2] pry(main)> list
+#<Artoo::MainRobot:0xe5e4>
+[3] pry(main)> exit
+```
+
 ## Installing:
 
 ```ruby
