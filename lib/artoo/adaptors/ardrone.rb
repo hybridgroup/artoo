@@ -4,6 +4,7 @@ module Artoo
   module Adaptors
     # Connect to a ARDrone 2.0 (http://ardrone2.parrot.com/)
     class Ardrone < Adaptor
+      finalizer :finalize
       attr_reader :ardrone
 
       def finalize

@@ -4,7 +4,7 @@ module Artoo
   module Adaptors
     # Connect to a Roomba (http://www.irobot.com/en/us/robots/Educators/Create.aspx)
     class Roomba < Adaptor
-      
+      finalizer :finalize
       attr_reader :sp
 
       def finalize
