@@ -4,6 +4,7 @@ module Artoo
   module Adaptors
     # Connect to a Sphero (http://gosphero.com)
     class Sphero < Adaptor
+      finalizer :finalize
       RETRY_COUNT = 5
       attr_reader :sphero
 
