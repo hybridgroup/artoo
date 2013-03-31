@@ -47,6 +47,14 @@ module Artoo
       MultiJson.dump(to_hash)
     end
 
+    def to_s
+      "#{self.class}:0x#{self.object_id}"
+    end
+
+    def inspect
+      "#<#{to_s}>"
+    end
+
     def method_missing(method_name, *arguments, &block)
       unless adaptor.connected?
         Logger.warn "Cannot call unconnected adaptor '#{name}', attempting to reconnect..."

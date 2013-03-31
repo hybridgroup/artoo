@@ -34,11 +34,14 @@ module Artoo
     end
 
     def pause_work
-      robots.each {|r| r.pause_work}
+      robots.each {|r|
+        Logger.info "pausing #{r.name}"
+        r.async.pause_work
+      }
     end
 
     def continue_work
-      robots.each {|r| r.continue_work}
+      robots.each {|r| r.async.continue_work}
     end
 
     def stop_work

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'pry'
 
+Pry.config.prompt = proc { "robi> " }
+
 command_set = Pry::CommandSet.new do
   block_command "start", "Start all robots working" do
     if defined?(Artoo::MainRobot)

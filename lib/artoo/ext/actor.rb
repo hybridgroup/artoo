@@ -1,24 +1,18 @@
 # monkeypatches for Celluloid Actor class
 module Celluloid
-  # Pause all running Celluloid::Timer objects for this actor
-  def pause_timers
-    Thread.current[:celluloid_actor].pause_timers
+  def timers
+    Actor.timers
   end
 
-  # Continue all paused Celluloid::Timer objects for this actor
-  def continue_timers
-    Thread.current[:celluloid_actor].continue_timers
-  end
-    
   class Actor
-    # Pause all active timers from running at their appointed times
-    def pause_timers
-      @timers.pause
-    end
+    attr_accessor :timers
 
-    # Continue all paused timers running at their appointed times
-    def continue_timers
-      @timers.continue
+    class << self
+      def timers
+        actor = Thread.current[:celluloid_actor]
+        raise NotActorError, "not in actor scope" unless actor
+        actor.timers
+      end
     end
   end
 end

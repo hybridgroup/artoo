@@ -1,5 +1,8 @@
+require 'celluloid/autostart'
 require 'celluloid/io'
 require 'multi_json'
+require 'artoo/ext/timers'
+require 'artoo/ext/actor'
 
 require 'artoo/basic'
 require 'artoo/connection'
@@ -9,8 +12,7 @@ require 'artoo/api'
 require 'artoo/master'
 require 'artoo/port'
 require 'artoo/utility'
-require 'artoo/ext/timers'
-require 'artoo/ext/actor'
+
 
 module Artoo
   # The most important class used by Artoo is Robot. This represents the primary
@@ -140,11 +142,13 @@ module Artoo
     end
 
     def pause_work
-      pause_timers
+      Logger.info "Pausing work..."
+      current_instance.timers.pause
     end
 
     def continue_work
-      continue_timers
+      Logger.info "Continuing work..."
+      current_instance.timers.continue
     end
 
     def disconnect
@@ -152,7 +156,7 @@ module Artoo
     end
 
     def default_connection
-      connections[connections.keys.first]
+      connections.values.first
     end
 
     def connection_types
@@ -177,6 +181,10 @@ module Artoo
 
     def as_json
       MultiJson.dump(to_hash)
+    end
+
+    def inspect
+      "#<Robot #{object_id}>"
     end
 
     private
