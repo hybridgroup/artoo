@@ -51,6 +51,10 @@ module Artoo
       driver.send(method_name, *arguments, &block)
     end
 
+    def inspect
+      "#<Device @id=#{object_id}, @name='name', @driver='driver'>"
+    end
+
     private
 
     def require_driver(d)
