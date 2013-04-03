@@ -7,6 +7,9 @@ To run locally:
       bundle install
       bundle exec middleman
 
-To build/deploy:  
+Deploy:  
 
-      coming soon
+[middleman-gh-pages](https://github.com/neo/middleman-gh-pages) gem is being used to build the webpage and deploy to gh-pages branch.  
+
+For deploying the webpage, your must be in 'artoo.io' branch and run the following command:
+      rake publish
