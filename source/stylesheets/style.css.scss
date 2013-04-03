@@ -1,0 +1,154 @@
+@import 'barebones';
+@import 'pygments';
+
+$red: hsl(355, 100%, 33%);
+
+body {
+  margin-bottom: 75px;
+}
+
+@media only screen and (max-width: 767px) {
+  pre {
+    white-space: pre;
+    overflow: scroll;
+    word-wrap: normal;
+  }
+}
+
+header {
+  border-bottom: 5px solid $red;
+  height: 75px;
+
+  @media only screen and (max-width: 767px) {
+    height: 150px;
+    border: none;
+  }
+
+  h1, .social {
+    height: 75px;
+  }
+
+  h1 {
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    float: left;
+    color: $red;
+    width: 75%;
+    font-size: 75px;
+    margin: 0;
+    line-height: 93px;
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      width: 60%;
+    }
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      text-align: center;
+      border-bottom: 5px solid $red;
+    }
+  }
+
+  .social {
+    text-align: center;
+    float: right;
+    display: block;
+    width: 24%;
+    line-height: 75px;
+
+    .button {
+      background: lighten($red, 30%);
+      color: white;
+      font-size: 18px;
+      font-weight: normal;
+      border: none;
+      margin: 10px;
+      padding: 8px 10px;
+      box-shadow: 3px 3px 0 lighten($red, 10%);
+      text-shadow-color: #efefef;
+      border-radius: 0;
+      &:hover {
+        background: lighten($red, 25%);
+        box-shadow-color: lighten($red, 5%);
+      }
+      &:active {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        box-shadow: 2px 2px 0 lighten($red, 5%);
+      }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+      width: 39%;
+
+      .button {
+        font-size: 22px;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+
+      .button {
+        width: 40%;
+      }
+    }
+  }
+}
+
+#main {
+  .aside.right {
+    float: right;
+    @media only screen and (max-width: 767px) {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+      float: right;
+    }
+  }
+
+  section:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  #examples {
+    .example {
+      &:not(:last-child) {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #eee;
+      }
+      h3 {
+        font-weight: normal;
+      }
+    }
+  }
+
+  #videos {
+    iframe {
+      width: 960px;
+      height: 540px;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 959px) {
+        width: 768px;
+        height: 432px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        width: 300px;
+        height: 169px;
+      }
+
+      @media only screen and (min-width: 480px) and (max-width: 767px) {
+        width: 420px;
+        height: 236px;
+      }
+    }
+  }
+}
+
