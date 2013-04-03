@@ -1,10 +1,33 @@
 @import 'barebones';
 @import 'pygments';
+@import 'coderay';
 
 $red: hsl(355, 100%, 33%);
 
 body {
   margin-bottom: 75px;
+}
+
+iframe {
+  width: 960px;
+  height: 540px;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    width: 768px;
+    height: 432px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    width: 300px;
+    height: 169px;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    width: 420px;
+    height: 236px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -126,29 +149,5 @@ header {
     }
   }
 
-  #videos {
-    iframe {
-      width: 960px;
-      height: 540px;
-      &:not(:last-child) {
-        margin-bottom: 20px;
-      }
-
-      @media only screen and (min-width: 768px) and (max-width: 959px) {
-        width: 768px;
-        height: 432px;
-      }
-
-      @media only screen and (max-width: 767px) {
-        width: 300px;
-        height: 169px;
-      }
-
-      @media only screen and (min-width: 480px) and (max-width: 767px) {
-        width: 420px;
-        height: 236px;
-      }
-    }
-  }
 }
 
