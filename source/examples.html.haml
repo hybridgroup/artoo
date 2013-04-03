@@ -1,0 +1,57 @@
+---
+layout: page
+---
+
+:markdown
+  ## Examples
+  You can find many more examples on [GitHub](https://github.com/hybridgroup/artoo/tree/master/examples).
+      
+  ### Arduino
+
+      require 'artoo'
+
+      connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+      device :led, :driver => :led, :pin => 13
+      device :button, :driver => :button, :pin => 2
+
+      work do
+        on button, :push => proc {led.toggle}
+      end
+
+   ### AR.Drone 2.0
+
+      require 'artoo'
+
+      connection :ardrone, :adaptor => :ardrone
+      device :drone, :driver => :ardrone
+
+      work do
+        drone.start
+        drone.take_off
+
+        after(25.seconds) { drone.hover.land }
+        after(30.seconds) { drone.stop }
+      end
+
+  ### Sphero - Modular
+
+      require 'artoo/robot'
+
+      SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
+
+      class SpheroRobot < Artoo::Robot
+        connection :sphero, :adaptor => :sphero
+        device :sphero, :driver => :sphero
+
+        work do
+          every(3.seconds) do
+            sphero.roll 90, rand(360)
+          end
+        end
+      end
+
+      robots = SPHEROS.map do |p|
+        SpheroRobot.new(:connections => {:sphero => {:port => p}})
+      end
+
+      SpheroRobot.work!(robots)
