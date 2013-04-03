@@ -21,9 +21,27 @@
         <div class="aside right">
           <img src="images/artoo.png">
 </div>
-        <section id="intro"><h2 id="artoo_is_a_microframework_for_robotics">artoo is a micro-framework for robotics</h2>
+        <section id="intro"><h2 id="the_dsl">The DSL</h2>
           
-          <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
+          <p>Artoo’s simple DSL makes telling robots what to do incredibly simple and fun.</p>
+          
+          <p>All you need to get started is the <code>artoo</code> gem</p>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span></pre>
+          
+          <p>Then hook it up to your robot (in this case, a <a href="http://gosphero.com">Sphero</a>):</p>
+          
+          <pre class="CodeRay">connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4560</span><span class="delimiter">'</span></span>  
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span></pre>
+          
+          <p>And tell it what to do!</p>
+          
+          <pre class="CodeRay">work <span class="keyword">do</span>
+  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
+    sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
         </section>
 </div>
       <h2 id="artoo_supports">artoo supports:</h2>

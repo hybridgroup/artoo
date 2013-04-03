@@ -21,9 +21,59 @@
         <div class="aside right">
           <img src="images/artoo.png">
 </div>
-        <section id="intro"><h2 id="artoo_is_a_microframework_for_robotics">artoo is a micro-framework for robotics</h2>
+        <section id="intro"><h2 id="examples">Examples</h2>
           
-          <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
+          <h3 id="arduino">Arduino</h3>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.usbmodemxxxxx</span><span class="delimiter">'</span></span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
+device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>
+
+work <span class="keyword">do</span>
+  on button, <span class="symbol">:push</span> =&gt; proc {led.toggle}
+<span class="keyword">end</span></pre>
+          
+          <h3 id="ardrone_20">AR.Drone 2.0</h3>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>
+
+work <span class="keyword">do</span>
+  drone.start
+  drone.take_off
+
+  after(<span class="integer">25</span>.seconds) { drone.hover.land }
+  after(<span class="integer">30</span>.seconds) { drone.stop }
+<span class="keyword">end</span></pre>
+          
+          <h3 id="sphero__modular">Sphero - Modular</h3>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo/robot</span><span class="delimiter">'</span></span>
+
+<span class="constant">SPHEROS</span> = [<span class="string"><span class="delimiter">"</span><span class="content">4567</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4568</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4569</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4570</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4571</span><span class="delimiter">"</span></span>]
+
+<span class="keyword">class</span> <span class="class">SpheroRobot</span> &lt; <span class="constant">Artoo</span>::<span class="constant">Robot</span>
+  connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>
+  device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+  work <span class="keyword">do</span>
+    every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+      sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+robots = <span class="constant">SPHEROS</span>.map <span class="keyword">do</span> |p|
+  <span class="constant">SpheroRobot</span>.new(<span class="symbol">:connections</span> =&gt; {<span class="symbol">:sphero</span> =&gt; {<span class="symbol">:port</span> =&gt; p}})
+<span class="keyword">end</span>
+
+<span class="constant">SpheroRobot</span>.work!(robots)</pre>
+          
+          <p>You can find many more examples on <a href="https://github.com/hybridgroup/artoo/tree/master/examples">GitHub</a>.</p>
         </section>
 </div>
       <h2 id="artoo_supports">artoo supports:</h2>
