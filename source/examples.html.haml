@@ -5,9 +5,8 @@ layout: page
 :markdown
   ## Examples
 
-      
   ### Arduino
-
+      :::ruby
       require 'artoo'
 
       connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
@@ -18,8 +17,8 @@ layout: page
         on button, :push => proc {led.toggle}
       end
 
-   ### AR.Drone 2.0
-
+  ### AR.Drone 2.0
+      :::ruby
       require 'artoo'
 
       connection :ardrone, :adaptor => :ardrone
@@ -34,7 +33,7 @@ layout: page
       end
 
   ### Sphero - Modular
-
+      :::ruby
       require 'artoo/robot'
 
       SPHEROS = ["4567", "4568", "4569", "4570", "4571"]

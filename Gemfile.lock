@@ -5,6 +5,7 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     chunky_png (1.2.8)
+    coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -58,6 +59,7 @@ GEM
       sprockets (~> 2.1, < 2.5)
       sprockets-sass (~> 0.9.1)
     multi_json (1.7.2)
+    nokogiri (1.5.9)
     padrino-core (0.10.7)
       activesupport (~> 3.2.0)
       http_router (~> 0.10.2)
@@ -68,6 +70,9 @@ GEM
       i18n (~> 0.6)
       padrino-core (= 0.10.7)
     rack (1.4.5)
+    rack-codehighlighter (0.5.0)
+      nokogiri (>= 1.4.1)
+      rack (>= 1.0.0)
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -100,5 +105,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coderay
   middleman
   middleman-gh-pages
+  rack-codehighlighter

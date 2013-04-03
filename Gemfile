@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
 
-gem "middleman"
+gem 'middleman'
 gem 'middleman-gh-pages'
+gem "rack-codehighlighter"
+gem "coderay"

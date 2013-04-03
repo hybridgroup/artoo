@@ -8,15 +8,18 @@ layout: page
       
   All you need to get started is the `artoo` gem  
 
-      require artoo
+      :::ruby
+      require 'artoo'
 
    Then hook it up to your robot (in this case, a [Sphero](http://gosphero.com)): 
 
+      :::ruby
       connection :sphero, :adaptor => :sphero, :port => '4560'  
       device :sphero, :driver => :sphero
 
   And tell it what to do!
 
+      :::ruby
       work do
         every(3.seconds) do
           puts "Rolling..."
