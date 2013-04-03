@@ -7,7 +7,7 @@ To run locally:
       bundle install
       bundle exec middleman
 
-Deploy:  
+### Deploy
 
 [middleman-gh-pages](https://github.com/neo/middleman-gh-pages) gem is being used to build the webpage and deploy to gh-pages branch.  
 
