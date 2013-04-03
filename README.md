@@ -2,9 +2,11 @@
 
 This site is build using [Middleman](http://middlemanapp.com/getting-started/)  
   
-To run locally:
+To run locally:  
+
       bundle install
       bundle exec middleman
 
-To build/deploy:
+To build/deploy:  
+
       coming soon
