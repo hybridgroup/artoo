@@ -10,3 +10,15 @@ set :images_dir, 'images'
 
 configure :build do
 end
+
+helpers do
+  def menu_item(path)
+    properties = {:href => "/#{path}", :class => "item"}
+
+    if current_page.path == path
+      properties[:class] = "active item"
+    end
+
+    properties
+  end
+end

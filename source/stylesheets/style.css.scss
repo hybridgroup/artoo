@@ -80,6 +80,10 @@ header {
       }
     }
 
+    .active {
+      color: $red;
+    }
+
     @media only screen and (min-width: 768px) and (max-width: 959px) {
       width: 60%;
     }
