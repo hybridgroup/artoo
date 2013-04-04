@@ -16,15 +16,16 @@ description: artoo is a micro-framework for robotics
   %body
     .container
       %header
-        %h1 artoo
-        %span.social
-          %a.twitter.button{:href => "https://twitter.com/artooio"} Twitter
-          %a.github.button{:href => "https://github.com/hybridgroup/artoo"} Github
+        %span.logo
+          %h1
+            %a#logo{:href => '/'} artoo
+        %span.subtitle Ruby on robots
+        %span.menu
+          %a.item{:href => "/about.html"} About
+          %a.item{:href => "/documentation.html"} Docs
+          %a.item{:href => "supported_hardware.html"} Hardware
+          %a.item{:href => "/examples.html"} Examples
       = yield
-      = partial "supported_hardware"
-      = partial "documentation"
-      = partial "examples"
-      = partial "videos"
       .footer
         &copy; Copyright 2012-2013
         %a{:href => "http://hybridgroup.com"} The Hybrid Group.
