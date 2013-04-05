@@ -1,0 +1,157 @@
+@import 'barebones'
+@import 'coderay'
+
+$red: #cc3300
+$blue: #ebfdff
+$gray: #373737
+$light_gray: #505252
+$bright-red: #bc2a1b
+
+$header-size: 66px
+$logo-size: 155px
+
+$small-screen: 480px
+$medium-screen: 767px
+$big-screen: 964px
+
+@mixin title-font($size, $color)
+  font-family: 'Montserrat', sans-serif
+  font-weight: 700
+  font-size: $size
+  color: $color
+
+@mixin margin-not-last-child()
+  &:not(:last-child)
+    margin-bottom: 20px
+
+@mixin small-screen($width, $height)
+  @media only screen and (max-width: $medium-screen) 
+    width: $width
+    height: $height
+
+@mixin small-screen-title
+  @media only screen and (max-width: $medium-screen) 
+    font-size: 28px
+
+@mixin medium-screen($width, $height)
+  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+    width: $width
+    height: $height
+
+@mixin medium-screen-menu()
+  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+    width: 335px
+    padding: 0
+
+body
+  background-color: $blue
+  background-image: url('../images/bg-artoo.png')
+  background-repeat: no-repeat
+  background-position: top
+
+pre
+  @media only screen and (max-width: $medium-screen) 
+    white-space: pre
+    overflow: scroll
+    word-wrap: normal
+
+header
+  height: $header-size
+  padding-top: 10px
+
+  h1
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
+    color: $red
+    font-size: 56
+
+  .logo, .subtitle, .menu, h1 
+    line-height: $header-size
+    vertical-align: middle
+    margin: 0
+
+  .logo
+    width: $logo-size
+    float: left
+
+  .subtitle
+    @include title-font(20px, $light_gray)
+    float: left
+    padding: 4 0 0 15
+
+  .menu
+    float: right
+    padding-top: 4 0 0 25
+    width: 450px
+    text-align: center
+
+    @include medium-screen-menu
+    @include small-screen($small-screen, $header-size)
+
+    .active
+      color: $red
+
+    .item
+      font-size: 15px
+      font-weight: bold
+      margin: 10px
+      padding: 8px 14px
+
+      &:hover
+        color: $red
+
+      &:active
+        color: $red
+
+      @include medium-screen-menu
+
+.title
+  @include title-font(43px, $gray)
+  @include small-screen-title
+  padding-top: 35px
+  line-height: 54px
+  width: 100%
+
+.subtitle
+  @include title-font(24px, $gray)
+  font-weight: 550
+  line-height: 50px
+
+.container
+  width: $big-screen
+  min-height: 100%
+  position: relative
+  @include medium-screen($medium-screen, "")
+  @include small-screen($small-screen - 10, "")
+
+.footer
+  bottom: 0
+  width: 100%
+  height: 30px
+  position: absolute
+
+.main
+  padding-bottom: 50px
+
+  iframe
+    width: 600
+    height: 400px
+
+    @include margin-not-last-child
+    @include medium-screen(420px, 236px)
+    @include small-screen(300px, 169px)
+
+  .content
+    padding-top: 22px
+    width: 70%
+
+    h1, h2
+      color: $bright-red
+
+  .aside.right
+    width: 30%
+    float: right
+    padding-top: 0px
+    text-align: right
+
+  section
+    @include margin-not-last-child
