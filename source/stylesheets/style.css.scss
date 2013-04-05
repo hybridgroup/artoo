@@ -1,5 +1,4 @@
 @import 'barebones';
-@import 'pygments';
 @import 'coderay';
 
 $red: #cc3300;
@@ -7,6 +6,9 @@ $blue: #ebfdff;
 
 body {
   background-color: $blue;
+  background-image: url('../images/bg-artoo.png');
+  background-repeat: no-repeat;
+  background-position: top;
 }
 
 pre {
@@ -19,12 +21,12 @@ pre {
 
 header {
   height: 66px;
-  padding-top: 12px;
+  padding-top: 10px;
+
   #logo {
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $red;
-    width: 155px;
-    font-size: 55;
+    font-size: 56;
   }
 
   .logo, .subtitle, .menu, #logo, h1 {
@@ -42,6 +44,7 @@ header {
   .subtitle {
     float: left;
     padding-top: 4px;
+    padding-left: 15px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -51,13 +54,14 @@ header {
   .menu {
     float: right;
     padding-top: 4px;
+    padding-left: 25px;
     width: 450px;
     text-align: center;
     .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
-      padding: 8px 10px;
+      padding: 8px 14px;
       border-radius: 0;
       &:hover {
         color: $red;
@@ -75,23 +79,24 @@ header {
 
 .title {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   color: #373737;
-  padding-top: 30px;
-  line-height: 58px;
-  font-size: 44px;
+  padding-top: 35px;
+  line-height: 54px;
+  font-size: 43px;
   width: 100%;
 }
 
 .subtitle {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 550;
   color: #373737;
-  line-height: 60px;
+  line-height: 50px;
   font-size: 24px;
 }
 
 .container {
+  width: 964px;
   min-height: 100%;
   position: relative;
 }
@@ -105,7 +110,6 @@ header {
 
 #main {
  padding-bottom: 50px;
- padding-top: 25px;
 
  iframe {
    width: 600;
@@ -127,6 +131,7 @@ header {
   }
 
   .content {
+    padding-top: 22px;
     width: 70%;
 
     h1 {
@@ -143,7 +148,7 @@ header {
     width: 30%;
     float: right;
     padding-top: 0px;
-    text-align: center;
+    text-align: right;
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
       width: 100%;
