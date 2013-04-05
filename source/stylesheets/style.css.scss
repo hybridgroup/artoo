@@ -2,8 +2,8 @@
 @import 'pygments';
 @import 'coderay';
 
-$red: hsl(355, 100%, 33%);
-$blue: #eefbfc;
+$red: #cc3300;
+$blue: #ebfdff;
 
 body {
   background-color: $blue;
@@ -18,84 +18,77 @@ pre {
 }
 
 header {
-  height: 75px;
-  line-height: 70px;
-  padding-top: 10px;
-
+  height: 66px;
+  padding-top: 12px;
   #logo {
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $red;
-    width: 20%;
-    font-size: 50;
+    width: 155px;
+    font-size: 55;
   }
 
-  .logo, .subtitle, .menu {
+  .logo, .subtitle, .menu, #logo, h1 {
+    line-height: 66px;
     vertical-align: middle; 
+    height: 66px;
+    margin: 0;
   }
 
   .logo {
-    width: 15%;
+    width: 155px;
     float: left;
-
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
-      width: 19%;
-    }
-    
-    @media only screen and (max-width: 767px) {
-      width: 35%;
-    }
   }
 
   .subtitle {
     float: left;
-    font-weight: bold;
-    color: #373737;
-    width: 35%;
-
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
-      width: 21%;
-    }
-    
-    @media only screen and (max-width: 767px) {
-      width: 65%;
-    }
+    padding-top: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #505252;
   }
 
   .menu {
     float: right;
-    width: 50%;
+    padding-top: 4px;
+    width: 450px;
     text-align: center;
-
     .item {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 10px;
       border-radius: 0;
       &:hover {
-        color: lighten($red, 25%);
+        color: $red;
       }
       &:active {
-        color: lighten($red, 25%);
+        color: $red;
       }
     }
 
     .active {
       color: $red;
     }
-
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
-      width: 60%;
-    }
-
-    @media only screen and (max-width: 767px) {
-      width: 100%;
-
-      .item {
-        margin: 0;
-      }
-    }
   }
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #373737;
+  padding-top: 30px;
+  line-height: 58px;
+  font-size: 44px;
+  width: 100%;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #373737;
+  line-height: 60px;
+  font-size: 24px;
 }
 
 .container {
@@ -136,17 +129,12 @@ header {
   .content {
     width: 70%;
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      width: 100%;
-    }
-
-    h1, h3 {
-      padding-top: 50px;
-      text-align: center;
+    h1 {
+      color: #bc2a1b;
     }
 
     h2 {
-      color: $red;
+      color: #bc2a1b;
     }
 
   } 
@@ -154,6 +142,7 @@ header {
   .aside.right {
     width: 30%;
     float: right;
+    padding-top: 0px;
     text-align: center;
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {

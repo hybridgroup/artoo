@@ -13,18 +13,21 @@ description: artoo is a micro-framework for robotics
     %title= data.page.title 
     %link(rel="stylesheet" href="stylesheets/style.css")
     %link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Russo+One")
+    %link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:700")
   %body
     .container
       %header
         %span.logo
           %h1
-            %a#logo{:href => '/'} artoo
-        %span.subtitle Ruby on robots
+            %a#logo{:href => '/index.html'} artoo
+        %span.subtitle Ruby on Robots
         %span.menu
-          = link_to "About", "", (menu_item("about.html"))
+          = link_to "About", "", (menu_item("index.html"))
+          = link_to "Examples", "", (menu_item("examples.html"))
           = link_to "Docs", "", (menu_item("documentation.html"))
           = link_to "Hardware", "", (menu_item("supported_hardware.html"))
-          = link_to "Examples", "", (menu_item("examples.html"))
+      .title Artoo is a Ruby Framework that will help you build Skynet.
+      .subtitle In 1 hour, flat.
       = yield
       .footer
         &copy; Copyright 2012-2013
