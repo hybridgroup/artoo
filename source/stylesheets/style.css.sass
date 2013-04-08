@@ -10,7 +10,8 @@ $bright-red: #bc2a1b
 $header-size: 66px
 $logo-size: 155px
 
-$small-screen: 480px
+$tiny-screen: 320px
+$small-screen: 479px
 $medium-screen: 767px
 $big-screen: 964px
 
@@ -24,8 +25,18 @@ $big-screen: 964px
   &:not(:last-child)
     margin-bottom: 20px
 
+@mixin tiny-screen($width, $height)
+  @media only screen and (max-width: $small-screen)
+    width: $width
+    height: $height
+
+@mixin tiny-screen-subtitle
+  @media only screen and (max-width: $small-screen)
+    font-size: 18px
+    padding: 4 0 0 8
+
 @mixin small-screen($width, $height)
-  @media only screen and (max-width: $medium-screen) 
+  @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) 
     width: $width
     height: $height
 
@@ -39,9 +50,24 @@ $big-screen: 964px
     height: $height
 
 @mixin medium-screen-menu()
-  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+  @media only screen and (max-width: $big-screen) 
     width: 335px
     padding: 0
+
+@mixin medium-screen-pre()
+  @media only screen and (max-width: $medium-screen) 
+    white-space: pre
+    overflow: scroll
+    word-wrap: normal
+
+@mixin medium-screen-content()
+  @media only screen and (max-width: $medium-screen) 
+    width: 100%
+
+@mixin medium-screen-aside()
+  @media only screen and (max-width: $medium-screen) 
+    width: 100%
+    text-align: center
 
 body
   background-color: $blue
@@ -50,10 +76,7 @@ body
   background-position: top
 
 pre
-  @media only screen and (max-width: $medium-screen) 
-    white-space: pre
-    overflow: scroll
-    word-wrap: normal
+  @include medium-screen-pre
 
 header
   height: $header-size
@@ -75,6 +98,7 @@ header
 
   .subtitle
     @include title-font(20px, $light_gray)
+    @include tiny-screen-subtitle
     float: left
     padding: 4 0 0 15
 
@@ -122,8 +146,10 @@ header
   position: relative
   @include medium-screen($medium-screen, "")
   @include small-screen($small-screen - 10, "")
-
+  @include tiny-screen($tiny-screen, "")
 .footer
+  @include title-font(12px, $gray)
+  font-weight: normal
   bottom: 0
   width: 100%
   height: 30px
@@ -138,11 +164,13 @@ header
 
     @include margin-not-last-child
     @include medium-screen(420px, 236px)
-    @include small-screen(300px, 169px)
+    @include small-screen(420px, 236px)
+    @include tiny-screen(300px, 169px)
 
   .content
     padding-top: 22px
     width: 70%
+    @include medium-screen-content
 
     h1, h2
       color: $bright-red
@@ -152,6 +180,7 @@ header
     float: right
     padding-top: 0px
     text-align: right
+    @include medium-screen-aside
 
   section
     @include margin-not-last-child
