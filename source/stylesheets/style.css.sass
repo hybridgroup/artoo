@@ -1,0 +1,216 @@
+@import 'barebones'
+@import 'coderay'
+
+$red: #cc3300
+$blue: #ebfdff
+$gray: #373737
+$light_gray: #505252
+$bright-red: #bc2a1b
+
+$header-size: 66px
+$logo-size: 155px
+
+$small-screen: 479px
+$medium-screen: 767px
+$big-screen: 964px
+
+@mixin title-font($size, $color)
+  font-family: 'Montserrat', sans-serif
+  font-weight: 700
+  font-size: $size
+  color: $color
+
+@mixin margin-not-last-child()
+  &:not(:last-child)
+    margin-bottom: 20px
+
+@mixin small-screen($width: "", $height: "")
+  @media only screen and (max-width: $medium-screen) 
+    @if $width != ""
+      width: $width
+    @if $height != ""
+      height: $height
+    @content
+
+@mixin medium-screen($width: "", $height: "")
+  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+    @if $width != ""
+      width: $width
+    @if $height != ""
+      height: $height
+    @content
+
+
+@mixin small-screen-header()
+  @media only screen and (max-width: $medium-screen)
+    width: 100%
+    text-align: center
+    .logo, .subtitle
+      width: 100%
+      float: none !important
+      display: block
+      margin: 0
+      padding: 0
+    .subtitle
+      font-size: 19px
+      line-height: 15px
+      padding: 0
+    .menu
+      width: 100%
+      .item
+        margin: 0
+        padding: 0 7px
+
+
+@mixin medium-screen-menu()
+  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+    width: 435px
+    padding: 0
+    line-height: 71px
+    .item
+      margin: 0
+      padding: 0 9px
+
+@mixin medium-screen-pre()
+  @media only screen and (max-width: $medium-screen) 
+    white-space: pre
+    overflow: scroll
+    word-wrap: normal
+
+@mixin medium-screen-content()
+  @media only screen and (max-width: $medium-screen) 
+    padding-top: 0
+    width: 100%
+
+@mixin medium-screen-aside()
+  @media only screen and (max-width: $medium-screen) 
+    display: none
+
+body
+  background-color: $blue
+  background-image: url('../images/bg-artoo.png')
+  background-repeat: no-repeat
+  background-position: top
+
+pre
+  @include medium-screen-pre
+
+header
+  height: $header-size
+  padding-top: 10px
+
+  h1
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
+    color: $red
+    font-size: 56
+
+  .logo, .subtitle, .menu, h1 
+    line-height: $header-size
+    vertical-align: middle
+    margin: 0
+
+  .logo
+    width: $logo-size
+    float: left
+
+  .subtitle
+    @include title-font(20px, $light_gray)
+    float: left
+    padding: 4 0 0 15
+
+  .menu
+    float: right
+    padding-top: 4 0 0 25
+    width: 450px
+    text-align: center
+
+
+    .active
+      color: $red
+
+    .item
+      font-size: 15px
+      font-weight: bold
+      margin: 10px
+      padding: 8px 14px
+
+      &:hover
+        color: $red
+
+      &:active
+        color: $red
+
+    +medium-screen-menu
+  +small-screen-header()
+
+
+.title
+  @include title-font(43px, $gray)
+  padding-top: 35px
+  line-height: 54px
+  width: 100%
+  +small-screen
+    font-size: 28px
+    line-height: 34px
+
+.subtitle
+  @include title-font(24px, $gray)
+  font-weight: 550
+  line-height: 50px
+  +small-screen
+    font-size: 20px
+    line-height: 34px
+    margin-top: 5px
+
+
+.container
+  width: $big-screen
+  min-height: 100%
+  position: relative
+  +medium-screen($medium-screen, "")
+  +small-screen(100%, "")
+    overflow: hidden
+    padding: 0 15px
+.footer
+  @include title-font(12px, $gray)
+  font-weight: normal
+  bottom: 0
+  width: 100%
+  height: 50px
+  position: absolute
+  +small-screen
+    height: 50px
+    font-size: 11px
+    line-height: 13px
+  .copyright
+    margin-top: 18px
+
+.main
+  padding-bottom: 50px
+
+  iframe
+    width: 600
+    height: 400px
+
+    @include margin-not-last-child
+    @include medium-screen(420px, 236px)
+    @include small-screen(290px, 169px)
+
+  .content
+    padding-top: 22px
+    width: 70%
+    &.full
+      width: 100%
+
+    h1, h2
+      color: $bright-red
+
+  .aside.right
+    width: 30%
+    float: right
+    padding-top: 0px
+    text-align: right
+    @include medium-screen-aside
+
+  section
+    @include margin-not-last-child

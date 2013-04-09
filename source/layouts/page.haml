@@ -1,6 +1,4 @@
 - wrap_layout :layout do
-  #main{:role => "main"}
-    .aside.right
-      %img{:src => "images/artoo.png"}
-    %section#intro
+  .main{:role => "main"}
+    %section.content.full
       = yield
