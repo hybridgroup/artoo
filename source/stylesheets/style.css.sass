@@ -24,24 +24,57 @@ $big-screen: 964px
   &:not(:last-child)
     margin-bottom: 20px
 
-@mixin small-screen($width, $height)
+@mixin small-screen($width: "", $height: "")
   @media only screen and (max-width: $medium-screen) 
-    width: $width
-    height: $height
+    @if $width != ""
+      width: $width
+    @if $height != ""
+      height: $height
+    @content
 
 @mixin small-screen-title
   @media only screen and (max-width: $medium-screen) 
     font-size: 28px
+    line-height: 35px
 
-@mixin medium-screen($width, $height)
+@mixin medium-screen($width: "", $height: "")
   @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
-    width: $width
-    height: $height
+    @if $width != ""
+      width: $width
+    @if $height != ""
+      height: $height
+    @content
+
+
+@mixin small-screen-header()
+  @media only screen and (max-width: $medium-screen)
+    width: 100%
+    text-align: center
+    .logo, .subtitle
+      width: 100%
+      float: none !important
+      display: block
+      margin: 0
+      padding: 0
+    .subtitle
+      font-size: 19px
+      line-height: 15px
+      padding: 0
+    .menu
+      width: 100%
+      .item
+        margin: 0
+        padding: 0 7px
+
 
 @mixin medium-screen-menu()
   @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
-    width: 335px
+    width: 435px
     padding: 0
+    line-height: 71px
+    .item
+      margin: 0
+      padding: 0 9px
 
 body
   background-color: $blue
@@ -84,8 +117,6 @@ header
     width: 450px
     text-align: center
 
-    @include medium-screen-menu
-    @include small-screen($small-screen, $header-size)
 
     .active
       color: $red
@@ -102,32 +133,49 @@ header
       &:active
         color: $red
 
-      @include medium-screen-menu
+    +medium-screen-menu
+  +small-screen-header()
+
 
 .title
   @include title-font(43px, $gray)
-  @include small-screen-title
   padding-top: 35px
   line-height: 54px
   width: 100%
+  +small-screen
+    font-size: 28px
+    line-height: 34px
 
 .subtitle
   @include title-font(24px, $gray)
   font-weight: 550
   line-height: 50px
+  +small-screen
+    font-size: 20px
+    line-height: 34px
+    margin-top: 5px
+
 
 .container
   width: $big-screen
   min-height: 100%
   position: relative
-  @include medium-screen($medium-screen, "")
-  @include small-screen($small-screen - 10, "")
+  +medium-screen($medium-screen, "")
+  +small-screen(100%, "")
+    overflow: hidden
+    padding: 0 15px
 
 .footer
   bottom: 0
   width: 100%
-  height: 30px
+  height: 50px
   position: absolute
+  +small-screen
+    height: 50px
+    font-size: 11px
+    line-height: 13px
+  .copyright
+    margin-top: 18px
 
 .main
   padding-bottom: 50px
@@ -138,11 +186,13 @@ header
 
     @include margin-not-last-child
     @include medium-screen(420px, 236px)
-    @include small-screen(300px, 169px)
+    @include small-screen(290px, 169px)
 
   .content
     padding-top: 22px
     width: 70%
+    &.full
+      width: 100%
 
     h1, h2
       color: $bright-red
