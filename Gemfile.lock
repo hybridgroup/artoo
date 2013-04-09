@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (0.2.0)
+    artoo (0.3.0)
       active_support (~> 3.0)
       celluloid-io (~> 0.13)
       multi_json (~> 1.6)
@@ -19,7 +19,7 @@ GEM
       sass (~> 3.2)
     celluloid (0.13.0)
       timers (>= 1.0.0)
-    celluloid-io (0.13.0)
+    celluloid-io (0.13.1)
       celluloid (>= 0.13.0)
       nio4r (>= 0.4.0)
     certified (0.1.1)
