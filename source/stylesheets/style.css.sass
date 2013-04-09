@@ -10,7 +10,7 @@ $bright-red: #bc2a1b
 $header-size: 66px
 $logo-size: 155px
 
-$small-screen: 480px
+$small-screen: 479px
 $medium-screen: 767px
 $big-screen: 964px
 
@@ -31,11 +31,6 @@ $big-screen: 964px
     @if $height != ""
       height: $height
     @content
-
-@mixin small-screen-title
-  @media only screen and (max-width: $medium-screen) 
-    font-size: 28px
-    line-height: 35px
 
 @mixin medium-screen($width: "", $height: "")
   @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
@@ -76,6 +71,21 @@ $big-screen: 964px
       margin: 0
       padding: 0 9px
 
+@mixin medium-screen-pre()
+  @media only screen and (max-width: $medium-screen) 
+    white-space: pre
+    overflow: scroll
+    word-wrap: normal
+
+@mixin medium-screen-content()
+  @media only screen and (max-width: $medium-screen) 
+    padding-top: 0
+    width: 100%
+
+@mixin medium-screen-aside()
+  @media only screen and (max-width: $medium-screen) 
+    display: none
+
 body
   background-color: $blue
   background-image: url('../images/bg-artoo.png')
@@ -83,10 +93,7 @@ body
   background-position: top
 
 pre
-  @media only screen and (max-width: $medium-screen) 
-    white-space: pre
-    overflow: scroll
-    word-wrap: normal
+  @include medium-screen-pre
 
 header
   height: $header-size
@@ -164,8 +171,9 @@ header
   +small-screen(100%, "")
     overflow: hidden
     padding: 0 15px
-
 .footer
+  @include title-font(12px, $gray)
+  font-weight: normal
   bottom: 0
   width: 100%
   height: 50px
@@ -202,6 +210,7 @@ header
     float: right
     padding-top: 0px
     text-align: right
+    @include medium-screen-aside
 
   section
     @include margin-not-last-child
