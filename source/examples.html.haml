@@ -12,20 +12,20 @@ description: Artoo code snippets for your convinience.
       :::ruby
       require 'artoo'
 
-      connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
-      device :led, :driver => :led, :pin => 13
-      device :button, :driver => :button, :pin => 2
+      connection :arduino, adaptor: :firmata, port: '/dev/tty.usbmodemxxxxx'
+      device :led, driver: :led, pin: 13
+      device :button, driver: :button, pin: 2
 
       work do
-        on button, :push => proc {led.toggle}
+        on button, push: proc {led.toggle}
       end
 
   #### AR.Drone 2.0
       :::ruby
       require 'artoo'
 
-      connection :ardrone, :adaptor => :ardrone
-      device :drone, :driver => :ardrone
+      connection :ardrone, adaptor: :ardrone
+      device :drone, driver: :ardrone
 
       work do
         drone.start
@@ -42,8 +42,8 @@ description: Artoo code snippets for your convinience.
       SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
 
       class SpheroRobot < Artoo::Robot
-        connection :sphero, :adaptor => :sphero
-        device :sphero, :driver => :sphero
+        connection :sphero, adaptor: :sphero
+        device :sphero, driver: :sphero
 
         work do
           every(3.seconds) do
@@ -53,7 +53,7 @@ description: Artoo code snippets for your convinience.
       end
 
       robots = SPHEROS.map do |p|
-        SpheroRobot.new(:connections => {:sphero => {:port => p}})
+        SpheroRobot.new(connections: {sphero: {port: p}})
       end
 
       SpheroRobot.work!(robots)
