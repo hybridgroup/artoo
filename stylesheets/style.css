@@ -1500,3 +1500,7 @@ header {
   /* line 24, style.css.sass */
   .main section:not(:last-child) {
     margin-bottom: 20px; }
+
+/* line 218, style.css.sass */
+.CodeRay {
+  font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
