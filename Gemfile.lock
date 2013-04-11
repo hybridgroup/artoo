@@ -109,3 +109,4 @@ DEPENDENCIES
   middleman
   middleman-gh-pages
   rack-codehighlighter
+  rake
