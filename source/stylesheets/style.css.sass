@@ -82,10 +82,6 @@ $big-screen: 964px
     padding-top: 0
     width: 100%
 
-@mixin medium-screen-aside()
-  @media only screen and (max-width: $medium-screen) 
-    display: none
-
 body
   background-color: $blue
   background-image: url('../images/bg-artoo.png')
@@ -210,7 +206,6 @@ header
     float: right
     padding-top: 0px
     text-align: right
-    @include medium-screen-aside
 
   section
     @include margin-not-last-child
