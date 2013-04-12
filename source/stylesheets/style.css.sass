@@ -1,18 +1,18 @@
 @import 'barebones'
 @import 'coderay'
 
-$red: #cc3300
-$blue: #ebfdff
-$gray: #373737
-$light_gray: #505252
-$bright-red: #bc2a1b
+$red           : #cc3300
+$blue          : #ebfdff
+$gray          : #373737
+$light_gray    : #505252
+$bright-red    : #bc2a1b
 
-$header-size: 66px
-$logo-size: 155px
+$header-size   : 66px
+$logo-size     : 155px
 
-$small-screen: 479px
-$medium-screen: 767px
-$big-screen: 964px
+$small-screen  : 479px
+$medium-screen : 767px
+$big-screen    : 964px
 
 @mixin title-font($size, $color)
   font-family: 'Montserrat', sans-serif
@@ -113,6 +113,18 @@ header
     @include title-font(20px, $light_gray)
     float: left
     padding: 4 0 0 15
+    width: 200px
+
+  .easter
+    display: none
+  .heart
+    color: red
+    font-size: 20px
+    vertical-align: middle
+    margin-top: -2px
+    display: inline-block
+    width: 38px
+    text-align: center
 
   .menu
     float: right
@@ -167,6 +179,7 @@ header
   +small-screen(100%, "")
     overflow: hidden
     padding: 0 15px
+
 .footer
   @include title-font(12px, $gray)
   font-weight: normal
@@ -181,7 +194,7 @@ header
   .copyright
     margin-top: 18px
 
-.main
+.main[role="main"]
   padding-bottom: 50px
 
   iframe

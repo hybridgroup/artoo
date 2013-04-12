@@ -6,14 +6,39 @@
     %meta{:content => data.page.description, :name => "description"}
     %meta{:content => data.page.author, :name => "author"}
     %title= data.page.title
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700")
     %link(rel="stylesheet" href="/stylesheets/style.css")
+    :javascript
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
   %body
     .container
       %header
         %a.logo{href: '/'}
           %h1 artoo
-        %span.subtitle Ruby on Robots
+        %span.subtitle
+          .main Ruby on Robots
+          .easter
+            .heart ♥
+            Rubinius
+
         %span.menu
           = link_to "About", "", (menu_item(""))
           = link_to "Examples", "", (menu_item("examples"))
