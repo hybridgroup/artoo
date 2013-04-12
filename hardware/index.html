@@ -8,8 +8,29 @@
     <meta content="Artoo compatible hardware." name="description">
     <meta content="The Hybrid Group" name="author">
     <title>Artoo Hardware</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container">
@@ -17,7 +38,13 @@
         <a class="logo" href="/">
           <h1>artoo</h1>
         </a>
-        <span class="subtitle">Ruby on Robots</span>
+        <span class="subtitle">
+          <div class="main">Ruby on Robots</div>
+          <div class="easter">
+            <div class="heart">♥</div>
+            Rubinius
+          </div>
+        </span>
         <span class="menu">
           <a href="/" class="item">About</a>
           <a href="/examples" class="item">Examples</a>

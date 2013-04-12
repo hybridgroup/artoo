@@ -1333,30 +1333,43 @@ header {
     font-size: 20px;
     color: #505252;
     float: left;
-    padding: 4 0 0 15; }
-  /* line 117, style.css.sass */
+    padding: 4 0 0 15;
+    width: 200px; }
+  /* line 118, style.css.sass */
+  header .easter {
+    display: none; }
+  /* line 120, style.css.sass */
+  header .heart {
+    color: red;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-top: -2px;
+    display: inline-block;
+    width: 38px;
+    text-align: center; }
+  /* line 129, style.css.sass */
   header .menu {
     float: right;
     padding-top: 4 0 0 25;
     width: 450px;
     text-align: center; }
-    /* line 124, style.css.sass */
+    /* line 136, style.css.sass */
     header .menu .active {
       color: #cc3300; }
-    /* line 127, style.css.sass */
+    /* line 139, style.css.sass */
     header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 14px; }
-      /* line 133, style.css.sass */
+      /* line 145, style.css.sass */
       header .menu .item:hover {
         color: #cc3300; }
-      /* line 136, style.css.sass */
+      /* line 148, style.css.sass */
       header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 117, style.css.sass */
+      /* line 129, style.css.sass */
       header .menu {
         width: 435px;
         padding: 0;
@@ -1390,7 +1403,7 @@ header {
           margin: 0;
           padding: 0 7px; } }
 
-/* line 143, style.css.sass */
+/* line 155, style.css.sass */
 .title {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1400,12 +1413,12 @@ header {
   line-height: 54px;
   width: 100%; }
   @media only screen and (max-width: 767px) {
-    /* line 143, style.css.sass */
+    /* line 155, style.css.sass */
     .title {
       font-size: 28px;
       line-height: 34px; } }
 
-/* line 152, style.css.sass */
+/* line 164, style.css.sass */
 .subtitle {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1414,29 +1427,29 @@ header {
   font-weight: 550;
   line-height: 50px; }
   @media only screen and (max-width: 767px) {
-    /* line 152, style.css.sass */
+    /* line 164, style.css.sass */
     .subtitle {
       font-size: 20px;
       line-height: 34px;
       margin-top: 5px; } }
 
-/* line 162, style.css.sass */
+/* line 174, style.css.sass */
 .container {
   width: 964px;
   min-height: 100%;
   position: relative; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 162, style.css.sass */
+    /* line 174, style.css.sass */
     .container {
       width: 767px; } }
   @media only screen and (max-width: 767px) {
-    /* line 162, style.css.sass */
+    /* line 174, style.css.sass */
     .container {
       width: 100%;
       overflow: hidden;
       padding: 0 15px; } }
 
-/* line 170, style.css.sass */
+/* line 183, style.css.sass */
 .footer {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1448,55 +1461,55 @@ header {
   height: 50px;
   position: absolute; }
   @media only screen and (max-width: 767px) {
-    /* line 170, style.css.sass */
+    /* line 183, style.css.sass */
     .footer {
       height: 50px;
       font-size: 11px;
       line-height: 13px; } }
-  /* line 181, style.css.sass */
+  /* line 194, style.css.sass */
   .footer .copyright {
     margin-top: 18px; }
 
-/* line 184, style.css.sass */
-.main {
+/* line 197, style.css.sass */
+.main[role="main"] {
   padding-bottom: 50px; }
-  /* line 187, style.css.sass */
-  .main iframe {
+  /* line 200, style.css.sass */
+  .main[role="main"] iframe {
     width: 600;
     height: 400px; }
     /* line 24, style.css.sass */
-    .main iframe:not(:last-child) {
+    .main[role="main"] iframe:not(:last-child) {
       margin-bottom: 20px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 187, style.css.sass */
-      .main iframe {
+      /* line 200, style.css.sass */
+      .main[role="main"] iframe {
         width: 420px;
         height: 236px; } }
     @media only screen and (max-width: 767px) {
-      /* line 187, style.css.sass */
-      .main iframe {
+      /* line 200, style.css.sass */
+      .main[role="main"] iframe {
         width: 290px;
         height: 169px; } }
-  /* line 195, style.css.sass */
-  .main .content {
+  /* line 208, style.css.sass */
+  .main[role="main"] .content {
     padding-top: 22px;
     width: 70%; }
-    /* line 198, style.css.sass */
-    .main .content.full {
+    /* line 211, style.css.sass */
+    .main[role="main"] .content.full {
       width: 100%; }
-    /* line 201, style.css.sass */
-    .main .content h1, .main .content h2 {
+    /* line 214, style.css.sass */
+    .main[role="main"] .content h1, .main[role="main"] .content h2 {
       color: #bc2a1b; }
-  /* line 204, style.css.sass */
-  .main .aside.right {
+  /* line 217, style.css.sass */
+  .main[role="main"] .aside.right {
     width: 30%;
     float: right;
     padding-top: 0px;
     text-align: right; }
   /* line 24, style.css.sass */
-  .main section:not(:last-child) {
+  .main[role="main"] section:not(:last-child) {
     margin-bottom: 20px; }
 
-/* line 213, style.css.sass */
+/* line 226, style.css.sass */
 .CodeRay {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
