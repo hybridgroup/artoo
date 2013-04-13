@@ -24,6 +24,14 @@ $big-screen    : 964px
   &:not(:last-child)
     margin-bottom: 20px
 
+@mixin tiny-screen($width: "", $height: "")
+  @media only screen and (max-width: 400) 
+    @if $width != ""
+      width: $width
+    @if $height != ""
+      height: $height
+    @content
+
 @mixin small-screen($width: "", $height: "")
   @media only screen and (max-width: $medium-screen) 
     @if $width != ""
@@ -267,5 +275,7 @@ header
     .splitter
       display: block
       margin-bottom: 5px
-    .twitter-share-button
-      margin-bottom: 10px
+
++tiny-screen
+  .twitter-share-button
+    margin-bottom: 10px
