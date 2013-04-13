@@ -1294,43 +1294,43 @@ ol.CodeRay li {
 .CodeRay .head .head {
   color: #f4f; }
 
-/* line 85, style.css.sass */
+/* line 93, style.css.sass */
 body {
   background-color: #ebfdff;
   background-image: url("../images/bg-artoo.png");
   background-repeat: no-repeat;
   background-position: top; }
 
-/* line 92, style.css.sass */
+/* line 100, style.css.sass */
 a, a:visited {
   color: #4da7e0; }
 
 @media only screen and (max-width: 767px) {
-  /* line 96, style.css.sass */
+  /* line 104, style.css.sass */
   pre {
     white-space: pre;
     overflow: scroll;
     word-wrap: normal; } }
 
-/* line 99, style.css.sass */
+/* line 107, style.css.sass */
 header {
   height: 66px;
   padding-top: 10px; }
-  /* line 103, style.css.sass */
+  /* line 111, style.css.sass */
   header h1 {
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #cc3300;
     font-size: 56; }
-  /* line 108, style.css.sass */
+  /* line 116, style.css.sass */
   header .logo, header .subtitle, header .menu, header h1 {
     line-height: 66px;
     vertical-align: middle;
     margin: 0; }
-  /* line 113, style.css.sass */
+  /* line 121, style.css.sass */
   header .logo {
     width: 155px;
     float: left; }
-  /* line 117, style.css.sass */
+  /* line 125, style.css.sass */
   header .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1339,10 +1339,10 @@ header {
     float: left;
     padding: 4 0 0 15;
     width: 200px; }
-  /* line 123, style.css.sass */
+  /* line 131, style.css.sass */
   header .easter {
     display: none; }
-  /* line 125, style.css.sass */
+  /* line 133, style.css.sass */
   header .heart {
     color: red;
     font-size: 20px;
@@ -1351,66 +1351,66 @@ header {
     display: inline-block;
     width: 38px;
     text-align: center; }
-  /* line 134, style.css.sass */
+  /* line 142, style.css.sass */
   header .menu {
     float: right;
     padding-top: 4 0 0 25;
     width: 450px;
     text-align: center; }
-    /* line 141, style.css.sass */
+    /* line 149, style.css.sass */
     header .menu .active {
       color: #cc3300; }
-    /* line 144, style.css.sass */
+    /* line 152, style.css.sass */
     header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 14px; }
-      /* line 150, style.css.sass */
+      /* line 158, style.css.sass */
       header .menu .item, header .menu .item:visited {
         color: #505252; }
-      /* line 153, style.css.sass */
+      /* line 161, style.css.sass */
       header .menu .item:hover {
         color: #cc3300; }
-      /* line 156, style.css.sass */
+      /* line 164, style.css.sass */
       header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 134, style.css.sass */
+      /* line 142, style.css.sass */
       header .menu {
         width: 400px;
         padding: 0;
         line-height: 71px; }
-        /* line 70, style.css.sass */
+        /* line 78, style.css.sass */
         header .menu .item {
           margin: 0;
           padding: 0 9px; } }
   @media only screen and (max-width: 767px) {
-    /* line 99, style.css.sass */
+    /* line 107, style.css.sass */
     header {
       width: 100%;
       text-align: center; }
-      /* line 48, style.css.sass */
+      /* line 56, style.css.sass */
       header .logo, header .subtitle {
         width: 100%;
         float: none !important;
         display: block;
         margin: 0;
         padding: 0; }
-      /* line 54, style.css.sass */
+      /* line 62, style.css.sass */
       header .subtitle {
         font-size: 19px;
         line-height: 15px;
         padding: 0; }
-      /* line 58, style.css.sass */
+      /* line 66, style.css.sass */
       header .menu {
         width: 100%; }
-        /* line 60, style.css.sass */
+        /* line 68, style.css.sass */
         header .menu .item {
           margin: 0;
           padding: 0 7px; } }
 
-/* line 162, style.css.sass */
+/* line 170, style.css.sass */
 .title {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1422,36 +1422,36 @@ header {
   clear: both;
   opacity: 0.94; }
   @media only screen and (max-width: 767px) {
-    /* line 162, style.css.sass */
+    /* line 170, style.css.sass */
     .title {
       font-size: 23px;
       line-height: 34px;
       padding: 0; }
-      /* line 173, style.css.sass */
+      /* line 181, style.css.sass */
       .title br {
         display: none; } }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 162, style.css.sass */
+    /* line 170, style.css.sass */
     .title {
       font-size: 33px;
       line-height: 42px; } }
 
-/* line 181, style.css.sass */
+/* line 189, style.css.sass */
 .container {
   width: 964px;
   min-height: 100%;
   position: relative; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 181, style.css.sass */
+    /* line 189, style.css.sass */
     .container {
       width: 767px; } }
   @media only screen and (max-width: 767px) {
-    /* line 181, style.css.sass */
+    /* line 189, style.css.sass */
     .container {
       width: 100%;
       overflow: hidden;
       padding: 0 15px; } }
-  /* line 190, style.css.sass */
+  /* line 198, style.css.sass */
   .container > .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1461,14 +1461,14 @@ header {
     line-height: 50px;
     opacity: 0.74; }
     @media only screen and (max-width: 767px) {
-      /* line 190, style.css.sass */
+      /* line 198, style.css.sass */
       .container > .subtitle {
         font-size: 18px;
         line-height: 34px;
         margin-top: 0px;
         padding: 0; } }
 
-/* line 201, style.css.sass */
+/* line 209, style.css.sass */
 .footer {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1480,19 +1480,19 @@ header {
   height: 50px;
   position: absolute; }
   @media only screen and (max-width: 767px) {
-    /* line 201, style.css.sass */
+    /* line 209, style.css.sass */
     .footer {
       height: 50px;
       font-size: 11px;
       line-height: 13px; } }
-  /* line 212, style.css.sass */
+  /* line 220, style.css.sass */
   .footer .copyright {
     margin-top: 18px; }
 
-/* line 215, style.css.sass */
+/* line 223, style.css.sass */
 .main[role="main"] {
   padding-bottom: 50px; }
-  /* line 220, style.css.sass */
+  /* line 228, style.css.sass */
   .main[role="main"] .videos iframe {
     width: 600;
     height: 400px; }
@@ -1500,34 +1500,34 @@ header {
     .main[role="main"] .videos iframe:not(:last-child) {
       margin-bottom: 20px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 220, style.css.sass */
+      /* line 228, style.css.sass */
       .main[role="main"] .videos iframe {
         width: 420px;
         height: 236px; } }
     @media only screen and (max-width: 767px) {
-      /* line 220, style.css.sass */
+      /* line 228, style.css.sass */
       .main[role="main"] .videos iframe {
         width: 290px;
         height: 169px; } }
-  /* line 228, style.css.sass */
+  /* line 236, style.css.sass */
   .main[role="main"] .content {
     width: 70%; }
-    /* line 230, style.css.sass */
+    /* line 238, style.css.sass */
     .main[role="main"] .content.full {
       width: 100%;
       clear: both; }
-    /* line 234, style.css.sass */
+    /* line 242, style.css.sass */
     .main[role="main"] .content h1, .main[role="main"] .content h2 {
       color: #bc2a1b;
       margin-top: 30px; }
-      /* line 237, style.css.sass */
+      /* line 245, style.css.sass */
       .main[role="main"] .content h1:first, .main[role="main"] .content h2:first {
         margin-top: 0; }
-    /* line 239, style.css.sass */
+    /* line 247, style.css.sass */
     .main[role="main"] .content h1 {
       font-size: 1.9em;
       padding: 10px 0; }
-  /* line 244, style.css.sass */
+  /* line 252, style.css.sass */
   .main[role="main"] .aside.right {
     width: 30%;
     float: right;
@@ -1537,28 +1537,30 @@ header {
   .main[role="main"] section:not(:last-child) {
     margin-bottom: 20px; }
 
-/* line 254, style.css.sass */
+/* line 262, style.css.sass */
 .documentation .item {
   margin-bottom: 40px; }
-  /* line 256, style.css.sass */
+  /* line 264, style.css.sass */
   .documentation .item h4 {
     color: #b9b9b9; }
 
-/* line 259, style.css.sass */
+/* line 267, style.css.sass */
 .CodeRay {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 262, style.css.sass */
+/* line 270, style.css.sass */
 .social {
   padding-top: 30px; }
-  /* line 264, style.css.sass */
+  /* line 272, style.css.sass */
   .social .splitter {
     display: inline; }
   @media only screen and (max-width: 767px) {
-    /* line 267, style.css.sass */
+    /* line 275, style.css.sass */
     .social .splitter {
       display: block;
-      margin-bottom: 5px; }
-    /* line 270, style.css.sass */
-    .social .twitter-share-button {
-      margin-bottom: 10px; } }
+      margin-bottom: 5px; } }
+
+@media only screen and (max-width: 400) {
+  /* line 280, style.css.sass */
+  .twitter-share-button {
+    margin-bottom: 10px; } }
