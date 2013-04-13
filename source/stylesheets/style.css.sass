@@ -88,6 +88,11 @@ body
   background-repeat: no-repeat
   background-position: top
 
+a
+  &, &:visited
+    color: #4DA7E0
+  
+
 pre
   @include medium-screen-pre
 
@@ -142,6 +147,9 @@ header
       margin: 10px
       padding: 8px 14px
 
+      &, &:visited
+        color: #505252
+
       &:hover
         color: $red
 
@@ -169,17 +177,6 @@ header
     line-height: 42px
 
 
-.subtitle
-  @include title-font(24px, #133A55)
-  font-weight: 550
-  line-height: 50px
-  opacity: 0.84
-  +small-screen
-    font-size: 18px
-    line-height: 34px
-    margin-top: 0px
-    padding: 0
-
 
 .container
   width: $big-screen
@@ -189,6 +186,17 @@ header
   +small-screen(100%, "")
     overflow: hidden
     padding: 0 15px
+
+  & > .subtitle
+    @include title-font(24px, #133A55)
+    font-weight: 550
+    line-height: 50px
+    opacity: 0.74
+    +small-screen
+      font-size: 18px
+      line-height: 34px
+      margin-top: 0px
+      padding: 0
 
 .footer
   @include title-font(12px, $gray)
@@ -207,13 +215,15 @@ header
 .main[role="main"]
   padding-bottom: 50px
 
-  iframe
-    width: 600
-    height: 400px
 
-    @include margin-not-last-child
-    @include medium-screen(420px, 236px)
-    @include small-screen(290px, 169px)
+  .videos
+    iframe
+      width: 600
+      height: 400px
+
+      @include margin-not-last-child
+      @include medium-screen(420px, 236px)
+      @include small-screen(290px, 169px)
 
   .content
     width: 70%
@@ -226,6 +236,9 @@ header
       margin-top: 30px
       &:first
         margin-top: 0
+    h1
+      font-size: 1.9em
+      padding: 10px 0
 
 
   .aside.right
@@ -237,5 +250,20 @@ header
   section
     @include margin-not-last-child
 
+.documentation
+  .item
+    margin-bottom: 40px
+    h4
+      color: #B9B9B9
+
 .CodeRay
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace
+
+.social
+  padding-top: 30px
+  .splitter
+    display: inline
+  +small-screen
+    .splitter
+      display: block
+      margin-bottom: 5px
