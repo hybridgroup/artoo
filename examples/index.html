@@ -21,7 +21,7 @@
         }
       }
       $(document).ready(function() {
-        $('header').hover(function() {
+        $('header .subtitle').hover(function() {
           $('.easter', this).show();
           $('.main', this).hide();
           heart();
@@ -81,6 +81,21 @@ work <span class="keyword">do</span>
 
   after(<span class="integer">25</span>.seconds) { drone.hover.land }
   after(<span class="integer">30</span>.seconds) { drone.stop }
+<span class="keyword">end</span></pre>
+          
+          <h4 id="roomba">Roomba</h4>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
+device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
+
+work <span class="keyword">do</span>
+  roomba.safe_mode
+  roomba.nudge_left
+  roomba.nudge_right
+  roomba.nudge_right
+  roomba.nudge_left
 <span class="keyword">end</span></pre>
           
           <h4 id="sphero__modular">Sphero - Modular</h4>
