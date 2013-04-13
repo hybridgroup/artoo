@@ -1,6 +1,7 @@
 require 'artoo'
+require 'artoo/drivers/roomba'
 
-connection :roomba, :adaptor => :roomba, :port => '/dev/tty.usbserial-A2001yzl'
+connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
 device :roomba, :driver => :roomba, :connection => :roomba
   
 work do
@@ -9,41 +10,26 @@ work do
   roomba.nudge_right
   roomba.nudge_right
   roomba.nudge_left
-  sing_jingle_bells
+  play_jingle_bells
 end
 
-def sing_jingle_bells
-  note_group = JingleBells.song0
-  l = note_group.length / 2
-  notes = [140, 0, l] + note_group
-  roomba.send_bytes(notes)
+def play_jingle_bells
+  roomba.song(JingleBells.song0, 0)
+  roomba.song(JingleBells.song1, 1)
+  roomba.song(JingleBells.song2, 2)
+  roomba.song(JingleBells.song3, 3)
 
-  note_group = JingleBells.song1
-  l = note_group.length / 2
-  notes = [140, 1, l] + note_group
-  roomba.send_bytes(notes)
-
-  note_group = JingleBells.song2
-  l = note_group.length / 2
-  notes = [140, 2, l] + note_group
-  roomba.send_bytes(notes)
-
-  note_group = JingleBells.song3
-  l = note_group.length / 2
-  notes = [140, 3, l] + note_group
-  roomba.send_bytes(notes)
-
-  roomba.send_bytes([141,0])
+  roomba.play(0)
   sleep(7)
-  roomba.send_bytes([141,1])
+  roomba.play(1)
   sleep(7)
-  roomba.send_bytes([141,2])
+  roomba.play(2)
   sleep(7)
-  roomba.send_bytes([141,3])
+  roomba.play(3)
 end
 
 class JingleBells
-  include Artoo::Drivers::Roomba::Note
+  extend Artoo::Drivers::Roomba::Note
 
   class << self
     def song0

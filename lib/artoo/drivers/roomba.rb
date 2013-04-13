@@ -34,6 +34,11 @@ module Artoo
         START = 128
       end
       
+      module Song
+        SONG = 140
+        PLAY = 141
+      end
+
       def start
         send_bytes(Mode::START)
         sleep 0.2
@@ -104,13 +109,13 @@ module Artoo
       end
   
       def play(song_number = 0)
-        send_bytes([141, song_number])
+        send_bytes([Song::PLAY, song_number])
       end
 
       def song(notes, song_number = 0)
         note_group = notes.flatten.compact
         l = note_group.length / 2
-        send_bytes([140, song_number, l] + note_group)
+        send_bytes([Song::SONG, song_number, l] + note_group)
       end
       
       def play_song(notes, song_number = 0)
