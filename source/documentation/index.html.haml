@@ -2,27 +2,19 @@
 layout: page
 ---
 
-:markdown
-  ## The DSL
-  Artoo’s simple DSL makes telling robots what to do incredibly simple and fun.
+%h2 Documentation
 
-  All you need to get started is the `artoo` gem
-
-      :::ruby
-      require 'artoo'
-
-   Then hook it up to your robot (in this case, a [Sphero](http://gosphero.com)):
-
-      :::ruby
-      connection :sphero, adaptor: :sphero, port: '4560'
-      device :sphero, driver: :sphero
-
-  And tell it what to do!
-
-      :::ruby
-      work do
-        every(3.seconds) do
-          puts "Rolling..."
-          sphero.roll 60, rand(360)
-        end
-      end
+.item
+  %h3
+    = link_to "Wiki", "#"
+    (Coming Soon)
+.item
+  %h3
+    = link_to "Artoo Reference", "#"
+    (Coming Soon)
+  The most complete documentation on Artoo DSL.
+.item
+  %h3
+    = link_to "Tutorial", "#"
+    (Coming Soon)
+  %p The tutorial is a great place to start if you aren’t familiar with Robotics. Here we'll explain some basic ideas to get you started with Artoo.

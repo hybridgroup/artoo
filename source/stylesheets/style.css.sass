@@ -64,7 +64,7 @@ $big-screen    : 964px
 
 @mixin medium-screen-menu()
   @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
-    width: 435px
+    width: 400px
     padding: 0
     line-height: 71px
     .item
@@ -151,24 +151,34 @@ header
     +medium-screen-menu
   +small-screen-header()
 
-
 .title
-  @include title-font(43px, $gray)
-  padding-top: 35px
+  @include title-font(47px, #133A55)
+  padding-top: 15px
   line-height: 54px
   width: 100%
+  clear: both
+  opacity: 0.94
   +small-screen
-    font-size: 28px
+    font-size: 23px
     line-height: 34px
+    padding: 0
+    br
+      display: none
+  +medium-screen
+    font-size: 33px
+    line-height: 42px
+
 
 .subtitle
-  @include title-font(24px, $gray)
+  @include title-font(24px, #133A55)
   font-weight: 550
   line-height: 50px
+  opacity: 0.84
   +small-screen
-    font-size: 20px
+    font-size: 18px
     line-height: 34px
-    margin-top: 5px
+    margin-top: 0px
+    padding: 0
 
 
 .container
@@ -206,13 +216,17 @@ header
     @include small-screen(290px, 169px)
 
   .content
-    padding-top: 22px
     width: 70%
     &.full
       width: 100%
+      clear: both
 
     h1, h2
       color: $bright-red
+      margin-top: 30px
+      &:first
+        margin-top: 0
+
 
   .aside.right
     width: 30%

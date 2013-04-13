@@ -42,11 +42,19 @@
         %span.menu
           = link_to "About", "", (menu_item(""))
           = link_to "Examples", "", (menu_item("examples"))
+          = link_to "GitHub", "https://github.com/hybridgroup/artoo/", class: "item"
           = link_to "Docs", "", (menu_item("documentation"))
-          = link_to "Hardware", "", (menu_item("hardware"))
       - unless data.page.hero.nil?
-        .title Artoo is a Ruby Framework that will help you build Skynet.
-        .subtitle In 1 hour, flat.
+        .title
+          We believe that it's time to bring
+          %br
+          Ruby and Robots together.
+        .subtitle
+          By providing a DSL that is
+          = link_to "Simple", "https://github.com/hybridgroup/artoo/wiki/"
+          and
+          = succeed '.' do
+            = link_to "Extensible", "https://github.com/hybridgroup/artoo/wiki/2.1.-Current-Hardware"
       = yield
       .footer
         .copyright
