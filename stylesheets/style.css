@@ -1301,32 +1301,36 @@ body {
   background-repeat: no-repeat;
   background-position: top; }
 
+/* line 92, style.css.sass */
+a, a:visited {
+  color: #4da7e0; }
+
 @media only screen and (max-width: 767px) {
-  /* line 91, style.css.sass */
+  /* line 96, style.css.sass */
   pre {
     white-space: pre;
     overflow: scroll;
     word-wrap: normal; } }
 
-/* line 94, style.css.sass */
+/* line 99, style.css.sass */
 header {
   height: 66px;
   padding-top: 10px; }
-  /* line 98, style.css.sass */
+  /* line 103, style.css.sass */
   header h1 {
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #cc3300;
     font-size: 56; }
-  /* line 103, style.css.sass */
+  /* line 108, style.css.sass */
   header .logo, header .subtitle, header .menu, header h1 {
     line-height: 66px;
     vertical-align: middle;
     margin: 0; }
-  /* line 108, style.css.sass */
+  /* line 113, style.css.sass */
   header .logo {
     width: 155px;
     float: left; }
-  /* line 112, style.css.sass */
+  /* line 117, style.css.sass */
   header .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1335,10 +1339,10 @@ header {
     float: left;
     padding: 4 0 0 15;
     width: 200px; }
-  /* line 118, style.css.sass */
+  /* line 123, style.css.sass */
   header .easter {
     display: none; }
-  /* line 120, style.css.sass */
+  /* line 125, style.css.sass */
   header .heart {
     color: red;
     font-size: 20px;
@@ -1347,31 +1351,34 @@ header {
     display: inline-block;
     width: 38px;
     text-align: center; }
-  /* line 129, style.css.sass */
+  /* line 134, style.css.sass */
   header .menu {
     float: right;
     padding-top: 4 0 0 25;
     width: 450px;
     text-align: center; }
-    /* line 136, style.css.sass */
+    /* line 141, style.css.sass */
     header .menu .active {
       color: #cc3300; }
-    /* line 139, style.css.sass */
+    /* line 144, style.css.sass */
     header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 14px; }
-      /* line 145, style.css.sass */
+      /* line 150, style.css.sass */
+      header .menu .item, header .menu .item:visited {
+        color: #505252; }
+      /* line 153, style.css.sass */
       header .menu .item:hover {
         color: #cc3300; }
-      /* line 148, style.css.sass */
+      /* line 156, style.css.sass */
       header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 129, style.css.sass */
+      /* line 134, style.css.sass */
       header .menu {
-        width: 435px;
+        width: 400px;
         padding: 0;
         line-height: 71px; }
         /* line 70, style.css.sass */
@@ -1379,7 +1386,7 @@ header {
           margin: 0;
           padding: 0 9px; } }
   @media only screen and (max-width: 767px) {
-    /* line 94, style.css.sass */
+    /* line 99, style.css.sass */
     header {
       width: 100%;
       text-align: center; }
@@ -1403,53 +1410,65 @@ header {
           margin: 0;
           padding: 0 7px; } }
 
-/* line 155, style.css.sass */
+/* line 162, style.css.sass */
 .title {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 43px;
-  color: #373737;
-  padding-top: 35px;
+  font-size: 47px;
+  color: #133a55;
+  padding-top: 15px;
   line-height: 54px;
-  width: 100%; }
+  width: 100%;
+  clear: both;
+  opacity: 0.94; }
   @media only screen and (max-width: 767px) {
-    /* line 155, style.css.sass */
+    /* line 162, style.css.sass */
     .title {
-      font-size: 28px;
-      line-height: 34px; } }
-
-/* line 164, style.css.sass */
-.subtitle {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  color: #373737;
-  font-weight: 550;
-  line-height: 50px; }
-  @media only screen and (max-width: 767px) {
-    /* line 164, style.css.sass */
-    .subtitle {
-      font-size: 20px;
+      font-size: 23px;
       line-height: 34px;
-      margin-top: 5px; } }
+      padding: 0; }
+      /* line 173, style.css.sass */
+      .title br {
+        display: none; } }
+  @media only screen and (min-width: 767px) and (max-width: 964px) {
+    /* line 162, style.css.sass */
+    .title {
+      font-size: 33px;
+      line-height: 42px; } }
 
-/* line 174, style.css.sass */
+/* line 181, style.css.sass */
 .container {
   width: 964px;
   min-height: 100%;
   position: relative; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 174, style.css.sass */
+    /* line 181, style.css.sass */
     .container {
       width: 767px; } }
   @media only screen and (max-width: 767px) {
-    /* line 174, style.css.sass */
+    /* line 181, style.css.sass */
     .container {
       width: 100%;
       overflow: hidden;
       padding: 0 15px; } }
+  /* line 190, style.css.sass */
+  .container > .subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #133a55;
+    font-weight: 550;
+    line-height: 50px;
+    opacity: 0.74; }
+    @media only screen and (max-width: 767px) {
+      /* line 190, style.css.sass */
+      .container > .subtitle {
+        font-size: 18px;
+        line-height: 34px;
+        margin-top: 0px;
+        padding: 0; } }
 
-/* line 183, style.css.sass */
+/* line 201, style.css.sass */
 .footer {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1461,46 +1480,54 @@ header {
   height: 50px;
   position: absolute; }
   @media only screen and (max-width: 767px) {
-    /* line 183, style.css.sass */
+    /* line 201, style.css.sass */
     .footer {
       height: 50px;
       font-size: 11px;
       line-height: 13px; } }
-  /* line 194, style.css.sass */
+  /* line 212, style.css.sass */
   .footer .copyright {
     margin-top: 18px; }
 
-/* line 197, style.css.sass */
+/* line 215, style.css.sass */
 .main[role="main"] {
   padding-bottom: 50px; }
-  /* line 200, style.css.sass */
-  .main[role="main"] iframe {
+  /* line 220, style.css.sass */
+  .main[role="main"] .videos iframe {
     width: 600;
     height: 400px; }
     /* line 24, style.css.sass */
-    .main[role="main"] iframe:not(:last-child) {
+    .main[role="main"] .videos iframe:not(:last-child) {
       margin-bottom: 20px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 200, style.css.sass */
-      .main[role="main"] iframe {
+      /* line 220, style.css.sass */
+      .main[role="main"] .videos iframe {
         width: 420px;
         height: 236px; } }
     @media only screen and (max-width: 767px) {
-      /* line 200, style.css.sass */
-      .main[role="main"] iframe {
+      /* line 220, style.css.sass */
+      .main[role="main"] .videos iframe {
         width: 290px;
         height: 169px; } }
-  /* line 208, style.css.sass */
+  /* line 228, style.css.sass */
   .main[role="main"] .content {
-    padding-top: 22px;
     width: 70%; }
-    /* line 211, style.css.sass */
+    /* line 230, style.css.sass */
     .main[role="main"] .content.full {
-      width: 100%; }
-    /* line 214, style.css.sass */
+      width: 100%;
+      clear: both; }
+    /* line 234, style.css.sass */
     .main[role="main"] .content h1, .main[role="main"] .content h2 {
-      color: #bc2a1b; }
-  /* line 217, style.css.sass */
+      color: #bc2a1b;
+      margin-top: 30px; }
+      /* line 237, style.css.sass */
+      .main[role="main"] .content h1:first, .main[role="main"] .content h2:first {
+        margin-top: 0; }
+    /* line 239, style.css.sass */
+    .main[role="main"] .content h1 {
+      font-size: 1.9em;
+      padding: 10px 0; }
+  /* line 244, style.css.sass */
   .main[role="main"] .aside.right {
     width: 30%;
     float: right;
@@ -1510,6 +1537,25 @@ header {
   .main[role="main"] section:not(:last-child) {
     margin-bottom: 20px; }
 
-/* line 226, style.css.sass */
+/* line 254, style.css.sass */
+.documentation .item {
+  margin-bottom: 40px; }
+  /* line 256, style.css.sass */
+  .documentation .item h4 {
+    color: #b9b9b9; }
+
+/* line 259, style.css.sass */
 .CodeRay {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
+
+/* line 262, style.css.sass */
+.social {
+  padding-top: 30px; }
+  /* line 264, style.css.sass */
+  .social .splitter {
+    display: inline; }
+  @media only screen and (max-width: 767px) {
+    /* line 267, style.css.sass */
+    .social .splitter {
+      display: block;
+      margin-bottom: 5px; } }
