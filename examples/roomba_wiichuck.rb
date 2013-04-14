@@ -8,7 +8,34 @@ device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.
   
 work do
   roomba.safe_mode
-  on wiichuck, :z_button => proc { roomba.beep }
+  on wiichuck, :z_button => proc { 
+    C1 = 66
+    D1 = 74
+    E1 = 83
+    F1 = 88
+    A2 = 100
+    QUARTER = 16
+    HALF = 57
+    la_cucaracha = []
+    la_cucaracha << [C1, QUARTER] 
+    la_cucaracha << [C1, QUARTER]
+    la_cucaracha << [C1, QUARTER] 
+    la_cucaracha << [F1, HALF] 
+    la_cucaracha << [A2, QUARTER] 
+    la_cucaracha << [C1, QUARTER]
+    la_cucaracha << [C1, QUARTER]
+    la_cucaracha << [C1, QUARTER] 
+    la_cucaracha << [F1, HALF] 
+    la_cucaracha << [A2, QUARTER] 
+    la_cucaracha << [F1, QUARTER] 
+    la_cucaracha << [F1, QUARTER] 
+    la_cucaracha << [E1, QUARTER] 
+    la_cucaracha << [E1, QUARTER] 
+    la_cucaracha << [D1, QUARTER] 
+    la_cucaracha << [D1, QUARTER] 
+    la_cucaracha << [C1, QUARTER] 
+    roomba.play_song(la_cucaracha)
+  }
   on wiichuck, :joystick => proc { |*value|
 
     pair = value[1]
