@@ -1,0 +1,9 @@
+-M github-markup
+
+--no-private
+--hide-void-return
+
+--markup=markdown
+--markup-provider=redcarpet
+
+--exclude lib/artoo/ext
