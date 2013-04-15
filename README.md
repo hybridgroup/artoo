@@ -137,3 +137,6 @@ gem install hybridgroup-sphero
 ruby myrobot.rb
 ```
 
+## Wiki
+
+Check out our [wiki](https://github.com/hybridgroup/artoo/wiki) for more docs
