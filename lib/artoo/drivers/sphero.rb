@@ -31,7 +31,7 @@ module Artoo
       end
 
       def set_color(*colors)
-        connection.rgb(*color(colors))
+        connection.rgb(*color(*colors))
       end
 
       def color(*colors)
