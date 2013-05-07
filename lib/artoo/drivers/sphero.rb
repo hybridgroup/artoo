@@ -51,7 +51,7 @@ module Artoo
         responses.select { |m| m.is_a? respone_klass } if responses
       end
 
-      def messages
+      def responses
         connection.async_messages
       end
     end
