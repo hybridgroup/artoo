@@ -15,7 +15,7 @@ module Artoo
       end
 
       def clear_collisions
-        responses.clear if responses = messages
+        messages.clear if responses = messages
       end
 
       def collisions
@@ -51,7 +51,7 @@ module Artoo
         responses.select { |m| m.is_a? respone_klass } if responses
       end
 
-      def responses
+      def messages
         connection.async_messages
       end
     end
