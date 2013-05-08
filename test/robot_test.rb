@@ -63,9 +63,7 @@ describe Artoo::Robot do
   it 'Artoo::Robot.work! with single object' do
     TestRobot.stubs(:sleep)
 
-    @asm = mock("async_method")
-    @asm.expects(:work)
-    @robot.expects(:async).returns(@asm)
+    TestRobot.expects(:start_work)
     TestRobot.work!(@robot)
   end
 
@@ -73,20 +71,14 @@ describe Artoo::Robot do
     @robot2 = TestRobot.new(:name => "too", :connections => {:test_connection => {:port => '1234'}})
     TestRobot.stubs(:sleep)
 
-    @asm = mock("async_method")
-    @asm.expects(:work).times(2)
-    @robot.expects(:async).returns(@asm)
-    @robot2.expects(:async).returns(@asm)
+    TestRobot.expects(:start_work)
     TestRobot.work!([@robot, @robot2])
   end
 
   it 'Artoo::Robot.work! without object' do
     TestRobot.stubs(:sleep)
 
-    @asm = mock("async_method")
-    @asm.expects(:work).at_least_once
-    TestRobot.expects(:new).returns(@robot)
-    @robot.expects(:async).returns(@asm)
+    TestRobot.expects(:start_work)
     TestRobot.work!
   end
 

@@ -89,7 +89,7 @@ module Artoo
 
         unless cli?
           Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
-          Celluloid::Actor[:master].start_work
+          start_work
           self.running = true
           sleep # sleep main thread, and let the work commence!
         end
@@ -107,6 +107,10 @@ module Artoo
         Celluloid::Actor[:master] = Master.new(robots)
       end
 
+      def start_work
+        Celluloid::Actor[:master].start_work
+      end
+      
       def test?
         ENV["ARTOO_TEST"] == 'true'
       end
