@@ -5,11 +5,16 @@ module Artoo
     #
     # Derive a class from this class, in order to implement communication
     # with a new type of hardware device.
+    # @see https://github.com/celluloid/celluloid-io Celluloid::IO Documentation
     class Adaptor
       include Celluloid::IO
 
       attr_reader :parent, :port
 
+      # Initialize an adaptor
+      # @param params [hash]
+      # @option params [String] :parent
+      # @option params [String] :port
       def initialize(params={})
         @parent = params[:parent]
         @port = params[:port]
