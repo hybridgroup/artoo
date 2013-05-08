@@ -1493,20 +1493,20 @@ header {
 .main[role="main"] {
   padding-bottom: 50px; }
   /* line 228, style.css.sass */
-  .main[role="main"] .videos iframe {
+  .main[role="main"] .videos iframe, .main[role="main"] .videos object {
     width: 600;
     height: 400px; }
     /* line 24, style.css.sass */
-    .main[role="main"] .videos iframe:not(:last-child) {
+    .main[role="main"] .videos iframe:not(:last-child), .main[role="main"] .videos object:not(:last-child) {
       margin-bottom: 20px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
       /* line 228, style.css.sass */
-      .main[role="main"] .videos iframe {
+      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
         width: 420px;
         height: 236px; } }
     @media only screen and (max-width: 767px) {
       /* line 228, style.css.sass */
-      .main[role="main"] .videos iframe {
+      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
         width: 290px;
         height: 169px; } }
   /* line 236, style.css.sass */
