@@ -1355,7 +1355,7 @@ header {
   header .menu {
     float: right;
     padding-top: 4 0 0 25;
-    width: 450px;
+    width: 501px;
     text-align: center; }
     /* line 149, style.css.sass */
     header .menu .active {
@@ -1408,7 +1408,7 @@ header {
         /* line 68, style.css.sass */
         header .menu .item {
           margin: 0;
-          padding: 0 7px; } }
+          padding: 0 2px; } }
 
 /* line 170, style.css.sass */
 .title {
