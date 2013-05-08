@@ -7,10 +7,12 @@ module Artoo
   class Connection
     include Celluloid
     include Artoo::Utility
+    include Comparable
 
-    attr_reader :parent, :name, :port, :adaptor
+    attr_reader :parent, :name, :port, :adaptor, :connection_id
 
     def initialize(params={})
+      @connection_id = rand(10000)
       @name = params[:name].to_s
       @port = Port.new(params[:port])
       @parent = params[:parent]
@@ -35,10 +37,15 @@ module Artoo
       adaptor.connected?
     end
 
+    def adaptor_name
+      adaptor.class.name
+    end
+
     def to_hash
       {:name => name,
+       :connection_id => connection_id,
        :port => port.to_s,
-       :adaptor => adaptor.class.name.demodulize,
+       :adaptor => adaptor_name.demodulize,
        :connected => connected?
       }
     end
@@ -47,12 +54,8 @@ module Artoo
       MultiJson.dump(to_hash)
     end
 
-    def to_s
-      "#{self.class}:0x#{self.object_id}"
-    end
-
     def inspect
-      "#<#{to_s}>"
+      "#<Connection @id=#{object_id}, @name='#{name}', @adaptor=#{adaptor_name}>"
     end
 
     def method_missing(method_name, *arguments, &block)
