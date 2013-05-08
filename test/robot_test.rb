@@ -60,29 +60,29 @@ describe Artoo::Robot do
     @robot.default_connection.adaptor.must_be_kind_of Artoo::Adaptors::Loopback
   end
 
-  it 'Artoo::Robot.work! with single object' do
-    TestRobot.stubs(:sleep)
-
-    TestRobot.expects(:start_work)
-    TestRobot.work!(@robot)
-  end
-
-  it 'Artoo::Robot.work! with array of objects' do
-    @robot2 = TestRobot.new(:name => "too", :connections => {:test_connection => {:port => '1234'}})
-    TestRobot.stubs(:sleep)
-
-    TestRobot.expects(:start_work)
-    TestRobot.work!([@robot, @robot2])
-  end
-
-  it 'Artoo::Robot.work! without object' do
-    TestRobot.stubs(:sleep)
-
-    TestRobot.expects(:start_work)
-    TestRobot.work!
-  end
-
   it 'Artoo::Robot#as_json' do
     MultiJson.load(@robot.as_json, :symbolize_keys => true)[:name].must_equal "testme"
+  end
+
+  describe 'work' do
+    before do
+      TestRobot.stubs(:sleep)
+      @master = mock('master')
+      TestRobot.stubs(:master).returns(@master)
+      @master.expects(:start_work)
+    end
+
+    it 'Artoo::Robot.work! with single object' do
+      TestRobot.work!(@robot)
+    end
+
+    it 'Artoo::Robot.work! with array of objects' do
+      @robot2 = TestRobot.new(:name => "too", :connections => {:test_connection => {:port => '1234'}})
+      TestRobot.work!([@robot, @robot2])
+    end
+
+    it 'Artoo::Robot.work! without object' do
+      TestRobot.work!
+    end
   end
 end
