@@ -29,10 +29,10 @@ class ConwaySpheroRobot < Artoo::Robot
 
   def death
     puts "Death."
+    pause_work
     @alive = false
     sphero.set_color :red
     sphero.stop
-    terminate
   end
 
   def birthday
