@@ -30,7 +30,7 @@ module Artoo
       end
     end
 
-    delegate :connection, :device, :work, :api, :set, :test?
+    delegate :connection, :device, :work, :api, :set, :test?, :cli?
 
     class << self
       attr_accessor :target

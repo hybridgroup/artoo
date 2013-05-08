@@ -19,14 +19,14 @@ describe Artoo::Device do
   end
 
   it 'Artoo::Device#default_connection' do
-    @robot.devices[:test_device_1].default_connection.must_equal @robot.default_connection
-    @robot.devices[:test_device_2].default_connection.must_equal @robot.default_connection
+    @robot.devices[:test_device_1].default_connection.wrapped_object.must_equal @robot.default_connection.wrapped_object
+    @robot.devices[:test_device_2].default_connection.wrapped_object.must_equal @robot.default_connection.wrapped_object
   end
 
   it 'Artoo::Device#connect' do
     @robot2 = MultipleDeviceConnectionTestRobot.new
-    @robot2.devices[:test_device_1].connection.must_equal @robot2.connections[:test_connection]
-    @robot2.devices[:test_device_2].connection.must_equal @robot2.connections[:test_connection2]
+    @robot2.devices[:test_device_1].connection.wrapped_object.must_equal @robot2.connections[:test_connection].wrapped_object
+    @robot2.devices[:test_device_2].connection.wrapped_object.must_equal @robot2.connections[:test_connection2].wrapped_object
   end
 
   it 'Artoo::Device#event_topic_name' do

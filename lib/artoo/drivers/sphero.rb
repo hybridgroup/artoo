@@ -15,7 +15,7 @@ module Artoo
       end
 
       def clear_collisions
-        responses.clear if responses = messages
+        messages.clear if responses = messages
       end
 
       def collisions
@@ -31,7 +31,7 @@ module Artoo
       end
 
       def set_color(*colors)
-        connection.rgb(*color(colors))
+        connection.rgb(*color(*colors))
       end
 
       def color(*colors)
