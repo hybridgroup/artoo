@@ -45,7 +45,7 @@ module Artoo
       {:name => name,
        :connection_id => connection_id,
        :port => port.to_s,
-       :adaptor => adaptor_name.demodulize,
+       :adaptor => adaptor_name.to_s.gsub(/^.*::/, ''),
        :connected => connected?
       }
     end
