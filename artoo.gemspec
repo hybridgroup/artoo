@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'celluloid-io', '~> 0.14.0'
   s.add_runtime_dependency 'reel', '~> 0.4.pre'
   s.add_runtime_dependency 'multi_json', '~> 1.6'
-  s.add_runtime_dependency 'active_support', '~> 3.0'
   s.add_runtime_dependency 'rake', '~> 10.0'
   s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_development_dependency 'minitest', '~> 4.6'

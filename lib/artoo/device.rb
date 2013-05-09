@@ -36,7 +36,7 @@ module Artoo
 
     def to_hash
       {:name => name,
-       :driver => driver.class.name.demodulize,
+       :driver => driver.class.name.to_s.gsub(/^.*::/, ''),
        :pin => pin.to_s,
        :connection => connection.to_hash,
        :interval => interval
