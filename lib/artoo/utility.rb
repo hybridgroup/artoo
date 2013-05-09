@@ -60,7 +60,7 @@ module Artoo
       Celluloid::Actor.current
     end
 
-    # @return [Class] current class
+    # @return [Class] current actor class
     def current_class
       Celluloid::Actor.current.class
     end
