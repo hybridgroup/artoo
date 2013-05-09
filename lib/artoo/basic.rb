@@ -1,7 +1,6 @@
-
 module Artoo
+  # Methods taken from Sinatra codebase
   module Basic
-    # Taken from Sinatra codebase
     # Sets an option to the given value.  If the value is a proc,
     # the proc will be called every time the option is accessed.
     def set(option, value = (not_set = true), ignore_setter = false, &block)
@@ -39,7 +38,7 @@ module Artoo
       self
     end
 
-    # Taken from Sinatra codebase
+    # Callers to ignore
     CALLERS_TO_IGNORE = [ # :nodoc:
       /lib\/artoo.*\.rb$/,                                # artoo code
       /^\(.*\)$/,                                         # generated code
@@ -50,7 +49,6 @@ module Artoo
       /src\/kernel\/bootstrap\/[A-Z]/                     # maglev kernel files
     ]
 
-    # Taken from Sinatra codebase
     # Like Kernel#caller but excluding certain magic entries and without
     # line / method information; the resulting array contains filenames only.
     def caller_files
@@ -59,16 +57,14 @@ module Artoo
 
     private
 
-    # Taken from Sinatra codebase
+    # Replace with call to singleton_class once we're 1.9 only
     def define_singleton_method(name, content = Proc.new)
-    # replace with call to singleton_class once we're 1.9 only
       (class << self; self; end).class_eval do
         undef_method(name) if method_defined? name
         String === content ? class_eval("def #{name}() #{content}; end") : define_method(name, &content)
       end
     end
 
-    # Taken from Sinatra codebase
     # Like Kernel#caller but excluding certain magic entries
     def cleaned_caller(keep = 3)
       caller(1).
