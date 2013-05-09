@@ -43,7 +43,7 @@ module Artoo
       end
 
       def command(method_name, *arguments)
-        Logger.warn("Calling unknown command '#{method_name}'...") unless known_command?(method_name)
+        known_command?(method_name)
         if arguments.first
           self.send(method_name, *arguments)
         else
@@ -56,7 +56,10 @@ module Artoo
       end
 
       def known_command?(method_name)
-        commands.include?(method_name.intern)
+        return true if commands.include?(method_name.intern)
+
+        Logger.warn("Calling unknown command '#{method_name}'...")
+        return false
       end
 
       def method_missing(method_name, *arguments, &block)
