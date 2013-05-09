@@ -1,13 +1,21 @@
 module Artoo
-  # The Artoo::Device class represents the interface to 
+  # The Artoo::Device class represents the interface to
   # a specific individual hardware devices. Examples would be a digital
   # thermometer connected to an Arduino, or a Sphero's accelerometer.
   class Device
     include Celluloid
     include Artoo::Utility
-    
+
     attr_reader :parent, :name, :driver, :pin, :connection, :interval
 
+    # Create new device
+    # @param  [Hash] params
+    # @option params :name       [String]
+    # @option params :pin        [String]
+    # @option params :parent     [String]
+    # @option params :connection [String]
+    # @option params :interval   [String]
+    # @option params :driver     [String]
     def initialize(params={})
       @name = params[:name].to_s
       @pin = params[:pin]
@@ -31,15 +39,16 @@ module Artoo
     end
 
     def event_topic_name(event)
-      "#{parent.safe_name}_#{name}_#{event}"  
+      "#{parent.safe_name}_#{name}_#{event}"
     end
 
     def to_hash
-      {:name => name,
-       :driver => driver.class.name.to_s.gsub(/^.*::/, ''),
-       :pin => pin.to_s,
-       :connection => connection.to_hash,
-       :interval => interval
+      {
+        :name => name,
+        :driver => driver.class.name.to_s.gsub(/^.*::/, ''),
+        :pin => pin.to_s,
+        :connection => connection.to_hash,
+        :interval => interval
       }
     end
 

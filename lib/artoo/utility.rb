@@ -1,5 +1,10 @@
 module Artoo
+  # Utility methods used for convertions
   module Utility
+
+    # Converts camel_cased_word to constant
+    # @example "CamelCasedWord" > CamelCasedWord
+    # @return [Constant] Converted constant
     def constantize(camel_cased_word)
       names = camel_cased_word.split('::')
       names.shift if names.empty? || names.first.empty?
@@ -26,14 +31,20 @@ module Artoo
       end
     end
 
+    # Convert a underscore string to a class
+    # @example "underscore_word" > UnderscoreWord
+    # @return [Class] converted class
     def classify(word)
       underscore(word).gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
     end
 
+    # @return [String] random string
     def random_string
       (0...8).map{65.+(rand(26)).chr}.join
     end
 
+    # Converts camel cased word to downcased with undercores
+    # @example CamelCase > camel_case
     def underscore(camel_cased_word)
       word = camel_cased_word.to_s.dup
       word.gsub!(/::/, '/')
@@ -44,25 +55,28 @@ module Artoo
       word
     end
 
+    # @return [Celluloid::Actor] current instance
     def current_instance
       Celluloid::Actor.current
     end
 
+    # @return [Class] current class
     def current_class
       Celluloid::Actor.current.class
     end
   end
 end
 
-# just a bit of syntactic sugar, actually does nothing
-# Example:
-#  20.seconds => 20
-#  1.second => 1
+# Adds syntactic suger for seconds
 class Integer < Numeric
+  # @return [Integer] Plain number, actually does nothing
+  # @example 20.seconds => 20
   def seconds
     return self
   end
 
+  # @return [Integer] Plain number, actually does nothing
+  # @example 1.second => 1
   def second
     return self
   end
