@@ -42,13 +42,24 @@ module Artoo
         self.class.const_get('COMMANDS')
       end
 
+      def command(method_name, *arguments)
+        Logger.warn("Calling unknown command '#{method_name}'...") unless known_command?(method_name)
+        if arguments.first
+          self.send(method_name, *arguments)
+        else
+          self.send(method_name)
+        end
+      rescue Exception => e
+        Logger.error e.message
+        Logger.error e.backtrace.inspect
+        return nil        
+      end
+
       def known_command?(method_name)
-        commands.include?(method_name)
+        commands.include?(method_name.intern)
       end
 
       def method_missing(method_name, *arguments, &block)
-        Logger.warn("Calling unknown command '#{method_name}'...") unless known_command?(method_name)
-
         connection.send(method_name, *arguments, &block)
       rescue Exception => e
         Logger.error e.message

@@ -36,6 +36,11 @@ module Artoo
       MultiJson.dump(device(@params['robotid'], @params['deviceid']).commands)
     end
 
+    post '/robots/:robotid/devices/:deviceid/commands/:commandid' do
+      result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], command_params)
+      return MultiJson.dump({'result' => result})
+    end
+
     get_ws '/robots/:robotid/devices/:deviceid/events' do
       DeviceEventClient.new(@req, device(@params['robotid'], @params['deviceid']).event_topic_name('update'))
       return nil
@@ -57,6 +62,15 @@ module Artoo
 
     def device(robot_id, device_id)
       master.robot_device(robot_id, device_id)
+    end
+
+    def command_params
+      data = MultiJson.load(@req.body, :symbolize_keys => true)      
+      if data 
+        data[:params]
+      else
+        nil
+      end
     end
   end
 end

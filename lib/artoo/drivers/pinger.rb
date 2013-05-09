@@ -18,7 +18,7 @@ module Artoo
       end
 
       def ping
-        puts "pong"
+        "pong"
       end
     end
   end
