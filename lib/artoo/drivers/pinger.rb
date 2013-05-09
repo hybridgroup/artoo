@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # Pings itself
     class Pinger < Driver
+      COMMANDS = [:ping].freeze
+
       def start_driver
         @count = 1
         every(interval) do
@@ -13,6 +15,10 @@ module Artoo
         end
 
         super
+      end
+
+      def ping
+        puts "pong"
       end
     end
   end
