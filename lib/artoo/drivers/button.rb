@@ -7,10 +7,13 @@ module Artoo
       DOWN = 1
       UP = 0
 
+      # @return [Boolean] True if pressed
       def is_pressed?
         (@is_pressed ||= false) == true
       end
 
+      # Sets values to read and write from button
+      # and starts driver
       def start_driver
         listener = ->(value) { update(value) }
         connection.on("digital-read-#{pin}", listener)
@@ -24,6 +27,7 @@ module Artoo
         super
       end
 
+      # Publishes events according to the button feedback
       def update(value)
         if value == DOWN
           @is_pressed = true

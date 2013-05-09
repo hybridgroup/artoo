@@ -4,6 +4,9 @@ module Artoo
   module Drivers
     # Pings itself
     class Pinger < Driver
+
+      # Publishes events to update and alive event topics
+      # with incremental count
       def start_driver
         @count = 1
         every(interval) do
