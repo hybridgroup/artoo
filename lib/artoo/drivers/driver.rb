@@ -12,6 +12,8 @@ module Artoo
       
       attr_reader :parent
 
+      COMMANDS = [].freeze
+
       def initialize(params={})
         @parent = params[:parent]
       end
@@ -36,7 +38,17 @@ module Artoo
         parent.event_topic_name(event)
       end
 
+      def commands
+        self.class.const_get('COMMANDS')
+      end
+
+      def known_command?(method_name)
+        commands.include?(method_name)
+      end
+
       def method_missing(method_name, *arguments, &block)
+        Logger.warn("Calling unknown command '#{method_name}'...") unless known_command?(method_name)
+
         connection.send(method_name, *arguments, &block)
       rescue Exception => e
         Logger.error e.message
