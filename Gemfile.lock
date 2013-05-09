@@ -75,6 +75,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nio4r (0.4.5)
+    nio4r (0.4.5-java)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -106,6 +107,9 @@ GEM
     timers (1.1.0)
     websocket_parser (0.1.2)
       http
+    yard (0.8.6.1)
+    yard-sinatra (1.0.0)
+      yard (~> 0.7)
 
 PLATFORMS
   java
@@ -127,3 +131,5 @@ DEPENDENCIES
   mocha (~> 0.13)
   sass
   sprockets
+  yard
+  yard-sinatra
