@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     artoo (0.4.0)
-      active_support (~> 3.0)
       celluloid (~> 0.14.0)
       celluloid-io (~> 0.14.0)
       multi_json (~> 1.6)
@@ -13,9 +12,6 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    active_support (3.0.0)
-      activesupport (= 3.0.0)
-    activesupport (3.0.0)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     celluloid (0.14.0)
