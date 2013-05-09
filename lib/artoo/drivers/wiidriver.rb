@@ -8,12 +8,14 @@ module Artoo
 
       def address; 0x52; end
 
+      # Create new Wiidriver
       def initialize(params={})
         @joystick = get_defaults
         @data = {}
         super
       end
 
+      # Starts drives and required connections
       def start_driver
         begin
           listener = ->(value) { update(value) }
@@ -38,6 +40,7 @@ module Artoo
         end
       end
 
+      # Get and update data
       def update(value)
         if encrypted?(value)
           Logger.error "Encrypted bytes from wii device!"
@@ -47,7 +50,7 @@ module Artoo
         @data = parse(value)
       end
 
-      protected 
+      protected
 
       def get_defaults
         {}
