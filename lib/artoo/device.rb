@@ -39,7 +39,8 @@ module Artoo
        :driver => driver.class.name.demodulize,
        :pin => pin.to_s,
        :connection => connection.to_hash,
-       :interval => interval
+       :interval => interval,
+       :commands => driver.commands
       }
     end
 

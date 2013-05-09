@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # L293 or other H-bridge style motor driver behaviors for Firmata
     class Motor < Driver
+      COMMANDS = [:forward, :backward, :stop, :speed, :current_speed].freeze
+
       attr_reader :leg1_pin, :leg2_pin, :speed_pin, :current_speed
 
       def initialize(params={})
