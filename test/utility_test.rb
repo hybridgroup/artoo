@@ -1,27 +1,44 @@
 require File.expand_path(File.dirname(__FILE__) + "/test_helper")
-
-class UtilityTestRobot < Artoo::Robot
-  connection :test_connection
-  device :test_device_1
-  device :test_device_2
-end
+require File.expand_path(File.dirname(__FILE__) + "/utility_test_cases")
 
 describe Artoo::Utility do
-  before do
-    @robot = UtilityTestRobot.new
+  include UtilityTestCases
+  include Artoo::Utility
+
+  describe "#random_string" do
+    it "returns an 8-character String" do
+      random_string.must_be_kind_of String
+      random_string.size.must_equal 8
+    end
   end
 
-  it 'Artoo::Utility#random_string' do
-    string = @robot.random_string
-    string.must_be_kind_of String
-    string.size.must_equal 8
+  describe "#classify" do
+    it "converts a snake_case string to CamelCase" do
+      classify("firmata").must_equal "Firmata"
+      classify("ardrone_awesome").must_equal "ArdroneAwesome"
+
+      CamelToUnderscore.each do |camel, underscore|
+        classify(underscore).must_equal camel
+      end
+    end
   end
 
-  it 'Artoo::Utility#classify' do
-    string = @robot.classify('firmata')
-    string.must_equal 'Firmata'
+  describe "#underscore" do
+    it "converts CamelCase strings to snake_case" do
+      CamelToUnderscore.each do |camel, underscore|
+        underscore(camel).must_equal underscore
+      end
 
-    string = @robot.classify('ardrone_awesome')
-    string.must_equal 'ArdroneAwesome'
+      underscore("HTMLTidy").must_equal "html_tidy"
+      underscore("HTMLTidyGenerator").must_equal "html_tidy_generator"
+    end
+  end
+
+  describe "#constantize" do
+    it "converts strings to constants" do
+      run_constantize_tests_on do |string|
+        constantize(string)
+      end
+    end
   end
 end
