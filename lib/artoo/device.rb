@@ -48,8 +48,16 @@ module Artoo
       MultiJson.dump(to_hash)
     end
 
+    def commands
+      driver.commands
+    end
+    
+    def command(method_name, *arguments, &block)
+      driver.command(method_name, *arguments)
+    end
+
     def method_missing(method_name, *arguments, &block)
-      driver.send(method_name, *arguments, &block)
+      command(method_name, *arguments, &block)
     end
 
     def inspect
