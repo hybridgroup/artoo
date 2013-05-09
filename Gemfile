@@ -18,3 +18,7 @@ gem 'guard'
 gem 'guard-livereload'
 gem 'guard-sprockets'
 gem 'guard-compass'
+
+# For documentation
+gem 'yard'
+gem 'yard-sinatra'
