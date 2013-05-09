@@ -4,6 +4,9 @@ module Artoo
   module Drivers
     # The Sphero driver behaviors
     class Sphero < Driver
+      COMMANDS = [:detect_collisions, :clear_collisions, :collisions, 
+                  :power_notifications, :sensor_data, :set_color, :color].freeze
+
       RED = [255, 0, 0]
       GREEN = [0, 255, 0]
       YELLOW = [255, 255, 0]
