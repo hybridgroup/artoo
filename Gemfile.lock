@@ -128,8 +128,8 @@ DEPENDENCIES
   hybridgroup-argus
   hybridgroup-firmata
   hybridgroup-sphero
-  minitest (~> 4.6)
-  mocha (~> 0.13)
+  minitest
+  mocha
   redcarpet
   sass
   sprockets
