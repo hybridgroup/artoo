@@ -26,8 +26,7 @@ module Artoo
         super
       end
 
-      # Calls Drone actions using method missing
-      # Supported actions: [take_off, land hover, emergency, forward backward, left right, up down, turn_left turn_right, front_camera, bottom_camera]
+      # Calls ardrone actions using method missing
       # @see https://github.com/hybridgroup/argus/blob/master/lib/argus/drone.rb hybridgroup-argus Drone
       def method_missing(method_name, *arguments, &block)
         ardrone.send(method_name, *arguments, &block)
