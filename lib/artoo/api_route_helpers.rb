@@ -101,6 +101,9 @@ module Artoo
       def get_ws(path, &block)
         route 'GET', path, &block
       end
+      def post(path, &block)
+        route 'POST', path, &block
+      end
       def put(path, &block)
         route 'PUT', path, &block
       end
