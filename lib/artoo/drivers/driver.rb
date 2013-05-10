@@ -12,6 +12,8 @@ module Artoo
 
       attr_reader :parent
 
+      COMMANDS = [].freeze
+
       # Create new driver
       # @param [Hash] params
       # @option params [Object] :parent
@@ -42,6 +44,35 @@ module Artoo
       # @return [String] parent topic name
       def event_topic_name(event)
         parent.event_topic_name(event)
+      end
+
+      # @return [Collection] commands
+      def commands
+        self.class.const_get('COMMANDS')
+      end
+
+      # Execute command
+      # @param [Symbol] method_name
+      # @param [Array]  arguments
+      def command(method_name, *arguments)
+        known_command?(method_name)
+        if arguments.first
+          self.send(method_name, *arguments)
+        else
+          self.send(method_name)
+        end
+      rescue Exception => e
+        Logger.error e.message
+        Logger.error e.backtrace.inspect
+        return nil
+      end
+
+      # @return [Boolean] True if command exists
+      def known_command?(method_name)
+        return true if commands.include?(method_name.intern)
+
+        Logger.warn("Calling unknown command '#{method_name}'...")
+        return false
       end
 
       # Sends missing methods to connection

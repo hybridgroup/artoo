@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # Servo behaviors for Firmata
     class Servo < Driver
+      COMMANDS = [:move, :min, :center, :max].freeze
+
       attr_reader :current_angle
 
       # Create new Servo with angle=0

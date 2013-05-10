@@ -114,6 +114,11 @@ module Artoo
         route 'GET', path, &block
       end
 
+      # Route function for post
+      def post(path, &block)
+        route 'POST', path, &block
+      end
+
       # Route function for put
       def put(path, &block)
         route 'PUT', path, &block
