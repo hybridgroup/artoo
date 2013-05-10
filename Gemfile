@@ -23,3 +23,7 @@ gem 'guard-compass'
 gem 'yard'
 gem 'yard-sinatra'
 gem 'redcarpet'
+
+# For tests
+gem 'minitest'
+gem 'mocha'
