@@ -18,3 +18,7 @@ gem 'guard'
 gem 'guard-livereload'
 gem 'guard-sprockets'
 gem 'guard-compass'
+
+# For tests
+gem 'minitest'
+gem 'mocha'
