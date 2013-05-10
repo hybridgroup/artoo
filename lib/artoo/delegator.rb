@@ -1,25 +1,15 @@
-
 module Artoo
   # Execution context for top-level robots
   # DSL methods executed on main are delegated to this class like Sinatra
   class MainRobot < Robot
-    #set :logging, Proc.new { ! test? }
-    #set :method_override, true
-    set :start_work, false #Proc.new { ! test? }
-    #set :app_file, nil
-
-    # def self.register(*extensions, &block) #:nodoc:
-    #   added_methods = extensions.map {|m| m.public_instance_methods }.flatten
-    #   Delegator.delegate(*added_methods)
-    #   super(*extensions, &block)
-    # end
+    set :start_work, false
   end
-  
-  # Artoo delegation mixin that acts like Sinatra. 
+
+  # Artoo delegation mixin that acts like Sinatra.
   # Mixing this module into an object causes all
-  # methods to be delegated to the Artoo::MainRobot class. 
+  # methods to be delegated to the Artoo::MainRobot class.
   # Used primarily at the top-level.
-  module Delegator #:nodoc:
+  module Delegator
     def self.delegate(*methods)
       methods.each do |method_name|
         define_method(method_name) do |*args, &block|
