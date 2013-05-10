@@ -241,10 +241,12 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
     };
     device = {
       console: function() {
+        var wspath;
         if (window.ws) {
           window.ws.close();
         }
-        window.ws = new WebSocket("ws://localhost:4321/robots/" + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events");
+        wspath = "ws://" + location.host + "/robots/";
+        window.ws = new WebSocket(wspath + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events");
         $(".console code").empty();
         return ws.onmessage = function(evt) {
           return $(".console code").prepend(evt.data + "\n");
