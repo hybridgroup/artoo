@@ -3,11 +3,14 @@ require 'artoo/drivers/wiidriver'
 module Artoo
   module Drivers
     # Wiiclassic driver behaviors for Firmata
-    class Wiiclassic < Wiidriver      
+    class Wiiclassic < Wiidriver
+
+      # Update buttons and joysticks values
+      # @param [Object] value
       def update(value)
         begin
           super
-          
+
           adjust_origins
           update_buttons
           update_left_joystick
@@ -21,6 +24,7 @@ module Artoo
         end
       end
 
+      # Adjust all origins
       def adjust_origins
         set_joystick_default_value(:ly_origin, data[:ly])
         set_joystick_default_value(:lx_origin, data[:lx])
@@ -30,6 +34,7 @@ module Artoo
         set_joystick_default_value(:lt_origin, data[:lt])
       end
 
+      # Update button values
       def update_buttons
         update_button("a_button", :a)
         update_button("b_button", :b)
@@ -40,25 +45,29 @@ module Artoo
         update_button("select_button", :-)
       end
 
+      # Publish button event
       def update_button(name, key)
         publish(event_topic_name(name)) if data[key] == true
       end
 
+      # Publish left joystick event
       def update_left_joystick
         publish(event_topic_name("left_joystick"), {:x => calculate_joystick_value(:lx, :lx_origin), :y => calculate_joystick_value(:ly, :ly_origin)})
       end
 
+      # Publish right joystick event
       def update_right_joystick
         publish(event_topic_name("right_joystick"), {:x => calculate_joystick_value(:rx, :rx_origin), :y => calculate_joystick_value(:ry, :ry_origin)})
       end
 
+      # Publish triggers events
       def update_triggers
         publish(event_topic_name("right_trigger"), calculate_joystick_value(:rt, :rt_origin))
         publish(event_topic_name("left_trigger"), calculate_joystick_value(:lt, :lt_origin))
       end
 
       private
-      
+
       def get_defaults
         {
           :ry_origin => nil,
@@ -67,8 +76,8 @@ module Artoo
           :lx_origin => nil,
           :rt_origin => nil,
           :lt_origin => nil
-        }  
-      end      
+        }
+      end
 
       def parse(value)
         return parse_joysticks(value).

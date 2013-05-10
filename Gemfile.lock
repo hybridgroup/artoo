@@ -75,6 +75,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nio4r (0.4.5)
+    nio4r (0.4.5-java)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -86,6 +87,7 @@ GEM
       spoon (~> 0.0)
     rack (1.5.2)
     rake (10.0.4)
+    redcarpet (2.2.2)
     reel (0.4.0.pre)
       celluloid-io (>= 0.8.0)
       http (>= 0.2.0)
@@ -106,6 +108,9 @@ GEM
     timers (1.1.0)
     websocket_parser (0.1.2)
       http
+    yard (0.8.6.1)
+    yard-sinatra (1.0.0)
+      yard (~> 0.7)
 
 PLATFORMS
   java
@@ -125,5 +130,8 @@ DEPENDENCIES
   hybridgroup-sphero
   minitest
   mocha
+  redcarpet
   sass
   sprockets
+  yard
+  yard-sinatra
