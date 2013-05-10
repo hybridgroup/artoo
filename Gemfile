@@ -22,3 +22,4 @@ gem 'guard-compass'
 # For documentation
 gem 'yard'
 gem 'yard-sinatra'
+gem 'redcarpet'
