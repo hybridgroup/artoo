@@ -100,9 +100,9 @@ end
 
 Once the robot or group is working, you can view the main API page at the host and port specified.
 
-## CLI:
+## Console:
 
-Artoo includes Robi, a Command Line Interface (CLI) based on Pry (http://pryrepl.org/) to allow you to interactively control your robot.
+Artoo includes Robi, a console based on Pry (http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
 robi ./examples/hello.rb
