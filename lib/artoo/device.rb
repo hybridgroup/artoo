@@ -26,40 +26,60 @@ module Artoo
       require_driver(params[:driver] || :passthru)
     end
 
+    # Retrieve connections from parent
+    # @param [String] c connection
     def determine_connection(c)
       parent.connections[c] unless c.nil?
     end
 
+    # @return [Connection] default connection
     def default_connection
       parent.default_connection
     end
 
+    # Starts device driver
     def start_device
       driver.start_driver
     end
 
+    # @return [String] event topic name
     def event_topic_name(event)
       "#{parent.safe_name}_#{name}_#{event}"
     end
 
+    # @return [Hash] device
     def to_hash
       {
         :name => name,
         :driver => driver.class.name.to_s.gsub(/^.*::/, ''),
         :pin => pin.to_s,
         :connection => connection.to_hash,
-        :interval => interval
+        :interval => interval,
+        :commands => driver.commands
       }
     end
 
+    # @return [JSON] device
     def as_json
       MultiJson.dump(to_hash)
     end
 
-    def method_missing(method_name, *arguments, &block)
-      driver.send(method_name, *arguments, &block)
+    # @return [Collection] commands
+    def commands
+      driver.commands
     end
 
+    # Execute driver command
+    def command(method_name, *arguments, &block)
+      driver.command(method_name, *arguments)
+    end
+
+    # Sends missing methods to command
+    def method_missing(method_name, *arguments, &block)
+      command(method_name, *arguments, &block)
+    end
+
+    # @return [String] pretty inspect
     def inspect
       "#<Device @id=#{object_id}, @name='name', @driver='driver'>"
     end

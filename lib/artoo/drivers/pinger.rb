@@ -5,6 +5,8 @@ module Artoo
     # Pings itself
     class Pinger < Driver
 
+      COMMANDS = [:ping].freeze
+
       # Publishes events to update and alive event topics
       # with incremental count
       def start_driver
@@ -16,6 +18,10 @@ module Artoo
         end
 
         super
+      end
+
+      def ping
+        "pong"
       end
     end
   end

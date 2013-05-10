@@ -4,6 +4,8 @@ module Artoo
   module Drivers
     # Button driver behaviors for Firmata
     class Button < Driver
+      COMMANDS = [:is_pressed?].freeze
+
       DOWN = 1
       UP = 0
 

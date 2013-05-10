@@ -49,4 +49,8 @@ describe Artoo::Drivers::Led do
     @connection.expects(:analog_write).with(@pin, val)
     @led.brightness(val)
   end
+
+  it 'Led#commands' do
+    @led.commands.must_include :toggle
+  end
 end
