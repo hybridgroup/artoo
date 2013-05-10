@@ -4,6 +4,10 @@ module Artoo
   module Drivers
     # The Roomba driver behaviors
     class Roomba < Driver
+      COMMANDS = [:start, :safe_mode, :full_mode, :forward, :stop, :fast_forward, 
+                  :backwards, :nudge_left, :nudge_right, :turn_left, :turn_right,
+                  :turn_around, :drive, :play, :song, :beep].freeze
+
       module Direction
         STRAIGHT = 32768
         CLOCKWISE = 65535
