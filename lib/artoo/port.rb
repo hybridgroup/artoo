@@ -1,28 +1,33 @@
 module Artoo
-  # The Artoo::Port class represents port and/or host to be used to connect 
+  # The Artoo::Port class represents port and/or host to be used to connect
   # tp a specific individual hardware device.
   class Port
     attr_reader :port, :host
 
+    # Create new port
+    # @param [Object] data
     def initialize(data)
       @is_tcp, @is_serial = false
       parse(data)
     end
 
+    # @return [Boolean] True if serial port
     def is_serial?
       @is_serial == true
     end
 
+    # @return [Boolean] True if tcp port
     def is_tcp?
       @is_tcp == true
     end
 
+    # @return [String] port
     def to_s
       if is_serial?
         port
       else
         "#{host}:#{port}"
-      end  
+      end
     end
 
     private
