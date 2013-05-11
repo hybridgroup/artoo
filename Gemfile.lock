@@ -70,11 +70,13 @@ GEM
     lumberjack (1.0.2)
     metaclass (0.0.1)
     method_source (0.8.1)
-    minitest (4.6.2)
-    mocha (0.13.2)
+    minitest (5.0.0)
+    minitest-happy (1.0.0)
+    mocha (0.14.0.alpha)
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nio4r (0.4.5)
+    nio4r (0.4.5-java)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -123,7 +125,8 @@ DEPENDENCIES
   hybridgroup-argus
   hybridgroup-firmata
   hybridgroup-sphero
-  minitest (~> 4.6)
-  mocha (~> 0.13)
+  minitest (~> 5.0)
+  minitest-happy
+  mocha (~> 0.14.0.alpha)
   sass
   sprockets
