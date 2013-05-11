@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + "/test_helper")
 
-class DelegatorTest < MiniTest::Unit::TestCase
+class DelegatorTest < Minitest::Unit::TestCase
   class Mirror
     attr_reader :last_call
     def method_missing(*a, &b)

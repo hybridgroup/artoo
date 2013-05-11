@@ -3,6 +3,8 @@ source "http://rubygems.org"
 # Specify your gem's dependencies in artoo.gemspec
 gemspec
 
+gem "mocha", '~> 0.14.0.alpha', :require => false
+
 # these are for specific hardware, they have to be here for tests
 gem 'hybridgroup-firmata'
 gem 'hybridgroup-sphero'
