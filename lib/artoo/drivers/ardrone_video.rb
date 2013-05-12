@@ -18,9 +18,9 @@ module Artoo
       # and publishes data to update and frame
       # event topics
       def handle_frame(*params)
-        frame = connection.video_parser.get_frame
-        publish(event_topic_name("update"), "frame", frame)
-        publish(event_topic_name("frame"), frame)
+        video = connection.receive_data
+        publish(event_topic_name("update"), "video", video)
+        publish(event_topic_name("frame"), video.frame)
       end
     end
   end
