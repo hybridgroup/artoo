@@ -27,8 +27,9 @@ module Artoo
               connection.i2c_write_request(address, 0x40, 0x00)
               connection.i2c_write_request(address, 0x00, 0x00)
               connection.i2c_read_request(address, 6)
-              connection.read_and_process
             end
+            
+            connection.read_and_process
           end
 
           super
