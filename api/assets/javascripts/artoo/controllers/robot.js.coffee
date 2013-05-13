@@ -14,6 +14,9 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
     $http.get('/robots/' + $scope.robot.name + "/devices/" + deviceId).success (data)->
       $scope.deviceDetail = data
       device.console()
+  $scope.executeCommand = (deviceId, command) ->
+    $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, {}).success (data)->
+      true
 
   $scope.driverHasOutput = (driverId)->
     true if $.inArray(driverId, window.driversWithOutput) != -1
@@ -28,5 +31,3 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
 
   $scope.isConnected = (connection) ->
     "connected" if  connection && connection.connected
-
-

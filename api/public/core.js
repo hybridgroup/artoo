@@ -234,6 +234,11 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
         return device.console();
       });
     };
+    $scope.executeCommand = function(deviceId, command) {
+      return $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, {}).success(function(data) {
+        return true;
+      });
+    };
     $scope.driverHasOutput = function(driverId) {
       if ($.inArray(driverId, window.driversWithOutput) !== -1) {
         return true;

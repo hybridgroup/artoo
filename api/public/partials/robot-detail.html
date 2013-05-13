@@ -42,7 +42,20 @@
 						</span>
 						<span ng-show='deviceDetail.connection'>
 							<dt><i class="icon-circle" ng-class="isConnected(deviceDetail.connection)"></i> </dt>
-								<dd ng-show="deviceDetail.connection.name">{{deviceDetail.connection.name}}</dd>
+							<dd ng-show="deviceDetail.connection.name">{{deviceDetail.connection.name}}</dd>
+						</span>
+						<span ng-show='deviceDetail.commands'>
+							<div class="commands btn-group" >
+								<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+									Commands
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<div ng-repeat="command in deviceDetail.commands">
+										<li><a ng-click="executeCommand(deviceDetail.name, command)">{{command }}</a></li>
+									</div>
+							</ul>
+							</div>
 						</span>
 					</dl>
 				</b>
