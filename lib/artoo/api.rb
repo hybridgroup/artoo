@@ -91,8 +91,8 @@ module Artoo
 
     def command_params
       data = MultiJson.load(@req.body, :symbolize_keys => true)
-      if data
-        data[:params]
+      if data && params = data[:params]
+        params.size == 1 ? params.first : params
       else
         nil
       end
