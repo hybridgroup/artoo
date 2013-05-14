@@ -47,12 +47,16 @@ module Artoo
       end
 
       def handle_events
-        while event = events.shift do
-          update(event.data.first) if event.name == "i2c_reply"
+        while i = find_event("i2c_reply") do
+          update(events.slice!(i).data.first)
         end
       end
 
       protected
+
+      def find_event(name)
+        events.index {|e| e.name == name}
+      end
 
       def events
         connection.async_events
