@@ -1,4 +1,4 @@
-# monkeypatches for Timers & Timer classes used by Celluloid
+# Monkeypatches for Timers & Timer classes used by Celluloid
 class Timers
   def initialize
     @timers = SortedSet.new

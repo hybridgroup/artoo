@@ -8,36 +8,35 @@ module Artoo
 
       def address; 0x52; end
 
+      # Create new Wiidriver
       def initialize(params={})
         @joystick = get_defaults
         @data = {}
         super
       end
 
+      # Starts drives and required connections
       def start_driver
         begin
-          listener = ->(value) { update(value) }
-          connection.on("i2c_reply", listener)
-
           connection.i2c_config(0)
           every(interval) do
             connection.i2c_write_request(address, 0x40, 0x00)
-            p
             connection.i2c_write_request(address, 0x00, 0x00)
-            p
             connection.i2c_read_request(address, 6)
-            p
+            
             connection.read_and_process
+            handle_events
           end
 
           super
         rescue Exception => e
-          p "start driver"
-          p e.message
-          p e.backtrace.inspect
+          Logger.error "Error starting wii driver!"
+          Logger.error e.message
+          Logger.error e.backtrace.inspect
         end
       end
 
+      # Get and update data
       def update(value)
         if encrypted?(value)
           Logger.error "Encrypted bytes from wii device!"
@@ -47,7 +46,21 @@ module Artoo
         @data = parse(value)
       end
 
-      protected 
+      def handle_events
+        while i = find_event("i2c_reply") do
+          update(events.slice!(i).data.first)
+        end
+      end
+
+      protected
+
+      def find_event(name)
+        events.index {|e| e.name == name}
+      end
+
+      def events
+        connection.async_events
+      end
 
       def get_defaults
         {}

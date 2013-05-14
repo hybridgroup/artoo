@@ -8,6 +8,7 @@ module Artoo
 
       attr_reader :leg1_pin, :leg2_pin, :speed_pin, :current_speed
 
+      # Create new Motor
       def initialize(params={})
         super
 
@@ -18,6 +19,7 @@ module Artoo
         @current_speed = 0
       end
 
+      # Starts connection to read and process and driver
       def start_driver
         every(interval) do
           connection.read_and_process
@@ -26,20 +28,27 @@ module Artoo
         super
       end
 
+      # Sets movement forward
+      # @param [Integer] s speed
       def forward(s)
         set_legs(Firmata::Board::LOW, Firmata::Board::HIGH)
         speed(s)
       end
 
+      # Sets movement backward
+      # @param [Integer] s speed
       def backward(s)
         set_legs(Firmata::Board::HIGH, Firmata::Board::LOW)
         speed(s)
       end
 
+      # Stops
       def stop
         speed(0)
       end
 
+      # Set motor speed
+      # @param [Integer] s speed (must be an integer between 0-255)
       def speed(s)
         raise "Motor speed must be an integer between 0-255" unless (s.is_a?(Numeric) && s >= 0 && s <= 255)
         @current_speed = s

@@ -1,4 +1,4 @@
-# monkeypatches for Celluloid Actor class
+# Monkeypatches for Celluloid Actor class
 module Celluloid
   def timers
     Actor.timers
