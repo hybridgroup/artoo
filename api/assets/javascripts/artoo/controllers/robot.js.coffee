@@ -15,7 +15,10 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
       $scope.deviceDetail = data
       device.console()
   $scope.executeCommand = (deviceId, command) ->
-    $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, {}).success (data)->
+    params      = $( "#appendedDropdownButton" ).val()
+    post_params = {}
+    post_params = "{\"params\": [#{params}]}" unless params == ""
+    $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, post_params).success (data)->
       true
 
   $scope.driverHasOutput = (driverId)->

@@ -25,7 +25,7 @@
 			<div class="span2">
 				<b><span class="name">{{deviceDetail.name}}</span></b>
 			</div>
-			<div class="span10">
+			<div class="span5 pull-right">
 				<b>
 					<dl class="controls">
 						<span ng-show='deviceDetail.pin'>
@@ -44,20 +44,21 @@
 							<dt><i class="icon-circle" ng-class="isConnected(deviceDetail.connection)"></i> </dt>
 							<dd ng-show="deviceDetail.connection.name">{{deviceDetail.connection.name}}</dd>
 						</span>
-						<span ng-show='deviceDetail.commands'>
-							<div class="commands btn-group" >
-								<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-									Commands
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<div ng-repeat="command in deviceDetail.commands">
-										<li><a ng-click="executeCommand(deviceDetail.name, command)">{{command }}</a></li>
-									</div>
-							</ul>
-							</div>
-						</span>
 					</dl>
+					<div class="input-append">
+						<input id="appendedDropdownButton" type="text">
+						<div class="commands btn-group" >
+							<a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
+								Commands
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<div ng-repeat="command in deviceDetail.commands">
+									<li><a ng-click="executeCommand(deviceDetail.name, command)">{{command }}</a></li>
+								</div>
+							</ul>
+						</div>
+					</div>
 				</b>
 			</div>
 		</div>
