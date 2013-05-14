@@ -62,7 +62,7 @@ GEM
       http_parser.rb
     http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-java)
-    hybridgroup-argus (0.2.0)
+    hybridgroup-argus (0.3.0)
     hybridgroup-firmata (0.3.0)
       event_spitter
     hybridgroup-sphero (1.2.0)
@@ -75,6 +75,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nio4r (0.4.5)
+    nio4r (0.4.5-java)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
