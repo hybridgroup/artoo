@@ -33,7 +33,7 @@ module Artoo
 
       def handle_collision_events
         while i = find_event(::Sphero::Response::CollisionDetected) do
-          update_collision(messages.slice!(i).data.first)
+          update_collision(messages.slice!(i))
         end
       end
 
