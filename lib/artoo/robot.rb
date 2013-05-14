@@ -26,50 +26,58 @@ module Artoo
 
     attr_reader :connections, :devices, :name
 
+    # Create new robot
+    # @param [Hash] params
+    # @option params [String]     :name
+    # @option params [Collection] :connections
+    # @option params [Collection] :devices
     def initialize(params={})
       @name = params[:name] || "Robot #{random_string}"
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})
     end
-    
+
     class << self
       attr_accessor :device_types, :working_code, :running,
                     :use_api, :api_host, :api_port
-      
+
       def connection_types
         @@connection_types ||= []
       end
 
-      # connection to some hardware that has one or more devices via some specific protocol
-      # Example:
-      #   connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+      # Connection to some hardware that has one or more devices via some specific protocol
+      # @example connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+      # @param [String] name
+      # @param [Hash]   params
       def connection(name, params = {})
         Celluloid::Logger.info "Registering connection '#{name}'..."
         self.connection_types << {:name => name}.merge(params)
       end
 
-      # device that uses a connection to communicate
-      # Example:
-      #   device :collision_detect, :driver => :switch, :pin => 3
+      # Device that uses a connection to communicate
+      # @example device :collision_detect, :driver => :switch, :pin => 3
+      # @param [String] name
+      # @param [Hash]   params
       def device(name, params = {})
         Celluloid::Logger.info "Registering device '#{name}'..."
         self.device_types ||= []
         self.device_types << {:name => name}.merge(params)
       end
 
-      # the work that needs to be performed
-      # Example:
-      #   work do 
+      # The work that needs to be performed
+      # @example
+      #   work do
       #     every(10.seconds) do
       #       puts "hello, world"
       #     end
       #   end
+      # @param [block] work
       def work(&block)
         Celluloid::Logger.info "Preparing work..."
         self.working_code = block if block_given?
       end
 
-      # activate RESTful api
+      # Activate RESTful api
       # Example:
       #   api :host => '127.0.0.1', :port => '1234'
       def api(params = {})
@@ -79,10 +87,11 @@ module Artoo
         self.api_port = params[:port] || '4321'
       end
 
-      # work can be performed by either:
+      # Work can be performed by either:
       #  an existing instance
       #  an array of existing instances
       #  or, a new instance can be created
+      # @param [Robot] robot
       def work!(robot=nil)
         return if !test? && is_running?
         prepare_robots(robot)
@@ -95,6 +104,7 @@ module Artoo
         end
       end
 
+      # Prepare master robots for work
       def prepare_robots(robot=nil)
         if robot.respond_to?(:work)
           robots = [robot]
@@ -107,32 +117,39 @@ module Artoo
         Celluloid::Actor[:master] = Master.new(robots)
       end
 
+      # Master actor
       def master
         Celluloid::Actor[:master]
       end
 
+      # @return [Boolean] True if test env
       def test?
         ENV["ARTOO_TEST"] == 'true'
       end
 
+      # @return [Boolean] True if cli env
       def cli?
         ENV["ARTOO_CLI"] == 'true'
       end
 
+      # @return [Boolean] True if it's running
       def is_running?
         self.running ||= false
         self.running == true
       end
     end
 
+    # @return [String] Name without spaces and downcased
     def safe_name
       name.gsub(' ', '_').downcase
     end
 
+    # @return [String] Api Host
     def api_host
       self.class.api_host
     end
 
+    # @return [String] Api Port
     def api_port
       self.class.api_port
     end
@@ -145,48 +162,59 @@ module Artoo
       execute_working_code
     end
 
+    # pause the work
     def pause_work
       Logger.info "Pausing work..."
       current_instance.timers.pause
     end
 
+    # continue with the work
     def continue_work
       Logger.info "Continuing work..."
       current_instance.timers.continue
     end
 
+    # Terminate all connections
     def disconnect
       connections.each {|k, c| c.async.disconnect}
     end
 
+    # @return [Connection] default connection
     def default_connection
       connections.values.first
     end
 
+    # @return [Collection] connection types
     def connection_types
       current_class.connection_types
     end
 
+    # @return [Collection] device types
     def device_types
       current_class.device_types ||= []
       current_class.device_types
     end
 
+    # @return [Proc] current working code
     def working_code
       current_class.working_code ||= proc {puts "No work defined."}
     end
-    
+
+    # @return [Hash] robot
     def to_hash
-      {:name => name,
-       :connections => connections.each_value.collect {|c|c.to_hash},
-       :devices => devices.each_value.collect {|d|d.to_hash}
+      {
+        :name => name,
+        :connections => connections.each_value.collect {|c|c.to_hash},
+        :devices => devices.each_value.collect {|d|d.to_hash}
       }
     end
 
+    # @return [JSON] robot
     def as_json
       MultiJson.dump(to_hash)
     end
 
+    # @return [String] robot
     def inspect
       "#<Robot #{object_id}>"
     end

@@ -1,23 +1,30 @@
-# route helpers used within the Artoo::Api class
 module Artoo
+  # Route helpers used within the Artoo::Api class
   module ApiRouteHelpers
     class ResponseHandled < StandardError; end
     module ClassMethods
 
+      # Path to api/public directory
+      # @return [String] static path
       def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api/public"))
         @static_path ||= default
       end
 
+      # @return [Hash] routes
       def routes
         @routes ||= {}
       end
 
+      # Adds compiled signature to routes hash
+      # @return [Array] signature
       def route(verb, path, &block)
         signature = compile!(verb, path, block, {})
         (routes[verb] ||= []) << signature
       end
 
-      ## Ripped from Sinatra 'cause it's so sexy in there
+      # Creates method from block, ripped from Sinatra
+      # 'cause it's so sexy in there
+      # @return [Method] generated method
       def generate_method(method_name, &block)
         define_method(method_name, &block)
         method = instance_method method_name
@@ -25,6 +32,7 @@ module Artoo
         method
       end
 
+      #@todo Add documentation
       def compile!(verb, path, block, options = {})
         options.each_pair { |option, args| send(option, *args) }
         method_name             = "#{verb} #{path}"
@@ -37,6 +45,7 @@ module Artoo
             proc { |a,p| unbound_method.bind(a).call } ]
       end
 
+      #@todo Add documentation
       def compile(path)
         keys = []
         if path.respond_to? :to_str
@@ -71,6 +80,7 @@ module Artoo
         end
       end
 
+      #@todo Add documentation
       def safe_ignore(ignore)
         unsafe_ignore = []
         ignore = ignore.gsub(/%[\da-fA-F]{2}/) do |hex|
@@ -94,16 +104,22 @@ module Artoo
         end
       end
 
-      # Helper route functions
+      # Route function for get
       def get(path, &block)
         route 'GET', path, &block
       end
+
+      # Route function for get_ws
       def get_ws(path, &block)
         route 'GET', path, &block
       end
+
+      # Route function for post
       def post(path, &block)
         route 'POST', path, &block
       end
+
+      # Route function for put
       def put(path, &block)
         route 'PUT', path, &block
       end

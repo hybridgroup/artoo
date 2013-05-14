@@ -9,23 +9,40 @@ module Artoo
       DOWN = 1
       UP = 0
 
+      # @return [Boolean] True if pressed
       def is_pressed?
         (@is_pressed ||= false) == true
       end
 
+      # Sets values to read and write from button
+      # and starts driver
       def start_driver
-        listener = ->(value) { update(value) }
-        connection.on("digital-read-#{pin}", listener)
         connection.set_pin_mode(pin, Firmata::Board::INPUT)
         connection.toggle_pin_reporting(pin)
 
         every(interval) do
           connection.read_and_process
+          handle_events
         end
 
         super
       end
 
+      def handle_events
+        while i = find_event("digital-read-#{pin}") do
+          update(events.slice!(i).data.first)
+        end
+      end
+
+      def find_event(name)
+        events.index {|e| e.name == name}
+      end
+
+      def events
+        connection.async_events
+      end
+
+      # Publishes events according to the button feedback
       def update(value)
         if value == DOWN
           @is_pressed = true
