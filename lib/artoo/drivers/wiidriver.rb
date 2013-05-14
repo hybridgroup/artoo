@@ -18,25 +18,21 @@ module Artoo
       # Starts drives and required connections
       def start_driver
         begin
-          listener = ->(value) { update(value) }
-          connection.on("i2c_reply", listener)
-
           connection.i2c_config(0)
           every(interval) do
             connection.i2c_write_request(address, 0x40, 0x00)
-            p
             connection.i2c_write_request(address, 0x00, 0x00)
-            p
             connection.i2c_read_request(address, 6)
-            p
+            
             connection.read_and_process
+            handle_events
           end
 
           super
         rescue Exception => e
-          p "start driver"
-          p e.message
-          p e.backtrace.inspect
+          Logger.error "Error starting wii driver!"
+          Logger.error e.message
+          Logger.error e.backtrace.inspect
         end
       end
 
@@ -50,7 +46,17 @@ module Artoo
         @data = parse(value)
       end
 
+      def handle_events
+        while event = events.shift do
+          update(event.data.first) if event.name == "i2c_reply"
+        end
+      end
+
       protected
+
+      def events
+        connection.async_events
+      end
 
       def get_defaults
         {}
