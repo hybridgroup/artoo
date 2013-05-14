@@ -14,6 +14,12 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
     $http.get('/robots/' + $scope.robot.name + "/devices/" + deviceId).success (data)->
       $scope.deviceDetail = data
       device.console()
+  $scope.executeCommand = (deviceId, command) ->
+    params      = $( "#appendedDropdownButton" ).val()
+    post_params = {}
+    post_params = "{\"params\": [#{params}]}" unless params == ""
+    $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, post_params).success (data)->
+      true
 
   $scope.driverHasOutput = (driverId)->
     true if $.inArray(driverId, window.driversWithOutput) != -1
@@ -28,5 +34,3 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
 
   $scope.isConnected = (connection) ->
     "connected" if  connection && connection.connected
-
-
