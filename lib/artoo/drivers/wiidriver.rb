@@ -18,18 +18,17 @@ module Artoo
       # Starts drives and required connections
       def start_driver
         begin
-          listener = ->(value) { update(value) }
-          connection.on("i2c_reply", listener)
+          #listener = ->(value) { update(value) }
+          #connection.on("i2c_reply", listener)
 
           connection.i2c_config(0)
           every(interval) do
-            exclusive do
-              connection.i2c_write_request(address, 0x40, 0x00)
-              connection.i2c_write_request(address, 0x00, 0x00)
-              connection.i2c_read_request(address, 6)
-            end
+            connection.i2c_write_request(address, 0x40, 0x00)
+            connection.i2c_write_request(address, 0x00, 0x00)
+            connection.i2c_read_request(address, 6)
             
             connection.read_and_process
+            handle_events
           end
 
           super
@@ -50,7 +49,17 @@ module Artoo
         @data = parse(value)
       end
 
+      def handle_events
+        while event = events.shift do
+          update(event.data.first) if event.name == "i2c_reply"
+        end
+      end
+
       protected
+
+      def events
+        connection.async_events
+      end
 
       def get_defaults
         {}
