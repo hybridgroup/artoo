@@ -14,6 +14,34 @@ module Artoo
       COMMANDS = [:detect_collisions, :clear_collisions, :collisions,
                   :power_notifications, :sensor_data, :set_color, :color].freeze
 
+      # Starts drives and required connections
+      def start_driver
+        begin
+          detect_collisions
+
+          every(interval) do
+            handle_collision_events
+          end
+
+          super
+        rescue Exception => e
+          Logger.error "Error starting Sphero driver!"
+          Logger.error e.message
+          Logger.error e.backtrace.inspect
+        end
+      end
+
+      def handle_collision_events
+        while i = find_event(::Sphero::Response::CollisionDetected) do
+          update_collision(messages.slice!(i))
+        end
+      end
+
+      # Publish collision events
+      def update_collision(data)
+        publish(event_topic_name("collision"), data)
+      end
+
       # Detects collisions
       # @param [Hash] params
       def detect_collisions(params={})
@@ -60,6 +88,10 @@ module Artoo
       end
 
       private
+
+      def find_event(response_klass)
+        messages.index {|m| m.is_a? response_klass}
+      end
 
       def matching_response_types(responses, respone_klass)
         responses.select { |m| m.is_a? respone_klass } if responses
