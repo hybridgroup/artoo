@@ -3,6 +3,8 @@ source "http://rubygems.org"
 # Specify your gem's dependencies in artoo.gemspec
 gemspec
 
+gem "foreman"
+
 # these are for specific hardware, they have to be here for tests
 gem "hybridgroup-firmata", "~> 0.4.0"
 gem "hybridgroup-sphero", "~> 1.3.0"

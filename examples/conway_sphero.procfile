@@ -1,0 +1,7 @@
+Sphero-BWY: bash ../bin/sphero_linux_socat.sh 4560 Sphero-BWY
+Sphero-GOB: bash ../bin/sphero_linux_socat.sh 4561 Sphero-GOB
+Sphero-PGB: bash ../bin/sphero_linux_socat.sh 4562 Sphero-PGB
+Sphero-PYG: bash ../bin/sphero_linux_socat.sh 4563 Sphero-PYG
+Sphero-WRW: bash ../bin/sphero_linux_socat.sh 4564 Sphero-WRW
+Sphero-WWW: bash ../bin/sphero_linux_socat.sh 4565 Sphero-WWW
+Sphero-YBW: bash ../bin/sphero_linux_socat.sh 4566 Sphero-YBW
