@@ -57,7 +57,7 @@ describe Artoo::Robot do
   end
 
   it 'connects to Artoo::Adaptors::Loopback' do
-    @robot.default_connection.adaptor.must_be_kind_of Artoo::Adaptors::Loopback
+    @robot.default_connection.adaptor.class.must_equal Artoo::Adaptors::Loopback
   end
 
   it 'Artoo::Robot#as_json' do
