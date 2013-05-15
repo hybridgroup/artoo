@@ -9,14 +9,18 @@ class ConwaySpheroRobot < Artoo::Robot
   work do
     birth
 
+    on sphero, :collision => proc { contact }
+
     every(3.seconds) { movement if alive? }
     every(10.seconds) { birthday if alive? }
   end
 
   def alive?; (@alive == true); end
+  def reset_contacts; @contacts = 0; end
+  def contact; @contacts += 1; end
 
   def birth
-    sphero.detect_collisions
+    reset_contacts
     @age = 0
     life
     movement
@@ -37,12 +41,11 @@ class ConwaySpheroRobot < Artoo::Robot
 
   def birthday
     @age += 1
-    contacts = sphero.collisions.size
-    sphero.clear_collisions
     
-    puts "Happy birthday, #{name}, you are #{@age} and had #{contacts} contacts."
+    puts "Happy birthday, #{name}, you are #{@age} and had #{@contacts} contacts."
     #return if @age <= 3
-    death unless contacts >= 3 && contacts < 5
+    death unless @contacts >= 3 && @contacts < 5
+    reset_contacts
   end
 
   def movement
