@@ -7,18 +7,18 @@ class ConwaySpheroRobot < Artoo::Robot
   #api :host => '127.0.0.1', :port => '8080'
 
   work do
-    on sphero, :collision => proc { @contacts += 1 }
-
     birth
+
+    on sphero, :collision => proc { contact }
 
     every(3.seconds) { movement if alive? }
     every(10.seconds) { birthday if alive? }
   end
 
   def alive?; (@alive == true); end
-
   def reset_contacts; @contacts = 0; end
-  
+  def contact; @contacts += 1; end
+
   def birth
     reset_contacts
     @age = 0
