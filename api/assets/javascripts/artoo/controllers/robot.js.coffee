@@ -1,5 +1,3 @@
-window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclassic"]
-
 @RobotIndexCtrl = ($scope, $http, $location, $route) ->
   $http.get('/robots').success (data)->
     $scope.robots = data
@@ -20,9 +18,6 @@ window.driversWithOutput = ["Pinger", "Pinger2", "ardrone_navigation", "wiiclass
     post_params = "{\"params\": [#{params}]}" unless params == ""
     $http.post('/robots/' + $scope.robot.name + "/devices/" + deviceId + "/commands/" + command, post_params).success (data)->
       true
-
-  $scope.driverHasOutput = (driverId)->
-    true if $.inArray(driverId, window.driversWithOutput) != -1
 
   device = console: ->
     window.ws.close() if window.ws
