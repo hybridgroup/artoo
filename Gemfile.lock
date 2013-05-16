@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (0.4.1)
+    artoo (0.5.0)
       celluloid (~> 0.14.0)
       celluloid-io (~> 0.14.0)
       multi_json (~> 1.6)
@@ -86,7 +86,6 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nio4r (0.4.5)
-    nio4r (0.4.5-java)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
