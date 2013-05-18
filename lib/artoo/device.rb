@@ -87,6 +87,11 @@ module Artoo
     private
 
     def require_driver(d)
+      if Artoo::Robot.test?
+        original_type = d
+        d = :test
+      end
+
       require "artoo/drivers/#{d.to_s}"
       @driver = constantize("Artoo::Drivers::#{classify(d.to_s)}").new(:parent => current_instance)
     end
