@@ -5,5 +5,5 @@ device :counter, :driver => :counter
 
 work do
   puts 'Starting...'
-  on counter, :count => proc {puts 'I am awesome!'}
+  on counter, :update => proc {puts 'I am awesome!'}
 end

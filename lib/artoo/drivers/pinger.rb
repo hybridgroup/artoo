@@ -17,7 +17,8 @@ module Artoo
       def ping
         @count += 1
         publish(event_topic_name("update"), "ping", @count)
-        "pong"
+        publish(event_topic_name("ping"), @count)
+        "ping #{@count}"
       end
     end
   end

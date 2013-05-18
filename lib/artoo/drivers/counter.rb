@@ -14,6 +14,7 @@ module Artoo
         every(interval) do
           @count += 1
           publish(event_topic_name("update"), "count", @count)
+          publish(event_topic_name("count"), @count)
         end
 
         super
