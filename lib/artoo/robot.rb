@@ -200,6 +200,13 @@ module Artoo
       current_class.working_code ||= proc {puts "No work defined."}
     end
 
+    # @param [Symbol] period
+    # @param [Numeric] interval
+    # @return [Boolean] True if there is recurring work for the period and interval
+    def has_work?(period, interval)
+      current_instance.timers.find {|t| t.recurring == (period == :every) && t.interval == interval}
+    end
+
     # @return [Hash] robot
     def to_hash
       {
