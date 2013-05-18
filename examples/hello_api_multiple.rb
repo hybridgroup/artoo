@@ -4,10 +4,11 @@ class HelloRobot < Artoo::Robot
 	connection :loopback1
 	connection :loopback2
 	connection :loopback3
+	device :pinger, :driver => :pinger
+	device :counter, :driver => :counter
+	device :random, :driver => :random
 	device :passthru1
 	device :passthru2
-	device :pinger, :driver => :pinger
-	device :pinger2, :driver => :pinger2
 
 	api :host => '127.0.0.1', :port => '8080'
 

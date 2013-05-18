@@ -93,7 +93,7 @@ module Artoo
       #  or, a new instance can be created
       # @param [Robot] robot
       def work!(robot=nil)
-        return if !test? && is_running?
+        return if is_running?
         prepare_robots(robot)
 
         unless cli?
@@ -134,8 +134,8 @@ module Artoo
 
       # @return [Boolean] True if it's running
       def is_running?
-        self.running ||= false
-        self.running == true
+        @@running ||= false
+        @@running == true
       end
     end
 
