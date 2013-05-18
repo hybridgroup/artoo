@@ -1,4 +1,4 @@
-require 'celluloid/autostart'
+require 'celluloid'
 require 'celluloid/io'
 require 'multi_json'
 require 'artoo/ext/timers'
