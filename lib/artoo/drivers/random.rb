@@ -13,6 +13,7 @@ module Artoo
         every(interval) do
           @number = rand(100000)
           publish(event_topic_name("update"), "random", @number)
+          publish(event_topic_name("random"), @number)
         end
 
         super
