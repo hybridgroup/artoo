@@ -1,9 +1,9 @@
 require 'artoo'
 
 connection :loop
-device :pinger, :driver => :pinger
+device :counter, :driver => :counter
 
 work do
   puts 'Starting...'
-  on pinger, :alive => proc {puts 'I am awesome!'}
+  on counter, :count => proc {puts 'I am awesome!'}
 end
