@@ -4,7 +4,6 @@ module Artoo
   # thermometer connected to an Arduino, or a Sphero's accelerometer.
   class Device
     include Celluloid
-    include Celluloid::Notifications
     include Artoo::Utility
 
     attr_reader :parent, :name, :driver, :pin, :connection, :interval
