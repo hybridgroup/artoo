@@ -47,6 +47,14 @@ module Artoo
       "#{parent.safe_name}_#{name}_#{event}"
     end
 
+    def publish(event, *data)
+      if data.first
+        driver.publish(event_topic_name(event), *data)
+      else
+        driver.publish(event_topic_name(event))
+      end
+    end
+
     # @return [Hash] device
     def to_hash
       {
