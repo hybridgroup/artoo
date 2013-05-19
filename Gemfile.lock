@@ -74,7 +74,6 @@ GEM
     hybridgroup-argus (0.3.0)
     hybridgroup-firmata (0.4.0)
       event_spitter
-    hybridgroup-sphero (1.3.0)
     libv8 (3.11.8.17)
     listen (0.7.2)
     lumberjack (1.0.2)
@@ -145,7 +144,6 @@ DEPENDENCIES
   guard-sprockets
   hybridgroup-argus (~> 0.3.0)
   hybridgroup-firmata (~> 0.4.0)
-  hybridgroup-sphero (~> 1.3.0)
   minitest (~> 5.0.1)
   minitest-happy
   mocha (~> 0.14.0)

@@ -7,7 +7,6 @@ gem "foreman"
 
 # these are for specific hardware, they have to be here for tests
 gem "hybridgroup-firmata", "~> 0.4.0"
-gem "hybridgroup-sphero", "~> 1.3.0"
 gem "hybridgroup-argus", "~> 0.3.0"
 
 # For the front end web application
