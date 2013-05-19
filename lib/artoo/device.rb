@@ -47,6 +47,14 @@ module Artoo
       "#{parent.safe_name}_#{name}_#{event}"
     end
 
+    def publish(event, *data)
+      if data.first
+        driver.publish(event_topic_name(event), *data)
+      else
+        driver.publish(event_topic_name(event))
+      end
+    end
+
     # @return [Hash] device
     def to_hash
       {
@@ -87,6 +95,11 @@ module Artoo
     private
 
     def require_driver(d)
+      if Artoo::Robot.test?
+        original_type = d
+        d = :test
+      end
+
       require "artoo/drivers/#{d.to_s}"
       @driver = constantize("Artoo::Drivers::#{classify(d.to_s)}").new(:parent => current_instance)
     end

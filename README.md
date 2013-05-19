@@ -45,6 +45,8 @@ end
 
 ### Modular
 
+You can also write more modular class-oriented code, that allows you to control swarms of robots:
+
 ```ruby
 require 'artoo/robot'
 
@@ -99,6 +101,60 @@ end
 ```
 
 Once the robot or group is working, you can view the main API page at the host and port specified.
+
+## Test-Driven Robotics:
+
+Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.
+
+Here is an example that uses Minitest and Mocha:
+
+```ruby
+describe 'sphero' do
+  let(:robot) { Artoo::MainRobot.new }
+   
+  it 'has work to do every 3 seconds' do
+    robot.work
+     
+    robot.has_work?(:every, 3.seconds).wont_be_nil
+  end
+   
+  it 'must roll every 3 seconds' do
+    robot.sphero.expects(:roll).twice
+     
+    robot.work
+    sleep 6.1
+  end
+   
+  it 'receives collision event' do
+    robot.expects(:contact)
+     
+    robot.work
+    robot.sphero.publish("collision", "clunk")
+    sleep 0.1
+  end
+end
+```
+to describe the following Sphero robot:
+
+```ruby
+require 'artoo'
+
+connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4560'
+device :sphero, :driver => :sphero
+
+def contact; @contacts += 1; end
+
+work do
+  @contacts = 0
+
+  on sphero, :collision => :contact
+
+  every(3.seconds) do
+    puts "Rolling..."
+    sphero.roll 90, rand(360)
+  end
+end
+```
 
 ## Console:
 

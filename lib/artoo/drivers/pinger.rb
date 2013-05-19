@@ -2,26 +2,23 @@ require 'artoo/drivers/driver'
 
 module Artoo
   module Drivers
-    # Pings itself
+    # Test driver that can be pinged itself
     class Pinger < Driver
 
       COMMANDS = [:ping].freeze
 
-      # Publishes events to update and alive event topics
-      # with incremental count
       def start_driver
-        @count = 1
-        every(interval) do
-          publish(event_topic_name("update"), "alive", @count)
-          publish(event_topic_name("alive"), @count)
-          @count += 1
-        end
-
+        @count = 0
         super
       end
 
+      # Publishes events to update event topic
+      # when pinged
       def ping
-        "pong"
+        @count += 1
+        publish(event_topic_name("update"), "ping", @count)
+        publish(event_topic_name("ping"), @count)
+        "ping #{@count}"
       end
     end
   end

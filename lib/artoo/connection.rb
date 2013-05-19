@@ -92,6 +92,11 @@ module Artoo
     private
 
     def require_adaptor(type)
+      if Artoo::Robot.test?
+        original_type = type
+        type = :test
+      end
+
       require "artoo/adaptors/#{type.to_s}"
       @adaptor = constantize("Artoo::Adaptors::#{classify(type.to_s)}").new(:port => port, :parent => current_instance)
     end

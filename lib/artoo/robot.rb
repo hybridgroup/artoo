@@ -93,7 +93,7 @@ module Artoo
       #  or, a new instance can be created
       # @param [Robot] robot
       def work!(robot=nil)
-        return if !test? && is_running?
+        return if is_running?
         prepare_robots(robot)
 
         unless cli?
@@ -134,8 +134,8 @@ module Artoo
 
       # @return [Boolean] True if it's running
       def is_running?
-        self.running ||= false
-        self.running == true
+        @@running ||= false
+        @@running == true
       end
     end
 
@@ -198,6 +198,13 @@ module Artoo
     # @return [Proc] current working code
     def working_code
       current_class.working_code ||= proc {puts "No work defined."}
+    end
+
+    # @param [Symbol] period
+    # @param [Numeric] interval
+    # @return [Boolean] True if there is recurring work for the period and interval
+    def has_work?(period, interval)
+      current_instance.timers.find {|t| t.recurring == (period == :every) && t.interval == interval}
     end
 
     # @return [Hash] robot
