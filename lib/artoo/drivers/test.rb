@@ -11,7 +11,7 @@ module Artoo
       end
 
       def command(method_name, *arguments)
-        if method_name.to_s == "publish"
+        if method_name == "publish"
           super
         else
           Logger.info "Driver command '#{method_name}'"
