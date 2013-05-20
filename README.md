@@ -175,7 +175,9 @@ I, [2013-03-16T18:14:23.842879 #61513]  INFO -- : Connecting to 'loop' on port '
 [3] pry(main)> exit
 ```
 
-## Installing:
+## Getting Started:
+
+### Installation
 
 ```ruby
 gem install artoo
@@ -196,11 +198,11 @@ If you want to connect via serial port directly, and are using MRI, install the 
 gem install hybridgroup-serialport
 ```
 
-## Writing your robot code:
+### Writing your robot code:
 
 Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
 
-## Running your robot:
+### Running your robot:
 
 ```ruby
 ruby myrobot.rb
