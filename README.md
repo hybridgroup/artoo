@@ -12,7 +12,7 @@ Artoo provides a simple, yet powerful domain-specific language (DSL) for robotic
 
 ### Basic
 
-Arduino with an LED and a button, using the Firmata protocol.
+#### Arduino with an LED and a button, using the Firmata protocol.
 
 ```ruby
 require 'artoo'
@@ -26,7 +26,7 @@ work do
 end
 ```
 
-Parrot ARDrone 2.0
+#### Parrot ARDrone 2.0
 
 ```ruby
 require 'artoo'
@@ -73,7 +73,7 @@ SPHEROS.each {|p|
 SpheroRobot.work!(robots)
 ```
 
-Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.2, and Rubinius 2.0-rc1
+Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0-rc1
 
 
 Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
@@ -184,9 +184,10 @@ gem install artoo
 Then install the gems required by your specific supported hardware:
 
 ```ruby
-gem install hybridgroup-firmata
-gem install hybridgroup-argus
-gem install hybridgroup-sphero
+gem install artoo-firmata
+gem install artoo-ardrone
+gem install artoo-arduino
+gem install artoo-sphero
 ```
 
 ## Running:
