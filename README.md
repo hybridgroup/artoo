@@ -196,11 +196,19 @@ If you want to connect via serial port directly, and are using MRI, install the 
 gem install hybridgroup-serialport
 ```
 
+## Writing your robot code:
+
+Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
+
 ## Running your robot:
 
 ```ruby
 ruby myrobot.rb
 ```
+
+## Integrating new hardware support:
+
+Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
 ## Wiki
 
