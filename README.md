@@ -181,16 +181,22 @@ I, [2013-03-16T18:14:23.842879 #61513]  INFO -- : Connecting to 'loop' on port '
 gem install artoo
 ```
 
-Then install the gems required by your specific supported hardware:
+Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
 
 ```ruby
-gem install artoo-firmata
-gem install artoo-ardrone
 gem install artoo-arduino
-gem install artoo-sphero
+gem install artoo-ardrone
 ```
 
-## Running:
+If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware. 
+
+If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
+
+```ruby
+gem install hybridgroup-serialport
+```
+
+## Running your robot:
 
 ```ruby
 ruby myrobot.rb
