@@ -96,6 +96,10 @@ module Artoo
         return if is_running?
         prepare_robots(robot)
 
+        Signal.trap("INT") do
+          master.stop_work if master
+        end
+
         unless cli?
           Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
           master.start_work
