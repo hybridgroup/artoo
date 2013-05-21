@@ -61,9 +61,9 @@ module Artoo
       robots.each {|r| r.async.continue_work}
     end
 
-    # @deprecated
+    # terminate all robots
     def stop_work
-      #robots.each {|r| r.async.stop_work} unless !Artoo::Robot.is_running?
+      robots.each {|r| r.terminate} unless !Artoo::Robot.is_running?
     end
   end
 end
