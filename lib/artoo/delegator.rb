@@ -2,7 +2,7 @@ module Artoo
   # Execution context for top-level robots
   # DSL methods executed on main are delegated to this class like Sinatra
   class MainRobot < Robot
-    set :start_work, false
+    set :start_work, Proc.new { ! test? }
   end
 
   # Artoo delegation mixin that acts like Sinatra.
