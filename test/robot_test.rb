@@ -64,12 +64,12 @@ describe Artoo::Robot do
     MultiJson.load(@robot.as_json, :symbolize_keys => true)[:name].must_equal "testme"
   end
 
-  describe 'work' do
+  describe 'work!' do
     before do
       TestRobot.stubs(:sleep)
       @master = mock('master')
-      TestRobot.stubs(:master).returns(@master)
       @master.expects(:start_work)
+      TestRobot.stubs(:master).returns(@master)
     end
 
     it 'Artoo::Robot.work! with single object' do
