@@ -96,12 +96,10 @@ module Artoo
         return if is_running?
         prepare_robots(robot)
 
-        Signal.trap("INT") do
-          master.stop_work if master
-        end
+        setup_interrupt
 
         unless cli?
-          Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+          start_api
           master.start_work
           sleep # sleep main thread, and let the work commence!
         end
@@ -120,6 +118,16 @@ module Artoo
         Celluloid::Actor[:master] = Master.new(robots)
       end
 
+      def setup_interrupt
+        Signal.trap("INT") do
+          master.stop_work if master
+        end
+      end
+
+      def start_api
+        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+      end
+      
       # Master actor
       def master
         Celluloid::Actor[:master]

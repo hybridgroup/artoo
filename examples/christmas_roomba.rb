@@ -16,8 +16,8 @@ end
 def play_jingle_bells
   roomba.song(JingleBells.song0, 0)
   roomba.song(JingleBells.song1, 1)
-  roomba.song(JingleBells.song2, 2)
-  roomba.song(JingleBells.song3, 3)
+  roomba.song(JingleBells.song0, 2)
+  roomba.song(JingleBells.song2, 3)
 
   roomba.play(0)
   sleep(7)
@@ -33,31 +33,28 @@ class JingleBells
 
   class << self
     def song0
-      [[B, QUARTER], [B, QUARTER], [B, HALF],
-       [B, QUARTER], [B, QUARTER], [B, HALF],
-       [B, QUARTER], [D, QUARTER], [G, QUARTER], [A, QUARTER],
-       [B, WHOLE]]
+      [n(B), n(B), n(B, HALF),
+       n(B), n(B), n(B, HALF),
+       n(B), n(D), n(G), n(A),
+       n(B, WHOLE)]
     end
 
     def song1
-      [[C, QUARTER], [C, QUARTER], [C, QUARTER], [C, QUARTER],
-       [C, QUARTER], [B, QUARTER], [B, HALF],
-       [B, QUARTER], [A, QUARTER], [A, QUARTER], [B, QUARTER],
-       [A, HALF], [D, HALF]]
+      [n(C), n(C), n(C), n(C),
+       n(C), n(B), n(B, HALF),
+       n(B), n(A), n(A), n(B),
+       n(A, HALF), n(D, HALF)]
     end
 
     def song2
-      [[B, QUARTER], [B, QUARTER], [B, HALF],
-       [B, QUARTER], [B, QUARTER], [B, HALF],
-       [B, QUARTER], [D, QUARTER], [G, QUARTER], [A, QUARTER],
-       [B, WHOLE]]
+      [n(C), n(C), n(C), n(C),
+       n(C), n(B), n(B), n(B),
+       n(D), n(D), n(C), n(A),
+       n(G, WHOLE)]
     end
 
-    def song3
-      [[C, QUARTER], [C, QUARTER], [C, QUARTER], [C, QUARTER],
-       [C, QUARTER], [B, QUARTER], [B, QUARTER], [B, QUARTER],
-       [D, QUARTER], [D, QUARTER], [C, QUARTER], [A, QUARTER],
-       [G, WHOLE]]
+    def n(note, duration=QUARTER)
+      [note, duration]
     end
   end
 end
