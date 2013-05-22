@@ -249,12 +249,13 @@ ngChange:rd,required:dc,ngRequired:dc,ngValue:ud}).directive(lb).directive(ec);a
         var wspath;
 
         if (window.ws) {
+          window.ws.onmessage = null;
           window.ws.close();
+          $(".console code").empty();
         }
         wspath = "ws://" + location.host + "/robots/";
         window.ws = new WebSocket(wspath + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events");
-        $(".console code").empty();
-        return ws.onmessage = function(evt) {
+        return window.ws.onmessage = function(evt) {
           return $(".console code").prepend(evt.data + "\n");
         };
       }

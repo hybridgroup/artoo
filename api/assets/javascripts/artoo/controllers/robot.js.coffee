@@ -20,11 +20,13 @@
       true
 
   device = console: ->
-    window.ws.close() if window.ws
+    if window.ws
+      window.ws.onmessage = null
+      window.ws.close()
+      $(".console code").empty()
     wspath = "ws://" + location.host + "/robots/"
     window.ws = new WebSocket(wspath + $scope.robot.name + "/devices/" + $scope.deviceDetail.name + "/events")
-    $(".console code").empty()
-    ws.onmessage = (evt)->
+    window.ws.onmessage = (evt)->
       $(".console code").prepend(evt.data + "\n")
 
   $scope.isConnected = (connection) ->
