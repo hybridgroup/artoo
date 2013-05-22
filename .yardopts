@@ -4,7 +4,7 @@
 --hide-void-return
 
 --markup=markdown
---markup-provider=redcarpet
+--markup-provider=kramdown
 
 --exclude lib/artoo/ext
 --plugin yard-sinatra

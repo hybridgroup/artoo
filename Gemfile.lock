@@ -73,6 +73,7 @@ GEM
     http_parser.rb (0.5.3-java)
     json (1.7.7)
     json (1.7.7-java)
+    kramdown (1.0.2)
     libv8 (3.11.8.17)
     listen (0.7.3)
     lumberjack (1.0.3)
@@ -98,14 +99,13 @@ GEM
     rake (10.0.4)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
-    redcarpet (2.2.2)
     reel (0.4.0.pre)
       celluloid-io (>= 0.8.0)
       http (>= 0.2.0)
       http_parser.rb (>= 0.5.3)
       rack (>= 1.4.0)
       websocket_parser (>= 0.1.2)
-    ref (1.0.4)
+    ref (1.0.5)
     sass (3.2.9)
     slop (3.4.5)
     spoon (0.0.4)
@@ -143,11 +143,11 @@ DEPENDENCIES
   guard-livereload
   guard-sprockets
   json (~> 1.7.7)
+  kramdown
   minitest (~> 5.0.1)
   minitest-happy
   mocha (~> 0.14.0)
   rb-inotify (~> 0.8.8)
-  redcarpet
   sass
   sprockets
   therubyracer
