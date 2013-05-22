@@ -82,6 +82,19 @@ Artoo provides a robust actor-based messaging architecture, that can support ful
 
 To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid), Celluloid::IO (https://github.com/celluloid/celluloid-io), and Reel (https://github.com/celluloid/reel).
 
+## Hardware support:
+
+The current hardware platform are supported:
+
+  - Arduino (https://github.com/hybridgroup/artoo-arduino)
+  - Ardrone (https://github.com/hybridgroup/artoo-ardrone)
+  - Roomba (https://github.com/hybridgroup/artoo-roomba)
+  - Sphero (https://github.com/hybridgroup/artoo-sphero)
+
+More platforms are coming soon!
+
+Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
+
 ## API:
 
 Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.
@@ -207,10 +220,6 @@ Now you are ready to write your own code. Take a look at the examples directory 
 ```ruby
 ruby myrobot.rb
 ```
-
-## Integrating new hardware support:
-
-Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
 ## Wiki
 
