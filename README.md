@@ -12,7 +12,7 @@ Artoo provides a simple, yet powerful domain-specific language (DSL) for robotic
 
 ### Basic
 
-Arduino with an LED and a button, using the Firmata protocol.
+#### Arduino with an LED and a button, using the Firmata protocol.
 
 ```ruby
 require 'artoo'
@@ -26,7 +26,7 @@ work do
 end
 ```
 
-Parrot ARDrone 2.0
+#### Parrot ARDrone 2.0
 
 ```ruby
 require 'artoo'
@@ -73,7 +73,7 @@ SPHEROS.each {|p|
 SpheroRobot.work!(robots)
 ```
 
-Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.2, and Rubinius 2.0-rc1
+Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0-rc1
 
 
 Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
@@ -81,6 +81,19 @@ Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) 
 Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency. 
 
 To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid), Celluloid::IO (https://github.com/celluloid/celluloid-io), and Reel (https://github.com/celluloid/reel).
+
+## Hardware support:
+
+Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
+
+  - Arduino (https://github.com/hybridgroup/artoo-arduino)
+  - Ardrone (https://github.com/hybridgroup/artoo-ardrone)
+  - Roomba (https://github.com/hybridgroup/artoo-roomba)
+  - Sphero (https://github.com/hybridgroup/artoo-sphero)
+
+More platforms are coming soon!
+
+Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
 ## API:
 
@@ -142,11 +155,13 @@ require 'artoo'
 connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4560'
 device :sphero, :driver => :sphero
 
-def contact; @contacts += 1; end
+def contact(*args)
+  @contacts ||= 0
+  @contacts += 1
+  puts "Contact #{@contacts}"
+end
 
 work do
-  @contacts = 0
-
   on sphero, :collision => :contact
 
   every(3.seconds) do
@@ -161,33 +176,51 @@ end
 Artoo includes Robi, a console based on Pry (http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
-robi ./examples/hello.rb
-I, [2013-03-16T18:14:22.281462 #61513]  INFO -- : Registering connection 'loop'...
-I, [2013-03-16T18:14:22.283027 #61513]  INFO -- : Preparing work...
-[1] pry(main)> start
-I, [2013-03-16T18:14:23.836523 #61513]  INFO -- : Initializing connection loop...
-I, [2013-03-16T18:14:23.842265 #61513]  INFO -- : Starting work...
-I, [2013-03-16T18:14:23.842879 #61513]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0xe3c0>'...
-[2] pry(main)> list
-#<Artoo::MainRobot:0xe5e4>
-[3] pry(main)> exit
+$ robi ./examples/hello.rb 
+I, [2013-05-21T18:09:05.179630 #8752]  INFO -- : Registering connection 'loop'...
+I, [2013-05-21T18:09:05.180681 #8752]  INFO -- : Preparing work...
+robi> start
+Starting main robot...
+I, [2013-05-21T18:09:37.086550 #8752]  INFO -- : Initializing connection loop...
+I, [2013-05-21T18:09:37.092231 #8752]  INFO -- : Starting work...
+I, [2013-05-21T18:09:37.092691 #8752]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0x104e4>'...
+robi> hello
+hello
+robi> stop
+Stopping robots...
+robi> exit
+D, [2013-05-21T18:09:53.507709 #8752] DEBUG -- : Terminating 7 actors...
+D, [2013-05-21T18:09:53.508622 #8752] DEBUG -- : Shutdown completed cleanly
 ```
 
-## Installing:
+## Getting Started:
+
+### Installation
 
 ```ruby
 gem install artoo
 ```
 
-Then install the gems required by your specific supported hardware:
+Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
 
 ```ruby
-gem install hybridgroup-firmata
-gem install hybridgroup-argus
-gem install hybridgroup-sphero
+gem install artoo-arduino
+gem install artoo-ardrone
 ```
 
-## Running:
+If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware. 
+
+If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
+
+```ruby
+gem install hybridgroup-serialport
+```
+
+### Writing your robot code:
+
+Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
+
+### Running your robot:
 
 ```ruby
 ruby myrobot.rb
