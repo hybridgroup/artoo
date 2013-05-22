@@ -38,7 +38,7 @@ module Artoo
     end
 
     class << self
-      attr_accessor :device_types, :working_code, :running,
+      attr_accessor :device_types, :working_code,
                     :use_api, :api_host, :api_port
 
       def connection_types
@@ -96,10 +96,13 @@ module Artoo
         return if is_running?
         prepare_robots(robot)
 
+        Signal.trap("INT") do
+          master.stop_work if master
+        end
+
         unless cli?
           Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
           master.start_work
-          self.running = true
           sleep # sleep main thread, and let the work commence!
         end
       end
@@ -136,6 +139,14 @@ module Artoo
       def is_running?
         @@running ||= false
         @@running == true
+      end
+
+      def running!
+        @@running = true
+      end
+
+      def stopped!
+        @@running = false
       end
     end
 
