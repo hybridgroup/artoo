@@ -84,7 +84,7 @@ To a large extent, this is due to being built on top of Celluloid (https://githu
 
 ## Hardware support:
 
-The current hardware platform are supported:
+Artoo has a extensible system for connecting to hardware devices. The current robotics and physical computing platforms are supported:
 
   - Arduino (https://github.com/hybridgroup/artoo-arduino)
   - Ardrone (https://github.com/hybridgroup/artoo-ardrone)
