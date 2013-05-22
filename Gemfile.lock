@@ -71,6 +71,8 @@ GEM
       http_parser.rb
     http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-java)
+    json (1.7.7)
+    json (1.7.7-java)
     libv8 (3.11.8.17)
     listen (0.7.3)
     lumberjack (1.0.3)
@@ -140,6 +142,7 @@ DEPENDENCIES
   guard-compass
   guard-livereload
   guard-sprockets
+  json (~> 1.7.7)
   minitest (~> 5.0.1)
   minitest-happy
   mocha (~> 0.14.0)
