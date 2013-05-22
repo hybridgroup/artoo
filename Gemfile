@@ -15,12 +15,17 @@ gem 'guard-sprockets'
 gem 'guard-compass'
 gem 'rb-inotify', '~> 0.8.8'
 gem 'execjs'
-gem 'therubyracer'
+
+if RUBY_PLATFORM =~ /java/
+  gem 'therubyrhino'
+else
+  gem 'therubyracer'
+end
 
 # For documentation
 gem 'yard'
 gem 'yard-sinatra'
-gem 'redcarpet'
+gem 'kramdown'
 
 # For tests
 gem "minitest", "~> 5.0.1"
