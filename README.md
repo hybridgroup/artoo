@@ -86,10 +86,10 @@ To a large extent, this is due to being built on top of Celluloid (https://githu
 
 Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
 
-  - Arduino (https://github.com/hybridgroup/artoo-arduino)
-  - Ardrone (https://github.com/hybridgroup/artoo-ardrone)
-  - Roomba (https://github.com/hybridgroup/artoo-roomba)
-  - Sphero (https://github.com/hybridgroup/artoo-sphero)
+  - Arduino (http://www.arduino.cc/) adaptor (https://github.com/hybridgroup/artoo-arduino)
+  - ARDrone (http://ardrone2.parrot.com/) adaptor (https://github.com/hybridgroup/artoo-ardrone)
+  - Roomba (http://www.irobot.com/us/robots/Educators/Create.aspx) adaptor (https://github.com/hybridgroup/artoo-roomba)
+  - Sphero (http://www.gosphero.com/) adaptor (https://github.com/hybridgroup/artoo-sphero)
 
 More platforms are coming soon!
 
@@ -229,3 +229,5 @@ ruby myrobot.rb
 ## Wiki
 
 Check out our [wiki](https://github.com/hybridgroup/artoo/wiki) for more docs
+
+(c) 2012-2013 The Hybrid Group
