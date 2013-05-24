@@ -1,4 +1,4 @@
-Artoo exists thanks to the contributions of these wonderful individuals:
+Artoo exists thanks to the work of these wonderful individuals:
 
 - Adrian Zankich (@adzankich)
 - Andrew Stewart (@stewart)
@@ -12,3 +12,5 @@ Artoo exists thanks to the contributions of these wonderful individuals:
 - Ron Evans (@deadprogram)
 
 Thank you!
+
+Please join us, we'd love your contribution too!
