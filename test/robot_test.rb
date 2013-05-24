@@ -66,7 +66,7 @@ describe Artoo::Robot do
 
   describe 'work!' do
     before do
-      TestRobot.stubs(:sleep)
+      TestRobot.stubs(:begin_working)
       @master = mock('master')
       @master.expects(:start_work)
       TestRobot.stubs(:master).returns(@master)

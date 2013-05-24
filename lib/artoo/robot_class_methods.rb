@@ -63,12 +63,18 @@ module Artoo
         return if is_running?
         prepare_robots(robot)
 
-        setup_interrupt
-
         unless cli?
-          start_api
-          master.start_work
-          sleep # sleep main thread, and let the work commence!
+          begin
+            start_api
+            master.start_work
+            begin_working
+          rescue Interrupt
+            Celluloid::Logger.info 'Shutting down...'
+            master.stop_work if master
+            # Explicitly exit so busy Processor threads can't block
+            # process shutdown... taken from Sidekiq, thanks!
+            exit(0)
+          end
         end
       end
 
@@ -85,9 +91,22 @@ module Artoo
         Celluloid::Actor[:master] = Master.new(robots)
       end
 
-      def setup_interrupt
+      def begin_working
+        self_read, self_write = IO.pipe
+        setup_interrupt(self_write)
+        handle_signals(self_read)
+      end
+      
+      def setup_interrupt(self_write)
         Signal.trap("INT") do
-          master.stop_work if master
+          self_write.puts("INT")
+        end
+      end
+
+      def handle_signals(self_read)
+        while readable_io = IO.select([self_read])
+          signal = readable_io.first[0].gets.strip
+          raise Interrupt
         end
       end
 
