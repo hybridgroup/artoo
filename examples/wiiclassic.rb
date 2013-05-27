@@ -15,7 +15,7 @@ work do
     puts "left joystick x: #{value[1][:x]}, y: #{value[1][:y]}" unless (value[1][:x] == 0 && value[1][:y] == 0)
   }
   on classic, :right_joystick => proc { |*value|
-#    puts "right joystick x: #{value[1][:x]}, y: #{value[1][:y]}" unless (value[1][:x] == 0 && value[1][:y] == 0)
+    puts "right joystick x: #{value[1][:x]}, y: #{value[1][:y]}" unless (value[1][:x] == 0 && value[1][:y] == 0)
   }
   on classic, :right_trigger => proc { |*value|
     puts "right trigger: #{value[1]}" unless (value[1]== 0)
