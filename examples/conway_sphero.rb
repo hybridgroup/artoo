@@ -12,7 +12,7 @@ class ConwaySpheroRobot < Artoo::Robot
     on sphero, :collision => proc { contact }
 
     every(3.seconds) { movement if alive? }
-    every(10.seconds) { birthday if alive? }
+    every(16.seconds) { birthday if alive? }
   end
 
   def alive?; (@alive == true); end
@@ -44,7 +44,7 @@ class ConwaySpheroRobot < Artoo::Robot
     
     puts "Happy birthday, #{name}, you are #{@age} and had #{@contacts} contacts."
     #return if @age <= 3
-    death unless @contacts >= 3 && @contacts < 5
+    death unless @contacts >= 6 && @contacts < 11
     reset_contacts
   end
 
@@ -53,13 +53,17 @@ class ConwaySpheroRobot < Artoo::Robot
   end
 end
 
-SPHEROS = {"127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
+SPHEROS = {
+           "127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
            "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP",
            "127.0.0.1:4562" => "/dev/tty.Sphero-BWY-RN-SPP",
            "127.0.0.1:4563" => "/dev/tty.Sphero-YRR-RN-SPP",
            "127.0.0.1:4564" => "/dev/tty.Sphero-OBG-RN-SPP",
            "127.0.0.1:4565" => "/dev/tty.Sphero-GOB-RN-SPP",
-           "127.0.0.1:4566" => "/dev/tty.Sphero-PYG-RN-SPP"}
+           "127.0.0.1:4566" => "/dev/tty.Sphero-PYG-RN-SPP",
+           "127.0.0.1:4567" => "/dev/tty.Sphero-PYG-RN-SPP",
+           "127.0.0.1:4568" => "/dev/tty.Sphero-PYG-RN-SPP",
+           "127.0.0.1:4569" => "/dev/tty.Sphero-PYG-RN-SPP"}
 robots = []
 SPHEROS.each_key {|p|
   robots << ConwaySpheroRobot.new(:connections => 
