@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4560'
+connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4568'
 device :sphero, :driver => :sphero
 
 connection :arduino, :adaptor => :firmata, :port => "8023"
@@ -15,7 +15,7 @@ work do
   }
   every(1.seconds) do
   	puts "Rolling..."
-    sphero.roll 20, @heading
+    sphero.roll 50, @heading
   end
 end
 

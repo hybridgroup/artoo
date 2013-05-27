@@ -1,13 +1,33 @@
 require 'artoo'
 
-connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4560'
+connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4569'
 device :sphero, :driver => :sphero
+
+connection :arduino, :adaptor => :firmata, :port => "8023"
+device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
   
 work do
-  @count = 1
-  every(3.seconds) do
-    sphero.set_color(@count % 2 == 0 ? :green : :blue)
-    @count += 1
-    sphero.roll 60, rand(360)
+  init_settings
+
+  on wiichuck, :joystick => proc { |*value|
+    @heading = heading(value[1])
+  }
+
+  every(1.seconds) do
+  	puts "Rolling..."
+    sphero.set_color(rand(255),rand(255),rand(255))
+    sphero.roll 20, @heading
   end
+  #every(3.seconds) do
+  # sphero.set_color(rand(255),rand(255),rand(255))
+  #nd
+end
+
+def init_settings
+  sphero.stop
+  @heading = 0
+end
+
+def heading(value)
+  (180.0 - (Math.atan2(value[:y],value[:x]) * (180.0 / Math::PI))).round
 end
