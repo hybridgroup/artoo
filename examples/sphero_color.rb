@@ -18,9 +18,6 @@ work do
     sphero.set_color(rand(255),rand(255),rand(255))
     sphero.roll 20, @heading
   end
-  #every(3.seconds) do
-  # sphero.set_color(rand(255),rand(255),rand(255))
-  #nd
 end
 
 def init_settings
