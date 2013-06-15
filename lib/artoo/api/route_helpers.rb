@@ -7,7 +7,7 @@ module Artoo
 
         # Path to api/public directory
         # @return [String] static path
-        def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "api/public"))
+        def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "..","api/public"))
           @static_path ||= default
         end
 
