@@ -2,22 +2,22 @@ PATH
   remote: .
   specs:
     artoo (1.0.0.pre)
-      celluloid (~> 0.14.0)
-      celluloid-io (~> 0.14.0)
+      celluloid (~> 0.14.1)
+      celluloid-io (~> 0.14.1)
       multi_json (~> 1.6)
       pry (~> 0.9)
       rake (~> 10.0)
-      reel (~> 0.4.pre)
+      reel (~> 0.4.0.pre)
 
 GEM
   remote: http://rubygems.org/
   specs:
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
-    celluloid (0.14.0)
+    celluloid (0.14.1)
       timers (>= 1.0.0)
-    celluloid-io (0.14.0)
-      celluloid (>= 0.13.0)
+    celluloid-io (0.14.1)
+      celluloid (>= 0.14.1)
       nio4r (>= 0.4.5)
     certified (0.1.1)
     chunky_png (1.2.8)
@@ -84,7 +84,8 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.3)
-    nio4r (0.4.5)
+    nio4r (0.4.6)
+    nio4r (0.4.6-java)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -120,7 +121,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timers (1.1.0)
-    websocket_parser (0.1.2)
+    websocket_parser (0.1.4)
       http
     yard (0.8.6.1)
     yard-sinatra (1.0.0)
