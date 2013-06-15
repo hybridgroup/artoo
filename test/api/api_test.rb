@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + "/test_helper")
-require File.expand_path(File.dirname(__FILE__) + "/../lib/artoo/api")
+require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
+require File.expand_path(File.dirname(__FILE__) + "/../../lib/artoo/api/api")
 
 class ExampleRequest
   extend Forwardable
@@ -34,11 +34,11 @@ class ExampleRequest
   end
 end
 
-describe Artoo::Api do
-	describe Artoo::ApiRouteHelpers do
+describe Artoo::Api::Server do
+	describe Artoo::Api::RouteHelpers do
 
 		class DummyClass
-			include Artoo::ApiRouteHelpers
+			include Artoo::Api::RouteHelpers
 		end
 
 		it "should have a list of routes" do

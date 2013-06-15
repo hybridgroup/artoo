@@ -111,7 +111,7 @@ module Artoo
       end
 
       def start_api
-        Celluloid::Actor[:api] = Api.new(self.api_host, self.api_port) if self.use_api
+        Celluloid::Actor[:api] = Api::Server.new(self.api_host, self.api_port) if self.use_api
       end
       
       # Master actor
