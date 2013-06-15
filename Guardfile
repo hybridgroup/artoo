@@ -8,8 +8,3 @@ end
 guard 'compass', :configuration_file => 'api/assets/compass.rb', :project_path => 'api/assets' do
   watch(%r{api(/assets/stylesheets/(.+\.(scss)))})
 end
-
-guard 'livereload' do
-  watch(%r{api(/public/(.+\.(css|js|html)))}) 
-end
-
