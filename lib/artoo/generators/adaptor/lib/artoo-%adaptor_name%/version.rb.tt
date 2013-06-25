@@ -1,5 +1,5 @@
 module Artoo
-  module Sphero
-    VERSION = '1.0.0.pre'
+  module <%= adaptor_class_name %>
+    VERSION = '0.0.1'
   end
 end

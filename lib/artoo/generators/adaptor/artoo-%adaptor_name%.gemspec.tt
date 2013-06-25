@@ -1,26 +1,25 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "artoo-sphero/version"
+require "artoo-<%= adaptor_name %>/version"
 
 Gem::Specification.new do |s|
-  s.name        = "artoo-sphero"
-  s.version     = Artoo::Sphero::VERSION
+  s.name        = "artoo-<%= adaptor_name %>"
+  s.version     = Artoo::<%= adaptor_class_name %>::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Ron Evans", "Adrian Zankich", "Mike Ford"]
-  s.email       = ["artoo@hybridgroup.com"]
-  s.homepage    = "https://github.com/hybridgroup/artoo-sphero"
-  s.summary     = %q{Artoo adaptor and driver for Sphero robot}
-  s.description = %q{Artoo adaptor and driver for Sphero robot}
+  s.authors     = ["Your name here"]
+  s.email       = ["your email here"]
+  s.homepage    = "Your homepage here"
+  s.summary     = %q{Artoo adaptor and driver for <%= adaptor_class_name %>}
+  s.description = %q{Artoo adaptor and driver for <%= adaptor_class_name %>}
 
-  s.rubyforge_project = "artoo-sphero"
+  s.rubyforge_project = "artoo-<%= adaptor_name %>"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'artoo', '~> 1.0.0.pre'
-  s.add_runtime_dependency 'hybridgroup-sphero', '~> 1.3.0'
+  s.add_runtime_dependency 'artoo', '~> <%= artoo_version %>'
   # TODO: add your development dependencies here
   # EXAMPLE:
   # s.add_development_dependency 'minitest', '~> 5.0'

@@ -4,7 +4,7 @@ module Artoo
   module Adaptors
     # Connect to a <%= adaptor_name %> device
     # @see device documentation for more information
-    class <%= Artoo::Utility::classify(adaptor_name) %> < Adaptor
+    class <%= adaptor_class_name %> < Adaptor
       finalizer :finalize
       attr_reader :device
 
