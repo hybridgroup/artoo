@@ -2,10 +2,10 @@ require 'artoo/drivers/driver'
 
 module Artoo
   module Drivers
-    # The Sphero driver behaviors
-    class Sphero < Driver
+    # The <%= adaptor_name %> driver behaviors
+    class <%= adaptor_class_name %> < Driver
 
-      # Starts drives and required connections
+      # Start driver and any required connections
       def start_driver
         begin
           every(interval) do
@@ -14,7 +14,7 @@ module Artoo
 
           super
         rescue Exception => e
-          Logger.error "Error starting Sphero driver!"
+          Logger.error "Error starting <%= adaptor_class_name %> driver!"
           Logger.error e.message
           Logger.error e.backtrace.inspect
         end

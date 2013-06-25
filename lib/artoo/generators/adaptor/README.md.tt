@@ -1,6 +1,6 @@
-# Artoo Adaptor For Sphero
+# Artoo Adaptor For <%= adaptor_class_name %>
 
-This repository contains the Artoo (http://artoo.io/) adaptor for the Sphero (http://gosphero.com) robot.
+This repository contains the Artoo (http://artoo.io/) adaptor for <%= adaptor_class_name %>.
 
 Artoo is a open source micro-framework for robotics using Ruby.
 
@@ -9,5 +9,5 @@ For more information abut Artoo, check out our repo at https://github.com/hybrid
 ## Installing
 
 ```
-gem install artoo-sphero
+gem install artoo-<%= adaptor_name %>
 ```

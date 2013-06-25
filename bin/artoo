@@ -5,6 +5,8 @@ require 'thor/group'
 require 'artoo/robot'
 require 'artoo/generators/main'
 
+Celluloid.logger = nil
+
 module CLI
   class Root < Thor
     desc 'version', 'Displays the current version'
@@ -18,4 +20,3 @@ module CLI
 end
 
 CLI::Root.start
-
