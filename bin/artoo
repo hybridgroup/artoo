@@ -18,3 +18,4 @@ module CLI
 end
 
 CLI::Root.start
+
