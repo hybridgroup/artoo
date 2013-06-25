@@ -4,20 +4,15 @@ require 'thor/group'
 module Artoo
   module Generator
     class Adaptor < Thor::Group
-      def create_directory
-        say "create_directory"
-      end
+      include Thor::Actions
 
-      def create_gemfile
-        say "create_gemfile"
-      end
+      argument :adaptor_name
 
-      def create_adaptor
-        say "create_adaptor"
-      end
-
-      def create_driver
-        say "create_driver"
+      def copy_adaptor_directory
+        say "Creating #{adaptor_name} adaptor..."
+        empty_directory adaptor_name
+        directory "adaptor", adaptor_name, :recursive => true
+        say "Done!"
       end
     end
   end
