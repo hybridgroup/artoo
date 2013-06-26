@@ -13,12 +13,13 @@ module Artoo
 
     # Create new connection
     # @param [Hash] params
+    # @option params :id      [String]
     # @option params :name    [String]
     # @option params :parent  [String]
     # @option params :adaptor [String]
     # @option params :port    [Integer]
     def initialize(params={})
-      @connection_id = rand(10000)
+      @connection_id = params[:id] || rand(10000).to_s
       @name = params[:name].to_s
       @port = Port.new(params[:port])
       @parent = params[:parent]
