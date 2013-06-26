@@ -60,6 +60,7 @@ module Artoo
       def connect_to_tcp
         @socket ||= TCPSocket.new(port.host, port.port)
       end
+      
       # @return [UDPSocket] UDP socket connection
       def connect_to_udp
         @udp_socket ||= UDPSocket.new
