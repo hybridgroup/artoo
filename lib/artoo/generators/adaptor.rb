@@ -22,10 +22,14 @@ module Artoo
         Artoo::VERSION
       end
 
+      def artoo_adaptor_name
+        "artoo-#{adaptor_name}"
+      end
+
       def copy_adaptor_directory
-        say "Creating #{adaptor_name} adaptor..."
-        empty_directory adaptor_name
-        directory "adaptor", adaptor_name, :recursive => true
+        say "Creating #{artoo_adaptor_name} adaptor..."
+        empty_directory artoo_adaptor_name
+        directory "adaptor", artoo_adaptor_name, :recursive => true
         say "Done!"
       end
     end
