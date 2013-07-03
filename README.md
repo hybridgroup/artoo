@@ -88,6 +88,7 @@ Artoo has a extensible system for connecting to hardware devices. The following 
 
   - Arduino (http://www.arduino.cc/) adaptor (https://github.com/hybridgroup/artoo-arduino)
   - ARDrone (http://ardrone2.parrot.com/) adaptor (https://github.com/hybridgroup/artoo-ardrone)
+  - Pebble (http://getpebble.com/) adaptor (https://github.com/hybridgroup/artoo-pebble)
   - Roomba (http://www.irobot.com/us/robots/Educators/Create.aspx) adaptor (https://github.com/hybridgroup/artoo-roomba)
   - Sphero (http://www.gosphero.com/) adaptor (https://github.com/hybridgroup/artoo-sphero)
 
