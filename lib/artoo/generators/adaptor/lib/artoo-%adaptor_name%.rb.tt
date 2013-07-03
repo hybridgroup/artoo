@@ -1,0 +1,3 @@
+require 'lib/artoo/adaptors/<%= adaptor_name %>'
+require 'lib/artoo/drivers/<%= adaptor_name %>'
+require 'lib/artoo-<%= adaptor_name %>/version'

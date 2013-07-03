@@ -1,0 +1,5 @@
+module Artoo
+  module <%= adaptor_class_name %>
+    VERSION = '0.0.1'
+  end
+end
