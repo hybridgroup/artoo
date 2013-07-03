@@ -1,0 +1,4 @@
+require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
+require 'artoo/drivers/<%= adaptor_name %>'
+
+# TODO: test for your driver goes here...
