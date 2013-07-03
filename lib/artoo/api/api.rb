@@ -57,7 +57,7 @@ module Artoo
       # Execute robot command
       # @return [JSON] command
       post '/robots/:robotid/devices/:deviceid/commands/:commandid' do
-        result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], command_params)
+        result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
 
