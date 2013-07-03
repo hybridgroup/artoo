@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'thor'
+require 'thor/group'
+require 'artoo/robot'
+require 'artoo/generators/main'
+
+Celluloid.logger = nil
+
+module CLI
+  class Root < Thor
+    desc 'version', 'Displays the current version'
+    def version
+      say Artoo::VERSION
+    end
+
+    desc "generate SUBCOMMAND ...ARGS", "Generates a new robot or adaptor"
+    subcommand "generate", Artoo::Generator::Main
+  end
+end
+
+CLI::Root.start
