@@ -8,6 +8,7 @@ PATH
       pry (~> 0.9)
       rake (~> 10.0)
       reel (~> 0.4.0.pre)
+      thor (~> 0.18.1)
 
 GEM
   remote: http://rubygems.org/
