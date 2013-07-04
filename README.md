@@ -96,6 +96,39 @@ More platforms are coming soon!
 
 Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
+## Getting Started:
+
+### Installation
+
+```ruby
+gem install artoo
+```
+
+Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
+
+```ruby
+gem install artoo-arduino
+gem install artoo-ardrone
+```
+
+If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware. 
+
+If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
+
+```ruby
+gem install hybridgroup-serialport
+```
+
+### Writing your robot code:
+
+Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
+
+### Running your robot:
+
+```ruby
+ruby myrobot.rb
+```
+
 ## API:
 
 Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.
@@ -215,41 +248,16 @@ D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
 
 Want to integrate a new kids of hardware devices for which there is not an Artoo adaptor yet? You can easily generate a new skeleton Artoo adaptor to help you get started! Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
 
-## Getting Started:
-
-### Installation
-
-```ruby
-gem install artoo
-```
-
-Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
-
-```ruby
-gem install artoo-arduino
-gem install artoo-ardrone
-```
-
-If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware. 
-
-If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
-
-```ruby
-gem install hybridgroup-serialport
-```
-
-### Writing your robot code:
-
-Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
-
-### Running your robot:
-
-```ruby
-ruby myrobot.rb
-```
-
 ## Wiki
 
 Check out our [wiki](https://github.com/hybridgroup/artoo/wiki) for more docs
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 (c) 2012-2013 The Hybrid Group
