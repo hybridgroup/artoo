@@ -172,27 +172,48 @@ work do
 end
 ```
 
-## Console:
+## CLI
+
+Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.
+
+```
+$ artoo
+Commands:
+  artoo console ROBOT                # run a robot using the Robi console
+  artoo generate SUBCOMMAND ...ARGS  # Generates a new robot or adaptor
+  artoo help [COMMAND]               # Describe available commands or one specific command
+  artoo version                      # Displays the current version
+```
+
+### Console:
 
 Artoo includes Robi, a console based on Pry (http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
-$ robi ./examples/hello.rb 
-I, [2013-05-21T18:09:05.179630 #8752]  INFO -- : Registering connection 'loop'...
-I, [2013-05-21T18:09:05.180681 #8752]  INFO -- : Preparing work...
+$ artoo console ./examples/hello.rb 
+         run  robi ./examples/hello.rb from "."
+I, [2013-07-03T17:11:35.793913 #5527]  INFO -- : Registering connection 'loop'...
+I, [2013-07-03T17:11:35.794939 #5527]  INFO -- : Preparing work...
 robi> start
 Starting main robot...
-I, [2013-05-21T18:09:37.086550 #8752]  INFO -- : Initializing connection loop...
-I, [2013-05-21T18:09:37.092231 #8752]  INFO -- : Starting work...
-I, [2013-05-21T18:09:37.092691 #8752]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0x104e4>'...
+I, [2013-07-03T17:11:48.950888 #5527]  INFO -- : Initializing connection loop...
+I, [2013-07-03T17:11:48.955804 #5527]  INFO -- : Starting work...
+I, [2013-07-03T17:11:48.956152 #5527]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0xfea0>'...
+robi> list
+#<Artoo::MainRobot:0x100c0>
 robi> hello
+hello
 hello
 robi> stop
 Stopping robots...
 robi> exit
-D, [2013-05-21T18:09:53.507709 #8752] DEBUG -- : Terminating 7 actors...
-D, [2013-05-21T18:09:53.508622 #8752] DEBUG -- : Shutdown completed cleanly
+D, [2013-07-03T17:12:04.413060 #5527] DEBUG -- : Terminating 7 actors...
+D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
 ```
+
+### Generator
+
+Want to integrate a new kids of hardware devices for which there is not an Artoo adaptor yet? You can easily generate a new skeleton Artoo adaptor to help you get started! Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
 
 ## Getting Started:
 
