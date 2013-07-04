@@ -246,7 +246,7 @@ D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
 
 ### Generator
 
-Want to integrate a new kids of hardware devices for which there is not an Artoo adaptor yet? You can easily generate a new skeleton Artoo adaptor to help you get started! Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
+Want to integrate a new kind of hardware devices for which there is not an Artoo adaptor yet? You can easily generate a new skeleton Artoo adaptor to help you get started! Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
 
 ## Wiki
 
