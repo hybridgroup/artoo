@@ -8,9 +8,12 @@ module Artoo
       include Artoo::Utility
       
       desc "socat", "install socat utility program"
-      def scan
-        if os == :linux
+      def socat
+        case os 
+        when :linux
           run("sudo apt-get update && sudo apt-get install socat")
+        when :macosx
+          run("brew install socat")
         else
           say "OS not yet supported..."
         end
