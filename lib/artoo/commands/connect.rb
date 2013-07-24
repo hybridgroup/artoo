@@ -6,10 +6,11 @@ module Artoo
     class Connect < Thor
       include Thor::Actions
       include Artoo::Utility
-      
+
       desc "scan", "scan for connected devices"
       def scan
-        if os == :linux
+        case os
+        when :linux, :macosx
           run("hcitool scan")
         else
           say "OS not yet supported..."
@@ -18,7 +19,8 @@ module Artoo
 
       desc "bind", "bind [COMM] [ADDRESS] [NAME] binds a device to some connected hardware"
       def bind(comm, address, name, hcix=nil)
-        if os == :linux
+        case os
+        when :linux, :macosx
           run("bundle exec ./bin/artoo_bind.sh #{comm} #{address} #{name}")
         else
           say "OS not yet supported..."
@@ -27,7 +29,8 @@ module Artoo
 
       desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a device by name"
       def socat(port, name)
-        if os == :linux
+        case os
+        when :linux, :macosx
           run("bundle exec ./bin/artoo_socat.sh #{port} #{name}")
         else
           say "OS not yet supported..."
