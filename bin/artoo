@@ -3,8 +3,9 @@ require 'rubygems'
 require 'thor'
 require 'thor/group'
 require 'artoo/robot'
-require 'artoo/generators/main'
+require 'artoo/commands/generate'
 require 'artoo/commands/connect'
+require 'artoo/commands/install'
 
 Celluloid.logger = nil
 
@@ -17,16 +18,19 @@ module CLI
       say Artoo::VERSION
     end
 
-    desc "console ROBOT", "run a robot using the Robi console"
+    desc "console ROBOT", "Run a robot using the Robi console"
     def console(robot)
       run("robi #{robot}")
     end
 
     desc "generate SUBCOMMAND ...ARGS", "Generates a new robot or adaptor"
-    subcommand "generate", Artoo::Generator::Main
+    subcommand "generate", Artoo::Commands::Generate
 
     desc "connect SUBCOMMAND ...ARGS", "Connects to device"
     subcommand "connect", Artoo::Commands::Connect
+
+    desc "install SUBCOMMAND ...ARGS", "Installs utility programs"
+    subcommand "install", Artoo::Commands::Install
   end
 end
 
