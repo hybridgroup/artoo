@@ -4,6 +4,7 @@ require 'thor'
 require 'thor/group'
 require 'artoo/robot'
 require 'artoo/generators/main'
+require 'artoo/commands/connect'
 
 Celluloid.logger = nil
 
@@ -23,6 +24,9 @@ module CLI
 
     desc "generate SUBCOMMAND ...ARGS", "Generates a new robot or adaptor"
     subcommand "generate", Artoo::Generator::Main
+
+    desc "connect SUBCOMMAND ...ARGS", "Connects to device"
+    subcommand "connect", Artoo::Commands::Connect
   end
 end
 
