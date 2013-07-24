@@ -34,8 +34,10 @@ module Artoo
       desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a device by name"
       def socat(port, name)
         case os
-        when :linux, :macosx
-          run("bundle exec ./bin/artoo_socat.sh #{port} #{name}")
+        when :linux
+          run("bundle exec ./bin/artoo_socat_linux.sh #{port} #{name}")
+        when :macosx
+          run("bundle exec ./bin/artoo_socat_osx.sh #{port} #{name}")          
         else
           say "OS not yet supported..."
         end
