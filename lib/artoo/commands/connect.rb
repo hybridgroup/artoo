@@ -19,8 +19,9 @@ module Artoo
         end
       end
 
-      desc "bind", "bind [COMM] [ADDRESS] [NAME] binds a device to some connected hardware"
-      def bind(comm, address, name, hcix=nil)
+      desc "bind", "bind [ADDRESS] [NAME] binds a device to some connected hardware"
+      option :comm, :default => 0, :desc => "Comm number"
+      def bind(address, name, hcix=nil)
         case os
         when :linux
           run("bundle exec ./bin/artoo_bind.sh #{comm} #{address} #{name}")
