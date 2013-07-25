@@ -15,12 +15,6 @@ gem 'guard-compass'
 gem 'rb-inotify', '~> 0.8.8'
 gem 'execjs'
 
-if RUBY_PLATFORM =~ /java/
-  gem 'therubyrhino'
-else
-  gem 'therubyracer'
-end
-
 # For documentation
 gem 'yard'
 gem 'yard-sinatra'
@@ -32,3 +26,9 @@ gem "mocha", '~> 0.14.0', :require => false
 
 gem 'json', '~> 1.7.7'
 gem "foreman"
+
+if RUBY_PLATFORM =~ /java/
+  gem 'therubyrhino'
+else
+  gem 'therubyracer'
+end
