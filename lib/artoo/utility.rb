@@ -1,5 +1,7 @@
+require 'rbconfig'
+
 module Artoo
-  # Utility methods used for convertions
+  # Utility methods used for various important things
   module Utility
 
     # Converts camel_cased_word to constant
@@ -63,6 +65,24 @@ module Artoo
     # @return [Class] current actor class
     def current_class
       Celluloid::Actor.current.class
+    end
+
+    def os
+      @os ||= (
+        host_os = RbConfig::CONFIG['host_os']
+        case host_os
+        when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+          :windows
+        when /darwin|mac os/
+          :macosx
+        when /linux/
+          :linux
+        when /solaris|bsd/
+          :unix
+        else
+          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+        end
+      )
     end
   end
 end
