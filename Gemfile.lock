@@ -142,5 +142,6 @@ DEPENDENCIES
   sass
   sprockets
   therubyracer
+  therubyrhino
   yard
   yard-sinatra
