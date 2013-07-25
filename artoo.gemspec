@@ -26,7 +26,4 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rake', '~> 10.0'
   s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_runtime_dependency 'thor', '~> 0.18.1'
-  s.add_development_dependency 'minitest', '~> 5.0'
-  s.add_development_dependency 'minitest-happy'
-  s.add_development_dependency 'mocha', '~> 0.14.0'
 end
