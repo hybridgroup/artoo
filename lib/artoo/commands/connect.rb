@@ -24,7 +24,7 @@ module Artoo
       def bind(address, name, hcix=nil)
         case os
         when :linux
-          run("bundle exec ./bin/artoo_bind.sh #{comm} #{address} #{name}")
+          run("bundle exec ./bin/artoo_bind.sh #{options[:comm]} #{address} #{name}")
         when :macosx
           say "OSX binds devices on its own volition."
         else
