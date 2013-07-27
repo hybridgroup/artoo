@@ -34,10 +34,10 @@ module Artoo
         end
       end
 
-      desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a device by name"
-      option :attempts, :default => 1, :desc => "Number of times to attempt to connect"
+      desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a serial device by name"
+      option :retries, :default => 0, :desc => "Number of times to retry connecting on failure"
       def socat(port, name)
-        attempts = options[:attempts].to_i
+        attempts = 1 + options[:retries].to_i
         
         case os
         when :linux
