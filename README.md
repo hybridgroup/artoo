@@ -212,11 +212,29 @@ Artoo has a Command Line Interface (CLI) so you can access important features ri
 ```
 $ artoo
 Commands:
-  artoo console ROBOT                # run a robot using the Robi console
+  artoo connect SUBCOMMAND ...ARGS   # Connects to device
+  artoo console ROBOT                # Run a robot using the Robi console
   artoo generate SUBCOMMAND ...ARGS  # Generates a new robot or adaptor
   artoo help [COMMAND]               # Describe available commands or one specific command
+  artoo install SUBCOMMAND ...ARGS   # Installs utility programs
+  artoo start ROBOT                  # Run a robot
   artoo version                      # Displays the current version
 ```
+
+### Connect:
+
+Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:
+
+```
+$ artoo connect
+Commands:
+  artoo connect bind            # bind [ADDRESS] [NAME] binds a device to some connected hardware
+  artoo connect help [COMMAND]  # Describe subcommands or one specific subcommand
+  artoo connect scan            # scan for connected devices
+  artoo connect socat           # socat [PORT] [NAME] use socat to connect a socket to a serial device by name
+```
+
+You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!
 
 ### Console:
 
