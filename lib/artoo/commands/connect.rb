@@ -41,6 +41,8 @@ module Artoo
         
         case os
         when :linux
+          run("sudo chmod a+rw /dev/#{name}")
+          
           while(attempts > 0) do
             run("socat -d -d FILE:/dev/#{name},nonblock,raw,b115200,echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
