@@ -23,6 +23,15 @@ module CLI
       run("robi #{robot}")
     end
 
+    desc "start ROBOT", "Run a robot"
+    option :delay, :default => 0, :desc => "Number of seconds to wait for connections"
+    def start(robot)
+      say "Starting robot..."
+      delay = options[:delay].to_i
+      sleep(delay) if delay > 0
+      run("ruby #{robot}")
+    end
+
     desc "generate SUBCOMMAND ...ARGS", "Generates a new robot or adaptor"
     subcommand "generate", Artoo::Commands::Generate
 
