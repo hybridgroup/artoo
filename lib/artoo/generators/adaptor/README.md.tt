@@ -11,3 +11,13 @@ For more information abut Artoo, check out our repo at https://github.com/hybrid
 ```
 gem install artoo-<%= adaptor_name %>
 ```
+
+## Using
+
+```ruby
+# your example code here...
+```
+
+## Connecting
+
+Explain how to connect from the computer to the device here...
