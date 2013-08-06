@@ -25,7 +25,7 @@ module Artoo
       def bind(address, name)
         case os
         when :linux
-          run("rfcomm -i #{options[:radio]} bind /dev/rfcomm#{options[:comm]} #{address} 1")
+          run("sudo rfcomm -i #{options[:radio]} bind /dev/rfcomm#{options[:comm]} #{address} 1")
           run("sudo ln -s /dev/rfcomm#{options[:comm]} /dev/#{name}")
         when :macosx
           say "OSX binds devices on its own volition."
