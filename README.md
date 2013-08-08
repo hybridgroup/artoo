@@ -76,22 +76,22 @@ SpheroRobot.work!(robots)
 Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0-rc1
 
 
-Artoo is conceptualy influenced by Sinatra (https://github.com/sinatra/sinatra) as well as borrowing some code from it.
+Artoo is conceptualy influenced by [Sinatra](https://github.com/sinatra/sinatra) as well as borrowing some code from it.
 
 Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency. 
 
-To a large extent, this is due to being built on top of Celluloid (https://github.com/celluloid/celluloid), Celluloid::IO (https://github.com/celluloid/celluloid-io), and Reel (https://github.com/celluloid/reel).
+To a large extent, this is due to being built on top of [Celluloid](https://github.com/celluloid/celluloid), [Celluloid::IO](https://github.com/celluloid/celluloid-io), and [Reel](https://github.com/celluloid/reel).
 
 ## Hardware support:
 
 Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
 
-  - Arduino (http://www.arduino.cc/) adaptor (https://github.com/hybridgroup/artoo-arduino)
-  - ARDrone (http://ardrone2.parrot.com/) adaptor (https://github.com/hybridgroup/artoo-ardrone)
-  - Leap Motion (https://www.leapmotion.com/) adaptor (https://github.com/hybridgroup/artoo-leapmotion)
-  - Pebble (http://getpebble.com/) adaptor (https://github.com/hybridgroup/artoo-pebble)
-  - Roomba (http://www.irobot.com/us/robots/Educators/Create.aspx) adaptor (https://github.com/hybridgroup/artoo-roomba)
-  - Sphero (http://www.gosphero.com/) adaptor (https://github.com/hybridgroup/artoo-sphero)
+  - [Arduino](http://www.arduino.cc/) <=> [Adaptor](https://github.com/hybridgroup/artoo-arduino)
+  - [ARDrone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-ardrone)
+  - [Leap Motion](https://www.leapmotion.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-leapmotion)
+  - [Pebble](http://getpebble.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-pebble)
+  - [Roomba](http://www.irobot.com/us/robots/Educators/Create.aspx) <=> [Adaptor](https://github.com/hybridgroup/artoo-roomba)
+  - [Sphero](http://www.gosphero.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-sphero)
 
 More platforms are coming soon!
 
@@ -239,7 +239,7 @@ You can scan your computer for paired Bluetooth devices, bind them to unix ports
 
 ### Console:
 
-Artoo includes Robi, a console based on Pry (http://pryrepl.org/) to allow you to interactively debug and control your robot.
+Artoo includes Robi, a console based on [Pry](http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
 $ artoo console ./examples/hello.rb 
