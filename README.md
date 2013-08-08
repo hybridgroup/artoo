@@ -1,4 +1,4 @@
-# artoo
+![Artoo](https://raw.github.com/hybridgroup/artoo/gh-pages/images/artoo-logo.png)
 
 http://artoo.io/
 
