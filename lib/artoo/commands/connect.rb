@@ -8,10 +8,17 @@ module Artoo
       include Artoo::Utility
 
       desc "scan", "scan for connected devices"
+      option :type, :default => "bluetooth", :desc => "type of scan [bluetooth, serial]"
       def scan
         case os
         when :linux
-          run("hcitool scan")
+          if options[:type] == 'bluetooth'
+            run("hcitool scan")
+          elsif options[:type] == 'serial'
+            run("ls /dev/tty.*")
+          else
+            say "ERROR: scan type '#{options[:type]}' not supported!"
+          end
         when :macosx
           run("ls /dev/tty.*")          
         else
