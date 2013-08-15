@@ -24,7 +24,7 @@ module Artoo
       @port = Port.new(params[:port])
       @parent = params[:parent]
 
-      require_adaptor(params[:adaptor] || :loopback)
+      require_adaptor(params[:adaptor] || :loopback, params)
     end
 
     # Creates adaptor connection
@@ -92,14 +92,14 @@ module Artoo
 
     private
 
-    def require_adaptor(type)
+    def require_adaptor(type, params)
       if Artoo::Robot.test?
         original_type = type
         type = :test
       end
 
       require "artoo/adaptors/#{type.to_s}"
-      @adaptor = constantize("Artoo::Adaptors::#{classify(type.to_s)}").new(:port => port, :parent => current_instance)
+      @adaptor = constantize("Artoo::Adaptors::#{classify(type.to_s)}").new(:port => port, :parent => current_instance, :additional_params => params)
     end
   end
 end

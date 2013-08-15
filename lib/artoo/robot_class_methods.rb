@@ -4,21 +4,19 @@ module Artoo
   #
   # This module contains the class-level methods used by Artoo::Robot
   class Robot
-    module ClassMethods
-      attr_accessor :device_types, :working_code,
-                      :use_api, :api_host, :api_port
+    class << self; attr_accessor :connection_types, :device_types; end
 
-      def connection_types
-        @@connection_types ||= []
-      end
+    module ClassMethods
+      attr_accessor :working_code, :use_api, :api_host, :api_port
 
       # Connection to some hardware that has one or more devices via some specific protocol
       # @example connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
       # @param [String] name
       # @param [Hash]   params
       def connection(name, params = {})
+        @connection_types ||= []
         Celluloid::Logger.info "Registering connection '#{name}'..."
-        self.connection_types << {:name => name}.merge(params)
+        @connection_types << {:name => name}.merge(params)
       end
 
       # Device that uses a connection to communicate
@@ -26,9 +24,9 @@ module Artoo
       # @param [String] name
       # @param [Hash]   params
       def device(name, params = {})
+        @device_types ||= []
         Celluloid::Logger.info "Registering device '#{name}'..."
-        self.device_types ||= []
-        self.device_types << {:name => name}.merge(params)
+        @device_types << {:name => name}.merge(params)
       end
 
       # The work that needs to be performed

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/test_helper")
 class DeviceTestRobot < Artoo::Robot
   connection :test_connection
   device :test_device_1
-  device :test_device_2
+  device :test_device_2, :cool_factor => 11
 end
 
 class MultipleDeviceConnectionTestRobot < Artoo::Robot
@@ -37,5 +37,10 @@ describe Artoo::Device do
   it 'Artoo::Device#as_json' do
     @device = @robot.devices[:test_device_1]
     MultiJson.load(@device.as_json, :symbolize_keys => true)[:name].must_equal "test_device_1"
+  end
+
+  it 'Artoo::Device#additional_params' do
+    @device = @robot.devices[:test_device_2]
+    @device.driver.additional_params[:cool_factor].must_equal 11
   end
 end

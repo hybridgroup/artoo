@@ -23,7 +23,7 @@ module Artoo
       @connection = determine_connection(params[:connection]) || default_connection
       @interval = params[:interval] || 0.5
 
-      require_driver(params[:driver] || :passthru)
+      require_driver(params[:driver] || :passthru, params)
     end
 
     # Retrieve connections from parent
@@ -94,14 +94,14 @@ module Artoo
 
     private
 
-    def require_driver(d)
+    def require_driver(d, params)
       if Artoo::Robot.test?
         original_type = d
         d = :test
       end
 
       require "artoo/drivers/#{d.to_s}"
-      @driver = constantize("Artoo::Drivers::#{classify(d.to_s)}").new(:parent => current_instance)
+      @driver = constantize("Artoo::Drivers::#{classify(d.to_s)}").new(:parent => current_instance, :additional_params => params)
     end
   end
 end
