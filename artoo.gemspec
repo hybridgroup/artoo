@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/hybridgroup/artoo"
   s.summary     = %q{Ruby-based microframework for robotics}
   s.description = %q{Ruby-based microframework for robotics}
-  s.license     = 'apache-2'
+  s.license     = 'Apache 2.0'
 
   s.rubyforge_project = "artoo"
 
