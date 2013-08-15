@@ -9,15 +9,17 @@ module Artoo
     class Adaptor
       include Celluloid::IO
 
-      attr_reader :parent, :port
+      attr_reader :parent, :port, :additional_params
 
       # Initialize an adaptor
       # @param params [hash]
       # @option params [String] :parent
       # @option params [String] :port
+      # @option params [String] :additional_params
       def initialize(params={})
         @parent = params[:parent]
         @port = params[:port]
+        @additional_params = params[:additional_params]
         @connected = false
       end
 

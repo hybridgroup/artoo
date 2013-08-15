@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + "/test_helper")
 
 class ConnectionTestRobot < Artoo::Robot
-  connection :test_connection
+  connection :my_test_connection, :awesomeness => :high, :super_powers => :active
 end
 
 describe Artoo::Connection do
@@ -22,7 +22,11 @@ describe Artoo::Connection do
   end
 
   it 'Artoo::Connection#as_json' do
-    MultiJson.load(@connection.as_json, :symbolize_keys => true)[:name].must_equal "test_connection"
+    MultiJson.load(@connection.as_json, :symbolize_keys => true)[:name].must_equal "my_test_connection"
     MultiJson.load(@connection.as_json, :symbolize_keys => true)[:connected].must_equal false
+  end
+
+  it 'Artoo::Connection#additional_params' do
+    @robot.default_connection.adaptor.additional_params[:awesomeness].must_equal :high
   end
 end

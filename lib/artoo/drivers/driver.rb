@@ -10,15 +10,17 @@ module Artoo
       include Celluloid
       include Celluloid::Notifications
 
-      attr_reader :parent
+      attr_reader :parent, :additional_params
 
       COMMANDS = [].freeze
 
       # Create new driver
       # @param [Hash] params
       # @option params [Object] :parent
+      # @option params [Object] :additional_params
       def initialize(params={})
         @parent = params[:parent]
+        @additional_params = params[:additional_params]
       end
 
       # @return [Connection] parent connection
