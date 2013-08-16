@@ -6,8 +6,8 @@ module Artoo
 
     # Create new port
     # @param [Object] data
-    def initialize(data)
-      @is_tcp, @is_serial = false
+    def initialize(data=nil)
+      @is_tcp, @is_serial, @is_portless = false
       parse(data)
     end
 
@@ -21,9 +21,16 @@ module Artoo
       @is_tcp == true
     end
 
+    # @return [Boolean] True if does not have real port
+    def is_portless?
+      @is_portless == true
+    end
+
     # @return [String] port
     def to_s
-      if is_serial?
+      if is_portless?
+        "none"
+      elsif is_serial?
         port
       else
         "#{host}:#{port}"
@@ -33,14 +40,20 @@ module Artoo
     private
 
     def parse(data)
+      case
+      # portless
+      when data.nil?
+        @port = "none"
+        @is_portless = true
+
       # is TCP host/port?
-      if m = /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d{1,5})/.match(data)
+      when m = /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d{1,5})/.match(data)
         @port = m[2]
         @host = m[1]
         @is_tcp = true
 
       # is it a numeric port for localhost tcp?
-      elsif /^[0-9]{1,5}$/.match(data)
+      when /^[0-9]{1,5}$/.match(data)
         @port = data
         @host = "localhost"
         @is_tcp = true
