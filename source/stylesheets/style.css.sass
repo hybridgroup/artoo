@@ -77,7 +77,7 @@ $big-screen    : 964px
     line-height: 71px
     .item
       margin: 0
-      padding: 0 9px
+      padding: 0 5px
 
 @mixin medium-screen-pre()
   @media only screen and (max-width: $medium-screen) 
@@ -153,7 +153,7 @@ header
       font-size: 15px
       font-weight: bold
       margin: 10px
-      padding: 8px 14px
+      padding: 8px 4px
 
       &, &:visited
         color: #505252
@@ -232,6 +232,14 @@ header
       @include margin-not-last-child
       @include medium-screen(420px, 236px)
       @include small-screen(290px, 169px)
+
+  .hardware
+    img
+      width: 600
+
+      @include margin-not-last-child
+      @include medium-screen(420px, '')
+      @include small-screen(290px, '')
 
   .content
     width: 70%

@@ -8,7 +8,7 @@ description: Artoo code snippets for your convinience.
 :markdown
   ## Examples
 
-  #### Arduino
+  #### Arduino : [artoo-arduino](https://github.com/hybridgroup/artoo-arduino)
 
   For complete setup, follow the [Arduino - Making an led blink with Artoo Tutorial](https://github.com/hybridgroup/artoo/wiki/1.3.1.-Arduino-Making-A-Led-Blink-With-Artoo) in our wiki.
 
@@ -23,7 +23,7 @@ description: Artoo code snippets for your convinience.
         on button, push: proc {led.toggle}
       end
 
-  #### AR.Drone 2.0
+  #### AR.Drone 2.0 : [artoo-ardrone](https://github.com/hybridgroup/artoo-ardrone)
       :::ruby
       require 'artoo'
 
@@ -38,7 +38,7 @@ description: Artoo code snippets for your convinience.
         after(30.seconds) { drone.stop }
       end
 
-  #### Roomba
+  #### Roomba : [artoo-roomba](https://github.com/hybridgroup/artoo-roomba)
       :::ruby
       require 'artoo'
 
@@ -53,7 +53,7 @@ description: Artoo code snippets for your convinience.
         roomba.nudge_left
       end
 
-  #### Sphero - Modular
+  #### Sphero : [artoo-sphero](https://github.com/hybridgroup/artoo-sphero)
 
   For complete setup, follow [Sphero Tutorial](https://github.com/hybridgroup/artoo/wiki/1.3.2.-Sphero) in our wiki.
 
@@ -79,5 +79,59 @@ description: Artoo code snippets for your convinience.
 
       SpheroRobot.work!(robots)
 
+  #### Leapmotion : [artoo-leapmotion](https://github.com/hybridgroup/artoo-leapmotion)
+
+      :::ruby
+      require 'artoo'
+
+      connection :leapmotion, :adaptor => :leapmotion, :port => '127.0.0.1:6437'
+      device :leapmotion, :driver => :leapmotion
+
+        work do
+          on leapmotion, :open => :on_open
+          on leapmotion, :gesture => :on_gesture
+          on leapmotion, :close => :on_close
+        end
+
+        def on_open(*args)
+          puts args
+        end
+
+        def on_gesture(*args)
+          puts args[1]
+        end
+
+        def on_close(*args)
+          puts args
+        end
+
+  #### Pebble : [artoo-pebble](https://github.com/hybridgroup/artoo-pebble)
+
+      :::ruby
+      require 'artoo'
+
+      connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+      device :watch, :driver => :pebble
+
+      work do
+        watch.set_nowplaying_metadata("Artoo", "Hello", Time.now.to_s)
+        every(5.seconds) do
+          watch.set_nowplaying_metadata("Artoo", "Update...", Time.now.to_s)
+        end
+      end
+
+  #### Raspberry Pi : [artoo-raspi](https://github.com/hybridgroup/artoo-raspi)
+
+      :::ruby
+      require 'artoo'
+
+      connection :raspi, :adaptor => :raspi
+      device :led, :driver => :raspi_pin, :pin => 17, :direction => :out
+
+      work do
+        every 1.second do
+          led.toggle
+        end
+      end
 
   You can find many more examples on [GitHub](https://github.com/hybridgroup/artoo/tree/master/examples).
