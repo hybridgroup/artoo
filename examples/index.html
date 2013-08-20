@@ -50,6 +50,7 @@
           <a href="/examples" class="item">Examples</a>
           <a class="item" href="https://github.com/hybridgroup/artoo/">GitHub</a>
           <a href="/videos" class="item">Videos</a>
+          <a href="/hardware" class="item">Hardware</a>
           <a href="/documentation" class="item">Docs</a>
         </span>
       </header>
@@ -57,7 +58,8 @@
         <section class="content full">
           <h2 id="examples">Examples</h2>
           
-          <h4 id="arduino">Arduino</h4>
+          <h4 id="arduino__artooarduino">Arduino : <a href="https://github.com/hybridgroup/artoo-arduino">artoo-arduino</a>
+</h4>
           
           <p>For complete setup, follow the <a href="https://github.com/hybridgroup/artoo/wiki/1.3.1.-Arduino-Making-A-Led-Blink-With-Artoo">Arduino - Making an led blink with Artoo Tutorial</a> in our wiki.</p>
           
@@ -71,7 +73,8 @@ work <span class="keyword">do</span>
   on button, <span class="key">push</span>: proc {led.toggle}
 <span class="keyword">end</span></pre>
           
-          <h4 id="ardrone_20">AR.Drone 2.0</h4>
+          <h4 id="ardrone_20__artooardrone">AR.Drone 2.0 : <a href="https://github.com/hybridgroup/artoo-ardrone">artoo-ardrone</a>
+</h4>
           
           <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -86,7 +89,8 @@ work <span class="keyword">do</span>
   after(<span class="integer">30</span>.seconds) { drone.stop }
 <span class="keyword">end</span></pre>
           
-          <h4 id="roomba">Roomba</h4>
+          <h4 id="roomba__artooroomba">Roomba : <a href="https://github.com/hybridgroup/artoo-roomba">artoo-roomba</a>
+</h4>
           
           <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -101,7 +105,8 @@ work <span class="keyword">do</span>
   roomba.nudge_left
 <span class="keyword">end</span></pre>
           
-          <h4 id="sphero__modular">Sphero - Modular</h4>
+          <h4 id="sphero__artoosphero">Sphero : <a href="https://github.com/hybridgroup/artoo-sphero">artoo-sphero</a>
+</h4>
           
           <p>For complete setup, follow <a href="https://github.com/hybridgroup/artoo/wiki/1.3.2.-Sphero">Sphero Tutorial</a> in our wiki.</p>
           
@@ -125,6 +130,61 @@ robots = <span class="constant">SPHEROS</span>.map <span class="keyword">do</spa
 <span class="keyword">end</span>
 
 <span class="constant">SpheroRobot</span>.work!(robots)</pre>
+          
+          <h4 id="leapmotion__artooleapmotion">Leapmotion : <a href="https://github.com/hybridgroup/artoo-leapmotion">artoo-leapmotion</a>
+</h4>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
+device <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
+
+  work <span class="keyword">do</span>
+    on leapmotion, <span class="symbol">:open</span> =&gt; <span class="symbol">:on_open</span>
+    on leapmotion, <span class="symbol">:gesture</span> =&gt; <span class="symbol">:on_gesture</span>
+    on leapmotion, <span class="symbol">:close</span> =&gt; <span class="symbol">:on_close</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">on_open</span>(*args)
+    puts args
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">on_gesture</span>(*args)
+    puts args[<span class="integer">1</span>]
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">on_close</span>(*args)
+    puts args
+  <span class="keyword">end</span></pre>
+          
+          <h4 id="pebble__artoopebble">Pebble : <a href="https://github.com/hybridgroup/artoo-pebble">artoo-pebble</a>
+</h4>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
+device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
+
+work <span class="keyword">do</span>
+  watch.set_nowplaying_metadata(<span class="string"><span class="delimiter">"</span><span class="content">Artoo</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Hello</span><span class="delimiter">"</span></span>, <span class="constant">Time</span>.now.to_s)
+  every(<span class="integer">5</span>.seconds) <span class="keyword">do</span>
+    watch.set_nowplaying_metadata(<span class="string"><span class="delimiter">"</span><span class="content">Artoo</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Update...</span><span class="delimiter">"</span></span>, <span class="constant">Time</span>.now.to_s)
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+          
+          <h4 id="raspberry_pi__artooraspi">Raspberry Pi : <a href="https://github.com/hybridgroup/artoo-raspi">artoo-raspi</a>
+</h4>
+          
+          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:raspi</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:raspi</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:raspi_pin</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">17</span>, <span class="symbol">:direction</span> =&gt; <span class="symbol">:out</span>
+
+work <span class="keyword">do</span>
+  every <span class="integer">1</span>.second <span class="keyword">do</span>
+    led.toggle
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
           
           <p>You can find many more examples on <a href="https://github.com/hybridgroup/artoo/tree/master/examples">GitHub</a>.</p>
         </section>
