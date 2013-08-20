@@ -6,15 +6,21 @@ description: Artoo compatible hardware.
 ---
 
 %section.hardware
-  :markdown
-    ## Supported Hardware
-
-    #### Click on an image to go to related adaptor repository
-
-    [![Arduino](/images/arduino.jpg)](https://github.com/hybridgroup/artoo-arduino)
-    [![AR Drone](/images/ardrone.jpg)](https://github.com/hybridgroup/artoo-ardrone)
-    [![Sphero](/images/sphero.jpg)](https://github.com/hybridgroup/artoo-sphero)
-    [![Roomba](/images/roomba.jpg)](https://github.com/hybridgroup/artoo-roomba)
-    [![Pebble](/images/pebble.jpg)](https://github.com/hybridgroup/artoo-pebble)
-    [![Raspberry Pi](/images/raspi.jpg)](https://github.com/hybridgroup/artoo-raspi)
-    [![Leap Motion](/images/leap_motion.jpg)](https://github.com/hybridgroup/artoo-leapmotion)
+  %h2 Supported Hardware
+  %h4 Here are the hardware devices that Artoo currently supports.
+  .devices
+    %a.device{href:"https://github.com/hybridgroup/artoo-ardrone", title: "AR Drone"}
+      %img{src: "/images/ardrone.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-arduino", title: "Arduino"}
+      %img{src: "/images/arduino.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-leapmotion", title: "Leap Motion"}
+      %img{src: "/images/leap_motion.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-pebble", title: "Pebble"}
+      %img{src: "/images/pebble.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-raspi", title: "Raspberry Pi"}
+      %img{src: "/images/raspi.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-roomba", title: "Roomba"}
+      %img{src: "/images/roomba.jpg"}
+    %a.device{href:"https://github.com/hybridgroup/artoo-sphero", title: "Sphero"}
+      %img{src: "/images/sphero.jpg"}
+  %h1 More hardware support coming soon...
