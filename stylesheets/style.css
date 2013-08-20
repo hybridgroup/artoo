@@ -1510,38 +1510,41 @@ header {
         width: 290px;
         height: 169px; } }
   /* line 237, style.css.sass */
+  .main[role="main"] .hardware .devices {
+    text-align: center; }
+  /* line 239, style.css.sass */
   .main[role="main"] .hardware img {
-    width: 600; }
+    width: 300px; }
     /* line 24, style.css.sass */
     .main[role="main"] .hardware img:not(:last-child) {
       margin-bottom: 20px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 237, style.css.sass */
+      /* line 239, style.css.sass */
       .main[role="main"] .hardware img {
         width: 420px; } }
     @media only screen and (max-width: 767px) {
-      /* line 237, style.css.sass */
+      /* line 239, style.css.sass */
       .main[role="main"] .hardware img {
         width: 290px; } }
-  /* line 244, style.css.sass */
+  /* line 246, style.css.sass */
   .main[role="main"] .content {
     width: 70%; }
-    /* line 246, style.css.sass */
+    /* line 248, style.css.sass */
     .main[role="main"] .content.full {
       width: 100%;
       clear: both; }
-    /* line 250, style.css.sass */
+    /* line 252, style.css.sass */
     .main[role="main"] .content h1, .main[role="main"] .content h2 {
       color: #bc2a1b;
       margin-top: 30px; }
-      /* line 253, style.css.sass */
+      /* line 255, style.css.sass */
       .main[role="main"] .content h1:first, .main[role="main"] .content h2:first {
         margin-top: 0; }
-    /* line 255, style.css.sass */
+    /* line 257, style.css.sass */
     .main[role="main"] .content h1 {
       font-size: 1.9em;
       padding: 10px 0; }
-  /* line 260, style.css.sass */
+  /* line 262, style.css.sass */
   .main[role="main"] .aside.right {
     width: 30%;
     float: right;
@@ -1551,30 +1554,30 @@ header {
   .main[role="main"] section:not(:last-child) {
     margin-bottom: 20px; }
 
-/* line 270, style.css.sass */
+/* line 272, style.css.sass */
 .documentation .item {
   margin-bottom: 40px; }
-  /* line 272, style.css.sass */
+  /* line 274, style.css.sass */
   .documentation .item h4 {
     color: #b9b9b9; }
 
-/* line 275, style.css.sass */
+/* line 277, style.css.sass */
 .CodeRay {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 278, style.css.sass */
+/* line 280, style.css.sass */
 .social {
   padding-top: 30px; }
-  /* line 280, style.css.sass */
+  /* line 282, style.css.sass */
   .social .splitter {
     display: inline; }
   @media only screen and (max-width: 767px) {
-    /* line 283, style.css.sass */
+    /* line 285, style.css.sass */
     .social .splitter {
       display: block;
       margin-bottom: 5px; } }
 
 @media only screen and (max-width: 400) {
-  /* line 288, style.css.sass */
+  /* line 290, style.css.sass */
   .twitter-share-button {
     margin-bottom: 10px; } }
