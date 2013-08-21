@@ -43,6 +43,7 @@ module Artoo
 
       desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a serial device by name"
       option :retries, :default => 0, :desc => "Number of times to retry connecting on failure"
+      option :baudrate, :default => 57600, :desc => "Baud rate to use to connect to the serial device"
       def socat(port, name)
         attempts = 1 + options[:retries].to_i
         
@@ -51,14 +52,14 @@ module Artoo
           run("sudo chmod a+rw /dev/#{name}")
           
           while(attempts > 0) do
-            run("socat -d -d FILE:/dev/#{name},nonblock,raw,b115200,echo=0 TCP-LISTEN:#{port},fork")
+            run("socat -d -d FILE:/dev/#{name},nonblock,raw,b#{options[:baudrate]},echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
             attempts -= 1
           end
 
         when :macosx
           while(attempts > 0) do
-            run("socat -d -d FILE:/dev/#{name},nonblock,raw,echo=0 TCP-LISTEN:#{port},fork")
+            run("socat -d -d -b#{options[:baudrate]} FILE:/dev/#{name},nonblock,raw,echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
             attempts -= 1
           end
