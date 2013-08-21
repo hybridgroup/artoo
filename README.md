@@ -266,7 +266,27 @@ D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
 
 ### Generator
 
-Want to integrate a new kind of hardware devices for which there is not an Artoo adaptor yet? You can easily generate a new skeleton Artoo adaptor to help you get started! Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
+Want to integrate a hardware device we don't have Artoo support for yet? There's a generator for that! You can easily generate a new skeleton Artoo adaptor to help you get started. Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
+
+```
+$ artoo generate adaptor awesome_device
+Creating artoo-awesome_device adaptor...
+      create  artoo-awesome_device
+       exist  artoo-awesome_device
+      create  artoo-awesome_device/Gemfile
+      create  artoo-awesome_device/LICENSE
+      create  artoo-awesome_device/README.md
+      create  artoo-awesome_device/Rakefile
+      create  artoo-awesome_device/artoo-awesome_device.gemspec
+      create  artoo-awesome_device/lib/artoo-awesome_device.rb
+      create  artoo-awesome_device/lib/artoo-awesome_device/version.rb
+      create  artoo-awesome_device/lib/artoo/adaptors/awesome_device.rb
+      create  artoo-awesome_device/lib/artoo/drivers/awesome_device.rb
+      create  artoo-awesome_device/test/adaptors/awesome_device_adaptor_test.rb
+      create  artoo-awesome_device/test/drivers/awesome_device_driver_test.rb
+      create  artoo-awesome_device/test/test_helper.rb
+Done!
+```
 
 ## Wiki
 
