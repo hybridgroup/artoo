@@ -41,10 +41,10 @@
 
         %span.menu
           = link_to "Examples", "", (menu_item("examples"))
-          = link_to "GitHub", "https://github.com/hybridgroup/artoo/", class: "item"
-          = link_to "Videos", "", (menu_item("videos"))
           = link_to "Hardware", "", (menu_item("hardware"))
+          = link_to "Videos", "", (menu_item("videos"))
           = link_to "Docs", "", (menu_item("documentation"))
+          = link_to "Github", "https://github.com/hybridgroup/artoo/", class: "item"
       - unless data.page.hero.nil?
         .title
           We believe that it's time to bring
@@ -52,10 +52,10 @@
           Ruby and Robots together.
         .subtitle
           Artoo makes robotics
-          = link_to "Simple", "https://github.com/hybridgroup/artoo/wiki/"
+          = link_to "Simple", "", (menu_item("examples"))
           and
           = succeed '.' do
-            = link_to "Extensible", "https://github.com/hybridgroup/artoo/wiki/2.1.-Current-Hardware"
+            = link_to "Extensible", "", (menu_item("hardware"))
       = yield
       .footer
         .copyright
