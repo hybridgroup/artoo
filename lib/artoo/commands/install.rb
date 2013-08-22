@@ -3,11 +3,10 @@ require 'thor/group'
 
 module Artoo
   module Commands
-    class Install < Thor
-      include Thor::Actions
-      include Artoo::Utility
+    class Install < Commands
+      package_name "install"
       
-      desc "socat", "install socat utility program"
+      desc "socat", "Install the socat serial to socket utility program"
       def socat
         case os 
         when :linux
