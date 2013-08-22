@@ -3,12 +3,11 @@ require 'thor/group'
 
 module Artoo
   module Commands
-    class Connect < Thor
-      include Thor::Actions
-      include Artoo::Utility
+    class Connect < Commands
+      package_name "connect"
 
-      desc "scan", "scan for connected devices"
-      option :type, :default => "bluetooth", :desc => "type of scan [bluetooth, serial]"
+      desc "scan", "Scan for connected devices"
+      option :type, :aliases => "-t", :default => "bluetooth", :desc => "type of scan [bluetooth, serial]"
       def scan
         case os
         when :linux
@@ -26,9 +25,9 @@ module Artoo
         end
       end
 
-      desc "bind", "bind [ADDRESS] [NAME] binds a device to some connected hardware"
-      option :comm, :default => 0, :desc => "Comm number"
-      option :radio, :default => "hci0", :desc => "Bluetooth radio address"
+      desc "bind [ADDRESS] [NAME]", "Binds a Bluetooth device to some connected hardware"
+      option :comm, :aliases => "-c", :default => 0, :desc => "Comm number"
+      option :radio, :aliases => "-r", :default => "hci0", :desc => "Bluetooth radio address"
       def bind(address, name)
         case os
         when :linux
@@ -41,10 +40,10 @@ module Artoo
         end
       end
 
-      desc "socat", "socat [PORT] [NAME] use socat to connect a socket to a serial device by name"
-      option :retries, :default => 0, :desc => "Number of times to retry connecting on failure"
-      option :baudrate, :default => 57600, :desc => "Baud rate to use to connect to the serial device"
-      def socat(port, name)
+      desc "serial [NAME] [PORT]", "Connect a serial device to a TCP socket using socat"
+      option :retries, :aliases => "-r", :default => 0, :desc => "Number of times to retry connecting on failure"
+      option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
+      def serial(name, port)
         attempts = 1 + options[:retries].to_i
         
         case os
