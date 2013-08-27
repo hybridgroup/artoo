@@ -31,6 +31,8 @@ module Artoo
 
     attr_reader :connections, :devices, :name
 
+    Celluloid.logger.level = ::Logger::Severity::INFO
+
     # Create new robot
     # @param [Hash] params
     # @option params [String]     :name
