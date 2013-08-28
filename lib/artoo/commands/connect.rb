@@ -14,12 +14,12 @@ module Artoo
           if options[:type] == 'bluetooth'
             run("hcitool scan")
           elsif options[:type] == 'serial'
-            run("ls /dev/tty.*")
+            run("ls /dev/tty*")
           else
             say "ERROR: scan type '#{options[:type]}' not supported!"
           end
         when :macosx
-          run("ls /dev/tty.*")          
+          run("ls /dev/tty*")          
         else
           say "OS not yet supported..."
         end
