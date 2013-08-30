@@ -74,7 +74,7 @@ module Artoo
       # @param stop_bits [int]
       # @param parity
       # @return [SerialPort] new connection
-      def connect_to_serial(speed=57600, data_bits=8, stop_bits=1, parity=::SerialPort::NONE)
+      def connect_to_serial(speed=57600, data_bits=8, stop_bits=1, parity=nil)
         require 'serialport'
         parity = ::SerialPort::NONE unless parity
         @sp = ::SerialPort.new(port.port, speed, data_bits, stop_bits, parity)
