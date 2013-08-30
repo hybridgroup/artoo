@@ -1,5 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
-require 'artoo/drivers/driver'
 
 class Awesome < Artoo::Drivers::Driver
   COMMANDS = [:awesome].freeze

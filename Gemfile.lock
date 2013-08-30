@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     artoo (1.0.0)
-      celluloid (~> 0.14.1)
-      celluloid-io (~> 0.14.1)
+      celluloid (~> 0.15.0.pre2)
+      celluloid-io (~> 0.15.0.pre2)
       multi_json (~> 1.6)
       pry (~> 0.9)
       rake (~> 10.0)
@@ -15,11 +15,11 @@ GEM
   specs:
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
-    celluloid (0.14.1)
+    celluloid (0.15.0.pre2)
       timers (>= 1.0.0)
-    celluloid-io (0.14.1)
-      celluloid (>= 0.14.1)
-      nio4r (>= 0.4.5)
+    celluloid-io (0.15.0.pre2)
+      celluloid (>= 0.15.0.pre)
+      nio4r (>= 0.5.0)
     certified (0.1.1)
     chunky_png (1.2.8)
     coderay (1.0.9)
@@ -62,6 +62,7 @@ GEM
       certified
       http_parser.rb
     http_parser.rb (0.5.3)
+    http_parser.rb (0.5.3-java)
     json (1.7.7)
     json (1.7.7-java)
     kramdown (1.1.0)
@@ -75,7 +76,8 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.7)
-    nio4r (0.4.6)
+    nio4r (0.5.0)
+    nio4r (0.5.0-java)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
