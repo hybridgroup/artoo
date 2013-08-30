@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (1.0.0)
+    artoo (1.1.0.pre)
       celluloid (~> 0.15.0.pre2)
       celluloid-io (~> 0.15.0.pre2)
       multi_json (~> 1.6)
@@ -62,7 +62,6 @@ GEM
       certified
       http_parser.rb
     http_parser.rb (0.5.3)
-    http_parser.rb (0.5.3-java)
     json (1.7.7)
     json (1.7.7-java)
     kramdown (1.1.0)
@@ -77,7 +76,6 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.7.7)
     nio4r (0.5.0)
-    nio4r (0.5.0-java)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)

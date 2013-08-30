@@ -229,11 +229,11 @@ Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port d
 
 ```
 $ artoo connect
-Commands:
-  artoo connect bind            # bind [ADDRESS] [NAME] binds a device to some connected hardware
-  artoo connect help [COMMAND]  # Describe subcommands or one specific subcommand
-  artoo connect scan            # scan for connected devices
-  artoo connect socat           # socat [PORT] [NAME] use socat to connect a socket to a serial device by name
+connect commands:
+  artoo connect bind [ADDRESS] [NAME]  # Binds a Bluetooth device to some connected hardware
+  artoo connect help [COMMAND]         # Describe subcommands or one specific subcommand
+  artoo connect scan                   # Scan for connected devices
+  artoo connect serial [NAME] [PORT]   # Connect a serial device to a TCP socket using socat
 ```
 
 You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!
