@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     artoo (1.0.0)
-      celluloid (~> 0.15.0.pre)
-      celluloid-io (~> 0.15.0.pre)
+      celluloid (~> 0.15.0.pre2)
+      celluloid-io (~> 0.15.0.pre2)
       multi_json (~> 1.6)
       pry (~> 0.9)
       rake (~> 10.0)
@@ -15,9 +15,9 @@ GEM
   specs:
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
-    celluloid (0.15.0.pre)
+    celluloid (0.15.0.pre2)
       timers (>= 1.0.0)
-    celluloid-io (0.15.0.pre)
+    celluloid-io (0.15.0.pre2)
       celluloid (>= 0.15.0.pre)
       nio4r (>= 0.5.0)
     certified (0.1.1)
