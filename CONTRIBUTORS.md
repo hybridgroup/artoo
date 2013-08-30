@@ -1,15 +1,19 @@
+# Contributors
+
 Artoo exists thanks to the work of these wonderful individuals:
 
-- Adrian Zankich (@adzankich)
-- Andrew Stewart (@stewart)
-- Ari Lerner (@auser)
-- Daniel Fischer (@dfischer)
-- Jake Good (@whoisjake)
-- Javier Cervantes (@solojavier)
-- Kurtis Rainbolt-Greene (@krainboltgreene)
-- Mario "Kuroir" Ricalde (@MarioRicalde)
-- Mike Ford (@mikejford)
-- Ron Evans (@deadprogram)
+- Adrian Zankich ([@adzankich](https://github.com/adzankich))
+- Andrew Stewart ([@stewart](https://github.com/stewart))
+- Ari Lerner ([@auser](https://github.com/auser))
+- Daniel Fischer ([@dfischer](https://github.com/dfischer))
+- Jake Good ([@whoisjake](https://github.com/whoisjake))
+- Javier Cervantes ([@solojavier](https://github.com/solojavier))
+- Kurtis Rainbolt-Greene([@krainboltgreene] (https://github.com/krainboltgreene))
+- Mario "Kuroir" Ricalde([@MarioRicalde] (https://github.com/MarioRicalde))
+- Mike Ford ([@mikejford](https://github.com/mikejford))
+- Rafael Magana ([@rafmagana](https://github.com/rafmagana))
+- Ron Evans ([@deadprogram](https://github.com/deadprogram))
+- Tim Uruski ([@timuruski](https://github.com/timuruski))
 
 Thank you!
 
