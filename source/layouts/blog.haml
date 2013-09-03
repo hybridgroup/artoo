@@ -1,0 +1,62 @@
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => data.page.description, :name => "description"}
+    %meta{:content => data.page.author, :name => "author"}
+    %title= data.page.title
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    %link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700")
+    %link(rel="stylesheet" href="/stylesheets/style.css")
+    :javascript
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+  %body
+    .container
+      %header
+        %a.logo{href: '/'}
+          %h1 artoo
+        %span.subtitle
+          .main Ruby on Robots
+          .easter
+            .heart ♥
+            = link_to "Rubinius", "http://rubini.us/"
+
+        %span.menu
+          = link_to "Blog", "", (menu_item("blog"))
+          = link_to "Examples", "", (menu_item("examples"))
+          = link_to "Hardware", "", (menu_item("hardware"))
+          = link_to "Videos", "", (menu_item("videos"))
+          = link_to "Docs", "", (menu_item("documentation"))
+          = link_to "Github", "https://github.com/hybridgroup/artoo/", class: "item"
+      - unless data.page.hero.nil?
+        .title
+          We believe that it's time to bring
+          %br
+          Ruby and Robots together.
+        .subtitle
+          Artoo makes robotics
+          = link_to "Simple", "", (menu_item("examples"))
+          and
+          = succeed '.' do
+            = link_to "Extensible", "", (menu_item("hardware"))
+      .main{:role => "main"}
+        %section.content.full
+          = yield
