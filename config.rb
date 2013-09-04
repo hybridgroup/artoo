@@ -8,6 +8,14 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.layout = "blog"
+  blog.tag_template = "blog/tag.html"
+end
+
+activate :directory_indexes
+
 configure :build do
 end
 

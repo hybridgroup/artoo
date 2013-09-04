@@ -5,5 +5,9 @@ author: The Hybrid Group
 description: Artoo blog entries.
 ---
 
+%h1
+  Articles tagged:
+  = tagname
+
 - page_articles.each_with_index do |article, i|
-  = partial "article", locals: {article: article}
+  = partial "/blog/article", locals: {article: article}

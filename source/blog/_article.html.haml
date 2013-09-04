@@ -1,0 +1,23 @@
+.article
+  .date
+    .blue
+      .month
+        = article.date.strftime('%b')
+      .day
+        = article.date.strftime('%d')
+    .red
+      .year
+        = article.date.strftime('%Y')
+  %h3
+    = link_to article.title, article
+
+  = article.body
+  .comments
+    .img
+      = image_tag "conversation.png"
+    = link_to "9 comments", "#"
+  .tags
+    .img
+      = image_tag "tag.png"
+    - article.tags.each do |tag_name|
+      = link_to tag_name, tag_path(tag_name)
