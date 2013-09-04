@@ -11,10 +11,13 @@ module Artoo
       def scan
         case os
         when :linux
-          if options[:type] == 'bluetooth'
+          case options[:type]
+          when 'bluetooth'
             run("hcitool scan")
-          elsif options[:type] == 'serial'
+          when 'serial'
             run("ls /dev/tty*")
+          when 'usb'
+            run("lsusb")            
           else
             say "ERROR: scan type '#{options[:type]}' not supported!"
           end
