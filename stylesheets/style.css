@@ -1582,20 +1582,20 @@ header {
   .twitter-share-button {
     margin-bottom: 10px; } }
 /* line 293, style.css.sass */
-.entries {
+.articles {
   max-width: 706px;
   margin-right: 40px;
   margin-bottom: 80px;
   float: left; }
   /* line 298, style.css.sass */
-  .entries .item {
+  .articles .article {
     display: inline-block;
     margin-top: 40px; }
     /* line 302, style.css.sass */
-    .entries .item h3, .entries .item h4, .entries .item a {
+    .articles .article h3, .articles .article h4, .articles .article a {
       color: #cc3300; }
     /* line 305, style.css.sass */
-    .entries .item h3 {
+    .articles .article h3 {
       display: inline-block;
       font-size: 24px;
       line-height: 26px;
@@ -1603,95 +1603,96 @@ header {
       margin: 0px;
       max-width: 80%; }
     /* line 313, style.css.sass */
-    .entries .item p {
+    .articles .article p {
       text-align: justify; }
     /* line 316, style.css.sass */
-    .entries .item .date {
+    .articles .article .date {
       color: white;
       display: inline-block;
       width: 50px;
       text-align: center;
       margin-right: 20px; }
       /* line 323, style.css.sass */
-      .entries .item .date .blue {
+      .articles .article .date .blue {
         padding: 5px;
         background-color: #79bee8; }
         /* line 327, style.css.sass */
-        .entries .item .date .blue .month {
+        .articles .article .date .blue .month {
+          text-transform: uppercase;
           font-size: 12px;
           line-height: 12px; }
-        /* line 331, style.css.sass */
-        .entries .item .date .blue .day {
+        /* line 332, style.css.sass */
+        .articles .article .date .blue .day {
           font-size: 16px;
           line-height: 16px; }
-      /* line 335, style.css.sass */
-      .entries .item .date .red {
+      /* line 336, style.css.sass */
+      .articles .article .date .red {
         padding: 2px;
         background-color: #cc3300; }
-        /* line 339, style.css.sass */
-        .entries .item .date .red .year {
+        /* line 340, style.css.sass */
+        .articles .article .date .red .year {
           font-size: 10px;
           line-height: 10px; }
-    /* line 343, style.css.sass */
-    .entries .item .comments, .entries .item .tags {
+    /* line 344, style.css.sass */
+    .articles .article .comments, .articles .article .tags {
       display: inline-block; }
-      /* line 346, style.css.sass */
-      .entries .item .comments .img, .entries .item .tags .img {
+      /* line 347, style.css.sass */
+      .articles .article .comments .img, .articles .article .tags .img {
         vertical-align: top;
         display: inline-block;
         width: 24px;
         height: 24px; }
-      /* line 352, style.css.sass */
-      .entries .item .comments a, .entries .item .tags a {
+      /* line 353, style.css.sass */
+      .articles .article .comments a, .articles .article .tags a {
         vertical-align: top;
         text-decoration: underline; }
-      /* line 356, style.css.sass */
-      .entries .item .comments img, .entries .item .tags img {
+      /* line 357, style.css.sass */
+      .articles .article .comments img, .articles .article .tags img {
         margin-right: 4px; }
-    /* line 359, style.css.sass */
-    .entries .item .comments {
+    /* line 360, style.css.sass */
+    .articles .article .comments {
       margin-right: 60px; }
 
-/* line 362, style.css.sass */
+/* line 363, style.css.sass */
 .categories, .network, .tweets {
   display: inline-block;
   vertical-align: top;
   width: 200px;
   margin-bottom: 40px;
   float: left; }
-  /* line 368, style.css.sass */
+  /* line 369, style.css.sass */
   .categories a, .network a, .tweets a {
     color: black; }
-  /* line 371, style.css.sass */
+  /* line 372, style.css.sass */
   .categories h4, .network h4, .tweets h4 {
     color: #cc3300;
     font-size: 20px;
     line-height: 24px; }
 
-/* line 378, style.css.sass */
+/* line 379, style.css.sass */
 .categories ul {
   margin: 0;
   list-style: none; }
 
-/* line 385, style.css.sass */
+/* line 386, style.css.sass */
 .tweets .tweet .avatar {
   display: inline-block; }
-/* line 388, style.css.sass */
+/* line 389, style.css.sass */
 .tweets .tweet .user {
   display: inline-block;
   vertical-align: top;
   margin-top: 15px; }
-/* line 393, style.css.sass */
+/* line 394, style.css.sass */
 .tweets .tweet p {
   font-size: 13px; }
 
-/* line 396, style.css.sass */
+/* line 397, style.css.sass */
 .alternative_footer {
   float: left; }
-  /* line 398, style.css.sass */
+  /* line 399, style.css.sass */
   .alternative_footer .copyright, .alternative_footer a {
     float: left;
     min-width: 176px; }
-  /* line 401, style.css.sass */
+  /* line 402, style.css.sass */
   .alternative_footer a {
     color: #cc3300; }
