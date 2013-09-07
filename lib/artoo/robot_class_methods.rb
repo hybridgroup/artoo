@@ -58,17 +58,17 @@ module Artoo
       #  or, a new instance can be created
       # @param [Robot] robot
       def work!(robot=nil)
+        prepare_work(robot)
         return if is_running?
-        prepare_robots(robot)
 
         unless cli?
           begin
             start_api
-            master.start_work
+            Artoo::Master.start_work
             begin_working
           rescue Interrupt
             Celluloid::Logger.info 'Shutting down...'
-            master.stop_work if master
+            Artoo::Master.stop_work
             # Explicitly exit so busy Processor threads can't block
             # process shutdown... taken from Sidekiq, thanks!
             exit(0)
@@ -77,7 +77,7 @@ module Artoo
       end
 
       # Prepare master robots for work
-      def prepare_robots(robot=nil)
+      def prepare_work(robot=nil)
         if robot.respond_to?(:work)
           robots = [robot]
         elsif robot.kind_of?(Array)
@@ -86,7 +86,7 @@ module Artoo
           robots = [self.new]
         end
 
-        Celluloid::Actor[:master] = Master.new(robots)
+        Artoo::Master.assign(robots)
       end
 
       def begin_working
@@ -112,11 +112,6 @@ module Artoo
         Celluloid::Actor[:api] = Api::Server.new(self.api_host, self.api_port) if self.use_api
       end
       
-      # Master actor
-      def master
-        Celluloid::Actor[:master]
-      end
-
       # @return [Boolean] True if test env
       def test?
         ENV["ARTOO_TEST"] == 'true'
