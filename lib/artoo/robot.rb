@@ -88,7 +88,7 @@ module Artoo
 
     # @return [Collection] connection types
     def connection_types
-      current_class.connection_types
+      current_class.connection_types ||= [{:name => :passthru}]
     end
 
     # @return [Collection] device types

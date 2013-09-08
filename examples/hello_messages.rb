@@ -1,8 +1,6 @@
 require 'artoo/robot'
 
 class GreeterRobot < Artoo::Robot
-  connection :loop
-  
   work do
     every(5.seconds) do
       say 'Hola'
@@ -17,14 +15,6 @@ class GreeterRobot < Artoo::Robot
 end
 
 class MessageRobot < Artoo::Robot
-  connection :loop
-  
-  work do
-    every(3.seconds) do
-      puts "#{name} is alive..."
-    end
-  end
-
   def hello(greeting, sender)
     puts "'#{sender.name}' said '#{greeting}' to #{name}"
   end
