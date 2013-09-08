@@ -12,26 +12,26 @@ command_set = Pry::CommandSet.new do
       output.puts "Starting robots..."
     end
 
-    Celluloid::Actor[:master].start_work
+    Artoo::Master.start_work
   end
 
   block_command "pause", "Pause all robots" do
     output.puts "Pausing robots..."
-    Celluloid::Actor[:master].pause_work
+    Artoo::Master.pause_work
   end
 
   block_command "continue", "Continue all robots" do
     output.puts "Continuing robots..."
-    Celluloid::Actor[:master].continue_work
+    Artoo::Master.continue_work
   end
 
   block_command "stop", "Stop all robots" do
     output.puts "Stopping robots..."
-    Celluloid::Actor[:master].stop_work
+    Artoo::Master.stop_work
   end
 
   block_command "list", "List all robots" do
-    output.puts Celluloid::Actor[:master].robots
+    output.puts Artoo::Master.robots
   end
 end
 
