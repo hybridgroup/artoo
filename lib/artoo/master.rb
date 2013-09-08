@@ -14,6 +14,10 @@ module Artoo
         current.assign(bots)
       end
 
+      def robots
+        current.robots
+      end
+
       def robot(name)
         current.robot(name)
       end
@@ -24,6 +28,14 @@ module Artoo
 
       def stop_work
         current.stop_work
+      end
+
+      def pause_work
+        current.pause_work
+      end
+
+      def continue_work
+        current.continue_work
       end
     end
 
