@@ -69,19 +69,22 @@ describe Artoo::Robot do
       TestRobot.stubs(:begin_working)
       @master = mock('master')
       @master.expects(:start_work)
-      TestRobot.stubs(:master).returns(@master)
+      Artoo::Master.stubs(:current).returns(@master)
     end
 
     it 'Artoo::Robot.work! with single object' do
+      @master.expects(:assign).with([@robot])
       TestRobot.work!(@robot)
     end
 
     it 'Artoo::Robot.work! with array of objects' do
       @robot2 = TestRobot.new(:name => "too", :connections => {:test_connection => {:port => '1234'}})
+      @master.expects(:assign).with([@robot, @robot2])
       TestRobot.work!([@robot, @robot2])
     end
 
     it 'Artoo::Robot.work! without object' do
+      @master.expects(:assign)
       TestRobot.work!
     end
   end

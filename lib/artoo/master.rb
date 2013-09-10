@@ -5,16 +5,60 @@ module Artoo
     include Celluloid
     attr_reader :robots
 
+    class << self
+      def current
+        Celluloid::Actor[:master] ||= self.new
+      end
+
+      def assign(bots=[])
+        current.assign(bots)
+      end
+
+      def robots
+        current.robots
+      end
+
+      def robot(name)
+        current.robot(name)
+      end
+
+      def start_work
+        current.start_work
+      end
+
+      def stop_work
+        current.stop_work
+      end
+
+      def pause_work
+        current.pause_work
+      end
+
+      def continue_work
+        current.continue_work
+      end
+    end
+
     # Create new master
     # @param [Collection] robots
-    def initialize(bots)
-      @robots = bots
+    def initialize(bots=[])
+      @robots = []
+      assign(bots)
+    end
+
+    # Assign robots to Master controller
+    # @param [Collection] robots
+    def assign(bots=[])
+      robots.concat(bots)
+      bots.each {|r| r.async.work} if Artoo::Robot.is_running?
     end
 
     # @param  [String] name
     # @return [Robot]  robot
     def robot(name)
-      robots.find {|r| r.name == name}
+      r = robots.find {|r| r.name == name}
+      raise RobotNotFound if r.nil?
+      r
     end
 
     # @param  [String]     name

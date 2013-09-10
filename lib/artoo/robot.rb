@@ -10,6 +10,7 @@ require 'artoo/adaptors/adaptor'
 require 'artoo/device'
 require 'artoo/drivers/driver'
 require 'artoo/events'
+require 'artoo/exceptions'
 require 'artoo/api/api'
 require 'artoo/master'
 require 'artoo/port'
@@ -88,7 +89,7 @@ module Artoo
 
     # @return [Collection] connection types
     def connection_types
-      current_class.connection_types
+      current_class.connection_types ||= [{:name => :passthru}]
     end
 
     # @return [Collection] device types

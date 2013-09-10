@@ -35,6 +35,10 @@ describe Artoo::Master do
     @master.robot("robot2").must_equal @robot2
   end
 
+  it 'Artoo::Master#robot with invalid robot name' do
+    proc {@master.robot("robotno")}.must_raise(Artoo::RobotNotFound)
+  end
+
   it 'Artoo::Master#robot_devices' do
     @master.robot_devices("robot2").first.must_equal "robot2-device1"
   end
