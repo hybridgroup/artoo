@@ -56,7 +56,9 @@ module Artoo
     # @param  [String] name
     # @return [Robot]  robot
     def robot(name)
-      robots.find {|r| r.name == name}
+      r = robots.find {|r| r.name == name}
+      raise RobotNotFound if r.nil?
+      r
     end
 
     # @param  [String]     name
