@@ -26,6 +26,18 @@ module Artoo
         super
       end
 
+      # Name of device
+      # @return [String]
+      def name
+        "<%= adaptor_name %>"
+      end
+
+      # Version of device
+      # @return [String]
+      def version
+        Artoo::<%= adaptor_class_name %>::VERSION
+      end
+
       # Uses method missing to call device actions
       # @see device documentation
       def method_missing(method_name, *arguments, &block)
