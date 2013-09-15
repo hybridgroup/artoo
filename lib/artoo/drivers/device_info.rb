@@ -4,14 +4,14 @@ module Artoo
   module Drivers
     # DeviceInfo driver behaviors
     class DeviceInfo < Driver
-      COMMANDS = [:name, :version, :connect].freeze
+      COMMANDS = [:firmware_name, :version, :connect].freeze
 
-      def name
-        connection.device_name
+      def firmware_name
+        connection.firmware_name
       end
 
       def version
-        connection.device_version
+        connection.version
       end
     end
   end
