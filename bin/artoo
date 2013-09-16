@@ -10,6 +10,7 @@ require 'artoo/commands/install'
 
 Celluloid.logger = nil
 
+# load main commands
 module CLI
   class Root < Thor
     include Thor::Actions
@@ -43,5 +44,8 @@ module CLI
     subcommand "install", Artoo::Commands::Install
   end
 end
+
+# require any custom commands installed by artoo adaptor or driver gems
+Dir["#{Artoo::Commands::Commands.install_dir}/*.rb"].each {|file| require file }
 
 CLI::Root.start
