@@ -97,9 +97,9 @@ Artoo has a extensible system for connecting to hardware devices. The following 
 
 More platforms are coming soon!
 
-Artoo also has support for "drivers" that can work across multiple hardware platforms.
-  - GPIO (General Purpose Input/Output) <=> [Drivers](https://github.com/hybridgroup/artoo-gpio)
-  - i2c <=> [Drivers](https://github.com/hybridgroup/artoo-i2c)
+Artoo also has support for devices that can work across multiple hardware platforms.
+  - GPIO (General Purpose Input/Output) devices <=> [Drivers](https://github.com/hybridgroup/artoo-gpio)
+  - i2c devices <=> [Drivers](https://github.com/hybridgroup/artoo-i2c)
 
 Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
