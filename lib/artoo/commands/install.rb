@@ -1,5 +1,6 @@
-require 'thor'
-require 'thor/group'
+require 'artoo/utility'
+require 'artoo/commands/commands'
+require 'fileutils'
 
 module Artoo
   module Commands
@@ -18,6 +19,12 @@ module Artoo
         else
           say "OS not yet supported..."
         end
+      end
+
+      desc "command [FILENAME]", "Installs artoo command extension files"
+      def command(file)
+        empty_directory Install.install_dir
+        FileUtils.cp(file, Install.install_dir)
       end
     end
   end
