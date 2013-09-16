@@ -88,6 +88,7 @@ Artoo has a extensible system for connecting to hardware devices. The following 
 
   - [Arduino](http://www.arduino.cc/) <=> [Adaptor](https://github.com/hybridgroup/artoo-arduino)
   - [ARDrone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-ardrone)
+  - [Digispark](http://digistump.com/products/1) <=> [Adaptor](https://github.com/hybridgroup/artoo-digispark)
   - [Leap Motion](https://www.leapmotion.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-leapmotion)
   - [Pebble](http://getpebble.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-pebble)
   - [Raspberry Pi](http://www.raspberrypi.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-raspi)
@@ -95,6 +96,10 @@ Artoo has a extensible system for connecting to hardware devices. The following 
   - [Sphero](http://www.gosphero.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-sphero)
 
 More platforms are coming soon!
+
+Artoo also has support for "drivers" that can work across multiple hardware platforms.
+  - GPIO (General Purpose Input/Output) <=> [Drivers](https://github.com/hybridgroup/artoo-gpio)
+  - i2c <=> [Drivers](https://github.com/hybridgroup/artoo-i2c)
 
 Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
 
