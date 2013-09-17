@@ -17,23 +17,11 @@ $small-screen  : 479px
 $medium-screen : 767px
 $big-screen    : 964px
 
-body
-  background-color: $blue
-  background-image: url('../images/bg-artoo.png')
-  background-repeat: no-repeat
-  background-position: top
-
-a
-  &, &:visited
-    color: #4DA7E0
   
 
 // Partials
 @import 'shared/headers'
 @import 'shared/footers'
-
-pre
-  @include medium-screen-pre
 
 .hero
   .title
@@ -76,7 +64,6 @@ pre
 
 .main[role="main"]
   padding-bottom: 50px
-
 
   .videos
     iframe, object
