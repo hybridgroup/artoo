@@ -29,6 +29,7 @@ $big-screen    : 964px
 @import 'elements/home'
 @import 'elements/blog'
 
+// TODO Move this to a layout
 .container
   width: $big-screen
   min-height: 100%
@@ -85,20 +86,12 @@ $big-screen    : 964px
   section
     @include margin-not-last-child
 
+// TODO Move this to a layout
 .documentation
   .item
     margin-bottom: 40px
     h4
       color: #B9B9B9
-
-.social
-  padding-top: 30px
-  .splitter
-    display: inline
-  +small-screen
-    .splitter
-      display: block
-      margin-bottom: 5px
 
 +tiny-screen
   .twitter-share-button
