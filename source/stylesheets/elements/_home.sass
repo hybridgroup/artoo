@@ -1,0 +1,29 @@
+.hero
+  .title
+    @include title-font(47px, #133A55)
+    padding-top: 15px
+    line-height: 54px
+    width: 100%
+    clear: both
+    opacity: 0.94
+    margin: 0
+    +small-screen
+      font-size: 23px
+      line-height: 34px
+      padding: 0
+      br
+        display: none
+    +medium-screen
+      font-size: 33px
+      line-height: 42px
+  .subtitle
+    @include title-font(24px, #133A55)
+    font-weight: 550
+    line-height: 50px
+    opacity: 0.74
+    margin: 0
+    +small-screen
+      font-size: 18px
+      line-height: 34px
+      margin-top: 0px
+      padding: 0

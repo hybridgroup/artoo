@@ -20,38 +20,13 @@ $big-screen    : 964px
   
 
 // Partials
+@import 'shared/base'
 @import 'shared/headers'
 @import 'shared/footers'
+@import 'shared/coderay'
 
-.hero
-  .title
-    @include title-font(47px, #133A55)
-    padding-top: 15px
-    line-height: 54px
-    width: 100%
-    clear: both
-    opacity: 0.94
-    margin: 0
-    +small-screen
-      font-size: 23px
-      line-height: 34px
-      padding: 0
-      br
-        display: none
-    +medium-screen
-      font-size: 33px
-      line-height: 42px
-  .subtitle
-    @include title-font(24px, #133A55)
-    font-weight: 550
-    line-height: 50px
-    opacity: 0.74
-    margin: 0
-    +small-screen
-      font-size: 18px
-      line-height: 34px
-      margin-top: 0px
-      padding: 0
+// Pages
+@import 'elements/home'
 
 .container
   width: $big-screen
@@ -114,9 +89,6 @@ $big-screen    : 964px
     margin-bottom: 40px
     h4
       color: #B9B9B9
-
-.CodeRay
-  font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace
 
 .social
   padding-top: 30px
