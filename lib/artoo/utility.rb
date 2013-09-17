@@ -1,4 +1,5 @@
 require 'rbconfig'
+require 'artoo/ext/numeric'
 
 module Artoo
   # Utility methods used for various important things
@@ -84,20 +85,5 @@ module Artoo
         end
       )
     end
-  end
-end
-
-# Adds syntactic suger for seconds
-class Integer < Numeric
-  # @return [Integer] Plain number, actually does nothing
-  # @example 20.seconds => 20
-  def seconds
-    return self
-  end
-
-  # @return [Integer] Plain number, actually does nothing
-  # @example 1.second => 1
-  def second
-    return self
   end
 end
