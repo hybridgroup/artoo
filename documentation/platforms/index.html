@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="Artoo Platforms" name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo Platforms</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a class="logo" href="/">
+          <h1>artoo</h1>
+        </a>
+        <span class="subtitle">
+          <div class="main">Ruby on Robots</div>
+          <div class="easter">
+            <div class="heart">♥</div>
+            <a href="http://rubini.us/">Rubinius</a>
+          </div>
+        </span>
+        <span class="menu">
+          <a href="/examples" class="item">Examples</a>
+          <a href="/hardware" class="item">Hardware</a>
+          <a href="/videos" class="item">Videos</a>
+          <a href="/documentation" class="item">Docs</a>
+          <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+        </span>
+      </header>
+      <div class="main" role="main">
+        <section class="content full">
+          <section class="hardware">
+            <h2>Platforms</h2>
+            <div class="devices">
+              <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
+                <img src="/images/ardrone.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                <img src="/images/arduino.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                <img src="/images/digispark.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
+                <img src="/images/leap_motion.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/pebble" title="Pebble">
+                <img src="/images/pebble.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                <img src="/images/raspi.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/roomba" title="Roomba">
+                <img src="/images/roomba.jpg">
+              </a>
+              <a class="device" href="/documentation/platforms/sphero" title="Sphero">
+                <img src="/images/sphero.jpg">
+              </a>
+            </div>
+          </section>
+        </section>
+      </div>
+      <div class="footer">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1294,43 +1294,43 @@ ol.CodeRay li {
 .CodeRay .head .head {
   color: #f4f; }
 
-/* line 93, style.css.sass */
+/* line 1, shared/_base.sass */
 body {
   background-color: #ebfdff;
   background-image: url("../images/bg-artoo.png");
   background-repeat: no-repeat;
   background-position: top; }
 
-/* line 100, style.css.sass */
+/* line 8, shared/_base.sass */
 a, a:visited {
   color: #4da7e0; }
 
 @media only screen and (max-width: 767px) {
-  /* line 104, style.css.sass */
+  /* line 10, shared/_base.sass */
   pre {
     white-space: pre;
     overflow: scroll;
     word-wrap: normal; } }
 
-/* line 107, style.css.sass */
+/* line 1, shared/_headers.sass */
 header {
   height: 66px;
   padding-top: 10px; }
-  /* line 111, style.css.sass */
+  /* line 5, shared/_headers.sass */
   header h1 {
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #cc3300;
     font-size: 56; }
-  /* line 116, style.css.sass */
+  /* line 10, shared/_headers.sass */
   header .logo, header .subtitle, header .menu, header h1 {
     line-height: 66px;
     vertical-align: middle;
     margin: 0; }
-  /* line 121, style.css.sass */
+  /* line 15, shared/_headers.sass */
   header .logo {
     width: 155px;
     float: left; }
-  /* line 125, style.css.sass */
+  /* line 19, shared/_headers.sass */
   header .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1339,10 +1339,10 @@ header {
     float: left;
     padding: 4 0 0 15;
     width: 200px; }
-  /* line 131, style.css.sass */
+  /* line 25, shared/_headers.sass */
   header .easter {
     display: none; }
-  /* line 133, style.css.sass */
+  /* line 27, shared/_headers.sass */
   header .heart {
     color: red;
     font-size: 20px;
@@ -1351,124 +1351,66 @@ header {
     display: inline-block;
     width: 38px;
     text-align: center; }
-  /* line 142, style.css.sass */
+  /* line 36, shared/_headers.sass */
   header .menu {
     float: right;
     padding-top: 4 0 0 25;
     width: 510px;
     text-align: center; }
-    /* line 149, style.css.sass */
+    /* line 42, shared/_headers.sass */
     header .menu .active {
       color: #cc3300; }
-    /* line 152, style.css.sass */
+    /* line 45, shared/_headers.sass */
     header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 4px; }
-      /* line 158, style.css.sass */
+      /* line 51, shared/_headers.sass */
       header .menu .item, header .menu .item:visited {
         color: #505252; }
-      /* line 161, style.css.sass */
+      /* line 54, shared/_headers.sass */
       header .menu .item:hover {
         color: #cc3300; }
-      /* line 164, style.css.sass */
+      /* line 57, shared/_headers.sass */
       header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 142, style.css.sass */
+      /* line 36, shared/_headers.sass */
       header .menu {
         width: 400px;
         padding: 0;
         line-height: 71px; }
-        /* line 78, style.css.sass */
+        /* line 64, shared/_headers.sass */
         header .menu .item {
           margin: 0;
           padding: 0 5px; } }
   @media only screen and (max-width: 767px) {
-    /* line 107, style.css.sass */
+    /* line 1, shared/_headers.sass */
     header {
       width: 100%;
       text-align: center; }
-      /* line 56, style.css.sass */
+      /* line 70, shared/_headers.sass */
       header .logo, header .subtitle {
         width: 100%;
         float: none !important;
         display: block;
         margin: 0;
         padding: 0; }
-      /* line 62, style.css.sass */
+      /* line 76, shared/_headers.sass */
       header .subtitle {
         font-size: 19px;
         line-height: 15px;
         padding: 0; }
-      /* line 66, style.css.sass */
+      /* line 80, shared/_headers.sass */
       header .menu {
         width: 100%; }
-        /* line 68, style.css.sass */
+        /* line 82, shared/_headers.sass */
         header .menu .item {
           margin: 0;
           padding: 0 2px; } }
 
-/* line 170, style.css.sass */
-.title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 47px;
-  color: #133a55;
-  padding-top: 15px;
-  line-height: 54px;
-  width: 100%;
-  clear: both;
-  opacity: 0.94; }
-  @media only screen and (max-width: 767px) {
-    /* line 170, style.css.sass */
-    .title {
-      font-size: 23px;
-      line-height: 34px;
-      padding: 0; }
-      /* line 181, style.css.sass */
-      .title br {
-        display: none; } }
-  @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 170, style.css.sass */
-    .title {
-      font-size: 33px;
-      line-height: 42px; } }
-
-/* line 189, style.css.sass */
-.container {
-  width: 964px;
-  min-height: 100%;
-  position: relative; }
-  @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 189, style.css.sass */
-    .container {
-      width: 767px; } }
-  @media only screen and (max-width: 767px) {
-    /* line 189, style.css.sass */
-    .container {
-      width: 100%;
-      overflow: hidden;
-      padding: 0 15px; } }
-  /* line 198, style.css.sass */
-  .container > .subtitle {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    color: #133a55;
-    font-weight: 550;
-    line-height: 50px;
-    opacity: 0.74; }
-    @media only screen and (max-width: 767px) {
-      /* line 198, style.css.sass */
-      .container > .subtitle {
-        font-size: 18px;
-        line-height: 34px;
-        margin-top: 0px;
-        padding: 0; } }
-
-/* line 209, style.css.sass */
+/* line 1, shared/_footers.sass */
 .footer {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -1480,121 +1422,93 @@ header {
   height: 50px;
   position: absolute; }
   @media only screen and (max-width: 767px) {
-    /* line 209, style.css.sass */
+    /* line 1, shared/_footers.sass */
     .footer {
       height: 50px;
       font-size: 11px;
       line-height: 13px; } }
-  /* line 220, style.css.sass */
+  /* line 12, shared/_footers.sass */
   .footer .copyright {
     margin-top: 18px; }
 
-/* line 223, style.css.sass */
-.main[role="main"] {
-  padding-bottom: 50px; }
-  /* line 228, style.css.sass */
-  .main[role="main"] .videos iframe, .main[role="main"] .videos object {
-    width: 600;
-    height: 400px; }
-    /* line 24, style.css.sass */
-    .main[role="main"] .videos iframe:not(:last-child), .main[role="main"] .videos object:not(:last-child) {
-      margin-bottom: 20px; }
-    @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 228, style.css.sass */
-      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
-        width: 420px;
-        height: 236px; } }
-    @media only screen and (max-width: 767px) {
-      /* line 228, style.css.sass */
-      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
-        width: 290px;
-        height: 169px; } }
-  /* line 237, style.css.sass */
-  .main[role="main"] .hardware .devices {
-    text-align: center; }
-  /* line 239, style.css.sass */
-  .main[role="main"] .hardware img {
-    width: 300px; }
-    /* line 24, style.css.sass */
-    .main[role="main"] .hardware img:not(:last-child) {
-      margin-bottom: 20px; }
-    @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 239, style.css.sass */
-      .main[role="main"] .hardware img {
-        width: 420px; } }
-    @media only screen and (max-width: 767px) {
-      /* line 239, style.css.sass */
-      .main[role="main"] .hardware img {
-        width: 290px; } }
-  /* line 246, style.css.sass */
-  .main[role="main"] .content {
-    width: 70%; }
-    /* line 248, style.css.sass */
-    .main[role="main"] .content.full {
-      width: 100%;
-      clear: both; }
-    /* line 252, style.css.sass */
-    .main[role="main"] .content h1, .main[role="main"] .content h2 {
-      color: #bc2a1b;
-      margin-top: 30px; }
-      /* line 255, style.css.sass */
-      .main[role="main"] .content h1:first, .main[role="main"] .content h2:first {
-        margin-top: 0; }
-    /* line 257, style.css.sass */
-    .main[role="main"] .content h1 {
-      font-size: 1.9em;
-      padding: 10px 0; }
-  /* line 262, style.css.sass */
-  .main[role="main"] .aside.right {
-    width: 30%;
-    float: right;
-    padding-top: 0px;
-    text-align: right; }
-  /* line 24, style.css.sass */
-  .main[role="main"] section:not(:last-child) {
-    margin-bottom: 20px; }
-
-/* line 272, style.css.sass */
-.documentation .item {
-  margin-bottom: 40px; }
-  /* line 274, style.css.sass */
-  .documentation .item h4 {
-    color: #b9b9b9; }
-
-/* line 277, style.css.sass */
+/* line 1, shared/_coderay.sass */
 .CodeRay {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 280, style.css.sass */
+/* line 2, elements/_home.sass */
+.hero .title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 47px;
+  color: #133a55;
+  padding-top: 15px;
+  line-height: 54px;
+  width: 100%;
+  clear: both;
+  opacity: 0.94;
+  margin: 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 2, elements/_home.sass */
+    .hero .title {
+      font-size: 23px;
+      line-height: 34px;
+      padding: 0; }
+      /* line 14, elements/_home.sass */
+      .hero .title br {
+        display: none; } }
+  @media only screen and (min-width: 767px) and (max-width: 964px) {
+    /* line 2, elements/_home.sass */
+    .hero .title {
+      font-size: 33px;
+      line-height: 42px; } }
+/* line 19, elements/_home.sass */
+.hero .subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #133a55;
+  font-weight: 550;
+  line-height: 50px;
+  opacity: 0.74;
+  margin: 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 19, elements/_home.sass */
+    .hero .subtitle {
+      font-size: 18px;
+      line-height: 34px;
+      margin-top: 0px;
+      padding: 0; } }
+
+/* line 31, elements/_home.sass */
 .social {
   padding-top: 30px; }
-  /* line 282, style.css.sass */
+  /* line 33, elements/_home.sass */
   .social .splitter {
     display: inline; }
   @media only screen and (max-width: 767px) {
-    /* line 285, style.css.sass */
+    /* line 36, elements/_home.sass */
     .social .splitter {
       display: block;
       margin-bottom: 5px; } }
 
 @media only screen and (max-width: 400) {
-  /* line 290, style.css.sass */
+  /* line 40, elements/_home.sass */
   .twitter-share-button {
     margin-bottom: 10px; } }
-/* line 293, style.css.sass */
+/* line 2, elements/_blog.sass */
 .articles {
   max-width: 706px;
   margin-right: 40px;
   margin-bottom: 80px;
   float: left; }
-  /* line 298, style.css.sass */
+  /* line 7, elements/_blog.sass */
   .articles .article {
     display: inline-block;
     margin-top: 40px; }
-    /* line 302, style.css.sass */
+    /* line 11, elements/_blog.sass */
     .articles .article h3, .articles .article h4, .articles .article a {
       color: #cc3300; }
-    /* line 305, style.css.sass */
+    /* line 14, elements/_blog.sass */
     .articles .article h3 {
       display: inline-block;
       font-size: 24px;
@@ -1602,97 +1516,190 @@ header {
       vertical-align: top;
       margin: 0px;
       max-width: 80%; }
-    /* line 313, style.css.sass */
+    /* line 22, elements/_blog.sass */
     .articles .article p {
       text-align: justify; }
-    /* line 316, style.css.sass */
+    /* line 25, elements/_blog.sass */
     .articles .article .date {
       color: white;
       display: inline-block;
       width: 50px;
       text-align: center;
       margin-right: 20px; }
-      /* line 323, style.css.sass */
+      /* line 32, elements/_blog.sass */
       .articles .article .date .blue {
         padding: 5px;
         background-color: #79bee8; }
-        /* line 327, style.css.sass */
+        /* line 36, elements/_blog.sass */
         .articles .article .date .blue .month {
           text-transform: uppercase;
           font-size: 12px;
           line-height: 12px; }
-        /* line 332, style.css.sass */
+        /* line 41, elements/_blog.sass */
         .articles .article .date .blue .day {
           font-size: 16px;
           line-height: 16px; }
-      /* line 336, style.css.sass */
+      /* line 45, elements/_blog.sass */
       .articles .article .date .red {
         padding: 2px;
         background-color: #cc3300; }
-        /* line 340, style.css.sass */
+        /* line 49, elements/_blog.sass */
         .articles .article .date .red .year {
           font-size: 10px;
           line-height: 10px; }
-    /* line 344, style.css.sass */
+    /* line 53, elements/_blog.sass */
     .articles .article .comments, .articles .article .tags {
       display: inline-block; }
-      /* line 347, style.css.sass */
+      /* line 56, elements/_blog.sass */
       .articles .article .comments .img, .articles .article .tags .img {
         vertical-align: top;
         display: inline-block;
         width: 24px;
         height: 24px; }
-      /* line 353, style.css.sass */
+      /* line 62, elements/_blog.sass */
       .articles .article .comments a, .articles .article .tags a {
         vertical-align: top;
         text-decoration: underline; }
-      /* line 357, style.css.sass */
+      /* line 66, elements/_blog.sass */
       .articles .article .comments img, .articles .article .tags img {
         margin-right: 4px; }
-    /* line 360, style.css.sass */
+    /* line 69, elements/_blog.sass */
     .articles .article .comments {
       margin-right: 60px; }
 
-/* line 363, style.css.sass */
+/* line 72, elements/_blog.sass */
 .categories, .network, .tweets {
   display: inline-block;
   vertical-align: top;
   width: 200px;
   margin-bottom: 40px;
   float: left; }
-  /* line 369, style.css.sass */
+  /* line 78, elements/_blog.sass */
   .categories a, .network a, .tweets a {
     color: black; }
-  /* line 372, style.css.sass */
+  /* line 81, elements/_blog.sass */
   .categories h4, .network h4, .tweets h4 {
     color: #cc3300;
     font-size: 20px;
     line-height: 24px; }
 
-/* line 379, style.css.sass */
+/* line 88, elements/_blog.sass */
 .categories ul {
   margin: 0;
   list-style: none; }
 
-/* line 386, style.css.sass */
+/* line 95, elements/_blog.sass */
 .tweets .tweet .avatar {
   display: inline-block; }
-/* line 389, style.css.sass */
+/* line 98, elements/_blog.sass */
 .tweets .tweet .user {
   display: inline-block;
   vertical-align: top;
   margin-top: 15px; }
-/* line 394, style.css.sass */
+/* line 103, elements/_blog.sass */
 .tweets .tweet p {
   font-size: 13px; }
 
-/* line 397, style.css.sass */
+/* line 106, elements/_blog.sass */
 .alternative_footer {
   float: left; }
-  /* line 399, style.css.sass */
+  /* line 108, elements/_blog.sass */
   .alternative_footer .copyright, .alternative_footer a {
     float: left;
     min-width: 176px; }
-  /* line 402, style.css.sass */
+  /* line 111, elements/_blog.sass */
   .alternative_footer a {
     color: #cc3300; }
+
+/* line 33, style.css.sass */
+.container {
+  width: 964px;
+  min-height: 100%;
+  position: relative; }
+  @media only screen and (min-width: 767px) and (max-width: 964px) {
+    /* line 33, style.css.sass */
+    .container {
+      width: 767px; } }
+  @media only screen and (max-width: 767px) {
+    /* line 33, style.css.sass */
+    .container {
+      width: 100%;
+      overflow: hidden;
+      padding: 0 15px; } }
+
+/* line 42, style.css.sass */
+.main[role="main"] {
+  padding-bottom: 50px; }
+  /* line 46, style.css.sass */
+  .main[role="main"] .videos iframe, .main[role="main"] .videos object {
+    width: 600;
+    height: 400px; }
+    /* line 8, _mixins.sass */
+    .main[role="main"] .videos iframe:not(:last-child), .main[role="main"] .videos object:not(:last-child) {
+      margin-bottom: 20px; }
+    @media only screen and (min-width: 767px) and (max-width: 964px) {
+      /* line 46, style.css.sass */
+      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
+        width: 420px;
+        height: 236px; } }
+    @media only screen and (max-width: 767px) {
+      /* line 46, style.css.sass */
+      .main[role="main"] .videos iframe, .main[role="main"] .videos object {
+        width: 290px;
+        height: 169px; } }
+  /* line 55, style.css.sass */
+  .main[role="main"] .hardware .devices {
+    text-align: center; }
+  /* line 57, style.css.sass */
+  .main[role="main"] .hardware img {
+    width: 300px; }
+    /* line 8, _mixins.sass */
+    .main[role="main"] .hardware img:not(:last-child) {
+      margin-bottom: 20px; }
+    @media only screen and (min-width: 767px) and (max-width: 964px) {
+      /* line 57, style.css.sass */
+      .main[role="main"] .hardware img {
+        width: 420px; } }
+    @media only screen and (max-width: 767px) {
+      /* line 57, style.css.sass */
+      .main[role="main"] .hardware img {
+        width: 290px; } }
+  /* line 64, style.css.sass */
+  .main[role="main"] .content {
+    width: 70%; }
+    /* line 66, style.css.sass */
+    .main[role="main"] .content.full {
+      width: 100%;
+      clear: both; }
+    /* line 70, style.css.sass */
+    .main[role="main"] .content h1, .main[role="main"] .content h2 {
+      color: #bc2a1b;
+      margin-top: 30px; }
+      /* line 73, style.css.sass */
+      .main[role="main"] .content h1:first, .main[role="main"] .content h2:first {
+        margin-top: 0; }
+    /* line 75, style.css.sass */
+    .main[role="main"] .content h1 {
+      font-size: 1.9em;
+      padding: 10px 0; }
+  /* line 80, style.css.sass */
+  .main[role="main"] .aside.right {
+    width: 30%;
+    float: right;
+    padding-top: 0px;
+    text-align: right; }
+  /* line 8, _mixins.sass */
+  .main[role="main"] section:not(:last-child) {
+    margin-bottom: 20px; }
+
+/* line 91, style.css.sass */
+.documentation .item {
+  margin-bottom: 40px; }
+  /* line 93, style.css.sass */
+  .documentation .item h4 {
+    color: #b9b9b9; }
+
+@media only screen and (max-width: 400) {
+  /* line 97, style.css.sass */
+  .twitter-share-button {
+    margin-bottom: 10px; } }
