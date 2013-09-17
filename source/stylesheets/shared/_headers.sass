@@ -1,0 +1,84 @@
+header
+  height: $header-size
+  padding-top: 10px
+
+  h1
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
+    color: $red
+    font-size: 56
+
+  .logo, .subtitle, .menu, h1 
+    line-height: $header-size
+    vertical-align: middle
+    margin: 0
+
+  .logo
+    width: $logo-size
+    float: left
+
+  .subtitle
+    @include title-font(20px, $light_gray)
+    float: left
+    padding: 4 0 0 15
+    width: 200px
+
+  .easter
+    display: none
+  .heart
+    color: red
+    font-size: 20px
+    vertical-align: middle
+    margin-top: -2px
+    display: inline-block
+    width: 38px
+    text-align: center
+
+  .menu
+    float: right
+    padding-top: 4 0 0 25
+    width: 510px
+    text-align: center
+
+    .active
+      color: $red
+
+    .item
+      font-size: 15px
+      font-weight: bold
+      margin: 10px
+      padding: 8px 4px
+
+      &, &:visited
+        color: #505252
+
+      &:hover
+        color: $red
+
+      &:active
+        color: $red
+
+    @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+      width: 400px
+      padding: 0
+      line-height: 71px
+      .item
+        margin: 0
+        padding: 0 5px
+  @media only screen and (max-width: $medium-screen)
+    width: 100%
+    text-align: center
+    .logo, .subtitle
+      width: 100%
+      float: none !important
+      display: block
+      margin: 0
+      padding: 0
+    .subtitle
+      font-size: 19px
+      line-height: 15px
+      padding: 0
+    .menu
+      width: 100%
+      .item
+        margin: 0
+        padding: 0 2px
