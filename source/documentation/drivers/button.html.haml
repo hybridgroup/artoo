@@ -3,9 +3,71 @@ title: Placeholder
 author: The Hybrid Group
 layout: page
 ---
+%section.intro
+  %h1 Button
+  %p
+    =image_tag "http://placehold.it/350x250", target: "_blank"
+  %p
+    Simple interface that makes it possible to register clicks through physical input.
 
-%h1 Placeholder
+  %h2 Circuit and Schematic
+  =link_to "http://arduino.cc/en/tutorial/button", "http://arduino.cc/en/tutorial/button"
 
-:markdown
-  Hello World
+  %h2 How to stablish a connection and setup the driver 
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :button, :driver => :button, :pin => 2, :interval => 0.01
 
+  %h3 For Digispark:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        device :button, :driver => :button, :pin => 2, :interval => 0.01
+
+%section.public-methods
+  %h2 Public instance methods:
+
+  %h3 is_pressed? → true | false
+  %p
+    Returns true or false matching state of the button.
+
+%section.public-events
+  %h2 Public driver events:
+  %h3 :push
+  %p
+    This event gets triggered when the button changes state from released to pushed.
+  %h3 :relase
+  %p
+    This event gets triggered when the button changes state from pushed to released.
+  %h3 How to use events and call them on your drivers?
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on button, :push    => proc { puts "button pressed!" }
+        on button, :release => proc { puts "button released!" }
+%section.example
+  %h2 Example using a button to turn a LED on and off.
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :firmata, adaptor: :firmata, port: '127.0.0.1:8023'
+        device :led, driver: :led, pin: 13
+        device :button, driver: :button, pin: 2, interval: 0.01
+
+        work do
+          puts
+          puts "Press the button connected on pin \#{ button.pin }..."
+
+          on button, :push    => proc { led.on }
+          on button, :release => proc { led.off }
+        end
+%section.compatability
+  %h2 Works with:
+  %ul
+    %li= link_to "Arduino", "../platforms/arduino"
+    %li= link_to "Digispark", "../platforms/digispark"
