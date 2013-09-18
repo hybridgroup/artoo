@@ -24,9 +24,19 @@ class Fixnum
   def to_pwm_reverse
     ((255.0 / 1023.0) * (1023 - self.to_f)).round
   end
+end
 
+class Numeric
   # convert value from old scale (min to max) to new scale (0 to new_max)
-  def to_scale(min, max, new_scale)
-    (((self.to_f - min) / (max - min)) * new_max).round
+  def from_scale(range)
+    (self.to_f - range.min) / (range.max - range.min)
   end
+
+  def to_scale(range)
+    (self.to_f * (range.max - range.min) + range.min).ceil
+  end
+
+  # def to_scale(old_range, new_range)
+  #   (((self.to_f - old_range.min) / (old_range.max - old_range.min)) * (new_range.max - new_range.min) + new_range.min).ceil
+  # end
 end
