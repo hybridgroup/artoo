@@ -19,14 +19,14 @@ layout: page
   :markdown
         :::ruby
         require 'artoo'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
 
   %h3 For Digispark:
   :markdown
         :::ruby
         require 'artoo'
-        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
 
 %section.public-methods
@@ -62,8 +62,8 @@ layout: page
 
         # Circuit and schematic here: http://www.electrojoystick.com/tutorial/?page_id=285
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/ttyACM0'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:4567'
         device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
         device :board, :driver => :device_info
 

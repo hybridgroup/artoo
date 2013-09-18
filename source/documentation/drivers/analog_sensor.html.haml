@@ -27,14 +27,14 @@ layout: page
   :markdown
         :::ruby
         require 'artoo'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0.25, upper: 900, lower: 200
 
   %h3 For Digispark:
   :markdown
         :::ruby
         require 'artoo'
-        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0.25, upper: 900, lower: 200
 
 %section.public-methods
@@ -81,7 +81,7 @@ layout: page
         :::ruby
         require 'artoo'
 
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
 
         # Analog inputs are based from 0 to 5 on the Arduino UNO, may vary on other arduino boards
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0.25, upper: 900, lower: 200

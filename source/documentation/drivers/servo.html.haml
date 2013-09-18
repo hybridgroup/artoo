@@ -19,14 +19,14 @@ layout: page
   :markdown
         :::ruby
         require 'artoo'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
   %h3 For Digispark:
   :markdown
         :::ruby
         require 'artoo'
-        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
 %section.public-methods
@@ -60,8 +60,8 @@ layout: page
 
         # Circuit and schematic here: http://arduino.cc/en/Tutorial/Sweep
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :board, :driver => :device_info
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 

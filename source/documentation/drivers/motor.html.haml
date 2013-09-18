@@ -20,14 +20,14 @@ layout: page
   :markdown
         :::ruby
         require 'artoo'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
   %h3 For Digispark:
   :markdown
         :::ruby
         require 'artoo'
-        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
 %section.public-methods
@@ -93,8 +93,8 @@ layout: page
 
         #Circuit's breadboard layout here: http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :board, :driver => :device_info
         device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
@@ -129,8 +129,8 @@ layout: page
         #Circuit's breadboard layout for the L293D: http://www.electrojoystick.com/tutorial/?p=759
         #For the L239DNE: http://bit.ly/14QdjD5
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :board, :driver => :device_info
         device :motor, :driver => :motor, 
                        :forward_pin  => 4, # Digital or PWM pin

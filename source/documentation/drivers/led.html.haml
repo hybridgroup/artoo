@@ -18,14 +18,14 @@ layout: page
   :markdown
         :::ruby
         require 'artoo'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :led, :driver => :led, :pin => 13
 
   %h3 For Digispark:
   :markdown
         :::ruby
         require 'artoo'
-        connection :littlewire, :adaptor => :littlewire, :port => '127.0.0.1:8023'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :led, :driver => :led, :pin => 13
 
 %section.public-methods
@@ -57,8 +57,8 @@ layout: page
         :::ruby
         require 'artoo'
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :led, :driver => :led, :pin => 13
 
         work do
