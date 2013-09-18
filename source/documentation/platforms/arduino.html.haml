@@ -4,44 +4,41 @@ author: The Hybrid Group
 layout: page
 ---
 
-%h1 Placeholder
+%section.intro
+  %h1 Arduino
+  %p
+    = image_tag "http://placehold.it/350x250"
 
-%ul.table-of-contents
-  %p.title Table of Contents
+  %p
+    Arduino is an open-source electronics prototyping platform based on flexible,
+    easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
+    anyone interested in creating interactive objects or environments.
+
+  %p
+    For more info about the arduino platform click
+    = link_to "here", "http://arduino.cc/", target: :blank
+
+%section.drivers
+  %h2 Drivers
+  %p
+    Thanks to
+    %b artoo
+    and
+    %b ruby
+    it is possible to interact with several I/O hardware devices and interfaces connected to the arduino
+    using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-arduino
+    adaptor (using the firmata communication protocol),
+    which makes it even possible to swap the entire platform for something else like digispark, and keep using the same code you just wrote for
+    arduino, this just by swapping a couple of lines in your program.
+  %p
+    Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
+    physical computing (using artoo and ruby) you could be doing:
+
+  %h3 Drivers Documentation
   %ol
-    %li= link_to "Introduction", "#"
-    %li= link_to "Drivers", "#"
-    %ol
-      %li= link_to "Buttons"              , "../drivers/button"
-      %li= link_to "Led"                  , "../drivers/led"
-      %li= link_to "Analog Sensors"       , "../drivers/analog_sensor"
-      %li= link_to "Motor"                , "../drivers/motor"
-      %li= link_to "Servo"                , "../drivers/servo"
-      %li= link_to "Maxbotix Range Finder", "../drivers/maxbotix"
-
-:markdown
-  # Introduction
-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-  egestas non turpis sit amet tempus. Suspendisse magna neque, varius
-  non ultricies porttitor, aliquam sit amet mauris. Pellentesque
-  molestie laoreet egestas. Phasellus luctus commodo dui fringilla
-  vestibulum. Suspendisse potenti. Praesent sit amet sollicitudin
-  nisi. Duis commodo malesuada elit. Mauris lorem mauris, egestas a
-  ligula vitae, semper tincidunt leo. Sed viverra felis quis diam
-  hendrerit, at ultrices dui mattis. Nunc vel elit sit amet lectus
-  viverra convallis. Sed varius euismod urna ut malesuada. Praesent
-  congue, quam eu commodo tempor, justo quam semper justo, ac gravida
-  felis nisl eu turpis. Sed gravida ornare nisi id commodo.
-
-  # Drivers
-
-  ## Buttons
-
-  Uestibulum. Suspendisse potenti. Praesent sit amet sollicitudin
-  nisi. Duis commodo malesuada elit. Mauris lorem mauris, egestas a
-  ligula vitae, semper tincidunt leo. Sed viverra felis quis diam
-  hendrerit, at ultrices dui mattis. Nunc vel elit sit amet lectus
-  viverra convallis. Sed varius euismod urna ut malesuada. Praesent
-  congue, quam eu commodo tempor, justo quam semper justo, ac gravida
-  felis nisl eu turpis. Sed gravida ornare nisi id commodo.
+    %li= link_to "Buttons"              , "../drivers/button"
+    %li= link_to "Led"                  , "../drivers/led"
+    %li= link_to "Analog Sensors"       , "../drivers/analog_sensor"
+    %li= link_to "Motor"                , "../drivers/motor"
+    %li= link_to "Servo"                , "../drivers/servo"
+    %li= link_to "Maxbotix Range Finder", "../drivers/maxbotix"
