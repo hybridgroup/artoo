@@ -33,7 +33,18 @@ class Numeric
   end
 
   def to_scale(range)
-    (self.to_f * (range.max - range.min) + range.min).ceil
+    ((self.to_f * (range.max - range.min) + range.min).ceil).within(range)
+  end
+
+  def within(range)
+    case
+    when self < range.min
+      range.min
+    when self > range.max
+      range.max
+    else
+      self
+    end
   end
 
   # def to_scale(old_range, new_range)
