@@ -27,15 +27,17 @@ class Fixnum
 end
 
 class Numeric
-  # convert value from old scale (min to max) to new scale (0 to new_max)
+  # convert value from old scale (min to max) to (0..1) scale
   def from_scale(range)
     (self.to_f - range.min) / (range.max - range.min)
   end
 
+  # convert value from (0..1) scale to new (min to max) scale
   def to_scale(range)
     ((self.to_f * (range.max - range.min) + range.min).ceil).within(range)
   end
 
+  # keep returned value absolutely within range
   def within(range)
     case
     when self < range.min
@@ -46,8 +48,4 @@ class Numeric
       self
     end
   end
-
-  # def to_scale(old_range, new_range)
-  #   (((self.to_f - old_range.min) / (old_range.max - old_range.min)) * (new_range.max - new_range.min) + new_range.min).ceil
-  # end
 end
