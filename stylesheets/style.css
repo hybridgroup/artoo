@@ -1737,3 +1737,16 @@ a, a:visited {
     margin: 0;
     line-height: 21px;
     margin-top: 7px; }
+
+/* line 1, elements/_hardware.sass */
+.more {
+  text-align: center;
+  width: 50%;
+  margin: 30px auto 10px auto;
+  background: white;
+  padding: 15px 30px;
+  color: #277dac; }
+  @media only screen and (max-width: 767px) {
+    /* line 1, elements/_hardware.sass */
+    .more {
+      width: 100%; } }
