@@ -11,8 +11,8 @@ layout: page
   %h1 What is Digispark?
 
   %p
-    In order to know digispark, and better undertand how it works, we must first learn a little bit 
-    about the ruby micro framework for robotics used to interact with the digispark platform.
+    In order to know Digispark, and better undertand how it works, we must first learn a little bit 
+    about the ruby micro framework for robotics used to interact with the Digispark platform.
 
   = partial "../documentation/what_is_artoo"
 
@@ -31,33 +31,29 @@ layout: page
     = link_to "here", "http://digistump.com/category/1", target: :blank
 
 %section.setup
-  %h2 Setting up digispark to work with artoo
-  %h3 Getting the digispark hardware ready
+  %h2 Setting up Digispark to work with artoo
+  %h3 Getting the Digispark hardware ready
   %p
     Before we start tinkering with artoo, programs and manipulating our own robots, we must get our hands dirty
-    and build our digispark kit.
+    and build our Digispark kit.
 
-  %h4 Assembling your digispark microcontroller
+  %h4 Assembling your Digispark microcontroller
   %p
     %b TODO
 
-  %h3 Installing Littlewire communication protocol in the digispark
+  %h3 Installing Littlewire communication protocol in the Digispark
   %p
-    First thing to do is to setup your digispark microcontroller for communication with artoo. Artoo communicates
-    with the digispark using the Littlewire communication protocol (
+    First thing to do is to setup your Digispark microcontroller for communication with Artoo. Artoo communicates
+    with the Digispark using the Littlewire communication protocol (
     = link_to "http://littlewire.cc/", "http://littlewire.cc/"
-    ), so we have to make sure this protocol has been installed to the digispark firmware, if this is the case, you
-    can start working with artoo right away.
+    ), so we have to make sure this protocol has been installed to the Digispark firmware, if this is the case, you
+    can start working with Artoo right away.
   %p
-    Nevertheless if the digispark does not have the littlewire protocol installed yet, you can follow this tutorial on how to install
-    Littlewire in the digispark, click 
-    = link_to "here.", "http://digistump.com/board/index.php/topic,160.0.html"
-
+    Nevertheless if the Digispark does not have the littlewire protocol installed yet, you can install it easily, by first installing the artoo-digispark gem, and then running the command 'artoo install digispark'. The program will prompt you to plug in the Digispark, and then once you do, it will install the firmware automatically.
+    
   %h3 Connecting digispark to your computer
   %p
-    Now that we have the littlewire communication protocol installed in the digispark we can check the USB connection to the
-    computer to obtain the vendor and product Ids, we will need this when programming using artoo, this way we can let it know
-    what is the correct device to talk to.
+    Now that we have the littlewire communication protocol installed in the Digispark we can use it with Artoo. When you plug it it, you should be able to use it with Artoo.
 
   %h4 When using OSX
   %p
@@ -88,7 +84,7 @@ layout: page
     = link_to "artoo-digispark", "https://github.com/hybridgroup/artoo-digispark/tree/master/examples"
     github repository (or clone the repository to your computer),
     for a whole bunch of code you can use to help get started.
-    We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
+    We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
 
   %h3 Running your robot:
 
