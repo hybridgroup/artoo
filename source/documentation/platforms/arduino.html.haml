@@ -1,64 +1,63 @@
 ---
 title: Placeholder
 author: The Hybrid Group
+page_title: Arduino
 layout: page
 ---
+.documentation
+  %section.intro
+    = image_tag "/images/arduino.jpg", class: "display"
 
-%section.intro
-  %h1 Arduino
-  %p
-    = image_tag "http://placehold.it/350x250"
+    %p
+      Arduino is an open-source electronics prototyping platform based on flexible,
+      easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
+      anyone interested in creating interactive objects or environments.
 
-  %p
-    Arduino is an open-source electronics prototyping platform based on flexible,
-    easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
-    anyone interested in creating interactive objects or environments.
+    %p
+      For more info about the arduino platform click
+      = link_to "here", "http://arduino.cc/", target: :blank
 
-  %p
-    For more info about the arduino platform click
-    = link_to "here", "http://arduino.cc/", target: :blank
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program lets you push a button on the arduino board to turn a LED on or off.
+      In less than 10 lines of code using Artoo.
+    :markdown
+          :::ruby
+          require 'artoo'
 
-%section.example
-  %h2 What the code looks like?
-  %p
-    This small program lets you push a button on the arduino board to turn a LED on or off.
-    In less than 10 lines of code using Artoo.
-  :markdown
-        :::ruby
-        require 'artoo'
+          connection :arduino, adaptor: :firmata, port: '127.0.0.1:8023'
+          device :led, driver: :led, pin: 13
+          device :button, driver: :button, pin: 2, interval: 0.01
 
-        connection :arduino, adaptor: :firmata, port: '127.0.0.1:8023'
-        device :led, driver: :led, pin: 13
-        device :button, driver: :button, pin: 2, interval: 0.01
+          work do
+            puts "Press the button connected on pin \#{ button.pin }..."
 
-        work do
-          puts "Press the button connected on pin \#{ button.pin }..."
+            on button, :push    => proc { led.on }
+            on button, :release => proc { led.off }
+          end
 
-          on button, :push    => proc { led.on }
-          on button, :release => proc { led.off }
-        end
+  %section.drivers
+    %h2 Drivers
+    %p
+      Thanks to
+      %b artoo
+      and
+      %b ruby
+      it is possible to interact with several I/O hardware devices and interfaces connected to the arduino
+      using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-arduino
+      adaptor (using the firmata communication protocol),
+      which makes it even possible to swap the entire platform for something else like digispark, and keep using the same code you just wrote for
+      arduino, this just by swapping a couple of lines in your program.
+    %p
+      Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
+      physical computing (using artoo and ruby) you could be doing:
 
-%section.drivers
-  %h2 Drivers
-  %p
-    Thanks to
-    %b artoo
-    and
-    %b ruby
-    it is possible to interact with several I/O hardware devices and interfaces connected to the arduino
-    using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-arduino
-    adaptor (using the firmata communication protocol),
-    which makes it even possible to swap the entire platform for something else like digispark, and keep using the same code you just wrote for
-    arduino, this just by swapping a couple of lines in your program.
-  %p
-    Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
-    physical computing (using artoo and ruby) you could be doing:
-
-  %h3 Drivers Documentation
-  %ol
-    %li= link_to "Buttons"              , "../drivers/button"
-    %li= link_to "Led"                  , "../drivers/led"
-    %li= link_to "Analog Sensors"       , "../drivers/analog_sensor"
-    %li= link_to "Motor"                , "../drivers/motor"
-    %li= link_to "Servo"                , "../drivers/servo"
-    %li= link_to "Maxbotix Range Finder", "../drivers/maxbotix"
+    %h3 Drivers Documentation
+    %ol
+      %li= link_to "Buttons"              , "../drivers/button"
+      %li= link_to "Led"                  , "../drivers/led"
+      %li= link_to "Analog Sensors"       , "../drivers/analog_sensor"
+      %li= link_to "Motor"                , "../drivers/motor"
+      %li= link_to "Servo"                , "../drivers/servo"
+      %li= link_to "Maxbotix Range Finder", "../drivers/maxbotix"
