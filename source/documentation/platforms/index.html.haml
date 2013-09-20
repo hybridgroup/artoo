@@ -5,8 +5,43 @@ description: Artoo Platforms
 layout: page
 ---
 
+%section.intro
+  %h1 Getting Started with artoo
+  %h2 What is artoo?
+
+  %p
+    Artoo is a micro-framework for robotics. It provides a simple, but powerful DSL
+    (domain-specific language) for robots and physical computing.
+
+  %p
+    With Artoo, you can easily connect multiple, different hardware devices together into a single solution at the same time.
+    Artoo makes telling robots what to do incredibly simple and fun.
+
+  %p
+    Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0-rc1
+    Artoo is conceptualy influenced by Sinatra (
+    = link_to "Sinatra", "https://github.com/sinatra/sinatra"
+    ) as well as borrowing some code from it.
+    Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
+    operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
+
+  %p
+    This means you will need to use JRuby or Rubinius for maximum concurrency.
+    To a large extent, this is due to being built on top of Celluloid (
+    = link_to "Celluloid", "https://github.com/celluloid/celluloid"
+    ), Celluloid::IO (
+    = link_to "Celluloid::IO", "https://github.com/celluloid/celluloid-io"
+    ), and Reel (
+    = link_to "Reel","https://github.com/celluloid/reel"
+    ).
+
 %section.hardware
-  %h2 Platforms
+  %h2  What platforms does it support?
+
+  %p
+    Artoo has a extensible system for connecting to hardware devices. The following robotics
+    and physical computing platforms are currently supported:
+
   .devices
     %a.device{href:"/documentation/platforms/ardrone", title: "AR Drone"}
       %img{src: "/images/ardrone.jpg"}
@@ -24,3 +59,107 @@ layout: page
       %img{src: "/images/roomba.jpg"}
     %a.device{href:"/documentation/platforms/sphero", title: "Sphero"}
       %img{src: "/images/sphero.jpg"}
+
+  %p More platforms are coming soon!
+
+  %p
+    Artoo also has support for devices that can work across multiple hardware platforms.
+    %ul
+      %li
+        GPIO (General Purpose Input/Output) devices &lt;==&gt;
+        = link_to "Drivers", "https://github.com/hybridgroup/artoo-gpio"
+      %li
+        i2c devices &lt;==&gt;
+        = link_to "Drivers", "https://github.com/hybridgroup/artoo-i2c"
+
+  %p
+    Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
+
+
+%section.artoo-code
+  %h2 What writing code to interact with robots looks like in artoo
+
+  %h3 Example: Arduino with LED and a button, using the Firmata protocol.
+
+  :markdown
+        :::ruby
+        # ./my_robot.rb
+        require 'artoo'
+
+        # Circuit and schematic here: http://arduino.cc/en/tutorial/button
+        connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+        device :led, :driver => :led, :pin => 13
+        device :button, :driver => :button, :pin => 2
+
+        work do
+          on button, :push => proc {led.toggle}
+        end
+
+  %h3 Parrot ARDrone 2.0
+
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :ardrone, :adaptor => :ardrone
+        device :drone, :driver => :ardrone
+
+        work do
+          drone.start
+          drone.take_off
+
+          after(25.seconds) { drone.hover.land }
+          after(30.seconds) { drone.stop }
+        end
+
+%section.installation
+
+  %h3 Installation
+
+  :markdown
+        :::ruby
+        gem install artoo
+  %p
+    Then install the gems required by the hardware you want to use. For
+    example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
+
+  :markdown
+        :::ruby
+        gem install artoo-arduino
+        gem install artoo-ardrone
+
+  %p
+    If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start
+    programming your hardware.
+
+  %p If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
+
+  :markdown
+        :::ruby
+        gem install hybridgroup-serialport
+
+  %h3 Writing your robot code:
+
+  %p Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.
+
+  %h3 Running your robot:
+
+  :markdown
+        :::ruby
+        ruby myrobot.rb
+
+%section.contributing
+  %h2 Contributing
+
+  %p 
+    You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
+    = link_to "artoo on github.","https://github.com/hybridgroup/artoo" 
+
+  %ul
+    %li Fork it
+    %li Create your feature branch (git checkout -b my-new-feature)
+    %li Commit your changes (git commit -am 'Add some feature')
+    %li Push to the branch (git push origin my-new-feature)
+    %li Create new Pull Request
+
+%section.footer
