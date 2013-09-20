@@ -1,14 +1,7 @@
-.footer
-  @include title-font(12px, $gray)
+.app-footer
+  @include title-font(12px, #D6E0E6)
+  line-height: 39px
+  background: #277DAC
   font-weight: normal
-  bottom: 0
-  width: 100%
-  height: 50px
-  position: absolute
-  +small-screen
-    height: 50px
-    font-size: 11px
-    line-height: 13px
-  .copyright
-    margin-top: 18px
-
+  a
+    @extend .anchors-blue

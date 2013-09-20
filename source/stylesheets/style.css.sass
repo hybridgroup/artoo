@@ -3,7 +3,6 @@
 @import 'coderay'
 
 // Config
-
 $red           : #cc3300
 $blue          : #ebfdff
 $gray          : #373737
@@ -17,8 +16,6 @@ $small-screen  : 479px
 $medium-screen : 767px
 $big-screen    : 964px
 
-  
-
 // Partials
 @import 'shared/base'
 @import 'shared/headers'
@@ -26,74 +23,11 @@ $big-screen    : 964px
 @import 'shared/coderay'
 
 // Pages
+@import 'layouts/home'
+@import 'layouts/blog'
+
+// Pages
 @import 'elements/home'
 @import 'elements/blog'
-
-// TODO Move this to a layout
-.container
-  width: $big-screen
-  min-height: 100%
-  position: relative
-  +medium-screen($medium-screen, "")
-  +small-screen(100%, "")
-    overflow: hidden
-    padding: 0 15px
-
-.main[role="main"]
-  padding-bottom: 50px
-
-  .videos
-    iframe, object
-      width: 600
-      height: 400px
-
-      @include margin-not-last-child
-      @include medium-screen(420px, 236px)
-      @include small-screen(290px, 169px)
-
-  .hardware
-    .devices
-      text-align: center
-    img
-      width: 300px
-
-      @include margin-not-last-child
-      @include medium-screen(420px, '')
-      @include small-screen(290px, '')
-
-  .content
-    width: 70%
-    &.full
-      width: 100%
-      clear: both
-
-    h1, h2
-      color: $bright-red
-      margin-top: 30px
-      &:first
-        margin-top: 0
-    h1
-      font-size: 1.9em
-      padding: 10px 0
-
-
-  .aside.right
-    width: 30%
-    float: right
-    padding-top: 0px
-    text-align: right
-
-  section
-    @include margin-not-last-child
-
-// TODO Move this to a layout
-.documentation
-  .item
-    margin-bottom: 40px
-    h4
-      color: #B9B9B9
-
-+tiny-screen
-  .twitter-share-button
-    margin-bottom: 10px
+@import 'elements/page'
 

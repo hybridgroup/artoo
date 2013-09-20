@@ -1,29 +1,29 @@
-header
-  height: $header-size
-  padding-top: 10px
-
-  h1
+.artoo-logo
+  width: $logo-size
+  a
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
     color: $red
-    font-size: 56
+    font-size: 56px
 
-  .logo, .subtitle, .menu, h1 
-    line-height: $header-size
+.app-header
+  margin: 9px 0 15px 0
+
+  .artoo-logo, .display, .subtitle, .menu, h1 
     vertical-align: middle
     margin: 0
+    display: inline-block
 
-  .logo
-    width: $logo-size
-    float: left
+  .display
+    margin: -1px 0 0 0
 
   .subtitle
     @include title-font(20px, $light_gray)
-    float: left
-    padding: 4 0 0 15
+    padding: 8px 0 0 15px
     width: 200px
 
   .easter
     display: none
+
   .heart
     color: red
     font-size: 20px
@@ -34,10 +34,10 @@ header
     text-align: center
 
   .menu
-    float: right
-    padding-top: 4 0 0 25
     width: 510px
-    text-align: center
+    text-align: right
+    display: inline-block
+    margin: 5px 0 0 0 
 
     .active
       color: $red
@@ -58,27 +58,26 @@ header
         color: $red
 
     @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
-      width: 400px
+      width: 360px
       padding: 0
-      line-height: 71px
       .item
         margin: 0
         padding: 0 5px
+
   @media only screen and (max-width: $medium-screen)
     width: 100%
     text-align: center
-    .logo, .subtitle
+    .artoo-logo, .subtitle
       width: 100%
-      float: none !important
       display: block
-      margin: 0
-      padding: 0
+      margin: 0 0 5px 0
     .subtitle
       font-size: 19px
       line-height: 15px
       padding: 0
     .menu
       width: 100%
+      text-align: center
       .item
         margin: 0
         padding: 0 2px

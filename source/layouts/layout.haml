@@ -29,36 +29,62 @@
         });
       });
   %body
-    .container
-      %header
-        %a.logo{href: '/'}
-          %h1 artoo
-        %span.subtitle
-          .main Ruby on Robots
-          .easter
-            .heart ♥
-            = link_to "Rubinius", "http://rubini.us/"
+    .app
+      .container
+        %header.app-header{role: "banner"}
+          .display
+            %h1.artoo-logo
+              %a{href: '/'} artoo
+            %span.subtitle
+              .main Ruby on Robots
+              .easter
+                .heart ♥
+                = link_to "Rubinius", "http://rubini.us/"
 
-        %span.menu
-          = link_to "Examples", "", (menu_item("examples"))
-          = link_to "Hardware", "", (menu_item("hardware"))
-          = link_to "Videos", "", (menu_item("videos"))
-          = link_to "Docs", "", (menu_item("documentation"))
-          = link_to "Github", "https://github.com/hybridgroup/artoo/", class: "item"
+          %span.menu
+            = link_to "Examples", "", (menu_item("examples"))
+            = link_to "Hardware", "", (menu_item("hardware"))
+            = link_to "Videos", "", (menu_item("videos"))
+            = link_to "Docs", "", (menu_item("documentation"))
+            = link_to "Github", "https://github.com/hybridgroup/artoo/", class: "item"
       - unless data.page.hero.nil?
         .hero
-          %h1.title
-            We believe that it's time to bring
-            %br
-            Ruby and Robots together.
-          %h2.subtitle
-            Artoo makes robotics
-            = link_to "Simple", "", (menu_item("examples"))
-            and
-            = succeed '.' do
-              = link_to "Extensible", "", (menu_item("hardware"))
-      = yield
-      .footer
+          .container
+            %h1.title
+              We believe that it's time to bring
+              %br
+              Ruby and Robots together.
+            %h2.subtitle
+              Artoo makes robotics
+              = link_to "Simple", "", (menu_item("examples"))
+              and
+              = succeed '.' do
+                = link_to "Extensible", "", (menu_item("hardware"))
+      - unless data.page.social.nil?
+        .social
+          .container
+            .splitter
+              %iframe{:allowtransparency => "true", :frameborder => "0", :height => "20", :scrolling => "0", :src => "http://ghbtns.com/github-btn.html?user=hybridgroup&repo=artoo&type=watch&count=true", :width => "95"}
+              %iframe{:allowtransparency => "true", :frameborder => "0", :height => "20", :scrolling => "0", :src => "http://ghbtns.com/github-btn.html?user=hybridgroup&repo=artoo&type=fork&count=true", :width => "95"}
+            .splitter
+              %a.twitter-share-button{"data-dnt" => "true", "data-text" => "Ruby on Robots!", "data-url" => "http://artoo.io", "data-via" => "artooio", :href => "https://twitter.com/share"} Tweet
+              :javascript
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+              %a.twitter-follow-button{"data-dnt" => "true", "data-show-count" => "false", :href => "https://twitter.com/artooio"} Follow @artooio
+              :javascript
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+      - unless data.page.page_title.nil?
+        .page-title
+          .w
+            %h1.title= data.page.page_title
+            - unless data.page.page_subtitle.nil?
+              %h2.subtitle= data.page.page_subtitle
+
+
+      .container
+        = yield
+    %footer.app-footer
+      .w
         .copyright
           &copy; Copyright 2012-2013
           %a{:href => "http://hybridgroup.com"} The Hybrid Group.
