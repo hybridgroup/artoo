@@ -6,15 +6,19 @@ layout: page
 ---
 
 .documentation
-  .item
-    %h4
-      = link_to "Wiki", "https://github.com/hybridgroup/artoo/wiki"
-    %p The core of the documentation Effort for Artoo.
-  .item
-    %h4
-      = link_to "Tutorials", "https://github.com/hybridgroup/artoo/wiki/1.3.-Introduction-Tutorials"
-    %p The tutorials are a great place to start if you aren’t familiar with Robotics. Here we'll explain some basic ideas to get you started with Artoo.
-  .item
-    %h4
-      = link_to "Generated Documentation", "http://rubydoc.info/gems/artoo/frames"
-    %p Finally, if you want to look at the Artoo implementation, check out the YARD Generated documentation.
+  %ol.index
+    %li
+      .link= link_to "Getting Started", "/documentation/getting-started"
+      .description The best way to get going with Artoo.
+    %li
+      .link= link_to "Platforms", "/documentation/platforms"
+      .description Artoo has a extensible system for connecting to hardware devices. 
+    %li
+      .link= link_to "Drivers", "/documentation/drivers"
+      .description Which one do you like?
+    %li
+      .link= link_to "Tutorials", "/tutorials"
+      .description The best way to get going with Artoo.
+    %li
+      .link= link_to "Generated Documentation", "http://rubydoc.info/gems/artoo/frames"
+      .description YARD Generated Documentation.
