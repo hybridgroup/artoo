@@ -89,7 +89,7 @@ description: Artoo code snippets for your convinience.
 
         work do
           on leapmotion, :open => :on_open
-          on leapmotion, :gesture => :on_gesture
+          on leapmotion, :hand => :on_hand
           on leapmotion, :close => :on_close
         end
 
@@ -97,7 +97,7 @@ description: Artoo code snippets for your convinience.
           puts args
         end
 
-        def on_gesture(*args)
+        def on_hand(*args)
           puts args[1]
         end
 
@@ -126,7 +126,7 @@ description: Artoo code snippets for your convinience.
       require 'artoo'
 
       connection :raspi, :adaptor => :raspi
-      device :led, :driver => :raspi_pin, :pin => 17, :direction => :out
+      device :led, :driver => :led, :pin => 17
 
       work do
         every 1.second do
