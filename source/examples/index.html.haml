@@ -15,7 +15,7 @@ description: Artoo code snippets for your convinience.
       :::ruby
       require 'artoo'
 
-      connection :arduino, adaptor: :firmata, port: '/dev/tty.usbmodemxxxxx'
+      connection :arduino, adaptor: :firmata, port: '/dev/ttyACM0'
       device :led, driver: :led, pin: 13
       device :button, driver: :button, pin: 2
 
