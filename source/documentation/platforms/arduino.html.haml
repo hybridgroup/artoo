@@ -15,7 +15,9 @@ layout: page
 
     %p
       For more info about the arduino platform click
-      = link_to "here", "http://arduino.cc/", target: :blank
+      = succeed "." do
+        = link_to "here", "http://arduino.cc/", target: :blank
+      
 
   %section.example
     %h2 What the code looks like?
