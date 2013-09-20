@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Placeholder</title>
+    <title>Artoo - Sphero</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -33,38 +33,144 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a class="logo" href="/">
-          <h1>artoo</h1>
-        </a>
-        <span class="subtitle">
-          <div class="main">Ruby on Robots</div>
-          <div class="easter">
-            <div class="heart">♥</div>
-            <a href="http://rubini.us/">Rubinius</a>
+    <div class="app">
+      <div class="container">
+        <header class="app-header" role="banner">
+          <div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
           </div>
-        </span>
-        <span class="menu">
-          <a href="/examples" class="item">Examples</a>
-          <a href="/hardware" class="item">Hardware</a>
-          <a href="/videos" class="item">Videos</a>
-          <a href="/documentation" class="item">Docs</a>
-          <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
-        </span>
-      </header>
-      <div class="main" role="main">
-        <section class="content full">
-          <h1>Placeholder</h1>
-          <p>Hello World</p>
-        </section>
+          <span class="menu">
+            <a href="/examples" class="item">Examples</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/documentation" class="item">Docs</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
       </div>
-      <div class="footer">
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full">
+            <section class="intro">
+              <h1>Sphero</h1>
+              <p>
+                <img target="_blank" src="http://placehold.it/350x250">
+              </p>
+              <h3>What is sphero?</h3>
+              <p>
+                Sphero is a sophisticated and programmable robot housed in a polycarbonate sphere shell.
+              </p>
+              <p>
+                The artoo sphero adaptor makes it easy to interact with sphero using ruby, once you have your sphero setup and connected to your computer
+                you can start writing code to make sphero, move, change direction, speed and colors, or detect sphero events and execute some
+                code when they occur.
+              </p>
+              <h3>How do I connect sphero to my computer so I can start coding?</h3>
+              <p>
+                Easy we have a guide for both mac and linux in the README.md page of the artoo-sphero gem
+                <a href="https://github.com/hybridgroup/artoo-sphero#connecting-to-sphero">here</a>
+                , once the sphero is paired and listening you should see it stay a solid color, instead of flashing different colors(not connected),
+                once this happens that's it, you can start coding using artoo and ruby.
+              </p>
+              <h3>Where can I get a sphero or find more info about it?</h3>
+              <p>
+                You can do it by following this link
+                <a href="http://www.gosphero.com/">GoSphero.</a>
+              </p>
+              <h2>How to stablish a connection and setup the driver</h2>
+              <p>
+                That is pretty simple once the sphero is ready (connected and listening), you just need three lines of code and you are set,
+                artoo and the sphero driver take care of the rest.
+              </p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span></pre>
+            </section>
+            <section class="public-methods">
+              <h2>Public instance methods:</h2>
+              <h3>roll(speed, direction) → true | nil</h3>
+              <p>
+                Starts the sphero rolling at the provided speed (value between 0 and 255) and direction (value between 0 and 360).
+              </p>
+              <h3>stop → true | nil</h3>
+              <p>
+                Stops the sphero.
+              </p>
+              <h3>detect_collissions → true | nil</h3>
+              <p>
+                REVISION PENDING: Sets the sphero to detect collisions and report them.
+              </p>
+              <h3>messages → [sphero_event]</h3>
+              <p>
+                REVISION PENDING: Returns an array of sphero events, the messages reported by the sphero.
+              </p>
+              <h3>color(:color_symbol | [red, green, blue]) → [red_int, green_int, blue_int]</h3>
+              <p>
+                REVISION PENDING: You can pass a color as a symbol or an array containing RGB colors from 0 to 255 ([255, 0, 0] == red),
+                if passed a symbol returns the array of RGB corresponding to the color, if passed an array of colors it returns the same array
+                (used when setting colors to the sphero).
+              </p>
+              <h3>set_color([red, green, blue]) → true | nil</h3>
+              <p>
+                REVISION PENDING: You can either use it in tandem with color to set the color of the sphero or just pass an array containing RGB colors
+                on the range 0 to 255 ([255, 0, 0] == red).
+              </p>
+            </section>
+            <section class="public-events">
+              <h2>Public driver events:</h2>
+              <p>
+                Public events are triggered when something occurs to your sphero, when this occurs you can execute some code
+                to respond accordingly, depending on the event triggered, you can access
+                the following public events when programming the Sphero.
+              </p>
+              <h3>:colission</h3>
+              <p>
+                Gets triggered when the sphero hits something or falls from a step.
+              </p>
+              <h3>How to use events and call them in your program.</h3>
+              <p>
+                Pretty simple, when the connection and the driver have been setup (as explained above)
+                you can call events on the sphero driver as follows:
+              </p>
+              <pre class="CodeRay"><span class="comment"># :contact is the name of a previously defined method containing the code to execute.</span>
+on sphero, <span class="symbol">:collision</span> =&gt; <span class="symbol">:contact</span></pre>
+            </section>
+            <section class="example">
+              <h2>Example of a simple program that makes the sphero roll and change colors.</h2>
+              <pre class="CodeRay"> require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+work <span class="keyword">do</span>
+  <span class="instance-variable">@count</span> = <span class="integer">1</span>
+  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+    sphero.set_color(<span class="instance-variable">@count</span> % <span class="integer">2</span> == <span class="integer">0</span> ? <span class="symbol">:green</span> : <span class="symbol">:blue</span>)
+    <span class="instance-variable">@count</span> += <span class="integer">1</span>
+    sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </div>
+    </footer>
   </body>
 </html>

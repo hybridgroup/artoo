@@ -33,38 +33,105 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a class="logo" href="/">
-          <h1>artoo</h1>
-        </a>
-        <span class="subtitle">
-          <div class="main">Ruby on Robots</div>
-          <div class="easter">
-            <div class="heart">♥</div>
-            <a href="http://rubini.us/">Rubinius</a>
+    <div class="app">
+      <div class="container">
+        <header class="app-header" role="banner">
+          <div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
           </div>
-        </span>
-        <span class="menu">
-          <a href="/examples" class="item">Examples</a>
-          <a href="/hardware" class="item">Hardware</a>
-          <a href="/videos" class="item">Videos</a>
-          <a href="/documentation" class="item">Docs</a>
-          <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
-        </span>
-      </header>
-      <div class="main" role="main">
-        <section class="content full">
-          <h1>Placeholder</h1>
-          <p>Hello World</p>
-        </section>
+          <span class="menu">
+            <a href="/examples" class="item">Examples</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/documentation" class="item">Docs</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
       </div>
-      <div class="footer">
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full">
+            <section class="intro">
+              <h1>Digispark</h1>
+              <p>
+                <img src="http://placehold.it/350x250">
+              </p>
+              <p>
+                The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller,
+                and a bit less powerful. With a whole host of shields to extend its functionality and the ability to
+                use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when
+                an Arduino is too big or too much.
+              </p>
+              <p>
+                For more info about the Digispark platform click
+                <a target="blank" href="http://digistump.com/category/1">here</a>
+              </p>
+            </section>
+            <section class="example">
+              <h2>What the code looks like?</h2>
+              <p>
+                This small program lets you push a button on the digispark to turn a LED on or off.
+                In less than 10 lines of code using Artoo.
+              </p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">1</span>
+device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">0</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.01</span>
+
+work <span class="keyword">do</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Press the button connected on pin </span><span class="inline"><span class="inline-delimiter">#{</span>button.pin<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
+
+  on button, <span class="symbol">:push</span>  =&gt; proc { led.toggle }
+<span class="keyword">end</span></pre>
+            </section>
+            <section class="drivers">
+              <h2>Drivers</h2>
+              <p>
+                Thanks to
+                <b>artoo</b>
+                and
+                <b>ruby</b>
+                it is possible to interact with several I/O hardware devices and interfaces connected to the digispark
+                using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-digispark
+                adaptor (using the littlewire communication protocol),
+                which makes it even possible to swap the entire platform for something else like arduino, and keep using the same code you just wrote for
+                digispark, this just by swapping a couple of lines in your program.
+              </p>
+              <p>
+                Available drivers for the digispark platform are listed below, the drivers contain detailed documentation and examples of what kind
+                physical computing (using artoo and ruby) you could be doing:
+              </p>
+              <h3>Drivers Documentation</h3>
+              <ol>
+                <li><a href="../drivers/button">Buttons</a></li>
+                <li><a href="../drivers/led">Led</a></li>
+                <li><a href="../drivers/analog_sensor">Analog Sensors</a></li>
+                <li><a href="../drivers/motor">Motor</a></li>
+                <li><a href="../drivers/servo">Servo</a></li>
+                <li><a href="../drivers/maxbotix">Maxbotix Range Finder</a></li>
+              </ol>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </div>
+    </footer>
   </body>
 </html>

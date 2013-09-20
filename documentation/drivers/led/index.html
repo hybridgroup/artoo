@@ -61,60 +61,61 @@
         <div class="main" role="main">
           <section class="content full">
             <section class="intro">
-              <h1>Button</h1>
+              <h1>LED</h1>
               <p>
                 <img target="_blank" src="http://placehold.it/350x250">
               </p>
               <p>
-                Simple interface that makes it possible to register clicks through physical input.
+                Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
               </p>
               <h2>Circuit and Schematic</h2>
-              <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
+              <a href="http://arduino.cc/en/Tutorial/Blink">http://arduino.cc/en/Tutorial/Blink</a>
               <h2>How to stablish a connection and setup the driver</h2>
               <h3>For Arduino:</h3>
               <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.01</span></pre>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span></pre>
               <h3>For Digispark:</h3>
               <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
-device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.01</span></pre>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span></pre>
             </section>
             <section class="public-methods">
               <h2>Public instance methods:</h2>
-              <h3>is_pressed? → true | false</h3>
+              <h3>on → true | nil</h3>
               <p>
-                Returns true or false matching state of the button.
+                Turns LED on.
               </p>
-            </section>
-            <section class="public-events">
-              <h2>Public driver events:</h2>
-              <h3>:push</h3>
+              <h3>off → true | nil</h3>
               <p>
-                This event gets triggered when the button changes state from released to pushed.
+                Turns LED off.
               </p>
-              <h3>:relase</h3>
+              <h3>on? → true | false</h3>
               <p>
-                This event gets triggered when the button changes state from pushed to released.
+                Returns true if LED is on, otherwise returns false.
               </p>
-              <h3>How to use events and call them on your drivers?</h3>
-              <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
-              <pre class="CodeRay">on button, <span class="symbol">:push</span>    =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">button pressed!</span><span class="delimiter">"</span></span> }
-on button, <span class="symbol">:release</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">button released!</span><span class="delimiter">"</span></span> }</pre>
+              <h3>off? → true | false</h3>
+              <p>
+                Returns true if LED is off, otherwise returns false.
+              </p>
+              <h3>toggle(brightness_int) → true | nil</h3>
+              <p>
+                Sets brightness of the led to the specified brightness value passed to toggle(brightness) using PWM,
+                brightness can be any integer value between 0 and 255.
+              </p>
             </section>
             <section class="example">
               <h2>Example using a button to turn a LED on and off.</h2>
               <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:led</span>, <span class="key">driver</span>: <span class="symbol">:led</span>, <span class="key">pin</span>: <span class="integer">13</span>
-device <span class="symbol">:button</span>, <span class="key">driver</span>: <span class="symbol">:button</span>, <span class="key">pin</span>: <span class="integer">2</span>, <span class="key">interval</span>: <span class="float">0.01</span>
+<span class="comment">#connection :arduino, :adaptor =&gt; :firmata, :port =&gt; '/dev/tty*'</span>
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
 
 work <span class="keyword">do</span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Press the button connected on pin </span><span class="inline"><span class="inline-delimiter">#{</span> button.pin <span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
-
-  on button, <span class="symbol">:push</span>    =&gt; proc { led.on }
-  on button, <span class="symbol">:release</span> =&gt; proc { led.off }
+  every <span class="integer">1</span>.second <span class="keyword">do</span>
+    led.on? ? led.off : led.on
+  <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
             </section>
             <section class="compatability">

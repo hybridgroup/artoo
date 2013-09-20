@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo - Analog Sensor Driver</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <div class="container">
+        <header class="app-header" role="banner">
+          <div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/examples" class="item">Examples</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/documentation" class="item">Docs</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full">
+            <section class="intro">
+              <h1>Analog Sensor</h1>
+              <p>
+                <img target="_blank" src="http://placehold.it/350x250">
+              </p>
+              <p>
+                Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
+                The value received from an analog input read from the sensor goes from 0 to 1027.
+              </p>
+              <h2>Circuit and Schematic</h2>
+              <p>
+                Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
+                the button for a photoresistor.
+                <br>
+                <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
+              </p>
+              <p>
+                It should look like the circuit in this example.
+                <br>
+                <a href="http://arduino.cc/en/Tutorial/SwitchCase">http://arduino.cc/en/Tutorial/SwitchCase</a>
+              </p>
+              <h2>How to stablish a connection and setup the driver</h2>
+              <h3>For Arduino:</h3>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <span class="symbol">:analog_sensor</span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">interval</span>: <span class="float">0.25</span>, <span class="key">upper</span>: <span class="integer">900</span>, <span class="key">lower</span>: <span class="integer">200</span></pre>
+              <h3>For Digispark:</h3>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
+device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <span class="symbol">:analog_sensor</span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">interval</span>: <span class="float">0.25</span>, <span class="key">upper</span>: <span class="integer">900</span>, <span class="key">lower</span>: <span class="integer">200</span></pre>
+            </section>
+            <section class="public-methods">
+              <h2>Public instance methods:</h2>
+              <h3>pin → integer_value</h3>
+              <p>
+                Returns the pin number set up when creating the sensor.
+              </p>
+              <h3>upper → integer_value</h3>
+              <p>
+                Returns the upper limit set up when creating the sensor.
+              </p>
+              <h3>lower → integer_value</h3>
+              <p>
+                Returns the lower limit set up when creating the sensor.
+              </p>
+              <h3>analog_read(pin_number) →  integer_value (from 0 to 1027)</h3>
+              <p>
+                Returns an integer value that represents the analog read from the sensor, the value goes from 0 to 1027.
+              </p>
+            </section>
+            <section class="public-events">
+              <h2>Public driver events:</h2>
+              <p>
+                The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ),
+                there are :upper and :lower limits, as well as an :interval param that defines how often the sensor should be read;
+                when the specified amount of time passes the sensor is read, if one of the limits stablished is reached
+                the corresponging event will be triggered.
+              </p>
+              <h3>:upper</h3>
+              <p>
+                Gets triggered if the value read by the sensor is greater or equal to :upper (value passed when setting up the sensor).
+              </p>
+              <h3>:lower</h3>
+              <p>
+                Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor)
+              </p>
+              <h3>How to use events and call them on your drivers?</h3>
+              <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+              <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
+on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }</pre>
+            </section>
+            <section class="example">
+              <h2>Example using a photoresistor sensor to turn a LED on and off.</h2>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Analog inputs are based from 0 to 5 on the Arduino UNO, may vary on other arduino boards</span>
+device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <span class="symbol">:analog_sensor</span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">interval</span>: <span class="float">0.25</span>, <span class="key">upper</span>: <span class="integer">900</span>, <span class="key">lower</span>: <span class="integer">200</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">8</span>
+
+work <span class="keyword">do</span>
+  puts
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Reading sensor in analog pin </span><span class="inline"><span class="inline-delimiter">#{</span> sensor.pin <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Reading intervals every =&gt; </span><span class="inline"><span class="inline-delimiter">#{</span> sensor.interval <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Initial sensor value =&gt; </span><span class="inline"><span class="inline-delimiter">#{</span> sensor.analog_read(<span class="integer">0</span>) <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Sensor upper trigger set at value =&gt; </span><span class="inline"><span class="inline-delimiter">#{</span> sensor.upper <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Sensor lower trigger set at value =&gt; </span><span class="inline"><span class="inline-delimiter">#{</span> sensor.lower <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+
+  on sensor, <span class="symbol">:upper</span> =&gt; proc {
+    puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span>
+    led.off
+  }
+
+  on sensor, <span class="symbol">:lower</span> =&gt; proc {
+    puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER SENSOR LIMIT REACHED!</span><span class="delimiter">"</span></span>
+    led.on
+  }
+<span class="keyword">end</span></pre>
+            </section>
+            <section class="compatability">
+              <h2>Works with:</h2>
+              <ul>
+                <li><a href="../platforms/arduino">Arduino</a></li>
+                <li><a href="../platforms/digispark">Digispark</a></li>
+              </ul>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="app-footer">
+      <div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

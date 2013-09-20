@@ -33,107 +33,119 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a class="logo" href="/">
-          <h1>artoo</h1>
-        </a>
-        <span class="subtitle">
-          <div class="main">Ruby on Robots</div>
-          <div class="easter">
-            <div class="heart">♥</div>
-            <a href="http://rubini.us/">Rubinius</a>
+    <div class="app">
+      <div class="container">
+        <header class="app-header" role="banner">
+          <div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
           </div>
-        </span>
-        <span class="menu">
-          <a href="/examples" class="item">Examples</a>
-          <a href="/hardware" class="item">Hardware</a>
-          <a href="/videos" class="item">Videos</a>
-          <a href="/documentation" class="item">Docs</a>
-          <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
-        </span>
-      </header>
-      <div class="hero">
-        <h1 class="title">
-          We believe that it's time to bring
-          <br>
-          Ruby and Robots together.
-        </h1>
-        <h2 class="subtitle">
-          Artoo makes robotics
-          <a href="/examples" class="item">Simple</a>
-          and
-          <a href="/hardware" class="item">Extensible</a>.
-        </h2>
+          <span class="menu">
+            <a href="/examples" class="item">Examples</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/documentation" class="item">Docs</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
       </div>
-      <div class="main" role="main">
-        <div class="aside right">
-          <img src="images/artoo.png">
+      <div class="hero">
+        <div class="container">
+          <h1 class="title">
+            We believe that it's time to bring
+            <br>
+            Ruby and Robots together.
+          </h1>
+          <h2 class="subtitle">
+            Artoo makes robotics
+            <a href="/examples" class="item">Simple</a>
+            and
+            <a href="/hardware" class="item">Extensible</a>.
+          </h2>
         </div>
-        <section class="content">
-          <div class="social">
-            <div class="splitter">
-              <iframe allowtransparency="true" frameborder="0" height="20" scrolling="0" src="http://ghbtns.com/github-btn.html?user=hybridgroup&amp;repo=artoo&amp;type=watch&amp;count=true" width="95"></iframe>
-              <iframe allowtransparency="true" frameborder="0" height="20" scrolling="0" src="http://ghbtns.com/github-btn.html?user=hybridgroup&amp;repo=artoo&amp;type=fork&amp;count=true" width="95"></iframe>
-            </div>
-            <div class="splitter">
-              <a class="twitter-share-button" data-dnt="true" data-text="Ruby on Robots!" data-url="http://artoo.io" data-via="artooio" href="https://twitter.com/share">Tweet</a>
-              <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-              </script>
-              <a class="twitter-follow-button" data-dnt="true" data-show-count="false" href="https://twitter.com/artooio">Follow @artooio</a>
-              <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-              </script>
-            </div>
+      </div>
+      <div class="social">
+        <div class="container">
+          <div class="splitter">
+            <iframe allowtransparency="true" frameborder="0" height="20" scrolling="0" src="http://ghbtns.com/github-btn.html?user=hybridgroup&amp;repo=artoo&amp;type=watch&amp;count=true" width="95"></iframe>
+            <iframe allowtransparency="true" frameborder="0" height="20" scrolling="0" src="http://ghbtns.com/github-btn.html?user=hybridgroup&amp;repo=artoo&amp;type=fork&amp;count=true" width="95"></iframe>
           </div>
-          <h2 id="about">About</h2>
-          
-          <p>Artoo is a micro-framework for robotics.</p>
-          
-          <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
-          
-          <p>With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.</p>
-          <h2 id="meet_the_code">Meet The Code</h2>
-          
-          <p>Artoo’s simple code makes telling robots what to do incredibly simple and fun.</p>
-          
-          <p>All you need to get started is the <code>artoo</code> gem</p>
-          
-          <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span></pre>
-          
-          <p>Then hook it up to your robot (in this case, a <a href="http://gosphero.com">Sphero</a>):</p>
-          
-          <pre class="CodeRay">connection <span class="symbol">:sphero</span>, <span class="key">adaptor</span>: <span class="symbol">:sphero</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">4560</span><span class="delimiter">'</span></span>
+          <div class="splitter">
+            <a class="twitter-share-button" data-dnt="true" data-text="Ruby on Robots!" data-url="http://artoo.io" data-via="artooio" href="https://twitter.com/share">Tweet</a>
+            <script>
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            </script>
+            <a class="twitter-follow-button" data-dnt="true" data-show-count="false" href="https://twitter.com/artooio">Follow @artooio</a>
+            <script>
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <div class="aside right">
+            <img src="images/artoo.png">
+          </div>
+          <section class="content">
+            <h2 id="about">About</h2>
+            
+            <p>Artoo is a micro-framework for robotics.</p>
+            
+            <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
+            
+            <p>With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.</p>
+            <h2 id="meet_the_code">Meet The Code</h2>
+            
+            <p>Artoo’s simple code makes telling robots what to do incredibly simple and fun.</p>
+            
+            <p>All you need to get started is the <code>artoo</code> gem</p>
+            
+            <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span></pre>
+            
+            <p>Then hook it up to your robot (in this case, a <a href="http://gosphero.com">Sphero</a>):</p>
+            
+            <pre class="CodeRay">connection <span class="symbol">:sphero</span>, <span class="key">adaptor</span>: <span class="symbol">:sphero</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">4560</span><span class="delimiter">'</span></span>
 device <span class="symbol">:sphero</span>, <span class="key">driver</span>: <span class="symbol">:sphero</span></pre>
-          
-          <p>And tell it what to do!</p>
-          
-          <pre class="CodeRay">work <span class="keyword">do</span>
+            
+            <p>And tell it what to do!</p>
+            
+            <pre class="CodeRay">work <span class="keyword">do</span>
   every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
     puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
     sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
-          <section class="videos">
-            <h2>Artoo in Action</h2>
-            <object type="application/x-shockwave-flash" id="clip_embed_player_flash" data="http://www-cdn.justin.tv/widgets/archive_embed_player.swf" bgcolor="#000000"><param name="movie" value="http://www-cdn.justin.tv/widgets/archive_embed_player.swf">
+            <section class="videos">
+              <h2>Artoo in Action</h2>
+              <object type="application/x-shockwave-flash" id="clip_embed_player_flash" data="http://www-cdn.justin.tv/widgets/archive_embed_player.swf" bgcolor="#000000"><param name="movie" value="http://www-cdn.justin.tv/widgets/archive_embed_player.swf">
 <param name="allowScriptAccess" value="always">
 <param name="allowNetworking" value="all">
 <param name="allowFullScreen" value="true">
 <param name="flashvars" value="auto_play=false&amp;start_volume=25&amp;title=Title&amp;channel=confreaks&amp;chapter_id=2250467"></object>
-            <div class="more">
-              <a href="/videos">More Videos</a>
-            </div>
+              <div class="more">
+                <a href="/videos">More Videos</a>
+              </div>
+            </section>
           </section>
-        </section>
+        </div>
       </div>
-      <div class="footer">
+    </div>
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </div>
+    </footer>
   </body>
 </html>
