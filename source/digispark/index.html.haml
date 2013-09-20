@@ -49,11 +49,14 @@ layout: page
     ), so we have to make sure this protocol has been installed to the Digispark firmware, if this is the case, you
     can start working with Artoo right away.
   %p
-    Nevertheless if the Digispark does not have the littlewire protocol installed yet, you can install it easily, by first installing the artoo-digispark gem, and then running the command 'artoo install digispark'. The program will prompt you to plug in the Digispark, and then once you do, it will install the firmware automatically.
-    
+    Nevertheless if the Digispark does not have the littlewire protocol installed yet, you can install it easily,
+    by first installing the artoo-digispark gem, and then running the command 'artoo install digispark'. The 
+    program will prompt you to plug in the Digispark, and then once you do, it will install the firmware automatically.
+
   %h3 Connecting digispark to your computer
   %p
-    Now that we have the littlewire communication protocol installed in the Digispark we can use it with Artoo. When you plug it it, you should be able to use it with Artoo.
+    Now that we have the littlewire communication protocol installed in the Digispark we can use it with Artoo.
+    When you plug it, you should be able to use it with Artoo.
 
   %h4 When using OSX
   %p
@@ -117,6 +120,24 @@ layout: page
           end
         end
 
+%section.other-resources
+  %h2 Additional resources
+  %p
+    We are building robust artoo docs for each platform, you can check more details about digispark,
+    artoo support, available drivers and code examples in the following links.
+    %ul
+      %li
+        = link_to "Digispark platform docs", "../documentation/platforms/digispark"
+        %ul
+          %li
+            Drivers
+            %ul
+              %li= link_to "Buttons"              , "../documentation/drivers/button"
+              %li= link_to "Led"                  , "../documentation/drivers/led"
+              %li= link_to "Analog Sensors"       , "../documentation/drivers/analog_sensor"
+              %li= link_to "Motor"                , "../documentation/drivers/motor"
+              %li= link_to "Servo"                , "../documentation/drivers/servo"
+              %li= link_to "Maxbotix Range Finder", "../documentation/drivers/maxbotix"
 %section.contributing
   %h2 Contributing
 
