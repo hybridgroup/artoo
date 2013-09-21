@@ -9,6 +9,7 @@ Artoo exists thanks to the work of these wonderful individuals:
 - Jake Good ([@whoisjake](https://github.com/whoisjake))
 - Javier Cervantes ([@solojavier](https://github.com/solojavier))
 - Kurtis Rainbolt-Greene([@krainboltgreene] (https://github.com/krainboltgreene))
+- Luis Galaviz([@MGalv] (https://github.com/MGalv))
 - Mario "Kuroir" Ricalde([@MarioRicalde] (https://github.com/MarioRicalde))
 - Mike Ford ([@mikejford](https://github.com/mikejford))
 - Rafael Magana ([@rafmagana](https://github.com/rafmagana))
