@@ -1,15 +1,8 @@
 %section.hardware
   .devices
-    %a.device{href:"/documentation/drivers/analog-sensor", title: "Analog Sensor"}
-      %img{src: "/images/analog-sensor.jpg"}
-    %a.device{href:"/documentation/drivers/button", title: "Button"}
-      %img{src: "/images/button.jpg"}
-    %a.device{href: "/documentation/drivers/led", title: "LED"}
-      %img{src: "/images/LED.jpg"}
-    %a.device{href: "/documentation/drivers/maxbotix", title: "MaxBotix"}
-      %img{src: "/images/maxbotix.jpg"}
-    %a.device{href: "/documentation/drivers/motor", title: "Motor"}
-      %img{src: "/images/motor.jpg"}
-    %a.device{href: "/documentation/drivers/servo", title: "Servo"}
-      %img{src: "/images/servo.jpg"}
-
+    = partial "../partials/analog-sensor"
+    = partial "../partials/button"
+    = partial "../partials/led"
+    = partial "../partials/maxbotix"
+    = partial "../partials/motor"
+    = partial "../partials/servo"

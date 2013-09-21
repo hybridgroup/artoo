@@ -56,10 +56,11 @@ layout: page
       Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
       physical computing (using artoo and ruby) you could be doing:
 
-    %ol
-      %li= link_to "Buttons"              , "../drivers/button"
-      %li= link_to "Led"                  , "../drivers/led"
-      %li= link_to "Analog Sensors"       , "../drivers/analog-sensor"
-      %li= link_to "Motor"                , "../drivers/motor"
-      %li= link_to "Servo"                , "../drivers/servo"
-      %li= link_to "Maxbotix Range Finder", "../drivers/maxbotix"
+    .hardware
+      .devices
+        = partial "documentation/partials/analog-sensor"
+        = partial "documentation/partials/button"
+        = partial "documentation/partials/led"
+        = partial "documentation/partials/maxbotix"
+        = partial "documentation/partials/motor"
+        = partial "documentation/partials/servo"
