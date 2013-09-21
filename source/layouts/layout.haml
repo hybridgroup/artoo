@@ -55,10 +55,10 @@
               Ruby and Robots together.
             %h2.subtitle
               Artoo makes robotics
-              = link_to "Simple", "", (menu_item("examples"))
+              = link_to "Simple", "/documentation/getting-started"
               and
               = succeed '.' do
-                = link_to "Extensible", "", (menu_item("hardware"))
+                = link_to "Extensible", "/documentation/platforms"
             = link_to "Get Started", "/documentation/getting-started", class: "cta"
       - unless data.page.social.nil?
         .social
@@ -73,16 +73,13 @@
               %a.twitter-follow-button{"data-dnt" => "true", "data-show-count" => "false", :href => "https://twitter.com/artooio"} Follow @artooio
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-      - unless data.page.page_title.nil?
-        .page-title
-          .w
-            %h1.title= data.page.page_title
-            - unless data.page.page_subtitle.nil?
-              %h2.subtitle= data.page.page_subtitle
-
-
       .container
         = yield
+      - unless data.page.catcher.nil?
+        %section.catcher
+          .w
+            %h3.phrase Ready to build the next big thing with Ruby?
+            = link_to "Get Started", "/documentation/getting-started", class: "cta"
     %footer.app-footer
       .w
         .copyright
