@@ -1603,6 +1603,9 @@ a, a:visited {
   color: white;
   font-weight: bold; }
   /* line 61, elements/_home.sass */
+  .cta:hover {
+    background: #599743; }
+  /* line 63, elements/_home.sass */
   .cta:visited {
     color: white; }
   @media only screen and (max-width: 767px) {
@@ -1611,15 +1614,15 @@ a, a:visited {
       font-size: 16px;
       padding: 8px 15px; } }
 
-/* line 67, elements/_home.sass */
+/* line 69, elements/_home.sass */
 .catcher {
   margin: 0 0 38px 0;
   background: #fdfcf5;
   padding: 20px; }
-  /* line 71, elements/_home.sass */
+  /* line 73, elements/_home.sass */
   .catcher .phrase {
     margin: 0; }
-  /* line 73, elements/_home.sass */
+  /* line 75, elements/_home.sass */
   .catcher .cta {
     margin-top: 8px; }
 
