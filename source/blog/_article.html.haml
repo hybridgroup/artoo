@@ -1,10 +1,6 @@
 .article
   = partial "/blog/header", {locals: { article: article }}
   = article.body
-  .comments
-    .img
-      = image_tag "conversation.png"
-    = link_to "9 comments", "#"
   .tags
     .img
       = image_tag "tag.png"
