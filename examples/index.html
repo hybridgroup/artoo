@@ -34,7 +34,7 @@
   </head>
   <body>
     <div class="app">
-      <div class="container">
+      <div class="w">
         <header class="app-header" role="banner">
           <div class="display">
             <h1 class="artoo-logo">
@@ -49,10 +49,10 @@
             </span>
           </div>
           <span class="menu">
-            <a href="/examples" class="item">Examples</a>
+            <a href="/documentation" class="item">Docs</a>
             <a href="/hardware" class="item">Hardware</a>
             <a href="/videos" class="item">Videos</a>
-            <a href="/documentation" class="item">Docs</a>
+            <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
@@ -72,7 +72,7 @@
             
             <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.usbmodemxxxxx</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:led</span>, <span class="key">driver</span>: <span class="symbol">:led</span>, <span class="key">pin</span>: <span class="integer">13</span>
 device <span class="symbol">:button</span>, <span class="key">driver</span>: <span class="symbol">:button</span>, <span class="key">pin</span>: <span class="integer">2</span>
 
@@ -148,7 +148,7 @@ device <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</sp
 
   work <span class="keyword">do</span>
     on leapmotion, <span class="symbol">:open</span> =&gt; <span class="symbol">:on_open</span>
-    on leapmotion, <span class="symbol">:gesture</span> =&gt; <span class="symbol">:on_gesture</span>
+    on leapmotion, <span class="symbol">:hand</span> =&gt; <span class="symbol">:on_hand</span>
     on leapmotion, <span class="symbol">:close</span> =&gt; <span class="symbol">:on_close</span>
   <span class="keyword">end</span>
 
@@ -156,7 +156,7 @@ device <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</sp
     puts args
   <span class="keyword">end</span>
 
-  <span class="keyword">def</span> <span class="function">on_gesture</span>(*args)
+  <span class="keyword">def</span> <span class="function">on_hand</span>(*args)
     puts args[<span class="integer">1</span>]
   <span class="keyword">end</span>
 
@@ -185,7 +185,7 @@ work <span class="keyword">do</span>
             <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:raspi</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:raspi</span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:raspi_pin</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">17</span>, <span class="symbol">:direction</span> =&gt; <span class="symbol">:out</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">17</span>
 
 work <span class="keyword">do</span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>

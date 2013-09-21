@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Placeholder</title>
+    <title>Arduino with Artroo</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -34,7 +34,7 @@
   </head>
   <body>
     <div class="app">
-      <div class="container">
+      <div class="w">
         <header class="app-header" role="banner">
           <div class="display">
             <h1 class="artoo-logo">
@@ -49,39 +49,45 @@
             </span>
           </div>
           <span class="menu">
-            <a href="/examples" class="item">Examples</a>
+            <a href="/documentation" class="item">Docs</a>
             <a href="/hardware" class="item">Hardware</a>
             <a href="/videos" class="item">Videos</a>
-            <a href="/documentation" class="item">Docs</a>
+            <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
       </div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Arduino</h1>
+          <h2 class="subtitle">
+<a href="https://github.com/hybridgroup/artoo-arduino" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-arduino/issues">Issues</a>
+</h2>
+        </div>
+      </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full">
-            <section class="intro">
-              <h1>Arduino</h1>
-              <p>
-                <img src="http://placehold.it/350x250">
-              </p>
-              <p>
-                Arduino is an open-source electronics prototyping platform based on flexible,
-                easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
-                anyone interested in creating interactive objects or environments.
-              </p>
-              <p>
-                For more info about the arduino platform click
-                <a target="blank" href="http://arduino.cc/">here</a>
-              </p>
-            </section>
-            <section class="example">
-              <h2>What the code looks like?</h2>
-              <p>
-                This small program lets you push a button on the arduino board to turn a LED on or off.
-                In less than 10 lines of code using Artoo.
-              </p>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/arduino.jpg">
+                <p>
+                  Arduino is an open-source electronics prototyping platform based on flexible,
+                  easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
+                  anyone interested in creating interactive objects or environments.
+                </p>
+                <p>
+                  For more info about the arduino platform click
+                  <a target="blank" href="http://arduino.cc/">here</a>.
+                </p>
+              </section>
+              <section class="example">
+                <h2>What the code looks like?</h2>
+                <p>
+                  This small program lets you push a button on the arduino board to turn a LED on or off.
+                  In less than 10 lines of code using Artoo.
+                </p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
 device <span class="symbol">:led</span>, <span class="key">driver</span>: <span class="symbol">:led</span>, <span class="key">pin</span>: <span class="integer">13</span>
@@ -93,34 +99,48 @@ work <span class="keyword">do</span>
   on button, <span class="symbol">:push</span>    =&gt; proc { led.on }
   on button, <span class="symbol">:release</span> =&gt; proc { led.off }
 <span class="keyword">end</span></pre>
-            </section>
-            <section class="drivers">
-              <h2>Drivers</h2>
-              <p>
-                Thanks to
-                <b>artoo</b>
-                and
-                <b>ruby</b>
-                it is possible to interact with several I/O hardware devices and interfaces connected to the arduino
-                using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-arduino
-                adaptor (using the firmata communication protocol),
-                which makes it even possible to swap the entire platform for something else like digispark, and keep using the same code you just wrote for
-                arduino, this just by swapping a couple of lines in your program.
-              </p>
-              <p>
-                Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
-                physical computing (using artoo and ruby) you could be doing:
-              </p>
-              <h3>Drivers Documentation</h3>
-              <ol>
-                <li><a href="../drivers/button">Buttons</a></li>
-                <li><a href="../drivers/led">Led</a></li>
-                <li><a href="../drivers/analog_sensor">Analog Sensors</a></li>
-                <li><a href="../drivers/motor">Motor</a></li>
-                <li><a href="../drivers/servo">Servo</a></li>
-                <li><a href="../drivers/maxbotix">Maxbotix Range Finder</a></li>
-              </ol>
-            </section>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
+                <p>
+                  Thanks to
+                  <b>artoo</b>
+                  and
+                  <b>ruby</b>
+                  it is possible to interact with several I/O hardware devices and interfaces connected to the arduino
+                  using a set of already defined and easy to use drivers, all of this thanks to the artoo architecture, in conjuction with artoo-arduino
+                  adaptor (using the firmata communication protocol),
+                  which makes it even possible to swap the entire platform for something else like digispark, and keep using the same code you just wrote for
+                  arduino, this just by swapping a couple of lines in your program.
+                </p>
+                <p>
+                  Available drivers for the arduino platform are listed below, the drivers contain detailed documentation and examples of what kind
+                  physical computing (using artoo and ruby) you could be doing:
+                </p>
+                <div class="hardware">
+                  <div class="devices">
+                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
+                      <img src="/images/analog-sensor.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/button" title="Button">
+                      <img src="/images/button.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/led" title="LED">
+                      <img src="/images/LED.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
+                      <img src="/images/maxbotix.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/motor" title="Motor">
+                      <img src="/images/motor.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/servo" title="Servo">
+                      <img src="/images/servo.jpg">
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </div>
           </section>
         </div>
       </div>

@@ -34,7 +34,7 @@
   </head>
   <body>
     <div class="app">
-      <div class="container">
+      <div class="w">
         <header class="app-header" role="banner">
           <div class="display">
             <h1 class="artoo-logo">
@@ -49,53 +49,24 @@
             </span>
           </div>
           <span class="menu">
-            <a href="/examples" class="item">Examples</a>
+            <a href="/documentation" class="item">Docs</a>
             <a href="/hardware" class="item">Hardware</a>
             <a href="/videos" class="item">Videos</a>
-            <a href="/documentation" class="item">Docs</a>
+            <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
       </div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Platforms</h1>
+          <h2 class="subtitle">Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported.</h2>
+        </div>
+      </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full">
-            <section class="intro">
-              <h1>Getting Started with artoo</h1>
-              <h2>What is artoo?</h2>
-              <p>
-                Artoo is a micro-framework for robotics. It provides a simple, but powerful DSL
-                (domain-specific language) for robots and physical computing.
-              </p>
-              <p>
-                With Artoo, you can easily connect multiple, different hardware devices together into a single solution at the same time.
-                Artoo makes telling robots what to do incredibly simple and fun.
-              </p>
-              <p>
-                Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0-rc1
-                Artoo is conceptualy influenced by Sinatra (
-                <a href="https://github.com/sinatra/sinatra">Sinatra</a>
-                ) as well as borrowing some code from it.
-                Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
-                operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
-              </p>
-              <p>
-                This means you will need to use JRuby or Rubinius for maximum concurrency.
-                To a large extent, this is due to being built on top of Celluloid (
-                <a href="https://github.com/celluloid/celluloid">Celluloid</a>
-                ), Celluloid::IO (
-                <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
-                ), and Reel (
-                <a href="https://github.com/celluloid/reel">Reel</a>
-                ).
-              </p>
-            </section>
             <section class="hardware">
-              <h2>What platforms does it support?</h2>
-              <p>
-                Artoo has a extensible system for connecting to hardware devices. The following robotics
-                and physical computing platforms are currently supported:
-              </p>
               <div class="devices">
                 <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
                   <img src="/images/ardrone.jpg">
@@ -122,88 +93,7 @@
                   <img src="/images/sphero.jpg">
                 </a>
               </div>
-              <p>More platforms are coming soon!</p>
-              <p>
-                Artoo also has support for devices that can work across multiple hardware platforms.
-                </p>
-<ul>
-                  <li>
-                    GPIO (General Purpose Input/Output) devices &lt;==&gt;
-                    <a href="https://github.com/hybridgroup/artoo-gpio">Drivers</a>
-                  </li>
-                  <li>
-                    i2c devices &lt;==&gt;
-                    <a href="https://github.com/hybridgroup/artoo-i2c">Drivers</a>
-                  </li>
-                </ul>
-              
-              <p>
-                Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-              </p>
             </section>
-            <section class="artoo-code">
-              <h2>What writing code to interact with robots looks like in artoo</h2>
-              <h3>Example: Arduino with LED and a button, using the Firmata protocol.</h3>
-              <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
-require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-
-<span class="comment"># Circuit and schematic here: http://arduino.cc/en/tutorial/button</span>
-connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.usbmodemxxxxx</span><span class="delimiter">'</span></span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
-device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>
-
-work <span class="keyword">do</span>
-  on button, <span class="symbol">:push</span> =&gt; proc {led.toggle}
-<span class="keyword">end</span></pre>
-              <h3>Parrot ARDrone 2.0</h3>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>
-
-work <span class="keyword">do</span>
-  drone.start
-  drone.take_off
-
-  after(<span class="integer">25</span>.seconds) { drone.hover.land }
-  after(<span class="integer">30</span>.seconds) { drone.stop }
-<span class="keyword">end</span></pre>
-            </section>
-            <section class="installation">
-              <h3>Installation</h3>
-              <pre class="CodeRay">gem install artoo</pre>
-              <p>
-                Then install the gems required by the hardware you want to use. For
-                example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
-              </p>
-              <pre class="CodeRay">gem install artoo-arduino
-gem install artoo-ardrone</pre>
-              <p>
-                If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start
-                programming your hardware.
-              </p>
-              <p>If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:</p>
-              <pre class="CodeRay">gem install hybridgroup-serialport</pre>
-              <h3>Writing your robot code:</h3>
-              <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.</p>
-              <h3>Running your robot:</h3>
-              <pre class="CodeRay">ruby myrobot.rb</pre>
-            </section>
-            <section class="contributing">
-              <h2>Contributing</h2>
-              <p>
-                You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
-                <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
-              </p>
-              <ul>
-                <li>Fork it</li>
-                <li>Create your feature branch (git checkout -b my-new-feature)</li>
-                <li>Commit your changes (git commit -am 'Add some feature')</li>
-                <li>Push to the branch (git push origin my-new-feature)</li>
-                <li>Create new Pull Request</li>
-              </ul>
-            </section>
-            <section class="footer"></section>
           </section>
         </div>
       </div>
