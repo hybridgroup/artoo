@@ -42,7 +42,6 @@
                 = link_to "Rubinius", "http://rubini.us/"
 
           %span.menu
-            = link_to "Examples", "", (menu_item("examples"))
             = link_to "Hardware", "", (menu_item("hardware"))
             = link_to "Videos", "", (menu_item("videos"))
             = link_to "Docs", "", (menu_item("documentation"))
@@ -60,6 +59,7 @@
               and
               = succeed '.' do
                 = link_to "Extensible", "", (menu_item("hardware"))
+            = link_to "Get Started", "/documentation/getting-started", class: "cta"
       - unless data.page.social.nil?
         .social
           .container
