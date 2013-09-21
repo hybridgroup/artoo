@@ -3,9 +3,10 @@
   margin-right: 40px
   margin-bottom: 80px
   float: left
+  +small-screen
+    margin-right: 0
   .article
     display: inline-block
-    margin-top: 40px
 
     h3, h4, a
       color: $red
@@ -21,12 +22,14 @@
     p
       text-align: justify
 
+    .data
+      padding-left: 71px
     .date
       color: #FFF
-      display: inline-block
       width: 50px
       text-align: center
       margin-right: 20px
+      float: left
 
       .blue
         padding: 5px
@@ -88,27 +91,6 @@
     margin: 0
     list-style: none
 
-.tweets
-  .tweet
-
-    .avatar
-      display: inline-block
-
-    .user
-      display: inline-block
-      vertical-align: top
-      margin-top: 15px
-
-    p
-      font-size: 13px
-
-.alternative_footer
-  float: left
-  .copyright, a
-    float: left
-    min-width: 176px
-  a
-    color: $red
 
 +tiny-screen
   .twitter-share-button

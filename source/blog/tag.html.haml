@@ -1,13 +1,10 @@
 ---
-layout: blog
-title: Blog
+title: Artoo Blog
+page_title: Blog
 author: The Hybrid Group
-description: Artoo blog entries.
+layout: blog
 ---
-
-%h1
-  Articles tagged:
-  = tagname
+- content_for(:subtitle, "Articles tagged with “#{tagname}”")
 
 - page_articles.each_with_index do |article, i|
   = partial "/blog/article", locals: {article: article}

@@ -3,9 +3,9 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
-    %meta{:content => data.page.description, :name => "description"}
-    %meta{:content => data.page.author, :name => "author"}
-    %title= data.page.title
+    %meta{:content => current_page.data.description, :name => "description"}
+    %meta{:content => current_page.data.author, :name => "author"}
+    %title= current_page.data.title
     %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700")
     %link(rel="stylesheet" href="/stylesheets/style.css")
@@ -30,7 +30,7 @@
       });
   %body
     .app
-      .container
+      .w
         %header.app-header{role: "banner"}
           .display
             %h1.artoo-logo
@@ -42,11 +42,12 @@
                 = link_to "Rubinius", "http://rubini.us/"
 
           %span.menu
+            = link_to "Docs", "", (menu_item("documentation"))
             = link_to "Hardware", "", (menu_item("hardware"))
             = link_to "Videos", "", (menu_item("videos"))
-            = link_to "Docs", "", (menu_item("documentation"))
+            = link_to "Blog", "", (menu_item("blog"))
             = link_to "Github", "https://github.com/hybridgroup/artoo/", class: "item"
-      - unless data.page.hero.nil?
+      - unless current_page.data.hero.nil?
         .hero
           .container
             %h1.title
@@ -60,7 +61,7 @@
               = succeed '.' do
                 = link_to "Extensible", "/documentation/platforms"
             = link_to "Get Started", "/documentation/getting-started", class: "cta"
-      - unless data.page.social.nil?
+      - unless current_page.data.social.nil?
         .social
           .container
             .splitter
@@ -73,15 +74,17 @@
               %a.twitter-follow-button{"data-dnt" => "true", "data-show-count" => "false", :href => "https://twitter.com/artooio"} Follow @artooio
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-      - unless data.page.page_title.nil?
+      - unless current_page.data.page_title.nil?
         .page-title
           .w
-            %h1.title= data.page.page_title
-            - unless data.page.page_subtitle.nil?
-              %h2.subtitle= data.page.page_subtitle
+            %h1.title= current_page.data.page_title
+            - unless current_page.data.page_subtitle.nil?
+              %h2.subtitle= current_page.data.page_subtitle
+            - if content_for? :subtitle
+              %h2.subtitle= yield_content(:subtitle)
       .container
         = yield
-      - unless data.page.catcher.nil?
+      - unless current_page.data.catcher.nil?
         %section.catcher
           .w
             %h3.phrase Ready to build the next big thing with Ruby?
