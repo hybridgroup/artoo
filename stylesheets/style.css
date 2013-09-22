@@ -1329,6 +1329,11 @@ a, a:visited {
 .anchors-blue:hover, .app-footer a:hover, .hero a:hover, .page-title a:hover {
   color: white; }
 
+/* line 26, shared/_base.sass */
+.notice {
+  background: white;
+  padding: 20px 25px; }
+
 /* line 1, shared/_headers.sass */
 .artoo-logo {
   width: 155px; }
