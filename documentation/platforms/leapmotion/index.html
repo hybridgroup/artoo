@@ -72,10 +72,43 @@
               <section class="intro">
                 <img class="display" src="/images/leap_motion.jpg">
                 <p>
-                  
-                  </p>
-<h3>Coming Soon...</h3>
-                
+                  The Leap Motion is a user-interface device that tracks the user's hand motions, and translates them into events that can control robots and physical computing hardware.
+                </p>
+                <p>
+                  For more info about the Leap Motion platform click
+                  <a target="blank" href="https://www.leapmotion.com/">here</a>.
+                </p>
+              </section>
+              <section class="example">
+                <h2>What the code looks like?</h2>
+                <p>
+                  This small program uses a Leap Motion to detect the user's hand position
+                </p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
+device <span class="symbol">:leapmotion</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
+
+work <span class="keyword">do</span>
+  on leapmotion, <span class="symbol">:hand</span> =&gt; <span class="symbol">:wave</span>
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">wave</span>(sender, hand)
+  puts hand.inspect
+<span class="keyword">end</span></pre>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
+                <p>
+                  There is only one driver for the Leap Motion platform as listed below.
+                </p>
+                <div class="hardware">
+                  <div class="devices">
+                    <a class="device" href="/documentation/drivers/leapmotion" title="Leap Motion">
+                      <img src="/images/leap_motion.jpg">
+                    </a>
+                  </div>
+                </div>
               </section>
             </div>
           </section>
