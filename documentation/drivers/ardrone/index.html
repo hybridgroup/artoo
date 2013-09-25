@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Ardrone with Artroo</title>
+    <title>Artoo - ARDrone Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,10 +59,8 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Ardrone</h1>
-          <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/artoo-ardrone" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-ardrone/issues">Issues</a>
-</h2>
+          <h1 class="title">ARDrone</h1>
+          <h2 class="subtitle">Driver</h2>
         </div>
       </div>
       <div class="container">
@@ -72,18 +70,38 @@
               <section class="intro">
                 <img class="display" src="/images/ardrone.jpg">
                 <p>
-                  The ARDrone from Parrot is an inexpensive quadcopter that is controlled using WiFi. It includes a built-in front-facing HD video camera, as well as a second lower resolution bottom facing video camera.
+                  Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers. Communication with the ARDrone takes place using a WiFi connection.
                 </p>
+                <h2>How to stablish a connection and setup the driver</h2>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Public instance methods:</h2>
+                <h3>start → drone</h3>
                 <p>
-                  For more info about the ARDrone platform click
-                  <a target="blank" href="http://ardrone2.parrot.com/">here</a>.
+                  Starts up the drone.
+                </p>
+                <h3>stop → drone</h3>
+                <p>
+                  Stops up the drone.
+                </p>
+                <h3>take_off → drone</h3>
+                <p>
+                  Causes the drone to take off, if already started.
+                </p>
+                <h3>hover → drone</h3>
+                <p>
+                  Causes the drone to hover at current altitude.
+                </p>
+                <h3>land → drone</h3>
+                <p>
+                  Causes the drone to begin its landing sequence.
                 </p>
               </section>
               <section class="example">
-                <h2>What the code looks like?</h2>
-                <p>
-                  This small program lets the ARDrone take-off, hover, and land.
-                </p>
+                <h2>Example of controlling an ARDrone.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
@@ -97,23 +115,12 @@ work <span class="keyword">do</span>
   after(<span class="integer">20</span>.seconds) { drone.stop }
 <span class="keyword">end</span></pre>
               </section>
-              <section class="drivers">
-                <h2>Drivers</h2>
-                <p>
-                  Available drivers for the ARDrone platform are listed below. There are three drivers for the ARDrone: the ARDrone for flight control, the ARDroneNav for navigation data, and the ARDroneVideo for grabbing video data.
-                </p>
-                <div class="hardware">
-                  <div class="devices">
-                    <a class="device" href="/documentation/drivers/ardrone" title="ARDrone Flight Control">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/ardrone-navigation" title="ARDrone Navigation Data">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/ardrone-video" title="ARDrone Video Data">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                  </div>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
+                <div class="devices">
+                  <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
+                    <img src="/images/ardrone.jpg">
+                  </a>
                 </div>
               </section>
             </div>

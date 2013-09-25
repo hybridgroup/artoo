@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Ardrone with Artroo</title>
+    <title>Artoo - ARDrone Video Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,10 +59,8 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Ardrone</h1>
-          <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/artoo-ardrone" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-ardrone/issues">Issues</a>
-</h2>
+          <h1 class="title">ARDrone Video</h1>
+          <h2 class="subtitle">Driver</h2>
         </div>
       </div>
       <div class="container">
@@ -72,48 +70,40 @@
               <section class="intro">
                 <img class="display" src="/images/ardrone.jpg">
                 <p>
-                  The ARDrone from Parrot is an inexpensive quadcopter that is controlled using WiFi. It includes a built-in front-facing HD video camera, as well as a second lower resolution bottom facing video camera.
+                  Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras. Communication with the ARDrone takes place using a WiFi connection.
                 </p>
-                <p>
-                  For more info about the ARDrone platform click
-                  <a target="blank" href="http://ardrone2.parrot.com/">here</a>.
-                </p>
+                <h2>How to stablish a connection and setup the driver</h2>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:videodrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5555</span><span class="delimiter">'</span></span>
+device <span class="symbol">:video</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:videodrone</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>TODO: document event data.</h2>
               </section>
               <section class="example">
-                <h2>What the code looks like?</h2>
-                <p>
-                  This small program lets the ARDrone take-off, hover, and land.
-                </p>
+                <h2>Example of receiving video data from an ARDrone.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
+device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
 
 work <span class="keyword">do</span>
-  drone.start
-  drone.take_off
+  on video, <span class="symbol">:frame</span> =&gt; <span class="symbol">:v_frame</span>
+<span class="keyword">end</span>
 
-  after(<span class="integer">15</span>.seconds) { drone.hover.land }
-  after(<span class="integer">20</span>.seconds) { drone.stop }
+<span class="keyword">def</span> <span class="function">v_frame</span>(*data)
+  <span class="instance-variable">@count</span> ||= <span class="integer">0</span>
+  <span class="instance-variable">@count</span> += <span class="integer">1</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Frame #</span><span class="delimiter">"</span></span> + <span class="instance-variable">@count</span>
+  puts data[<span class="integer">1</span>].size + <span class="string"><span class="delimiter">"</span><span class="content"> bytes</span><span class="delimiter">"</span></span>
 <span class="keyword">end</span></pre>
               </section>
-              <section class="drivers">
-                <h2>Drivers</h2>
-                <p>
-                  Available drivers for the ARDrone platform are listed below. There are three drivers for the ARDrone: the ARDrone for flight control, the ARDroneNav for navigation data, and the ARDroneVideo for grabbing video data.
-                </p>
-                <div class="hardware">
-                  <div class="devices">
-                    <a class="device" href="/documentation/drivers/ardrone" title="ARDrone Flight Control">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/ardrone-navigation" title="ARDrone Navigation Data">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/ardrone-video" title="ARDrone Video Data">
-                      <img src="/images/ardrone.jpg">
-                    </a>
-                  </div>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
+                <div class="devices">
+                  <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
+                    <img src="/images/ardrone.jpg">
+                  </a>
                 </div>
               </section>
             </div>
