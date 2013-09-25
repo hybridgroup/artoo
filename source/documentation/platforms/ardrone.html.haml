@@ -10,5 +10,39 @@ layout: page
     = image_tag "/images/ardrone.jpg", class: "display"
 
     %p
-      =# TODO: Add content to the ardrone platform page.
-      %h3 Coming Soon...
+      The ARDrone from Parrot is an inexpensive quadcopter that is controlled using WiFi. It includes a built-in front-facing HD video camera, as well as a second lower resolution bottom facing video camera.
+
+    %p
+      For more info about the ARDrone platform click
+      = succeed "." do
+        = link_to "here", "http://ardrone2.parrot.com/", target: :blank
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program lets the ARDrone take-off, hover, and land.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+          device :drone, :driver => :ardrone, :connection => :ardrone
+
+          work do
+            drone.start
+            drone.take_off
+  
+            after(15.seconds) { drone.hover.land }
+            after(20.seconds) { drone.stop }
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p
+      Available drivers for the ARDrone platform are listed below. There are three drivers for the ARDrone: the ARDrone for flight control, the ARDroneNav for navigation data, and the ARDroneVideo for grabbing video data.
+
+    .hardware
+      .devices
+        = partial "documentation/partials/ardrone-flight"
+        = partial "documentation/partials/ardrone-navigation"
+        = partial "documentation/partials/ardrone-video"

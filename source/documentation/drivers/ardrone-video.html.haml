@@ -1,0 +1,47 @@
+---
+title: Artoo - ARDrone Video Driver
+author: The Hybrid Group
+page_title: ARDrone Video
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/ardrone.jpg", class: "display"
+    %p
+      Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras. Communication with the ARDrone takes place using a WiFi connection.
+
+    %h2 How to stablish a connection and setup the driver
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :videodrone, :adaptor => :ardrone_video, :port => '192.168.1.1:5555'
+          device :video, :driver => :ardrone_video, :connection => :videodrone
+
+  %section.public-methods
+    %h2 TODO: document event data.
+
+  %section.example
+    %h2 Example of receiving video data from an ARDrone.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
+          device :nav, :driver => :ardrone_navigation, :connection => :navigation
+
+          work do
+            on video, :frame => :v_frame
+          end
+
+          def v_frame(*data)
+            @count ||= 0
+            @count += 1
+            puts "Frame #" + @count
+            puts data[1].size + " bytes"
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/ardrone"

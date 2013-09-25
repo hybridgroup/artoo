@@ -1,0 +1,63 @@
+---
+title: Artoo - ARDrone Driver
+author: The Hybrid Group
+page_title: ARDrone
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/ardrone.jpg", class: "display"
+    %p
+      Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers. Communication with the ARDrone takes place using a WiFi connection.
+
+    %h2 How to stablish a connection and setup the driver
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+          device :drone, :driver => :ardrone, :connection => :ardrone
+
+  %section.public-methods
+    %h2 Public instance methods:
+
+    %h3 start → drone
+    %p
+      Starts up the drone.
+
+    %h3 stop → drone
+    %p
+      Stops up the drone.
+
+    %h3 take_off → drone
+    %p
+      Causes the drone to take off, if already started.
+
+    %h3 hover → drone
+    %p
+      Causes the drone to hover at current altitude.
+
+    %h3 land → drone
+    %p
+      Causes the drone to begin its landing sequence.
+  %section.example
+    %h2 Example of controlling an ARDrone.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+          device :drone, :driver => :ardrone, :connection => :ardrone
+
+          work do
+            drone.start
+            drone.take_off
+  
+            after(15.seconds) { drone.hover.land }
+            after(20.seconds) { drone.stop }
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/ardrone"

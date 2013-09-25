@@ -1,0 +1,44 @@
+---
+title: Artoo - ARDrone Navigation Driver
+author: The Hybrid Group
+page_title: ARDrone Navigation
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/ardrone.jpg", class: "display"
+    %p
+      Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements. Communication with the ARDrone takes place using a WiFi connection.
+
+    %h2 How to stablish a connection and setup the driver
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
+          device :nav, :driver => :ardrone_navigation, :connection => :navigation
+
+  %section.public-methods
+    %h2 TODO: document event data.
+
+  %section.example
+    %h2 Example of receiving navigation data from an ARDrone.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
+          device :nav, :driver => :ardrone_navigation, :connection => :navigation
+
+          work do
+            on nav, :navdata => :nav_update
+          end
+
+          def nav_update(*data)
+            p data[1].inspect
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/ardrone"
