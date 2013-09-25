@@ -11,7 +11,7 @@ layout: page
     %p
       Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements. Communication with the ARDrone takes place using a WiFi connection.
 
-    %h2 How to stablish a connection and setup the driver
+    %h2 How to establish a connection and setup the driver
     :markdown
           :::ruby
           require 'artoo'
@@ -19,7 +19,8 @@ layout: page
           device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
   %section.public-methods
-    %h2 TODO: document event data.
+    %h2 Events
+    We're working on documentation for the ARDrone's navigation events. Stay tuned.
 
   %section.example
     %h2 Example of receiving navigation data from an ARDrone.
