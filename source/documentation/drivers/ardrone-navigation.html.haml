@@ -9,9 +9,12 @@ layout: page
   %section.intro
     =image_tag "/images/ardrone-navigation.jpg", class: "display"
     %p
-      Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements. Communication with the ARDrone takes place using a WiFi connection.
+      Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements.
 
     %h2 How to establish a connection and setup the driver
+    %p
+      Communication with the ARDrone's navigation data interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
+
     :markdown
           :::ruby
           require 'artoo'
