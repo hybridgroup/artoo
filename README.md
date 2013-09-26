@@ -293,9 +293,13 @@ Creating artoo-awesome_device adaptor...
 Done!
 ```
 
-## Wiki
+## Documentation
 
-Check out our [wiki](https://github.com/hybridgroup/artoo/wiki) for more docs
+Check out our [documentation](http://artoo.io/documentation/) for lots of information about how to use Artoo.
+
+## IRC
+
+Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
 
 ## Contributing
 
