@@ -1,5 +1,5 @@
 ---
-title: Roomba with Artroo
+title: Roomba with Artoo
 author: The Hybrid Group
 page_title: Roomba
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-roomba' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-roomba/issues'>Issues</a>"
@@ -10,5 +10,37 @@ layout: page
     = image_tag "/images/roomba.jpg", class: "display"
 
     %p
-      =# TODO: Add content to the roomba platform page.
-      %h3 Coming Soon...
+      The Roomba is a simple robot that usually cleans floors.
+
+    %p
+      For more info about the Roomba platform click
+      = succeed "." do
+        = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program controls a Roomba.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
+          device :roomba, :driver => :roomba, :connection => :roomba
+            
+          work do
+            roomba.safe_mode
+            roomba.nudge_left
+            roomba.nudge_right
+            roomba.nudge_right
+            roomba.nudge_left
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p
+      There is only one driver for the Roomba platform, as listed below.
+
+    .hardware
+      .devices
+        = partial "documentation/partials/roomba-driver"

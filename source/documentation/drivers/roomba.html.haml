@@ -1,0 +1,45 @@
+---
+title: Artoo - Roomba Driver
+author: The Hybrid Group
+page_title: Roomba
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/roomba.jpg", class: "display"
+    %p
+      Allows user to control a Roomba iRobot Create using Artoo.
+    
+    %h2 How to establish a connection and setup the driver
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
+          device :roomba, :driver => :roomba, :connection => :roomba
+
+  %section.public-methods
+    %h2 Events
+    We're working on the documentation for the methods for the Roomba. Thanks for your patience.
+
+  %section.example
+    %h2 Example controlling a Roomba.
+    :markdown
+          :::ruby
+          require 'artoo'
+          
+          connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
+          device :roomba, :driver => :roomba, :connection => :roomba
+            
+          work do
+            roomba.safe_mode
+            roomba.nudge_left
+            roomba.nudge_right
+            roomba.nudge_right
+            roomba.nudge_left
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/roomba"
