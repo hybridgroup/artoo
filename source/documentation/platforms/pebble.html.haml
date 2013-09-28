@@ -1,5 +1,5 @@
 ---
-title: Pebble with Artroo
+title: Pebble with Artoo
 author: The Hybrid Group
 page_title: Pebble
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-pebble' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-pebble/issues'>Issues</a>"
@@ -10,5 +10,37 @@ layout: page
     = image_tag "/images/pebble.jpg", class: "display"
 
     %p
-      =# TODO: Add content to the pebble platform page.
-      %h3 Coming Soon...
+      The Pebble is a smart watch, that connects via bluetooth.
+
+    %p
+      For more info about the Pebble platform click
+      = succeed "." do
+        = link_to "here", "http://getpebble.com/", target: :blank
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program receives button press events from a Pebble smart watch.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+          device :watch, :driver => :pebble
+
+          work do
+            on watch, :media_control => :button_push
+          end
+
+          def button_push(caller, data)
+            puts data.button unless data.nil?
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p
+      There is only one driver for the Pebble platform, as listed below.
+
+    .hardware
+      .devices
+        = partial "documentation/partials/pebble-driver"
