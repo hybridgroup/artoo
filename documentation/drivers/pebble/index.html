@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Roomba with Artoo</title>
+    <title>Artoo - Pebble Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,10 +59,8 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Roomba</h1>
-          <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/artoo-roomba" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-roomba/issues">Issues</a>
-</h2>
+          <h1 class="title">Pebble</h1>
+          <h2 class="subtitle">Driver</h2>
         </div>
       </div>
       <div class="container">
@@ -70,44 +68,40 @@
           <section class="content full">
             <div class="documentation">
               <section class="intro">
-                <img class="display" src="/images/roomba.jpg">
+                <img class="display" src="/images/pebble.jpg">
                 <p>
-                  The Roomba is a simple robot that usually cleans floors.
+                  Allows user to interact with Artoo devices using a Pebble smart watch.
                 </p>
-                <p>
-                  For more info about the Roomba platform click
-                  <a target="blank" href="http://www.irobot.com/us/learn/Educators/Create.aspx">here</a>.
-                </p>
+                <h2>How to establish a connection and setup the driver</h2>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
+device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Events</h2>
+                We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
               </section>
               <section class="example">
-                <h2>What the code looks like?</h2>
-                <p>
-                  This small program controls a Roomba.
-                </p>
+                <h2>Example receiving button events from a Pebble smart watch.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-  
+connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
+device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
+
 work <span class="keyword">do</span>
-  roomba.safe_mode
-  roomba.nudge_left
-  roomba.nudge_right
-  roomba.nudge_right
-  roomba.nudge_left
+  on watch, <span class="symbol">:media_control</span> =&gt; <span class="symbol">:button_push</span>
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">button_push</span>(caller, data)
+  puts data.button <span class="keyword">unless</span> data.nil?
 <span class="keyword">end</span></pre>
               </section>
-              <section class="drivers">
-                <h2>Drivers</h2>
-                <p>
-                  There is only one driver for the Roomba platform, as listed below.
-                </p>
-                <div class="hardware">
-                  <div class="devices">
-                    <a class="device" href="/documentation/drivers/roomba" title="Roomba">
-                      <img src="/images/roomba.jpg">
-                    </a>
-                  </div>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
+                <div class="devices">
+                  <a class="device" href="/documentation/platforms/pebble" title="Pebble">
+                    <img src="/images/pebble.jpg">
+                  </a>
                 </div>
               </section>
             </div>

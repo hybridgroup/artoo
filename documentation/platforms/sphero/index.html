@@ -71,87 +71,30 @@
             <div class="documentation">
               <section class="intro">
                 <img class="display" src="/images/sphero.jpg">
-                <h3>What is sphero?</h3>
+                <h3>What is Sphero?</h3>
                 <p>
                   Sphero is a sophisticated and programmable robot housed in a polycarbonate sphere shell.
                 </p>
                 <p>
-                  The artoo sphero adaptor makes it easy to interact with sphero using ruby, once you have your sphero setup and connected to your computer
-                  you can start writing code to make sphero, move, change direction, speed and colors, or detect sphero events and execute some
+                  The artoo-sphero adaptor makes it easy to interact with Sphero using Ruby, once you have your Sphero setup and connected to your computer
+                  you can start writing code to make Sphero move, change direction, speed and colors, or detect Sphero events and execute some
                   code when they occur.
                 </p>
-                <h3>How do I connect sphero to my computer so I can start coding?</h3>
+                <h3>How do I connect Sphero to my computer so I can start coding?</h3>
                 <p>
                   Easy we have a guide for both mac and linux in the README.md page of the artoo-sphero gem
                   <a href="https://github.com/hybridgroup/artoo-sphero#connecting-to-sphero">here</a>
                   , once the sphero is paired and listening you should see it stay a solid color, instead of flashing different colors(not connected),
                   once this happens that's it, you can start coding using artoo and ruby.
                 </p>
-                <h3>Where can I get a sphero or find more info about it?</h3>
+                <h3>Where can I get a Sphero or find more info about it?</h3>
                 <p>
                   You can do it by following this link
                   <a href="http://www.gosphero.com/">GoSphero.</a>
                 </p>
-                <h2>How to stablish a connection and setup the driver</h2>
-                <p>
-                  That is pretty simple once the sphero is ready (connected and listening), you just need three lines of code and you are set,
-                  artoo and the sphero driver take care of the rest.
-                </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span></pre>
-              </section>
-              <section class="public-methods">
-                <h2>Public instance methods:</h2>
-                <h3>roll(speed, direction) → true | nil</h3>
-                <p>
-                  Starts the sphero rolling at the provided speed (value between 0 and 255) and direction (value between 0 and 360).
-                </p>
-                <h3>stop → true | nil</h3>
-                <p>
-                  Stops the sphero.
-                </p>
-                <h3>detect_collissions → true | nil</h3>
-                <p>
-                  REVISION PENDING: Sets the sphero to detect collisions and report them.
-                </p>
-                <h3>messages → [sphero_event]</h3>
-                <p>
-                  REVISION PENDING: Returns an array of sphero events, the messages reported by the sphero.
-                </p>
-                <h3>color(:color_symbol | [red, green, blue]) → [red_int, green_int, blue_int]</h3>
-                <p>
-                  REVISION PENDING: You can pass a color as a symbol or an array containing RGB colors from 0 to 255 ([255, 0, 0] == red),
-                  if passed a symbol returns the array of RGB corresponding to the color, if passed an array of colors it returns the same array
-                  (used when setting colors to the sphero).
-                </p>
-                <h3>set_color([red, green, blue]) → true | nil</h3>
-                <p>
-                  REVISION PENDING: You can either use it in tandem with color to set the color of the sphero or just pass an array containing RGB colors
-                  on the range 0 to 255 ([255, 0, 0] == red).
-                </p>
-              </section>
-              <section class="public-events">
-                <h2>Public driver events:</h2>
-                <p>
-                  Public events are triggered when something occurs to your sphero, when this occurs you can execute some code
-                  to respond accordingly, depending on the event triggered, you can access
-                  the following public events when programming the Sphero.
-                </p>
-                <h3>:colission</h3>
-                <p>
-                  Gets triggered when the sphero hits something or falls from a step.
-                </p>
-                <h3>How to use events and call them in your program.</h3>
-                <p>
-                  Pretty simple, when the connection and the driver have been setup (as explained above)
-                  you can call events on the sphero driver as follows:
-                </p>
-                <pre class="CodeRay"><span class="comment"># :contact is the name of a previously defined method containing the code to execute.</span>
-on sphero, <span class="symbol">:collision</span> =&gt; <span class="symbol">:contact</span></pre>
               </section>
               <section class="example">
-                <h2>Example of a simple program that makes the sphero roll and change colors.</h2>
+                <h2>Example of a simple program that makes the Sphero roll and change colors.</h2>
                 <pre class="CodeRay"> require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -165,6 +108,19 @@ work <span class="keyword">do</span>
     sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
+                <p>
+                  There is only one driver for the Sphero.
+                </p>
+                <div class="hardware">
+                  <div class="devices">
+                    <a class="device" href="/documentation/drivers/sphero" title="Sphero">
+                      <img src="/images/sphero.jpg">
+                    </a>
+                  </div>
+                </div>
               </section>
             </div>
           </section>
