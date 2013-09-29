@@ -1,0 +1,60 @@
+---
+title: Artoo - BlinkM Driver
+author: The Hybrid Group
+page_title: BlinkM
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/blinkm.jpg", class: "display"
+    %p
+      Allows user to control BlinkM via i2c interface
+
+    %h2 How to establish a connection and setup the driver
+    %h3 For Arduino:
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
+          device :blink_m, :driver => :blink_m, :connection => :arduino
+
+  %section.public-events
+    %h2 Methods:
+    %h3 Coming soon...
+    %p
+      We are hard at work on this documentation...
+
+  %section.example
+    %h2 Example using a BlinkM.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
+          device :blink_m, :driver => :blink_m
+
+          work do
+            every 1.second do
+              unless @on
+                blink_m.rgb(0xff, 0xff, 0xff)
+                @on = true
+              else
+                blink_m.rgb(0, 0, 0)
+                @on = false
+              end
+            end
+          end
+
+  %section.circuit
+    %h2 Circuit and Schematic
+    %p
+      Coming soon...
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/arduino"
+      = partial "documentation/partials/beaglebone"
+      = partial "documentation/partials/digispark"
+      = partial "documentation/partials/raspberry-pi"
