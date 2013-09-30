@@ -1,7 +1,7 @@
 module Artoo
   module Adaptors
     module IO
-      class Digital
+      class DigitalPin
         attr_reader :pin_num, :mode, :pin_file, :status
 
         GPIO_PATH = "/sys/class/gpio"
