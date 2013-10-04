@@ -20,28 +20,30 @@ layout: page
   %section.example
     %h2 What the code looks like?
     %p
-      This small program receives joystick and button press events from a game controller.
+      This small program receives joystick and button press events from an XBox 360 game controller.
     :markdown
           :::ruby
           require 'artoo'
 
           connection :joystick, :adaptor => :joystick
-          device :joystick, :driver => :joystick, :connection => :joystick, :interval => 0.1
+          device :joystick, :driver => :xbox360, :connection => :joystick, :interval => 0.1
 
           work do
             on joystick, :joystick => proc { |caller, value|
               puts 'joystick ' + value[:s].to_s, value[:x], value[:y]
             }
-            on joystick, :button => proc { |*value|
-              puts 'button ' + value[1]
+            on joystick, :button_a => proc { |*value|
+              puts 'a pushed'
             }
           end
 
   %section.drivers
     %h2 Drivers
     %p
-      There is only one driver for all joysticks, as listed below.
+      There are 3 driver for different joysticks, as listed below:
 
     .hardware
       .devices
         = partial "documentation/partials/joystick-driver"
+        = partial "documentation/partials/ps3"
+        = partial "documentation/partials/xbox360"
