@@ -1,0 +1,47 @@
+---
+title: Joysticks with Artoo
+author: The Hybrid Group
+page_title: Joysticks
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-joystick' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-joystick/issues'>Issues</a>"
+layout: page
+---
+.documentation
+  %section.intro
+    = image_tag "/images/joystick.jpg", class: "display"
+
+    %p
+      You can use Artoo (http://artoo.io/) with any joystick or game controller that is compatible with Simple DirectMedia Layer (SDL)
+
+    %p
+      For more info about Simple DirectMedia Layer (SDL) click
+      = succeed "." do
+        = link_to "here", "http://www.libsdl.org/", target: :blank
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program receives joystick and button press events from a game controller.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :joystick, :adaptor => :joystick
+          device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
+
+          work do
+            on controller, :joystick => proc { |caller, value|
+              puts "joystick #{value[:s]} x:#{value[:x]} y:#{value[:y]}"
+            }
+            on controller, :button => proc { |*value|
+              puts "button #{value[1]}"
+            }
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p
+      There is only one driver for all joysticks, as listed below.
+
+    .hardware
+      .devices
+        = partial "documentation/partials/joystick-driver"

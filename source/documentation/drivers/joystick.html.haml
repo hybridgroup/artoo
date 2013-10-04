@@ -1,0 +1,46 @@
+---
+title: Artoo - Joystick Driver
+author: The Hybrid Group
+page_title: Joystick
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/joystick.jpg", class: "display"
+    %p
+      Allows user to interact with Artoo devices using any joystick or game controller that is compatible with SDL.
+    
+    %h2 How to establish a connection and setup the driver
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :joystick, :adaptor => :joystick
+          device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
+
+  %section.public-methods
+    %h2 Events
+    We're working on the documentation for Joystick driver events. Thank you for your patience.
+
+  %section.example
+    %h2 Example receiving button events from a Pebble smart watch.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :joystick, :adaptor => :joystick
+          device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
+
+          work do
+            on controller, :joystick => proc { |*value|
+              puts "joystick #{value[1][:s]} x:#{value[1][:x]} y:#{value[1][:y]}"
+            }
+            on controller, :button => proc { |*value|
+              puts "button #{value[1]}"
+            }
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/joystick"
