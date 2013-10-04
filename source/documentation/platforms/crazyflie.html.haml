@@ -1,0 +1,44 @@
+---
+title: Crazyflie with Artoo
+author: The Hybrid Group
+page_title: Crazyflie
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-crazyflie/issues'>Issues</a>"
+layout: page
+---
+.documentation
+  %section.intro
+    = image_tag "/images/crazyflie.jpg", class: "display"
+
+    %p
+      You can use Artoo with the Crazyflie micro-quadcopter.
+
+    %p
+      For more info about Crazyflie click
+      = succeed "." do
+        = link_to "here", "http://www.bitcraze.se/", target: :blank
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program causes the Crazyflie to 'hop' up in the air for 1 second.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :crazyflie, :adaptor => :crazyflie
+          device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
+
+          work do
+            drone.forward(0)
+            drone.set_thrust_on
+            after(1.seconds) {drone.stop}
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p
+      There is current only one driver for the Crazyflie, as listed below.
+
+    .hardware
+      .devices
+        = partial "documentation/partials/crazyflie-flight"
