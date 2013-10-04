@@ -4,7 +4,7 @@ http://artoo.io/
 
 Artoo is a micro-framework for robotics using Ruby.
 
-Artoo provides a simple, yet powerful domain-specific language (DSL) for robotics and physical computing.
+Artoo provides a simple, yet powerful Domain-Specific Language (DSL) for robotics and physical computing.
 
 [![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo) [![Build Status](https://travis-ci.org/hybridgroup/artoo.png?branch=master)](https://travis-ci.org/hybridgroup/artoo)
 
@@ -17,7 +17,7 @@ Artoo provides a simple, yet powerful domain-specific language (DSL) for robotic
 ```ruby
 require 'artoo'
 
-connection :arduino, :adaptor => :firmata, :port => '/dev/tty.usbmodemxxxxx'
+connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
 device :led, :driver => :led, :pin => 13
 device :button, :driver => :button, :pin => 2
 
@@ -88,8 +88,11 @@ Artoo has a extensible system for connecting to hardware devices. The following 
 
   - [Arduino](http://www.arduino.cc/) <=> [Adaptor](https://github.com/hybridgroup/artoo-arduino)
   - [ARDrone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-ardrone)
+  - [BeagleBone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-beaglebone)
+  - [Crazyflie](http://www.bitcraze.se/) <=> [Adaptor](https://github.com/hybridgroup/artoo-crazyflie)
   - [Digispark](http://digistump.com/products/1) <=> [Adaptor](https://github.com/hybridgroup/artoo-digispark)
   - [Leap Motion](https://www.leapmotion.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-leapmotion)
+  - [Joystick](http://www.libsdl.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-joystick)
   - [Pebble](http://getpebble.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-pebble)
   - [Raspberry Pi](http://www.raspberrypi.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-raspi)
   - [Roomba](http://www.irobot.com/us/robots/Educators/Create.aspx) <=> [Adaptor](https://github.com/hybridgroup/artoo-roomba)
@@ -111,10 +114,10 @@ Do you have some hardware that is not yet supported by Artoo? We want to help yo
 gem install artoo
 ```
 
-Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
+Then install the gems required by the hardware you want to use. For example, if you wanted to integrate a PS3 controller to fly your ARDrone:
 
 ```ruby
-gem install artoo-arduino
+gem install artoo-joystick
 gem install artoo-ardrone
 ```
 
