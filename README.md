@@ -88,7 +88,7 @@ Artoo has a extensible system for connecting to hardware devices. The following 
 
   - [Arduino](http://www.arduino.cc/) <=> [Adaptor](https://github.com/hybridgroup/artoo-arduino)
   - [ARDrone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-ardrone)
-  - [BeagleBone](http://ardrone2.parrot.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-beaglebone)
+  - [BeagleBone](http://beagleboard.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-beaglebone)
   - [Crazyflie](http://www.bitcraze.se/) <=> [Adaptor](https://github.com/hybridgroup/artoo-crazyflie)
   - [Digispark](http://digistump.com/products/1) <=> [Adaptor](https://github.com/hybridgroup/artoo-digispark)
   - [Leap Motion](https://www.leapmotion.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-leapmotion)
