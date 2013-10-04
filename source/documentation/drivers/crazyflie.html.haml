@@ -1,0 +1,47 @@
+---
+title: Artoo - Crazyflie Driver
+author: The Hybrid Group
+page_title: Crazyflie
+page_subtitle: Driver
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/crazyflie.jpg", class: "display"
+    %p
+      Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
+
+    %h2 How to establish a connection and setup the driver
+    %p
+      Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device. 
+    :markdown
+          :::ruby
+          require 'artoo'
+          connection :crazyflie, :adaptor => :crazyflie
+          device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
+
+  %section.public-methods
+    %h2 Public instance methods:
+    %p
+      We're busy working on this information right now... check back soon.
+
+    
+  %section.example
+    %h2 Example of controlling a Crazyflie.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :crazyflie, :adaptor => :crazyflie
+          device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
+
+          work do
+            drone.forward(0)
+            drone.set_thrust_on
+            after(1.seconds) {drone.stop}
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/crazyflie"
