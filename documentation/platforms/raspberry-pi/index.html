@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Raspberry-pi with Artroo</title>
+    <title>Raspberry Pi with Artroo</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,7 +59,7 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Raspberry-pi</h1>
+          <h1 class="title">Raspberry Pi</h1>
           <h2 class="subtitle">
 <a href="https://github.com/hybridgroup/artoo-raspi" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-raspi/issues">Issues</a>
 </h2>
@@ -71,11 +71,59 @@
             <div class="documentation">
               <section class="intro">
                 <img class="display" src="/images/raspi.jpg">
+                <p>The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital &amp; PWM GPIO, and i2c interfaces built in.</p>
                 <p>
-                  
-                  </p>
-<h3>Coming Soon...</h3>
-                
+                  For more info about the Raspberry Pi platform go to
+                  <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
+                </p>
+              </section>
+              <section class="example">
+                <h2>What the code looks like?</h2>
+                <p>
+                  This small program causes an LED to blink.
+                </p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:raspi</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:raspi</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">11</span>
+
+work <span class="keyword">do</span>
+  every <span class="integer">1</span>.second <span class="keyword">do</span>
+    led.toggle
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
+                <p>All Artoo digital &amp; PWM GPIO, and i2c drivers listed below should work with the Raspberry Pi:</p>
+                <div class="hardware">
+                  <div class="devices">
+                    <a class="device" href="/documentation/drivers/button" title="Button">
+                      <img src="/images/button.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/led" title="LED">
+                      <img src="/images/LED.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/servo" title="Servo">
+                      <img src="/images/servo.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/motor" title="Motor">
+                      <img src="/images/motor.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
+                      <img src="/images/blinkm.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
+                      <img src="/images/hmc6352-compass.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
+                      <img src="/images/wii-chuck.jpg">
+                    </a>
+                    <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
+                      <img src="/images/wii-classic-controller.jpg">
+                    </a>
+                  </div>
+                </div>
               </section>
             </div>
           </section>

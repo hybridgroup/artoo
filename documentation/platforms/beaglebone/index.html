@@ -77,36 +77,36 @@
                   <a target="blank" href="http://beagleboard.org/Products/BeagleBone">here</a>.
                 </p>
                 <p>
-                  We have created a bootable image of Arch Linux, that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
+                  We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
                   <a target="blank" href="https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz">here</a>.
                 </p>
               </section>
               <section class="example">
                 <h2>What the code looks like?</h2>
-                <p>Pending</p>
+                <p>
+                  This small program causes an LED to blink.
+                </p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:beaglebone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:beaglebone</span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="symbol">:P9_12</span>
+
+work <span class="keyword">do</span>
+  every <span class="integer">1</span>.second <span class="keyword">do</span>
+    led.toggle
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>
-                <p>Pending</p>
+                <p>All Artoo digital GPIO and i2c drivers listed below should work with the BeagleBone:</p>
                 <div class="hardware">
                   <div class="devices">
-                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/analog-sensor.jpg">
-                    </a>
                     <a class="device" href="/documentation/drivers/button" title="Button">
                       <img src="/images/button.jpg">
                     </a>
                     <a class="device" href="/documentation/drivers/led" title="LED">
                       <img src="/images/LED.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/maxbotix.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/motor.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/servo.jpg">
                     </a>
                     <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
                       <img src="/images/blinkm.jpg">
