@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Artoo - Joystick Driver</title>
+    <title>Artoo - Generic Joystick Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,7 +59,7 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Joystick</h1>
+          <h1 class="title">Generic Joystick</h1>
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
@@ -82,7 +82,7 @@ device <span class="symbol">:controller</span>, <span class="symbol">:driver</sp
                 We're working on the documentation for Joystick driver events. Thank you for your patience.
               </section>
               <section class="example">
-                <h2>Example receiving button events from a Pebble smart watch.</h2>
+                <h2>Example receiving button events from a generic joystick.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>

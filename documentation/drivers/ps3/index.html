@@ -7,7 +7,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="description">
     <meta content="The Hybrid Group" name="author">
-    <title>Joysticks with Artoo</title>
+    <title>Artoo - PS3 Controller Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -59,10 +59,8 @@
       </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Joysticks</h1>
-          <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/artoo-joystick" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-joystick/issues">Issues</a>
-</h2>
+          <h1 class="title">PS3 Controller</h1>
+          <h2 class="subtitle">Driver</h2>
         </div>
       </div>
       <div class="container">
@@ -70,51 +68,41 @@
           <section class="content full">
             <div class="documentation">
               <section class="intro">
-                <img class="display" src="/images/joystick.jpg">
+                <img class="display" src="/images/ps3.jpg">
                 <p>
-                  You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
+                  Allows user to interact with Artoo devices using a PS3 game controller.
                 </p>
-                <p>
-                  For more info about Simple DirectMedia Layer (SDL) go to
-                  <a target="blank" href="http://www.libsdl.org/">http://www.libsdl.org/</a>.
-                </p>
+                <h2>How to establish a connection and setup the driver</h2>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
+device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ps3</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Events</h2>
+                We're working on the documentation for PS3 driver events. Thank you for your patience.
               </section>
               <section class="example">
-                <h2>What the code looks like?</h2>
-                <p>
-                  This small program receives joystick and button press events from an XBox 360 game controller.
-                </p>
+                <h2>Example receiving button events from PS3 controller joystick.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
-device <span class="symbol">:joystick</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+device <span class="symbol">:joystick</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ps3</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 
 work <span class="keyword">do</span>
   on joystick, <span class="symbol">:joystick</span> =&gt; proc { |caller, value|
     puts <span class="string"><span class="delimiter">'</span><span class="content">joystick </span><span class="delimiter">'</span></span> + value[<span class="symbol">:s</span>].to_s, value[<span class="symbol">:x</span>], value[<span class="symbol">:y</span>]
   }
-  on joystick, <span class="symbol">:button_a</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">'</span><span class="content">a pushed</span><span class="delimiter">'</span></span>
+  on joystick, <span class="symbol">:button_triangle</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">'</span><span class="content">triangle button</span><span class="delimiter">'</span></span>
   }
 <span class="keyword">end</span></pre>
               </section>
-              <section class="drivers">
-                <h2>Drivers</h2>
-                <p>
-                  There are 3 driver for different joysticks, as listed below:
-                </p>
-                <div class="hardware">
-                  <div class="devices">
-                    <a class="device" href="/documentation/drivers/joystick" title="Joystick">
-                      <img src="/images/joystick.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/ps3" title="PS3 Controller">
-                      <img src="/images/ps3.jpg">
-                    </a>
-                    <a class="device" href="/documentation/drivers/xbox360" title="XBox360 Controller">
-                      <img src="/images/xbox360.jpg">
-                    </a>
-                  </div>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
+                <div class="devices">
+                  <a class="device" href="/documentation/platforms/joystick" title="Joystick">
+                    <img src="/images/joystick.jpg">
+                  </a>
                 </div>
               </section>
             </div>
