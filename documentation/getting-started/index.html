@@ -69,11 +69,10 @@
             <section class="intro">
               <h2>What is artoo?</h2>
               <p>
-                Artoo is a micro-framework for robotics. It provides a simple, but powerful DSL
-                (domain-specific language) for robots and physical computing.
+                Artoo is a micro-framework for robotics. It provides a simple, but powerful Domain-Specific Language (DSL) for robots and physical computing.
               </p>
               <p>
-                With Artoo, you can easily connect multiple, different hardware devices together into a single solution at the same time.
+                With Artoo, you can easily connect multiple, different hardware devices together at the same time into a single solution.
                 Artoo makes telling robots what to do incredibly simple and fun.
               </p>
               <p>
@@ -136,7 +135,7 @@
                 </p>
 <ul>
                   <li>
-                    GPIO (General Purpose Input/Output) devices &lt;==&gt;
+                    General Purpose Input/Output (GPIO) devices &lt;==&gt;
                     <a href="/documentation/drivers/">Drivers</a>
                   </li>
                   <li>
@@ -150,13 +149,13 @@
               </p>
             </section>
             <section class="artoo-code">
-              <h2>What writing code to interact with robots looks like in artoo</h2>
+              <h2>Code to control robots with Artoo</h2>
               <h3>Example: Arduino with LED and a button, using the Firmata protocol.</h3>
               <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
 require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment"># Circuit and schematic here: http://arduino.cc/en/tutorial/button</span>
-connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/tty.usbmodemxxxxx</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
 device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>
 
@@ -182,18 +181,12 @@ work <span class="keyword">do</span>
               <pre class="CodeRay">gem install artoo</pre>
               <p>
                 Then install the gems required by the hardware you want to use. For
-                example, if you wanted to integrate a Wiiclassic controller connected to an Arduino to fly your ARDrone:
+                example, if you wanted to use an XBox360 controller to fly your ARDrone:
               </p>
-              <pre class="CodeRay">gem install artoo-arduino
+              <pre class="CodeRay">gem install artoo-joystick
 gem install artoo-ardrone</pre>
-              <p>
-                If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start
-                programming your hardware.
-              </p>
-              <p>If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:</p>
-              <pre class="CodeRay">gem install hybridgroup-serialport</pre>
               <h3>Writing your robot code:</h3>
-              <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using TDR (Test-Driven Robotics) with your preferred test frameworks.</p>
+              <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
               <h3>Running your robot:</h3>
               <pre class="CodeRay">ruby myrobot.rb</pre>
             </section>
