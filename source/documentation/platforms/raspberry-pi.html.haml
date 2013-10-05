@@ -1,7 +1,7 @@
 ---
-title: Raspberry-pi with Artroo
+title: Raspberry Pi with Artroo
 author: The Hybrid Group
-page_title: Raspberry-pi
+page_title: Raspberry Pi
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-raspi' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-raspi/issues'>Issues</a>"
 layout: page
 ---
@@ -9,6 +9,42 @@ layout: page
   %section.intro
     = image_tag "/images/raspi.jpg", class: "display"
 
+    %p The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital & PWM GPIO, and i2c interfaces built in.
+
     %p
-      =# TODO: Add content to the raspi platform page.
-      %h3 Coming Soon...
+      For more info about the Raspberry Pi platform go to
+      = succeed "." do
+        = link_to "http://www.raspberrypi.org/", "http://www.raspberrypi.org/", target: :blank
+
+
+  %section.example
+    %h2 What the code looks like?
+    %p
+      This small program causes an LED to blink.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :raspi, :adaptor => :raspi
+          device :led, :driver => :led, :pin => 11
+
+          work do
+            every 1.second do
+              led.toggle
+            end
+          end
+
+  %section.drivers
+    %h2 Drivers
+    %p All Artoo digital & PWM GPIO, and i2c drivers listed below should work with the Raspberry Pi:
+
+    .hardware
+      .devices
+        = partial "documentation/partials/button"
+        = partial "documentation/partials/led"
+        = partial "documentation/partials/servo"
+        = partial "documentation/partials/motor"
+        = partial "documentation/partials/blinkm"
+        = partial "documentation/partials/hmc6352-compass"
+        = partial "documentation/partials/wiichuck"
+        = partial "documentation/partials/wiiclassic"

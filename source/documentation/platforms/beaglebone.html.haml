@@ -16,27 +16,36 @@ layout: page
       = succeed "." do
         = link_to "here", "http://beagleboard.org/Products/BeagleBone", target: :blank
     %p
-      We have created a bootable image of Arch Linux, that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
+      We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
       = succeed "." do
         = link_to "here", "https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz", target: :blank
 
 
   %section.example
     %h2 What the code looks like?
-    %p Pending
+    %p
+      This small program causes an LED to blink.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :beaglebone, :adaptor => :beaglebone
+          device :led, :driver => :led, :pin => :P9_12
+
+          work do
+            every 1.second do
+              led.toggle
+            end
+          end
 
   %section.drivers
     %h2 Drivers
-    %p Pending
+    %p All Artoo digital GPIO and i2c drivers listed below should work with the BeagleBone:
 
     .hardware
       .devices
-        = partial "documentation/partials/analog-sensor"
         = partial "documentation/partials/button"
         = partial "documentation/partials/led"
-        = partial "documentation/partials/maxbotix"
-        = partial "documentation/partials/motor"
-        = partial "documentation/partials/servo"
         = partial "documentation/partials/blinkm"
         = partial "documentation/partials/hmc6352-compass"
         = partial "documentation/partials/wiichuck"
