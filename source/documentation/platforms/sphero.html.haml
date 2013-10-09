@@ -17,20 +17,20 @@ layout: page
       you can start writing code to make Sphero move, change direction, speed and colors, or detect Sphero events and execute some
       code when they occur.
 
-    %h3 How do I connect Sphero to my computer so I can start coding?
-    %p
-      Easy we have a guide for both mac and linux in the README.md page of the artoo-sphero gem
-      = link_to "here", "https://github.com/hybridgroup/artoo-sphero#connecting-to-sphero"
-      , once the sphero is paired and listening you should see it stay a solid color, instead of flashing different colors(not connected),
-      once this happens that's it, you can start coding using artoo and ruby.
-
     %h3 Where can I get a Sphero or find more info about it?
     %p
       You can do it by following this link
       = link_to "GoSphero.", "http://www.gosphero.com/"
+  %section.how-to
+    %h2 How to install
+    %p
+      Installing artoo with sphero support is pretty easy using ruby gems.
+    :markdown
+          :::bash
+          gem install artoo-sphero
 
-  %section.example
-    %h2 Example of a simple program that makes the Sphero roll and change colors.
+    %h2 How to use
+    %p Example of a simple program that makes the Sphero roll and change colors.
     :markdown
           :::ruby
            require 'artoo'
@@ -46,6 +46,69 @@ layout: page
               sphero.roll 60, rand(360)
             end
           end
+
+    %h2 How to connect
+    %h3 OSX
+
+    %p The main steps are:
+
+    %ul
+      %li Pair your computer and the Sphero
+      %li Use a socket to serial connection to map a TCP socket to the local unix port
+      %li Connect to the device via Artoo
+
+    %p
+      First pair your computer and Sphero. You might be prompted for a passcode, but you do not need
+      to enter it, sinec the Sphero does not check.
+
+    %p Once paired, use the "artoo connect scan" command to find out your connection info:
+
+    :markdown
+          :::bash
+          $ artoo connect scan
+
+    %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
+
+    :markdown
+          :::bash
+          artoo connect serial Sphero-WRW 8023
+
+    %h3 Ubuntu
+
+    %p The main steps are:
+
+    %ul
+      %li Pair your computer and the Sphero
+      %li Map your device to a unix port
+      %li Use a socket to serial connection to map a TCP socket to the local unix port
+      %li Connect to the device via Artoo
+
+    %p
+      First pair your computer and Sphero. You might be prompted for a passcode, but you do not need
+      to enter it, sinec the Sphero does not check.
+
+    %p Once paired, use the artoo connect scan command to find out your connection info:
+
+    :markdown
+          :::bash
+          $ artoo connect scan
+          Scanning ...
+            00:06:66:4A:14:99 Sphero-WRW
+
+    %p
+      Next, you need to bind the Sphero to the system port. In the above example, /dev/Sphero-WRW.
+      The easiest way to do this is to use the artoo connect bind command:
+
+    :markdown
+          :::bash
+          artoo connect bind 00:06:66:4A:14:99 Sphero-WRW
+
+    %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
+
+    :markdown
+          :::bash
+          artoo connect serial Sphero-WRW 8023
+
   %section.drivers
     %h2 Drivers
     %p

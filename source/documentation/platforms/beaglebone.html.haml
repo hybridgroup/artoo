@@ -20,9 +20,15 @@ layout: page
       = succeed "." do
         = link_to "here", "https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz", target: :blank
 
+  %section.how-to
+    %h2 How to install
+    %p
+      Installing artoo for beaglebone is pretty easy using ruby gems.
+    :markdown
+          :::bash
+          gem install artoo-beaglebone
 
-  %section.example
-    %h2 What the code looks like?
+    %h2 How to use
     %p
       This small program causes an LED to blink.
     :markdown
@@ -34,7 +40,7 @@ layout: page
 
           work do
             every 1.second do
-              led.toggle
+              led.on? ? led.off : led.on
             end
           end
 

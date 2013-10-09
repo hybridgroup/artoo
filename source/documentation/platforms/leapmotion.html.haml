@@ -17,8 +17,15 @@ layout: page
       = succeed "." do
         = link_to "here", "https://www.leapmotion.com/", target: :blank
 
-  %section.example
-    %h2 What the code looks like?
+  %section.how-to
+    %h2 How to install
+    %p
+      Installing artoo with leapmotion support is pretty easy using ruby gems.
+    :markdown
+          :::bash
+          gem install artoo-leapmotion --pre
+
+    %h2 How to use
     %p
       This small program uses a Leap Motion to detect the user's hand position
     :markdown
@@ -26,15 +33,52 @@ layout: page
           require 'artoo'
 
           connection :leapmotion, :adaptor => :leapmotion, :port => '127.0.0.1:6437'
-          device :leapmotion, :connection => :leapmotion, :driver => :leapmotion
- 
+          device :leapmotion, :driver => :leapmotion
+
           work do
-            on leapmotion, :hand => :wave
+            on leapmotion, :open => :on_open
+            on leapmotion, :frame => :on_frame
+            on leapmotion, :close => :on_close
           end
 
-          def wave(sender, hand)
-            puts hand.inspect
+          def on_open(*args)
+            puts args
           end
+
+          def on_frame(*args)
+            frame = args[1]
+            puts frame
+            puts frame.hands
+            puts frame.gestures
+            puts frame.pointables
+          end
+
+          def on_close(*args)
+            puts args
+          end
+    %h2 How to connect
+    %h3 OSX
+    %p
+      This driver works out of the box with the vanilla installation of the Leap Motion Software that you get in their 
+      %a{ href:"https://www.leapmotion.com/setup" } Setup Guide.
+
+    %p The main steps are:
+
+    %ul
+      %li Run Leap Motion.app
+      %li Connect your Computer and Leap Motion Controller.
+      %li Connect to the device via Artoo.
+
+    %h3 Ubuntu
+    %p
+      The Linux download of the Leap Motion software can be obtained from
+      %a{ href:"https://developer.leapmotion.com/downloads" } Leap Motion Dev Center
+      (requires free signup)
+    %p The main steps are:
+    %ul
+      %li Run the leapd daemon.
+      %li Connect your computer and the Leap Motion controller
+      %li Connect to the device via Artoo
 
   %section.drivers
     %h2 Drivers

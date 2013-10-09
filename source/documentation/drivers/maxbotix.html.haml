@@ -11,10 +11,7 @@ layout: page
     %p
       Provides tools to use maxbotix sonar (range finder).
 
-    %h2 Circuit and Schematic
-    %p
-      =link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
-
+  %section.how-to
     %h2 How to stablish a connection and setup the driver
     %h3 For Arduino:
     :markdown
@@ -79,10 +76,15 @@ layout: page
           def sonar_reading(*args)
             puts args
           end
+
+  %section.circuit
+    %h2 Circuit and Schematic
+    %p
+      =link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
+
   %section.compatability.hardware
     %h2 Works with:
     =# TODO: Update platform list with all that work with this driver in artoo.
     .devices
       = partial "documentation/partials/arduino"
       = partial "documentation/partials/digispark"
-

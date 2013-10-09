@@ -11,10 +11,7 @@ layout: page
     %p
       Provides an interface for making servos easy to work and interact with from Artoo.
 
-    %h2 Circuit and Schematic
-    %p
-      =link_to "http://arduino.cc/en/Tutorial/Sweep", "http://arduino.cc/en/Tutorial/Sweep"
-
+  %section.how-to
     %h2 How to stablish a connection and setup the driver
     %h3 For Arduino:
     :markdown
@@ -79,7 +76,13 @@ layout: page
               when 180 then servo.min
               end
             end
-          end 
+          end
+
+  %section.circuit
+    %h2 Circuit and Schematic
+    %p
+      =link_to "http://arduino.cc/en/Tutorial/Sweep", "http://arduino.cc/en/Tutorial/Sweep"
+
   %section.compatability.hardware
     %h2 Works with:
     =# TODO: Update platform list with all that work with this driver in artoo.

@@ -10,7 +10,8 @@ layout: page
     =image_tag "/images/roomba.jpg", class: "display"
     %p
       Allows user to control a Roomba iRobot Create using Artoo.
-    
+
+  %section.how-to
     %h2 How to establish a connection and setup the driver
     :markdown
           :::ruby
@@ -27,10 +28,10 @@ layout: page
     :markdown
           :::ruby
           require 'artoo'
-          
+
           connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
           device :roomba, :driver => :roomba, :connection => :roomba
-            
+
           work do
             roomba.safe_mode
             roomba.nudge_left
