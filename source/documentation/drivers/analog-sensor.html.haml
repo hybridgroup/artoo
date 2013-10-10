@@ -54,20 +54,24 @@ layout: page
       there are :upper and :lower limits, as well as an :interval param that defines how often the sensor should be read;
       when the specified amount of time passes the sensor is read, if one of the limits stablished is reached
       the corresponging event will be triggered.
+
     %h3 :upper
     %p
       Gets triggered if the value read by the sensor is greater or equal to :upper (value passed when setting up the sensor).
+
     %h3 :lower
     %p
       Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor)
+
     %h3 How to use events and call them on your drivers?
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
     :markdown
           :::ruby
           on sensor, :upper => proc { puts "UPPER LIMIT REACHED!" }
           on sensor, :lower => proc { puts "LOWER LIMIT REACHED!" }
-  %section.example
-    %h2 Example using a photoresistor sensor to turn a LED on and off.
+  %section.how-to
+    %h2 How to use
+    %h3 Example using a photoresistor sensor to turn a LED on and off.
     :markdown
           :::ruby
           require 'artoo'

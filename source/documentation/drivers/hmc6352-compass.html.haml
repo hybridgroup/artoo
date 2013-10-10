@@ -11,6 +11,7 @@ layout: page
     %p
       Allows user to read heading from HMC6352 Digital Compass via i2c interface
 
+  %section.how-to
     %h2 How to establish a connection and setup the driver
     %h3 For Arduino:
     :markdown
@@ -20,11 +21,22 @@ layout: page
           device :compass, :driver => :hmc_6352_compass, :connection => :arduino, :interval => 0.5
 
   %section.public-methods
-    %h2 Events:
-    %h3 Coming soon...
+    %h2 Public instance methods:
+    %h3 heading -> float
     %p
-      We are hard at work on this documentation...
+      Returns the heading data for the compass.
 
+  %section.public-events
+    %h2 Public driver events:
+    %h3 heading
+    %p
+      Gets triggered every time the specified interval is met.
+
+    %h3 How to use events and call them on your drivers?
+    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+    :markdown
+          :::ruby
+          on compass, :heading => proc { |caller, data| puts "heading: #{data}"}
   %section.example
     %h2 Example using a HMC6352 Digital Compass.
     :markdown
