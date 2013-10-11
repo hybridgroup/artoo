@@ -22,7 +22,7 @@ layout: page
 
   %section.public-methods
     %h2 Public instance methods:
-    %h3 heading -> float
+    %h3 heading → float
     %p
       Returns the heading data for the compass.
 
@@ -32,13 +32,15 @@ layout: page
     %p
       Gets triggered every time the specified interval is met.
 
-    %h3 How to use events and call them on your drivers?
+    %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
     :markdown
           :::ruby
-          on compass, :heading => proc { |caller, data| puts "heading: #{data}"}
-  %section.example
-    %h2 Example using a HMC6352 Digital Compass.
+          on compass, :heading => proc { |caller, data| puts "heading: \#{data}"}
+
+  %section.how-to
+    %h2 How to use
+    %h3 Example using a HMC6352 Digital Compass.
     :markdown
           :::ruby
           require 'artoo'
@@ -47,7 +49,7 @@ layout: page
           device :compass, :driver => :hmc_6352_compass, :connection => :arduino, :interval => 0.5
 
           work do
-            on compass, :heading => proc { |caller, data| puts "heading: #{data}"}
+            on compass, :heading => proc { |caller, data| puts "heading: \#{data}"}
           end
 
   %section.circuit

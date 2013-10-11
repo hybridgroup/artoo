@@ -75,15 +75,23 @@ layout: page
 
     %h3 joystick
     %p
-      Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y, s.
+      Get's triggered every interval amount of time if a joystick event occured, you can access values x, y, s(joystick number, 0 and 1 for left and right).
 
     %h3 joystick_0
     %p
-      Get's triggered every "interval" amount of time if a joystick_0 event occured, you can access values x, y.
+      Get's triggered every interval amount of time if a joystick_0 event occured, you can access values x, y.
 
     %h3 joystick_1
     %p
-      Get's triggered every "interval" amount of time if a joystick_1 event occured, you can access values x, y.
+      Get's triggered every interval amount of time if a joystick_1 event occured, you can access values x, y.
+
+    %h3 How to use events and call them on your drivers
+    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+    :markdown
+          :::ruby
+          on joystick, :joystick => proc { |caller, value|
+            puts 'joystick ' + value[:s].to_s, value[:x], value[:y]
+          }
 
   %section.how-to
     %h2 How to use

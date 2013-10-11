@@ -34,6 +34,12 @@ layout: page
     %p
       Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y.
 
+    %h3 How to use events and call them on your drivers
+    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+    :markdown
+          :::ruby
+          on wiichuck, :c_button => proc { puts "c button pressed!" }
+
   %section.how_to
     %h2 Example using a Nintendo Wii Nunchuck.
     :markdown

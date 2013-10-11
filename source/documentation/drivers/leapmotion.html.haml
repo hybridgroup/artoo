@@ -37,14 +37,15 @@ layout: page
     %p
       Gets triggered with every motion detected, makes frame input available.
 
-    %h3 How to use events and call them on your drivers?
+    %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
     :markdown
           :::ruby
           on leapmotion, :hand => proc { |sender, hand| puts hand.inspect }
 
-  %section.example
-    %h2 Example receiving hand motion events from a Leap Motion.
+  %section.how-to
+    %h2 How to use
+    %h3 Example receiving hand motion events from a Leap Motion.
     :markdown
           :::ruby
           require 'artoo'

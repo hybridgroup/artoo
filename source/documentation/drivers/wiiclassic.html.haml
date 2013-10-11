@@ -73,11 +73,16 @@ layout: page
     %p
       Get's triggered every "interval" amount of time if a right joystick event occured, you can access values x, y.
 
+    %h3 How to use events and call them on your drivers
+    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+    :markdown
+          :::ruby
+          on wiiclassic, :a_button => proc { puts "a button pressed!" }
 
   %section.how-to
     %h2 How to use
     %h3 Example using a Nintendo Wii Classic Controller comming soon.
-    -# :markdown
+    :markdown
           :::ruby
           require 'artoo'
 
@@ -85,9 +90,9 @@ layout: page
           device :wiiclassic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
           work do
-            on wiichuck, :c_button => proc { puts "c button pressed!" }
-            on wiichuck, :z_button => proc { puts "z button pressed!" }
-            on wiichuck, :joystick => proc { |*value|
+            on wiiclassic, :a_button => proc { puts "c button pressed!" }
+            on wiiclassic, :b_button => proc { puts "z button pressed!" }
+            on wiiclassic, :left_joystick => proc { |*value|
               puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
             }
           end
