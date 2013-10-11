@@ -21,12 +21,20 @@ layout: page
           device :wiichuck, :driver => :wiichuck, :connection :arduino
 
   %section.public-methods
-    %h2 Events:
-    %h3 Coming soon...
+    %h2 Public driver events
+    %h3 c_button
     %p
-      We are hard at work on this documentation...
+      Get's triggered every interval amount of time if the square button is pressed.
 
-  %section.example
+    %h3 z_button
+    %p
+      Get's triggered every interval amount of time if the square button is pressed.
+
+    %h3 joystick
+    %p
+      Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y.
+
+  %section.how_to
     %h2 Example using a Nintendo Wii Nunchuck.
     :markdown
           :::ruby

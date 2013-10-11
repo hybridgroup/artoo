@@ -28,15 +28,56 @@ layout: page
           device :wiiclassic, :driver => :wiiclassic, :connection :digispark
 
   %section.public-methods
-    %h2 Public instance methods:
-
-    %h3 Coming soon...
+    %h2 Public driver events:
+    %h3 a_button
     %p
-      We are hard at work on this documentation...
+      Get's triggered every interval amount of time if the a button is pressed.
 
-  %section.example
-    %h2 Example using a Nintendo Wii Classic Controller.
-    :markdown
+    %h3 b_button
+    %p
+      Get's triggered every interval amount of time if the b button is pressed.
+
+    %h3 x_button
+    %p
+      Get's triggered every interval amount of time if the x button is pressed.
+
+    %h3 y_button
+    %p
+      Get's triggered every interval amount of time if the y button is pressed.
+
+    %h3 home_button
+    %p
+      Get's triggered every interval amount of time if the home button is pressed.
+
+    %h3 select_button
+    %p
+      Get's triggered every interval amount of time if the select button (-) is pressed.
+
+    %h3 start_button
+    %p
+      Get's triggered every interval amount of time if the start button (+) is pressed.
+
+    %h3 right_trigger
+    %p
+      Get's triggered every interval amount of time if the right trigger button is pressed, makes right trigger value available.
+
+    %h3 left_trigger
+    %p
+      Get's triggered every interval amount of time if the left trigger button is pressed, makes left trigger value available.
+
+    %h3 left_joystick
+    %p
+      Get's triggered every "interval" amount of time if a left joystick event occured, you can access values x, y.
+
+    %h3 right_joystick
+    %p
+      Get's triggered every "interval" amount of time if a right joystick event occured, you can access values x, y.
+
+
+  %section.how-to
+    %h2 How to use
+    %h3 Example using a Nintendo Wii Classic Controller comming soon.
+    -# :markdown
           :::ruby
           require 'artoo'
 
