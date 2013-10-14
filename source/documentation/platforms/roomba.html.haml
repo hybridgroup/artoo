@@ -17,8 +17,14 @@ layout: page
       = succeed "." do
         = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
 
-  %section.example
-    %h2 What the code looks like?
+  %section.how-to
+    %h2 How to install
+    %p
+      Installing artoo with roomba support is pretty easy using ruby gems.
+    :markdown
+          :::bash
+          gem install artoo-roomba
+    %h2 How to use
     %p
       This small program controls a Roomba.
     :markdown
@@ -27,7 +33,7 @@ layout: page
 
           connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
           device :roomba, :driver => :roomba, :connection => :roomba
-            
+
           work do
             roomba.safe_mode
             roomba.nudge_left

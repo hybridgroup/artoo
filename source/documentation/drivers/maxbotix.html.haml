@@ -11,10 +11,7 @@ layout: page
     %p
       Provides tools to use maxbotix sonar (range finder).
 
-    %h2 Circuit and Schematic
-    %p
-      =link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
-
+  %section.how-to
     %h2 How to stablish a connection and setup the driver
     %h3 For Arduino:
     :markdown
@@ -48,14 +45,16 @@ layout: page
     %h3 :range
     %p
       Gets triggered after :interval amount of time passes, everytime the range will be read and the event triggered.
-    %h3 How to use events and call them on your drivers?
+
+    %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
     :markdown
           :::ruby
           on sonar, :range => proc { puts "range \#{ sonar.range }!" }
 
-  %section.example
-    %h2 Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.
+  %section.how-to
+    %h2 How to use
+    %h3 Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.
     :markdown
           :::ruby
 
@@ -79,10 +78,15 @@ layout: page
           def sonar_reading(*args)
             puts args
           end
+
+  %section.circuit
+    %h2 Circuit and Schematic
+    %p
+      =link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
+
   %section.compatability.hardware
     %h2 Works with:
     =# TODO: Update platform list with all that work with this driver in artoo.
     .devices
       = partial "documentation/partials/arduino"
       = partial "documentation/partials/digispark"
-
