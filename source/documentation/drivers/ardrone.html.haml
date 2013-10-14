@@ -11,6 +11,7 @@ layout: page
     %p
       Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
 
+  %section.how-to
     %h2 How to establish a connection and setup the driver
     %p
       Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
@@ -94,9 +95,10 @@ layout: page
     %h3 led(color, strength, number) → drone
     %p
       Turn on one of the drone's built in LEDs.
-    
-  %section.example
-    %h2 Example of controlling an ARDrone.
+
+  %section.how-to
+    %h2 How to use
+    %h3 Example of controlling an ARDrone.
     :markdown
           :::ruby
           require 'artoo'
@@ -107,7 +109,7 @@ layout: page
           work do
             drone.start
             drone.take_off
-  
+
             after(15.seconds) { drone.hover.land }
             after(20.seconds) { drone.stop }
           end
