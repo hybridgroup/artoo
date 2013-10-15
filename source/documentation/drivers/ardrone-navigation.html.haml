@@ -11,6 +11,7 @@ layout: page
     %p
       Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements.
 
+  %section.how-to
     %h2 How to establish a connection and setup the driver
     %p
       Communication with the ARDrone's navigation data interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
@@ -22,11 +23,88 @@ layout: page
           device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
   %section.public-methods
-    %h2 Events
-    We're working on documentation for the ARDrone's navigation events. Stay tuned.
+    %h2 Public driver events
+    %h3 navdata
+    %p
+      Gets triggered every time interval amount of time passes, returns and lets you access a navdata object containing navigation data as described below:
+    %ul
+      %li
+        %b navdata.sequence_number
+        → String (returns the sequence number)
 
-  %section.example
-    %h2 Example of receiving navigation data from an ARDrone.
+      %li
+        %b navdata.vision_flag
+        → String (returns the sequence number)
+
+      %li
+        %b navdata.flying?
+        → Boolean (is the ardrone flying?)
+
+      %li
+        %b navdata.communication_lost?
+        → Boolean (is communication lost?)
+
+      %li
+        %b navdata.com_watchdog_problem?
+        → Boolean (is there a watchdog problem?)
+
+      %li
+        %b navdata.bootstrap?
+        → Boolean (boostrap navigation setup?)
+
+      %li
+        %b navdata.options
+        → Returns an object with the following navdata
+        %ul
+          %li
+            %b options.control_strate_name
+            → String (returns control state name)
+
+          %li
+            %b options.control_strate
+            → Integer (returns control state)
+
+          %li
+            %b options.battery_level
+            → Integer
+
+          %li
+            %b options.pitch
+            → float (returns the current pitch)
+
+          %li
+            %b options.roll
+            → float (returns the current roll)
+
+          %li
+            %b options.yaw
+            → float (returns the current yaw)
+
+          %li
+            %b options.altitude
+            → float (returns the current altitude)
+
+          %li
+            %b options.vx
+            → float (returns the current velocity on X axis)
+
+          %li
+            %b options.vy
+            → float (returns the current velocity on Y axis)
+
+          %li
+            %b options.vz
+            → float (returns the current velocity on Z axis)
+
+    %h3 How to use events and call them on your drivers
+    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+    :markdown
+          :::ruby
+          device :nav, :driver => :ardrone_navigation, :connection => :navigation, :interval => 0.1
+
+  %section.how-to
+    %h2 How to use
+    %h3 Example of receiving navigation data from an ARDrone.
     :markdown
           :::ruby
           require 'artoo'
