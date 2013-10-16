@@ -11,6 +11,25 @@ layout: page
 
   = partial "../what_is_artoo"
 
+%section.how-to
+  %h2 How to install ruby
+  %p First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 1.9.3 or above, you can install it in ubuntu using the following terminal command.
+
+  %h3 Ubuntu
+  :markdown
+        :::bash
+        sudo apt-get install ruby1.9.3
+
+  %h3 Arch Linux
+  :markdown
+        :::bash
+        sudo pacman -S ruby
+
+  %h3 OSX
+  :markdown
+        :::bash
+        brew install ruby
+
   = partial "../platforms"
 
   %p
@@ -25,7 +44,6 @@ layout: page
 
   %p
     Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-
 
 %section.artoo-code
   %h2 Code to control robots with Artoo
