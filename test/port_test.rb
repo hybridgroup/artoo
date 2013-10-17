@@ -12,7 +12,7 @@ describe Artoo::Port do
     @remote_tcp_port.port.must_equal "8080"
     @local_tcp_port.port.must_equal "5678"
     @serial_port.port.must_equal "/dev/tty.usb12345"
-    @portless.port.must_equal "none"
+    @portless.port.must_equal nil
   end
 
   it 'Artoo::Port#is_tcp?' do
