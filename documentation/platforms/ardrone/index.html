@@ -107,6 +107,26 @@ work <span class="keyword">do</span>
                   connection to a single drone. However, in order to connect to multiple drones,
                   you need to perform some configuration steps on each drone via SSH.
                 </p>
+                <h2>Automatic Reset From Emergency Mode</h2>
+                <p>
+                  When you first connect to the ARDrone by calling the `start` method, if it is in "emergency" mode, the ARDrone will not take off. Artoo can automatically reset it back "normal" mode, to be able to fly IF you pass in the navigation like this example:
+                </p>
+                <pre class="CodeRay">connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+
+connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>
+device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
+
+work <span class="keyword">do</span>
+  on drone, <span class="symbol">:ready</span> =&gt; <span class="symbol">:fly</span>
+  drone.start(nav) <span class="comment"># pass the nav object into the start method</span>
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">fly</span>(*data)
+  drone.take_off
+  after(<span class="integer">15</span>.seconds) { drone.hover.land }
+  after(<span class="integer">20</span>.seconds) { drone.stop }
+<span class="keyword">end</span></pre>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>
