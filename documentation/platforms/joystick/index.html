@@ -79,8 +79,13 @@
                   <a target="blank" href="http://www.libsdl.org/">http://www.libsdl.org/</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with arduino support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-joystick</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program receives joystick and button press events from an XBox 360 game controller.
                 </p>
@@ -90,13 +95,24 @@ connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor<
 device <span class="symbol">:joystick</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 
 work <span class="keyword">do</span>
-  on joystick, <span class="symbol">:joystick</span> =&gt; proc { |caller, value|
-    puts <span class="string"><span class="delimiter">'</span><span class="content">joystick </span><span class="delimiter">'</span></span> + value[<span class="symbol">:s</span>].to_s, value[<span class="symbol">:x</span>], value[<span class="symbol">:y</span>]
+  on controller, <span class="symbol">:joystick</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick </span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:s</span>]<span class="inline-delimiter">}</span></span><span class="content"> x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   }
-  on joystick, <span class="symbol">:button_a</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">'</span><span class="content">a pushed</span><span class="delimiter">'</span></span>
+  on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_b</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">bee!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_x</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">exxx!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_y</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">why!</span><span class="delimiter">"</span></span>
   }
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <p>Plug your USB joystick or game controller into your USB port. If your device is supported by SDL, you are now ready.</p>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>

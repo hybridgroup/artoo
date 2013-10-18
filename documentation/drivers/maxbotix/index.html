@@ -72,10 +72,8 @@
                 <p>
                   Provides tools to use maxbotix sonar (range finder).
                 </p>
-                <h2>Circuit and Schematic</h2>
-                <p>
-                  <a href="http://www.electrojoystick.com/tutorial/?page_id=285">http://www.electrojoystick.com/tutorial/?page_id=285</a>
-                </p>
+              </section>
+              <section class="how-to">
                 <h2>How to stablish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -106,12 +104,13 @@ device <span class="symbol">:sonar</span>, <span class="symbol">:driver</span> =
                 <p>
                   Gets triggered after :interval amount of time passes, everytime the range will be read and the event triggered.
                 </p>
-                <h3>How to use events and call them on your drivers?</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on sonar, <span class="symbol">:range</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">range </span><span class="inline"><span class="inline-delimiter">#{</span> sonar.range <span class="inline-delimiter">}</span></span><span class="content">!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
-                <h2>Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment"># Circuit and schematic here: http://www.electrojoystick.com/tutorial/?page_id=285</span>
@@ -132,6 +131,12 @@ work <span class="keyword">do</span>
 <span class="keyword">def</span> <span class="function">sonar_reading</span>(*args)
   puts args
 <span class="keyword">end</span></pre>
+              </section>
+              <section class="circuit">
+                <h2>Circuit and Schematic</h2>
+                <p>
+                  <a href="http://www.electrojoystick.com/tutorial/?page_id=285">http://www.electrojoystick.com/tutorial/?page_id=285</a>
+                </p>
               </section>
               <section class="compatability hardware">
                 <h2>Works with:</h2>

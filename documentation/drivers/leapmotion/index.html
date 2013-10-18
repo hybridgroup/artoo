@@ -72,17 +72,38 @@
                 <p>
                   Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger actions or control hardware.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
 device <span class="symbol">:leapmotion</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span></pre>
               </section>
               <section class="public-methods">
-                <h2>Events</h2>
-                We're working on the documentation for the Leap Motions's events. Thanks for your patience.
+                <h2>Public driver events</h2>
+                <h3>hand</h3>
+                <p>
+                  Gets triggered when doing a hand motion, makes hand input available.
+                </p>
+                <h3>gesture</h3>
+                <p>
+                  Gets triggered when doing a gesture motion, makes hand input available.
+                </p>
+                <h3>pointable</h3>
+                <p>
+                  Gets triggered when doing a pointable motion, makes hand input available.
+                </p>
+                <h3>frame</h3>
+                <p>
+                  Gets triggered with every motion detected, makes frame input available.
+                </p>
+                <h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on leapmotion, <span class="symbol">:hand</span> =&gt; proc { |sender, hand| puts hand.inspect }</pre>
               </section>
-              <section class="example">
-                <h2>Example receiving hand motion events from a Leap Motion.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example receiving hand motion events from a Leap Motion.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>

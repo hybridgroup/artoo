@@ -73,18 +73,8 @@
                   Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
                   The value received from an analog input read from the sensor goes from 0 to 1027.
                 </p>
-                <h2>Circuit and Schematic</h2>
-                <p>
-                  Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
-                  the button for a photoresistor.
-                  <br>
-                  <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
-                </p>
-                <p>
-                  It should look like the circuit in this example.
-                  <br>
-                  <a href="http://arduino.cc/en/Tutorial/SwitchCase">http://arduino.cc/en/Tutorial/SwitchCase</a>
-                </p>
+              </section>
+              <section class="how_to">
                 <h2>How to stablish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -130,13 +120,14 @@ device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <sp
                 <p>
                   Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor)
                 </p>
-                <h3>How to use events and call them on your drivers?</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
-                <h2>Example using a photoresistor sensor to turn a LED on and off.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example using a photoresistor sensor to turn a LED on and off.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -163,6 +154,20 @@ work <span class="keyword">do</span>
     led.on
   }
 <span class="keyword">end</span></pre>
+              </section>
+              <section class="circuit">
+                <h2>Circuit and Schematic</h2>
+                <p>
+                  Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
+                  the button for a photoresistor.
+                  <br>
+                  <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
+                </p>
+                <p>
+                  It should look like the circuit in this example.
+                  <br>
+                  <a href="http://arduino.cc/en/Tutorial/SwitchCase">http://arduino.cc/en/Tutorial/SwitchCase</a>
+                </p>
               </section>
               <section class="compatibility hardware">
                 <h2>Works with:</h2>

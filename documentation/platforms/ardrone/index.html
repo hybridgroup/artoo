@@ -79,23 +79,34 @@
                   <a target="blank" href="http://ardrone2.parrot.com/">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with ardrone support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-ardrone</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program lets the ARDrone take-off, hover, and land.
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.0.43:5556</span><span class="delimiter">'</span></span>
 device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
 
 work <span class="keyword">do</span>
   drone.start
   drone.take_off
 
-  after(<span class="integer">15</span>.seconds) { drone.hover.land }
-  after(<span class="integer">20</span>.seconds) { drone.stop }
+  after(<span class="integer">25</span>.seconds) { drone.hover.land }
+  after(<span class="integer">30</span>.seconds) { drone.stop }
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <p>
+                  The ARDrone is a WiFi device, so there is no additional work to establish a
+                  connection to a single drone. However, in order to connect to multiple drones,
+                  you need to perform some configuration steps on each drone via SSH.
+                </p>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>

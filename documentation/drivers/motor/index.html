@@ -73,10 +73,8 @@
                   Provides motor manipulation tools for artoo like on/off, speed modulation using PWM,
                   use of bidirectional motors using forward/backward pins.
                 </p>
-                <h2>Circuit and Schematic</h2>
-                <p>
-                  <a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
-                </p>
+              </section>
+              <section class="how-to">
                 <h2>How to stablish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -142,8 +140,9 @@ device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =
                   Returns the current speed of the motor as an integer between 0 and 255.
                 </p>
               </section>
-              <section class="example">
-                <h2>Example of a dc motor with speed changes using PWM.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example of a dc motor with speed changes using PWM.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment">#Circuit's breadboard layout here: http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</span>
@@ -214,6 +213,10 @@ work <span class="keyword">do</span>
     sleep <span class="integer">3</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
+                <h2>Circuit and Schematic</h2>
+                <p>
+                  <a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
+                </p>
               </section>
               <section class="compatability hardware">
                 <h2>Works with:</h2>
@@ -222,8 +225,14 @@ work <span class="keyword">do</span>
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
                     <img src="/images/arduino.jpg">
                   </a>
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/beaglebone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
                     <img src="/images/digispark.jpg">
+                  </a>
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/raspi.jpg">
                   </a>
                 </div>
               </section>

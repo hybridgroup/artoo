@@ -72,6 +72,8 @@
                 <p>
                   Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <p>
                   Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
@@ -150,13 +152,63 @@ device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =
                 <p>
                   Reset the watchdog in the drone.
                 </p>
-                <h3>led(color, strength, number) → drone</h3>
+                <h3>led(color_animation, strength, duration) → drone</h3>
                 <p>
-                  Turn on one of the drone's built in LEDs.
+                  Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
                 </p>
+                <ul>
+                  <li>:blink_green_red</li>
+                  <li>:blink_green</li>
+                  <li>:blink_red</li>
+                  <li>:blink_orange</li>
+                  <li>:snake_green_red</li>
+                  <li>:fire</li>
+                  <li>:standard</li>
+                  <li>:red</li>
+                  <li>:green</li>
+                  <li>:red_snake</li>
+                  <li>:blank</li>
+                  <li>:right_missile</li>
+                  <li>:left_missile</li>
+                  <li>:double_missile</li>
+                  <li>:front_left_green_others_red</li>
+                  <li>:front_right_green_others_red</li>
+                  <li>:rear_right_green_others_red</li>
+                  <li>:rear_left_green_others_red</li>
+                  <li>:left_green_right_red</li>
+                  <li>:left_red_right_green</li>
+                  <li>:blink_standard</li>
+                </ul>
+                <h3>animate(animation, duration) → drone</h3>
+                <p>
+                  Animate the ardrone to do flips and turns depending on selection, available animation options are:
+                </p>
+                <ul>
+                  <li>:phi_m30_deg</li>
+                  <li>:phi_30_deg</li>
+                  <li>:theta_m30_deg</li>
+                  <li>:theta_30_deg</li>
+                  <li>:theta_20_deg_yaw_200_deg</li>
+                  <li>:theta_20_deg_yaw_m_200_deg</li>
+                  <li>:turnaround</li>
+                  <li>:turnaround_go_down</li>
+                  <li>:yaw_shake</li>
+                  <li>:yaw_dance</li>
+                  <li>:phi_dance</li>
+                  <li>:theta_dance</li>
+                  <li>:vz_dance</li>
+                  <li>:wave</li>
+                  <li>:phi_theta_mixed</li>
+                  <li>:double_phi_theta_mixed</li>
+                  <li>:flip_ahead</li>
+                  <li>:flip_behind</li>
+                  <li>:flip_left</li>
+                  <li>:flip_right</li>
+                </ul>
               </section>
-              <section class="example">
-                <h2>Example of controlling an ARDrone.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example of controlling an ARDrone.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
@@ -166,6 +218,26 @@ work <span class="keyword">do</span>
   drone.start
   drone.take_off
 
+  after(<span class="integer">15</span>.seconds) { drone.hover.land }
+  after(<span class="integer">20</span>.seconds) { drone.stop }
+<span class="keyword">end</span></pre>
+                <h3>Example of ARDrone doing a flip.</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+
+connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
+device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
+
+work <span class="keyword">do</span>
+  on drone, <span class="symbol">:ready</span> =&gt; <span class="symbol">:fly</span>
+  drone.start(nav)
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">fly</span>(*data)
+  drone.take_off
+  after(<span class="integer">10</span>.seconds) { drone.animate(<span class="symbol">:flip_ahead</span>, <span class="integer">1000</span>) }
   after(<span class="integer">15</span>.seconds) { drone.hover.land }
   after(<span class="integer">20</span>.seconds) { drone.stop }
 <span class="keyword">end</span></pre>

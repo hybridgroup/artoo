@@ -79,8 +79,13 @@
                   <a target="blank" href="http://www.bitcraze.se/">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how_to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with arduino support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-crazyflie</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program causes the Crazyflie to 'hop' up in the air for 1 second.
                 </p>
@@ -94,11 +99,37 @@ work <span class="keyword">do</span>
   drone.set_thrust_on
   after(<span class="integer">1</span>.seconds) {drone.stop}
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <p>
+                  The Crazyflie uses a 2.4 GHz radio to communicate. There is a
+                  USB dongle called the Crazyradio that is required to control the Crazyflie quadcopter.
+                </p>
+                <p>
+                  If you are have a USB 3.0 port, you might run into this issue
+                  <br>
+                  <a href="http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability">http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability</a>
+                </p>
+                <h2>How to hover</h2>
+                <p>
+                  To use Crazyflie with the hover command, requires installing the
+                  <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware">https://bitbucket.org/omwdunkley/crazyflie-firmware</a>
+                  fork of the Crazyflie firmware. The easiest way to currently do this, is to
+                  install the Crazyflie PC Client, download the 'hover' branch BIN file from here
+                  <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin">https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin</a>
+                  and then use the Crazyflie PC tools to update the Crazyflie firmware.
+                </p>
+                <p>
+                  Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Artoo code to use it:
+                </p>
+                <pre class="CodeRay">connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span></pre>
+                <p>
+                  If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...
+                </p>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>
                 <p>
-                  There is current only one driver for the Crazyflie, as listed below.
+                  There is currently only one driver for the Crazyflie, as listed below.
                 </p>
                 <div class="hardware">
                   <div class="devices">

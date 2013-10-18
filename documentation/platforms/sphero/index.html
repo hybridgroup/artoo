@@ -80,21 +80,20 @@
                   you can start writing code to make Sphero move, change direction, speed and colors, or detect Sphero events and execute some
                   code when they occur.
                 </p>
-                <h3>How do I connect Sphero to my computer so I can start coding?</h3>
-                <p>
-                  Easy we have a guide for both mac and linux in the README.md page of the artoo-sphero gem
-                  <a href="https://github.com/hybridgroup/artoo-sphero#connecting-to-sphero">here</a>
-                  , once the sphero is paired and listening you should see it stay a solid color, instead of flashing different colors(not connected),
-                  once this happens that's it, you can start coding using artoo and ruby.
-                </p>
                 <h3>Where can I get a Sphero or find more info about it?</h3>
                 <p>
                   You can do it by following this link
                   <a href="http://www.gosphero.com/">GoSphero.</a>
                 </p>
               </section>
-              <section class="example">
-                <h2>Example of a simple program that makes the Sphero roll and change colors.</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with sphero support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-sphero</pre>
+                <h2>How to use</h2>
+                <p>Example of a simple program that makes the Sphero roll and change colors.</p>
                 <pre class="CodeRay"> require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -108,6 +107,45 @@ work <span class="keyword">do</span>
     sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <h3>OSX</h3>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Pair your computer and the Sphero</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
+                  <li>Connect to the device via Artoo</li>
+                </ul>
+                <p>
+                  First pair your computer and Sphero. You might be prompted for a passcode, but you do not need
+                  to enter it, sinec the Sphero does not check.
+                </p>
+                <p>Once paired, use the "artoo connect scan" command to find out your connection info:</p>
+                <pre class="CodeRay">$ artoo connect scan</pre>
+                <p>Now you are ready to connect to the Sphero using the socket, in this example port 8023:</p>
+                <pre class="CodeRay">artoo connect serial Sphero-WRW 8023</pre>
+                <h3>Ubuntu</h3>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Pair your computer and the Sphero</li>
+                  <li>Map your device to a unix port</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
+                  <li>Connect to the device via Artoo</li>
+                </ul>
+                <p>
+                  First pair your computer and Sphero. You might be prompted for a passcode, but you do not need
+                  to enter it, sinec the Sphero does not check.
+                </p>
+                <p>Once paired, use the artoo connect scan command to find out your connection info:</p>
+                <pre class="CodeRay">$ artoo connect scan
+Scanning ...
+  00:06:66:4A:14:99 Sphero-WRW</pre>
+                <p>
+                  Next, you need to bind the Sphero to the system port. In the above example, /dev/Sphero-WRW.
+                  The easiest way to do this is to use the artoo connect bind command:
+                </p>
+                <pre class="CodeRay">artoo connect bind 00:06:66:4A:14:99 Sphero-WRW</pre>
+                <p>Now you are ready to connect to the Sphero using the socket, in this example port 8023:</p>
+                <pre class="CodeRay">artoo connect serial Sphero-WRW 8023</pre>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>

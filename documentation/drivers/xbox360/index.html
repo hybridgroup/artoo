@@ -72,28 +72,89 @@
                 <p>
                   Allows user to interact with Artoo devices using a XBox360 game controller.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
 device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span></pre>
               </section>
               <section class="public-methods">
-                <h2>Events</h2>
-                We're working on the documentation for XBox360 driver events. Thank you for your patience.
+                <h2>Public driver events</h2>
+                <h3>button_a</h3>
+                <p>
+                  Get's triggered every interval amount of time if the a button is pressed.
+                </p>
+                <h3>button_b</h3>
+                <p>
+                  Get's triggered every interval amount of time if the b button is pressed.
+                </p>
+                <h3>button_x</h3>
+                <p>
+                  Get's triggered every interval amount of time if the x button is pressed.
+                </p>
+                <h3>button_y</h3>
+                <p>
+                  Get's triggered every interval amount of time if the y button is pressed.
+                </p>
+                <h3>button_lb</h3>
+                <p>
+                  Get's triggered every interval amount of time if the left bumper button is pressed.
+                </p>
+                <h3>button_rb</h3>
+                <p>
+                  Get's triggered every interval amount of time if the right bumper button is pressed.
+                </p>
+                <h3>button_start</h3>
+                <p>
+                  Get's triggered every interval amount of time if the start button is pressed.
+                </p>
+                <h3>button_back</h3>
+                <p>
+                  Get's triggered every interval amount of time if the back button is pressed.
+                </p>
+                <h3>joystick</h3>
+                <p>
+                  Get's triggered every interval amount of time if a joystick event occured, you can access values x, y, s(joystick number, 0 and 1 for left and right).
+                </p>
+                <h3>joystick_0</h3>
+                <p>
+                  Get's triggered every interval amount of time if a joystick_0 event occured, you can access values x, y.
+                </p>
+                <h3>joystick_1</h3>
+                <p>
+                  Get's triggered every interval amount of time if a joystick_1 event occured, you can access values x, y.
+                </p>
+                <h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value| puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
-                <h2>Example receiving button events from XBox360 controller joystick.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example receiving button events from XBox360 controller joystick.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
-device <span class="symbol">:joystick</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 
 work <span class="keyword">do</span>
-  on joystick, <span class="symbol">:joystick</span> =&gt; proc { |caller, value|
-    puts <span class="string"><span class="delimiter">'</span><span class="content">joystick </span><span class="delimiter">'</span></span> + value[<span class="symbol">:s</span>].to_s, value[<span class="symbol">:x</span>], value[<span class="symbol">:y</span>]
+  on controller, <span class="symbol">:joystick_0</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick 0 - x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   }
-  on joystick, <span class="symbol">:button_a</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">'</span><span class="content">a button</span><span class="delimiter">'</span></span>
+  on controller, <span class="symbol">:joystick_1</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick 1 - x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_b</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">bee!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_x</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">exxx!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_y</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">why!</span><span class="delimiter">"</span></span>
   }
 <span class="keyword">end</span></pre>
               </section>

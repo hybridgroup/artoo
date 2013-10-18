@@ -72,22 +72,88 @@
                 <p>
                   Allows user to control a Roomba iRobot Create using Artoo.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span></pre>
               </section>
               <section class="public-methods">
-                <h2>Events</h2>
-                We're working on the documentation for the methods for the Roomba. Thanks for your patience.
+                <h2>Public instance methods</h2>
+                <h3>start</h3>
+                <p>
+                  Puts roomba in start mode.
+                </p>
+                <h3>safe_mode</h3>
+                <p>
+                  Puts roomba in safe mode.
+                </p>
+                <h3>full_mode</h3>
+                <p>
+                  Puts roomba in full mode.
+                </p>
+                <h3>forward(seconds, speed=slow) → nil</h3>
+                <p>
+                  Moves roomba forward for &lt;seconds&gt; amount of time at &lt;speed&gt; (speed(int) between 0 and 500).
+                </p>
+                <h3>fast_forward(seconds) → nil</h3>
+                <p>
+                  Moves roomba forward for &lt;seconds&gt; amount of time at max speed.
+                </p>
+                <h3>stop</h3>
+                <p>
+                  Stops the roomba.
+                </p>
+                <h3>backwards(seconds) → nil</h3>
+                <p>
+                  Moves roomba backwards for &lt;seconds&gt; amount of time at default speed.
+                </p>
+                <h3>nudge_left</h3>
+                <p>
+                  Turns roomba a little bit to the left.
+                </p>
+                <h3>nudge_right</h3>
+                <p>
+                  Turns roomba a little bit to the right.
+                </p>
+                <h3>turn_left(seconds=1) → nil</h3>
+                <p>
+                  Turns roomba to the left the specefied amount of seconds.
+                </p>
+                <h3>turn_right(seconds=1) → nil</h3>
+                <p>
+                  Turns roomba to the right the specefied amount of seconds.
+                </p>
+                <h3>turn_around</h3>
+                <p>
+                  Turns roomba 180 degrees.
+                </p>
+                <h3>drive(speed, direction, seconds = 0)  → nil</h3>
+                <p>
+                  Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).
+                </p>
+                <h3>play(song_number)  → nil</h3>
+                <p>
+                  Plays the song specified by song_numer.
+                </p>
+                <h3>song(notes[Collection], song_number[Integer])  → nil</h3>
+                <p>
+                  Stores a song in the roomba.
+                </p>
+                <h3>beep</h3>
+                <p>
+                  Makes roomba beep.
+                </p>
               </section>
-              <section class="example">
-                <h2>Example controlling a Roomba.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example controlling a Roomba.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-  
+
 work <span class="keyword">do</span>
   roomba.safe_mode
   roomba.nudge_left

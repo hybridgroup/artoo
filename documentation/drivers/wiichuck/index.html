@@ -72,6 +72,8 @@
                 <p>
                   Allows user to use a Nintendo Wii Nunchuck controller via i2c interface
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -79,13 +81,24 @@ connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</
 device <span class="symbol">:wiichuck</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:wiichuck</span>, <span class="symbol">:connection</span> <span class="symbol">:arduino</span></pre>
               </section>
               <section class="public-methods">
-                <h2>Events:</h2>
-                <h3>Coming soon...</h3>
+                <h2>Public driver events</h2>
+                <h3>c_button</h3>
                 <p>
-                  We are hard at work on this documentation...
+                  Get's triggered every interval amount of time if the square button is pressed.
                 </p>
+                <h3>z_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the square button is pressed.
+                </p>
+                <h3>joystick</h3>
+                <p>
+                  Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y.
+                </p>
+                <h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on wiichuck, <span class="symbol">:c_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">c button pressed!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
+              <section class="how_to">
                 <h2>Example using a Nintendo Wii Nunchuck.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 

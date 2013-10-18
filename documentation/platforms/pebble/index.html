@@ -79,8 +79,13 @@
                   <a target="blank" href="http://getpebble.com/">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with pebble support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-pebble</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program receives button press events from a Pebble smart watch.
                 </p>
@@ -96,6 +101,34 @@ work <span class="keyword">do</span>
 <span class="keyword">def</span> <span class="function">button_push</span>(caller, data)
   puts data.button <span class="keyword">unless</span> data.nil?
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <p>This software requires version 1.12.0 of the Pebble watch firmware.</p>
+                <h3>OSX</h3>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Pair your computer and the Pebble</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local port</li>
+                  <li>Connect to the device via Artoo</li>
+                  <li>To figure out which port your pebble is connected to, use the artoo connect scan command:</li>
+                </ul>
+                <pre class="CodeRay">$ artoo connect scan</pre>
+                <p>Now you are ready to connect to the Sphero using the socket, in this example port 4567:</p>
+                <pre class="CodeRay">artoo connect serial 4567 pebble</pre>
+                <h3>Ubuntu</h3>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Pair your computer and the Pebble</li>
+                  <li>Map your device to a port</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local port</li>
+                  <li>Connect to the device via Artoo</li>
+                  <li>You will need to pair with the Pebble, entering any needed password.</li>
+                </ul>
+                <p>Then you can find the Bluetooth address, for example 00:18:33:86:37:8B, by using the artoo connect scan command:</p>
+                <pre class="CodeRay">$ artoo connect scan</pre>
+                <p>Once you know the address, you can use the artoo connect bind command to map a port to the device:</p>
+                <pre class="CodeRay">artoo connect bind 00:18:33:86:37:8B pebble</pre>
+                <p>Now you are ready to connect to the Pebble using a socket, in this example port 4567:</p>
+                <pre class="CodeRay">artoo connect socat pebble 4567</pre>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>

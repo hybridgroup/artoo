@@ -93,6 +93,37 @@
                 <a href="https://github.com/celluloid/reel">Reel</a>
                 ).
               </p>
+            </section>
+            <section class="how-to">
+              <h2>How to setup your ruby environment</h2>
+              <p>
+                First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above,
+                we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
+              </p>
+              <h3>How to install RVM</h3>
+              <p>
+                First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
+                <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
+              </p>
+              <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable</pre>
+              <p>
+                Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed
+                correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
+              </p>
+              <pre class="CodeRay">type rvm | head -n 1
+rvm is a function</pre>
+              <h3>How to install ruby 2.0</h3>
+              <p>
+                Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
+              </p>
+              <pre class="CodeRay">rvm install 2.0.0</pre>
+              <h3>How to install rubinius 2.0</h3>
+              <p>
+                If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.0-rc1
+                or higher. It is pretty easy to isntall using
+                <a href="https://rvm.io/">RVM.</a>
+              </p>
+              <pre class="CodeRay">rvm install rbx-2.0.0</pre>
               <section class="hardware">
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">

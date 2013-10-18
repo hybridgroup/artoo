@@ -72,6 +72,8 @@
                 <p>
                   Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <p>
                   Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.
@@ -82,12 +84,66 @@ device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =
               </section>
               <section class="public-methods">
                 <h2>Public instance methods:</h2>
+                <h3>start</h3>
                 <p>
-                  We're busy working on this information right now... check back soon.
+                  Starts the crazyfly's motors and controls.
+                </p>
+                <h3>stop</h3>
+                <p>
+                  Stops the crazyfly's motors.
+                </p>
+                <h3>hover</h3>
+                <p>
+                  Makes the crazyflie hover in a position.
+                </p>
+                <h3>land</h3>
+                <p>
+                  Initiates a landing sequence.
+                </p>
+                <h3>take_off</h3>
+                <p>
+                  Initiates take off sequence.
+                </p>
+                <h3>up</h3>
+                <p>
+                  Orders crazy flie to go up.
+                </p>
+                <h3>down</h3>
+                <p>
+                  Orders crazy flie to go down.
+                </p>
+                <h3>left(deg)</h3>
+                <p>
+                  Orders crazyflie to go left the amount specified by deg (roll left).
+                </p>
+                <h3>right(deg)</h3>
+                <p>
+                  Orders crazyflie to go right the amount specified by deg (roll right).
+                </p>
+                <h3>forward(deg)</h3>
+                <p>
+                  Orders crazyflie to go forward the amount specified by deg (pitch forward).
+                </p>
+                <h3>backward(deg)</h3>
+                <p>
+                  Orders crazyflie to go backward the amount specified by deg (pitch backward).
+                </p>
+                <h3>turn_left(deg)</h3>
+                <p>
+                  Orders crazyflie to turn left the amount specified by deg (yaw left).
+                </p>
+                <h3>turn_right(deg)</h3>
+                <p>
+                  Orders crazyflie to turn right the amount specified by deg (yaw right).
+                </p>
+                <h3>power(deg)</h3>
+                <p>
+                  Sets thrust power to deg.
                 </p>
               </section>
-              <section class="example">
-                <h2>Example of controlling a Crazyflie.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example of controlling a Crazyflie.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>

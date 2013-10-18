@@ -72,6 +72,8 @@
                 <p>
                   Allows user to interact with the Sphero robotic sphero using Artoo.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <p>
                   That is pretty simple once the Sphero is ready (connected and listening), you just need three lines of code and you are set,
@@ -122,13 +124,36 @@ device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> 
                 <p>
                   Gets triggered when the sphero hits something or falls from a step.
                 </p>
-                <h3>How to use events and call them in your program.</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>
                   Pretty simple, when the connection and the driver have been setup (as explained above)
                   you can call events on the sphero driver as follows:
                 </p>
                 <pre class="CodeRay"><span class="comment"># :contact is the name of a previously defined method containing the code to execute.</span>
 on sphero, <span class="symbol">:collision</span> =&gt; <span class="symbol">:contact</span></pre>
+              </section>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example to roll the sphero in a random direction and change direction every 3 seconds.</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4567</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+work <span class="keyword">do</span>
+  <span class="instance-variable">@rolling</span> = <span class="predefined-constant">false</span>
+
+  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
+    <span class="keyword">unless</span> <span class="instance-variable">@rolling</span>
+      sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
+      <span class="instance-variable">@rolling</span> = <span class="predefined-constant">true</span>
+    <span class="keyword">else</span>
+      sphero.stop
+      <span class="instance-variable">@rolling</span> = <span class="predefined-constant">false</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
               </section>
               <section class="compatability hardware">
                 <h2>Works with:</h2>

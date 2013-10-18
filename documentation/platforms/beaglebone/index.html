@@ -81,8 +81,13 @@
                   <a target="blank" href="https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo for beaglebone is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-beaglebone</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program causes an LED to blink.
                 </p>
@@ -93,7 +98,7 @@ device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&g
 
 work <span class="keyword">do</span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>
-    led.toggle
+    led.on? ? led.off : led.on
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
               </section>

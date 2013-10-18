@@ -72,17 +72,28 @@
                 <p>
                   Allows user to interact with Artoo devices using any joystick or game controller that is compatible with SDL.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
 device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span></pre>
               </section>
-              <section class="public-methods">
-                <h2>Events</h2>
-                We're working on the documentation for Joystick driver events. Thank you for your patience.
+              <section class="public-events">
+                <h2>Public driver events</h2>
+                <h3>joystick</h3>
+                <p>Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y, s.</p>
+                <h3>button</h3>
+                <p>Get's triggered every "interval" amount of time if the button was pressed, you can access the value of the pressed button.</p>
+                <h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on joystick, <span class="symbol">:joystick</span> =&gt; proc { |caller, value|
+  puts <span class="string"><span class="delimiter">'</span><span class="content">joystick </span><span class="delimiter">'</span></span> + value[<span class="symbol">:s</span>].to_s, value[<span class="symbol">:x</span>], value[<span class="symbol">:y</span>]
+}</pre>
               </section>
-              <section class="example">
-                <h2>Example receiving button events from a generic joystick.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example receiving button events from a generic joystick.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>

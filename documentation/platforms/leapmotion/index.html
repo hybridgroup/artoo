@@ -79,23 +79,66 @@
                   <a target="blank" href="https://www.leapmotion.com/">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with leapmotion support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-leapmotion --pre</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program uses a Leap Motion to detect the user's hand position
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
-device <span class="symbol">:leapmotion</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
+device <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
 
 work <span class="keyword">do</span>
-  on leapmotion, <span class="symbol">:hand</span> =&gt; <span class="symbol">:wave</span>
+  on leapmotion, <span class="symbol">:open</span> =&gt; <span class="symbol">:on_open</span>
+  on leapmotion, <span class="symbol">:frame</span> =&gt; <span class="symbol">:on_frame</span>
+  on leapmotion, <span class="symbol">:close</span> =&gt; <span class="symbol">:on_close</span>
 <span class="keyword">end</span>
 
-<span class="keyword">def</span> <span class="function">wave</span>(sender, hand)
-  puts hand.inspect
+<span class="keyword">def</span> <span class="function">on_open</span>(*args)
+  puts args
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">on_frame</span>(*args)
+  frame = args[<span class="integer">1</span>]
+  puts frame
+  puts frame.hands
+  puts frame.gestures
+  puts frame.pointables
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">on_close</span>(*args)
+  puts args
 <span class="keyword">end</span></pre>
+                <h2>How to connect</h2>
+                <h3>OSX</h3>
+                <p>
+                  This driver works out of the box with the vanilla installation of the Leap Motion Software that you get in their
+                  <a href="https://www.leapmotion.com/setup">Setup Guide.</a>
+                </p>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Run Leap Motion.app</li>
+                  <li>Connect your Computer and Leap Motion Controller.</li>
+                  <li>Connect to the device via Artoo.</li>
+                </ul>
+                <h3>Ubuntu</h3>
+                <p>
+                  The Linux download of the Leap Motion software can be obtained from
+                  <a href="https://developer.leapmotion.com/downloads">Leap Motion Dev Center</a>
+                  (requires free signup)
+                </p>
+                <p>The main steps are:</p>
+                <ul>
+                  <li>Run the leapd daemon.</li>
+                  <li>Connect your computer and the Leap Motion controller</li>
+                  <li>Connect to the device via Artoo</li>
+                </ul>
               </section>
               <section class="drivers">
                 <h2>Drivers</h2>

@@ -72,8 +72,8 @@
                 <p>
                   Simple interface that makes it possible to register clicks through physical input.
                 </p>
-                <h2>Circuit and Schematic</h2>
-                <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
+              </section>
+              <section class="how_to">
                 <h2>How to stablish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -101,13 +101,14 @@ device <span class="symbol">:button</span>, <span class="symbol">:driver</span> 
                 <p>
                   This event gets triggered when the button changes state from pushed to released.
                 </p>
-                <h3>How to use events and call them on your drivers?</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on button, <span class="symbol">:push</span>    =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">button pressed!</span><span class="delimiter">"</span></span> }
 on button, <span class="symbol">:release</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">button released!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
-                <h2>Example using a button to turn a LED on and off.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example using a button to turn a LED on and off.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -121,6 +122,10 @@ work <span class="keyword">do</span>
   on button, <span class="symbol">:release</span> =&gt; proc { led.off }
 <span class="keyword">end</span></pre>
               </section>
+              <section class="circuit">
+                <h2>Circuit and Schematic</h2>
+                <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
+              </section>
               <section class="compatability hardware">
                 <h2>Works with:</h2>
                 
@@ -128,8 +133,14 @@ work <span class="keyword">do</span>
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
                     <img src="/images/arduino.jpg">
                   </a>
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/beaglebone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
                     <img src="/images/digispark.jpg">
+                  </a>
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/raspi.jpg">
                   </a>
                 </div>
               </section>

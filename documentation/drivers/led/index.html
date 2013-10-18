@@ -72,8 +72,8 @@
                 <p>
                   Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
                 </p>
-                <h2>Circuit and Schematic</h2>
-                <a href="http://arduino.cc/en/Tutorial/Blink">http://arduino.cc/en/Tutorial/Blink</a>
+              </section>
+              <section class="how-to">
                 <h2>How to stablish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -112,8 +112,9 @@ device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&g
                   brightness can be any integer value between 0 and 255.
                 </p>
               </section>
-              <section class="example">
-                <h2>Example using a button to turn a LED on and off.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example using a button to turn a LED on and off.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment">#connection :arduino, :adaptor =&gt; :firmata, :port =&gt; '/dev/tty*'</span>
@@ -126,6 +127,10 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
               </section>
+              <section class="circuit">
+                <h2>Circuit and Schematic</h2>
+                <a href="http://arduino.cc/en/Tutorial/Blink">http://arduino.cc/en/Tutorial/Blink</a>
+              </section>
               <section class="compatability hardware">
                 <h2>Works with:</h2>
                 
@@ -133,8 +138,14 @@ work <span class="keyword">do</span>
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
                     <img src="/images/arduino.jpg">
                   </a>
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/beaglebone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
                     <img src="/images/digispark.jpg">
+                  </a>
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/raspi.jpg">
                   </a>
                 </div>
               </section>

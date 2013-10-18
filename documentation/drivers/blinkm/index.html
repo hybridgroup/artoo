@@ -72,6 +72,8 @@
                 <p>
                   Allows user to control BlinkM RGB LED via i2c interface.
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -79,14 +81,27 @@ connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</
 device <span class="symbol">:blink_m</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:blink_m</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:arduino</span></pre>
               </section>
               <section class="public-events">
-                <h2>Methods:</h2>
-                <h3>Coming soon...</h3>
+                <h2>Public instance methods:</h2>
+                <h3>rgb(red=0, green=0, blue=0) → nil</h3>
                 <p>
-                  We are hard at work on this documentation...
+                  Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
+                </p>
+                <h3>fade(red=0, green=0, blue=0) → nil</h3>
+                <p>
+                  Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
+                </p>
+                <h3>firmware_version → String</h3>
+                <p>
+                  Returns an sring describing the I2C firmware version being used.
+                </p>
+                <h3>color → [red, green, blue] (integer)</h3>
+                <p>
+                  Returns an array containing the RGB values for the current color (all integer between 0 and 255).
                 </p>
               </section>
-              <section class="example">
-                <h2>Example using a BlinkM.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example using a BlinkM.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>

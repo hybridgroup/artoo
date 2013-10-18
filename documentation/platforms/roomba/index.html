@@ -79,8 +79,13 @@
                   <a target="blank" href="http://www.irobot.com/us/learn/Educators/Create.aspx">here</a>.
                 </p>
               </section>
-              <section class="example">
-                <h2>What the code looks like?</h2>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with roomba support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-roomba</pre>
+                <h2>How to use</h2>
                 <p>
                   This small program controls a Roomba.
                 </p>
@@ -88,7 +93,7 @@
 
 connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-  
+
 work <span class="keyword">do</span>
   roomba.safe_mode
   roomba.nudge_left

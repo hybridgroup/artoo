@@ -72,6 +72,8 @@
                 <p>
                   Allows user to use a Nintendo Wii Classic Controller via i2c interface
                 </p>
+              </section>
+              <section class="how-to">
                 <h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -83,23 +85,67 @@ connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor
 device <span class="symbol">:wiiclassic</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:wiiclassic</span>, <span class="symbol">:connection</span> <span class="symbol">:digispark</span></pre>
               </section>
               <section class="public-methods">
-                <h2>Public instance methods:</h2>
-                <h3>Coming soon...</h3>
+                <h2>Public driver events:</h2>
+                <h3>a_button</h3>
                 <p>
-                  We are hard at work on this documentation...
+                  Get's triggered every interval amount of time if the a button is pressed.
                 </p>
+                <h3>b_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the b button is pressed.
+                </p>
+                <h3>x_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the x button is pressed.
+                </p>
+                <h3>y_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the y button is pressed.
+                </p>
+                <h3>home_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the home button is pressed.
+                </p>
+                <h3>select_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the select button (-) is pressed.
+                </p>
+                <h3>start_button</h3>
+                <p>
+                  Get's triggered every interval amount of time if the start button (+) is pressed.
+                </p>
+                <h3>right_trigger</h3>
+                <p>
+                  Get's triggered every interval amount of time if the right trigger button is pressed, makes right trigger value available.
+                </p>
+                <h3>left_trigger</h3>
+                <p>
+                  Get's triggered every interval amount of time if the left trigger button is pressed, makes left trigger value available.
+                </p>
+                <h3>left_joystick</h3>
+                <p>
+                  Get's triggered every "interval" amount of time if a left joystick event occured, you can access values x, y.
+                </p>
+                <h3>right_joystick</h3>
+                <p>
+                  Get's triggered every "interval" amount of time if a right joystick event occured, you can access values x, y.
+                </p>
+                <h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on wiiclassic, <span class="symbol">:a_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">a button pressed!</span><span class="delimiter">"</span></span> }</pre>
               </section>
-              <section class="example">
-                <h2>Example using a Nintendo Wii Classic Controller.</h2>
+              <section class="how-to">
+                <h2>How to use</h2>
+                <h3>Example using a Nintendo Wii Classic Controller comming soon.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">127.0.0.1:8023</span><span class="delimiter">"</span></span>
 device <span class="symbol">:wiiclassic</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:wiiclassic</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:arduino</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 
 work <span class="keyword">do</span>
-  on wiichuck, <span class="symbol">:c_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">c button pressed!</span><span class="delimiter">"</span></span> }
-  on wiichuck, <span class="symbol">:z_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">z button pressed!</span><span class="delimiter">"</span></span> }
-  on wiichuck, <span class="symbol">:joystick</span> =&gt; proc { |*value|
+  on wiiclassic, <span class="symbol">:a_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">c button pressed!</span><span class="delimiter">"</span></span> }
+  on wiiclassic, <span class="symbol">:b_button</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">z button pressed!</span><span class="delimiter">"</span></span> }
+  on wiiclassic, <span class="symbol">:left_joystick</span> =&gt; proc { |*value|
     puts <span class="string"><span class="delimiter">"</span><span class="content">joystick x: </span><span class="delimiter">"</span></span> + value[<span class="integer">1</span>][<span class="symbol">:x</span>] + <span class="string"><span class="delimiter">"</span><span class="content">, y: </span><span class="delimiter">"</span></span> + value[<span class="integer">1</span>][<span class="symbol">:y</span>]
   }
 <span class="keyword">end</span></pre>
