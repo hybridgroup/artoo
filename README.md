@@ -81,7 +81,6 @@ Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm
 rvm get head && rvm install rbx-2.0.0 --1.9
 ```
 
-
 Artoo is conceptualy influenced by [Sinatra](https://github.com/sinatra/sinatra) as well as borrowing some code from it.
 
 Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency. 
