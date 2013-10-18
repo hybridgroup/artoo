@@ -8,7 +8,8 @@ module Artoo
     # @see https://github.com/celluloid/celluloid-io Celluloid::IO Documentation
     class Adaptor
       include Celluloid::IO
-
+      finalizer :finalize
+      
       attr_reader :parent, :port, :additional_params
 
       # Initialize an adaptor
