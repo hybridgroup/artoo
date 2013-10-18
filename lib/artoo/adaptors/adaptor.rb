@@ -23,6 +23,12 @@ module Artoo
         @connected = false
       end
 
+      # Closes connection with device if connected
+      # @return [Boolean]
+      def finalize
+        disconnect if connected?
+      end
+
       # Makes connected flag true
       # @return [Boolean]
       def connect
