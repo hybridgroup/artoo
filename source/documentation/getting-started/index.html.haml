@@ -11,6 +11,48 @@ layout: page
 
   = partial "../what_is_artoo"
 
+%section.how-to
+  %h2 How to setup your ruby environment
+  %p
+    First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above,
+    we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
+
+  %h3 How to install RVM
+  %p
+    First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
+    %a{ href: "https://rvm.io/rvm/install" } https://rvm.io/rvm/install
+
+  :markdown
+        :::bash
+        \curl -L https://get.rvm.io | bash -s stable
+
+  %p
+    Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed
+    correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
+
+  :markdown
+        :::bash
+        type rvm | head -n 1
+        rvm is a function
+
+  %h3 How to install ruby 2.0
+  %p
+    Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
+
+  :markdown
+        :::bash
+        rvm install 2.0.0
+
+  %h3 How to install rubinius 2.0
+  %p
+    If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.0-rc1
+    or higher. It is pretty easy to isntall using
+    %a{ href:"https://rvm.io/" } RVM.
+
+  :markdown
+        :::bash
+        rvm install rbx-2.0.0
+
   = partial "../platforms"
 
   %p
@@ -25,7 +67,6 @@ layout: page
 
   %p
     Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-
 
 %section.artoo-code
   %h2 Code to control robots with Artoo
