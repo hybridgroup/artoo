@@ -208,13 +208,13 @@ device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&g
                 </ul>
                 <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
-                <pre class="CodeRay">on nav, <span class="symbol">:navdata</span> =&gt; proc { |navdata| puts <span class="string"><span class="delimiter">"</span><span class="content">Sequence number: </span><span class="inline"><span class="inline-delimiter">#{</span> navdata.sequence_number <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
-on nav, <span class="symbol">:demo</span> =&gt; proc { |navdata, nav_option_demo| 
+                <pre class="CodeRay">on nav, <span class="symbol">:navdata</span> =&gt; proc { |caller, navdata| puts <span class="string"><span class="delimiter">"</span><span class="content">Sequence number: </span><span class="inline"><span class="inline-delimiter">#{</span> navdata.sequence_number <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
+on nav, <span class="symbol">:demo</span> =&gt; proc { |caller, navdata, nav_option_demo| 
   puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone pitch: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.pitch <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone roll:  </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.roll <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone yaw:   </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.yaw <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
 }
-on nav, <span class="symbol">:vision_detect</span> =&gt; proc { |navdata, nav_option_vision_detect|
+on nav, <span class="symbol">:vision_detect</span> =&gt; proc { |caller, navdata, nav_option_vision_detect|
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect count: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.detected_count <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect type: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.type <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect name: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.name <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
