@@ -9,14 +9,22 @@
     <meta content="The Hybrid Group" name="author">
     <title>Artoo - ARDrone Video Driver</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
-    <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
     <script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
       $(document).ready(function() {
         $('header .subtitle').hover(function() {
           $('.easter', this).show();
           $('.main', this).hide();
+          heart();
         }, function () {
           $('.easter', this).hide();
           $('.main', this).show();
@@ -29,16 +37,23 @@
       <div class="w">
         <header class="app-header" role="banner">
           <div class="display">
-            <h1 class="cylon-logo">
-              <a href="/">Cylon</a>
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
             </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
           </div>
           <span class="menu">
-            
-            
-            
-            
-            
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
       </div>

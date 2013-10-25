@@ -1297,7 +1297,7 @@ ol.CodeRay li {
 
 /* line 1, shared/_base.sass */
 body {
-  background-color: #f8f4ef;
+  background-color: #ebfdff;
   background-image: url("../images/bg-artoo.png");
   background-repeat: no-repeat;
   background-position: top; }
@@ -1313,7 +1313,7 @@ h3, h4, h5, ul, ol {
 
 /* line 15, shared/_base.sass */
 a, a:visited {
-  color: #3892cc; }
+  color: #4da7e0; }
 
 @media only screen and (max-width: 767px) {
   /* line 17, shared/_base.sass */
@@ -1334,27 +1334,27 @@ a, a:visited {
   background: white;
   padding: 20px 25px; }
 
-/* line 2, shared/_headers.sass */
-.cylon-logo a {
-  background: transparent url("/images/logo.png") left top no-repeat;
-  display: inline-block;
-  text-indent: -99999px;
-  color: #cc3300;
-  width: 256px;
-  height: 27px; }
+/* line 1, shared/_headers.sass */
+.artoo-logo {
+  width: 155px; }
+  /* line 3, shared/_headers.sass */
+  .artoo-logo a {
+    font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #cc3300;
+    font-size: 56px; }
 
-/* line 10, shared/_headers.sass */
+/* line 8, shared/_headers.sass */
 .app-header {
-  margin: 16px 0 15px 0; }
-  /* line 13, shared/_headers.sass */
+  margin: 9px 0 15px 0; }
+  /* line 11, shared/_headers.sass */
   .app-header .artoo-logo, .app-header .display, .app-header .subtitle, .app-header .menu, .app-header h1 {
     vertical-align: middle;
     margin: 0;
     display: inline-block; }
-  /* line 18, shared/_headers.sass */
+  /* line 16, shared/_headers.sass */
   .app-header .display {
     margin: -1px 0 0 0; }
-  /* line 21, shared/_headers.sass */
+  /* line 19, shared/_headers.sass */
   .app-header .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1362,10 +1362,10 @@ a, a:visited {
     color: #505252;
     padding: 8px 0 0 15px;
     width: 200px; }
-  /* line 26, shared/_headers.sass */
+  /* line 24, shared/_headers.sass */
   .app-header .easter {
     display: none; }
-  /* line 29, shared/_headers.sass */
+  /* line 27, shared/_headers.sass */
   .app-header .heart {
     color: red;
     font-size: 20px;
@@ -1374,59 +1374,59 @@ a, a:visited {
     display: inline-block;
     width: 38px;
     text-align: center; }
-  /* line 38, shared/_headers.sass */
+  /* line 36, shared/_headers.sass */
   .app-header .menu {
     width: 510px;
     text-align: right;
     display: inline-block;
-    margin: 3px 0 0 0; }
-    /* line 44, shared/_headers.sass */
+    margin: 5px 0 0 0; }
+    /* line 42, shared/_headers.sass */
     .app-header .menu .active {
       color: #cc3300; }
-    /* line 47, shared/_headers.sass */
+    /* line 45, shared/_headers.sass */
     .app-header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 4px; }
-      /* line 53, shared/_headers.sass */
+      /* line 51, shared/_headers.sass */
       .app-header .menu .item, .app-header .menu .item:visited {
         color: #505252; }
-      /* line 56, shared/_headers.sass */
+      /* line 54, shared/_headers.sass */
       .app-header .menu .item:hover {
         color: #cc3300; }
-      /* line 59, shared/_headers.sass */
+      /* line 57, shared/_headers.sass */
       .app-header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 38, shared/_headers.sass */
+      /* line 36, shared/_headers.sass */
       .app-header .menu {
         width: 360px;
         padding: 0; }
-        /* line 65, shared/_headers.sass */
+        /* line 63, shared/_headers.sass */
         .app-header .menu .item {
           margin: 0;
           padding: 0 5px; } }
   @media only screen and (max-width: 767px) {
-    /* line 10, shared/_headers.sass */
+    /* line 8, shared/_headers.sass */
     .app-header {
       width: 100%;
       text-align: center; }
-      /* line 72, shared/_headers.sass */
+      /* line 70, shared/_headers.sass */
       .app-header .artoo-logo, .app-header .subtitle {
         width: 100%;
         display: block;
         margin: 0 0 5px 0; }
-      /* line 76, shared/_headers.sass */
+      /* line 74, shared/_headers.sass */
       .app-header .subtitle {
         font-size: 19px;
         line-height: 15px;
         padding: 0; }
-      /* line 80, shared/_headers.sass */
+      /* line 78, shared/_headers.sass */
       .app-header .menu {
         width: 100%;
         text-align: center; }
-        /* line 83, shared/_headers.sass */
+        /* line 81, shared/_headers.sass */
         .app-header .menu .item {
           margin: 0;
           padding: 0 2px; } }
@@ -1438,7 +1438,7 @@ a, a:visited {
   font-size: 12px;
   color: #d6e0e6;
   line-height: 39px;
-  background: #292c31;
+  background: #277dac;
   font-weight: normal; }
 
 /* line 1, shared/_coderay.sass */
@@ -1530,7 +1530,7 @@ a, a:visited {
 /* line 1, elements/_home.sass */
 .hero {
   margin: 15px 0 0 0;
-  background: #580a25;
+  background: #277dac;
   padding: 25px 0; }
   @media only screen and (max-width: 767px) {
     /* line 1, elements/_home.sass */
@@ -1566,7 +1566,7 @@ a, a:visited {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 24px;
-    color: #b39f89;
+    color: #bfd5e2;
     font-weight: 550;
     opacity: 0.94;
     margin: 0;
@@ -1737,7 +1737,7 @@ a, a:visited {
     margin-bottom: 10px; } }
 /* line 1, elements/_page.sass */
 .page-title {
-  background: #580a25;
+  background: #277dac;
   padding: 25px 0;
   margin: 10px 0 25px 0; }
   /* line 5, elements/_page.sass */
