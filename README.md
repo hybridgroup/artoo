@@ -6,6 +6,8 @@ Artoo is a micro-framework for robotics using Ruby.
 
 Artoo provides a simple, yet powerful Domain-Specific Language (DSL) for robotics and physical computing.
 
+Want to use JavaScript on robots? Check out our sister project Cylon.js (http://cylonjs.com)
+
 [![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo) [![Build Status](https://travis-ci.org/hybridgroup/artoo.png?branch=master)](https://travis-ci.org/hybridgroup/artoo)
 
 ## Examples:
