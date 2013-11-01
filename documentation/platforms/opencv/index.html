@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>OpenCV with Artoo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner">
+          <div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+      </div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">OpenCV</h1>
+          <h2 class="subtitle">
+<a href="https://github.com/hybridgroup/artoo-opencv" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-opencv/issues">Issues</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/opencv.jpg">
+                <p>
+                  OpenCV is a real-time computer vision library.
+                </p>
+                <p>
+                  For more info about OpenCV click
+                  <a target="blank" href="http://opencv.org/">here</a>.
+                </p>
+              </section>
+              <section class="how-to">
+                <h2>How to install</h2>
+                <p>
+                  Installing artoo with OpenCV support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-opencv</pre>
+                <p>
+                  If you don't already have OpenCV installed
+                </p>
+                <h3>Ubuntu</h3>
+                <pre class="CodeRay">$ sudo apt-get -y install autoconf automake build-essential git libass-dev libgpac-dev \
+libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libx11-dev \
+libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev yasm libmp3lame-dev \
+libopus-dev libvpx-dev cmake libgtk2.0-dev pkg-config libjpeg8 libjpeg8-dev \
+libgstreamer0.10-0 libgstreamer0.10-dev gstreamer0.10-tools gstreamer0.10-plugins-base \
+libgstreamer-plugins-base0.10-dev gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly \
+gstreamer0.10-plugins-bad gstreamer0.10-ffmpeg
+$ mkdir ~/ffmpeg_sources
+$ cd ~/ffmpeg_sources
+$ git clone --depth 1 git://git.videolan.org/x264.git
+$ cd x264
+$ ./configure --prefix="/usr/local" --bindir="/usr/local/bin" --enable-shared --enable-pic
+$ make
+$ sudo make install
+$ cd ~/ffmpeg_sources
+$ git clone --depth 1 git://git.code.sf.net/p/opencore-amr/fdk-aac
+$ cd fdk-aac
+$ autoreconf -fiv
+$ ./configure --prefix="/usr/local" --bindir="/usr/local/bin" --enable-shared --with-pic
+$ make
+$ sudo make install
+$ cd ~/ffmpeg_sources
+$ git clone --depth 1 git://source.ffmpeg.org/ffmpeg
+$ cd ffmpeg
+$ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+$ ./configure --prefix="/usr/local"   --extra-cflags="-I/usr/local/include" --extra-ldflags="-L/usr/local/lib"   --bindir="/usr/local/bin" \
+  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac   --enable-libmp3lame --enable-libopus --enable-libtheora \
+  --enable-libvorbis --enable-libvpx   --enable-libx264 --enable-nonfree --enable-x11grab --enable-shared --enable-pic
+$ make
+$ sudo make install
+$ hash -r
+$ cd ~
+$ git clone --depth 1 -b 2.4.6.2 https://github.com/Itseez/opencv.git
+$ cd opencv
+$ mkdir release
+$ cd release
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+$ make
+$ sudo make install</pre>
+                <h2>How to use</h2>
+                <p>
+                  This program displays your webcam video through OpenCV
+                </p>
+                <pre class="CodeRay">  require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+  connection <span class="symbol">:capture</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:opencv_capture</span>
+  device <span class="symbol">:capture</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:opencv_capture</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:capture</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.01</span>
+
+  connection <span class="symbol">:window</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:opencv_window</span>
+  device <span class="symbol">:window</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:opencv_window</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:window</span>, <span class="symbol">:title</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">My Window</span><span class="delimiter">"</span></span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.01</span>
+
+  work <span class="keyword">do</span>
+    on capture, <span class="symbol">:frame</span> =&gt; proc { |*value| 
+      window.image = value[<span class="integer">1</span>].image
+    }
+  <span class="keyword">end</span></pre>
+              </section>
+              <section class="drivers"></section>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="app-footer">
+      <div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
