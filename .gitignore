@@ -14,3 +14,4 @@
 /.sass-cache
 
 .DS_Store
+.rvmrc
