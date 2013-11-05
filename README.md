@@ -170,31 +170,44 @@ Once the robot or group is working, you can view the main API page at the host a
 
 Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.
 
-Here is an example that uses Minitest and Mocha:
+Here is an example that uses Minitest, Mocha, and Timecop:
 
 ```ruby
+require './test_helper'
+require './test_robot'
+
 describe 'sphero' do
   let(:robot) { Artoo::MainRobot.new }
-   
-  it 'has work to do every 3 seconds' do
+  let (:start) { Time.now }
+
+  before :each do
+    Timecop.travel(start)
     robot.work
-     
+  end
+
+  after :each do
+    Timecop.return
+  end
+
+  it 'has work to do every 3 seconds' do
     robot.has_work?(:every, 3.seconds).wont_be_nil
   end
-   
-  it 'must roll every 3 seconds' do
-    robot.sphero.expects(:roll).twice
-     
-    robot.work
-    sleep 6.1
-  end
-   
+
   it 'receives collision event' do
     robot.expects(:contact)
-     
-    robot.work
     robot.sphero.publish("collision", "clunk")
-    sleep 0.1
+    sleep 0.05
+  end
+
+  it 'must roll every 3 seconds' do
+    Timecop.travel(start + 3.seconds) do
+      robot.sphero.expects(:roll)
+      sleep 0.05
+    end
+    Timecop.travel(start + 6.seconds) do
+      robot.sphero.expects(:roll)
+      sleep 0.05
+    end
   end
 end
 ```
@@ -216,11 +229,12 @@ work do
   on sphero, :collision => :contact
 
   every(3.seconds) do
-    puts "Rolling..."
     sphero.roll 90, rand(360)
   end
 end
 ```
+
+The repo with full example of using Artoo for test driven robotics is located at [https://github.com/hybridgroup/artoo-test-example](https://github.com/hybridgroup/artoo-test-example)
 
 ## CLI
 
