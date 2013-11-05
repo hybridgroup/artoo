@@ -1,8 +1,9 @@
 require 'celluloid/autostart'
 require 'celluloid/io'
 require 'multi_json'
-
+require 'artoo/ext/timers'
 require 'artoo/ext/actor'
+
 require 'artoo/robot_class_methods'
 require 'artoo/basic'
 require 'artoo/connection'
