@@ -43,7 +43,7 @@ module Artoo
       case
       # portless
       when data.nil?
-        @port = "none"
+        @port = nil
         @is_portless = true
 
       # is TCP host/port?
