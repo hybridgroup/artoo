@@ -20,22 +20,22 @@ layout: page
           device :leapmotion, :connection => :leapmotion, :driver => :leapmotion
 
   %section.public-methods
-    %h2 Public driver events
-    %h3 hand
-    %p
-      Gets triggered when doing a hand motion, makes hand input available.
+    %h2 Events:
 
-    %h3 gesture
-    %p
-      Gets triggered when doing a gesture motion, makes hand input available.
+    %dl.methods 
+      %dt hand
+      %dd Gets triggered when doing a hand motion, makes hand input available.
 
-    %h3 pointable
-    %p
-      Gets triggered when doing a pointable motion, makes hand input available.
+      %dt gesture
+      %dd Gets triggered when doing a gesture motion, makes hand input available.
 
-    %h3 frame
-    %p
-      Gets triggered with every motion detected, makes frame input available.
+      %dt pointable
+      %dd Gets triggered when doing a pointable motion, makes hand input available.
+
+      %dt frame
+      %dd Gets triggered with every motion detected, makes frame input available.
+
+
 
     %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:

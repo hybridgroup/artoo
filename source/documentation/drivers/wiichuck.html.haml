@@ -21,18 +21,19 @@ layout: page
           device :wiichuck, :driver => :wiichuck, :connection :arduino
 
   %section.public-methods
-    %h2 Public driver events
-    %h3 c_button
-    %p
-      Get's triggered every interval amount of time if the square button is pressed.
+    %h2 Events:
 
-    %h3 z_button
-    %p
-      Get's triggered every interval amount of time if the square button is pressed.
+    %dl.methods 
+      %dt c_button
+      %dd Get's triggered every interval amount of time if the square button is pressed.
 
-    %h3 joystick
-    %p
-      Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y.
+      %dt z_button
+      %dd Get's triggered every interval amount of time if the square button is pressed.
+      
+      %dt joystick
+      %dd 
+        :markdown
+          Get's triggered every "interval" amount of time if a joystick event occured, you can access values `x`, `y`.
 
     %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:

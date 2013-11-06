@@ -21,22 +21,27 @@ layout: page
           device :blink_m, :driver => :blink_m, :connection => :arduino
 
   %section.public-events
-    %h2 Public instance methods:
-    %h3 rgb(red=0, green=0, blue=0) → nil
-    %p
-      Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
+    %h2 Commands:
 
-    %h3 fade(red=0, green=0, blue=0) → nil
-    %p
-      Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
+    %dl.methods 
+      %dt rgb(red=0, green=0, blue=0) → nil
+      %dd 
+        :markdown
+          Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
 
-    %h3 firmware_version → String
-    %p
-      Returns an sring describing the I2C firmware version being used.
+      %dt fade(red=0, green=0, blue=0) → nil
+      %dd 
+        :markdown
+          Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
 
-    %h3 color → [red, green, blue] (integer)
-    %p
-      Returns an array containing the RGB values for the current color (all integer between 0 and 255).
+      %dt firmware_version → String
+      %dd Returns an sring describing the I2C firmware version being used.
+
+      %dt color → [red, green, blue] (integer)
+      %dd 
+        :markdown
+          Returns an array containing the RGB values for the current color (all integer between `0` and `255`).
+
 
   %section.how-to
     %h2 How to use

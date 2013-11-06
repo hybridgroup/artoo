@@ -29,59 +29,56 @@ layout: page
           device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
   %section.public-methods
-    %h2 Public instance methods:
+    %h2 Commands:
 
-    %h3 stop → true | nil
-    %p
-      Stops the motor.
+    %dl.methods 
+      %dt stop → true | nil
+      %dd Stops the motor.
+      
+      %dt start → true | nil
+      %dd Starts the motor.
 
-    %h3 start → true | nil
-    %p
-      Starts the motor.
+      %dt on? → true | false
+      %dd Returns true if the motor is on, otherwise returns false.
 
-    %h3 on? → true | false
-    %p
-      Returns true if the motor is on, otherwise returns false.
+      %dt off? → true | false
+      %dd Returns true if the motor is off, otherwise returns false.
 
-    %h3 off? → true | false
-    %p
-      Returns true if the motor is off, otherwise returns false.
+      %dt toggle → true | nil
+      %dd Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
+      
+      %dt speed(speed_value) → true | nil
+      %dd 
+        :markdown
+          Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between `0` and `255`.  
+      
+      %dt min → true | nil
+      %dd 
+        :markdown
+          Stops the motor, sets the speed to `0`.
 
-    %h3 toggle → true | nil
-    %p
-      Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
+      %dt max → true | nil
+      %dd 
+        :markdown
+          Starts the motor at max speed, sets the speed to `255`.
+      
+      %dt forward(speed) → true | nil
+      %dd Starts the motor in forward direction at the provided speed.
 
-    %h3 speed(speed_value) → true | nil
-    %p
-      Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between 0 and 255.
+      %dt backward(speed) → true | nil
+      %dd Starts the motor in backward direction at the provided speed.
 
-    %h3 min → true | nil
-    %p
-      Stops the motor, sets the speed to 0.
+      %dt forward? → true | false
+      %dd Returns true if the motor is direction is set to forward, otherwise false.
 
-    %h3 max → true | nil
-    %p
-      Starts the motor at max speed, sets the speed to 255.
+      %dt backward? → true | false
+      %dd Returns true if the motor is direction is set to backward, otherwise false.
 
-    %h3 forward(speed) → true | nil
-    %p
-      Starts the motor in forward direction at the provided speed.
-
-    %h3 backward(speed) → true | nil
-    %p
-      Starts the motor in backward direction at the provided speed.
-
-    %h3 forward? → true | false
-    %p
-      Returns true if the motor is direction is set to forward, otherwise false.
-
-    %h3 backward? → true | false
-    %p
-      Returns true if the motor is direction is set to backward, otherwise false.
-
-    %h3 current_speed → speed
-    %p
-      Returns the current speed of the motor as an integer between 0 and 255.
+      %dt current_speed → speed
+      %dd 
+        :markdown
+          Returns the current speed of the motor as an integer between `0` and `255`.
+  
 
   %section.how-to
     %h2 How to use

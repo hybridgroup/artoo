@@ -22,126 +22,111 @@ layout: page
           device :drone, :driver => :ardrone, :connection => :ardrone
 
   %section.public-methods
-    %h2 Public instance methods:
+    %h2 Commands:
 
-    %h3 start → drone
-    %p
-      Starts up the drone.
+    %dl.methods 
+      %dt start → drone
+      %dd Starts up the drone.
 
-    %h3 stop → drone
-    %p
-      Stops the drone.
+      %dt stop → drone
+      %dd Stops the drone.
 
-    %h3 hover → drone
-    %p
-      Causes the drone to hover at current altitude.
+      %dt hover → drone
+      %dd Causes the drone to hover at current altitude.
 
-    %h3 land → drone
-    %p
-      Causes the drone to begin its landing sequence.
+      %dt land → drone
+      %dd Causes the drone to begin its landing sequence.
 
-    %h3 take_off → drone
-    %p
-      Causes the drone to take off, if already started.
+      %dt take_off → drone
+      %dd Causes the drone to take off, if already started.
 
-    %h3 emergency → drone
-    %p
-      Causes the drone to make an immediate emergency landing
+      %dt emergency → drone
+      %dd Causes the drone to make an immediate emergency landing.
 
-    %h3 front_camera → drone
-    %p
-      Causes the drone to turn on the front-facing camera.
+      %dt front_camera → drone
+      %dd Causes the drone to turn on the front-facing camera.
 
-    %h3 bottom_camera → drone
-    %p
-      Causes the drone to turn on the bottom-facing camera.
+      %dt bottom_camera → drone
+      %dd Causes the drone to turn on the bottom-facing camera.
+      
+      %dt up → drone
+      %dd Causes the drone to increase altitude.
 
-    %h3 up → drone
-    %p
-      Causes the drone to increase altitude.
+      %dt down → drone
+      %dd Causes the drone to decrease altitude.
+      
+      %dt left → drone
+      %dd Causes the drone to bank to the left.
 
-    %h3 down → drone
-    %p
-      Causes the drone to decrease altitude.
+      %dt right → drone
+      %dd Causes the drone to bank to the right.
 
-    %h3 left → drone
-    %p
-      Causes the drone to bank to the left.
+      %dt forward → drone
+      %dd Causes the drone to bank forward.
 
-    %h3 right → drone
-    %p
-      Causes the drone to bank to the right.
+      %dt backward → drone
+      %dd Causes the drone to bank backward.
 
-    %h3 forward → drone
-    %p
-      Causes the drone to bank forward.
+      %dt turn_left → drone
+      %dd Causes the drone to rotate to the left.
 
-    %h3 backward → drone
-    %p
-      Causes the drone to bank backward.
+      %dt turn_right → drone
+      %dd Causes the drone to rotate to the right.
+      
+      %dt reset_watchdog → drone
+      %dd Reset the watchdog in the drone.
 
-    %h3 turn_left → drone
-    %p
-      Causes the drone to rotate to the left.
+      %dt led(color_animation, strength, duration) → drone
+      %dd 
+        Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
+        %ul
+          %li :blink_green_red
+          %li :blink_green
+          %li :blink_red
+          %li :blink_orange
+          %li :snake_green_red
+          %li :fire
+          %li :standard
+          %li :red
+          %li :green
+          %li :red_snake
+          %li :blank
+          %li :right_missile
+          %li :left_missile
+          %li :double_missile
+          %li :front_left_green_others_red
+          %li :front_right_green_others_red
+          %li :rear_right_green_others_red
+          %li :rear_left_green_others_red
+          %li :left_green_right_red
+          %li :left_red_right_green
+          %li :blink_standard
 
-    %h3 turn_right → drone
-    %p
-      Causes the drone to rotate to the right.
+      %dt animate(animation, duration) → drone
+      %dd 
+        Animate the ardrone to do flips and turns depending on selection, available animation options are:
+        %ul
+          %li :phi_m30_deg
+          %li :phi_30_deg
+          %li :theta_m30_deg
+          %li :theta_30_deg
+          %li :theta_20_deg_yaw_200_deg
+          %li :theta_20_deg_yaw_m_200_deg
+          %li :turnaround
+          %li :turnaround_go_down
+          %li :yaw_shake
+          %li :yaw_dance
+          %li :phi_dance
+          %li :theta_dance
+          %li :vz_dance
+          %li :wave
+          %li :phi_theta_mixed
+          %li :double_phi_theta_mixed
+          %li :flip_ahead
+          %li :flip_behind
+          %li :flip_left
+          %li :flip_right
 
-    %h3 reset_watchdog → drone
-    %p
-      Reset the watchdog in the drone.
-
-    %h3 led(color_animation, strength, duration) → drone
-    %p
-      Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
-    %ul
-      %li :blink_green_red
-      %li :blink_green
-      %li :blink_red
-      %li :blink_orange
-      %li :snake_green_red
-      %li :fire
-      %li :standard
-      %li :red
-      %li :green
-      %li :red_snake
-      %li :blank
-      %li :right_missile
-      %li :left_missile
-      %li :double_missile
-      %li :front_left_green_others_red
-      %li :front_right_green_others_red
-      %li :rear_right_green_others_red
-      %li :rear_left_green_others_red
-      %li :left_green_right_red
-      %li :left_red_right_green
-      %li :blink_standard
-
-    %h3 animate(animation, duration) → drone
-    %p
-      Animate the ardrone to do flips and turns depending on selection, available animation options are:
-    %ul
-      %li :phi_m30_deg
-      %li :phi_30_deg
-      %li :theta_m30_deg
-      %li :theta_30_deg
-      %li :theta_20_deg_yaw_200_deg
-      %li :theta_20_deg_yaw_m_200_deg
-      %li :turnaround
-      %li :turnaround_go_down
-      %li :yaw_shake
-      %li :yaw_dance
-      %li :phi_dance
-      %li :theta_dance
-      %li :vz_dance
-      %li :wave
-      %li :phi_theta_mixed
-      %li :double_phi_theta_mixed
-      %li :flip_ahead
-      %li :flip_behind
-      %li :flip_left
-      %li :flip_right
 
   %section.how-to
     %h2 How to use
