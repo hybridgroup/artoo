@@ -1,17 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-  <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="description">
-    <meta content="The Hybrid Group" name="author">
-    <title>Artoo - ARDrone Navigation Driver</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo - ARDrone Navigation Driver</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -31,12 +30,11 @@
         });
       });
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner">
-          <div class="display">
+        <header class="app-header" role="banner"><div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -56,7 +54,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-      </div>
+</div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">ARDrone Navigation</h1>
@@ -65,148 +63,144 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full">
-            <div class="documentation">
-              <section class="intro">
-                <img class="display" src="/images/ardrone-navigation.jpg">
-                <p>
+          <section class="content full"><div class="documentation">
+              <section class="intro"><img class="display" src="/images/ardrone-navigation.jpg"><p>
                   Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements.
                 </p>
-              </section>
-              <section class="how-to">
-                <h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <p>
                   Communication with the ARDrone's navigation data interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
-device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span></pre>
-              </section>
-              <section class="public-methods">
-                <h2>Public driver events</h2>
-                <h3>navdata</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavData object containing the attributes described below:
-                </p>
-                <ul>
-                  <li>
-                    <b>navdata.sequence_number</b>
-                    → String (returns the sequence number)
-                  </li>
-                  <li>
-                    <b>navdata.vision_flag</b>
-                    → String (returns the sequence number)
-                  </li>
-                  <li>
-                    <b>navdata.flying?</b>
-                    → Boolean (is the ardrone flying?)
-                  </li>
-                  <li>
-                    <b>navdata.communication_lost?</b>
-                    → Boolean (is communication lost?)
-                  </li>
-                  <li>
-                    <b>navdata.com_watchdog_problem?</b>
-                    → Boolean (is there a watchdog problem?)
-                  </li>
-                  <li>
-                    <b>navdata.bootstrap?</b>
-                    → Boolean (boostrap navigation setup?)
-                  </li>
-                </ul>
-                <h3>demo</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionDemo object containing navigation data as described below:
-                </p>
-                <ul>
-                  <li>
-                    <b>nav_option_demo.control_state_name</b>
-                    → String (returns control state name)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.control_state</b>
-                    → Integer (returns control state)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.battery_level</b>
-                    → Integer
-                  </li>
-                  <li>
-                    <b>nav_option_demo.pitch</b>
-                    → float (returns the current pitch)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.roll</b>
-                    → float (returns the current roll)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.yaw</b>
-                    → float (returns the current yaw)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.altitude</b>
-                    → float (returns the current altitude)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vx</b>
-                    → float (returns the current velocity on X axis)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vy</b>
-                    → float (returns the current velocity on Y axis)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vz</b>
-                    → float (returns the current velocity on Z axis)
-                  </li>
-                </ul>
-                <h3>vision_detect</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionVisionDetect object containing the following data:
-                </p>
-                <ul>
-                  <li>
-                    <b>nav_option_vision_detect.detected_count</b>
-                    → Integer (Number of devices detected)
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.type</b>
-                    → String
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.name</b>
-                    → String
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.x</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.y</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.width</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.height</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.distance</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.orientation_angle</b>
-                    → float
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.camera_source</b>
-                    → integer
-                  </li>
-                </ul>
-                <h3>How to use events and call them on your drivers</h3>
+device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
+</pre>
+              </section><section class="public-methods"><h2>Events:</h2>
+                <dl class="methods">
+<dt>navdata</dt>
+                  <dd>
+                    Gets triggered every time interval amount of time passes, returns and lets you access a NavData object containing the attributes described below:
+                    <ul>
+<li>
+                        <b>navdata.sequence_number</b>
+                        → String (returns the sequence number)
+                      </li>
+                      <li>
+                        <b>navdata.vision_flag</b>
+                        → String (returns the sequence number)
+                      </li>
+                      <li>
+                        <b>navdata.flying?</b>
+                        → Boolean (is the ardrone flying?)
+                      </li>
+                      <li>
+                        <b>navdata.communication_lost?</b>
+                        → Boolean (is communication lost?)
+                      </li>
+                      <li>
+                        <b>navdata.com_watchdog_problem?</b>
+                        → Boolean (is there a watchdog problem?)
+                      </li>
+                      <li>
+                        <b>navdata.bootstrap?</b>
+                        → Boolean (boostrap navigation setup?)
+                      </li>
+                    </ul>
+</dd>
+                  <dt>demo</dt>
+                  <dd>
+                    Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionDemo object containing navigation data as described below:
+                    <ul>
+<li>
+                        <b>nav_option_demo.control_state_name</b>
+                        → String (returns control state name)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.control_state</b>
+                        → Integer (returns control state)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.battery_level</b>
+                        → Integer
+                      </li>
+                      <li>
+                        <b>nav_option_demo.pitch</b>
+                        → float (returns the current pitch)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.roll</b>
+                        → float (returns the current roll)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.yaw</b>
+                        → float (returns the current yaw)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.altitude</b>
+                        → float (returns the current altitude)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.vx</b>
+                        → float (returns the current velocity on X axis)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.vy</b>
+                        → float (returns the current velocity on Y axis)
+                      </li>
+                      <li>
+                        <b>nav_option_demo.vz</b>
+                        → float (returns the current velocity on Z axis)
+                      </li>
+                    </ul>
+</dd>
+                  <dt>vision_detect</dt>
+                  <dd>
+                    Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionVisionDetect object containing the following data:
+                    <ul>
+<li>
+                        <b>nav_option_vision_detect.detected_count</b>
+                        → Integer (Number of devices detected)
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.type</b>
+                        → String
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.name</b>
+                        → String
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.x</b>
+                        → integer
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.y</b>
+                        → integer
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.width</b>
+                        → integer
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.height</b>
+                        → integer
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.distance</b>
+                        → integer
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.orientation_angle</b>
+                        → float
+                      </li>
+                      <li>
+                        <b>nav_option_vision_detect.camera_source</b>
+                        → integer
+                      </li>
+                    </ul>
+</dd>
+                </dl>
+<h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on nav, <span class="symbol">:navdata</span> =&gt; proc { |caller, navdata| puts <span class="string"><span class="delimiter">"</span><span class="content">Sequence number: </span><span class="inline"><span class="inline-delimiter">#{</span> navdata.sequence_number <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
 on nav, <span class="symbol">:demo</span> =&gt; proc { |caller, navdata, nav_option_demo| 
@@ -218,10 +212,9 @@ on nav, <span class="symbol">:vision_detect</span> =&gt; proc { |caller, navdata
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect count: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.detected_count <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect type: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.type <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect name: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.name <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-}</pre>
-              </section>
-              <section class="how-to">
-                <h2>How to use</h2>
+}
+</pre>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example of receiving navigation data from an ARDrone.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -234,28 +227,25 @@ work <span class="keyword">do</span>
 
 <span class="keyword">def</span> <span class="function">nav_update</span>(*data)
   p data[<span class="integer">1</span>].inspect
-<span class="keyword">end</span></pre>
-              </section>
-              <section class="compatability hardware">
-                <h2>Works with:</h2>
+<span class="keyword">end</span>
+</pre>
+              </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg">
-                  </a>
+                    <img src="/images/ardrone.jpg"></a>
                 </div>
               </section>
-            </div>
+</div>
           </section>
-        </div>
+</div>
       </div>
     </div>
-    <footer class="app-footer">
-      <div class="w">
+    <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-  </body>
+</body>
 </html>

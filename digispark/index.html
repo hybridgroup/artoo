@@ -1,17 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-  <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta content="Guetting started page for artoo-digispark" name="description">
-    <meta content="The Hybrid Group" name="author">
-    <title>Artoo - Digispark - Guetting started</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Guetting started page for artoo-digispark" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo - Digispark - Guetting started</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -31,12 +30,11 @@
         });
       });
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner">
-          <div class="display">
+        <header class="app-header" role="banner"><div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -56,7 +54,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-      </div>
+</div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Getting Started - Digispark</h1>
@@ -65,12 +63,10 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full">
-            <div class="notice">
+          <section class="content full"><div class="notice">
               <b>Important</b>:  2012 MBP The USB ports on the 2012 MBPs (Retina and non) cause issues due to their USB3 controllers, currently the best work around is to use a cheap USB hub (non USB3) - we are working on future solutions. The hub on a Cinema display will work as well.
             </div>
-            <section class="intro">
-              <h1>What is Digispark?</h1>
+            <section class="intro"><h1>What is Digispark?</h1>
               <p>
                 In order to know Digispark, and better undertand how it works, we must first learn a little bit
                 about the ruby micro framework for robotics used to interact with the Digispark platform.
@@ -102,8 +98,7 @@
                 ).
               </p>
               <h2>The Digispark microcontroller</h2>
-              <img class="display" src="/images/digispark.jpg">
-              <p>
+              <img class="display" src="/images/digispark.jpg"><p>
                 The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller,
                 and a bit less powerful. With a whole host of shields to extend its functionality and the ability to
                 use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when
@@ -113,9 +108,7 @@
                 For more info about the Digispark platform click
                 <a target="blank" href="http://digistump.com/category/1">here</a>
               </p>
-            </section>
-            <section class="setup">
-              <h2>Setting up Digispark to work with artoo</h2>
+            </section><section class="setup"><h2>Setting up Digispark to work with artoo</h2>
               <h3>Getting the Digispark hardware ready</h3>
               <p>
                 Before we start tinkering with artoo, programs and manipulating our own robots, we must get our hands dirty
@@ -160,13 +153,12 @@
                 
                 <b>TODO</b>
               </p>
-            </section>
-            <section class="installation">
-              <h2>Installing artoo and artoo-digispark gems</h2>
+            </section><section class="installation"><h2>Installing artoo and artoo-digispark gems</h2>
               <p>
                 Installation is pretty simple, just install the artoo-digispark gem and you are set.
               </p>
-              <pre class="CodeRay">gem install artoo-digispark</pre>
+              <pre class="CodeRay">gem install artoo-digispark
+</pre>
               <h3>Writing your robot code:</h3>
               <p>
                 Now you are ready to write your own code. Take a look at the examples directory in the
@@ -176,10 +168,9 @@
                 We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
               </p>
               <h3>Running your robot:</h3>
-              <pre class="CodeRay">ruby ./examples/blink.rb</pre>
-            </section>
-            <section class="artoo-code">
-              <h2>What the code looks like</h2>
+              <pre class="CodeRay">ruby ./examples/blink.rb
+</pre>
+            </section><section class="artoo-code"><h2>What the code looks like</h2>
               <h3>Example: Digispark with LED and a button, using the Littlewire protocol.</h3>
               <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -197,60 +188,51 @@ work <span class="keyword">do</span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>
     led.toggle
   <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
-            </section>
-            <section class="other-resources">
-              <h2>Additional resources</h2>
+<span class="keyword">end</span>
+</pre>
+            </section><section class="other-resources"><h2>Additional resources</h2>
               <p>
                 We are building robust artoo docs for each platform, you can check more details about digispark,
                 artoo support, available drivers and code examples in the following links.
                 </p>
 <ul>
-                  <li>
+<li>
                     <a href="../documentation/platforms/digispark">Digispark platform docs</a>
                     <ul>
-                      <li>
+<li>
                         Drivers
                         <ul>
-                          <li><a href="../documentation/drivers/button">Buttons</a></li>
+<li><a href="../documentation/drivers/button">Buttons</a></li>
                           <li><a href="../documentation/drivers/led">Led</a></li>
                           <li><a href="../documentation/drivers/analog-sensor">Analog Sensors</a></li>
                           <li><a href="../documentation/drivers/motor">Motor</a></li>
                           <li><a href="../documentation/drivers/servo">Servo</a></li>
                           <li><a href="../documentation/drivers/maxbotix">Maxbotix Range Finder</a></li>
                         </ul>
-                      </li>
+</li>
                     </ul>
-                  </li>
-                </ul>
-              
-            </section>
-            <section class="contributing">
-              <h2>Contributing</h2>
+</li>
+                </ul></section><section class="contributing"><h2>Contributing</h2>
               <p>
                 You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
                 <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
               </p>
               <ul>
-                <li>Fork it</li>
+<li>Fork it</li>
                 <li>Create your feature branch (git checkout -b my-new-feature)</li>
                 <li>Commit your changes (git commit -am 'Add some feature')</li>
                 <li>Push to the branch (git push origin my-new-feature)</li>
                 <li>Create new Pull Request</li>
-              </ul>
-            </section>
-            <section class="footer"></section>
-          </section>
-        </div>
+              </ul></section><section class="footer"></section></section>
+</div>
       </div>
     </div>
-    <footer class="app-footer">
-      <div class="w">
+    <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-  </body>
+</body>
 </html>
