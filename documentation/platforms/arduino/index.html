@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Arduino with Artroo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Arduino with Artroo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Arduino</h1>
@@ -65,8 +67,11 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/arduino.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/arduino.jpg">
+                <p>
                   Arduino is an open-source electronics prototyping platform based on flexible,
                   easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
                   anyone interested in creating interactive objects or environments.
@@ -75,12 +80,13 @@
                   For more info about the arduino platform click
                   <a target="blank" href="http://arduino.cc/">here</a>.
                 </p>
-              </section><section class="how_to"><h2>How to install</h2>
+              </section>
+              <section class="how_to">
+                <h2>How to install</h2>
                 <p>
                   Installing artoo with arduino support is pretty easy using ruby gems.
                 </p>
-                <pre class="CodeRay">gem install artoo-arduino
-</pre>
+                <pre class="CodeRay">gem install artoo-arduino</pre>
                 <h2>How to use</h2>
                 <p>
                   This small program lets you push a button on the arduino board to turn a LED on or off.
@@ -97,13 +103,12 @@ work <span class="keyword">do</span>
 
   on button, <span class="symbol">:push</span>    =&gt; proc { led.on }
   on button, <span class="symbol">:release</span> =&gt; proc { led.off }
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <h2>How to connect</h2>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>
+                  <li>
                     Connect to the Arduino via serial port/USB
                   </li>
                   <li>
@@ -116,18 +121,16 @@ work <span class="keyword">do</span>
                     First plug the Arduino into your computer via the USB/serial port. A dialog box will appear telling you that a new network interface has been detected. Click "Network Preferences...", and when it opens, simply click "Apply".
                   </li>
                 </ul>
-<p>Once plugged in, use the artoo connect scan command to find out your connection info:</p>
-                <pre class="CodeRay">$ artoo connect scan
-</pre>
+                <p>Once plugged in, use the artoo connect scan command to find out your connection info:</p>
+                <pre class="CodeRay">$ artoo connect scan</pre>
                 <p>
                   Now you are ready to connect to the Arduino using a socket, such as in this example port 4567:
                 </p>
-                <pre class="CodeRay">$ artoo connect serial ttyACM0
-</pre>
+                <pre class="CodeRay">$ artoo connect serial ttyACM0</pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>
+                  <li>
                     Connect to the Arduino via serial port/USB
                   </li>
                   <li>
@@ -140,14 +143,14 @@ work <span class="keyword">do</span>
                     First plug the Arduino into your computer via the USB/serial port.
                   </li>
                 </ul>
-<p>Once plugged in, use the ls /dev/ttyACM* command to find out your connection info:</p>
+                <p>Once plugged in, use the ls /dev/ttyACM* command to find out your connection info:</p>
                 <pre class="CodeRay">$ ls /dev/ttyACM*
-/dev/ttyACM0
-</pre>
+/dev/ttyACM0</pre>
                 <p>Now you are ready to connect to the Arduino using the socket, in this example port 4567:</p>
-                <pre class="CodeRay">$ artoo connect serial ttyACM0 4567
-</pre>
-              </section><section class="drivers"><h2>Drivers</h2>
+                <pre class="CodeRay">$ artoo connect serial ttyACM0 4567</pre>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
                 <p>
                   Thanks to
                   <b>artoo</b>
@@ -166,39 +169,50 @@ work <span class="keyword">do</span>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/analog-sensor.jpg"></a>
+                      <img src="/images/analog-sensor.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/button.jpg"></a>
+                      <img src="/images/button.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/LED.jpg"></a>
+                      <img src="/images/LED.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/maxbotix.jpg"></a>
+                      <img src="/images/maxbotix.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/motor.jpg"></a>
+                      <img src="/images/motor.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/servo.jpg"></a>
+                      <img src="/images/servo.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
-                      <img src="/images/blinkm.jpg"></a>
+                      <img src="/images/blinkm.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
-                      <img src="/images/hmc6352-compass.jpg"></a>
+                      <img src="/images/hmc6352-compass.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/wii-chuck.jpg"></a>
+                      <img src="/images/wii-chuck.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
-                      <img src="/images/wii-classic-controller.jpg"></a>
+                      <img src="/images/wii-classic-controller.jpg">
+                    </a>
                   </div>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Raspberry Pi with Artroo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Raspberry Pi with Artroo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Raspberry Pi</h1>
@@ -65,19 +67,23 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/raspi.jpg"><p>The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital &amp; PWM GPIO, and i2c interfaces built in.</p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/raspi.jpg">
+                <p>The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital &amp; PWM GPIO, and i2c interfaces built in.</p>
                 <p>
                   For more info about the Raspberry Pi platform go to
                   <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
                 </p>
-              </section><section class="how-to"><h2>How to install</h2>
+              </section>
+              <section class="how-to">
+                <h2>How to install</h2>
                 <p>If you do not have ruby installed, you'll need to do that first.</p>
                 <p>
                   Then install the artoo-raspi gem:
                 </p>
-                <pre class="CodeRay">sudo gem install artoo-raspi
-</pre>
+                <pre class="CodeRay">sudo gem install artoo-raspi</pre>
                 <h2>How to use</h2>
                 <p>
                   This small program causes an LED to blink.
@@ -91,11 +97,9 @@ work <span class="keyword">do</span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>
     led.toggle
   <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <p>To run the examples, requires sudo access on the Raspberry Pi:</p>
-                <pre class="CodeRay">sudo ruby examples/raspi_led.rb
-</pre>
+                <pre class="CodeRay">sudo ruby examples/raspi_led.rb</pre>
                 <h2>How to connect</h2>
                 <h3>Connecting to Raspberry Pi GPIO</h3>
                 <p>
@@ -106,12 +110,10 @@ work <span class="keyword">do</span>
                 <h3>Enabling the Raspberry Pi i2c on raspbian</h3>
                 <p>You must add these two entries in your /etc/modules</p>
                 <pre class="CodeRay">i2c-bcm2708
-i2c-dev
-</pre>
+i2c-dev</pre>
                 <p>You must also ensure that these entries are commented in your /etc/modprobe.d/raspi-blacklist.conf</p>
                 <pre class="CodeRay">#blacklist spi-bcm2708
-#blacklist i2c-bcm2708
-</pre>
+#blacklist i2c-bcm2708</pre>
                 <p>Now restart your raspberry pi.</p>
                 <h3>Enabling PWM output on GPIO pins.</h3>
                 <p>
@@ -119,40 +121,51 @@ i2c-dev
                   the instructions for pi-blaster install on our repo here:
                 </p>
                 <a href="https://github.com/hybridgroup/pi-blaster">https://github.com/hybridgroup/pi-blaster</a>
-              </section><section class="drivers"><h2>Drivers</h2>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
                 <p>All Artoo digital and PWM GPIO, and i2c drivers listed below should work with the Raspberry Pi:</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/button.jpg"></a>
+                      <img src="/images/button.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/LED.jpg"></a>
+                      <img src="/images/LED.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/servo.jpg"></a>
+                      <img src="/images/servo.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/motor.jpg"></a>
+                      <img src="/images/motor.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
-                      <img src="/images/blinkm.jpg"></a>
+                      <img src="/images/blinkm.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
-                      <img src="/images/hmc6352-compass.jpg"></a>
+                      <img src="/images/hmc6352-compass.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/wii-chuck.jpg"></a>
+                      <img src="/images/wii-chuck.jpg">
+                    </a>
                     <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
-                      <img src="/images/wii-classic-controller.jpg"></a>
+                      <img src="/images/wii-classic-controller.jpg">
+                    </a>
                   </div>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

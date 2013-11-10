@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Artoo - ARDrone Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo - ARDrone Driver</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">ARDrone</h1>
@@ -63,108 +65,149 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/ardrone-flight.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/ardrone-flight.jpg">
+                <p>
                   Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
                 </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section>
+              <section class="how-to">
+                <h2>How to establish a connection and setup the driver</h2>
                 <p>
                   Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
-</pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>start → drone</dt>
-                  <dd>Starts up the drone.</dd>
-                  <dt>stop → drone</dt>
-                  <dd>Stops the drone.</dd>
-                  <dt>hover → drone</dt>
-                  <dd>Causes the drone to hover at current altitude.</dd>
-                  <dt>land → drone</dt>
-                  <dd>Causes the drone to begin its landing sequence.</dd>
-                  <dt>take_off → drone</dt>
-                  <dd>Causes the drone to take off, if already started.</dd>
-                  <dt>emergency → drone</dt>
-                  <dd>Causes the drone to make an immediate emergency landing.</dd>
-                  <dt>front_camera → drone</dt>
-                  <dd>Causes the drone to turn on the front-facing camera.</dd>
-                  <dt>bottom_camera → drone</dt>
-                  <dd>Causes the drone to turn on the bottom-facing camera.</dd>
-                  <dt>up → drone</dt>
-                  <dd>Causes the drone to increase altitude.</dd>
-                  <dt>down → drone</dt>
-                  <dd>Causes the drone to decrease altitude.</dd>
-                  <dt>left → drone</dt>
-                  <dd>Causes the drone to bank to the left.</dd>
-                  <dt>right → drone</dt>
-                  <dd>Causes the drone to bank to the right.</dd>
-                  <dt>forward → drone</dt>
-                  <dd>Causes the drone to bank forward.</dd>
-                  <dt>backward → drone</dt>
-                  <dd>Causes the drone to bank backward.</dd>
-                  <dt>turn_left → drone</dt>
-                  <dd>Causes the drone to rotate to the left.</dd>
-                  <dt>turn_right → drone</dt>
-                  <dd>Causes the drone to rotate to the right.</dd>
-                  <dt>reset_watchdog → drone</dt>
-                  <dd>Reset the watchdog in the drone.</dd>
-                  <dt>led(color_animation, strength, duration) → drone</dt>
-                  <dd>
-                    Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
-                    <ul>
-<li>:blink_green_red</li>
-                      <li>:blink_green</li>
-                      <li>:blink_red</li>
-                      <li>:blink_orange</li>
-                      <li>:snake_green_red</li>
-                      <li>:fire</li>
-                      <li>:standard</li>
-                      <li>:red</li>
-                      <li>:green</li>
-                      <li>:red_snake</li>
-                      <li>:blank</li>
-                      <li>:right_missile</li>
-                      <li>:left_missile</li>
-                      <li>:double_missile</li>
-                      <li>:front_left_green_others_red</li>
-                      <li>:front_right_green_others_red</li>
-                      <li>:rear_right_green_others_red</li>
-                      <li>:rear_left_green_others_red</li>
-                      <li>:left_green_right_red</li>
-                      <li>:left_red_right_green</li>
-                      <li>:blink_standard</li>
-                    </ul>
-</dd>
-                  <dt>animate(animation, duration) → drone</dt>
-                  <dd>
-                    Animate the ardrone to do flips and turns depending on selection, available animation options are:
-                    <ul>
-<li>:phi_m30_deg</li>
-                      <li>:phi_30_deg</li>
-                      <li>:theta_m30_deg</li>
-                      <li>:theta_30_deg</li>
-                      <li>:theta_20_deg_yaw_200_deg</li>
-                      <li>:theta_20_deg_yaw_m_200_deg</li>
-                      <li>:turnaround</li>
-                      <li>:turnaround_go_down</li>
-                      <li>:yaw_shake</li>
-                      <li>:yaw_dance</li>
-                      <li>:phi_dance</li>
-                      <li>:theta_dance</li>
-                      <li>:vz_dance</li>
-                      <li>:wave</li>
-                      <li>:phi_theta_mixed</li>
-                      <li>:double_phi_theta_mixed</li>
-                      <li>:flip_ahead</li>
-                      <li>:flip_behind</li>
-                      <li>:flip_left</li>
-                      <li>:flip_right</li>
-                    </ul>
-</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Public instance methods:</h2>
+                <h3>start → drone</h3>
+                <p>
+                  Starts up the drone.
+                </p>
+                <h3>stop → drone</h3>
+                <p>
+                  Stops the drone.
+                </p>
+                <h3>hover → drone</h3>
+                <p>
+                  Causes the drone to hover at current altitude.
+                </p>
+                <h3>land → drone</h3>
+                <p>
+                  Causes the drone to begin its landing sequence.
+                </p>
+                <h3>take_off → drone</h3>
+                <p>
+                  Causes the drone to take off, if already started.
+                </p>
+                <h3>emergency → drone</h3>
+                <p>
+                  Causes the drone to make an immediate emergency landing
+                </p>
+                <h3>front_camera → drone</h3>
+                <p>
+                  Causes the drone to turn on the front-facing camera.
+                </p>
+                <h3>bottom_camera → drone</h3>
+                <p>
+                  Causes the drone to turn on the bottom-facing camera.
+                </p>
+                <h3>up → drone</h3>
+                <p>
+                  Causes the drone to increase altitude.
+                </p>
+                <h3>down → drone</h3>
+                <p>
+                  Causes the drone to decrease altitude.
+                </p>
+                <h3>left → drone</h3>
+                <p>
+                  Causes the drone to bank to the left.
+                </p>
+                <h3>right → drone</h3>
+                <p>
+                  Causes the drone to bank to the right.
+                </p>
+                <h3>forward → drone</h3>
+                <p>
+                  Causes the drone to bank forward.
+                </p>
+                <h3>backward → drone</h3>
+                <p>
+                  Causes the drone to bank backward.
+                </p>
+                <h3>turn_left → drone</h3>
+                <p>
+                  Causes the drone to rotate to the left.
+                </p>
+                <h3>turn_right → drone</h3>
+                <p>
+                  Causes the drone to rotate to the right.
+                </p>
+                <h3>reset_watchdog → drone</h3>
+                <p>
+                  Reset the watchdog in the drone.
+                </p>
+                <h3>led(color_animation, strength, duration) → drone</h3>
+                <p>
+                  Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
+                </p>
+                <ul>
+                  <li>:blink_green_red</li>
+                  <li>:blink_green</li>
+                  <li>:blink_red</li>
+                  <li>:blink_orange</li>
+                  <li>:snake_green_red</li>
+                  <li>:fire</li>
+                  <li>:standard</li>
+                  <li>:red</li>
+                  <li>:green</li>
+                  <li>:red_snake</li>
+                  <li>:blank</li>
+                  <li>:right_missile</li>
+                  <li>:left_missile</li>
+                  <li>:double_missile</li>
+                  <li>:front_left_green_others_red</li>
+                  <li>:front_right_green_others_red</li>
+                  <li>:rear_right_green_others_red</li>
+                  <li>:rear_left_green_others_red</li>
+                  <li>:left_green_right_red</li>
+                  <li>:left_red_right_green</li>
+                  <li>:blink_standard</li>
+                </ul>
+                <h3>animate(animation, duration) → drone</h3>
+                <p>
+                  Animate the ardrone to do flips and turns depending on selection, available animation options are:
+                </p>
+                <ul>
+                  <li>:phi_m30_deg</li>
+                  <li>:phi_30_deg</li>
+                  <li>:theta_m30_deg</li>
+                  <li>:theta_30_deg</li>
+                  <li>:theta_20_deg_yaw_200_deg</li>
+                  <li>:theta_20_deg_yaw_m_200_deg</li>
+                  <li>:turnaround</li>
+                  <li>:turnaround_go_down</li>
+                  <li>:yaw_shake</li>
+                  <li>:yaw_dance</li>
+                  <li>:phi_dance</li>
+                  <li>:theta_dance</li>
+                  <li>:vz_dance</li>
+                  <li>:wave</li>
+                  <li>:phi_theta_mixed</li>
+                  <li>:double_phi_theta_mixed</li>
+                  <li>:flip_ahead</li>
+                  <li>:flip_behind</li>
+                  <li>:flip_left</li>
+                  <li>:flip_right</li>
+                </ul>
+              </section>
+              <section class="how-to">
+                <h2>How to use</h2>
                 <h3>Example of controlling an ARDrone.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -177,8 +220,7 @@ work <span class="keyword">do</span>
 
   after(<span class="integer">15</span>.seconds) { drone.hover.land }
   after(<span class="integer">20</span>.seconds) { drone.stop }
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <h3>Example of ARDrone doing a flip.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -198,25 +240,28 @@ work <span class="keyword">do</span>
   after(<span class="integer">10</span>.seconds) { drone.animate(<span class="symbol">:flip_ahead</span>, <span class="integer">1000</span>) }
   after(<span class="integer">15</span>.seconds) { drone.hover.land }
   after(<span class="integer">20</span>.seconds) { drone.stop }
-<span class="keyword">end</span>
-</pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+<span class="keyword">end</span></pre>
+              </section>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg"></a>
+                    <img src="/images/ardrone.jpg">
+                  </a>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

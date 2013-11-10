@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Artoo - Motor Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo - Motor Driver</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Motor</h1>
@@ -63,59 +65,83 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/motor.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/motor.jpg">
+                <p>
                   Provides motor manipulation tools for artoo like on/off, speed modulation using PWM,
                   use of bidirectional motors using forward/backward pins.
                 </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section>
+              <section class="how-to">
+                <h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:motor</span>, <span class="symbol">:speed_pin</span> =&gt; <span class="integer">3</span> <span class="comment"># Use a PWM pin</span>
-</pre>
+device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:motor</span>, <span class="symbol">:speed_pin</span> =&gt; <span class="integer">3</span> <span class="comment"># Use a PWM pin</span></pre>
                 <h3>For Digispark:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
-device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:motor</span>, <span class="symbol">:speed_pin</span> =&gt; <span class="integer">3</span> <span class="comment"># Use a PWM pin</span>
-</pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>stop → true | nil</dt>
-                  <dd>Stops the motor.</dd>
-                  <dt>start → true | nil</dt>
-                  <dd>Starts the motor.</dd>
-                  <dt>on? → true | false</dt>
-                  <dd>Returns true if the motor is on, otherwise returns false.</dd>
-                  <dt>off? → true | false</dt>
-                  <dd>Returns true if the motor is off, otherwise returns false.</dd>
-                  <dt>toggle → true | nil</dt>
-                  <dd>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</dd>
-                  <dt>speed(speed_value) → true | nil</dt>
-                  <dd>
-                    <p>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between <code>0</code> and <code>255</code>.  </p>
-                  </dd>
-                  <dt>min → true | nil</dt>
-                  <dd>
-                    <p>Stops the motor, sets the speed to <code>0</code>.</p>
-                  </dd>
-                  <dt>max → true | nil</dt>
-                  <dd>
-                    <p>Starts the motor at max speed, sets the speed to <code>255</code>.</p>
-                  </dd>
-                  <dt>forward(speed) → true | nil</dt>
-                  <dd>Starts the motor in forward direction at the provided speed.</dd>
-                  <dt>backward(speed) → true | nil</dt>
-                  <dd>Starts the motor in backward direction at the provided speed.</dd>
-                  <dt>forward? → true | false</dt>
-                  <dd>Returns true if the motor is direction is set to forward, otherwise false.</dd>
-                  <dt>backward? → true | false</dt>
-                  <dd>Returns true if the motor is direction is set to backward, otherwise false.</dd>
-                  <dt>current_speed → speed</dt>
-                  <dd>
-                    <p>Returns the current speed of the motor as an integer between <code>0</code> and <code>255</code>.</p>
-                  </dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:motor</span>, <span class="symbol">:speed_pin</span> =&gt; <span class="integer">3</span> <span class="comment"># Use a PWM pin</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Public instance methods:</h2>
+                <h3>stop → true | nil</h3>
+                <p>
+                  Stops the motor.
+                </p>
+                <h3>start → true | nil</h3>
+                <p>
+                  Starts the motor.
+                </p>
+                <h3>on? → true | false</h3>
+                <p>
+                  Returns true if the motor is on, otherwise returns false.
+                </p>
+                <h3>off? → true | false</h3>
+                <p>
+                  Returns true if the motor is off, otherwise returns false.
+                </p>
+                <h3>toggle → true | nil</h3>
+                <p>
+                  Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
+                </p>
+                <h3>speed(speed_value) → true | nil</h3>
+                <p>
+                  Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between 0 and 255.
+                </p>
+                <h3>min → true | nil</h3>
+                <p>
+                  Stops the motor, sets the speed to 0.
+                </p>
+                <h3>max → true | nil</h3>
+                <p>
+                  Starts the motor at max speed, sets the speed to 255.
+                </p>
+                <h3>forward(speed) → true | nil</h3>
+                <p>
+                  Starts the motor in forward direction at the provided speed.
+                </p>
+                <h3>backward(speed) → true | nil</h3>
+                <p>
+                  Starts the motor in backward direction at the provided speed.
+                </p>
+                <h3>forward? → true | false</h3>
+                <p>
+                  Returns true if the motor is direction is set to forward, otherwise false.
+                </p>
+                <h3>backward? → true | false</h3>
+                <p>
+                  Returns true if the motor is direction is set to backward, otherwise false.
+                </p>
+                <h3>current_speed → speed</h3>
+                <p>
+                  Returns the current speed of the motor as an integer between 0 and 255.
+                </p>
+              </section>
+              <section class="how-to">
+                <h2>How to use</h2>
                 <h3>Example of a dc motor with speed changes using PWM.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -147,8 +173,7 @@ work <span class="keyword">do</span>
       step = -step
     <span class="keyword">end</span>
   <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <h2>Example of a dc motor with direction and speed change.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -187,36 +212,42 @@ work <span class="keyword">do</span>
     puts <span class="string"><span class="delimiter">"</span><span class="content">Going backward, Speed: </span><span class="inline"><span class="inline-delimiter">#{</span>motor.current_speed<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
     sleep <span class="integer">3</span>
   <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <h2>Circuit and Schematic</h2>
                 <p>
                   <a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
                 </p>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
                 
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
+                    <img src="/images/arduino.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg"></a>
+                    <img src="/images/beaglebone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
+                    <img src="/images/digispark.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg"></a>
+                    <img src="/images/raspi.jpg">
+                  </a>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Pebble with Artoo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Pebble with Artoo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Pebble</h1>
@@ -65,20 +67,24 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/pebble.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/pebble.jpg">
+                <p>
                   The Pebble is a smart watch, that connects via bluetooth.
                 </p>
                 <p>
                   For more info about the Pebble platform click
                   <a target="blank" href="http://getpebble.com/">here</a>.
                 </p>
-              </section><section class="how-to"><h2>How to install</h2>
+              </section>
+              <section class="how-to">
+                <h2>How to install</h2>
                 <p>
                   Installing artoo with pebble support is pretty easy using ruby gems.
                 </p>
-                <pre class="CodeRay">gem install artoo-pebble
-</pre>
+                <pre class="CodeRay">gem install artoo-pebble</pre>
                 <h2>How to use</h2>
                 <p>
                   This small program receives button press events from a Pebble smart watch.
@@ -94,63 +100,61 @@ work <span class="keyword">do</span>
 
 <span class="keyword">def</span> <span class="function">button_push</span>(caller, data)
   puts data.button <span class="keyword">unless</span> data.nil?
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
                 <h2>How to connect</h2>
                 <p>This software requires version 1.12.0 of the Pebble watch firmware.</p>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Pair your computer and the Pebble</li>
+                  <li>Pair your computer and the Pebble</li>
                   <li>Use a socket to serial connection to map a TCP socket to the local port</li>
                   <li>Connect to the device via Artoo</li>
                   <li>To figure out which port your pebble is connected to, use the artoo connect scan command:</li>
                 </ul>
-<pre class="CodeRay">$ artoo connect scan
-</pre>
+                <pre class="CodeRay">$ artoo connect scan</pre>
                 <p>Now you are ready to connect to the Sphero using the socket, in this example port 4567:</p>
-                <pre class="CodeRay">artoo connect serial 4567 pebble
-</pre>
+                <pre class="CodeRay">artoo connect serial 4567 pebble</pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Pair your computer and the Pebble</li>
+                  <li>Pair your computer and the Pebble</li>
                   <li>Map your device to a port</li>
                   <li>Use a socket to serial connection to map a TCP socket to the local port</li>
                   <li>Connect to the device via Artoo</li>
                   <li>You will need to pair with the Pebble, entering any needed password.</li>
                 </ul>
-<p>Then you can find the Bluetooth address, for example 00:18:33:86:37:8B, by using the artoo connect scan command:</p>
-                <pre class="CodeRay">$ artoo connect scan
-</pre>
+                <p>Then you can find the Bluetooth address, for example 00:18:33:86:37:8B, by using the artoo connect scan command:</p>
+                <pre class="CodeRay">$ artoo connect scan</pre>
                 <p>Once you know the address, you can use the artoo connect bind command to map a port to the device:</p>
-                <pre class="CodeRay">artoo connect bind 00:18:33:86:37:8B pebble
-</pre>
+                <pre class="CodeRay">artoo connect bind 00:18:33:86:37:8B pebble</pre>
                 <p>Now you are ready to connect to the Pebble using a socket, in this example port 4567:</p>
-                <pre class="CodeRay">artoo connect socat pebble 4567
-</pre>
-              </section><section class="drivers"><h2>Drivers</h2>
+                <pre class="CodeRay">artoo connect socat pebble 4567</pre>
+              </section>
+              <section class="drivers">
+                <h2>Drivers</h2>
                 <p>
                   There is only one driver for the Pebble platform, as listed below.
                 </p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/pebble" title="Pebble">
-                      <img src="/images/pebble.jpg"></a>
+                      <img src="/images/pebble.jpg">
+                    </a>
                   </div>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

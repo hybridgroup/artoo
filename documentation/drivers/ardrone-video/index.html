@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Artoo - ARDrone Video Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo - ARDrone Video Driver</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">ARDrone Video</h1>
@@ -63,8 +65,11 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/ardrone-video.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/ardrone-video.jpg">
+                <p>
                   Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras.
                 </p>
                 <h2>How to establish a connection and setup the driver</h2>
@@ -73,11 +78,14 @@
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:videodrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5555</span><span class="delimiter">'</span></span>
-device <span class="symbol">:video</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:videodrone</span>
-</pre>
-              </section><section class="public-methods"><h2>Events</h2>
+device <span class="symbol">:video</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:videodrone</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Events</h2>
                 We're working on the documentation for the events. Stay tuned.
-              </section><section class="example"><h2>Example of receiving video data from an ARDrone.</h2>
+              </section>
+              <section class="example">
+                <h2>Example of receiving video data from an ARDrone.</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
@@ -92,25 +100,28 @@ work <span class="keyword">do</span>
   <span class="instance-variable">@count</span> += <span class="integer">1</span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Frame #</span><span class="delimiter">"</span></span> + <span class="instance-variable">@count</span>
   puts data[<span class="integer">1</span>].size + <span class="string"><span class="delimiter">"</span><span class="content"> bytes</span><span class="delimiter">"</span></span>
-<span class="keyword">end</span>
-</pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+<span class="keyword">end</span></pre>
+              </section>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg"></a>
+                    <img src="/images/ardrone.jpg">
+                  </a>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

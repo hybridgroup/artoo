@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta content="Artoo Platforms" name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Artoo Platforms</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="Artoo Platforms" name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo Platforms</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Getting Started</h1>
@@ -63,7 +65,9 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><section class="intro"><h2>What is artoo?</h2>
+          <section class="content full">
+            <section class="intro">
+              <h2>What is artoo?</h2>
               <p>
                 Artoo is a micro-framework for robotics. It provides a simple, but powerful Domain-Specific Language (DSL) for robots and physical computing.
               </p>
@@ -89,7 +93,9 @@
                 <a href="https://github.com/celluloid/reel">Reel</a>
                 ).
               </p>
-            </section><section class="how-to"><h2>How to setup your ruby environment</h2>
+            </section>
+            <section class="how-to">
+              <h2>How to setup your ruby environment</h2>
               <p>
                 First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above,
                 we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
@@ -99,60 +105,70 @@
                 First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
                 <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
               </p>
-              <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable
-</pre>
+              <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable</pre>
               <p>
                 Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed
                 correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
               </p>
               <pre class="CodeRay">type rvm | head -n 1
-rvm is a function
-</pre>
+rvm is a function</pre>
               <h3>How to install ruby 2.0</h3>
               <p>
                 Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
               </p>
-              <pre class="CodeRay">rvm install 2.0.0
-</pre>
+              <pre class="CodeRay">rvm install 2.0.0</pre>
               <h3>How to install rubinius 2.0</h3>
               <p>
                 If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.0-rc1
                 or higher. It is pretty easy to isntall using
                 <a href="https://rvm.io/">RVM.</a>
               </p>
-              <pre class="CodeRay">rvm install rbx-2.0.0
-</pre>
-              <section class="hardware"><div class="devices">
+              <pre class="CodeRay">rvm install rbx-2.0.0</pre>
+              <section class="hardware">
+                <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg"></a>
+                    <img src="/images/ardrone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
+                    <img src="/images/arduino.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg"></a>
+                    <img src="/images/beaglebone.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                    <img src="/images/crazyflie.jpg"></a>
+                    <img src="/images/crazyflie.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
+                    <img src="/images/digispark.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/joystick" title="Joystick">
-                    <img src="/images/joystick.jpg"></a>
+                    <img src="/images/joystick.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
-                    <img src="/images/leap_motion.jpg"></a>
+                    <img src="/images/leap_motion.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/pebble" title="Pebble">
-                    <img src="/images/pebble.jpg"></a>
+                    <img src="/images/pebble.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg"></a>
+                    <img src="/images/raspi.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                    <img src="/images/roomba.jpg"></a>
+                    <img src="/images/roomba.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/sphero" title="Sphero">
-                    <img src="/images/sphero.jpg"></a>
+                    <img src="/images/sphero.jpg">
+                  </a>
                   <a class="device" href="/documentation/platforms/opencv" title="OpenCV">
-                    <img src="/images/opencv.jpg"></a>
+                    <img src="/images/opencv.jpg">
+                  </a>
                 </div>
-              </section><p>
+              </section>
+              <p>
                 Artoo also has support for devices that can work across multiple hardware platforms.
                 </p>
 <ul>
-<li>
+                  <li>
                     General Purpose Input/Output (GPIO) devices &lt;==&gt;
                     <a href="/documentation/drivers/">Drivers</a>
                   </li>
@@ -161,10 +177,13 @@ rvm is a function
                     <a href="/documentation/drivers/">Drivers</a>
                   </li>
                 </ul>
-<p>
+              
+              <p>
                 Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
               </p>
-            </section><section class="artoo-code"><h2>Code to control robots with Artoo</h2>
+            </section>
+            <section class="artoo-code">
+              <h2>Code to control robots with Artoo</h2>
               <h3>Example: Arduino with LED and a button</h3>
               <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
 require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -176,8 +195,7 @@ device <span class="symbol">:button</span>, <span class="symbol">:driver</span> 
 
 work <span class="keyword">do</span>
   on button, <span class="symbol">:push</span> =&gt; proc {led.toggle}
-<span class="keyword">end</span>
-</pre>
+<span class="keyword">end</span></pre>
               <h3>Parrot ARDrone 2.0</h3>
               <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -190,44 +208,48 @@ work <span class="keyword">do</span>
 
   after(<span class="integer">25</span>.seconds) { drone.hover.land }
   after(<span class="integer">30</span>.seconds) { drone.stop }
-<span class="keyword">end</span>
-</pre>
-            </section><section class="installation"><h3>Installation</h3>
-              <pre class="CodeRay">gem install artoo
-</pre>
+<span class="keyword">end</span></pre>
+            </section>
+            <section class="installation">
+              <h3>Installation</h3>
+              <pre class="CodeRay">gem install artoo</pre>
               <p>
                 Then install the gems required by the hardware you want to use. For
                 example, if you wanted to use an XBox360 controller to fly your ARDrone:
               </p>
               <pre class="CodeRay">gem install artoo-joystick
-gem install artoo-ardrone
-</pre>
+gem install artoo-ardrone</pre>
               <h3>Writing your robot code:</h3>
               <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
               <h3>Running your robot:</h3>
-              <pre class="CodeRay">ruby myrobot.rb
-</pre>
-            </section><section class="contributing"><h2>Contributing</h2>
+              <pre class="CodeRay">ruby myrobot.rb</pre>
+            </section>
+            <section class="contributing">
+              <h2>Contributing</h2>
               <p>
                 You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
                 <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
               </p>
               <ul>
-<li>Fork it</li>
+                <li>Fork it</li>
                 <li>Create your feature branch (git checkout -b my-new-feature)</li>
                 <li>Commit your changes (git commit -am 'Add some feature')</li>
                 <li>Push to the branch (git push origin my-new-feature)</li>
                 <li>Create new Pull Request</li>
-              </ul></section><section class="footer"></section></section>
-</div>
+              </ul>
+            </section>
+            <section class="footer"></section>
+          </section>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta content="The Hybrid Group" name="author">
-<title>Artoo - Roomba Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description">
+    <meta content="The Hybrid Group" name="author">
+    <title>Artoo - Roomba Driver</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -30,11 +31,12 @@
         });
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner"><div class="display">
+        <header class="app-header" role="banner">
+          <div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -54,7 +56,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-</div>
+      </div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">Roomba</h1>
@@ -63,58 +65,89 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/roomba.jpg"><p>
+          <section class="content full">
+            <div class="documentation">
+              <section class="intro">
+                <img class="display" src="/images/roomba.jpg">
+                <p>
                   Allows user to control a Roomba iRobot Create using Artoo.
                 </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section>
+              <section class="how-to">
+                <h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-</pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>start</dt>
-                  <dd>Puts roomba in start mode.</dd>
-                  <dt>safe_mode</dt>
-                  <dd>Puts roomba in safe mode.</dd>
-                  <dt>full_mode</dt>
-                  <dd>Puts roomba in full mode.</dd>
-                  <dt>forward(seconds, speed=slow) → nil</dt>
-                  <dd>
-                    <p>Moves roomba forward for <code>seconds</code> amount of time at <code>speed</code> (speed(int) between <code>0</code> and <code>500</code>).</p>
-                  </dd>
-                  <dt>fast_forward(seconds) → nil</dt>
-                  <dd>
-                    <p>Moves roomba forward for <code>seconds</code> amount of time at max speed.</p>
-                  </dd>
-                  <dt>stop</dt>
-                  <dd>Stops the roomba.</dd>
-                  <dt>backwards(seconds) → nil</dt>
-                  <dd>
-                    <p>Moves roomba backwards for <code>seconds</code> amount of time at default speed.</p>
-                  </dd>
-                  <dt>nudge_left</dt>
-                  <dd>Turns roomba a little bit to the left.</dd>
-                  <dt>nudge_right</dt>
-                  <dd>Turns roomba a little bit to the right.</dd>
-                  <dt>turn_left(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the left the specefied amount of seconds.</dd>
-                  <dt>turn_right(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the right the specefied amount of seconds.</dd>
-                  <dt>turn_around</dt>
-                  <dd>Turns roomba 180 degrees.</dd>
-                  <dt>drive(speed, direction, seconds = 0)  → nil</dt>
-                  <dd>
-                    <p>Drives the roomba at speed (from <code>0</code> to <code>500</code>) and direction (<code>straight=32768</code>, <code>clockwise=65535</code>, <code>counterclockwise=1</code>) for the specefied amount of time (seconds). </p>
-                  </dd>
-                  <dt>play(song_number)  → nil</dt>
-                  <dd>Plays the song specified by song_numer.</dd>
-                  <dt>song(notes[Collection], song_number[Integer])  → nil</dt>
-                  <dd>Stores a song in the roomba.</dd>
-                  <dt>beep</dt>
-                  <dd>Makes roomba beep.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span></pre>
+              </section>
+              <section class="public-methods">
+                <h2>Public instance methods</h2>
+                <h3>start</h3>
+                <p>
+                  Puts roomba in start mode.
+                </p>
+                <h3>safe_mode</h3>
+                <p>
+                  Puts roomba in safe mode.
+                </p>
+                <h3>full_mode</h3>
+                <p>
+                  Puts roomba in full mode.
+                </p>
+                <h3>forward(seconds, speed=slow) → nil</h3>
+                <p>
+                  Moves roomba forward for &lt;seconds&gt; amount of time at &lt;speed&gt; (speed(int) between 0 and 500).
+                </p>
+                <h3>fast_forward(seconds) → nil</h3>
+                <p>
+                  Moves roomba forward for &lt;seconds&gt; amount of time at max speed.
+                </p>
+                <h3>stop</h3>
+                <p>
+                  Stops the roomba.
+                </p>
+                <h3>backwards(seconds) → nil</h3>
+                <p>
+                  Moves roomba backwards for &lt;seconds&gt; amount of time at default speed.
+                </p>
+                <h3>nudge_left</h3>
+                <p>
+                  Turns roomba a little bit to the left.
+                </p>
+                <h3>nudge_right</h3>
+                <p>
+                  Turns roomba a little bit to the right.
+                </p>
+                <h3>turn_left(seconds=1) → nil</h3>
+                <p>
+                  Turns roomba to the left the specefied amount of seconds.
+                </p>
+                <h3>turn_right(seconds=1) → nil</h3>
+                <p>
+                  Turns roomba to the right the specefied amount of seconds.
+                </p>
+                <h3>turn_around</h3>
+                <p>
+                  Turns roomba 180 degrees.
+                </p>
+                <h3>drive(speed, direction, seconds = 0)  → nil</h3>
+                <p>
+                  Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).
+                </p>
+                <h3>play(song_number)  → nil</h3>
+                <p>
+                  Plays the song specified by song_numer.
+                </p>
+                <h3>song(notes[Collection], song_number[Integer])  → nil</h3>
+                <p>
+                  Stores a song in the roomba.
+                </p>
+                <h3>beep</h3>
+                <p>
+                  Makes roomba beep.
+                </p>
+              </section>
+              <section class="how-to">
+                <h2>How to use</h2>
                 <h3>Example controlling a Roomba.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -127,25 +160,28 @@ work <span class="keyword">do</span>
   roomba.nudge_right
   roomba.nudge_right
   roomba.nudge_left
-<span class="keyword">end</span>
-</pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+<span class="keyword">end</span></pre>
+              </section>
+              <section class="compatability hardware">
+                <h2>Works with:</h2>
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                    <img src="/images/roomba.jpg"></a>
+                    <img src="/images/roomba.jpg">
+                  </a>
                 </div>
               </section>
-</div>
+            </div>
           </section>
-</div>
+        </div>
       </div>
     </div>
-    <footer class="app-footer"><div class="w">
+    <footer class="app-footer">
+      <div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>
