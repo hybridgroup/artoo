@@ -1,17 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-  <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="description">
-    <meta content="The Hybrid Group" name="author">
-    <title>Artoo - LED Driver</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo - LED Driver</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
       function heart() {
         var $heart = $(".heart");
         if($heart.is(":visible")) {
@@ -31,12 +30,11 @@
         });
       });
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <div class="app">
       <div class="w">
-        <header class="app-header" role="banner">
-          <div class="display">
+        <header class="app-header" role="banner"><div class="display">
             <h1 class="artoo-logo">
               <a href="/">artoo</a>
             </h1>
@@ -56,7 +54,7 @@
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
           </span>
         </header>
-      </div>
+</div>
       <div class="page-title">
         <div class="w">
           <h1 class="title">LED</h1>
@@ -65,55 +63,36 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full">
-            <div class="documentation">
-              <section class="intro">
-                <img class="display" src="/images/LED.jpg">
-                <p>
+          <section class="content full"><div class="documentation">
+              <section class="intro"><img class="display" src="/images/LED.jpg"><p>
                   Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
                 </p>
-              </section>
-              <section class="how-to">
-                <h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span></pre>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
+</pre>
                 <h3>For Digispark:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span></pre>
-              </section>
-              <section class="public-methods">
-                <h2>Public instance methods:</h2>
-                <h3>on → true | nil</h3>
-                <p>
-                  Turns LED on.
-                </p>
-                <h3>off → true | nil</h3>
-                <p>
-                  Turns LED off.
-                </p>
-                <h3>on? → true | false</h3>
-                <p>
-                  Returns true if LED is on, otherwise returns false.
-                </p>
-                <h3>off? → true | false</h3>
-                <p>
-                  Returns true if LED is off, otherwise returns false.
-                </p>
-                <h3>toggle → true | nil</h3>
-                <p>
-                  Turns the LED on, or off, depending on if it is already off, or on, respectively.
-                </p>
-                <h3>brightness(brightness_int) → true | nil</h3>
-                <p>
-                  Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM,
-                  brightness can be any integer value between 0 and 255.
-                </p>
-              </section>
-              <section class="how-to">
-                <h2>How to use</h2>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
+</pre>
+              </section><section class="public-methods"><h2>Commands:</h2>
+                <dl class="methods">
+<dt>on → true | nil</dt>
+                  <dd>Turns LED on.</dd>
+                  <dt>off → true | nil</dt>
+                  <dd>Turns LED off.</dd>
+                  <dt>on? → true | false</dt>
+                  <dd>Returns true if LED is on, otherwise returns false.</dd>
+                  <dt>off? → true | false</dt>
+                  <dd>Returns true if LED is off, otherwise returns false.</dd>
+                  <dt>toggle → true | nil</dt>
+                  <dd>Turns the LED on, or off, depending on if it is already off, or on, respectively.</dd>
+                  <dt>brightness(brightness_int) → true | nil</dt>
+                  <dd>Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.</dd>
+                </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Example using a button to turn a LED on and off.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -125,42 +104,34 @@ work <span class="keyword">do</span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>
     led.on? ? led.off : led.on
   <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
-              </section>
-              <section class="circuit">
-                <h2>Circuit and Schematic</h2>
+<span class="keyword">end</span>
+</pre>
+              </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <a href="http://arduino.cc/en/Tutorial/Blink">http://arduino.cc/en/Tutorial/Blink</a>
-              </section>
-              <section class="compatability hardware">
-                <h2>Works with:</h2>
+              </section><section class="compatability hardware"><h2>Works with:</h2>
                 
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg">
-                  </a>
+                    <img src="/images/arduino.jpg"></a>
                   <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg">
-                  </a>
+                    <img src="/images/beaglebone.jpg"></a>
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg">
-                  </a>
+                    <img src="/images/digispark.jpg"></a>
                   <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg">
-                  </a>
+                    <img src="/images/raspi.jpg"></a>
                 </div>
               </section>
-            </div>
+</div>
           </section>
-        </div>
+</div>
       </div>
     </div>
-    <footer class="app-footer">
-      <div class="w">
+    <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
     </footer>
-  </body>
+</body>
 </html>
