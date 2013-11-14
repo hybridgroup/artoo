@@ -1,0 +1,37 @@
+---
+title: Blink with Artoo.io
+author: The Hybrid Group
+page_title: Blink
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo-i2c/blob/master/examples/blinkm.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          #connection :firmata, :adaptor => :firmata, :port => '/dev/ttyACM0'
+          connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+          device :blink_m, :driver => :blink_m
+
+          work do
+            puts blink_m.color.inspect
+
+            every 1.second do
+              unless @on
+                blink_m.rgb(0xff, 0xff, 0xff)
+                puts blink_m.color.inspect
+                @on = true
+              else
+                blink_m.rgb(0, 0, 0)
+                puts blink_m.color.inspect
+                @on = false
+              end
+            end
+          end
+			
+			
+			
