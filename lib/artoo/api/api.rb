@@ -56,7 +56,7 @@ module Artoo
 
       # Execute robot command
       # @return [JSON] command
-      post '/robots/:robotid/devices/:deviceid/commands/:commandid' do
+      any '/robots/:robotid/devices/:deviceid/commands/:commandid' do
         result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
@@ -91,11 +91,13 @@ module Artoo
       end
 
       def command_params
-        data = MultiJson.load(@req.body, :symbolize_keys => true)
-        if data && params = data[:params]
-          params.size == 1 ? params.first : params
-        else
-          nil
+        if @req.body.to_s != ""
+          data = MultiJson.load(@req.body, :symbolize_keys => true)
+          if data && params = data[:params]
+            params.size == 1 ? params.first : params
+          else
+            nil
+          end
         end
       end
     end
