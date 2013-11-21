@@ -3,7 +3,7 @@
     .articles
       .article
         - if is_blog_article?
-          = partial "blog/header", {locals: { article: page_articles.first } }
+          = partial "blog/header", {locals: { article: current_article } }
           = yield
         - else 
           = yield
