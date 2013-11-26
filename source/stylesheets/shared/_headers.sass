@@ -1,4 +1,4 @@
-.artoo-logo
+.app-logo
   width: $logo-size
   a
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -8,7 +8,7 @@
 .app-header
   margin: 9px 0 15px 0
 
-  .artoo-logo, .display, .subtitle, .menu, h1 
+  .app-logo, .display, .subtitle, .menu, h1 
     vertical-align: middle
     margin: 0
     display: inline-block
@@ -17,7 +17,7 @@
     margin: -1px 0 0 0
 
   .subtitle
-    @include title-font(20px, $light_gray)
+    @include title-font(20px, $subtitle-color)
     padding: 8px 0 0 15px
     width: 200px
 
@@ -67,7 +67,7 @@
   @media only screen and (max-width: $medium-screen)
     width: 100%
     text-align: center
-    .artoo-logo, .subtitle
+    .app-logo, .subtitle
       width: 100%
       display: block
       margin: 0 0 5px 0
