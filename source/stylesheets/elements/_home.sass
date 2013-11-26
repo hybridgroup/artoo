@@ -1,6 +1,6 @@
 .hero
   margin: 15px 0 0 0
-  background: #277DAC
+  background: $hero-color
   padding: 25px 0
   +small-screen
     margin-top: -8px
@@ -21,7 +21,7 @@
       font-size: 33px
       line-height: 42px
   .subtitle
-    @include title-font(24px, #BFD5E2)
+    @include title-font(24px, $hero-subtitle-color)
     font-weight: 550
     opacity: 0.94
     margin: 0
@@ -34,7 +34,7 @@
       margin-top: 4px
       padding: 0
   a
-    @extend .bright-contrast-anchors
+    @extend .hero-anchors
 
 .social
   line-height: 0
