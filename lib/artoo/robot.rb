@@ -30,7 +30,7 @@ module Artoo
     include Artoo::Utility
     include Artoo::Events
 
-    attr_reader :connections, :devices, :name
+    attr_reader :connections, :devices, :name, :commands
 
     exclusive :execute_startup
 
@@ -41,6 +41,7 @@ module Artoo
     # @option params [Collection] :devices
     def initialize(params={})
       @name = params[:name] || "Robot #{random_string}"
+      @commands = params[:commands] || []
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})
     end
@@ -118,7 +119,8 @@ module Artoo
       {
         :name => name,
         :connections => connections.each_value.collect {|c|c.to_hash},
-        :devices => devices.each_value.collect {|d|d.to_hash}
+        :devices => devices.each_value.collect {|d|d.to_hash},
+        :commands => commands
       }
     end
 
@@ -132,7 +134,30 @@ module Artoo
       "#<Robot #{object_id}>"
     end
 
+    def command(method_name, *arguments)
+      if known_command?(method_name)
+        if arguments.first
+          self.send(method_name, *arguments)
+        else
+          self.send(method_name)
+        end
+      else
+        "Unknown Command"
+      end
+    rescue Exception => e
+      Logger.error e.message
+      Logger.error e.backtrace.inspect
+      return nil
+    end
+
+    # @return [Boolean] True if command exists
+    def known_command?(method_name)
+      return commands.include?(method_name.intern)
+    end
+
+
     private
+
 
     def initialize_connections(params={})
       @connections = {}
