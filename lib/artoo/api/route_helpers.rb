@@ -124,6 +124,12 @@ module Artoo
         def put(path, &block)
           route 'PUT', path, &block
         end
+
+        # Route function for put
+        def any(path, &block)
+          route 'GET', path, &block
+          route 'POST', path, &block
+        end
       end
 
       module InstanceMethods
