@@ -36,6 +36,19 @@ module Artoo
         master.robot(@params['robotid']).as_json
       end
 
+      # Retrieve robot commands
+      # @return [JSON] commands
+      get '/robots/:robotid/commands' do
+        MultiJson.dump(master.robot(@params['robotid']).commands)
+      end
+
+      # Execute robot command
+      # @return [JSON] command
+      any '/robots/:robotid/commands/:commandid' do
+        result = master.robot(@params['robotid']).command(@params['commandid'], *command_params)
+        return MultiJson.dump({'result' => result})
+      end
+
       # Retrieve robot devices
       # @return [JSON] devices
       get '/robots/:robotid/devices' do
@@ -92,9 +105,13 @@ module Artoo
 
       def command_params
         if @req.body.to_s != ""
-          data = MultiJson.load(@req.body, :symbolize_keys => true)
-          if data && params = data[:params]
-            params.size == 1 ? params.first : params
+          data = MultiJson.load(@req.body.to_s, :symbolize_keys => true)
+          if data
+            params = []
+            data.each {|key, value|
+              params << value
+            }
+            params
           else
             nil
           end
