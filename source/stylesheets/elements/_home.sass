@@ -5,7 +5,7 @@
   +small-screen
     margin-top: -8px
   .title
-    @include title-font(47px, #F1F7FA)
+    @include title-font(47px, $hero-title-color)
     line-height: 54px
     width: 100%
     clear: both
@@ -51,7 +51,7 @@
       margin-bottom: 5px
   
 .cta
-  background: #7AA75D
+  background: $cta-color
   padding: 10px 20px
   display: inline-block
   margin: 17px 0 0 0
@@ -59,9 +59,9 @@
   color: #FFF
   font-weight: bold
   &:hover
-    background: #599743
+    background: $cta-hover-color
   &:visited
-    color: #fff
+    color: #FFF
   +small-screen
     font-size: 16px
     padding: 8px 15px
