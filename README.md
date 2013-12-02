@@ -21,7 +21,7 @@ If you want to help us with the documentation of the site, you can follow this s
 
 - 1) Download the zip of the branch "artoo.io" or clone the proyect with git.
 
-	  git clone https://github.com/hybridgroup/artoo.git <name>
+		  git clone https://github.com/hybridgroup/artoo.git "name"
 
 
 
