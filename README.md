@@ -14,3 +14,14 @@ To run locally:
 For deploying the webpage, your must be in 'artoo.io' branch and run the following command:
 
       rake publish
+
+### Documentation
+
+If you want to help us with the documentation of the site, you can follow this steps :
+
+- 1) Download the zip of the branch "artoo.io" or clone the proyect with git.
+
+	  git clone https://github.com/hybridgroup/artoo.git <name>
+
+
+
