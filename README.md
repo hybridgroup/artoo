@@ -17,6 +17,8 @@ For deploying the webpage, your must be in 'artoo.io' branch and run the followi
 
 ### Documentation
 
+This project uses HAML.
+
 If you want to help us with the documentation of the site, you can follow this steps :
 
 - 1) Download the zip of the branch "artoo.io" or clone the project with git.
@@ -34,7 +36,43 @@ If you want to help us with the documentation of the site, you can follow this s
 
 #### Platforms
 
+To add new information to any platform, do this : 
 
+- 1) Go to the file `source/documentation/platforms` , and select the platform you want to edit.
+
+#### Drivers
+
+To add new information to any driver, do this : 
+
+- 1) Go to the file `source/documentation/drivers` , and select the driver you want to edit.
+
+#### Examples
+
+To create a new example for any driver or platform, do this : 
+
+- 1) Go to the file `source/documentation/examples` , and create a new file `file.html.haml`.
+
+- 2) Add the path into this file `source/documentation/index.html.haml`, on the examples section.
+
+-3) Add this code to the top part of your file :
+		
+		  ---
+		  title: Site Title
+		  author: Author
+		  page_title: Page Title
+		  page_subtitle: "Page Subtitle"
+		  layout: page
+		  ---
+
+### Sed your Pull Request
+
+When you have your code ready, create a new PR : `base: artoo.io` and `compare:"your_branch"`
+
+	
+
+
+
+	
 
 
 
