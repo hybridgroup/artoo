@@ -19,17 +19,19 @@ For deploying the webpage, your must be in 'artoo.io' branch and run the followi
 
 If you want to help us with the documentation of the site, you can follow this steps :
 
-- 1) Download the zip of the branch "artoo.io" or clone the proyect with git.
+- 1) Download the zip of the branch "artoo.io" or clone the project with git.
 
-		  git clone https://github.com/hybridgroup/artoo.git < name >
+		  git clone https://github.com/hybridgroup/artoo.git << name >>
 
 - 2) Create a new branch for the project and switch to that new branch.
 
-		  git branch < new name >
+		  git branch << new_name >>
+		  git checkout << new_name >>
 
-		  git checkout < new name >
+- 4) Open the project with your favourite text editor.
 
-- 3) 
+- 3) Go to the file `source/documentation` , here is all the documentation of the site.
+
 
 
 
