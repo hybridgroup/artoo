@@ -1,6 +1,7 @@
 .app-logo
   width: $logo-size
   a
+    display: block
     font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
     color: $blog-title-color
     font-size: 56px
@@ -51,10 +52,7 @@
       &, &:visited
         color: $header-subtitle-color
 
-      &:hover
-        color: $blog-title-color
-
-      &:active
+      &:hover, &:active
         color: $blog-title-color
 
     @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
@@ -63,7 +61,7 @@
       .item
         margin: 0
         padding: 0 5px
-
+  
   @media only screen and (max-width: $medium-screen)
     width: 100%
     text-align: center
