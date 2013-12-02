@@ -54,7 +54,7 @@ To create a new example for any driver or platform, do this :
 
 - 2) Add the path into this file `source/documentation/index.html.haml`, on the examples section.
 
--3) Add this code to the top part of your file :
+- 3) Add this code to the top part of your file :
 		
 		  ---
 		  title: Site Title
