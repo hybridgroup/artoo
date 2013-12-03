@@ -1,0 +1,56 @@
+---
+title: Spark with Artroo
+author: The Hybrid Group
+page_title: Spark
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-spark' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-spark/issues'>Issues</a>"
+layout: page
+---
+.documentation
+  %section.intro
+    = image_tag "/images/spark.jpg", class: "display"
+
+    %p The Core contains a Wi-Fi module paired with a powerful microcontroller that acts as the "connected brain" for your product. Once it's connected to your Wi-Fi network, it automatically connects with the Spark Cloud and holds open a connection so it can be accessed at any time.
+
+    %p
+      For more info about the spark platform click
+      = succeed "." do
+        = link_to "here", "https://www.spark.io/", target: :blank
+
+  %section.how-to
+    %h2 How to install
+    %p
+      Installing artoo with ardrone support is pretty easy using ruby gems.
+    :markdown
+          :::bash
+          gem install artoo-spark
+
+    %h2 How to use
+    %p This small program lets you turn on or off a LED for every 1 sec.
+
+    :markdown
+          :::ruby
+
+          require 'artoo'
+
+          connection :spark, :adaptor => :spark, :access_token => 'XYZABC123'
+          device :led, :driver => :led, :pin => 'D0'
+
+          work do
+            every(1.second) do
+              led.toggle
+            end
+          end
+    
+  %section.drivers
+    %h2 Drivers
+    %p
+      Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
+
+    .hardware
+      .devices
+        = partial "documentation/partials/analog-sensor"
+        = partial "documentation/partials/button"
+        = partial "documentation/partials/led"
+        = partial "documentation/partials/maxbotix"
+        = partial "documentation/partials/motor"
+        = partial "documentation/partials/servo"
