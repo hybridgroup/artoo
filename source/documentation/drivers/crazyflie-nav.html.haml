@@ -1,0 +1,65 @@
+---
+title: Artoo - Crazyflie Navigation Driver
+author: The Hybrid Group
+page_title: Crazyflie
+page_subtitle: Navigation
+layout: page
+---
+.documentation
+  %section.intro
+    =image_tag "/images/crazyflie-nav.jpg", class: "display"
+    %p
+      Allows user to send navigation control commands to a Crazyflie micro-quadcopter. 
+      -#Navigation control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
+
+  %section.how-to
+    %h2 How to establish a connection and setup the driver
+    %p
+      Communication with the Crazyflie's navigation control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device. 
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :crazyflie, :adaptor => :crazyflie, :supports_hover => true
+          device :drone, :driver => :crazyflie_nav, :connection => :crazyflie
+
+  %section.public-methods
+    %h2 Commands:
+    %dl.methods 
+      %dt set_value
+      %dd Sets a value for the Crazyflie. 
+      %dt start_get_value
+      %dd Gets a value from the Crazyflie.
+      %dt toc
+      %dd Gets the toc from the Crazyflie.
+      %dt values
+      %dd Gets the values from the Crazyflie.
+      %dt log
+      %dd Logs a value to the Crazyflie.
+      %dt start_driver
+      %dd Starts the driver.
+    
+
+  %section.how-to
+    %h2 How to use
+    %h3 Example of controlling a Crazyflie.
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :crazyflie, :adaptor => :crazyflie, :supports_hover => true
+          device :drone, :driver => :crazyflie_nav, :connection => :crazyflie
+
+          work do
+            drone.log_value("stabilizer.pitch")  
+            drone.start_logging
+
+            every(1.seconds) {
+              puts drone.log
+            }
+          end
+
+  %section.compatability.hardware
+    %h2 Works with:
+    .devices
+      = partial "documentation/partials/crazyflie"
