@@ -28,11 +28,13 @@
     line-height: 36px
     margin-top: 3px
 
+
     +small-screen
       font-size: 18px
       line-height: 22px
       margin-top: 4px
       padding: 0
+
   a
     @extend .hero-anchors
 
@@ -56,12 +58,12 @@
   display: inline-block
   margin: 17px 0 0 0
   font-size: 19px
-  color: #FFF
+  color: $cta-text-color
   font-weight: bold
   &:hover
-    background: $cta-hover-color
+    background: $cta-color - 30
   &:visited
-    color: #FFF
+    color: $cta-text-color
   +small-screen
     font-size: 16px
     padding: 8px 15px
