@@ -1,0 +1,30 @@
+---
+title: Sphero with Artoo.io
+author: The Hybrid Group
+page_title: Sphero Firmata
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/sphero_firmata.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :sphero, :adaptor => :sphero, :port => '/dev/tty.Sphero-BRG-RN-SPP'
+          device :sphero, :driver => :sphero, :connection => :sphero
+
+          connection :arduino, :adaptor => :firmata, :port => '/dev/cu.usbserial-A700636n'
+          device :led, :driver => :led, :connection => :arduino, :pin => 13
+
+          work do
+            every 3.seconds do
+              sphero.roll 60, rand(360)
+            end
+
+            every 1.second do
+              led.toggle
+            end
+          end
