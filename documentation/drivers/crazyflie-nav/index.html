@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Artoo - Crazyflie Flight Driver</title>
+<title>Artoo - Crazyflie Navigation Driver</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script>
@@ -58,64 +58,52 @@
       <div class="page-title">
         <div class="w">
           <h1 class="title">Crazyflie</h1>
-          <h2 class="subtitle">Flight</h2>
+          <h2 class="subtitle">Navigation</h2>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/crazyflie-driver.jpg"><p>
-                  Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
+              <section class="intro"><img class="display" src="/images/crazyflie-nav.jpg"><p>
+                  Allows user to send navigation control commands to a Crazyflie micro-quadcopter.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <p>
-                  Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.
+                  Communication with the Crazyflie's navigation control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.
                 </p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+
+connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie_nav</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
-<dt>start</dt>
-                  <dd>Starts the crazyfly's motors and controls.</dd>
-                  <dt>stop</dt>
-                  <dd>Stops the crazyfly's motors.</dd>
-                  <dt>hover</dt>
-                  <dd>Makes the crazyflie hover in a position.</dd>
-                  <dt>land</dt>
-                  <dd>Initiates a landing sequence.</dd>
-                  <dt>take_off</dt>
-                  <dd>Initiates take off sequence.</dd>
-                  <dt>up</dt>
-                  <dd>Orders crazy flie to go up.</dd>
-                  <dt>down</dt>
-                  <dd>Orders crazy flie to go down.</dd>
-                  <dt>left(deg)</dt>
-                  <dd>Orders crazyflie to go left the amount specified by deg (roll left).</dd>
-                  <dt>right(deg)</dt>
-                  <dd>Orders crazyflie to go right the amount specified by deg (roll right).</dd>
-                  <dt>forward(deg)</dt>
-                  <dd>Orders crazyflie to go forward the amount specified by deg (pitch forward).</dd>
-                  <dt>backward(deg)</dt>
-                  <dd>Orders crazyflie to go backward the amount specified by deg (pitch backward).</dd>
-                  <dt>turn_left(deg)</dt>
-                  <dd>Orders crazyflie to turn left the amount specified by deg (yaw left).</dd>
-                  <dt>turn_right(deg)</dt>
-                  <dd>Orders crazyflie to turn right the amount specified by deg (yaw right).</dd>
-                  <dt>power(deg)</dt>
-                  <dd>Sets thrust power to deg.</dd>
+<dt>set_value</dt>
+                  <dd>Sets a value for the Crazyflie.</dd>
+                  <dt>start_get_value</dt>
+                  <dd>Gets a value from the Crazyflie.</dd>
+                  <dt>toc</dt>
+                  <dd>Gets the toc from the Crazyflie.</dd>
+                  <dt>values</dt>
+                  <dd>Gets the values from the Crazyflie.</dd>
+                  <dt>log</dt>
+                  <dd>Logs a value to the Crazyflie.</dd>
+                  <dt>start_driver</dt>
+                  <dd>Starts the driver.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Example of controlling a Crazyflie.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie_nav</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>
 
 work <span class="keyword">do</span>
-  drone.forward(<span class="integer">0</span>)
-  drone.set_thrust_on
-  after(<span class="integer">1</span>.seconds) {drone.stop}
+  drone.log_value(<span class="string"><span class="delimiter">"</span><span class="content">stabilizer.pitch</span><span class="delimiter">"</span></span>)  
+  drone.start_logging
+
+  every(<span class="integer">1</span>.seconds) {
+    puts drone.log
+  }
 <span class="keyword">end</span>
 </pre>
               </section><section class="compatability hardware"><h2>Works with:</h2>

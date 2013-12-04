@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Spark with Artroo</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Spark</h1>
+          <h2 class="subtitle">
+<a href="https://github.com/hybridgroup/artoo-spark" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-spark/issues">Issues</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <section class="intro"><img class="display" src="/images/spark.jpg"><p>The Core contains a Wi-Fi module paired with a powerful microcontroller that acts as the "connected brain" for your product. Once it's connected to your Wi-Fi network, it automatically connects with the Spark Cloud and holds open a connection so it can be accessed at any time.</p>
+                <p>
+                  For more info about the spark platform click
+                  <a target="blank" href="https://www.spark.io/">here</a>.
+                </p>
+              </section><section class="how-to"><h2>How to install</h2>
+                <p>
+                  Installing artoo with ardrone support is pretty easy using ruby gems.
+                </p>
+                <pre class="CodeRay">gem install artoo-spark
+</pre>
+                <h2>How to use</h2>
+                <p>This small program lets you turn on or off a LED for every 1 sec.</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:spark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:spark</span>, <span class="symbol">:access_token</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">XYZABC123</span><span class="delimiter">'</span></span>
+device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">D0</span><span class="delimiter">'</span></span>
+
+work <span class="keyword">do</span>
+  every(<span class="integer">1</span>.second) <span class="keyword">do</span>
+    led.toggle
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+              </section><section class="drivers"><h2>Drivers</h2>
+                <p>
+                  Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
+                </p>
+                <div class="hardware">
+                  <div class="devices">
+                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
+                      <img src="/images/analog-sensor.jpg"></a>
+                    <a class="device" href="/documentation/drivers/button" title="Button">
+                      <img src="/images/button.jpg"></a>
+                    <a class="device" href="/documentation/drivers/led" title="LED">
+                      <img src="/images/LED.jpg"></a>
+                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
+                      <img src="/images/maxbotix.jpg"></a>
+                    <a class="device" href="/documentation/drivers/motor" title="Motor">
+                      <img src="/images/motor.jpg"></a>
+                    <a class="device" href="/documentation/drivers/servo" title="Servo">
+                      <img src="/images/servo.jpg"></a>
+                  </div>
+                </div>
+              </section>
+</div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
