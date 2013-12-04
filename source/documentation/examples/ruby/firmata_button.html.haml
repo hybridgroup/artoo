@@ -1,0 +1,22 @@
+---
+title: Firmata with Artoo.io
+author: The Hybrid Group
+page_title: Firmata Button
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/firmata_button.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+          device :led, :driver => :led, :pin => 13
+          device :button, :driver => :button, :pin => 2
+
+          work do
+            on button, :push => proc {led.toggle}
+          end

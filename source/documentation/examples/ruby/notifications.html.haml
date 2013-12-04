@@ -1,0 +1,22 @@
+---
+title: Artoo.io
+author: The Hybrid Group
+page_title: Notifications
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/notifications.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :loop
+          device :counter, :driver => :counter
+
+          work do
+            puts 'Starting...'
+            on counter, :update => proc {puts 'I am awesome!'}
+          end

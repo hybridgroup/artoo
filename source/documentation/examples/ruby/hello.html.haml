@@ -1,0 +1,25 @@
+---
+title: Artoo.io
+author: The Hybrid Group
+page_title: Hello
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/hello.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :loop
+
+          work do
+            every(3.seconds) do
+              puts "hello"
+            end
+            after(10.seconds) do
+                    puts "wow"
+            end
+          end

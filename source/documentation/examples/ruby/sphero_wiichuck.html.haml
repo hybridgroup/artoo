@@ -1,0 +1,41 @@
+---
+title: Sphero with Artoo.io
+author: The Hybrid Group
+page_title: Sphero Wiichuck
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/sphero_wiichuck.rb' target='blanck' class='repository'>here.</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h2 Example
+    :markdown
+          :::ruby
+          require 'artoo'
+
+          connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4568'
+          device :sphero, :driver => :sphero
+
+          connection :arduino, :adaptor => :firmata, :port => "8023"
+          device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
+            
+          work do
+            init_settings
+            on wiichuck, :c_button => proc {}
+            on wiichuck, :z_button => proc {}
+            on wiichuck, :joystick => proc { |*value|
+              @heading = heading(value[1])
+            }
+            every(1.seconds) do
+                    puts "Rolling..."
+              sphero.roll 50, @heading
+            end
+          end
+
+          def init_settings
+            @heading = 0
+          end
+
+          def heading(value)
+            (180.0 - (Math.atan2(value[:y],value[:x]) * (180.0 / Math::PI))).round
+          end
