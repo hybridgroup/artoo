@@ -9,27 +9,29 @@ layout: page
   %section.intro
     = image_tag "/images/spark.jpg", class: "display"
 
-    %p The Core contains a Wi-Fi module paired with a powerful microcontroller that acts as the "connected brain" for your product. Once it's connected to your Wi-Fi network, it automatically connects with the Spark Cloud and holds open a connection so it can be accessed at any time.
+    %p 
+      This repository contains the Artoo 
+      =link_to "(http://artoo.io/)", "http://artoo.io/", target: :blank 
+      adaptor for the Spark core device 
+      =link_to "(http://spark.io) ", "http://spark.io", target: :blank 
+      using the built-in Tinker protocol.
 
-    %p
-      For more info about the spark platform click
-      = succeed "." do
-        = link_to "here", "https://www.spark.io/", target: :blank
 
   %section.how-to
     %h2 How to install
     %p
-      Installing artoo with ardrone support is pretty easy using ruby gems.
+      Installing artoo with spark support is pretty easy.
     :markdown
           :::bash
           gem install artoo-spark
 
-    %h2 How to use
+    %p You will need to have a Spark device, and an access token from a registered Spark account.
+
+    %h2 Using
     %p This small program lets you turn on or off a LED for every 1 sec.
 
     :markdown
           :::ruby
-
           require 'artoo'
 
           connection :spark, :adaptor => :spark, :access_token => 'XYZABC123'
@@ -40,7 +42,8 @@ layout: page
               led.toggle
             end
           end
-    
+    %h2 Connecting to Spark
+    %p Once your Spark is connected via Wifi, you're done. It should keep itself connected, and your Artoo program should be able to connect to it via the Internet, using the access token that Spark has given you.
   %section.drivers
     %h2 Drivers
     %p
