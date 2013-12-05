@@ -1,0 +1,86 @@
+---
+layout: page
+title: Artoo Example - conway_sphero
+page_title: "Example: conway_sphero"
+author: The Hybrid Group
+description: A Artoo code example
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo/robot'
+
+        class ConwaySpheroRobot < Artoo::Robot
+          connection :sphero, :adaptor => :sphero
+          device :sphero, :driver => :sphero
+          
+          #api :host => '127.0.0.1', :port => '8080'
+
+          work do
+            birth
+
+            on sphero, :collision => proc { contact }
+
+            every(3.seconds) { movement if alive? }
+            every(16.seconds) { birthday if alive? }
+          end
+
+          def alive?; (@alive == true); end
+          def reset_contacts; @contacts = 0; end
+          def contact; @contacts += 1; end
+
+          def birth
+            reset_contacts
+            @age = 0
+            life
+            movement
+          end
+
+          def life
+            @alive = true
+            sphero.set_color :green
+          end
+
+          def death
+            puts "Death."
+            pause_work
+            @alive = false
+            sphero.set_color :red
+            sphero.stop
+          end
+
+          def birthday
+            @age += 1
+            
+            puts "Happy birthday, \1name}, you are \1@age} and had \1@contacts} contacts."
+            #return if @age <= 3
+            death unless @contacts >= 6 && @contacts < 11
+            reset_contacts
+          end
+
+          def movement
+            sphero.roll 90, rand(360)
+          end
+        end
+
+        SPHEROS = {
+                   "127.0.0.1:4560" => "/dev/tty.Sphero-BRG-RN-SPP",
+                   "127.0.0.1:4561" => "/dev/tty.Sphero-YBW-RN-SPP",
+                   "127.0.0.1:4562" => "/dev/tty.Sphero-BWY-RN-SPP",
+                   "127.0.0.1:4563" => "/dev/tty.Sphero-YRR-RN-SPP",
+                   "127.0.0.1:4564" => "/dev/tty.Sphero-OBG-RN-SPP",
+                   "127.0.0.1:4565" => "/dev/tty.Sphero-GOB-RN-SPP",
+                   "127.0.0.1:4566" => "/dev/tty.Sphero-PYG-RN-SPP",
+                   "127.0.0.1:4567" => "/dev/tty.Sphero-PYG-RN-SPP",
+                   "127.0.0.1:4568" => "/dev/tty.Sphero-PYG-RN-SPP",
+                   "127.0.0.1:4569" => "/dev/tty.Sphero-PYG-RN-SPP"}
+        robots = []
+        SPHEROS.each_key {|p|
+          robots << ConwaySpheroRobot.new(:connections => 
+                                      {:sphero => 
+                                        {:port => p}})
+        }
+
+        ConwaySpheroRobot.work!(robots)
+
