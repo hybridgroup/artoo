@@ -29,6 +29,11 @@ module Artoo
         @device_types << {:name => name}.merge(params)
       end
 
+      def name(new_name = false)
+        @name = new_name if new_name
+        @name
+      end
+
       # The work that needs to be performed
       # @example
       #   work do
