@@ -20,7 +20,7 @@ module Artoo
         end
       end
 
-      def handle_message_events         
+      def handle_message_events
       end
 
     end

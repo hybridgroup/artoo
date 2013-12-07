@@ -6,10 +6,10 @@ module Artoo
   module Commands
     class Install < Commands
       package_name "install"
-      
+
       desc "socat", "Install the socat serial to socket utility program"
       def socat
-        case os 
+        case os
         when :linux
           run("sudo apt-get update && sudo apt-get install socat")
         when :macosx
