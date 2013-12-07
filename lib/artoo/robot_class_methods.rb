@@ -94,7 +94,7 @@ module Artoo
         setup_interrupt(self_write)
         handle_signals(self_read)
       end
-      
+
       def setup_interrupt(self_write)
         Signal.trap("INT") do
           self_write.puts("INT")
@@ -111,7 +111,7 @@ module Artoo
       def start_api
         Celluloid::Actor[:api] = Api::Server.new(self.api_host, self.api_port) if self.use_api
       end
-      
+
       # @return [Boolean] True if test env
       def test?
         ENV["ARTOO_TEST"] == 'true'

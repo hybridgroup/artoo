@@ -17,12 +17,12 @@ module Artoo
           when 'serial'
             run("ls /dev/tty*")
           when 'usb'
-            run("lsusb")            
+            run("lsusb")
           else
             say "ERROR: scan type '#{options[:type]}' not supported!"
           end
         when :macosx
-          run("ls /dev/tty*")          
+          run("ls /dev/tty*")
         else
           say "OS not yet supported..."
         end
@@ -48,11 +48,11 @@ module Artoo
       option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
       def serial(name, port)
         attempts = 1 + options[:retries].to_i
-        
+
         case os
         when :linux
           run("sudo chmod a+rw /dev/#{name}")
-          
+
           while(attempts > 0) do
             run("socat -d -d FILE:/dev/#{name},nonblock,raw,b#{options[:baudrate]},echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
