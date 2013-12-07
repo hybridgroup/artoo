@@ -40,7 +40,7 @@ module Artoo
     # @option params [Collection] :connections
     # @option params [Collection] :devices
     def initialize(params={})
-      @name = params[:name] || "Robot #{random_string}"
+      @name = params[:name] || current_class.name || "Robot #{random_string}"
       @commands = params[:commands] || []
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})

@@ -2,11 +2,14 @@ require 'artoo'
 
 connection :loop
 
+name "Johnny"
+
 work do
   every(3.seconds) do
-    puts "hello"
+    puts "Hello. My name is #{name}."
   end
+
   after(10.seconds) do
-  	puts "wow"
+    puts "Wow."
   end
 end
