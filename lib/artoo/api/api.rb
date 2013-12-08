@@ -21,6 +21,10 @@ module Artoo
       def on_connection(connection)
         while request = connection.request
           dispatch!(connection, request)
+          if request.websocket?
+            connection.detach
+            return 
+          end
         end
       end
 
