@@ -11,12 +11,14 @@
     clear: both
     opacity: 0.94
     margin: 0
+
     +small-screen
       font-size: 23px
       line-height: 27px
       padding: 0
       br
         display: none
+    
     +medium-screen
       font-size: 33px
       line-height: 42px
@@ -27,7 +29,6 @@
     margin: 0
     line-height: 36px
     margin-top: 3px
-
 
     +small-screen
       font-size: 18px
@@ -47,26 +48,31 @@
   .splitter
     display: inline-block
     height: 21px
+    
   +small-screen
     .splitter
       display: block
       margin-bottom: 5px
   
 .cta
-  background: $cta-color
   padding: 10px 20px
   display: inline-block
   margin: 17px 0 0 0
   font-size: 19px
-  color: $cta-text-color
   font-weight: bold
-  &:hover
-    background: $cta-color - 30
-  &:visited
+  &, &:visited, &:active
+    background: $cta-color
     color: $cta-text-color
+  &:hover, &:focus
+    background: $cta-hover-color
+    color: $cta-text-hover-color
   +small-screen
     font-size: 16px
     padding: 8px 15px
+
+.hero
+  a.cta
+    @extend .cta
 
 .catcher
   margin: 0 0 38px 0

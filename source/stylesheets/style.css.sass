@@ -3,7 +3,6 @@
 @import 'coderay'
 
 // Config
-
 $body-bg-color          : #EBFDFF
 $footer-text-color      : #D6E0E6
 
@@ -21,15 +20,15 @@ $hero-link-color        : #FFFBDA
 $hero-link-hover-color  : #FFFFFF
 
 $cta-color              : #7AA75D
-$cta-hover-color        : #599743
-$cta-text-color         : #BD583D
-$cta-text-hover-color   : #FF7E5B
+$cta-hover-color        : $cta-color - 30
+$cta-text-color         : $hero-link-color
+$cta-text-hover-color   : $hero-link-hover-color
 
 $blog-title-color       : #CC3300
 $blog-date-top-color    : #79BEE8
 
 $header-size   : 66px
-$logo-size     : 155px
+$logo-size     : 109px
 
 $small-screen  : 479px
 $medium-screen : 767px
@@ -53,3 +52,9 @@ $big-screen    : 964px
 @import 'elements/hardware'
 @import 'elements/documentation'
 @import 'elements/sphero_colors'
+
+// Custom
+.app-logo a
+  font-size: 56px
+  font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif
+
