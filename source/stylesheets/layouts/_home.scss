@@ -15,6 +15,10 @@
   }
 }
 
+.w {
+  @include outer-container;
+}
+
 .main[role="main"] {
   padding-bottom: 50px;
   .videos {
