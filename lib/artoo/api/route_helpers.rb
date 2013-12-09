@@ -140,10 +140,10 @@ module Artoo
             route!      connection, req
           end
           if resp && !resp.nil?
-            return if req.is_a?(Reel::WebSocket)
+            return if req.websocket?
             status, body = resp
             begin
-              req.respond status, body
+              req.respond status, body 
             rescue Errno::EAGAIN
               retry
             end
