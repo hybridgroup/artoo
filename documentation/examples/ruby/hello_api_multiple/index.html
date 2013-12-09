@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - hello_api_multiple</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: hello_api_multiple</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="example">
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo/robot</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">HelloRobot</span> &lt; <span class="constant">Artoo</span>::<span class="constant">Robot</span>
+        connection <span class="symbol">:loopback1</span>
+        connection <span class="symbol">:loopback2</span>
+        connection <span class="symbol">:loopback3</span>
+        device <span class="symbol">:pinger</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pinger</span>
+        device <span class="symbol">:counter</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:counter</span>
+        device <span class="symbol">:random</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:random</span>
+        device <span class="symbol">:passthru1</span>
+        device <span class="symbol">:passthru2</span>
+
+        api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
+
+        work <span class="keyword">do</span>
+                puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from '</span><span class="char">\1</span><span class="content">name}' attached to API running at </span><span class="char">\1</span><span class="content">api_host}:</span><span class="char">\1</span><span class="content">api_port}...</span><span class="delimiter">"</span></span>
+        <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+robots = []
+<span class="integer">5</span>.times <span class="keyword">do</span> |i|
+        robots &lt;&lt; <span class="constant">HelloRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="char">\1</span><span class="content">i}</span><span class="delimiter">"</span></span>)
+<span class="keyword">end</span>
+
+<span class="constant">HelloRobot</span>.work!(robots)
+sleep
+</pre>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

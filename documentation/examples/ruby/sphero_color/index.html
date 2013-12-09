@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta name="author">
-<title>Documentation</title>
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - sphero_color</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script>
@@ -57,40 +57,26 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Documentation</h1>
-          <h2 class="subtitle">Made by Humans, for Humans.</h2>
+          <h1 class="title">Example: sphero_color</h1>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <ol class="index">
-<li>
-                  <div class="link"><a href="/documentation/getting-started">Getting Started</a></div>
-                  <div class="description">The best way to get going with Artoo.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/platforms">Platforms</a></div>
-                  <div class="description">Artoo has a extensible system for connecting to multiple hardware platforms such as Arduino &amp; ARDrone.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/drivers">Drivers</a></div>
-                  <div class="description">Artoo supports many different hardware devices, from LEDs to ultrasonic rangefinders, to drone flight control.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="http://rubydoc.info/gems/artoo/frames">Generated Documentation</a></div>
-                  <div class="description">YARD Generated Documentation.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/examples">Examples</a></div>
-                  <div class="description">Examples of how to use Artoo with a number of hardware configurations.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/api">API Server</a></div>
-                  <div class="description">The Artoo API Server makes it easy to communicate with your robots using a REST and Websockets-based interface. You can access the Artoo master class and retrieve information about the robots being controlled, and even send them commands.</div>
-                </li>
-              </ol>
-</div>
+          <section class="content full"><div class="example">
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4569</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+work <span class="keyword">do</span>
+  every(<span class="integer">1</span>.seconds) <span class="keyword">do</span>
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
+    sphero.set_color(rand(<span class="integer">255</span>),rand(<span class="integer">255</span>),rand(<span class="integer">255</span>))
+    sphero.roll <span class="integer">20</span>, rand(<span class="integer">360</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+            </div>
           </section>
 </div>
       </div>

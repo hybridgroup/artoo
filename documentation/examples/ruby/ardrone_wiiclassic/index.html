@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - ardrone_wiiclassic</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script>
+      function heart() {
+        var $heart = $(".heart");
+        if($heart.is(":visible")) {
+          $heart.animate({
+            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
+          }, 500, heart);
+        }
+      }
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+          heart();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="artoo-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+              <div class="easter">
+                <div class="heart">♥</div>
+                <a href="http://rubini.us/">Rubinius</a>
+              </div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: ardrone_wiiclassic</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="example">
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.0.43:5556</span><span class="delimiter">'</span></span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">8023</span><span class="delimiter">"</span></span>
+device <span class="symbol">:classic</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:wiiclassic</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:arduino</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+
+<span class="constant">OFFSETS</span> = {
+  <span class="symbol">:ry</span> =&gt; <span class="float">12.0</span>,
+  <span class="symbol">:ly</span> =&gt; <span class="float">27.0</span>,
+  <span class="symbol">:lx</span> =&gt; <span class="float">27.0</span>,
+  <span class="symbol">:rt</span> =&gt; <span class="float">27.0</span>,
+  <span class="symbol">:lt</span> =&gt; <span class="float">12.0</span>
+}
+<span class="instance-variable">@toggle_camera</span> = <span class="integer">0</span>
+
+work <span class="keyword">do</span>
+  on classic, <span class="symbol">:a_button</span> =&gt; proc { drone.take_off }
+  on classic, <span class="symbol">:b_button</span> =&gt; proc { drone.hover }
+  on classic, <span class="symbol">:x_button</span> =&gt; proc { drone.land }
+  on classic, <span class="symbol">:y_button</span> =&gt; proc { 
+    <span class="keyword">unless</span> <span class="instance-variable">@toggle_camera</span>
+      drone.bottom_camera
+      <span class="instance-variable">@toggle_camera</span> = <span class="integer">1</span>
+    <span class="keyword">else</span>
+      drone.front_camera
+      <span class="instance-variable">@toggle_camera</span> = <span class="integer">0</span>
+    <span class="keyword">end</span>
+  }
+  on classic, <span class="symbol">:home_button</span> =&gt; proc { drone.emergency }
+  on classic, <span class="symbol">:start_button</span> =&gt; proc { drone.start }
+  on classic, <span class="symbol">:select_button</span> =&gt; proc { drone.stop }
+
+  on classic, <span class="symbol">:left_joystick</span> =&gt; proc { |*value|
+    pair = value[<span class="integer">1</span>]
+    <span class="keyword">if</span> pair[<span class="symbol">:y</span>] &gt; <span class="integer">0</span>
+      drone.forward(validate_pitch(pair[<span class="symbol">:y</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:ly</span>]))
+    <span class="keyword">elsif</span> pair[<span class="symbol">:y</span>] &lt; <span class="integer">0</span>
+      drone.backward(validate_pitch(pair[<span class="symbol">:y</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:ly</span>]))
+    <span class="keyword">else</span>
+      drone.forward(<span class="float">0.0</span>)
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> pair[<span class="symbol">:x</span>] &gt; <span class="integer">0</span>
+      drone.right(validate_pitch(pair[<span class="symbol">:x</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:lx</span>]))
+    <span class="keyword">elsif</span> pair[<span class="symbol">:x</span>] &lt; <span class="integer">0</span>
+      drone.left(validate_pitch(pair[<span class="symbol">:x</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:lx</span>]))
+    <span class="keyword">else</span>
+      drone.right(<span class="float">0.0</span>)
+    <span class="keyword">end</span>
+  }
+
+  on classic, <span class="symbol">:right_joystick</span> =&gt; proc { |*value|
+    pair = value[<span class="integer">1</span>]
+    <span class="keyword">if</span> pair[<span class="symbol">:y</span>] &gt; <span class="integer">0</span>
+      drone.up(validate_pitch(pair[<span class="symbol">:y</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:ry</span>]))
+    <span class="keyword">elsif</span> pair[<span class="symbol">:y</span>] &lt; <span class="integer">0</span>
+      drone.down(validate_pitch(pair[<span class="symbol">:y</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:ry</span>]))
+    <span class="keyword">else</span>
+      drone.up(<span class="float">0.0</span>)
+    <span class="keyword">end</span>
+  }
+
+  on classic, <span class="symbol">:right_trigger</span> =&gt; proc { |*value|
+    <span class="keyword">if</span> value[<span class="integer">1</span>] &gt; <span class="integer">0</span>
+      drone.turn_right(validate_pitch(value[<span class="integer">1</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:rt</span>]))
+    <span class="keyword">else</span>
+      drone.turn_right(<span class="float">0.0</span>)
+    <span class="keyword">end</span>
+  }
+
+  on classic, <span class="symbol">:left_trigger</span> =&gt; proc { |*value|
+    <span class="keyword">if</span> value[<span class="integer">1</span>] &gt; <span class="integer">0</span>
+      drone.turn_left(validate_pitch(value[<span class="integer">1</span>], <span class="constant">OFFSETS</span>[<span class="symbol">:lt</span>]))
+    <span class="keyword">end</span>
+  }
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">validate_pitch</span>(data, offset)
+  value = data.abs / offset
+  value &gt;= <span class="float">0.1</span> ? (value &lt;= <span class="float">1.0</span> ? value.round(<span class="integer">2</span>) : <span class="float">1.0</span>) : <span class="float">0.0</span>
+<span class="keyword">end</span>
+</pre>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

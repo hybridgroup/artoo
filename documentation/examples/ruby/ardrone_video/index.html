@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta name="author">
-<title>Documentation</title>
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - ardrone_video</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script>
@@ -57,40 +57,36 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Documentation</h1>
-          <h2 class="subtitle">Made by Humans, for Humans.</h2>
+          <h1 class="title">Example: ardrone_video</h1>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><div class="documentation">
-              <ol class="index">
-<li>
-                  <div class="link"><a href="/documentation/getting-started">Getting Started</a></div>
-                  <div class="description">The best way to get going with Artoo.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/platforms">Platforms</a></div>
-                  <div class="description">Artoo has a extensible system for connecting to multiple hardware platforms such as Arduino &amp; ARDrone.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/drivers">Drivers</a></div>
-                  <div class="description">Artoo supports many different hardware devices, from LEDs to ultrasonic rangefinders, to drone flight control.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="http://rubydoc.info/gems/artoo/frames">Generated Documentation</a></div>
-                  <div class="description">YARD Generated Documentation.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/examples">Examples</a></div>
-                  <div class="description">Examples of how to use Artoo with a number of hardware configurations.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/api">API Server</a></div>
-                  <div class="description">The Artoo API Server makes it easy to communicate with your robots using a REST and Websockets-based interface. You can access the Artoo master class and retrieve information about the robots being controlled, and even send them commands.</div>
-                </li>
-              </ol>
-</div>
+          <section class="content full"><div class="example">
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+
+connection <span class="symbol">:videodrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5555</span><span class="delimiter">'</span></span>
+device <span class="symbol">:video</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_video</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:videodrone</span>
+
+work <span class="keyword">do</span>
+  on video, <span class="symbol">:frame</span> =&gt; <span class="symbol">:v_frame</span>
+  drone.start
+  drone.take_off
+
+        after(<span class="integer">25</span>.seconds) { drone.hover.land }
+        after(<span class="integer">30</span>.seconds) { drone.stop }
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">v_frame</span>(*data)
+        <span class="instance-variable">@count</span> ||= <span class="integer">0</span>
+        <span class="instance-variable">@count</span> += <span class="integer">1</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Frame# </span><span class="char">\1</span><span class="content">@count} </span><span class="char">\1</span><span class="content">data[1].size} bytes</span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
+</pre>
+            </div>
           </section>
 </div>
       </div>

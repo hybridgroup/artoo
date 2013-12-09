@@ -66,18 +66,21 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/spark.jpg"><p>The Core contains a Wi-Fi module paired with a powerful microcontroller that acts as the "connected brain" for your product. Once it's connected to your Wi-Fi network, it automatically connects with the Spark Cloud and holds open a connection so it can be accessed at any time.</p>
-                <p>
-                  For more info about the spark platform click
-                  <a target="blank" href="https://www.spark.io/">here</a>.
+              <section class="intro"><img class="display" src="/images/spark.jpg"><p>
+                  This repository contains the Artoo
+                  <a target="blank" href="http://artoo.io/">(http://artoo.io/)</a>
+                  adaptor for the Spark core device
+                  <a target="blank" href="http://spark.io">(http://spark.io) </a>
+                  using the built-in Tinker protocol.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
                 <p>
-                  Installing artoo with ardrone support is pretty easy using ruby gems.
+                  Installing artoo with spark support is pretty easy.
                 </p>
                 <pre class="CodeRay">gem install artoo-spark
 </pre>
-                <h2>How to use</h2>
+                <p>You will need to have a Spark device, and an access token from a registered Spark account.</p>
+                <h2>Using</h2>
                 <p>This small program lets you turn on or off a LED for every 1 sec.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -90,6 +93,8 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
+                <h2>Connecting to Spark</h2>
+                <p>Once your Spark is connected via Wifi, you're done. It should keep itself connected, and your Artoo program should be able to connect to it via the Internet, using the access token that Spark has given you.</p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>
                   Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
