@@ -1,5 +1,5 @@
 .container, .w {
-  @include outer-container;
+  width: $big-screen;
   margin: 0 auto;
   @include medium-screen($medium-screen, "") {
     padding: 0 15px;
@@ -10,12 +10,9 @@
   }
 }
 
-.w {
-  @include outer-container;
-}
-
 .main[role="main"] {
   padding-bottom: 50px;
+  @include outer-container;
   .videos {
     iframe, object {
       width: 600px;
@@ -26,7 +23,6 @@
     }
   }
   .content {
-    width: 70%;
     &.full {
       width: 100%;
       clear: both;
@@ -40,12 +36,21 @@
     }
   }
   .aside.right {
-    width: 30%;
-    float: right;
+    @include span-columns(3);
     padding-top: 0px;
     text-align: right;
+    img {
+      width: 100%;
+      margin-top: 20px;
+    }
+      
   }
-  section {
-    @include margin-not-last-child;
+  section.content {
+    .index_content {
+      @include margin-not-last-child;
+      @include span-columns(9);
+    }
   }
+    
+      
 }
