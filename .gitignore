@@ -15,3 +15,6 @@
 
 .DS_Store
 .rvmrc
+
+# Used for the import_examples script
+/.artoo
