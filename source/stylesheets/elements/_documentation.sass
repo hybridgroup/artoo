@@ -44,6 +44,12 @@
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace
 .colors
   @include span-columns(3)
+  @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+    @include span-columns(3)
+    p
+      font-size: 10px
+  @media only screen and (max-width: $medium-screen)
+    @include span-columns(12)
   dt
     font-weight: bold
     padding: 5px
