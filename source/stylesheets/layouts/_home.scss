@@ -1,10 +1,5 @@
-.container {
-  position: relative;
-  overflow: hidden;
-}
-
 .container, .w {
-  width: $big-screen;
+  @include outer-container;
   margin: 0 auto;
   @include medium-screen($medium-screen, "") {
     padding: 0 15px;

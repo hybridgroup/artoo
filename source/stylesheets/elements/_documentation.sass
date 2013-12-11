@@ -1,9 +1,9 @@
 .repository
   margin-right: 10px
 .documentation
+  @include span-columns(12)
   .index
     padding: 0 0 0 8px
-
     li
       margin: 8px 0
   .link
@@ -18,8 +18,11 @@
     float: right
     border: 1px solid rgba($hero-color, 0.14)
     margin: 0 0 19px 20px
-  .hardware .devices
-    text-align: left
+.hardware 
+  @include span-columns(12)
+  .devices
+    text-align: center
+    margin: 5px 0
 .clear
   clear: both
 .image-size-300
@@ -40,9 +43,7 @@
   li
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace
 .colors
-  width: 23%
-  float: left
-
+  @include span-columns(3)
   dt
     font-weight: bold
     padding: 5px

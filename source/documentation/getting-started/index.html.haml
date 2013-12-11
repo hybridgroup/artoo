@@ -72,7 +72,6 @@ layout: page
   %h2 Code to control robots with Artoo
 
   %h3 Example: Arduino with LED and a button
-
   :markdown
         :::ruby
         # ./my_robot.rb
@@ -103,6 +102,7 @@ layout: page
           after(25.seconds) { drone.hover.land }
           after(30.seconds) { drone.stop }
         end
+
   %h3 Modular
   %p You can also write more modular class-oriented code, that allows you to control swarms of robots:
   :markdown
@@ -130,6 +130,7 @@ layout: page
         }
 
         SpheroRobot.work!(robots)
+
   %p Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+
   %p Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm
   :markdown
