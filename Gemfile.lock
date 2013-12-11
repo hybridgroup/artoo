@@ -112,12 +112,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   coderay
   middleman (= 3.1)
   middleman-blog
   middleman-gh-pages
   middleman-neat
-  neat
   rack-codehighlighter
   rake
   therubyracer
