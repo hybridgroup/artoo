@@ -1,0 +1,25 @@
+---
+layout: page
+title: Artoo Example - firmata
+page_title: "Example: firmata"
+author: The Hybrid Group
+description: A Artoo code example
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :board
+        device :led, :driver => :led, :pin => 13
+
+        work do
+          puts "Firmware name \1board.firmware_name}"
+          puts "Firmata version \1board.version}"
+          every 1.second do
+            led.toggle
+          end
+        end
+

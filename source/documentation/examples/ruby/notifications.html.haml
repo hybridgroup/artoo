@@ -1,0 +1,21 @@
+---
+layout: page
+title: Artoo Example - notifications
+page_title: "Example: notifications"
+author: The Hybrid Group
+description: A Artoo code example
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :loop
+        device :counter, :driver => :counter
+
+        work do
+          puts 'Starting...'
+          on counter, :update => proc {puts 'I am awesome!'}
+        end
+

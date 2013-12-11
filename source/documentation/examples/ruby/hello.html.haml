@@ -1,0 +1,23 @@
+---
+layout: page
+title: Artoo Example - hello
+page_title: "Example: hello"
+author: The Hybrid Group
+description: A Artoo code example
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :loop
+
+        work do
+          every(3.seconds) do
+            puts "hello"
+          end
+          after(10.seconds) do
+          	puts "wow"
+          end
+        end
