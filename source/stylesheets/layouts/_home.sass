@@ -11,6 +11,7 @@
   @include outer-container
 
   .videos
+    @include outer-container
     .video
       @include span-columns(6)
       margin: .5%
@@ -26,6 +27,17 @@
         @include span-columns(12)
         iframe, object
           height: 240px
+    .video_index
+      @include span-columns(10)
+      iframe, object
+        width: 100%
+        height: 400px
+      @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) 
+        iframe, object
+          height: 300px
+      @media only screen and (max-width: $medium-screen)
+        iframe, object
+          height: 180px
 
   .content
     &.full
