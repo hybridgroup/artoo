@@ -27,15 +27,6 @@
   }
 }
 
-.hardware {
-  @include span-columns(12);
-  .devices {
-    text-align: center;
-    margin: 5px 0;
-  }
-}
-  
-
 .clear {
   clear: both;
 }
