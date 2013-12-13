@@ -36,16 +36,24 @@
         }
       }
     }
+    .video_index {
+      @include span-columns(10)
+      iframe, object {
+        width: 100%
+        height: 400px
+      }
+      @media only screen and (min-width: $medium-screen) and (max-width: $big-screen)  {
+        iframe, object {
+          height: 300px
+        }
+      }
+      @media only screen and (max-width: $medium-screen) {
+        iframe, object {
+          height: 180px
+        }
+      }
   }
-  .videos {
-    iframe, object {
-      width: 600px;
-      height: 400px;
-      @include margin-not-last-child;
-      @include medium-screen(420px, 236px);
-      @include small-screen(290px, 169px);
-    }
-  }
+  
   .content {
     &.full {
       width: 100%;
