@@ -1,6 +1,6 @@
 body
-  background-color: $blue
-  background-image: url('../images/bg-artoo.png')
+  background-color: $body-bg-color
+  background-image: url($body-background-src)
   background-repeat: no-repeat
   background-position: top
 
@@ -9,19 +9,22 @@ body
   margin-bottom: -38px
 
 h3, h4, h5, ul, ol
-  color: #3D4A52
+  color: $lesser-title-color
 
 a
   &, &:visited
-    color: #4DA7E0
+    color: $link-color
+  &:hover, &:focus
+    color: $link-hover-color
+
 pre
   @include medium-screen-pre
 
-.anchors-blue
+.hero-anchors
   &, &:active, &:visited
-    color: #FFFBDA
-  &:hover
-    color: #fff
+    color: $hero-link-color
+  &:hover, &:focus
+    color: $hero-link-hover-color
 
 .notice
   background: #fff
