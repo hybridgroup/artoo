@@ -10,6 +10,7 @@
 <title>Artoo</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script>
       function heart() {
         var $heart = $(".heart");
@@ -35,7 +36,7 @@
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
-            <h1 class="artoo-logo">
+            <h1 class="app-logo">
               <a href="/">artoo</a>
             </h1>
             <span class="subtitle">
@@ -90,46 +91,62 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <div class="aside right">
-            <img src="images/artoo.png">
-</div>
-          <section class="content"><h2 id="about">About</h2>
-            <p>Artoo is a micro-framework for robotics.</p>
-            
-            <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
-            
-            <p>With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.</p>
-            
-            <p>Want to use Javascript on Robots? Check out our sister project Cylon (<a href="http://cylonjs.com">http://cylonjs.com</a>).</p>
-            
-            <p>Want to use the Go programming language to power your robots? Check out our sister project Gobot (<a href="http://gobot.io">http://gobot.io</a>).</p>
-            <h2 id="meet-the-code">Meet The Code</h2>
-            <p>Artoo’s simple code makes telling robots what to do incredibly simple and fun.</p>
-            
-            <p>All you need to get started is the <code>artoo</code> gem</p>
-            
-            <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+          <section class="content"><div class="index_content">
+              <h2>About</h2>
+              <p>Artoo is a micro-framework for robotics.</p>
+              <p>It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.</p>
+              <p>With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.</p>
+              <p>
+                Want to use Javascript on Robots? Check out our sister project Cylon
+                <a href="http://cylonjs.com">(http://cylonjs.com).</a>
+              </p>
+              <p>
+                Want to use the Go programming language to power your robots? Check out our sister project Gobot
+                <a href="http://gobot.io">(http://gobot.io).</a>
+              </p>
+              <h2>Meet The Code</h2>
+              <p>Artoo’s simple code makes telling robots what to do incredibly simple and fun.</p>
+              <p>All you need to get started is the <code>artoo</code> gem</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 </pre>
-            
-            <p>Then hook it up to your robot (in this case, a <a href="http://gosphero.com">Sphero</a>):</p>
-            
-            <pre class="CodeRay">connection <span class="symbol">:sphero</span>, <span class="key">adaptor</span>: <span class="symbol">:sphero</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">4560</span><span class="delimiter">'</span></span>
+              <p>
+                Then hook it up to your robot (in this case, a
+                <a href="http://gosphero.com">Sphero :</a>
+              </p>
+              <pre class="CodeRay">connection <span class="symbol">:sphero</span>, <span class="key">adaptor</span>: <span class="symbol">:sphero</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">4560</span><span class="delimiter">'</span></span>
 device <span class="symbol">:sphero</span>, <span class="key">driver</span>: <span class="symbol">:sphero</span>
 </pre>
-            
-            <p>And tell it what to do!</p>
-            
-            <pre class="CodeRay">work <span class="keyword">do</span>
+              <p>And tell it what to do!</p>
+              <pre class="CodeRay">work <span class="keyword">do</span>
   every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
     puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
     sphero.roll <span class="integer">60</span>, rand(<span class="integer">360</span>)
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
-            <section class="videos"><h2>Artoo in Action</h2>
-              <iframe allowfullscreen="true" frameborder="0" src="http://www.youtube.com/embed/ciSs9x_Ogls"></iframe>
-            </section></section>
+              <h2>API</h2>
+              <p>Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.</p>
+              <p>To activate the API, use the <code>api</code> command like this:</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:loop</span>
+device <span class="symbol">:passthru</span>
+api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
+
+work <span class="keyword">do</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
+</pre>
+              <section class="videos"><div class="video_index">
+                  <h2>Artoo in Action</h2>
+                  <iframe allowfullscreen="true" frameborder="0" src="http://www.youtube.com/embed/ciSs9x_Ogls"></iframe>
+                </div>
+              </section>
 </div>
+          </section><div class="aside right">
+            <img src="images/artoo.png">
+</div>
+        </div>
       </div>
       <section class="catcher"><div class="w">
           <h3 class="phrase">Ready to build the next big thing with Ruby?</h3>

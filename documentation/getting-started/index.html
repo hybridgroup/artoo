@@ -10,6 +10,7 @@
 <title>Artoo Platforms</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script>
       function heart() {
         var $heart = $(".heart");
@@ -35,7 +36,7 @@
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
-            <h1 class="artoo-logo">
+            <h1 class="app-logo">
               <a href="/">artoo</a>
             </h1>
             <span class="subtitle">
@@ -194,6 +195,50 @@ work <span class="keyword">do</span>
   after(<span class="integer">30</span>.seconds) { drone.stop }
 <span class="keyword">end</span>
 </pre>
+              <h3>Modular</h3>
+              <p>You can also write more modular class-oriented code, that allows you to control swarms of robots:</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo/robot</span><span class="delimiter">'</span></span>
+
+<span class="constant">SPHEROS</span> = [<span class="string"><span class="delimiter">"</span><span class="content">4567</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4568</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4569</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4570</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4571</span><span class="delimiter">"</span></span>]
+
+<span class="keyword">class</span> <span class="class">SpheroRobot</span> &lt; <span class="constant">Artoo</span>::<span class="constant">Robot</span>
+  connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>
+  device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+  work <span class="keyword">do</span>
+    every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+      sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+robots = []
+<span class="constant">SPHEROS</span>.each {|p|
+  robots &lt;&lt; <span class="constant">SpheroRobot</span>.new(<span class="symbol">:connections</span> =&gt; 
+                              {<span class="symbol">:sphero</span> =&gt; 
+                                {<span class="symbol">:port</span> =&gt; p}})
+}
+
+<span class="constant">SpheroRobot</span>.work!(robots)
+</pre>
+              <p>Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+</p>
+              <p>Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm</p>
+              <pre class="CodeRay">rvm get head &amp;&amp; rvm install rbx-2.1.1 --1.9
+</pre>
+              <p>
+                Artoo is conceptualy influenced by
+                <a href="https://github.com/sinatra/sinatra">Sinatra</a>
+                as well as borrowing some code from it.
+              </p>
+              <p>Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency.</p>
+              <p>
+                To a large extent, this is due to being built on top of
+                <a href="https://github.com/celluloid/celluloid">Celluloid</a>
+                ,
+                <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
+                , and
+                <a href="https://github.com/celluloid/reel">Reel.</a>
+              </p>
             </section><section class="installation"><h3>Installation</h3>
               <pre class="CodeRay">gem install artoo
 </pre>
@@ -208,6 +253,153 @@ gem install artoo-ardrone
               <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
               <h3>Running your robot:</h3>
               <pre class="CodeRay">ruby myrobot.rb
+</pre>
+              <h3>API:</h3>
+              <p>Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.</p>
+              <p>To activate the API, use the <code>api</code> command like this:</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:loop</span>
+device <span class="symbol">:passthru</span>
+api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
+
+work <span class="keyword">do</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
+</pre>
+              <p>Once the robot or group is working, you can view the main API page at the host and port specified.</p>
+              <h3>Test-Driven Robotics:</h3>
+              <p>Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.</p>
+              <p>Here is an example that uses Minitest, Mocha, and Timecop:</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">./test_helper</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">./test_robot</span><span class="delimiter">'</span></span>
+
+describe <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+  let(<span class="symbol">:robot</span>) { <span class="constant">Artoo</span>::<span class="constant">MainRobot</span>.new }
+  let (<span class="symbol">:start</span>) { <span class="constant">Time</span>.now }
+
+  before <span class="symbol">:each</span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.travel(start)
+    robot.work
+  <span class="keyword">end</span>
+
+  after <span class="symbol">:each</span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.return
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">has work to do every 3 seconds</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    robot.has_work?(<span class="symbol">:every</span>, <span class="integer">3</span>.seconds).wont_be_nil
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">receives collision event</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    robot.expects(<span class="symbol">:contact</span>)
+    robot.sphero.publish(<span class="string"><span class="delimiter">"</span><span class="content">collision</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">clunk</span><span class="delimiter">"</span></span>)
+    sleep <span class="float">0.05</span>
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">must roll every 3 seconds</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.travel(start + <span class="integer">3</span>.seconds) <span class="keyword">do</span>
+      robot.sphero.expects(<span class="symbol">:roll</span>)
+      sleep <span class="float">0.05</span>
+    <span class="keyword">end</span>
+    <span class="constant">Timecop</span>.travel(start + <span class="integer">6</span>.seconds) <span class="keyword">do</span>
+      robot.sphero.expects(<span class="symbol">:roll</span>)
+      sleep <span class="float">0.05</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+              <p>to describe the following Sphero robot:</p>
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4560</span><span class="delimiter">'</span></span>
+device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+
+<span class="keyword">def</span> <span class="function">contact</span>(*args)
+  <span class="instance-variable">@contacts</span> ||= <span class="integer">0</span>
+  <span class="instance-variable">@contacts</span> += <span class="integer">1</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Contact </span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
+
+work <span class="keyword">do</span>
+  on sphero, <span class="symbol">:collision</span> =&gt; <span class="symbol">:contact</span>
+
+  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+    sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+              <p>The repo with full example of using Artoo for test driven robotics is located at</p>
+              <p>
+                <a href="https://github.com/hybridgroup/artoo-test-example">https://github.com/hybridgroup/artoo-test-example</a>
+              </p>
+              <h3>CLI</h3>
+              <p>Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
+              <pre class="CodeRay">$ artoo
+Commands:
+  artoo connect SUBCOMMAND ...ARGS   # Connects to device
+  artoo console ROBOT                # Run a robot using the Robi console
+  artoo generate SUBCOMMAND ...ARGS  # Generates a new robot or adaptor
+  artoo help [COMMAND]               # Describe available commands or one specific command
+  artoo install SUBCOMMAND ...ARGS   # Installs utility programs
+  artoo start ROBOT                  # Run a robot
+  artoo version                      # Displays the current version
+</pre>
+              <h3>Connect:</h3>
+              <p>Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:</p>
+              <pre class="CodeRay">$ artoo connect
+connect commands:
+  artoo connect bind [ADDRESS] [NAME]  # Binds a Bluetooth device to some connected hardware
+  artoo connect help [COMMAND]         # Describe subcommands or one specific subcommand
+  artoo connect scan                   # Scan for connected devices
+  artoo connect serial [NAME] [PORT]   # Connect a serial device to a TCP socket using socat
+</pre>
+              <p>You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!</p>
+              <h3>Console:</h3>
+              <p>
+                Artoo includes Robi, a console based on
+                <a href="http://pryrepl.org/">Pry</a>
+                to allow you to interactively debug and control your robot.
+              </p>
+              <pre class="CodeRay">$ artoo console ./examples/hello.rb 
+ run  robi ./examples/hello.rb from "."
+I, [2013-07-03T17:11:35.793913 #5527]  INFO -- : Registering connection 'loop'...
+I, [2013-07-03T17:11:35.794939 #5527]  INFO -- : Preparing work...
+robi&gt; start
+Starting main robot...
+I, [2013-07-03T17:11:48.950888 #5527]  INFO -- : Initializing connection loop...
+I, [2013-07-03T17:11:48.955804 #5527]  INFO -- : Starting work...
+I, [2013-07-03T17:11:48.956152 #5527]  INFO -- : Connecting to 'loop' on port '#&lt;Artoo::Port:0xfea0&gt;'...
+robi&gt; list
+#&lt;Artoo::MainRobot:0x100c0&gt;
+robi&gt; hello
+hello
+hello
+robi&gt; stop
+Stopping robots...
+robi&gt; exit
+D, [2013-07-03T17:12:04.413060 #5527] DEBUG -- : Terminating 7 actors...
+D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
+</pre>
+              <h3>Generator</h3>
+              <p>Want to integrate a hardware device we don't have Artoo support for yet? There's a generator for that! You can easily generate a new skeleton Artoo adaptor to help you get started. Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.</p>
+              <pre class="CodeRay">$ artoo generate adaptor awesome_device
+Creating artoo-awesome_device adaptor...
+      create  artoo-awesome_device
+       exist  artoo-awesome_device
+      create  artoo-awesome_device/Gemfile
+      create  artoo-awesome_device/LICENSE
+      create  artoo-awesome_device/README.md
+      create  artoo-awesome_device/Rakefile
+      create  artoo-awesome_device/artoo-awesome_device.gemspec
+      create  artoo-awesome_device/lib/artoo-awesome_device.rb
+      create  artoo-awesome_device/lib/artoo-awesome_device/version.rb
+      create  artoo-awesome_device/lib/artoo/adaptors/awesome_device.rb
+      create  artoo-awesome_device/lib/artoo/drivers/awesome_device.rb
+      create  artoo-awesome_device/test/adaptors/awesome_device_adaptor_test.rb
+      create  artoo-awesome_device/test/drivers/awesome_device_driver_test.rb
+      create  artoo-awesome_device/test/test_helper.rb
+Done!
 </pre>
             </section><section class="contributing"><h2>Contributing</h2>
               <p>
