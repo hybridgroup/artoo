@@ -7,8 +7,9 @@
     %meta{:content => current_page.data.author, :name => "author"}
     %title= current_page.data.title
     %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
-    %link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700")
-    %link(rel="stylesheet" href="/stylesheets/style.css")
+    %link{rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700"}
+    %link{href: "/stylesheets/style.css", rel: "stylesheet"}
+    %link{href: '/favicon.ico', rel: 'shortcut icon', type: 'image/gif' }
     :javascript
       function heart() {
         var $heart = $(".heart");
@@ -33,7 +34,7 @@
       .w
         %header.app-header{role: "banner"}
           .display
-            %h1.artoo-logo
+            %h1.app-logo
               %a{href: '/'} artoo
             %span.subtitle
               .main Ruby on Robots
