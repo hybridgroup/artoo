@@ -171,7 +171,7 @@ class ExampleImporter
         body = file[:content]
 
         # escape interpolation as to not confuse HAML
-        body.gsub! /(#\{)/, '\\\1'
+        body.gsub! /(#\{)/, "\\\#{"
 
         # indent by eight spaces
         body.gsub! /^(.+)/, '        \1'
