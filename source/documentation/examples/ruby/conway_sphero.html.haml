@@ -53,7 +53,7 @@ description: A Artoo code example
           def birthday
             @age += 1
             
-            puts "Happy birthday, \1name}, you are \1@age} and had \1@contacts} contacts."
+            puts "Happy birthday, \#{name}, you are \#{@age} and had \#{@contacts} contacts."
             #return if @age <= 3
             death unless @contacts >= 6 && @contacts < 11
             reset_contacts

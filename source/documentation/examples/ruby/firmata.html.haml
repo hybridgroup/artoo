@@ -16,8 +16,8 @@ description: A Artoo code example
         device :led, :driver => :led, :pin => 13
 
         work do
-          puts "Firmware name \1board.firmware_name}"
-          puts "Firmata version \1board.version}"
+          puts "Firmware name \#{board.firmware_name}"
+          puts "Firmata version \#{board.version}"
           every 1.second do
             led.toggle
           end

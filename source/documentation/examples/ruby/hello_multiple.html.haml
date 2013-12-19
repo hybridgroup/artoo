@@ -16,17 +16,17 @@ description: A Artoo code example
           
         	work do
         	  every(3.seconds) do
-        	    puts "Hello from \1name}"
+        	    puts "Hello from \#{name}"
         	  end
         	  after(10.seconds) do
-        	  	puts "\1name} is alive!" if name == 'Number 5'
+        	  	puts "\#{name} is alive!" if name == 'Number 5'
         	  end
         	end
         end
 
         robots = []
         5.times do |i|
-        	robots << HelloRobot.new(:name => "Number \1i}")
+        	robots << HelloRobot.new(:name => "Number \#{i}")
         end
 
         HelloRobot.work!(robots)

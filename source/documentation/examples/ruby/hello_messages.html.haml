@@ -19,21 +19,21 @@ description: A Artoo code example
           end
 
           def say(greeting)
-            friend_name = "Number \1rand(5)}"
-            puts "Saying '\1greeting}' to \1friend_name}"
+            friend_name = "Number \#{rand(5)}"
+            puts "Saying '\#{greeting}' to \#{friend_name}"
             Artoo::Master.robot(friend_name).hello(greeting, current_instance)
           end
         end
 
         class MessageRobot < Artoo::Robot
           def hello(greeting, sender)
-            puts "'\1sender.name}' said '\1greeting}' to \1name}"
+            puts "'\#{sender.name}' said '\#{greeting}' to \#{name}"
           end
         end
 
         robots = []
         5.times do |i|
-          robots << MessageRobot.new(:name => "Number \1i}")
+          robots << MessageRobot.new(:name => "Number \#{i}")
         end
 
         robots << GreeterRobot.new(:name => "Greeter")

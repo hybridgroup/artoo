@@ -24,13 +24,13 @@ description: A Artoo code example
         	api :host => '127.0.0.1', :port => '8080'
 
         	work do
-        		puts "Hello from '\1name}' attached to API running at \1api_host}:\1api_port}..."
+        		puts "Hello from '\#{name}' attached to API running at \#{api_host}:\#{api_port}..."
         	end
         end
 
         robots = []
         5.times do |i|
-        	robots << HelloRobot.new(:name => "Number \1i}")
+        	robots << HelloRobot.new(:name => "Number \#{i}")
         end
 
         HelloRobot.work!(robots)
