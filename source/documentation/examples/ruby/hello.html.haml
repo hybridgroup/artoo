@@ -13,11 +13,15 @@ description: A Artoo code example
 
         connection :loop
 
+        name "Johnny"
+
         work do
           every(3.seconds) do
-            puts "hello"
+            puts "Hello. My name is \1name}."
           end
+
           after(10.seconds) do
-          	puts "wow"
+            puts "Wow."
           end
         end
+

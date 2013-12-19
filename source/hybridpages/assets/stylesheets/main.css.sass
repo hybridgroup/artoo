@@ -1,0 +1,69 @@
+@import 'mixins'
+@import 'barebones'
+@import 'coderay'
+@import 'bourbon'
+@import "neat"
+
+// Config
+$body-bg-color          : #EBFDFF
+$footer-text-color      : #D6E0E6
+
+$link-color             : #4DA7E0
+$link-hover-color       : #1A74AD
+
+$title-color            : #BC2A1B
+$lesser-title-color     : #3D4A52
+$header-subtitle-color  : #505252
+
+$hero-color             : #277DAC
+$hero-title-color       : #F1F7FA
+$hero-subtitle-color    : #BFD5E2
+$hero-link-color        : #FFFBDA
+$hero-link-hover-color  : #FFFFFF
+
+$cta-color              : #7AA75D
+$cta-hover-color        : $cta-color - 30
+$cta-text-color         : $hero-link-color
+$cta-text-hover-color   : $hero-link-hover-color
+
+$blog-title-color       : #CC3300
+$blog-date-top-color    : #79BEE8
+
+$doc-description-color:  #808080
+
+$social-catcher-background-color: #FDFCF5
+
+$header-size   : 66px
+$logo-size     : 109px
+
+$small-screen  : 479px
+$medium-screen : 767px
+$big-screen    : 964px
+
+//URL SRC
+$body-background-src: '../images/bg-artoo.png'
+$header-logo-src: '/images/logo.png'
+
+//Page Font
+$page-title-font: "Montserrat", sans-serif
+
+// Partials
+@import 'shared/base'
+@import 'shared/headers'
+@import 'shared/footers'
+@import 'shared/coderay'
+
+// Pages
+@import 'layouts/home'
+@import 'layouts/blog'
+@import 'layouts/hardware'
+
+// Pages
+@import 'elements/home'
+@import 'elements/blog'
+@import 'elements/page'
+@import 'elements/hardware'
+@import 'elements/documentation'
+@import 'elements/sphero_colors'
+
+

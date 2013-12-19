@@ -1,106 +1,107 @@
 ---
+page_title_show: true
 title: Artoo - Wii Classic Controller Driver
 author: The Hybrid Group
 page_title: Wii Classic Controller
 page_subtitle: Driver
-layout: page
+layout: documentation
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/wii-classic-controller.jpg", class: "display"
-    %p
-      Allows user to use a Nintendo Wii Classic Controller via i2c interface
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %h3 For Arduino:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :wiiclassic, :driver => :wiiclassic, :connection :arduino
+%section.intro
+  =image_tag "/images/wii-classic-controller.jpg", class: "display"
+  %p
+    Allows user to use a Nintendo Wii Classic Controller via i2c interface
 
-    %h3 For Digispark:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
-          device :wiiclassic, :driver => :wiiclassic, :connection :digispark
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :wiiclassic, :driver => :wiiclassic, :connection :arduino
 
-  %section.public-methods
-    %h2 Events:
+  %h3 For Digispark:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :wiiclassic, :driver => :wiiclassic, :connection :digispark
 
-    %dl.methods 
-      %dt a_button
-      %dd Get's triggered every interval amount of time if the a button is pressed.
+%section.public-methods
+  %h2 Events:
 
-      %dt b_button
-      %dd Get's triggered every interval amount of time if the b button is pressed.
+  %dl.methods 
+    %dt a_button
+    %dd Get's triggered every interval amount of time if the a button is pressed.
 
-      %dt x_button
-      %dd Get's triggered every interval amount of time if the x button is pressed.
+    %dt b_button
+    %dd Get's triggered every interval amount of time if the b button is pressed.
 
-      %dt y_button
-      %dd  Get's triggered every interval amount of time if the y button is pressed.
-      
-      %dt home_button
-      %dd Get's triggered every interval amount of time if the home button is pressed.
+    %dt x_button
+    %dd Get's triggered every interval amount of time if the x button is pressed.
 
-      %dt select_button
-      %dd Get's triggered every interval amount of time if the select button (-) is pressed.
+    %dt y_button
+    %dd  Get's triggered every interval amount of time if the y button is pressed.
+    
+    %dt home_button
+    %dd Get's triggered every interval amount of time if the home button is pressed.
 
-      %dt start_button
-      %dd Get's triggered every interval amount of time if the start button (+) is pressed.
+    %dt select_button
+    %dd Get's triggered every interval amount of time if the select button (-) is pressed.
 
-      %dt right_trigger
-      %dd Get's triggered every interval amount of time if the right trigger button is pressed, makes right trigger value available.
-      
-      %dt left_trigger
-      %dd Get's triggered every interval amount of time if the left trigger button is pressed, makes left trigger value available.
+    %dt start_button
+    %dd Get's triggered every interval amount of time if the start button (+) is pressed.
 
-      %dt left_joystick
-      %dd 
-        :markdown
-          Get's triggered every "interval" amount of time if a left joystick event occured, you can access values `x`, `y`.
+    %dt right_trigger
+    %dd Get's triggered every interval amount of time if the right trigger button is pressed, makes right trigger value available.
+    
+    %dt left_trigger
+    %dd Get's triggered every interval amount of time if the left trigger button is pressed, makes left trigger value available.
 
-      %dt right_joystick
-      %dd  
-        :markdown
-          Get's triggered every "interval" amount of time if a right joystick event occured, you can access values `x`, `y`.
+    %dt left_joystick
+    %dd 
+      :markdown
+        Get's triggered every "interval" amount of time if a left joystick event occured, you can access values `x`, `y`.
 
-    %h3 How to use events and call them on your drivers
-    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
-    :markdown
-          :::ruby
-          on wiiclassic, :a_button => proc { puts "a button pressed!" }
+    %dt right_joystick
+    %dd  
+      :markdown
+        Get's triggered every "interval" amount of time if a right joystick event occured, you can access values `x`, `y`.
 
-  %section.how-to
-    %h2 How to use
-    %h3 Example using a Nintendo Wii Classic Controller comming soon.
-    :markdown
-          :::ruby
-          require 'artoo'
+  %h3 How to use events and call them on your drivers
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on wiiclassic, :a_button => proc { puts "a button pressed!" }
 
-          connection :arduino, :adaptor => :firmata, :port => "127.0.0.1:8023"
-          device :wiiclassic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
+%section.how-to
+  %h2 How to use
+  %h3 Example using a Nintendo Wii Classic Controller comming soon.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-          work do
-            on wiiclassic, :a_button => proc { puts "c button pressed!" }
-            on wiiclassic, :b_button => proc { puts "z button pressed!" }
-            on wiiclassic, :left_joystick => proc { |*value|
-              puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
-            }
-          end
+        connection :arduino, :adaptor => :firmata, :port => "127.0.0.1:8023"
+        device :wiiclassic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
-  %section.circuit
-    %h2 Circuit and Schematic
-    %p
-      Coming soon...
+        work do
+          on wiiclassic, :a_button => proc { puts "c button pressed!" }
+          on wiiclassic, :b_button => proc { puts "z button pressed!" }
+          on wiiclassic, :left_joystick => proc { |*value|
+            puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
+          }
+        end
 
-  %section.compatability.hardware
-    %h2 Works with:
-    .devices
-      = partial "documentation/partials/arduino"
-      = partial "documentation/partials/beaglebone"
-      = partial "documentation/partials/digispark"
-      = partial "documentation/partials/raspberry-pi"
+%section.circuit
+  %h2 Circuit and Schematic
+  %p
+    Coming soon...
+
+%section.compatability.hardware
+  %h2 Works with:
+  .devices
+    = partial "documentation/partials/arduino"
+    = partial "documentation/partials/beaglebone"
+    = partial "documentation/partials/digispark"
+    = partial "documentation/partials/raspberry-pi"

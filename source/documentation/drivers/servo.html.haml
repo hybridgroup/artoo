@@ -1,102 +1,103 @@
 ---
+page_title_show: true
 title: Artoo - Servo Driver
 author: The Hybrid Group
 page_title: Servo
 page_subtitle: Driver
-layout: page
+layout: documentation
 ---
-.documentation
-  %section.intro
-    = image_tag "/images/servo.jpg", class: "display"
-    %p
-      Provides an interface for making servos easy to work and interact with from Artoo.
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %h3 For Arduino:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
+%section.intro
+  = image_tag "/images/servo.jpg", class: "display"
+  %p
+    Provides an interface for making servos easy to work and interact with from Artoo.
 
-    %h3 For Digispark:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
-          device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-  %section.public-methods
-    %h2 Commands:
+  %h3 For Digispark:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-    %dl.methods 
-      %dt move(angle) → true | nil
-      %dd 
-        :markdown
-          Moves the servo to the specified angle, angle must be an integer value between `0` and `180`.
+%section.public-methods
+  %h2 Commands:
 
-      %dt min
-      %dd 
-        :markdown
-          Moves the servo to the angle = `0` position.
-      
-      %dt max
-      %dd 
-        :markdown
-          Moves the servo to the angle = `180` position.
+  %dl.methods 
+    %dt move(angle) → true | nil
+    %dd 
+      :markdown
+        Moves the servo to the specified angle, angle must be an integer value between `0` and `180`.
 
-      %dt center
-      %dd 
-        :markdown
-          Moves the servo to the angle = `90` position.
+    %dt min
+    %dd 
+      :markdown
+        Moves the servo to the angle = `0` position.
+    
+    %dt max
+    %dd 
+      :markdown
+        Moves the servo to the angle = `180` position.
 
-      %dt current_angle → integer_value (0 - 180)
-      %dd 
-        :markdown
-          Returns the current angle of the servo, an integer value between `0` and `180`.
+    %dt center
+    %dd 
+      :markdown
+        Moves the servo to the angle = `90` position.
+
+    %dt current_angle → integer_value (0 - 180)
+    %dd 
+      :markdown
+        Returns the current angle of the servo, an integer value between `0` and `180`.
 
 
-  %section.how-to
-    %h2 How to use
-    %h3 Example moves a servo from angle 0 to 90 to 180.
-    :markdown
-          :::ruby
-          require 'artoo'
+%section.how-to
+  %h2 How to use
+  %h3 Example moves a servo from angle 0 to 90 to 180.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-          # Circuit and schematic here: http://arduino.cc/en/Tutorial/Sweep
+        # Circuit and schematic here: http://arduino.cc/en/Tutorial/Sweep
 
-          #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :board, :driver => :device_info
-          device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :board, :driver => :device_info
+        device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-          work do
-            puts "Firmware name: \#{board.firmware_name}"
-            puts "Firmata version: \#{board.version}"
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
 
-            servo.move(0) # reset the position of the sweep (same as servo.min)
+          servo.move(0) # reset the position of the sweep (same as servo.min)
 
-            every(2) do
-              case servo.current_angle
-              when 0 then servo.center
-              when 90 then servo.max
-              when 180 then servo.min
-              end
+          every(2) do
+            case servo.current_angle
+            when 0 then servo.center
+            when 90 then servo.max
+            when 180 then servo.min
             end
           end
+        end
 
-  %section.circuit
-    %h2 Circuit and Schematic
-    %p
-      =link_to "http://arduino.cc/en/Tutorial/Sweep", "http://arduino.cc/en/Tutorial/Sweep"
+%section.circuit
+  %h2 Circuit and Schematic
+  %p
+    =link_to "http://arduino.cc/en/Tutorial/Sweep", "http://arduino.cc/en/Tutorial/Sweep"
 
-  %section.compatability.hardware
-    %h2 Works with:
-    =# TODO: Update platform list with all that work with this driver in artoo.
-    .devices
-      = partial "documentation/partials/arduino"
-      = partial "documentation/partials/digispark"
-      = partial "documentation/partials/spark"
+%section.compatability.hardware
+  %h2 Works with:
+  =# TODO: Update platform list with all that work with this driver in artoo.
+  .devices
+    = partial "documentation/partials/arduino"
+    = partial "documentation/partials/digispark"
+    = partial "documentation/partials/spark"
 
 
