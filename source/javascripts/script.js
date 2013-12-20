@@ -1,3 +1,5 @@
+//Custom
+
 function heart() {
   var $heart = $(".heart");
   if($heart.is(":visible")) {

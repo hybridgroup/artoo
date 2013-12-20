@@ -1,6 +1,6 @@
+!!!
 %html
   %head
-    
     = partial "/hybridpages/partials/layouts/head"
 
   %body
@@ -8,13 +8,7 @@
       .w
         %header.app-header{role: "banner"}
           .display
-            %h1.app-logo
-              %a{href: '/'} artoo
-            %span.subtitle
-              .main Ruby on Robots
-              .easter
-                .heart ♥
-                = link_to "Rubinius", "http://rubini.us/"
+            = partial "/hybridpages/partials/layouts/app-logo"
 
           %span.menu
             = partial "/hybridpages/partials/layouts/menu"
@@ -30,8 +24,9 @@
       
       .container
         = yield
-      
-      = partial "/hybridpages/partials/widgets/catcher" 
+        
+      - if current_page.data.catcher == true
+        = partial "/hybridpages/partials/widgets/catcher" 
 
     %footer.app-footer
       .w
