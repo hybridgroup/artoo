@@ -15,67 +15,9 @@ catcher_phrase: Ready to build the next big thing with Ruby?
 getting_started_button: "<a href='/documentation/getting-started' class='cta'> Get Started</a>"
 ---
 
+= partial "/hybridpages/partials/widgets/about"
 
-%h2 About
-%p Artoo is a micro-framework for robotics.
+= partial "/hybridpages/partials/widgets/hardware-support"
 
-%p It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
+= partial "/hybridpages/partials/widgets/extras"
 
-%p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
-
-%p 
-  Want to use Javascript on Robots? Check out our sister project Cylon 
-  =link_to "(http://cylonjs.com).", "http://cylonjs.com"
-
-%p 
-  Want to use the Go programming language to power your robots? Check out our sister project Gobot 
-  =link_to "(http://gobot.io).","http://gobot.io"
-
-%h2 Meet The Code
-%p Artoo’s simple code makes telling robots what to do incredibly simple and fun.
-:markdown
-  All you need to get started is the `artoo` gem
-:markdown
-      :::ruby
-      require 'artoo'
-
-%p 
-  Then hook it up to your robot (in this case, a 
-  =link_to "Sphero :","http://gosphero.com"
-
-:markdown
-      :::ruby
-      connection :sphero, adaptor: :sphero, port: '4560'
-      device :sphero, driver: :sphero
-
-%p And tell it what to do!
-:markdown
-      :::ruby
-      work do
-        every(3.seconds) do
-          puts "Rolling..."
-          sphero.roll 60, rand(360)
-        end
-      end
-%h2 API
-%p Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.
-
-:markdown
-  To activate the API, use the `api` command like this:
-  
-:markdown
-      :::ruby
-      require 'artoo'
-
-      connection :loop
-      device :passthru
-      api :host => '127.0.0.1', :port => '4321'
-
-      work do
-        puts "Hello from the API running at \#{api_host}:\#{api_port}..."
-      end
-
-%section.videos
-  .video_index
-    %h2 Artoo in Action
-    %iframe{:src => "http://www.youtube.com/embed/ciSs9x_Ogls", :frameborder => "0", :allowfullscreen => "true"}
