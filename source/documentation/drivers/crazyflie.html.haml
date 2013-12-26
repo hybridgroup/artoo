@@ -8,13 +8,11 @@ layout: documentation
 ---
 %section.intro
   =image_tag "/images/crazyflie-driver.jpg", class: "display"
-  %p
-    Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
+  %p Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
 
 %section.how-to
   %h2 How to establish a connection and setup the driver
-  %p
-    Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device. 
+  %p Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device. 
   :markdown
         :::ruby
         require 'artoo'
@@ -52,8 +50,6 @@ layout: documentation
     %dd Orders crazyflie to turn right the amount specified by deg (yaw right).
     %dt power(deg)
     %dd Sets thrust power to deg.
-
-
 
 %section.how-to
   %h2 How to use

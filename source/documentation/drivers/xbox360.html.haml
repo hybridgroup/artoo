@@ -9,8 +9,7 @@ layout: documentation
 .documentation
   %section.intro
     =image_tag "/images/xbox360.jpg", class: "display"
-    %p
-      Allows user to interact with Artoo devices using a XBox360 game controller.
+    %p Allows user to interact with Artoo devices using a XBox360 game controller.
 
   %section.how-to
     %h2 How to establish a connection and setup the driver
@@ -22,7 +21,6 @@ layout: documentation
 
   %section.public-methods
     %h2 Events
-
     %dl.methods 
       %dt button_a
       %dd Get's triggered every interval amount of time if the a button is pressed.
@@ -46,7 +44,6 @@ layout: documentation
       %dd Get's triggered every interval amount of time if a joystick_0 event occured, you can access values x, y.
       %dt joystick_1
       %dd Get's triggered every interval amount of time if a joystick_1 event occured, you can access values x, y.
-
     %h3 How to use events and call them on your drivers
     %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
     :markdown

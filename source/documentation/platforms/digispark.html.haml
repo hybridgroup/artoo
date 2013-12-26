@@ -6,16 +6,9 @@ page_title: Digispark
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-digispark' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-digispark/issues'>Issues</a>"
 layout: documentation
 ---
-
 %section.intro
   = image_tag "/images/digispark.jpg", class: "display"
-
-  %p
-    The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller,
-    and a bit less powerful. With a whole host of shields to extend its functionality and the ability to
-    use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when
-    an Arduino is too big or too much.
-
+  %p The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller, and a bit less powerful. With a whole host of shields to extend its functionality and the ability to use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when an Arduino is too big or too much.
   %p
     For more info about the Digispark platform click
     = succeed "." do
@@ -23,14 +16,12 @@ layout: documentation
 
 %section.how-to
   %h2 How to install
-  %p
-    Installing artoo with digispark support is pretty easy using ruby gems.
+  %p Installing artoo with digispark support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-digispark
   %h2 How to use
-  %p
-    This small program lets you toggle an LED on and off.
+  %p This small program lets you toggle an LED on and off.
   :markdown
         :::ruby
         require 'artoo'
@@ -55,31 +46,22 @@ layout: documentation
     ) ATTiny-based USB development board already has the Little Wire (
     %a{ href:"http://littlewire.cc/"} http://littlewire.cc/
     ) protocol firmware installed, you can connect right away with Artoo.
-
   %p
     Otherwise, for instructions on how to install Little Wire on a Digispark check out 
     %a{ href:"http://digistump.com/board/index.php/topic,160.0.html " } http://digistump.com/board/index.php/topic,160.0.html 
-
   %h3 OSX
-  %p
-    The main steps are:
+  %p The main steps are:
   %ul
     %li Plug in the Digispark to the USB port
     %li Connect to the device via Artoo
   %p First plug the Digispark into your computer via the USB port. Then... (directions go here)
-
   %h3 Ubuntu
-  %p
-    The main steps are:
+  %p The main steps are:
   %ul
     %li Add a udev rule to allow access to the Digispark device
     %li Plug in the Digispark to the USB port
     %li Connect to the device via Artoo
-  %p
-    First, you must add a udev rule, so that Artoo can communicate with the USB device. Ubuntu and
-    other modern Linux distibutions use udev to manage device files when USB devices are added and
-    removed. By default, udev will create a device with read-only permission which will not allow to
-    you download code. You must place the udev rules below into a file named /etc/udev/rules.d/49-micronucleus.rules.
+  %p First, you must add a udev rule, so that Artoo can communicate with the USB device. Ubuntu and other modern Linux distibutions use udev to manage device files when USB devices are added and removed. By default, udev will create a device with read-only permission which will not allow to you download code. You must place the udev rules below into a file named /etc/udev/rules.d/49-micronucleus.rules.
   :markdown
         :::bash
         # UDEV Rules for Micronucleus boards including the Digispark.
@@ -105,16 +87,13 @@ layout: documentation
     Thanks to @bluebie for these instructions! (
     %a{ href:"https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux" } https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux
     )
-
   %p Now plug the Digispark into your computer via the USB port.
-
   %p Once plugged in, use the artoo connect scan command with the -t usb option to verify your connection info:
-
   :markdown
         :::bash
         $ artoo connect scan -t usb
-  %p
-    Now use the ID info returned to find the product and vendor ID's for the connection info Digispark in your Artoo code.
+  %p Now use the ID info returned to find the product and vendor ID's for the connection info Digispark in your Artoo code.
+
 %section.drivers
   %h2 Drivers
   %p
@@ -128,9 +107,7 @@ layout: documentation
     which makes it even possible to swap the entire platform for something else like arduino,
     and keep using the same code you just wrote for digispark, this just by swapping a couple
     of lines in your program.
-  %p
-    Available drivers for the digispark platform are listed below, the drivers contain detailed documentation and examples of what kind
-    physical computing (using artoo and ruby) you could be doing:
+  %p Available drivers for the digispark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
 
   .hardware
     .devices

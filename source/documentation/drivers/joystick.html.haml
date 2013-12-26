@@ -6,11 +6,9 @@ page_title: Generic Joystick
 page_subtitle: Driver
 layout: documentation
 ---
-
 %section.intro
   =image_tag "/images/joystick.jpg", class: "display"
-  %p
-    Allows user to interact with Artoo devices using any joystick or game controller that is compatible with SDL.
+  %p Allows user to interact with Artoo devices using any joystick or game controller that is compatible with SDL.
 
 %section.how-to
   %h2 How to establish a connection and setup the driver
@@ -21,13 +19,12 @@ layout: documentation
         device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
 
 %section.public-events
-  %h2 Public driver events
-  %h3 joystick
-  %p Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y, s.
-
-  %h3 button
-  %p Get's triggered every "interval" amount of time if the button was pressed, you can access the value of the pressed button.
-
+  %h2 Events
+  %dl.methods 
+    %dt joystick
+    %dd Get's triggered every "interval" amount of time if a joystick event occured, you can access values x, y, s.
+    %dt button
+    %dd Get's triggered every "interval" amount of time if the button was pressed, you can access the value of the pressed button.
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown

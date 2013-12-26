@@ -6,11 +6,9 @@ page_title: Button
 page_subtitle: Driver
 layout: documentation
 ---
-
 %section.intro
   = image_tag "/images/button.jpg", class: "display"
-  %p
-    Simple interface that makes it possible to register clicks through physical input.
+  %p Simple interface that makes it possible to register clicks through physical input.
 
 %section.how_to
   %h2 How to establish a connection and setup the driver 
@@ -20,7 +18,6 @@ layout: documentation
         require 'artoo'
         connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :button, :driver => :button, :pin => 2, :interval => 0.01
-
   %h3 For Digispark:
   :markdown
         :::ruby
@@ -30,22 +27,17 @@ layout: documentation
 
 %section.public-methods
   %h2 Commands:
-
   %dl.methods 
     %dt is_pressed? → true | false
     %dd Returns true or false matching state of the button.
 
-
 %section.public-events
   %h2 Events:
-
   %dl.methods 
     %dt :push
     %dd This event gets triggered when the button changes state from released to pushed.
-
     %dt :relase
     %dd This event gets triggered when the button changes state from pushed to released.
-
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown

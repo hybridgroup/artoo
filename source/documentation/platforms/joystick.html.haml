@@ -6,13 +6,9 @@ page_title: Joysticks
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-joystick' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-joystick/issues'>Issues</a>"
 layout: documentation
 ---
-
 %section.intro
   = image_tag "/images/joystick.jpg", class: "display"
-
-  %p
-    You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
-
+  %p You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
   %p
     For more info about Simple DirectMedia Layer (SDL) go to
     = succeed "." do
@@ -20,15 +16,12 @@ layout: documentation
 
 %section.how-to
   %h2 How to install
-  %p
-    Installing artoo with arduino support is pretty easy using ruby gems.
+  %p Installing artoo with arduino support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-joystick
-
   %h2 How to use
-  %p
-    This small program receives joystick and button press events from an XBox 360 game controller.
+  %p This small program receives joystick and button press events from an XBox 360 game controller.
   :markdown
         :::ruby
         require 'artoo'
@@ -59,8 +52,7 @@ layout: documentation
 
 %section.drivers
   %h2 Drivers
-  %p
-    There are 3 driver for different joysticks, as listed below:
+  %p There are 3 driver for different joysticks, as listed below:
 
   .hardware
     .devices

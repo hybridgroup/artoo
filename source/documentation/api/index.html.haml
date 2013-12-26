@@ -6,27 +6,22 @@ page_title: API
 page_subtitle: "The Artoo API provides an interface for retrieving information and communicating with the currently running robots."
 layout: documentation
 ---
-
-
 %h2  How To Connect
 %p Now that you are ready to write your own code you can access a running Artoo API server.
 %h3 Running your robot:
-
 :markdown	
 	To test your code you can type this on your console:
-
 	    :::ruby
 		artoo start myrobot.rb
-		
+
 	or
-		
+
 	    :::ruby
 	    ruby myrobot.rb
 
-	
 	For example, on this code:
 
-	    :::javascript
+	    :::ruby
 		require 'artoo'
 		
 		connection :loop
@@ -38,11 +33,8 @@ layout: documentation
 		end
 
 %p artoo automatically, starts the server.
-
 %h2  How To Configure
-	
 %p The Artoo API server, allows a configuration for your robots.
-
 :markdown	
 	You can set it up like this:
 
@@ -65,13 +57,10 @@ layout: documentation
 	    end	
 
 %h2  Routes
-
 %h3  GET /robots
-
 :markdown	
 	Our first route returns all the Robots the master class knows about in JSON
 	format.
-      	
 	   
 	    [
 	      {

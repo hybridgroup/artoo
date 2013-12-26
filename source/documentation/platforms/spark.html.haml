@@ -9,7 +9,6 @@ layout: documentation
 
 %section.intro
   = image_tag "/images/spark.jpg", class: "display"
-
   %p 
     This repository contains the Artoo 
     =link_to "(http://artoo.io/)", "http://artoo.io/", target: :blank 
@@ -17,20 +16,15 @@ layout: documentation
     =link_to "(http://spark.io) ", "http://spark.io", target: :blank 
     using the built-in Tinker protocol.
 
-
 %section.how-to
   %h2 How to install
-  %p
-    Installing artoo with spark support is pretty easy.
+  %p  Installing artoo with spark support is pretty easy.
   :markdown
         :::bash
         gem install artoo-spark
-
   %p You will need to have a Spark device, and an access token from a registered Spark account.
-
   %h2 Using
   %p This small program lets you turn on or off a LED for every 1 sec.
-
   :markdown
         :::ruby
         require 'artoo'
@@ -45,10 +39,10 @@ layout: documentation
         end
   %h2 Connecting to Spark
   %p Once your Spark is connected via Wifi, you're done. It should keep itself connected, and your Artoo program should be able to connect to it via the Internet, using the access token that Spark has given you.
+
 %section.drivers
   %h2 Drivers
-  %p
-    Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
+  %p Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
 
   .hardware
     .devices

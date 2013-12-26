@@ -8,8 +8,7 @@ layout: documentation
 ---
 %section.intro
   =image_tag "/images/hmc6352-compass.jpg", class: "display"
-  %p
-    Allows user to read heading from HMC6352 Digital Compass via i2c interface
+  %p Allows user to read heading from HMC6352 Digital Compass via i2c interface
 
 %section.how-to
   %h2 How to establish a connection and setup the driver
@@ -22,19 +21,15 @@ layout: documentation
 
 %section.public-methods
   %h2 Commands:
-
   %dl.methods 
     %dt heading → float
     %dd Returns the heading data for the compass.
   
 %section.public-events
   %h2 Events:
-
   %dl.methods 
     %dt heading
     %dd Gets triggered every time the specified interval is met.
-
-
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -57,8 +52,7 @@ layout: documentation
 
 %section.circuit
   %h2 Circuit and Schematic
-  %p
-    Coming soon...
+  %p Coming soon...
 
 %section.compatability.hardware
   %h2 Works with:

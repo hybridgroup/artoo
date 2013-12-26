@@ -6,11 +6,9 @@ page_title: Motor
 page_subtitle: Driver
 layout: documentation
 ---
-
 %section.intro
   =image_tag "/images/motor.jpg", class: "display"
-  %p
-    Provides motor manipulation tools for artoo like on/off, speed modulation using PWM,
+  %p Provides motor manipulation tools for artoo like on/off, speed modulation using PWM,
     use of bidirectional motors using forward/backward pins.
 
 %section.how-to
@@ -31,55 +29,41 @@ layout: documentation
 
 %section.public-methods
   %h2 Commands:
-
   %dl.methods 
     %dt stop → true | nil
     %dd Stops the motor.
-    
     %dt start → true | nil
     %dd Starts the motor.
-
     %dt on? → true | false
     %dd Returns true if the motor is on, otherwise returns false.
-
     %dt off? → true | false
     %dd Returns true if the motor is off, otherwise returns false.
-
     %dt toggle → true | nil
     %dd Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
-    
     %dt speed(speed_value) → true | nil
     %dd 
       :markdown
         Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between `0` and `255`.  
-    
     %dt min → true | nil
     %dd 
       :markdown
         Stops the motor, sets the speed to `0`.
-
     %dt max → true | nil
     %dd 
       :markdown
         Starts the motor at max speed, sets the speed to `255`.
-    
     %dt forward(speed) → true | nil
     %dd Starts the motor in forward direction at the provided speed.
-
     %dt backward(speed) → true | nil
     %dd Starts the motor in backward direction at the provided speed.
-
     %dt forward? → true | false
     %dd Returns true if the motor is direction is set to forward, otherwise false.
-
     %dt backward? → true | false
     %dd Returns true if the motor is direction is set to backward, otherwise false.
-
     %dt current_speed → speed
     %dd 
       :markdown
         Returns the current speed of the motor as an integer between `0` and `255`.
-
 
 %section.how-to
   %h2 How to use
@@ -161,8 +145,7 @@ layout: documentation
         end
 
   %h2 Circuit and Schematic
-  %p
-    =link_to "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout", "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout"
+  %p=link_to "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout", "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout"
 
 %section.compatability.hardware
   %h2 Works with:
