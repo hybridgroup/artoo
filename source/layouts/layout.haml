@@ -2,14 +2,16 @@
 %html
   %head
     = partial "/hybridpages/partials/layouts/head"
-  %body
+    = partial "layouts/contents"
+  %body  
     .app
       .w
         %header.app-header{role: "banner"}
           .display
             = partial "/hybridpages/partials/layouts/app-logo"
+
           %span.menu
-            = partial "/hybridpages/partials/layouts/menu"
+            = yield_content :menu
 
       - if current_page.data.hero == true
         = partial "/hybridpages/partials/widgets/hero"
@@ -27,10 +29,9 @@
         = partial "/hybridpages/partials/widgets/catcher" 
 
     %footer.app-footer
-      .w
-        .copyright
-          &copy; Copyright 2012-2013
-          %a{:href => "http://hybridgroup.com"} The Hybrid Group.
-    
-    = partial "/hybridpages/partials/widgets/google-analytics"
-    
+      = yield_content :footer
+
+
+
+
+ 

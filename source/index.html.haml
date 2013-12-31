@@ -16,7 +16,47 @@ catcher_phrase: Ready to build the next big thing with Ruby?
 getting_started_button: "<a href='/documentation/getting-started' class='cta'> Get Started</a>"
 ---
 
-= partial "/hybridpages/partials/widgets/about"
+%h2 About
+%p Artoo is a micro-framework for robotics.
+
+%p It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
+
+%p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
+
+%p 
+  Want to use Javascript on Robots? Check out our sister project Cylon 
+  =link_to "(http://cylonjs.com).", "http://cylonjs.com"
+
+%p 
+  Want to use the Go programming language to power your robots? Check out our sister project Gobot 
+  =link_to "(http://gobot.io).","http://gobot.io"
+
+%h2 Meet The Code
+%p Artoo’s simple code makes telling robots what to do incredibly simple and fun.
+:markdown
+  All you need to get started is the `artoo` gem
+:markdown
+      :::ruby
+      require 'artoo'
+
+%p 
+  Then hook it up to your robot (in this case, a 
+  =link_to "Sphero :","http://gosphero.com"
+
+:markdown
+      :::ruby
+      connection :sphero, adaptor: :sphero, port: '4560'
+      device :sphero, driver: :sphero
+
+%p And tell it what to do!
+:markdown
+      :::ruby
+      work do
+        every(3.seconds) do
+          puts "Rolling..."
+          sphero.roll 60, rand(360)
+        end
+      end
 
 = partial "/hybridpages/partials/widgets/hardware-support"
 
