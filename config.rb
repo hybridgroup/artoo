@@ -1,6 +1,8 @@
 require 'rack/codehighlighter'
 require "coderay"
 
+use Rack::GoogleAnalytics, :tracker => 'UA-46433484-1', :domain => 'artoo.io'
+
 use Rack::Codehighlighter, :coderay, :markdown => true,
   :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 

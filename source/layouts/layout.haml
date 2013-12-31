@@ -2,8 +2,10 @@
 %html
   %head
     = partial "/hybridpages/partials/layouts/head"
-    = partial "layouts/layout-contents"
+    %link{rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Russo+One|Inconsolata:400,700|Montserrat:700"}
+    %link{href: '/favicon.ico', rel: 'shortcut icon', type: 'image/gif' }
   %body  
+    = partial "layouts/layout-contents"
     .app
       .w
         %header.app-header{role: "banner"}
