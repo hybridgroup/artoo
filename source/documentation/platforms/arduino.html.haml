@@ -6,16 +6,8 @@ page_title: Arduino
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-arduino/issues'>Issues</a>"
 layout: documentation
 
-analog_sensor_driver: true
-button_driver: true
-led_driver: true
-maxbotix_driver: true
-motor_driver: true
-servo_driver: true
-blinkm_driver: true
-hmc6352_compass_driver: true
-wiichuck_driver: true
-wiiclassic_driver: true
+gpio_drivers: true
+i2c_drivers: true
 ---
 %section.intro
   = image_tag "/images/arduino.jpg", class: "display"
@@ -104,4 +96,7 @@ wiiclassic_driver: true
   .hardware
     .devices
       =# TODO: Update drivers list at the top of the page.
-      = partial "documentation/partials/devices_drivers"
+      %h2 GPIO Drivers
+      = partial "documentation/partials/devices_gpio_drivers"
+      %h2 i2c Drivers
+      = partial "documentation/partials/devices_i2c_drivers"
