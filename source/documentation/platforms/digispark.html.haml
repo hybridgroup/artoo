@@ -5,6 +5,17 @@ author: The Hybrid Group
 page_title: Digispark
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-digispark' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-digispark/issues'>Issues</a>"
 layout: documentation
+
+analog_sensor_driver: true
+button_driver: true
+led_driver: true
+maxbotix_driver: true
+motor_driver: true
+servo_driver: true
+blinkm_driver: true
+hmc6352_compass_driver: true
+wiichuck_driver: true
+wiiclassic_driver: true
 ---
 %section.intro
   = image_tag "/images/digispark.jpg", class: "display"
@@ -111,13 +122,5 @@ layout: documentation
 
   .hardware
     .devices
-      = partial "documentation/partials/analog-sensor"
-      = partial "documentation/partials/button"
-      = partial "documentation/partials/led"
-      = partial "documentation/partials/maxbotix"
-      = partial "documentation/partials/motor"
-      = partial "documentation/partials/servo"
-      = partial "documentation/partials/blinkm"
-      = partial "documentation/partials/hmc6352-compass"
-      = partial "documentation/partials/wiichuck"
-      = partial "documentation/partials/wiiclassic"
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_drivers"

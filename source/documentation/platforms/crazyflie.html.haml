@@ -5,6 +5,9 @@ author: The Hybrid Group
 page_title: Crazyflie
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-crazyflie/issues'>Issues</a>"
 layout: documentation
+
+crazyflie_flight_driver: true
+crazyflie_nav_driver: true
 ---
 %section.intro
   = image_tag "/images/crazyflie.jpg", class: "display"
@@ -63,5 +66,5 @@ layout: documentation
 
   .hardware
     .devices
-      = partial "documentation/partials/crazyflie-flight"
-      = partial "documentation/partials/crazyflie-nav"
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_drivers"

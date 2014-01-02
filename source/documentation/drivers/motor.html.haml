@@ -5,6 +5,12 @@ author: The Hybrid Group
 page_title: Motor
 page_subtitle: Driver
 layout: documentation
+
+arduino_platform: true
+beaglebone_platform: true
+digispark_platform: true
+raspberry_platform: true
+spark_platform: true
 ---
 %section.intro
   =image_tag "/images/motor.jpg", class: "display"
@@ -149,11 +155,7 @@ layout: documentation
 
 %section.compatability.hardware
   %h2 Works with:
-  =# TODO: Update platform list with all that work with this driver in artoo.
+  =# TODO: Update platform list at the top of the page.
   .devices
-    = partial "documentation/partials/arduino"
-    = partial "documentation/partials/beaglebone"
-    = partial "documentation/partials/digispark"
-    = partial "documentation/partials/raspberry-pi"
-    = partial "documentation/partials/spark"
+    = partial "documentation/partials/devices_platforms"
 

@@ -1,45 +1,46 @@
 %section.hardware
+  = partial "/documentation/partials/devices_drivers"
   %h2 General Purpose Input/Output (GPIO) Drivers
   Artoo's GPIO drivers work with several different platforms that support the required GPIO interfaces. For example, the Arduino and Digispark.
   .devices
-    = partial "../partials/analog-sensor"
-    = partial "../partials/button"
-    = partial "../partials/led"
-    = partial "../partials/maxbotix"
-    = partial "../partials/motor"
-    = partial "../partials/servo"
+    = yield_content :analog_sensor
+    = yield_content :button
+    = yield_content :led
+    = yield_content :maxbotix
+    = yield_content :motor
+    = yield_content :servo
 
   %h2 i2c Drivers
   Artoo's i2c drivers work with several different platforms that support the required interfaces. For example, the Arduino.
   .devices
-    = partial "../partials/wiichuck"
-    = partial "../partials/wiiclassic"
-    = partial "../partials/blinkm"
-    = partial "../partials/hmc6352-compass"
+    = yield_content :wiichuck
+    = yield_content :wiiclassic
+    = yield_content :blinkm
+    = yield_content :hmc6352_compass
 
   %h2 ARDrone Drivers
   .devices
-    = partial "../partials/ardrone-flight"
-    = partial "../partials/ardrone-navigation"
-    = partial "../partials/ardrone-video"
+    = yield_content :ardrone_flight
+    = yield_content :ardrone_navigation
+    = yield_content :ardrone_video
 
   %h2 Crazyflie Drivers
   .devices
-    = partial "../partials/crazyflie-flight"
-    = partial "../partials/crazyflie-nav"
+    = yield_content :crazyflie_flight
+    = yield_content :crazyflie_nav
 
   %h2 Leap Motion Driver
   .devices
-    = partial "../partials/leapmotion-driver"
+    = yield_content :leapmotion_driver
 
   %h2 Pebble Driver
   .devices
-    = partial "../partials/pebble-driver"
+    = yield_content :pebble_driver
 
   %h2 Roomba Driver
   .devices
-    = partial "../partials/roomba-driver"
+    = yield_content :roomba
 
   %h2 Sphero Driver
   .devices
-    = partial "../partials/sphero-driver"
+    = yield_content :sphero_driver

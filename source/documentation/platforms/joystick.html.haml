@@ -5,6 +5,10 @@ author: The Hybrid Group
 page_title: Joysticks
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-joystick' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-joystick/issues'>Issues</a>"
 layout: documentation
+
+joystick_driver: true
+ps3_driver: true
+xbox360_driver: true
 ---
 %section.intro
   = image_tag "/images/joystick.jpg", class: "display"
@@ -56,6 +60,5 @@ layout: documentation
 
   .hardware
     .devices
-      = partial "documentation/partials/joystick-driver"
-      = partial "documentation/partials/ps3"
-      = partial "documentation/partials/xbox360"
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_drivers"

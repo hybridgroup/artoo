@@ -5,6 +5,10 @@ author: The Hybrid Group
 page_title: Servo
 page_subtitle: Driver
 layout: documentation
+
+arduino_platform: true
+digispark_platform: true
+spark_platform: true
 ---
 %section.intro
   = image_tag "/images/servo.jpg", class: "display"
@@ -86,10 +90,8 @@ layout: documentation
 
 %section.compatability.hardware
   %h2 Works with:
-  =# TODO: Update platform list with all that work with this driver in artoo.
   .devices
-    = partial "documentation/partials/arduino"
-    = partial "documentation/partials/digispark"
-    = partial "documentation/partials/spark"
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"
 
 

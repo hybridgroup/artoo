@@ -5,6 +5,13 @@ author: The Hybrid Group
 page_title: Spark
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-spark' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-spark/issues'>Issues</a>"
 layout: documentation
+
+analog_sensor_driver: true
+button_driver: true
+led_driver: true
+maxbotix_driver: true
+motor_driver: true
+servo_driver: true
 ---
 
 %section.intro
@@ -46,9 +53,5 @@ layout: documentation
 
   .hardware
     .devices
-      = partial "documentation/partials/analog-sensor"
-      = partial "documentation/partials/button"
-      = partial "documentation/partials/led"
-      = partial "documentation/partials/maxbotix"
-      = partial "documentation/partials/motor"
-      = partial "documentation/partials/servo"
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_drivers"

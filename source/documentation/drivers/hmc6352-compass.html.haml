@@ -5,6 +5,11 @@ author: The Hybrid Group
 page_title: HMC6352 Digital Compass
 page_subtitle: Driver
 layout: documentation
+
+arduino_platform: true
+beaglebone_platform: true
+digispark_platform: true
+raspberry_platform: true
 ---
 %section.intro
   =image_tag "/images/hmc6352-compass.jpg", class: "display"
@@ -57,7 +62,5 @@ layout: documentation
 %section.compatability.hardware
   %h2 Works with:
   .devices
-    = partial "documentation/partials/arduino"
-    = partial "documentation/partials/beaglebone"
-    = partial "documentation/partials/digispark"
-    = partial "documentation/partials/raspberry-pi"
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"
