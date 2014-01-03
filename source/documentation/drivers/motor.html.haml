@@ -165,7 +165,14 @@ layout: page
 
   %section.compatability.hardware
     %h2 Works with:
-    =# TODO: Update platform list with all that work with this driver in artoo.
+    %p 
+      %b Important Note:
+      You need to install
+      = link_to "pi-blaster", "https://github.com/sarfata/pi-blaster", target: :blank
+      in the 
+      %b raspberry-pi, 
+      this project enables PWM in the GPIO pins .
+    // TODO: Update platform list with all that work with this driver in artoo.
     .devices
       = partial "documentation/partials/arduino"
       = partial "documentation/partials/beaglebone"
