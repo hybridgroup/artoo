@@ -46,6 +46,13 @@ layout: page
     :markdown
           :::bash
           sudo ruby examples/raspi_led.rb
+    %p 
+      %b Important Note:
+      You need to install
+      = link_to "pi-blaster", "https://github.com/hybridgroup/pi-blaster", target: :blank
+      in the 
+      %b raspberry-pi, 
+      this project enables PWM in the GPIO pins for some of the drivers like LED, Motor and Servo.
 
     %h2 How to connect
     %h3 Connecting to Raspberry Pi GPIO
@@ -82,7 +89,7 @@ layout: page
   %section.drivers
     %h2 Drivers
     %p All Artoo digital and PWM GPIO, and i2c drivers listed below should work with the Raspberry Pi:
-
+    
     .hardware
       .devices
         = partial "documentation/partials/button"
