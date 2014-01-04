@@ -18,3 +18,5 @@ $(document).ready(function() {
     $('.main', this).show();
   });
 });
+
+if ($(window).scrollTop() > 600)

@@ -16,7 +16,7 @@ wiichuck_driver: true
 wiiclassic_driver: true
 ---
 %section.intro
-  = image_tag "/images/raspi.jpg", class: "display"
+  = image_tag "/images/devices/raspi.jpg", class: "display"
   %p The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital & PWM GPIO, and i2c interfaces built in.
   %p
     For more info about the Raspberry Pi platform go to
@@ -48,6 +48,14 @@ wiiclassic_driver: true
   :markdown
         :::bash
         sudo ruby examples/raspi_led.rb
+  %p 
+    %b Important Note:
+    You need to install
+    = link_to "pi-blaster", "https://github.com/sarfata/pi-blaster", target: :blank
+    in the 
+    %b raspberry-pi, 
+    this project enables PWM in the GPIO pins for some of the drivers like LED, Motor and Servo.
+
   %h2 How to connect
   %h3 Connecting to Raspberry Pi GPIO
   %p  This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's GPIO pins.
