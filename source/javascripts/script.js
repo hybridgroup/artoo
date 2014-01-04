@@ -19,4 +19,3 @@ $(document).ready(function() {
   });
 });
 
-if ($(window).scrollTop() > 600)
