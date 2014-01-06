@@ -71,17 +71,17 @@
   
         work <span class="keyword">do</span>
           every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
-            puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from </span><span class="char">\1</span><span class="content">name}</span><span class="delimiter">"</span></span>
+            puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from </span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
           <span class="keyword">end</span>
           after(<span class="integer">10</span>.seconds) <span class="keyword">do</span>
-                  puts <span class="string"><span class="delimiter">"</span><span class="char">\1</span><span class="content">name} is alive!</span><span class="delimiter">"</span></span> <span class="keyword">if</span> name == <span class="string"><span class="delimiter">'</span><span class="content">Number 5</span><span class="delimiter">'</span></span>
+                  puts <span class="string"><span class="delimiter">"</span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="content"> is alive!</span><span class="delimiter">"</span></span> <span class="keyword">if</span> name == <span class="string"><span class="delimiter">'</span><span class="content">Number 5</span><span class="delimiter">'</span></span>
           <span class="keyword">end</span>
         <span class="keyword">end</span>
 <span class="keyword">end</span>
 
 robots = []
 <span class="integer">5</span>.times <span class="keyword">do</span> |i|
-        robots &lt;&lt; <span class="constant">HelloRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="char">\1</span><span class="content">i}</span><span class="delimiter">"</span></span>)
+        robots &lt;&lt; <span class="constant">HelloRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="inline"><span class="inline-delimiter">#{</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
 <span class="keyword">end</span>
 
 <span class="constant">HelloRobot</span>.work!(robots)
@@ -93,7 +93,7 @@ robots = []
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>

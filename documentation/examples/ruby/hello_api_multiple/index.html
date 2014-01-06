@@ -79,13 +79,13 @@
         api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
 
         work <span class="keyword">do</span>
-                puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from '</span><span class="char">\1</span><span class="content">name}' attached to API running at </span><span class="char">\1</span><span class="content">api_host}:</span><span class="char">\1</span><span class="content">api_port}...</span><span class="delimiter">"</span></span>
+                puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from '</span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="content">' attached to API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
         <span class="keyword">end</span>
 <span class="keyword">end</span>
 
 robots = []
 <span class="integer">5</span>.times <span class="keyword">do</span> |i|
-        robots &lt;&lt; <span class="constant">HelloRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="char">\1</span><span class="content">i}</span><span class="delimiter">"</span></span>)
+        robots &lt;&lt; <span class="constant">HelloRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="inline"><span class="inline-delimiter">#{</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
 <span class="keyword">end</span>
 
 <span class="constant">HelloRobot</span>.work!(robots)
@@ -98,7 +98,7 @@ sleep
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>

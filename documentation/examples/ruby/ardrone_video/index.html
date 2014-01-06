@@ -84,7 +84,7 @@ work <span class="keyword">do</span>
 <span class="keyword">def</span> <span class="function">v_frame</span>(*data)
         <span class="instance-variable">@count</span> ||= <span class="integer">0</span>
         <span class="instance-variable">@count</span> += <span class="integer">1</span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Frame# </span><span class="char">\1</span><span class="content">@count} </span><span class="char">\1</span><span class="content">data[1].size} bytes</span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Frame# </span><span class="inline"><span class="inline-delimiter">#{</span><span class="instance-variable">@count</span><span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">#{</span>data[<span class="integer">1</span>].size<span class="inline-delimiter">}</span></span><span class="content"> bytes</span><span class="delimiter">"</span></span>
 <span class="keyword">end</span>
 </pre>
             </div>
@@ -94,7 +94,7 @@ work <span class="keyword">do</span>
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>

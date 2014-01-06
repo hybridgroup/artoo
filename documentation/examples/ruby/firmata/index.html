@@ -71,8 +71,8 @@ device <span class="symbol">:board</span>
 device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
 
 work <span class="keyword">do</span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmware name </span><span class="char">\1</span><span class="content">board.firmware_name}</span><span class="delimiter">"</span></span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmata version </span><span class="char">\1</span><span class="content">board.version}</span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmware name </span><span class="inline"><span class="inline-delimiter">#{</span>board.firmware_name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmata version </span><span class="inline"><span class="inline-delimiter">#{</span>board.version<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   every <span class="integer">1</span>.second <span class="keyword">do</span>
     led.toggle
   <span class="keyword">end</span>
@@ -85,7 +85,7 @@ work <span class="keyword">do</span>
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>

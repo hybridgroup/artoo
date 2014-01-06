@@ -74,21 +74,21 @@
   <span class="keyword">end</span>
 
   <span class="keyword">def</span> <span class="function">say</span>(greeting)
-    friend_name = <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="char">\1</span><span class="content">rand(5)}</span><span class="delimiter">"</span></span>
-    puts <span class="string"><span class="delimiter">"</span><span class="content">Saying '</span><span class="char">\1</span><span class="content">greeting}' to </span><span class="char">\1</span><span class="content">friend_name}</span><span class="delimiter">"</span></span>
+    friend_name = <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="inline"><span class="inline-delimiter">#{</span>rand(<span class="integer">5</span>)<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Saying '</span><span class="inline"><span class="inline-delimiter">#{</span>greeting<span class="inline-delimiter">}</span></span><span class="content">' to </span><span class="inline"><span class="inline-delimiter">#{</span>friend_name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
     <span class="constant">Artoo</span>::<span class="constant">Master</span>.robot(friend_name).hello(greeting, current_instance)
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 
 <span class="keyword">class</span> <span class="class">MessageRobot</span> &lt; <span class="constant">Artoo</span>::<span class="constant">Robot</span>
   <span class="keyword">def</span> <span class="function">hello</span>(greeting, sender)
-    puts <span class="string"><span class="delimiter">"</span><span class="content">'</span><span class="char">\1</span><span class="content">sender.name}' said '</span><span class="char">\1</span><span class="content">greeting}' to </span><span class="char">\1</span><span class="content">name}</span><span class="delimiter">"</span></span>
+    puts <span class="string"><span class="delimiter">"</span><span class="content">'</span><span class="inline"><span class="inline-delimiter">#{</span>sender.name<span class="inline-delimiter">}</span></span><span class="content">' said '</span><span class="inline"><span class="inline-delimiter">#{</span>greeting<span class="inline-delimiter">}</span></span><span class="content">' to </span><span class="inline"><span class="inline-delimiter">#{</span>name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 
 robots = []
 <span class="integer">5</span>.times <span class="keyword">do</span> |i|
-  robots &lt;&lt; <span class="constant">MessageRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="char">\1</span><span class="content">i}</span><span class="delimiter">"</span></span>)
+  robots &lt;&lt; <span class="constant">MessageRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Number </span><span class="inline"><span class="inline-delimiter">#{</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
 <span class="keyword">end</span>
 
 robots &lt;&lt; <span class="constant">GreeterRobot</span>.new(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Greeter</span><span class="delimiter">"</span></span>)
@@ -102,7 +102,7 @@ robots &lt;&lt; <span class="constant">GreeterRobot</span>.new(<span class="symb
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
