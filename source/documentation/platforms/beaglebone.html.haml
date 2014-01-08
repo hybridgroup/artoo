@@ -52,9 +52,10 @@ wiiclassic_driver: true
   %p All Artoo digital GPIO and i2c drivers listed below should work with the BeagleBone:
 
   .hardware
+    =# TODO: Update drivers list at the top of the page.
+    %h2 GPIO Drivers
     .devices
-      =# TODO: Update drivers list at the top of the page.
-      %h2 GPIO Drivers
-      = partial "documentation/partials/devices_gpio_drivers"
-      %h2 i2c Drivers
+       = partial "documentation/partials/devices_gpio_drivers"
+    %h2 i2c Drivers
+    .devices
       = partial "documentation/partials/devices_i2c_drivers"
