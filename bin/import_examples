@@ -46,7 +46,7 @@ description: Examples of using #{PROJECT} with different hardware configurations
 page_subtitle: How you can get started.
 ---
 
-.documentation.examples
+.examples
   %table
     %thead
       %th Example
@@ -182,11 +182,12 @@ class ExampleImporter
 page_title_show: true
 layout: page
 title: #{PROJECT} Example - #{file[:name]}
-page_title: "Example"
+page_title: "Example: #{file[:name]}"
 author: The Hybrid Group
 description: A #{PROJECT} code example
+page_subtitle: "You can find this example <a href='https://github.com/hybridgroup/artoo/blob/master/examples/#{file[:name]}.rb' target='blank' class='repository'>here.</a>"
 ---
-%h2 #{file[:name]}
+
 .example
   :markdown
         :::#{lang}
