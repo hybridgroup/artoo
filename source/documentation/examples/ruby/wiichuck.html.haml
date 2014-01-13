@@ -20,7 +20,7 @@ page_subtitle: "You can find this example <a href='https://github.com/hybridgrou
           on wiichuck, :c_button => proc { puts "c button pressed!" }
           on wiichuck, :z_button => proc { puts "z button pressed!" }
           on wiichuck, :joystick => proc { |*value|
-            puts "joystick x: \1value[1][:x]}, y: \1value[1][:y]}"
+            puts "joystick x: \#{value[1][:x]}, y: \#{value[1][:y]}"
           }
         end
 

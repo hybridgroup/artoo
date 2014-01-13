@@ -31,5 +31,5 @@ page_subtitle: "You can find this example <a href='https://github.com/hybridgrou
         def v_frame(*data)
         	@count ||= 0
         	@count += 1
-          puts "Frame# \1@count} \1data[1].size} bytes"
+          puts "Frame# \#{@count} \#{data[1].size} bytes"
         end

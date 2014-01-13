@@ -20,11 +20,11 @@ page_subtitle: "You can find this example <a href='https://github.com/hybridgrou
           api :host => '127.0.0.1', :port => '4321'
 
           work do
-          	puts "Hello from the API running at \1api_host}:\1api_port}..."
+          	puts "Hello from the API running at \#{api_host}:\#{api_port}..."
           end
 
           def hello name
-            "hi \1name}!"
+            "hi \#{name}!"
           end
         end
 

@@ -18,8 +18,8 @@ page_subtitle: "You can find this example <a href='https://github.com/hybridgrou
         device :led, :driver => :led, :pin => 13
 
         work do
-          puts "Firmware name \1board.firmware_name}"
-          puts "Firmata version \1board.version}"
+          puts "Firmware name \#{board.firmware_name}"
+          puts "Firmata version \#{board.version}"
           every 1.second do
             led.toggle
           end

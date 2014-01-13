@@ -30,7 +30,7 @@ page_subtitle: "You can find this example <a href='https://github.com/hybridgrou
 
         def nav_update(*data)
           data[1].drone_state.each do |name, val|
-            p "\1name}: \1val}"
+            p "\#{name}: \#{val}"
           end
         end
 
