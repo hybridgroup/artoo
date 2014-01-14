@@ -1,72 +1,70 @@
 ---
+page_title_show: true
 title: Artoo - Wii Nunchuck Driver
 author: The Hybrid Group
 page_title: Wii Nunchuk
 page_subtitle: Driver
-layout: page
+layout: documentation
+
+arduino_platform: true
+beaglebone_platform: true
+digispark_platform: true
+raspberry_platform: true
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/wii-chuck.jpg", class: "display"
-    %p
-      Allows user to use a Nintendo Wii Nunchuck controller via i2c interface
+%section.intro
+  =image_tag "/images/devices/wii-chuck.jpg", class: "display"
+  %p Allows user to use a Nintendo Wii Nunchuck controller via i2c interface
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %h3 For Arduino:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
-          device :wiichuck, :driver => :wiichuck, :connection :arduino
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
+        device :wiichuck, :driver => :wiichuck, :connection :arduino
 
-  %section.public-methods
-    %h2 Events:
+%section.public-methods
+  %h2 Events:
+  %dl.methods 
+    %dt c_button
+    %dd Get's triggered every interval amount of time if the square button is pressed.
+    %dt z_button
+    %dd Get's triggered every interval amount of time if the square button is pressed.
+    %dt joystick
+    %dd 
+      :markdown
+        Get's triggered every "interval" amount of time if a joystick event occured, you can access values `x`, `y`.
 
-    %dl.methods 
-      %dt c_button
-      %dd Get's triggered every interval amount of time if the square button is pressed.
+  %h3 How to use events and call them on your drivers
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on wiichuck, :c_button => proc { puts "c button pressed!" }
 
-      %dt z_button
-      %dd Get's triggered every interval amount of time if the square button is pressed.
-      
-      %dt joystick
-      %dd 
-        :markdown
-          Get's triggered every "interval" amount of time if a joystick event occured, you can access values `x`, `y`.
+%section.how_to
+  %h2 Example using a Nintendo Wii Nunchuck.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-    %h3 How to use events and call them on your drivers
-    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
-    :markdown
-          :::ruby
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
+
+        work do
           on wiichuck, :c_button => proc { puts "c button pressed!" }
+          on wiichuck, :z_button => proc { puts "z button pressed!" }
+          on wiichuck, :joystick => proc { |*value|
+            puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
+          }
+        end
 
-  %section.how_to
-    %h2 Example using a Nintendo Wii Nunchuck.
-    :markdown
-          :::ruby
-          require 'artoo'
+%section.circuit
+  %h2 Circuit and Schematic
+  %p Coming soon...
 
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
-
-          work do
-            on wiichuck, :c_button => proc { puts "c button pressed!" }
-            on wiichuck, :z_button => proc { puts "z button pressed!" }
-            on wiichuck, :joystick => proc { |*value|
-              puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
-            }
-          end
-
-  %section.circuit
-    %h2 Circuit and Schematic
-    %p
-      Coming soon...
-
-  %section.compatability.hardware
-    %h2 Works with:
-    .devices
-      = partial "documentation/partials/arduino"
-      = partial "documentation/partials/beaglebone"
-      = partial "documentation/partials/digispark"
-      = partial "documentation/partials/raspberry-pi"
+%section.compatability.hardware
+  %h2 Works with:
+  .devices
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"

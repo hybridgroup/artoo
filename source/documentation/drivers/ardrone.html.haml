@@ -1,175 +1,159 @@
 ---
+page_title_show: true
 title: Artoo - ARDrone Driver
 author: The Hybrid Group
 page_title: ARDrone
 page_subtitle: Driver
-layout: page
+layout: documentation
+
+ardrone_platform: true
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/ardrone-flight.jpg", class: "display"
-    %p
-      Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %p
-      Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
-          device :drone, :driver => :ardrone, :connection => :ardrone
+%section.intro
+  =image_tag "/images/devices/ardrone-flight.jpg", class: "display"
+  %p
+    Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %p
+    Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+        device :drone, :driver => :ardrone, :connection => :ardrone
 
-  %section.public-methods
-    %h2 Commands:
+%section.public-methods
+  %h2 Commands:
+  %dl.methods 
+    %dt start → drone
+    %dd Starts up the drone.
+    %dt stop → drone
+    %dd Stops the drone.
+    %dt hover → drone
+    %dd Causes the drone to hover at current altitude.
+    %dt land → drone
+    %dd Causes the drone to begin its landing sequence.
+    %dt take_off → drone
+    %dd Causes the drone to take off, if already started.
+    %dt emergency → drone
+    %dd Causes the drone to make an immediate emergency landing.
+    %dt front_camera → drone
+    %dd Causes the drone to turn on the front-facing camera.
+    %dt bottom_camera → drone
+    %dd Causes the drone to turn on the bottom-facing camera.
+    %dt up → drone
+    %dd Causes the drone to increase altitude.
+    %dt down → drone
+    %dd Causes the drone to decrease altitude.
+    %dt left → drone
+    %dd Causes the drone to bank to the left.
+    %dt right → drone
+    %dd Causes the drone to bank to the right.
+    %dt forward → drone
+    %dd Causes the drone to bank forward.
+    %dt backward → drone
+    %dd Causes the drone to bank backward.
+    %dt turn_left → drone
+    %dd Causes the drone to rotate to the left.
+    %dt turn_right → drone
+    %dd Causes the drone to rotate to the right.
+    %dt reset_watchdog → drone
+    %dd Reset the watchdog in the drone.
+    %dt led(color_animation, strength, duration) → drone
+    %dd 
+      Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
+      %ul
+        %li :blink_green_red
+        %li :blink_green
+        %li :blink_red
+        %li :blink_orange
+        %li :snake_green_red
+        %li :fire
+        %li :standard
+        %li :red
+        %li :green
+        %li :red_snake
+        %li :blank
+        %li :right_missile
+        %li :left_missile
+        %li :double_missile
+        %li :front_left_green_others_red
+        %li :front_right_green_others_red
+        %li :rear_right_green_others_red
+        %li :rear_left_green_others_red
+        %li :left_green_right_red
+        %li :left_red_right_green
+        %li :blink_standard
 
-    %dl.methods 
-      %dt start → drone
-      %dd Starts up the drone.
+    %dt animate(animation, duration) → drone
+    %dd 
+      Animate the ardrone to do flips and turns depending on selection, available animation options are:
+      %ul
+        %li :phi_m30_deg
+        %li :phi_30_deg
+        %li :theta_m30_deg
+        %li :theta_30_deg
+        %li :theta_20_deg_yaw_200_deg
+        %li :theta_20_deg_yaw_m_200_deg
+        %li :turnaround
+        %li :turnaround_go_down
+        %li :yaw_shake
+        %li :yaw_dance
+        %li :phi_dance
+        %li :theta_dance
+        %li :vz_dance
+        %li :wave
+        %li :phi_theta_mixed
+        %li :double_phi_theta_mixed
+        %li :flip_ahead
+        %li :flip_behind
+        %li :flip_left
+        %li :flip_right
+        
+%section.how-to
+  %h2 How to use
+  %h3 Example of controlling an ARDrone.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-      %dt stop → drone
-      %dd Stops the drone.
+        connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
+        device :drone, :driver => :ardrone, :connection => :ardrone
 
-      %dt hover → drone
-      %dd Causes the drone to hover at current altitude.
+        work do
+          drone.start
+          drone.take_off
 
-      %dt land → drone
-      %dd Causes the drone to begin its landing sequence.
+          after(15.seconds) { drone.hover.land }
+          after(20.seconds) { drone.stop }
+        end
 
-      %dt take_off → drone
-      %dd Causes the drone to take off, if already started.
+  %h3 Example of ARDrone doing a flip.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-      %dt emergency → drone
-      %dd Causes the drone to make an immediate emergency landing.
+        connection :ardrone, :adaptor => :ardrone
+        device :drone, :driver => :ardrone, :connection => :ardrone
 
-      %dt front_camera → drone
-      %dd Causes the drone to turn on the front-facing camera.
+        connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
+        device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
-      %dt bottom_camera → drone
-      %dd Causes the drone to turn on the bottom-facing camera.
-      
-      %dt up → drone
-      %dd Causes the drone to increase altitude.
+        work do
+          on drone, :ready => :fly
+          drone.start(nav)
+        end
 
-      %dt down → drone
-      %dd Causes the drone to decrease altitude.
-      
-      %dt left → drone
-      %dd Causes the drone to bank to the left.
+        def fly(*data)
+          drone.take_off
+          after(10.seconds) { drone.animate(:flip_ahead, 1000) }
+          after(15.seconds) { drone.hover.land }
+          after(20.seconds) { drone.stop }
+        end
 
-      %dt right → drone
-      %dd Causes the drone to bank to the right.
-
-      %dt forward → drone
-      %dd Causes the drone to bank forward.
-
-      %dt backward → drone
-      %dd Causes the drone to bank backward.
-
-      %dt turn_left → drone
-      %dd Causes the drone to rotate to the left.
-
-      %dt turn_right → drone
-      %dd Causes the drone to rotate to the right.
-      
-      %dt reset_watchdog → drone
-      %dd Reset the watchdog in the drone.
-
-      %dt led(color_animation, strength, duration) → drone
-      %dd 
-        Turn on the drone's built in LEDs with the color_animation passed, strength and duration; color_animation might be one of the following:
-        %ul
-          %li :blink_green_red
-          %li :blink_green
-          %li :blink_red
-          %li :blink_orange
-          %li :snake_green_red
-          %li :fire
-          %li :standard
-          %li :red
-          %li :green
-          %li :red_snake
-          %li :blank
-          %li :right_missile
-          %li :left_missile
-          %li :double_missile
-          %li :front_left_green_others_red
-          %li :front_right_green_others_red
-          %li :rear_right_green_others_red
-          %li :rear_left_green_others_red
-          %li :left_green_right_red
-          %li :left_red_right_green
-          %li :blink_standard
-
-      %dt animate(animation, duration) → drone
-      %dd 
-        Animate the ardrone to do flips and turns depending on selection, available animation options are:
-        %ul
-          %li :phi_m30_deg
-          %li :phi_30_deg
-          %li :theta_m30_deg
-          %li :theta_30_deg
-          %li :theta_20_deg_yaw_200_deg
-          %li :theta_20_deg_yaw_m_200_deg
-          %li :turnaround
-          %li :turnaround_go_down
-          %li :yaw_shake
-          %li :yaw_dance
-          %li :phi_dance
-          %li :theta_dance
-          %li :vz_dance
-          %li :wave
-          %li :phi_theta_mixed
-          %li :double_phi_theta_mixed
-          %li :flip_ahead
-          %li :flip_behind
-          %li :flip_left
-          %li :flip_right
-
-
-  %section.how-to
-    %h2 How to use
-    %h3 Example of controlling an ARDrone.
-    :markdown
-          :::ruby
-          require 'artoo'
-
-          connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
-          device :drone, :driver => :ardrone, :connection => :ardrone
-
-          work do
-            drone.start
-            drone.take_off
-
-            after(15.seconds) { drone.hover.land }
-            after(20.seconds) { drone.stop }
-          end
-
-    %h3 Example of ARDrone doing a flip.
-    :markdown
-          :::ruby
-          require 'artoo'
-
-          connection :ardrone, :adaptor => :ardrone
-          device :drone, :driver => :ardrone, :connection => :ardrone
-
-          connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
-          device :nav, :driver => :ardrone_navigation, :connection => :navigation
-
-          work do
-            on drone, :ready => :fly
-            drone.start(nav)
-          end
-
-          def fly(*data)
-            drone.take_off
-            after(10.seconds) { drone.animate(:flip_ahead, 1000) }
-            after(15.seconds) { drone.hover.land }
-            after(20.seconds) { drone.stop }
-          end
-
-  %section.compatability.hardware
-    %h2 Works with:
-    .devices
-      = partial "documentation/partials/ardrone"
+%section.compatability.hardware
+  %h2 Works with:
+  .devices
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"

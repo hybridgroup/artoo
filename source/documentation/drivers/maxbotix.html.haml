@@ -1,97 +1,91 @@
 ---
+page_title_show: true
 title: Artoo - Maxbotix Driver
 author: The Hybrid Group
 page_title: Maxbotix
 page_subtitle: Driver
-layout: page
+layout: documentation
+
+arduino_platform: true
+digispark_platform: true
+spark_platform: true
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/maxbotix.jpg", class: "display"
-    %p
-      Provides tools to use maxbotix sonar (range finder).
+%section.intro
+  =image_tag "/images/devices/maxbotix.jpg", class: "display"
+  %p Provides tools to use maxbotix sonar (range finder).
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %h3 For Arduino:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
 
-    %h3 For Digispark:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
-          device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
+  %h3 For Digispark:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
 
-  %section.public-methods
-    %h2 Commands:
+%section.public-methods
+  %h2 Commands:
+  %dl.methods 
+    %dt range → distance_in_inches(float)
+    %dd Returns the distance measured by the sonar in inches.
+    %dt range_cm → distance_in_cm(float)
+    %dd Returns the distance measured by the sonar in cm.
 
-    %dl.methods 
-      %dt range → distance_in_inches(float)
-      %dd Returns the distance measured by the sonar in inches.
+%section.public-events
+  %h2 Events:
+  :markdown
+    The events will be triggered when the amount of time specified by the param `:interval`, when setting up the driver, passes.
+  %dl.methods 
+    %dt :range
+    %dd 
+      :markdown
+        Gets triggered after `:interval` amount of time passes, everytime the range will be read and the event triggered.
+  %h3 How to use events and call them on your drivers
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on sonar, :range => proc { puts "range \#{ sonar.range }!" }
 
-      %dt range_cm → distance_in_cm(float)
-      %dd Returns the distance measured by the sonar in cm.
+%section.how-to
+  %h2 How to use
+  %h3 Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.
+  :markdown
+        :::ruby
 
+        require 'artoo'
 
-  %section.public-events
-    %h2 Events:
-    :markdown
-      The events will be triggered when the amount of time specified by the param `:interval`, when setting up the driver, passes.
+        # Circuit and schematic here: http://www.electrojoystick.com/tutorial/?page_id=285
 
-    %dl.methods 
-      %dt :range
-      %dd 
-        :markdown
-          Gets triggered after `:interval` amount of time passes, everytime the range will be read and the event triggered.
-      
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:4567'
+        device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
+        device :board, :driver => :device_info
 
-    %h3 How to use events and call them on your drivers
-    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
-    :markdown
-          :::ruby
-          on sonar, :range => proc { puts "range \#{ sonar.range }!" }
+        work do
+          on sonar, :range => :sonar_reading
 
-  %section.how-to
-    %h2 How to use
-    %h3 Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.
-    :markdown
-          :::ruby
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+          puts "starting sonar..."
+        end
 
-          require 'artoo'
+        def sonar_reading(*args)
+          puts args
+        end
 
-          # Circuit and schematic here: http://www.electrojoystick.com/tutorial/?page_id=285
+%section.circuit
+  %h2 Circuit and Schematic
+  %p=link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
 
-          #connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:4567'
-          device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
-          device :board, :driver => :device_info
-
-          work do
-            on sonar, :range => :sonar_reading
-
-            puts "Firmware name: \#{board.firmware_name}"
-            puts "Firmata version: \#{board.version}"
-            puts "starting sonar..."
-          end
-
-          def sonar_reading(*args)
-            puts args
-          end
-
-  %section.circuit
-    %h2 Circuit and Schematic
-    %p
-      =link_to "http://www.electrojoystick.com/tutorial/?page_id=285", "http://www.electrojoystick.com/tutorial/?page_id=285"
-
-  %section.compatability.hardware
-    %h2 Works with:
-    =# TODO: Update platform list with all that work with this driver in artoo.
-    .devices
-      = partial "documentation/partials/arduino"
-      = partial "documentation/partials/digispark"
-      = partial "documentation/partials/spark"
+%section.compatability.hardware
+  %h2 Works with:
+  =# TODO: Update platform list at the top of the page.
+  .devices
+    = partial "documentation/partials/devices_platforms"

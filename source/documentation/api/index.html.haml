@@ -1,32 +1,27 @@
 ---
+page_title_show: true
 title: Artoo API
 author: The Hybrid Group
 page_title: API
 page_subtitle: "The Artoo API provides an interface for retrieving information and communicating with the currently running robots."
-layout: page
+layout: documentation
 ---
-
-:markdown
-	## How To Connect
-
-	Now that you are ready to write your own code you can access a running Artoo API server.
-
-	### Running your robot:
-	
+%h2  How To Connect
+%p Now that you are ready to write your own code you can access a running Artoo API server.
+%h3 Running your robot:
+:markdown	
 	To test your code you can type this on your console:
-
 	    :::ruby
 		artoo start myrobot.rb
-		
+
 	or
-		
+
 	    :::ruby
 	    ruby myrobot.rb
 
-	
 	For example, on this code:
 
-	    :::javascript
+	    :::ruby
 		require 'artoo'
 		
 		connection :loop
@@ -37,12 +32,10 @@ layout: page
 		  puts "Hello from the API running at \#{api_host}:\#{api_port}..."
 		end
 
-	artoo automatically, starts the server.
-
-	## How To Configure
-	
-	The Artoo API server, allows a configuration for your robots.
-
+%p artoo automatically, starts the server.
+%h2  How To Configure
+%p The Artoo API server, allows a configuration for your robots.
+:markdown	
 	You can set it up like this:
 
 	    :::ruby
@@ -63,13 +56,11 @@ layout: page
 	      puts "Hello from the API running at \#{api_host}:\#{api_port}..."
 	    end	
 
-	## Routes
-
-	### GET /robots
-
+%h2  Routes
+%h3  GET /robots
+:markdown	
 	Our first route returns all the Robots the master class knows about in JSON
 	format.
-      	
 	   
 	    [
 	      {
@@ -105,8 +96,8 @@ layout: page
 	      }
 	    ]
 
-	### GET /robots/:robotid
-
+%h3 GET /robots/:robotid
+:markdown	
 	Given a robot's name, returns JSON information about the requested Robot:
 
 	    {
@@ -141,8 +132,8 @@ layout: page
 	      ]
 	    }
 
-	### GET /robots/:robotid/devices
-
+%h3  GET /robots/:robotid/devices
+:markdown	
 	Given a robot's name, returns JSON information about the devices belonging to
 	the requested Robot:
 
@@ -167,8 +158,8 @@ layout: page
 	      }
 	    ]
 
-	### GET /robots/:robotid/devices/:deviceid
-
+%h3  GET /robots/:robotid/devices/:deviceid
+:markdown	
 	Given the names of a device and the robot it belongs to, returns data on the
 	specified device.
 
@@ -191,8 +182,8 @@ layout: page
 	      ]
 	    }
 
-	### GET /robots/:robotid/devices/:deviceid/commands
-
+%h3 GET /robots/:robotid/devices/:deviceid/commands
+:markdown	
 	Given the names of a device and the robot it belongs to, returns all commands
 	available for the specified device.
 
@@ -204,15 +195,15 @@ layout: page
 	      "stop"
 	    ]
 
-	### POST /robots/:robotid/devices/:deviceid/commands/:commandid
-
+%h3 POST /robots/:robotid/devices/:deviceid/commands/:commandid
+:markdown	
 	Given a robot name, device name, and command name, executes a robot's command
 	and returns the result.
 
 	    // example pending
 
-	### GET /robots/:robotid/connections
-
+%h3 GET /robots/:robotid/connections
+:markdown	
 	Given a robot's name, returns JSON information about the connections belonging
 	to the requested Robot:
 
@@ -225,8 +216,8 @@ layout: page
 	      }
 	    ]
 
-	### GET /robots/:robotid/connections/:connectionid
-
+%h3  GET /robots/:robotid/connections/:connectionid
+:markdown	
 	Given a robot's name, returns JSON information about the connections belonging
 	to the requested Robot:
 
@@ -237,12 +228,7 @@ layout: page
 	      "connection_id": 2778
 	    }
 
-	### GET /robots/:robotid/devices/:deviceid/events
-
-	Routes to a Reel route to handle WebSockets connections requesting updates
-	on device events.
-
-	### WS_GET /events
-
-	A Reel route to handle updating clients whenever a device sends
-	an 'update' event.
+%h3 GET /robots/:robotid/devices/:deviceid/events
+%p Routes to a Reel route to handle WebSockets connections requesting updates on device events.
+%h3  WS_GET /events
+%p A Reel route to handle updating clients whenever a device sends an 'update' event.

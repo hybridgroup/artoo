@@ -1,89 +1,84 @@
 ---
+page_title_show: true
 title: Artoo - LED Driver
 author: The Hybrid Group
 page_title: LED
 page_subtitle: Driver
-layout: page
+layout: documentation
+
+arduino_platform: true
+beaglebone_platform: true
+digispark_platform: true
+raspberry_platform: true
+spark_platform: true
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/LED.jpg", class: "display"
-    %p
-      Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
+%section.intro
+  =image_tag "/images/devices/LED.jpg", class: "display"
+  %p  Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    %h3 For Arduino:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :led, :driver => :led, :pin => 13
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :led, :driver => :led, :pin => 13
 
-    %h3 For Digispark:
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
-          device :led, :driver => :led, :pin => 13
+  %h3 For Digispark:
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :led, :driver => :led, :pin => 13
 
-  %section.public-methods
-    %h2 Commands:
+%section.public-methods
+  %h2 Commands:
+  %dl.methods 
+    %dt on → true | nil
+    %dd Turns LED on.
+    %dt off → true | nil
+    %dd Turns LED off.
+    %dt on? → true | false
+    %dd Returns true if LED is on, otherwise returns false.
+    %dt off? → true | false
+    %dd Returns true if LED is off, otherwise returns false.
+    %dt toggle → true | nil
+    %dd Turns the LED on, or off, depending on if it is already off, or on, respectively.
+    %dt brightness(brightness_int) → true | nil
+    %dd Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.
 
-    %dl.methods 
-      %dt on → true | nil
-      %dd Turns LED on.
+%section.how-to
+  %h2 How to use
+  %h3 Example using a button to turn a LED on and off.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-      %dt off → true | nil
-      %dd Turns LED off.
+        #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :led, :driver => :led, :pin => 13
 
-      %dt on? → true | false
-      %dd Returns true if LED is on, otherwise returns false.
-
-      %dt off? → true | false
-      %dd Returns true if LED is off, otherwise returns false.
-      
-      %dt toggle → true | nil
-      %dd Turns the LED on, or off, depending on if it is already off, or on, respectively.
-      
-      %dt brightness(brightness_int) → true | nil
-      %dd Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.
-      
-
-  %section.how-to
-    %h2 How to use
-    %h3 Example using a button to turn a LED on and off.
-    :markdown
-          :::ruby
-          require 'artoo'
-
-          #connection :arduino, :adaptor => :firmata, :port => '/dev/tty*'
-          connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
-          device :led, :driver => :led, :pin => 13
-
-          work do
-            every 1.second do
-              led.on? ? led.off : led.on
-            end
+        work do
+          every 1.second do
+            led.on? ? led.off : led.on
           end
+        end
 
-  %section.circuit
-    %h2 Circuit and Schematic
-    =link_to "http://arduino.cc/en/Tutorial/Blink", "http://arduino.cc/en/Tutorial/Blink"
+%section.circuit
+  %h2 Circuit and Schematic
+  =link_to "http://arduino.cc/en/Tutorial/Blink", "http://arduino.cc/en/Tutorial/Blink"
 
-  %section.compatability.hardware
-    %h2 Works with:
-    %p 
-      %b Important Note:
-      You need to install
-      = link_to "pi-blaster", "https://github.com/sarfata/pi-blaster", target: :blank
-      in the 
-      %b raspberry-pi, 
-      this project enables PWM in the GPIO pins .
-    =# TODO: Update platform list with all that work with this driver in artoo.
-    .devices
-      = partial "documentation/partials/arduino"
-      = partial "documentation/partials/beaglebone"
-      = partial "documentation/partials/digispark"
-      = partial "documentation/partials/raspberry-pi"
-      = partial "documentation/partials/spark"
+%section.compatability.hardware
+  %h2 Works with:
+  %p 
+    %b Important Note:
+    You need to install
+    = link_to "pi-blaster", "https://github.com/sarfata/pi-blaster", target: :blank
+    in the 
+    %b raspberry-pi, 
+    this project enables PWM in the GPIO pins .
+  =# TODO: Update platform list at the top of the page.
+  .devices
+    = partial "documentation/partials/devices_platforms"
+

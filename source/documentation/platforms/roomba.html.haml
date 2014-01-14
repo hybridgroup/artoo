@@ -1,52 +1,49 @@
 ---
+page_title_show: true
 title: Roomba with Artoo
 author: The Hybrid Group
 page_title: Roomba
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-roomba' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-roomba/issues'>Issues</a>"
-layout: page
+layout: documentation
+
+roomba_driver: true
 ---
-.documentation
-  %section.intro
-    = image_tag "/images/roomba.jpg", class: "display"
+%section.intro
+  = image_tag "/images/devices/roomba.jpg", class: "display"
+  %p The Roomba is a simple robot that usually cleans floors.
+  %p
+    For more info about the Roomba platform click
+    = succeed "." do
+      = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
 
-    %p
-      The Roomba is a simple robot that usually cleans floors.
+%section.how-to
+  %h2 How to install
+  %p  Installing artoo with roomba support is pretty easy using ruby gems.
+  :markdown
+        :::bash
+        gem install artoo-roomba
+  %h2 How to use
+  %p This small program controls a Roomba.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-    %p
-      For more info about the Roomba platform click
-      = succeed "." do
-        = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
+        connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
+        device :roomba, :driver => :roomba, :connection => :roomba
 
-  %section.how-to
-    %h2 How to install
-    %p
-      Installing artoo with roomba support is pretty easy using ruby gems.
-    :markdown
-          :::bash
-          gem install artoo-roomba
-    %h2 How to use
-    %p
-      This small program controls a Roomba.
-    :markdown
-          :::ruby
-          require 'artoo'
+        work do
+          roomba.safe_mode
+          roomba.nudge_left
+          roomba.nudge_right
+          roomba.nudge_right
+          roomba.nudge_left
+        end
 
-          connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
-          device :roomba, :driver => :roomba, :connection => :roomba
+%section.drivers
+  %h2 Drivers
+  %p There is only one driver for the Roomba platform, as listed below.
 
-          work do
-            roomba.safe_mode
-            roomba.nudge_left
-            roomba.nudge_right
-            roomba.nudge_right
-            roomba.nudge_left
-          end
-
-  %section.drivers
-    %h2 Drivers
-    %p
-      There is only one driver for the Roomba platform, as listed below.
-
-    .hardware
-      .devices
-        = partial "documentation/partials/roomba-driver"
+  .hardware
+    .devices
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_roomba_drivers"

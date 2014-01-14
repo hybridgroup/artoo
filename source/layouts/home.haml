@@ -4,4 +4,5 @@
       .index_content
         = yield
     .aside.right
-      %img{:src => "images/artoo.png"}
+      = current_page.data.img_character
+    

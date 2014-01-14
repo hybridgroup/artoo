@@ -1,4 +1,5 @@
 - wrap_layout :layout do
+  = partial "layouts/contents-blog"
   .main.blog{:role => "main"}
     .articles
       .article
@@ -8,13 +9,8 @@
         - else 
           = yield
     .categories
-      %h4
-        Tags
-      %ul
-        %li= link_to "Robots", "/blog/tags/robots/"
-        %li= link_to "Events", "/blog/tags/events/"
+      %h4 Tags
+      = yield_content :tags
     .network
-      %h4
-        Network
-      = link_to image_tag("twitter.png"), "https://twitter.com/artooio"
-      = link_to image_tag("github.png"), "https://github.com/hybridgroup/artoo"
+      %h4 Network
+      = yield_content :network
