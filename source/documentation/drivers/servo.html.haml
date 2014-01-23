@@ -33,27 +33,62 @@ raspberry_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt move(angle) → true | nil
-    %dd 
-      :markdown
-        Moves the servo to the specified angle, angle must be an integer value between `0` and `180`.
-    %dt min
-    %dd 
-      :markdown
-        Moves the servo to the angle = `0` position.
-    %dt max
-    %dd 
-      :markdown
-        Moves the servo to the angle = `180` position.
-    %dt center
-    %dd 
-      :markdown
-        Moves the servo to the angle = `90` position.
-    %dt current_angle → integer_value (0 - 180)
-    %dd 
-      :markdown
-        Returns the current angle of the servo, an integer value between `0` and `180`.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command move(angle)
+      %td.param  
+        %p 
+          Moves the servo to the specified angle, angle must be an integer value between 
+          %span 0
+          and 
+          %span 180.
+        %span move(angle) → true | nil
+        %h5 Returns 
+        %span true | nil
+    %tr 
+      %td.command min
+      %td.param  
+        %p 
+          Moves the servo to the angle = 
+          %span 0
+          position.
+        %span min() →
+        %h5 Returns 
+        %span 
+    %tr 
+      %td.command max
+      %td.param  
+        %p 
+          Moves the servo to the angle = 
+          %span 180
+          position.
+        %span max() →
+        %h5 Returns 
+        %span 
+    %tr 
+      %td.command center
+      %td.param  
+        %p 
+          Moves the servo to the angle = 
+          %span 90
+          position.
+        %span center() →
+        %h5 Returns 
+        %span 
+    %tr 
+      %td.command current_angle
+      %td.param  
+        %p 
+          Returns the current angle of the servo, an integer value between
+          %span 0
+          and
+          %span 180.
+        %span current_angle() →integer_value 
+        %h5 Returns 
+        %span integer_value (0 - 180)
 
 %section.how-to
   %h2 How to use

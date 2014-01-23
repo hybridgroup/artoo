@@ -33,65 +33,44 @@ spark_platform: true
 
 %section.public-methods
   %h2 Commands:
+
+ 
   %table.commands 
     %tr 
       %th Command (param)
-      %th Returns
       %th Description
     %tr 
       %td.command pin
       %td.param 
+        %p Returns the pin number set up when creating the sensor.
+        %span  pin() → integer_value
+        %h5 Returns
         %span integer_value
-      %td Returns the pin number set up when creating the sensor.
+        
     %tr 
       %td.command upper
       %td.param 
+        %p Returns the upper limit set up when creating the sensor.
+        %span upper() → integer_value
+        %h5 Returns
         %span integer_value
-      %td Returns the upper limit set up when creating the sensor.
+    
     %tr 
       %td.command lower
       %td.param 
+        %p Returns the lower limit set up when creating the sensor.
+        %span lower() → integer_value
+        %h5 Returns 
         %span integer_value
-      %td Returns the lower limit set up when creating the sensor.
+      
     %tr 
       %td.command analog_read(pin_number)
       %td.param  
+        %p Returns the lower limit set up when creating the sensor.
+        %span analog_read(pin_number) → integer_value
+        %h5 Returns 
         %span integer_value (from 0 to 1027)
-      %td Returns the lower limit set up when creating the sensor.
 
-  %h3 Examples
-  %table.commands 
-    %tr 
-      %th Command
-      %th Example
-    %tr 
-      %td.command  pin
-      %td 
-        :markdown
-              :::bash
-              drone.ping()
-              => integer_value
-    %tr 
-      %td.command  upper
-      %td 
-        :markdown
-              :::bash
-              drone.upper()
-              => integer_value
-    %tr 
-      %td.command  lower
-      %td 
-        :markdown
-              :::bash
-              drone.lower()
-              => integer_value
-    %tr 
-      %td.command  analog_read
-      %td 
-        :markdown
-              :::bash
-              drone.analog_read(pin_number)
-              => integer_value #from 0 to 1027
 
 
 %section.public-events
@@ -114,27 +93,6 @@ spark_platform: true
         %span :lower
       %td Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor).
 
-  %h3 Examples
-  %table.commands 
-    %tr 
-      %th Event
-      %th Example
-    %tr 
-      %td.command :upper
-      %td 
-        :markdown
-              :::bash
-              on sensor, :upper => proc {
-                puts "UPPER LIMIT REACHED!"
-              }
-    %tr 
-      %td.command :lower
-      %td 
-        :markdown
-              :::bash
-              on sensor, :lower => proc {
-                puts "LOWER SENSOR LIMIT REACHED!"
-              }
 
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
