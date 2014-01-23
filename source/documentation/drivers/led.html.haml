@@ -34,19 +34,36 @@ spark_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt on → true | nil
-    %dd Turns LED on.
-    %dt off → true | nil
-    %dd Turns LED off.
-    %dt on? → true | false
-    %dd Returns true if LED is on, otherwise returns false.
-    %dt off? → true | false
-    %dd Returns true if LED is off, otherwise returns false.
-    %dt toggle → true | nil
-    %dd Turns the LED on, or off, depending on if it is already off, or on, respectively.
-    %dt brightness(brightness_int) → true | nil
-    %dd Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Returns
+      %th Description
+    %tr 
+      %td.command on
+      %td.param true | nil
+      %td Turns LED on.
+    %tr 
+      %td.command off
+      %td.param true | nil
+      %td Turns LED off.
+    %tr 
+      %td.command on?
+      %td.param true | false
+      %td Returns true if LED is on, otherwise returns false.
+    %tr 
+      %td.command off?
+      %td.param true | false
+      %td Returns true if LED is off, otherwise returns false.
+    %tr 
+      %td.command toggle
+      %td.param true | nil   
+      %td Turns the LED on, or off, depending on if it is already off, or on, respectively.
+    %tr 
+      %td.command brightness(brightness_int)
+      %td.param true | nil
+      %td Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.
+
 
 %section.how-to
   %h2 How to use

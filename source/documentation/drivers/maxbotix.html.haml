@@ -32,11 +32,20 @@ spark_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt range → distance_in_inches(float)
-    %dd Returns the distance measured by the sonar in inches.
-    %dt range_cm → distance_in_cm(float)
-    %dd Returns the distance measured by the sonar in cm.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Returns
+      %th Description
+    %tr 
+      %td.command range
+      %td.param distance_in_inches (float)
+      %td Returns the distance measured by the sonar in inches.
+    %tr 
+      %td.command range_cm
+      %td.param distance_in_cm (float)
+      %td Returns the distance measured by the sonar in cm.
+
 
 %section.public-events
   %h2 Events:
