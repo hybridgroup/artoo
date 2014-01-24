@@ -7,7 +7,7 @@ module Artoo
 
         # Path to api/public directory
         # @return [String] static path
-        def static_path(default=File.join(File.dirname(__FILE__), "..", "..", "..","api"))
+        def static_path(default = Gem.loaded_specs['roboux'].full_gem_path)
           @static_path ||= default
         end
 
