@@ -8,6 +8,7 @@ PATH
       pry (~> 0.9)
       rake
       reel (~> 0.4.0)
+      roboux (~> 0.0.2)
       thor (~> 0.18.1)
 
 GEM
@@ -62,6 +63,7 @@ GEM
       websocket_parser (>= 0.1.4)
     ref (1.0.5)
     slop (3.4.6)
+    roboux (0.0.2)
     spoon (0.0.4)
       ffi
     therubyracer (0.12.0)
