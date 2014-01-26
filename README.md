@@ -99,6 +99,7 @@ Artoo has a extensible system for connecting to hardware devices. The following 
   - [Crazyflie](http://www.bitcraze.se/) <=> [Adaptor](https://github.com/hybridgroup/artoo-crazyflie)
   - [Digispark](http://digistump.com/products/1) <=> [Adaptor](https://github.com/hybridgroup/artoo-digispark)
   - [Joystick](http://www.libsdl.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-joystick)
+  - [Keyboard](http://en.wikipedia.org/wiki/Computer_keyboard) <=> [Adaptor](https://github.com/hybridgroup/artoo-keyboard)
   - [Leap Motion](https://www.leapmotion.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-leapmotion)
   - [OpenCV](http://opencv.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-opencv)
   - [Pebble](http://getpebble.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-pebble)
