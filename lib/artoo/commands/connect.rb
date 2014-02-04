@@ -52,7 +52,8 @@ module Artoo
         # check that Socat is installed
         system("socat -V &> /dev/null")
         unless $?.success?
-          say "Socat not installed. Cannot bind serial to TCP. Please install socat and try again."
+          say "Socat not installed. Cannot bind serial to TCP."
+          say "Please install with 'artoo install socat' and try again."
           return
         end
 
