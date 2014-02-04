@@ -49,6 +49,14 @@ module Artoo
       def serial(name, port)
         attempts = 1 + options[:retries].to_i
 
+        # check that Socat is installed
+        system("socat -V &> /dev/null")
+        unless $?.success?
+          say "Socat not installed. Cannot bind serial to TCP."
+          say "Please install with 'artoo install socat' and try again."
+          return
+        end
+
         case os
         when :linux
           run("sudo chmod a+rw /dev/#{name}")
