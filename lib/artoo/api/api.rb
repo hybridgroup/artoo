@@ -110,15 +110,7 @@ module Artoo
       def command_params
         if @req.body.to_s != ""
           data = MultiJson.load(@req.body.to_s, :symbolize_keys => true)
-          if data
-            params = []
-            data.each {|key, value|
-              params << value
-            }
-            params
-          else
-            nil
-          end
+          data.values
         end
       end
     end
