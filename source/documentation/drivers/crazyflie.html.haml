@@ -23,35 +23,123 @@ crazyflie_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods
-    %dt start
-    %dd Starts the crazyfly's motors and controls.
-    %dt stop
-    %dd Stops the crazyfly's motors.
-    %dt hover
-    %dd Makes the crazyflie hover in a position.
-    %dt land
-    %dd Initiates a landing sequence.
-    %dt take_off
-    %dd Initiates take off sequence.
-    %dt up
-    %dd Orders crazy flie to go up.
-    %dt down
-    %dd Orders crazy flie to go down.
-    %dt left(deg)
-    %dd Orders crazyflie to go left the amount specified by deg (roll left).
-    %dt right(deg)
-    %dd Orders crazyflie to go right the amount specified by deg (roll right).
-    %dt forward(deg)
-    %dd Orders crazyflie to go forward the amount specified by deg (pitch forward).
-    %dt backward(deg)
-    %dd Orders crazyflie to go backward the amount specified by deg (pitch backward).
-    %dt turn_left(deg)
-    %dd Orders crazyflie to turn left the amount specified by deg (yaw left).
-    %dt turn_right(deg)
-    %dd Orders crazyflie to turn right the amount specified by deg (yaw right).
-    %dt power(deg)
-    %dd Sets thrust power to deg.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command start 
+      %td.param  
+        %p Starts the crazyfly's motors and controls.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command stop 
+      %td.param  
+        %p Stops the crazyfly's motors.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command hover 
+      %td.param  
+        %p Makes the crazyflie hover in a position.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command land 
+      %td.param  
+        %p Initiates a landing sequence.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command take_off 
+      %td.param  
+        %p Initiates take off sequence.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command up 
+      %td.param  
+        %p Orders crazy flie to go up.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command down 
+      %td.param  
+        %p Orders crazy flie to go down.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command left(deg) 
+      %td.param  
+        %p  Orders crazyflie to go left the amount specified by deg (roll left).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command right(deg)
+      %td.param  
+        %p  Orders crazyflie to go right the amount specified by deg (roll right).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command forward(deg)
+      %td.param  
+        %p Orders crazyflie to go forward the amount specified by deg (pitch forward).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command backward(deg)
+      %td.param  
+        %p Orders crazyflie to go backward the amount specified by deg (pitch backward).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command turn_left(deg)
+      %td.param  
+        %p Orders crazyflie to turn left the amount specified by deg (yaw left).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command turn_right(deg)
+      %td.param  
+        %p Orders crazyflie to turn right the amount specified by deg (yaw right).
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+    %tr 
+      %td.command power(deg)
+      %td.param  
+        %p Sets thrust power to deg.
+        %h5 Params
+        %span deg → drone
+        %h5 Returns 
+        %span drone
+
 
 %section.how-to
   %h2 How to use

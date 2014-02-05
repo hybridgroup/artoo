@@ -26,15 +26,24 @@ raspberry_platform: true
 
 %section.public-methods
   %h2 Events:
-  %dl.methods 
-    %dt c_button
-    %dd Get's triggered every interval amount of time if the square button is pressed.
-    %dt z_button
-    %dd Get's triggered every interval amount of time if the square button is pressed.
-    %dt joystick
-    %dd 
-      :markdown
-        Get's triggered every "interval" amount of time if a joystick event occured, you can access values `x`, `y`.
+  %table.commands 
+    %tr 
+      %th Event
+      %th Description
+    %tr 
+      %td.command 
+        %span c_button
+      %td Get's triggered every interval amount of time if the square button is pressed.
+    %tr 
+      %td.command 
+        %span z_button
+      %td Get's triggered every interval amount of time if the square button is pressed.
+    %tr 
+      %td.command 
+        %span joystick
+      %td 
+        Get's triggered every "interval" amount of time if a joystick event occured, you can access values 
+        %span x, y.
 
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:

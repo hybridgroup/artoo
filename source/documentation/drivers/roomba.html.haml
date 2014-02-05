@@ -22,47 +22,153 @@ roomba_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt start
-    %dd Puts roomba in start mode.
-    %dt safe_mode
-    %dd Puts roomba in safe mode.
-    %dt full_mode
-    %dd Puts roomba in full mode.
-    %dt forward(seconds, speed=slow) → nil
-    %dd 
-      :markdown
-        Moves roomba forward for `seconds` amount of time at `speed` (speed(int) between `0` and `500`).
-    %dt fast_forward(seconds) → nil
-    %dd 
-      :markdown
-        Moves roomba forward for `seconds` amount of time at max speed.
-    %dt stop
-    %dd Stops the roomba.
-    %dt backwards(seconds) → nil
-    %dd 
-      :markdown
-        Moves roomba backwards for `seconds` amount of time at default speed.
-    %dt nudge_left
-    %dd Turns roomba a little bit to the left.  
-    %dt nudge_right
-    %dd Turns roomba a little bit to the right.
-    %dt turn_left(seconds=1) → nil
-    %dd Turns roomba to the left the specefied amount of seconds.
-    %dt turn_right(seconds=1) → nil
-    %dd Turns roomba to the right the specefied amount of seconds.
-    %dt turn_around
-    %dd Turns roomba 180 degrees.
-    %dt drive(speed, direction, seconds = 0)  → nil
-    %dd
-      :markdown
-        Drives the roomba at speed (from `0` to `500`) and direction (`straight=32768`, `clockwise=65535`, `counterclockwise=1`) for the specefied amount of time (seconds). 
-    %dt play(song_number)  → nil
-    %dd Plays the song specified by song_numer.
-    %dt song(notes[Collection], song_number[Integer])  → nil
-    %dd Stores a song in the roomba.
-    %dt beep
-    %dd Makes roomba beep.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command start
+      %td.param  
+        %p Puts roomba in start mode.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command safe_mode
+      %td.param  
+        %p Puts roomba in safe mode.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command full_mode
+      %td.param  
+        %p Puts roomba in full mode.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command forward(seconds, speed=slow)
+      %td.param  
+        %p  
+          Moves roomba forward for 
+          %span seconds 
+          amount of time at 
+          %span speed 
+          (speed(int) between 0 and 500).
+        %h5 Params
+        %span (seconds, speed=slow) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command fast_forward(seconds) 
+      %td.param  
+        %p  
+          Moves roomba forward for 
+          %span seconds
+          amount of time at max speed.
+        %h5 Params
+        %span (seconds) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command stop
+      %td.param  
+        %p Stops the roomba.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command backwards(seconds) 
+      %td.param  
+        %p 
+          Moves roomba backwards for 
+          %span seconds
+          amount of time at default speed.
+        %h5 Params
+        %span (seconds) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command nudge_left
+      %td.param  
+        %p Turns roomba a little bit to the left.  
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command nudge_right
+      %td.param  
+        %p Turns roomba a little bit to the right.  
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command turn_left(seconds=1)
+      %td.param  
+        %p Turns roomba to the left the specefied amount of seconds. 
+        %h5 Params
+        %span (seconds=1) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command turn_right(seconds=1)
+      %td.param  
+        %p Turns roomba to the right the specefied amount of seconds.
+        %h5 Params
+        %span (seconds=1) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command turn_around
+      %td.param  
+        %p Turns roomba 180 degrees.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command drive(speed, direction, seconds = 0) 
+      %td.param  
+        %p 
+          Drives the roomba at speed (from 0 to 500) and direction 
+          %span (straight=32768, clockwise=65535, counterclockwise=1) 
+          for the specefied amount of time (seconds). 
+        %h5 Params
+        %span (speed, direction, seconds = 0)  → nil
+        %h5 Returns 
+        %span nil
+    %tr
+      %td.command play(song_number)
+      %td.param  
+        %p Plays the song specified by song_numer.
+        %h5 Params
+        %span (song_number)  → nil
+        %h5 Returns 
+        %span nil
+    %tr
+      %td.command song(notes[Collection], song_number[Integer]) 
+      %td.param  
+        %p Stores a song in the roomba.
+        %h5 Params
+        %span (notes[Collection], song_number[Integer])  → nil
+        %h5 Returns 
+        %span nil
+    %tr
+      %td.command beep
+      %td.param  
+        %p Makes roomba beep.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+
     
 %section.how-to
   %h2 How to use
