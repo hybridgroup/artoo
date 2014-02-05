@@ -5,3 +5,39 @@
   font-size: 56px;
   font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.documentation {
+  .index {
+    @include outer-container;
+    padding-left: 30px;
+
+    section {
+      margin: 0 auto;
+      @include span-columns(3 of 9.5);
+      background: #027CAF;
+      height: 100px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+
+      a {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: block;
+      }
+
+      &:hover {
+        background: darken(#027CAF, 5);
+      }
+
+      .title {
+        color: #E0EFF5;
+        font-weight: bold;
+      }
+
+      .description {
+        color: #A7C6D5;
+      }
+    }
+  }
+}
