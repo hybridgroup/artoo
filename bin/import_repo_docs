@@ -1,0 +1,124 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.setup
+
+require 'git'
+require 'fileutils'
+
+REPOS = %w(
+  https://github.com/hybridgroup/artoo-ardrone.git
+  https://github.com/hybridgroup/artoo-arduino.git
+  https://github.com/hybridgroup/artoo-beaglebone.git
+  https://github.com/hybridgroup/artoo-crazyflie.git
+  https://github.com/hybridgroup/artoo-digispark.git
+  https://github.com/hybridgroup/artoo-force.git
+  https://github.com/hybridgroup/artoo-gpio.git
+  https://github.com/hybridgroup/artoo-i2c.git
+  https://github.com/hybridgroup/artoo-joystick.git
+  https://github.com/hybridgroup/artoo-keyboard.git
+  https://github.com/hybridgroup/artoo-leapmotion.git
+  https://github.com/hybridgroup/artoo-opencv.git
+  https://github.com/hybridgroup/artoo-pebble.git
+  https://github.com/hybridgroup/artoo-raspi.git
+  https://github.com/hybridgroup/artoo-roomba.git
+  https://github.com/hybridgroup/artoo-spark.git
+  https://github.com/hybridgroup/artoo-sphero.git
+)
+
+# Public: Gets the name of the repository from it's GitHub clone URI
+#
+# uri - string git clone URI to extract a name from
+#
+# Examples
+#
+#   get_repo_name "https://github.com/hybridgroup/artoo-ardrone.git"
+#   #=> "artoo-ardrone"
+#
+#   get_repo_name "git@github.com:hybridgroup/artoo.git"
+#   #=> "artoo"
+#
+#   get_repo_name ""
+#   #=> nil
+#
+# Returns a string or nil if it couldn't be parsed
+def get_repo_name(uri)
+  uri[/.*\/(.*).git/, 1]
+end
+
+# Public: Uses the git gem to clone down a remote git repository
+#
+# uri - string URI of remote git repo to clone down
+#
+# Returns an array containing the path to the cloned repository, and the Git
+# repository instance
+def clone_repo(uri)
+  name = get_repo_name(uri)
+  path = File.expand_path("#{__dir__}/../.docs/#{name}")
+
+  remove_repo(path) if File.directory?(path)
+
+  puts "  - Cloning #{name}."
+  repo = Git.clone(uri, path)
+  return [path, repo]
+end
+
+def extract_docs_from_repo(path)
+  docs = {}
+
+  puts "  - Importing docs from #{File.basename(path)}"
+
+  Dir.glob(path + "/docs/*.md") do |file|
+    contents = File.read(file)
+    filename = File.basename(file)
+    docs[filename] = contents
+    puts "    - #{filename}"
+  end
+
+  docs
+end
+
+def add_docs_to_site(repo_name, docs)
+  return if docs == {}
+  docs_path = File.expand_path("#{__dir__}/../source/documentation/drivers/partials/")
+  docs_path += "/" + repo_name[/^artoo-(.*)$/, 1]
+
+  if File.directory?(docs_path)
+    FileUtils.rm_rf docs_path + "/*.html.haml"
+  else
+    FileUtils.mkdir_p docs_path
+  end
+
+  docs.each do |name, content|
+    filename = "_" + File.basename(name, ".md") + ".html.haml"
+    path = File.join docs_path, filename
+
+    # indent by two spaces
+    content.gsub! /^(.+)/, '  \1'
+
+    File.write path, ":markdown\n#{content}"
+  end
+end
+
+# Public: Removes the existing git repository
+#
+# path - path to git repository to remove
+#
+# Returns nothing
+def remove_repo(path)
+  FileUtils.rm_r path
+end
+
+def main
+  REPOS.each do |repo|
+    name = get_repo_name(repo)
+    puts "Importing docs from #{name}."
+
+    path, repo = clone_repo repo
+    docs = extract_docs_from_repo path
+    add_docs_to_site name, docs
+    remove_repo path
+  end
+end
+
+main
