@@ -1,0 +1,16 @@
+:markdown
+  # Events
+
+  The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ), there are `:upper` and `:lower` limits, as well as an `:interval` param that defines how often the sensor should be read; when the specified amount of time passes the sensor is read, if one of the limits stablished is reached the corresponging event will be triggered.
+
+  ## start_driver
+
+  Starts the driver.
+
+  ## :upper
+
+  Gets triggered if the value read by the sensor is greater or equal to :upper (value passed when setting up the sensor).
+
+  ## :lower
+
+  Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor).
