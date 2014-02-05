@@ -28,21 +28,58 @@ raspberry_platform: true
 
 %section.public-events
   %h2 Commands:
-  %dl.methods 
-    %dt rgb(red=0, green=0, blue=0) → nil
-    %dd 
-      :markdown
-        Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
-    %dt fade(red=0, green=0, blue=0) → nil
-    %dd 
-      :markdown
-        Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
-    %dt firmware_version → String
-    %dd Returns an sring describing the I2C firmware version being used.
-    %dt color → [red, green, blue] (integer)
-    %dd 
-      :markdown
-        Returns an array containing the RGB values for the current color (all integer between `0` and `255`).
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command rgb(red=0, green=0, blue=0) 
+      %td.param  
+        %p 
+          Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 
+          %span 0
+          and 
+          %span 255
+          ).
+        %h5 Params
+        %span (red=0, green=0, blue=0) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command fade(red=0, green=0, blue=0) 
+      %td.param  
+        %p 
+          Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 
+          %span 0
+          and 
+          %span 255
+          ).
+        %h5 Params
+        %span (red=0, green=0, blue=0) → nil
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command firmware_version 
+      %td.param  
+        %p Returns an sring describing the I2C firmware version being used.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span String
+    %tr 
+      %td.command color 
+      %td.param  
+        %p 
+          Returns an array containing the RGB values for the current color (all integer between 
+          %span 0 
+          and 
+          %span 255
+          ).
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span integer
+
 
 %section.how-to
   %h2 How to use

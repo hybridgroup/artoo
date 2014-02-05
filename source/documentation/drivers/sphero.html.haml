@@ -25,35 +25,77 @@ sphero_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt roll(speed, direction) → true | nil
-    %dd 
-      :markdown
-        Starts the sphero rolling at the provided speed (value between `0` and `255`) and direction (value between `0` and `360`).
-    %dt stop → true | nil
-    %dd Stops the sphero.
-    %dt detect_collissions → true | nil
-    %dd REVISION PENDING: Sets the sphero to detect collisions and report them.
-    %dt messages → [sphero_event]
-    %dd REVISION PENDING: Returns an array of sphero events, the messages reported by the sphero.
-    %dt color(:color_symbol | [red, green, blue]) → [red_int, green_int, blue_int]
-    %dd 
-      :markdown
-        REVISION PENDING: You can pass a color as a symbol or an array containing RGB colors from `0` to `255` ([`255`, `0`, `0`] == red),
-        if passed a symbol returns the array of RGB corresponding to the color, if passed an array of colors it returns the same array 
-        (used when setting colors to the sphero).
-    %dt set_color([red, green, blue]) → true | nil
-    %dd 
-      :markdown
-        REVISION PENDING: You can either use it in tandem with color to set the color of the sphero or just pass an array containing RGB colors
-        on the range `0` to `255` ([`255`, `0`, `0`] == red).
+  %table.commands  
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command roll(speed, direction)
+      %td.param  
+        %p Starts the sphero rolling at the provided speed (value between 0 and 255) and direction (value between 0 and 360).
+        %h5 Params
+        %span (speed, direction) → true | nil
+        %h5 Returns 
+        %span true | nil
+    %tr 
+      %td.command stop 
+      %td.param  
+        %p Stops the sphero.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span true | nil
+    %tr 
+      %td.command detect_collissions 
+      %td.param  
+        %p Sets the sphero to detect collisions and report them.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span true | nil
+    %tr 
+      %td.command messages 
+      %td.param  
+        %p Returns an array of sphero events, the messages reported by the sphero.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span [sphero_event]
+    %tr 
+      %td.command color(:color_symbol | [red, green, blue]) 
+      %td.param  
+        %p 
+          You can pass a color as a symbol or an array containing RGB colors from 0 to 255 
+          %span ([255, 0, 0] == red)
+          if passed a symbol returns the array of RGB corresponding to the color, if passed an array of colors it returns the same array (used when setting colors to the sphero). 
+        %h5 Params
+        %span (:color_symbol | [red, green, blue]) → [red_int, green_int, blue_int]
+        %h5 Returns 
+        %span [red_int, green_int, blue_int] 
+    %tr 
+      %td.command set_color([red, green, blue])
+      %td.param  
+        %p 
+          You can either use it in tandem with color to set the color of the sphero or just pass an array containing RGB colors on the range 0 to 255 
+          %span ([255, 0, 0] == red).
+        %h5 Params
+        %span ([red, green, blue]) → true | nil
+        %h5 Returns 
+        %span true | nil
+
 
 %section.public-events
   %h2 Events:
   %p Public events are triggered when something occurs to your sphero, when this occurs you can execute some code to respond accordingly, depending on the event triggered, you can access the following public events when programming the Sphero.
-  %dl.methods 
-    %dt :colission
-    %dd  Gets triggered when the sphero hits something or falls from a step.
+  %table.commands 
+    %tr 
+      %th Event
+      %th Description
+    %tr 
+      %td.command 
+        %span :colission
+      %td Gets triggered when the sphero hits something or falls from a step.
+
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on the sphero driver as follows:
   :markdown
@@ -63,63 +105,96 @@ sphero_platform: true
 
 %section 
   %h2 Sphero Colors (R,G,B)
-  %dl.colors 
-    %dt aliceblue            
-    %dd 
-      .aliceblue.square
-      %p (240, 248, 255)
-    %dt antiquewhite         
-    %dd 
-      .antiquewhite.square
-      %p (250, 235, 215) 
-    %dt aqua                 
-    %dd 
-      .square.aqua
-      %p (0, 255, 255)
-    %dt aquamarine           
-    %dd
-      .square.aquamarine 
-      %p (127, 255, 212)
-    %dt azure                 
-    %dd 
-      .square.azure
-      %p (240, 255, 255)
-    %dt beige                 
-    %dd 
-      .square.beige
-      %p (245, 245, 220)
-    %dt bisque                
-    %dd 
-      .square.bisque
-      %p (255, 228, 196)
-    %dt black                 
-    %dd 
-      .square.black
-      %p (0, 0, 0)
-    %dt blanchedalmond        
-    %dd 
-      .square.blanchedalmond
-      %p (255, 235, 205)
-    %dt blue                 
-    %dd 
-      .square.blue
-      %p (0, 0, 255)
-    %dt blueviolet            
-    %dd 
-      .square.blueviolet
-      %p (138, 43, 226)
-    %dt brown                 
-    %dd 
-      .square.brown
-      %p (165, 42, 42)
-    %dt burlywood             
-    %dd 
-      .square.burlywood
-      %p (222, 184, 135)
-    %dt cadetblue             
-    %dd
-      .square.cadetblue 
-      %p (95, 158, 160)
+  %table.commands 
+    %tr 
+      %th Example
+      %th Name
+      %th Code
+      %th Example
+      %th Name
+      %th Code
+    %tr 
+      %td
+        .aliceblue.square
+      %td.command 
+        %span aliceblue
+      %td (240, 248, 255)
+      %td
+        .antiquewhite.square
+      %td.command 
+        %span antiquewhite
+      %td (250, 235, 215) 
+    %tr 
+      %td
+        .aqua.square
+      %td.command 
+        %span aqua
+      %td (0, 255, 255)
+      %td
+        .aquamarine.square
+      %td.command 
+        %span aquamarine
+      %td (127, 255, 212)
+    %tr 
+      %td
+        .azure.square
+      %td.command 
+        %span azure
+      %td (240, 255, 255)
+      %td
+        .beige.square
+      %td.command 
+        %span beige
+      %td (245, 245, 220)
+    %tr 
+      %td
+        .bisque.square
+      %td.command 
+        %span bisque
+      %td (255, 228, 196)
+      %td
+        .black.square
+      %td.command 
+        %span black
+      %td (0, 0, 0)
+    %tr 
+      %td
+        .blanchedalmond.square
+      %td.command 
+        %span blanchedalmond
+      %td (255, 235, 205)
+      %td
+        .blue.square
+      %td.command 
+        %span blue
+      %td (0, 0, 255)
+    %tr 
+      %td
+        .blueviolet.square
+      %td.command 
+        %span blueviolet
+      %td (138, 43, 226)
+      %td
+        .brown.square
+      %td.command 
+        %span brown
+      %td (165, 42, 42)
+    %tr 
+      %td
+        .burlywood.square
+      %td.command 
+        %span burlywood
+      %td (222, 184, 135)
+      %td
+        .cadetblue.square
+      %td.command 
+        %span cadetblue
+      %td (95, 158, 160)
+
+
+
+
+  %dl.colors
     %dt chartreuse            
     %dd 
       .square.chartreuse

@@ -43,35 +43,40 @@ spark_platform: true
       %td.command stop
       %td.param  
         %p Stops the motor.
-        %span stop() → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command start
       %td.param  
         %p Starts the motor.
-        %span start() → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command on?
       %td.param  
         %p Returns true if the motor is on, otherwise returns false.
-        %span on?() → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
     %tr 
       %td.command off?
       %td.param  
         %p Returns true if the motor is off, otherwise returns false.
-        %span off?() → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
     %tr 
       %td.command toggle
       %td.param  
         %p Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
-        %span toggle() → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
@@ -82,7 +87,8 @@ spark_platform: true
           %span 0 
           and 
           %span 255. 
-        %span speed(speed_value) → true | nil
+        %h5 Params
+        %span (speed_value) → true | nil
         %h5 Returns 
         %span true | nil
     %tr 
@@ -91,7 +97,8 @@ spark_platform: true
         %p 
           Stops the motor, sets the speed to 
           %span 0. 
-        %span min() → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
@@ -100,35 +107,40 @@ spark_platform: true
         %p 
           Starts the motor at max speed, sets the speed to
           %span 255. 
-        %span max() → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command forward(speed)
       %td.param  
         %p Starts the motor in forward direction at the provided speed.
-        %span forward(speed) → true | nil
+        %h5 Params
+        %span (speed) → true | nil
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command backward(speed)
       %td.param  
         %p Starts the motor in backward direction at the provided speed.
-        %span backward(speed) → true | nil
+        %h5 Params
+        %span (speed) → true | nil
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command forward?
       %td.param  
         %p Returns true if the motor is direction is set to forward, otherwise false.
-        %span forward?() → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
     %tr 
       %td.command backward? 
       %td.param  
         %p Returns true if the motor is direction is set to backward, otherwise false.
-        %span backward?() → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
     %tr 
@@ -139,7 +151,8 @@ spark_platform: true
           %span 0 
           and 
           %span 255.
-        %span current_speed() → integer_value(speed)
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span integer_value
 

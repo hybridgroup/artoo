@@ -42,28 +42,32 @@ spark_platform: true
       %td.command on
       %td.param  
         %p Turns LED on.
-        %span on → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command off
       %td.param  
         %p Turns LED off.
-        %span off → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command off
       %td.param  
         %p Turns LED off.
-        %span off → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
     %tr 
       %td.command on?
       %td.param  
         %p Returns true if LED is on, otherwise returns false.
-        %span on? → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
 
@@ -71,7 +75,8 @@ spark_platform: true
       %td.command off?
       %td.param  
         %p Returns true if LED is off, otherwise returns false.
-        %span off? → true | false
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | false
 
@@ -79,7 +84,8 @@ spark_platform: true
       %td.command toggle
       %td.param  
         %p Turns the LED on, or off, depending on if it is already off, or on, respectively.
-        %span off? → true | nil
+        %h5 Params
+        %span no params
         %h5 Returns 
         %span true | nil
 
@@ -87,7 +93,8 @@ spark_platform: true
       %td.command brightness(brightness_int)
       %td.param  
         %p Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between 0 and 255.
-        %span brightness(brightness_int) → true | nil
+        %h5 Params
+        %span (brightness_int) → true | nil
         %h5 Returns 
         %span true | nil
 

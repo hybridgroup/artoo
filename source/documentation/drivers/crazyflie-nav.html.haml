@@ -26,19 +26,58 @@ crazyflie_platform: true
 
 %section.public-methods
   %h2 Commands:
-  %dl.methods 
-    %dt set_value
-    %dd Sets a value for the Crazyflie. 
-    %dt start_get_value
-    %dd Gets a value from the Crazyflie.
-    %dt toc
-    %dd Gets the toc from the Crazyflie.
-    %dt values
-    %dd Gets the values from the Crazyflie.
-    %dt log
-    %dd Logs a value to the Crazyflie.
-    %dt start_driver
-    %dd Starts the driver.
+  %table.commands 
+    %tr 
+      %th Command (param)
+      %th Description
+    %tr 
+      %td.command set_value 
+      %td.param  
+        %p Sets a value for the Crazyflie. 
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command start_get_value 
+      %td.param  
+        %p Gets a value from the Crazyflie.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span value
+    %tr 
+      %td.command toc 
+      %td.param  
+        %p Gets the toc from the Crazyflie.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span toc
+    %tr 
+      %td.command values 
+      %td.param  
+        %p Gets the values from the Crazyflie.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span values
+    %tr 
+      %td.command log 
+      %td.param  
+        %p Logs a value to the Crazyflie.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
+    %tr 
+      %td.command start_driver 
+      %td.param  
+        %p Starts the driver.
+        %h5 Params
+        %span no params
+        %h5 Returns 
+        %span nil
 
 %section.how-to
   %h2 How to use
