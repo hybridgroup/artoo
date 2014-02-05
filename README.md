@@ -8,6 +8,8 @@ Artoo provides a simple, yet powerful Domain-Specific Language (DSL) for robotic
 
 Want to use JavaScript on robots? Check out our sister project Cylon.js (http://cylonjs.com)
 
+Want to use the Go programming language to power your robots? Check out our sister project Gobot (http://gobot.io).
+
 [![Code Climate](https://codeclimate.com/github/hybridgroup/artoo.png)](https://codeclimate.com/github/hybridgroup/artoo) [![Build Status](https://travis-ci.org/hybridgroup/artoo.png?branch=master)](https://travis-ci.org/hybridgroup/artoo)
 
 ## Examples:
@@ -329,6 +331,8 @@ If you want to help us with some documentation on the site, you can go to [artoo
 ## IRC
 
 Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
+
+## Contributing
 
 * All patches must be provided under the Apache 2.0 License
 * Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
