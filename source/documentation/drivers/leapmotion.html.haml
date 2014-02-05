@@ -21,27 +21,8 @@ leapmotion_platform: true
         device :leapmotion, :connection => :leapmotion, :driver => :leapmotion
 
 %section.public-methods
-  %h2 Events:
-  %table.commands 
-    %tr 
-      %th Event
-      %th Description
-    %tr 
-      %td.command 
-        %span hand
-      %td Gets triggered when doing a hand motion, makes hand input available.
-    %tr 
-      %td.command 
-        %span gesture
-      %td Gets triggered when doing a gesture motion, makes hand input available.
-    %tr 
-      %td.command 
-        %span pointable
-      %td Gets triggered when doing a pointable motion, makes hand input available.
-    %tr 
-      %td.command 
-        %span frame
-      %td Gets triggered with every motion detected, makes frame input available.
+  .commands_api
+    = partial "/documentation/drivers/partials/leapmotion/events"
 
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:

@@ -34,60 +34,8 @@ raspberry_platform: true
         device :wiiclassic, :driver => :wiiclassic, :connection :digispark
 
 %section.public-methods
-  %h2 Events:
-  %table.commands 
-    %tr 
-      %th Event
-      %th Description
-    %tr 
-      %td.command 
-        %span a_button
-      %td Get's triggered every interval amount of time if the a button is pressed.
-    %tr 
-      %td.command 
-        %span b_button
-      %td Get's triggered every interval amount of time if the b button is pressed.
-    %tr 
-      %td.command 
-        %span x_button
-      %td Get's triggered every interval amount of time if the x button is pressed.
-    %tr 
-      %td.command 
-        %span y_button
-      %td Get's triggered every interval amount of time if the y button is pressed. 
-    %tr 
-      %td.command 
-        %span home_button
-      %td Get's triggered every interval amount of time if the home button is pressed.
-    %tr 
-      %td.command 
-        %span select_button
-      %td Get's triggered every interval amount of time if the select button (-) is pressed. 
-    %tr 
-      %td.command 
-        %span start_button
-      %td Get's triggered every interval amount of time if the start button (+) is pressed.
-    %tr 
-      %td.command 
-        %span right_trigger
-      %td Get's triggered every interval amount of time if the right trigger button is pressed, makes right trigger value available.
-    %tr 
-      %td.command 
-        %span left_trigger
-      %td Get's triggered every interval amount of time if the left trigger button is pressed, makes left trigger value available.
-    %tr 
-      %td.command 
-        %span left_joystick
-      %td 
-        Get's triggered every "interval" amount of time if a left joystick event occured, you can access values
-        %span x, y.
-    %tr 
-      %td.command 
-        %span right_joystick
-      %td 
-        Get's triggered every "interval" amount of time if a right joystick event occured, you can access values 
-        %span x, y.
-
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/events_wiiclassic"
         
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:

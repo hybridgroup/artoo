@@ -21,6 +21,9 @@ roomba_platform: true
         device :roomba, :driver => :roomba, :connection => :roomba
 
 %section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/roomba/commands"
+
   %h2 Commands:
   %table.commands 
     %tr 

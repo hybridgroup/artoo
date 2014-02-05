@@ -25,9 +25,10 @@ ardrone_platform: true
         device :video, :driver => :ardrone_video, :connection => :videodrone
 
 %section.public-methods
-  %h2 Events
-  We're working on the documentation for the events. Stay tuned.
+  .commands_api
+    = partial "/documentation/drivers/partials/ardrone/events_video"
 
+ 
 %section.example
   %h2 Example of receiving video data from an ARDrone.
   :markdown

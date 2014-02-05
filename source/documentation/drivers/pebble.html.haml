@@ -21,10 +21,10 @@ pebble_platform: true
         device :watch, :driver => :pebble
 
 %section.public-methods
-  %h2 Commands:
-  %p We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
-  %h2 Events:
-  %p We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
+  .commands_api
+    = partial "/documentation/drivers/partials/pebble/commands"
+  .commands_api
+    = partial "/documentation/drivers/partials/pebble/events"
 
 %section.how-to
   %h2 How to use

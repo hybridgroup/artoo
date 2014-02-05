@@ -25,6 +25,11 @@ raspberry_platform: true
         device :compass, :driver => :hmc_6352_compass, :connection => :arduino, :interval => 0.5
 
 %section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/commands_hmc"
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/events_hmc"
+
   %h2 Commands:
   %table.commands 
     %tr 
