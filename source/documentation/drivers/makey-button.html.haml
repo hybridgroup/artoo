@@ -1,0 +1,49 @@
+---
+page_title_show: true
+title: Artoo - Makey Button Driver
+author: The Hybrid Group
+page_title: Makey Button
+page_subtitle: Driver
+layout: documentation
+
+arduino_platform: true
+---
+%section.intro
+  = image_tag "/images/devices/makey-button.jpg", class: "display"
+  %p Simple interface that makes it possible to register clicks through physical input.
+
+%section.how_to
+  %h2 How to establish a connection and setup the driver 
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        coming soon
+
+
+%section.public-methods
+  %h2 Commands:
+  %dl.methods 
+    %dt is_pressed? → true | false
+    %dd Returns true or false matching state of the button.
+
+%section.public-events
+  %h2 Events:
+  %dl.methods 
+    %dt :push
+    %dd This event gets triggered when the button changes state from released to pushed.
+    %dt :release
+    %dd This event gets triggered when the button changes state from pushed to released.
+
+
+%section.how-to
+  %h2 How to use
+  :markdown
+        :::ruby
+        coming soon
+
+
+%section.compatability.hardware
+  %h2 Works with:
+  =# TODO: Update platform list at the top of the page.
+  .devices
+    = partial "documentation/partials/devices_platforms"
