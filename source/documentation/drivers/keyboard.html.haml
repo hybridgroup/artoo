@@ -1,0 +1,54 @@
+---
+page_title_show: true
+title: Artoo - Keyboard Driver
+author: The Hybrid Group
+page_title: Keyboard 
+page_subtitle: Driver
+layout: documentation
+
+keyboard_platform: true
+---
+%section.intro
+  =image_tag "/images/devices/keyboard.jpg", class: "display"
+  %p The Artoo adaptor for keyboard input.
+
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  %h3 For Arduino:
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :keyboard, adaptor: :keyboard
+        device :keyboard, driver: :keyboard, connection: :keyboard
+        ...
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/keyboard/events"
+
+
+%section.how-to
+  %h2 How to use
+  %h3 Example using a Key.
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :keyboard, adaptor: :keyboard
+        device :keyboard, driver: :keyboard, connection: :keyboard
+
+        work do
+          on keyboard, :key => :keypress
+        end
+
+        def keypress(sender, key)
+          puts key
+        end
+
+
+%section.compatability.hardware
+  %h2 Works with:
+  .devices
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"

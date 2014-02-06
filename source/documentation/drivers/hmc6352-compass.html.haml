@@ -30,32 +30,6 @@ raspberry_platform: true
   .commands_api
     = partial "/documentation/drivers/partials/i2c/events_hmc"
 
-  %h2 Commands:
-  %table.commands 
-    %tr 
-      %th Command (param)
-      %th Description
-    %tr 
-      %td.command heading → float
-      %td.param  
-        %p  Returns the heading data for the compass.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span float
-
-  
-%section.public-events
-  %h2 Events:
-  %table.commands 
-    %tr 
-      %th Event
-      %th Description
-    %tr 
-      %td.command 
-        %span heading
-      %td Gets triggered every time the specified interval is met.
-
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
