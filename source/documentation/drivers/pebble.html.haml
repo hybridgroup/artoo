@@ -17,25 +17,27 @@ pebble_platform: true
   :markdown
         :::ruby
         require 'artoo'
-        connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+        connection :pebble, :adaptor => :pebble
         device :watch, :driver => :pebble
 
 %section.how-to
   %h2 How to use
-  %h3 Example receiving button events from a Pebble smart watch.
+  %h3 Example communicating with Pebble smart watch.
   :markdown
         :::ruby
         require 'artoo'
 
-        connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+        connection :pebble, :adaptor => :pebble
         device :watch, :driver => :pebble
 
         work do
-          on watch, :media_control => :button_push
-        end
-
-        def button_push(caller, data)
-          puts data.button unless data.nil?
+          c = 100
+          every 1.second do
+            c++
+            str = "c: \#{c}"
+            pebble.message_queue.push(str)
+            Logger.info(pebble.last_message)
+          end
         end
 
 %section.public-methods
