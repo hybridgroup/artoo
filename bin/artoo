@@ -14,7 +14,7 @@ Celluloid.logger = nil
 module CLI
   class Root < Thor
     include Thor::Actions
-    
+
     desc 'version', 'Displays the current version'
     def version
       say Artoo::VERSION
@@ -42,6 +42,7 @@ module CLI
 
     desc "install SUBCOMMAND ...ARGS", "Installs utility programs"
     subcommand "install", Artoo::Commands::Install
+
   end
 end
 
