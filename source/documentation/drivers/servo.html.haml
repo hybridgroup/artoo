@@ -31,11 +31,6 @@ raspberry_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/commands_servo"
-
-
 %section.how-to
   %h2 How to use
   %h3 Example moves a servo from angle 0 to 90 to 180.
@@ -64,6 +59,11 @@ raspberry_platform: true
             end
           end
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_servo"
+
 
 %section.circuit
   %h2 Circuit and Schematic

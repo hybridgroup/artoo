@@ -24,20 +24,15 @@ raspberry_platform: true
         connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
         device :compass, :driver => :hmc_6352_compass, :connection => :arduino, :interval => 0.5
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/i2c/commands_hmc"
-  .commands_api
-    = partial "/documentation/drivers/partials/i2c/events_hmc"
-
+%section.how-to
+  %h2 How to use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
         :::ruby
         on compass, :heading => proc { |caller, data| puts "heading: \#{data}"}
-
-%section.how-to
-  %h2 How to use
+        
+  
   %h3 Example using a HMC6352 Digital Compass.
   :markdown
         :::ruby
@@ -49,6 +44,16 @@ raspberry_platform: true
         work do
           on compass, :heading => proc { |caller, data| puts "heading: \#{data}"}
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/commands_hmc"
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/events_hmc"
+
+  
+
+
 
 %section.circuit
   %h2 Circuit and Schematic

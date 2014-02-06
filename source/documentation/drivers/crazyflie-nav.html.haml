@@ -23,15 +23,7 @@ crazyflie_platform: true
 
         connection :crazyflie, :adaptor => :crazyflie, :supports_hover => true
         device :drone, :driver => :crazyflie_nav, :connection => :crazyflie
-
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/crazyflie/commands_nav"
-  .commands_api
-    = partial "/documentation/drivers/partials/crazyflie/events_nav"
-
- 
-
+        
 %section.how-to
   %h2 How to use
   %h3 Example of controlling a Crazyflie.
@@ -50,6 +42,16 @@ crazyflie_platform: true
             puts drone.log
           }
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/crazyflie/commands_nav"
+  .commands_api
+    = partial "/documentation/drivers/partials/crazyflie/events_nav"
+
+ 
+
+
 
 %section.compatability.hardware
   %h2 Works with:

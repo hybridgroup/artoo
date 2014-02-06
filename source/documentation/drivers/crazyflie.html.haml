@@ -21,13 +21,6 @@ crazyflie_platform: true
         connection :crazyflie, :adaptor => :crazyflie
         device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/crazyflie/commands_flight"
-  .commands_api
-    = partial "/documentation/drivers/partials/crazyflie/events_flight"
-
-
 %section.how-to
   %h2 How to use
   %h3 Example of controlling a Crazyflie.
@@ -43,6 +36,15 @@ crazyflie_platform: true
           drone.set_thrust_on
           after(1.seconds) {drone.stop}
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/crazyflie/commands_flight"
+  .commands_api
+    = partial "/documentation/drivers/partials/crazyflie/events_flight"
+
+
+
 
 %section.compatability.hardware
   %h2 Works with:

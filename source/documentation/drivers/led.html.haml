@@ -32,11 +32,6 @@ spark_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :led, :driver => :led, :pin => 13
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/commands_led"
-
-
 %section.how-to
   %h2 How to use
   %h3 Example using a button to turn a LED on and off.
@@ -53,6 +48,13 @@ spark_platform: true
             led.on? ? led.off : led.on
           end
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_led"
+
+
+
 
 %section.circuit
   %h2 Circuit and Schematic

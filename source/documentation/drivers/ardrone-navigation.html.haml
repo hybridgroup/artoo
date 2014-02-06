@@ -23,15 +23,8 @@ ardrone_platform: true
         require 'artoo'
         connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
         device :nav, :driver => :ardrone_navigation, :connection => :navigation
-
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/ardrone/commands_nav"
-  .commands_api
-    = partial "/documentation/drivers/partials/ardrone/events_nav"
-
-  
-
+%section.how-to
+  %h2 How to use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -47,9 +40,6 @@ ardrone_platform: true
           puts "Vision detect type: \#{ nav_option_vision_detect.type }"
           puts "Vision detect name: \#{ nav_option_vision_detect.name }"
         }
-
-%section.how-to
-  %h2 How to use
   %h3 Example of receiving navigation data from an ARDrone.
   :markdown
         :::ruby
@@ -65,6 +55,14 @@ ardrone_platform: true
         def nav_update(*data)
           p data[1].inspect
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/ardrone/commands_nav"
+  .commands_api
+    = partial "/documentation/drivers/partials/ardrone/events_nav"
+
+
 
 %section.compatability.hardware
   %h2 Works with:

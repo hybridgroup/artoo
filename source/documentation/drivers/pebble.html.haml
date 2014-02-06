@@ -20,12 +20,6 @@ pebble_platform: true
         connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
         device :watch, :driver => :pebble
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/pebble/commands"
-  .commands_api
-    = partial "/documentation/drivers/partials/pebble/events"
-
 %section.how-to
   %h2 How to use
   %h3 Example receiving button events from a Pebble smart watch.
@@ -43,6 +37,14 @@ pebble_platform: true
         def button_push(caller, data)
           puts data.button unless data.nil?
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/pebble/commands"
+  .commands_api
+    = partial "/documentation/drivers/partials/pebble/events"
+
+
 
 %section.compatability.hardware
   %h2 Works with:

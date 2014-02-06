@@ -8,62 +8,61 @@ layout: documentation
 
 joystick_platform: true
 ---
-.documentation
-  %section.intro
-    =image_tag "/images/devices/xbox360.jpg", class: "display"
-    %p Allows user to interact with Artoo devices using a XBox360 game controller.
 
-  %section.how-to
-    %h2 How to establish a connection and setup the driver
-    :markdown
-          :::ruby
-          require 'artoo'
-          connection :joystick, :adaptor => :joystick
-          device :controller, :driver => :xbox360, :connection => :joystick, :interval => 0.1
+%section.intro
+  =image_tag "/images/devices/xbox360.jpg", class: "display"
+  %p Allows user to interact with Artoo devices using a XBox360 game controller.
 
-  %section.public-methods
-    .commands_api
-    = partial "/documentation/drivers/partials/joystick/events_xbox360"
+%section.how-to
+  %h2 How to establish a connection and setup the driver
+  :markdown
+        :::ruby
+        require 'artoo'
+        connection :joystick, :adaptor => :joystick
+        device :controller, :driver => :xbox360, :connection => :joystick, :interval => 0.1
 
-    %h3 How to use events and call them on your drivers
-    %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
-    :markdown
-          :::ruby
-          on controller, :button_a => proc { |*value| puts "ayyyy!" }
+%section.how-to
+  %h2 How to use
+  %h3 How to use events and call them on your drivers
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on controller, :button_a => proc { |*value| puts "ayyyy!" }
+  %h3 Example receiving button events from XBox360 controller joystick.
+  :markdown
+        :::ruby
+        require 'artoo'
 
-  %section.how-to
-    %h2 How to use
-    %h3 Example receiving button events from XBox360 controller joystick.
-    :markdown
-          :::ruby
-          require 'artoo'
+        connection :joystick, :adaptor => :joystick
+        device :controller, :driver => :xbox360, :connection => :joystick, :interval => 0.1
 
-          connection :joystick, :adaptor => :joystick
-          device :controller, :driver => :xbox360, :connection => :joystick, :interval => 0.1
+        work do
+          on controller, :joystick_0 => proc { |*value|
+            puts "joystick 0 - x:\#{value[1][:x]} y:\#{value[1][:y]}"
+          }
+          on controller, :joystick_1 => proc { |*value|
+            puts "joystick 1 - x:\#{value[1][:x]} y:\#{value[1][:y]}"
+          }
+          on controller, :button_a => proc { |*value|
+            puts "ayyyy!"
+          }
+          on controller, :button_b => proc { |*value|
+            puts "bee!"
+          }
+          on controller, :button_x => proc { |*value|
+            puts "exxx!"
+          }
+          on controller, :button_y => proc { |*value|
+            puts "why!"
+          }
+        end
 
-          work do
-            on controller, :joystick_0 => proc { |*value|
-              puts "joystick 0 - x:\#{value[1][:x]} y:\#{value[1][:y]}"
-            }
-            on controller, :joystick_1 => proc { |*value|
-              puts "joystick 1 - x:\#{value[1][:x]} y:\#{value[1][:y]}"
-            }
-            on controller, :button_a => proc { |*value|
-              puts "ayyyy!"
-            }
-            on controller, :button_b => proc { |*value|
-              puts "bee!"
-            }
-            on controller, :button_x => proc { |*value|
-              puts "exxx!"
-            }
-            on controller, :button_y => proc { |*value|
-              puts "why!"
-            }
-          end
+%section.public-methods
+  .commands_api
+  = partial "/documentation/drivers/partials/joystick/events_xbox360"
 
-  %section.compatability.hardware
-    %h2 Works with:
-    .devices
-      =# TODO: Update platform list at the top of the page.
-      = partial "documentation/partials/devices_platforms"
+%section.compatability.hardware
+  %h2 Works with:
+  .devices
+    =# TODO: Update platform list at the top of the page.
+    = partial "documentation/partials/devices_platforms"

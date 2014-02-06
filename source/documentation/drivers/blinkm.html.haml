@@ -26,10 +26,6 @@ raspberry_platform: true
         connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
         device :blink_m, :driver => :blink_m, :connection => :arduino
 
-%section.public-events
-  .commands_api
-    = partial "/documentation/drivers/partials/i2c/commands_blinkM"
-
 %section.how-to
   %h2 How to use
   %h3 Example using a BlinkM.
@@ -51,6 +47,12 @@ raspberry_platform: true
             end
           end
         end
+
+%section.public-events
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/commands_blinkM"
+
+
 
 %section.circuit
   %h2 Circuit and Schematic

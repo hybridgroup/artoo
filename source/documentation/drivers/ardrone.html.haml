@@ -23,10 +23,6 @@ ardrone_platform: true
         connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
         device :drone, :driver => :ardrone, :connection => :ardrone
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/ardrone/commands_flight"
-
 %section.how-to
   %h2 How to use
   %h3 Example of controlling an ARDrone.
@@ -67,6 +63,12 @@ ardrone_platform: true
           after(15.seconds) { drone.hover.land }
           after(20.seconds) { drone.stop }
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/ardrone/commands_flight"
+
+
 
 %section.compatability.hardware
   %h2 Works with:

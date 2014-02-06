@@ -33,10 +33,6 @@ spark_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/commands_motor"
-
 %section.how-to
   %h2 How to use
   %h3 Example of a dc motor with speed changes using PWM.
@@ -74,7 +70,7 @@ spark_platform: true
           end
         end
 
-  %h2 Example of a dc motor with direction and speed change.
+  %h3 Example of a dc motor with direction and speed change.
   :markdown
         :::ruby
         require 'artoo'
@@ -115,6 +111,10 @@ spark_platform: true
             sleep 3
           end
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_motor"
 
   %h2 Circuit and Schematic
   %p=link_to "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout", "http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout"

@@ -31,24 +31,15 @@ spark_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :button, :driver => :button, :pin => 2, :interval => 0.01
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/commands_button"
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/events_button"
 
-
-%section.public-events
-
+%section.how-to
+  %h2 How to use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
         :::ruby
         on button, :push    => proc { puts "button pressed!" }
         on button, :release => proc { puts "button released!" }
-
-%section.how-to
-  %h2 How to use
   %h3 Example using a button to turn a LED on and off.
   :markdown
         :::ruby
@@ -64,6 +55,15 @@ spark_platform: true
           on button, :push    => proc { led.on }
           on button, :release => proc { led.off }
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_button"
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/events_button"
+
+
+
 
 %section.circuit
   %h2 Circuit and Schematic

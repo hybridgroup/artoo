@@ -33,18 +33,13 @@ raspberry_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :wiiclassic, :driver => :wiiclassic, :connection :digispark
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/i2c/events_wiiclassic"
-        
+%section.how-to
+  %h2 How to use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
         :::ruby
         on wiiclassic, :a_button => proc { puts "a button pressed!" }
-
-%section.how-to
-  %h2 How to use
   %h3 Example using a Nintendo Wii Classic Controller comming soon.
   :markdown
         :::ruby
@@ -60,6 +55,10 @@ raspberry_platform: true
             puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
           }
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/events_wiiclassic"
 
 %section.circuit
   %h2 Circuit and Schematic

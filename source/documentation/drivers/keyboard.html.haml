@@ -23,11 +23,6 @@ keyboard_platform: true
         device :keyboard, driver: :keyboard, connection: :keyboard
         ...
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/keyboard/events"
-
-
 %section.how-to
   %h2 How to use
   %h3 Example using a Key.
@@ -46,6 +41,9 @@ keyboard_platform: true
           puts key
         end
 
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/keyboard/events"
 
 %section.compatability.hardware
   %h2 Works with:

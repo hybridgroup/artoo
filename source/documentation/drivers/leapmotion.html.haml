@@ -20,18 +20,13 @@ leapmotion_platform: true
         connection :leapmotion, :adaptor => :leapmotion, :port => '127.0.0.1:6437'
         device :leapmotion, :connection => :leapmotion, :driver => :leapmotion
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/leapmotion/events"
-
+%section.how-to
+  %h2 How to use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
         :::ruby
         on leapmotion, :hand => proc { |sender, hand| puts hand.inspect }
-
-%section.how-to
-  %h2 How to use
   %h3 Example receiving hand motion events from a Leap Motion.
   :markdown
         :::ruby
@@ -47,6 +42,14 @@ leapmotion_platform: true
         def wave(sender, hand)
           puts hand.inspect
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/leapmotion/events"
+
+  
+
+
 
 %section.compatability.hardware
   %h2 Works with:

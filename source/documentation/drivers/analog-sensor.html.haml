@@ -30,23 +30,6 @@ spark_platform: true
         require 'artoo'
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0.25, upper: 900, lower: 200
-
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/commands_analog_sensor"
-
-
-
-%section.public-events
-  .commands_api
-    = partial "/documentation/drivers/partials/gpio/events_analog_sensor"
-
-  %h3 How to use events and call them on your drivers
-  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
-  :markdown
-        :::ruby
-        on sensor, :upper => proc { puts "UPPER LIMIT REACHED!" }
-        on sensor, :lower => proc { puts "LOWER LIMIT REACHED!" }
 %section.how-to
   %h2 How to use
   %h3 Example using a photoresistor sensor to turn a LED on and off.
@@ -78,6 +61,24 @@ spark_platform: true
             led.on
           }
         end
+
+%section.public-methods
+  %h3 How to use events and call them on your drivers
+  %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
+  :markdown
+        :::ruby
+        on sensor, :upper => proc { puts "UPPER LIMIT REACHED!" }
+        on sensor, :lower => proc { puts "LOWER LIMIT REACHED!" }
+
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_analog_sensor"
+
+
+
+%section.public-events
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/events_analog_sensor"
+
 
 %section.circuit
   %h2 Circuit and Schematic

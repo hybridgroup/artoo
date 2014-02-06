@@ -20,159 +20,6 @@ roomba_platform: true
         connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
         device :roomba, :driver => :roomba, :connection => :roomba
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/roomba/commands"
-
-  %h2 Commands:
-  %table.commands 
-    %tr 
-      %th Command (param)
-      %th Description
-    %tr 
-      %td.command start
-      %td.param  
-        %p Puts roomba in start mode.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command safe_mode
-      %td.param  
-        %p Puts roomba in safe mode.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command full_mode
-      %td.param  
-        %p Puts roomba in full mode.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command forward(seconds, speed=slow)
-      %td.param  
-        %p  
-          Moves roomba forward for 
-          %span seconds 
-          amount of time at 
-          %span speed 
-          (speed(int) between 0 and 500).
-        %h5 Params
-        %span (seconds, speed=slow) → nil
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command fast_forward(seconds) 
-      %td.param  
-        %p  
-          Moves roomba forward for 
-          %span seconds
-          amount of time at max speed.
-        %h5 Params
-        %span (seconds) → nil
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command stop
-      %td.param  
-        %p Stops the roomba.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command backwards(seconds) 
-      %td.param  
-        %p 
-          Moves roomba backwards for 
-          %span seconds
-          amount of time at default speed.
-        %h5 Params
-        %span (seconds) → nil
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command nudge_left
-      %td.param  
-        %p Turns roomba a little bit to the left.  
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command nudge_right
-      %td.param  
-        %p Turns roomba a little bit to the right.  
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command turn_left(seconds=1)
-      %td.param  
-        %p Turns roomba to the left the specefied amount of seconds. 
-        %h5 Params
-        %span (seconds=1) → nil
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command turn_right(seconds=1)
-      %td.param  
-        %p Turns roomba to the right the specefied amount of seconds.
-        %h5 Params
-        %span (seconds=1) → nil
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command turn_around
-      %td.param  
-        %p Turns roomba 180 degrees.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-    %tr 
-      %td.command drive(speed, direction, seconds = 0) 
-      %td.param  
-        %p 
-          Drives the roomba at speed (from 0 to 500) and direction 
-          %span (straight=32768, clockwise=65535, counterclockwise=1) 
-          for the specefied amount of time (seconds). 
-        %h5 Params
-        %span (speed, direction, seconds = 0)  → nil
-        %h5 Returns 
-        %span nil
-    %tr
-      %td.command play(song_number)
-      %td.param  
-        %p Plays the song specified by song_numer.
-        %h5 Params
-        %span (song_number)  → nil
-        %h5 Returns 
-        %span nil
-    %tr
-      %td.command song(notes[Collection], song_number[Integer]) 
-      %td.param  
-        %p Stores a song in the roomba.
-        %h5 Params
-        %span (notes[Collection], song_number[Integer])  → nil
-        %h5 Returns 
-        %span nil
-    %tr
-      %td.command beep
-      %td.param  
-        %p Makes roomba beep.
-        %h5 Params
-        %span no params
-        %h5 Returns 
-        %span nil
-
-    
 %section.how-to
   %h2 How to use
   %h3 Example controlling a Roomba.
@@ -190,6 +37,10 @@ roomba_platform: true
           roomba.nudge_right
           roomba.nudge_left
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/roomba/commands"
 
 %section.compatability.hardware
   %h2 Works with:

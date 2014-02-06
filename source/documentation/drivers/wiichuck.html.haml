@@ -24,18 +24,14 @@ raspberry_platform: true
         connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
         device :wiichuck, :driver => :wiichuck, :connection :arduino
 
-%section.public-methods
-  .commands_api
-    = partial "/documentation/drivers/partials/i2c/events_wiichuck"
-
+%section.how_to
+  %h2 How to use 
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
         :::ruby
         on wiichuck, :c_button => proc { puts "c button pressed!" }
-
-%section.how_to
-  %h2 Example using a Nintendo Wii Nunchuck.
+  %h3 Example using a Nintendo Wii Nunchuck.
   :markdown
         :::ruby
         require 'artoo'
@@ -50,6 +46,10 @@ raspberry_platform: true
             puts "joystick x: " + value[1][:x] + ", y: " + value[1][:y]
           }
         end
+
+%section.public-methods
+  .commands_api
+    = partial "/documentation/drivers/partials/i2c/events_wiichuck"
 
 %section.circuit
   %h2 Circuit and Schematic
