@@ -93,6 +93,8 @@ def add_docs_to_site(repo_name, docs)
     filename = "_" + File.basename(name, ".md") + ".html.haml"
     path = File.join docs_path, filename
 
+    content = content.force_encoding("UTF-8")
+
     # indent by two spaces
     content.gsub! /^(.+)/, '  \1'
 
