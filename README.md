@@ -73,6 +73,18 @@ This script will:
 - extract all `docs/*.md` documents
 - add them as partials to `source/documentation/drivers/partials`
 
+If you want to only import docs from a single repo:
+
+```
+bin/import_repo_docs hybridgroup/artoo-gpio
+```
+
+or
+
+```
+bin/import_repo_docs https://github.com/hybridgroup/artoo-gpio.git
+```
+
 ### Send your Pull Request
 
 When you have your code ready, create a new PR : `base: artoo.io` and `compare:"your_branch"`
