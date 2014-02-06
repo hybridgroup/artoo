@@ -1,86 +1,158 @@
 :markdown
   # Commands
 
-  ## stop → true | nil
+  ## stop 
 
-  Public: Stops the motor.
+  Stops the motor.
 
-  ** Returns true or nil **
+  ##### Params
 
-  ## start → true | nil
+  `no params`
 
-  Public: Starts the motor.
+  ##### Returns
 
-  ** Returns true or nil **
+  `true or nil`
 
-  ## on? → true | false
+  ## start 
 
-  Public: Returns true if the motor is on, otherwise returns false.
+  Starts the motor.
 
-  ** Returns true or false **
+  ##### Params
 
-  ## off? → true | false
+  `no params`
 
-  Public: Returns true if the motor is off, otherwise returns false.
+  ##### Returns
 
-  ** Returns true or false **
+  `true or nil`
 
-  ## toggle → true | nil
+  ## on?
 
-  Public: Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
+  Returns true if the motor is on, otherwise returns false.
 
-  ** Returns true or nil **
+  ##### Params
 
-  ## speed(speed_value) → true | nil
+  `no params`
 
-  Public: Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between `0` and `255`.
+  ##### Returns
+
+  `true or false`
+
+  ## off? 
+
+  Returns true if the motor is off, otherwise returns false.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or false`
+
+  ## toggle 
+
+  Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or nil`
+
+  ## speed(speed_value)
+
+  Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between `0` and `255`.
+
+  ##### Params
 
   - **speed_value** - params, the speed value
 
-  ** Returns true or nil **
+  ##### Returns
 
-  ## min → true | nil
+  `true or nil`
 
-  Public: Stops the motor, sets the speed to `0`.
+  ## min 
 
-  ** Returns true or nil **
+  Stops the motor, sets the speed to `0`.
 
-  ## max → true | nil
+  ##### Params
 
-  Public: Starts the motor at max speed, sets the speed to `255`.
+  `no params`
 
-  ** Returns true or nil **
+  ##### Returns
 
-  ## forward(speed) → true | nil
+  `true or nil`
 
-  Public: Starts the motor in forward direction at the provided speed.
+  ## max 
+
+  Starts the motor at max speed, sets the speed to `255`.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or nil`
+
+  ## forward(speed) 
+
+  Starts the motor in forward direction at the provided speed.
+
+  ##### Params
 
   - **speed** - params, the speed value
 
-  ** Returns true or nil **
+  ##### Returns
 
-  ## backward(speed) → true | nil
+  `true or nil`
 
-  Public: Starts the motor in backward direction at the provided speed.
+  ## backward(speed)
+
+  Starts the motor in backward direction at the provided speed.
+
+  ##### Params
 
   - **speed** - params, the speed value
 
-  ** Returns true or nil **
+  ##### Returns
 
-  ## forward? → true | false
+  `true or nil`
 
-  Public: Returns true if the motor is direction is set to forward, otherwise false.
+  ## forward? 
 
-  ** Returns true or false **
+  Returns true if the motor is direction is set to forward, otherwise false.
 
-  ## backward? → true | false
+  ##### Params
 
-  Public: Returns true if the motor is direction is set to backward, otherwise false.
+  `no params`
 
-  ** Returns true or false **
+  ##### Returns
 
-  ## current_speed → speed
+  `true or false`
 
-  Public: Returns the current speed of the motor as an integer between `0` and `255`.
+  ## backward? 
 
-  ** Returns speed **
+  Returns true if the motor is direction is set to backward, otherwise false.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or false`
+
+  ## current_speed 
+
+  Returns the current speed of the motor as an integer between `0` and `255`.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `speed`

@@ -1,34 +1,54 @@
 :markdown
   # Commands
 
-  ## rgb(red=0, green=0, blue=0) → nil
+  ## rgb(red=0, green=0, blue=0) 
 
-  Public: Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
+  Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
 
-  - **red** - params, red value
-  - **green** - params, green value
-  - **blue** - params, blue
-
-  ** Returns nil **
-
-  ## fade(red=0, green=0, blue=0) → nil
-
-  Public: Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
+  ##### Params
 
   - **red** - params, red value
   - **green** - params, green value
   - **blue** - params, blue
 
-  ** Returns nil **
+  ##### Returns
 
-  ## firmware_version → String
+  `nil`
 
-  Public: Returns an sring describing the I2C firmware version being used.
+  ## fade(red=0, green=0, blue=0) 
 
-  ** Returns string **
+  Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between `0` and `255`).
 
-  ## color → [red, green, blue] (integer)
+  ##### Params
 
-  Public: Returns an array containing the RGB values for the current color (all integer between `0` and `255`).
+  - **red** - params, red value
+  - **green** - params, green value
+  - **blue** - params, blue
 
-  ** Returns [red, green, blue] (integer) **
+  ##### Returns
+
+  `nil`
+
+  ## firmware_version 
+
+  Returns an sring describing the I2C firmware version being used.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `String`
+
+  ## color 
+
+  Returns an array containing the RGB values for the current color (all integer between `0` and `255`).
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `[red, green, blue] (integer)`

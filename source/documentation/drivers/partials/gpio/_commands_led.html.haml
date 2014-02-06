@@ -1,40 +1,74 @@
 :markdown
   # Commands
 
-  ## on → true | nil
+  ## on 
 
-  Public: Turns LED on.
+  Turns LED on.
 
-  ** Returns true or nil **
+  ##### Params
 
-  ## off → true | nil
+  `no params`
 
-  Public: Turns LED off.
+  ##### Returns
 
-  ** Returns true or nil **
+  `true or nil`
 
-  ## on? → true | false
+  ## off 
 
-  Public: Returns true if LED is on, otherwise returns false.
+  Turns LED off.
 
-  ** Returns true or false **
+  ##### Params
 
-  ## off? → true | false
+  `no params`
 
-  Public: Returns true if LED is off, otherwise returns false.
+  ##### Returns
 
-  ** Returns true or false **
+  `true or nil`
 
-  ## toggle → true | nil
+  ## on? 
 
-  Public: Turns the LED on, or off, depending on if it is already off, or on, respectively.
+  Returns true if LED is on, otherwise returns false.
 
-  ** Returns true or nil **
+  ##### Params
 
-  ## brightness(brightness_int) → true | nil
+  `no params`
 
-  Public: Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between `0` and `255`.
+  ##### Returns
+
+  `true or false`
+
+  ## off? 
+
+  Returns true if LED is off, otherwise returns false.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or false`
+
+  ## toggle 
+
+  Turns the LED on, or off, depending on if it is already off, or on, respectively.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `true or nil`
+
+  ## brightness(brightness_int)
+
+  Sets brightness of the led to the specified brightness value passed to brightness(brightness_int) using PWM, brightness can be any integer value between `0` and `255`.
+
+  ##### Params
 
   - **brightness_int** - params , the brightness value
 
-  ** Returns true or nil **
+  ##### Returns
+
+  `true or nil`

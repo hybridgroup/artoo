@@ -1,125 +1,235 @@
 :markdown
   # Commands
 
-  ## start() → drone
+  ## start
 
-  Public: Starts up the drone.
+  Starts up the drone.
 
-  ** Returns drone ***
+  ##### Params
 
-  ## stop() → drone
+  `no params`
 
-  Public: Stops the drone.
+  ##### Returns
 
-  ** Returns drone ** 
+  `drone`
 
-  ## hover() → drone
+  ## stop
 
-  Public: Causes the drone to hover at current altitude.
+  Stops the drone.
 
-  ** Returns drone **
+  ##### Params
 
-  ## land() → drone
+  `no params`
 
-  Public: Causes the drone to begin its landing sequence.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## take_off() → drone
+  ## hover
 
-  Public: Causes the drone to take off, if already started.
+  Causes the drone to hover at current altitude.
 
-  ** Returns drone **
+  ##### Params
 
-  ## emergency() → drone
+  `no params`
 
-  Public: Causes the drone to make an immediate emergency landing.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## front_camera() → drone
+  ## land
 
-  Public: Causes the drone to turn on the front-facing camera.
+  Causes the drone to begin its landing sequence.
 
-  ** Returns drone **
+  ##### Params
 
-  ## bottom_camera() → drone
+  `no params`
 
-  Public: Causes the drone to turn on the bottom-facing camera.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## up() → drone
+  ## take_off
 
-  Public: Causes the drone to increase altitude.
+  Causes the drone to take off, if already started.
 
-  ** Returns drone **
+  ##### Params
 
-  ## down() → drone
+  `no params`
 
-  Public: Causes the drone to decrease altitude.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## left() → drone
+  ## emergency
 
-  Public: Causes the drone to bank to the left.
+  Causes the drone to make an immediate emergency landing.
 
-  ** Returns drone **
+  ##### Params
 
-  ## right() → drone
+  `no params`
 
-  Public: Causes the drone to bank to the right.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## forward() → drone
+  ## front_camera
 
-  Public: Causes the drone to bank forward.
+  Causes the drone to turn on the front-facing camera.
 
-  ** Returns drone **
+  ##### Params
 
-  ## backward() → drone
+  `no params`
 
-  Public: Causes the drone to bank backward.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## turn_left() → drone
+  ## bottom_camera
 
-  Public: Causes the drone to rotate to the left.
+  Causes the drone to turn on the bottom-facing camera.
 
-  ** Returns drone **
+  ##### Params
 
-  ## turn_right() → drone
+  `no params`
 
-  Public: Causes the drone to rotate to the right.
+  ##### Returns
 
-  ** Returns drone **
+  `drone` 
 
-  ## reset_watchdog() → drone
+  ## up
 
-  Public: Reset the watchdog in the drone.
+  Causes the drone to increase altitude.
 
-  ** Returns drone **
+  ##### Params
 
-  ## led(color_animation, strength, duration) → drone
+  `no params`
 
-  Public: Turn on the drone's built in LEDs with the color_animation passed, strength and duration color_animation might be one of the following: `:blink_green_red`, `:blink_green`, `:blink_red`, `:blink_orange`, `:snake_green_red`, `:fire`, `:standard`, `:red`, `:green`, `:red_snake`, `:blank`, `:right_missile`, `:left_missile`, `:double_missile`, `:front_left_green_others_red`, `:front_right_green_others_red`, `:rear_right_green_others_red`, `:rear_left_green_others_red`, `:left_green_right_red`, `:left_red_right_green`, `:blink_standard`
+  ##### Returns
+
+  `drone` 
+
+  ## down
+
+  Causes the drone to decrease altitude.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## left
+
+  Causes the drone to bank to the left.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## right
+
+  Causes the drone to bank to the right.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## forward
+
+  Causes the drone to bank forward.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## backward
+
+  Causes the drone to bank backward.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## turn_left
+
+  Causes the drone to rotate to the left.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## turn_right
+
+  Causes the drone to rotate to the right.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## reset_watchdog
+
+  Reset the watchdog in the drone.
+
+  ##### Params
+
+  `no params`
+
+  ##### Returns
+
+  `drone` 
+
+  ## led(color_animation, strength, duration)
+
+  Turn on the drone's built in LEDs with the color_animation passed, strength and duration color_animation might be one of the following: `:blink_green_red`, `:blink_green`, `:blink_red`, `:blink_orange`, `:snake_green_red`, `:fire`, `:standard`, `:red`, `:green`, `:red_snake`, `:blank`, `:right_missile`, `:left_missile`, `:double_missile`, `:front_left_green_others_red`, `:front_right_green_others_red`, `:rear_right_green_others_red`, `:rear_left_green_others_red`, `:left_green_right_red`, `:left_red_right_green`, `:blink_standard`
+
+  ##### Params
 
   - **color_animation** - params
   - **strength** - params
   - **duration** - params
 
-  ** Returns drone **
+  ##### Returns
 
-  ## animate(animation, duration) → drone
+  `drone` 
 
-  Public: Animate the ardrone to do flips and turns depending on selection, available animation options are: `:phi_m30_deg`,`:phi_30_deg`, `:theta_m30_deg`, `:theta_30_deg`, `:theta_20_deg_yaw_200_deg`, `:theta_20_deg_yaw_m_200_deg`, `:turnaround`, `:turnaround_go_down`, `:yaw_shake`, `:yaw_dance`, `:phi_dance`, `:theta_dance`, `:vz_dance`, `:wave`, `:phi_theta_mixed`, `:double_phi_theta_mixed`, `:flip_ahead`, `:flip_behind`, `:flip_left`, `:flip_right`
+  ## animate(animation, duration) 
+
+  Animate the ardrone to do flips and turns depending on selection, available animation options are: `:phi_m30_deg`,`:phi_30_deg`, `:theta_m30_deg`, `:theta_30_deg`, `:theta_20_deg_yaw_200_deg`, `:theta_20_deg_yaw_m_200_deg`, `:turnaround`, `:turnaround_go_down`, `:yaw_shake`, `:yaw_dance`, `:phi_dance`, `:theta_dance`, `:vz_dance`, `:wave`, `:phi_theta_mixed`, `:double_phi_theta_mixed`, `:flip_ahead`, `:flip_behind`, `:flip_left`, `:flip_right`
+
+  ##### Params
 
   - **animation** - params
   - **duration** - params
 
-  ** Returns drone **
+  ##### Returns
+
+  `drone` 
 
 
