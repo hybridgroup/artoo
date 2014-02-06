@@ -6,25 +6,35 @@ Bundler.setup
 require 'git'
 require 'fileutils'
 
-REPOS = %w(
-  https://github.com/hybridgroup/artoo-ardrone.git
-  https://github.com/hybridgroup/artoo-arduino.git
-  https://github.com/hybridgroup/artoo-beaglebone.git
-  https://github.com/hybridgroup/artoo-crazyflie.git
-  https://github.com/hybridgroup/artoo-digispark.git
-  https://github.com/hybridgroup/artoo-force.git
-  https://github.com/hybridgroup/artoo-gpio.git
-  https://github.com/hybridgroup/artoo-i2c.git
-  https://github.com/hybridgroup/artoo-joystick.git
-  https://github.com/hybridgroup/artoo-keyboard.git
-  https://github.com/hybridgroup/artoo-leapmotion.git
-  https://github.com/hybridgroup/artoo-opencv.git
-  https://github.com/hybridgroup/artoo-pebble.git
-  https://github.com/hybridgroup/artoo-raspi.git
-  https://github.com/hybridgroup/artoo-roomba.git
-  https://github.com/hybridgroup/artoo-spark.git
-  https://github.com/hybridgroup/artoo-sphero.git
-)
+if ARGV.any?
+  REPOS = ARGV.collect do |arg|
+    if arg[/^([\w-]+\/[\w-]+)$/, 1]
+      "https://github.com/#{arg}.git"
+    else
+      arg
+    end
+  end
+else
+  REPOS = %w(
+    https://github.com/hybridgroup/artoo-ardrone.git
+    https://github.com/hybridgroup/artoo-arduino.git
+    https://github.com/hybridgroup/artoo-beaglebone.git
+    https://github.com/hybridgroup/artoo-crazyflie.git
+    https://github.com/hybridgroup/artoo-digispark.git
+    https://github.com/hybridgroup/artoo-force.git
+    https://github.com/hybridgroup/artoo-gpio.git
+    https://github.com/hybridgroup/artoo-i2c.git
+    https://github.com/hybridgroup/artoo-joystick.git
+    https://github.com/hybridgroup/artoo-keyboard.git
+    https://github.com/hybridgroup/artoo-leapmotion.git
+    https://github.com/hybridgroup/artoo-opencv.git
+    https://github.com/hybridgroup/artoo-pebble.git
+    https://github.com/hybridgroup/artoo-raspi.git
+    https://github.com/hybridgroup/artoo-roomba.git
+    https://github.com/hybridgroup/artoo-spark.git
+    https://github.com/hybridgroup/artoo-sphero.git
+  )
+end
 
 # Public: Gets the name of the repository from it's GitHub clone URI
 #
