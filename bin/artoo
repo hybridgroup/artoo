@@ -8,10 +8,6 @@ require 'artoo/commands/generate'
 require 'artoo/commands/connect'
 require 'artoo/commands/install'
 
-# Only require this commands if the propper Gems are installed.
-require 'artoo/commands/firmata' if Gem::Specification::find_all_by_name('artoo-arduino').any?
-require 'artoo/commands/littlewire' if Gem::Specification::find_all_by_name('artoo-digispark').any?
-
 Celluloid.logger = nil
 
 # load main commands
@@ -47,19 +43,6 @@ module CLI
     desc "install SUBCOMMAND ...ARGS", "Installs utility programs"
     subcommand "install", Artoo::Commands::Install
 
-    # Check if the propper gems are installed before registering these two commands
-    #   firmata
-    #   littlewire
-    #
-    if Gem::Specification::find_all_by_name('artoo-arduino').any?
-      desc "firmata SUBCOMMAND <serial_port>", "Installs avrdude and uploads firmata to the arduino"
-      subcommand "firmata", Artoo::Commands::Firmata
-    end
-
-    if Gem::Specification::find_all_by_name('artoo-digispark').any?
-      desc "littlewire SUBCOMMAND", "Uploads littlewire protocol to digispark"
-      subcommand "littlewire", Artoo::Commands::Littlewire
-    end
   end
 end
 
