@@ -31,22 +31,11 @@ spark_platform: true
         device :sonar, :driver => :maxbotix, :pin => 0, :interval => 0.5
 
 %section.public-methods
-  %h2 Commands:
-  %dl.methods 
-    %dt range → distance_in_inches(float)
-    %dd Returns the distance measured by the sonar in inches.
-    %dt range_cm → distance_in_cm(float)
-    %dd Returns the distance measured by the sonar in cm.
-
-%section.public-events
-  %h2 Events:
-  :markdown
-    The events will be triggered when the amount of time specified by the param `:interval`, when setting up the driver, passes.
-  %dl.methods 
-    %dt :range
-    %dd 
-      :markdown
-        Gets triggered after `:interval` amount of time passes, everytime the range will be read and the event triggered.
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_maxbotix"
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/events_maxbotix"
+  
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown

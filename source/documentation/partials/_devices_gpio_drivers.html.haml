@@ -6,6 +6,9 @@
   /// Button
   %a.device{href:"/documentation/drivers/button", title: "Button"}
     %img{src: "/images/devices/button.jpg"}
+  // Continuous Servo
+  %a.device{href:"/documentation/drivers/continuous_servo", title: "Button"}
+    %img{src: "/images/devices/continuous_servo.jpg"}
   /// LED
   %a.device{href: "/documentation/drivers/led", title: "LED"}
     %img{src: "/images/devices/LED.jpg"}
@@ -31,6 +34,11 @@
   /// Button
   %a.device{href:"/documentation/drivers/button", title: "Button"}
     %img{src: "/images/devices/button.jpg"}
+
+-if current_page.data.continuous_servo_driver == true
+  // Continuous Servo
+  %a.device{href:"/documentation/drivers/continuous_servo", title: "Button"}
+    %img{src: "/images/devices/continuous_servo.jpg"}
 
 -if current_page.data.led_driver == true
   /// LED

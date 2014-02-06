@@ -32,18 +32,14 @@ spark_platform: true
         device :button, :driver => :button, :pin => 2, :interval => 0.01
 
 %section.public-methods
-  %h2 Commands:
-  %dl.methods 
-    %dt is_pressed? → true | false
-    %dd Returns true or false matching state of the button.
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_button"
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/events_button"
+
 
 %section.public-events
-  %h2 Events:
-  %dl.methods 
-    %dt :push
-    %dd This event gets triggered when the button changes state from released to pushed.
-    %dt :relase
-    %dd This event gets triggered when the button changes state from pushed to released.
+
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown

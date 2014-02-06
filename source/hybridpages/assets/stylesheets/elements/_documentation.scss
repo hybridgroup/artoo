@@ -35,6 +35,27 @@
   width: 200px;
 }
 
+.commands_api {
+  h2 {
+    background: $title-color;
+    color: white !important;
+    padding: 5px 10px;
+    font-size: 12pt;
+    margin: 20px 0 0 0;
+
+  }
+  p, ul{
+    background: white;
+    font-size: 10.5pt;
+    margin: 0;
+    padding: 10px;
+    font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
+  }
+  li {
+    margin-left: 20px;
+  }
+}
+
 .methods {
   dt {
     font-weight: bold;

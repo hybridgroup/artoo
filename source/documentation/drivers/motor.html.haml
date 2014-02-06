@@ -34,42 +34,8 @@ spark_platform: true
         device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
 
 %section.public-methods
-  %h2 Commands:
-  %dl.methods 
-    %dt stop → true | nil
-    %dd Stops the motor.
-    %dt start → true | nil
-    %dd Starts the motor.
-    %dt on? → true | false
-    %dd Returns true if the motor is on, otherwise returns false.
-    %dt off? → true | false
-    %dd Returns true if the motor is off, otherwise returns false.
-    %dt toggle → true | nil
-    %dd Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
-    %dt speed(speed_value) → true | nil
-    %dd 
-      :markdown
-        Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between `0` and `255`.  
-    %dt min → true | nil
-    %dd 
-      :markdown
-        Stops the motor, sets the speed to `0`.
-    %dt max → true | nil
-    %dd 
-      :markdown
-        Starts the motor at max speed, sets the speed to `255`.
-    %dt forward(speed) → true | nil
-    %dd Starts the motor in forward direction at the provided speed.
-    %dt backward(speed) → true | nil
-    %dd Starts the motor in backward direction at the provided speed.
-    %dt forward? → true | false
-    %dd Returns true if the motor is direction is set to forward, otherwise false.
-    %dt backward? → true | false
-    %dd Returns true if the motor is direction is set to backward, otherwise false.
-    %dt current_speed → speed
-    %dd 
-      :markdown
-        Returns the current speed of the motor as an integer between `0` and `255`.
+  .commands_api
+    = partial "/documentation/drivers/partials/gpio/commands_motor"
 
 %section.how-to
   %h2 How to use

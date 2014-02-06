@@ -21,6 +21,9 @@ joystick_platfrom: true
         device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
 
 %section.public-events
+  .commands_api
+    = partial "/documentation/drivers/partials/joystick/events_joystick"
+
   %h2 Events
   %dl.methods 
     %dt joystick
