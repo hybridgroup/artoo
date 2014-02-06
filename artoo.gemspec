@@ -27,5 +27,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_runtime_dependency 'thor', '~> 0.18.1'
-  s.add_runtime_dependency 'robeaux', '~> 0.0.2'
+  s.add_runtime_dependency 'robeaux', '~> 0.0.3'
 end
