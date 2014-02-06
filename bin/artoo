@@ -8,13 +8,21 @@ require 'artoo/commands/generate'
 require 'artoo/commands/connect'
 require 'artoo/commands/install'
 
+if Gem::Specification::find_all_by_name('artoo-arduino').any?
+  require 'artoo/commands/firmata'
+end
+
+if Gem::Specification::find_all_by_name('artoo-digispark').any?
+  require 'artoo/commands/littlewire'
+end
+
 Celluloid.logger = nil
 
 # load main commands
 module CLI
   class Root < Thor
     include Thor::Actions
-    
+
     desc 'version', 'Displays the current version'
     def version
       say Artoo::VERSION
@@ -42,6 +50,16 @@ module CLI
 
     desc "install SUBCOMMAND ...ARGS", "Installs utility programs"
     subcommand "install", Artoo::Commands::Install
+
+    if Gem::Specification::find_all_by_name('artoo-arduino').any?
+      desc "firmata SUBCOMMAND <serial_port>", "Installs avrdude and uploads firmata to the arduino"
+      subcommand "firmata", Artoo::Commands::Firmata
+    end
+
+    if Gem::Specification::find_all_by_name('artoo-digispark').any?
+      desc "littlewire SUBCOMMAND", "Uploads littlewire protocol to digispark"
+      subcommand "littlewire", Artoo::Commands::Littlewire
+    end
   end
 end
 
