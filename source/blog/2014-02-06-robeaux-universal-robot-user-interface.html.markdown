@@ -19,4 +19,4 @@ Our Sphero (http://gosphero.com) drivers have now had a major overhaul. They can
 
 Last but certainly not least, we've updated the Artoo documentation to include better and more complete information. We've also added more examples. You have told us how important docs and examples are to help get started.
 
-We're excited about our first release of the year, and we're looking forward to hearing from you about what you think, and what else you think we should be working on.
+Make sure you follow us on Twitter at [@artooio](http://twitter.com/artooio) for the latest updates. We're excited about our first release of the year, and we're looking forward to hearing from you what you think about it, and what else you think we should be working on.
