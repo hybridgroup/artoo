@@ -94,32 +94,85 @@ work <span class="keyword">do</span>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Connect to the Arduino via serial port/USB</li>
+<li>Install the artoo-arduino gem</li>
+                  <li>Find out what serial port your arduino is connected to</li>
+                  <li>Upload the Firmata protocol to the arduino</li>
                   <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
                   <li>Connect to the device via Artoo</li>
-                  <li>First plug the Arduino into your computer via the USB/serial port. A dialog box will appear telling you that a new network interface has been detected. Click "Network Preferences...", and when it opens, simply click "Apply".</li>
                 </ul>
-<p>Once plugged in, use the artoo connect scan command to find out your connection info:</p>
-                <pre class="CodeRay">$ artoo connect scan
+<p>
+                  First plug the Arduino into your computer via the USB/serial port. A dialog box
+                  will appear telling you that a new network interface has been detected. Click
+                  "Network Preferences...", and when it opens, simply click "Apply".
+                </p>
+                <p>Install the artoo-arduino gem:</p>
+                <pre class="CodeRay">$ gem install artoo-arduino
 </pre>
-                <p>Now you are ready to connect to the Arduino using a socket, such as in this example port 4567:</p>
-                <pre class="CodeRay">$ artoo connect serial ttyACM0
+                <p>
+                  Once plugged in, use the `artoo connect scan -t serial` command to find out your
+                  connection info and serial port address:
+                </p>
+                <pre class="CodeRay">$ artoo connect scan -t serial
+</pre>
+                <p>
+                  Use the `artoo firmata install` command to install avrdude,
+                  this will allow us to upload firmata to the arduino:
+                </p>
+                <pre class="CodeRay">$ artoo firmata install
+</pre>
+                <p>
+                  Once the avrdude uploader is installed we upload the firmata protocol to
+                  the arduino, use the arduino serial port address found when you ran `artoo
+                  connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
+                </p>
+                <pre class="CodeRay">$ artoo firmata upload /dev/ttyACM0
+</pre>
+                <p>
+                  Now you are ready to connect to the Arduino using a socket, in this example
+                  the socket to serial is set on port 4567 (which is also the default value):
+                </p>
+                <pre class="CodeRay">artoo connect serial ttyACM0 4567
 </pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Connect to the Arduino via serial port/USB</li>
+<li>Install the artoo-arduino gem</li>
+                  <li>Find out what serial port your arduino is connected to</li>
+                  <li>Upload the Firmata protocol to the arduino</li>
                   <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
                   <li>Connect to the device via Artoo</li>
-                  <li>First plug the Arduino into your computer via the USB/serial port.</li>
                 </ul>
-<p>Once plugged in, use the ls /dev/ttyACM* command to find out your connection info:</p>
-                <pre class="CodeRay">$ ls /dev/ttyACM*
-/dev/ttyACM0
+<p>First plug the Arduino into your computer via the USB/serial port.</p>
+                <p>Install the artoo-arduino gem:</p>
+                <pre class="CodeRay">$ gem install artoo-arduino
 </pre>
-                <p>Now you are ready to connect to the Arduino using the socket, in this example port 4567:</p>
-                <pre class="CodeRay">$ artoo connect serial ttyACM0 4567
+                <p>
+                  Once plugged in, use the `artoo connect scan -t serial` command
+                  to find out your connection info and serial port address:
+                </p>
+                <pre class="CodeRay">$ artoo connect scan -t serial
 </pre>
+                <p>
+                  Use the `artoo firmata install` command to install avrdude,
+                  this will allow us to upload firmata to the arduino:
+                </p>
+                <pre class="CodeRay">$ artoo firmata install
+</pre>
+                <p>
+                  Once the avrdude uploader is installed we upload the firmata protocol to
+                  the arduino, use the arduino serial port address found when you ran `artoo
+                  connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
+                </p>
+                <pre class="CodeRay">$ artoo firmata upload /dev/ttyACM0
+</pre>
+                <p>
+                  Now you are ready to connect to the Arduino using a socket, in this example
+                  the socket to serial is set on port 4567 (which is also the default value):
+                </p>
+                <pre class="CodeRay">artoo connect serial ttyACM0 4567
+</pre>
+                <h3>Windows</h3>
+                <p>We are currently working with the Celluloid team to add Windows support. Please check back soon!</p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>
                   Thanks to

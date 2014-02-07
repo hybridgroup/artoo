@@ -93,61 +93,89 @@ work <span class="keyword">do</span>
 </pre>
                 <h2>How to connect</h2>
                 <p>
-                  If your Digispark (
-                  <a href="http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board">http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board</a>
-                  ) ATTiny-based USB development board already has the Little Wire (
-                  <a href="http://littlewire.cc/">http://littlewire.cc/</a>
-                  ) protocol firmware installed, you can connect right away with Artoo.
+                  It is very easy to setup and connect to the Digispark using Artoo CLI commands.
                 </p>
                 <p>
-                  Otherwise, for instructions on how to install Little Wire on a Digispark check out
-                  <a href="http://digistump.com/board/index.php/topic,160.0.html%20">http://digistump.com/board/index.php/topic,160.0.html</a>
+                  Connecting to the Digispark
+                  <a href="http://www.kickstarter.com/projects/digistump/digispark-the-tiny-arduino-enabled-usb-dev-board">(Kickstarter Campaign)</a>
+                  ATTiny-based USB development board is very easy using Artoo, first we need to install the littlewire
+                  <a href="http://littlewire.cc/">(http://littlewire.cc)</a>
+                  protocol to communicate with the digispark, Artoo includes CLI commands to make the process of uploading littlewire to the
+                  digispark as simple as possible, after littlewire has been uploaded you can connect and communicate using Artoo.
                 </p>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Plug in the Digispark to the USB port</li>
+<li>Install the artoo-digispark gem</li>
+                  <li>Upload the Littlewire protocol to the digispark</li>
                   <li>Connect to the device via Artoo</li>
                 </ul>
-<p>First plug the Digispark into your computer via the USB port. Then... (directions go here)</p>
+<h4>DO NOT plug in the Digispark to your computer's USB port until prompted.</h4>
+                <p>Install the artoo-digispark gem:</p>
+                <pre class="CodeRay">$ gem install artoo-digispark
+</pre>
+                <p>
+                  After installing the artoo-digispark gem run the following command to
+                  upload littlewire to the digispark, plug it to a USB port when
+                  prompted:
+                </p>
+                <pre class="CodeRay">$ artoo littlewire upload
+</pre>
+                <p>
+                  Once plugged in, use the `artoo connect scan` command with the  `-t usb`
+                  option to verify your connection info:
+                </p>
+                <pre class="CodeRay">$ artoo connect scan -t usb
+</pre>
+                <p>
+                  Now use the `ID` info returned to find the `product` and `vendor` ID's
+                  required to establish a connection with the Digispark in your Artoo code.
+                </p>
+                <p>That is it, you are set to start running Artoo digispark examples.</p>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Add a udev rule to allow access to the Digispark device</li>
+<li>Install the artoo-digispark gem</li>
+                  <li>
+                    Add a udev rule to allow access to the Digispark device (Do not worry
+                    about this, the `artoo littlewire upload` command does it for you if none is detected)
+                  </li>
                   <li>Plug in the Digispark to the USB port</li>
                   <li>Connect to the device via Artoo</li>
                 </ul>
-<p>First, you must add a udev rule, so that Artoo can communicate with the USB device. Ubuntu and other modern Linux distibutions use udev to manage device files when USB devices are added and removed. By default, udev will create a device with read-only permission which will not allow to you download code. You must place the udev rules below into a file named /etc/udev/rules.d/49-micronucleus.rules.</p>
-                <pre class="CodeRay"># UDEV Rules for Micronucleus boards including the Digispark.
-# This file must be placed at:
-#
-# /etc/udev/rules.d/49-micronucleus.rules    (preferred location)
-#   or
-# /lib/udev/rules.d/49-micronucleus.rules    (req'd on some broken systems)
-#
-# After this file is copied, physically unplug and reconnect the board.
-#
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", MODE:="0666"
-KERNEL=="ttyACM*", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
-
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="0666"
-KERNEL=="ttyACM*", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0753", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
-#
-# If you share your linux system with other users, or just don't like the
-# idea of write permission for everybody, you can replace MODE:="0666" with
-# OWNER:="yourusername" to create the device owned by you, or with
-# GROUP:="somegroupname" and mange access using standard unix groups.
+<h4>DO NOT plug in the Digispark to your computer's USB port until prompted.</h4>
+                <p>Install the artoo-digispark gem:</p>
+                <pre class="CodeRay">$ gem install artoo-digispark
 </pre>
                 <p>
-                  Thanks to @bluebie for these instructions! (
-                  <a href="https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux">https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux</a>
-                  )
+                  After installing the artoo-digispark gem run the following command to
+                  upload littlewire to the digispark, plug it to a USB port when
+                  prompted, you might be asked to enter your sudo password, since
+                  uploading littlewire to the digispark requires some new udev rules, you
+                  can check and review them in /etc/udev/rules.d/49-micronucleus.rules
+                  after running the `artoo littlewire upload` command):
                 </p>
-                <p>Now plug the Digispark into your computer via the USB port.</p>
-                <p>Once plugged in, use the artoo connect scan command with the -t usb option to verify your connection info:</p>
+                <pre class="CodeRay">$ artoo littlewire upload
+</pre>
+                <p>
+                  Once plugged in, use the `artoo connect scan` command with the `-t usb`
+                  option to verify your connection info:
+                </p>
                 <pre class="CodeRay">$ artoo connect scan -t usb
 </pre>
-                <p>Now use the ID info returned to find the product and vendor ID's for the connection info Digispark in your Artoo code.</p>
+                <p>
+                  Now use the `ID` info returned to find the `product` and `vendor` ID's
+                  required to establish a connection with the Digispark in your Artoo code.
+                </p>
+                <p>That is it, you are set to start running Artoo digispark examples.</p>
+                <p>
+                  Thanks to [@bluebie]
+                  <a href="https://github.com/Bluebie">https://github.com/Bluebie</a>
+                  for the help with udev rules used when uploading littlewire to the digispark!
+                  <a href="https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux">(https://github.com/Bluebie/micronucleus-t85/wiki/Ubuntu-Linux)</a>
+                </p>
+                <h3>Windows</h3>
+                <p>We are currently working with the Celluloid team to add Windows support. Please check back soon!</p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>
                   Thanks to
