@@ -10,20 +10,33 @@ arduino_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/makey-button.jpg", class: "display"
-  %p Simple interface that makes it possible to register clicks through physical input.
+  %p Inspired by the awesome MakeyMakey (http://makeymakey.com), this GPIO driver allows you to connect a 10 MOhm resistor to a digital pin on your Arduino or Raspberry Pi to control your robots with bananas, clay, or drawable circuitry.
 
 %section.how_to
   %h2 How to establish a connection and setup the driver 
   %h3 For Arduino:
   :markdown
         :::ruby
-        coming soon
+        require 'artoo'
+        connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :button, :driver => :makey_button, :pin => 2
 
 %section.how-to
   %h2 How to use
   :markdown
         :::ruby
-        coming soon
+        require 'artoo'
+
+        connection :arduino, adaptor: :firmata, port: '127.0.0.1:8023'
+        device :led, driver: :led, pin: 13
+        device :button, driver: :makey_button, pin: 2
+
+        work do
+          puts "Press the button connected on pin \#{ button.pin }..."
+
+          on button, :push    => proc { led.on }
+          on button, :release => proc { led.off }
+        end
 
 %section.public-methods
   .commands_api
