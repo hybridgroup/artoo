@@ -7,32 +7,34 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Arduino with Artroo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<title>Arduino with Artoo</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -67,26 +65,18 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/arduino.jpg"><p>
-                  Arduino is an open-source electronics prototyping platform based on flexible,
-                  easy-to-use hardware and software. It's intended for artists, designers, hobbyists and
-                  anyone interested in creating interactive objects or environments.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/arduino.jpg"><p>Arduino is an open-source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments.</p>
                 <p>
                   For more info about the arduino platform click
                   <a target="blank" href="http://arduino.cc/">here</a>.
                 </p>
               </section><section class="how_to"><h2>How to install</h2>
-                <p>
-                  Installing artoo with arduino support is pretty easy using ruby gems.
-                </p>
+                <p>Installing artoo with arduino support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-arduino
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program lets you push a button on the arduino board to turn a LED on or off.
-                  In less than 10 lines of code using Artoo.
-                </p>
+                <p>This small program lets you push a button on the arduino board to turn a LED on or off.</p>
+                <p>In less than 10 lines of code using Artoo.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -104,42 +94,24 @@ work <span class="keyword">do</span>
                 <h3>OSX</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>
-                    Connect to the Arduino via serial port/USB
-                  </li>
-                  <li>
-                    Use a socket to serial connection to map a TCP socket to the local unix port
-                  </li>
-                  <li>
-                    Connect to the device via Artoo
-                  </li>
-                  <li>
-                    First plug the Arduino into your computer via the USB/serial port. A dialog box will appear telling you that a new network interface has been detected. Click "Network Preferences...", and when it opens, simply click "Apply".
-                  </li>
+<li>Connect to the Arduino via serial port/USB</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
+                  <li>Connect to the device via Artoo</li>
+                  <li>First plug the Arduino into your computer via the USB/serial port. A dialog box will appear telling you that a new network interface has been detected. Click "Network Preferences...", and when it opens, simply click "Apply".</li>
                 </ul>
 <p>Once plugged in, use the artoo connect scan command to find out your connection info:</p>
                 <pre class="CodeRay">$ artoo connect scan
 </pre>
-                <p>
-                  Now you are ready to connect to the Arduino using a socket, such as in this example port 4567:
-                </p>
+                <p>Now you are ready to connect to the Arduino using a socket, such as in this example port 4567:</p>
                 <pre class="CodeRay">$ artoo connect serial ttyACM0
 </pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>
-                    Connect to the Arduino via serial port/USB
-                  </li>
-                  <li>
-                    Use a socket to serial connection to map a TCP socket to the local unix port
-                  </li>
-                  <li>
-                    Connect to the device via Artoo
-                  </li>
-                  <li>
-                    First plug the Arduino into your computer via the USB/serial port.
-                  </li>
+<li>Connect to the Arduino via serial port/USB</li>
+                  <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
+                  <li>Connect to the device via Artoo</li>
+                  <li>First plug the Arduino into your computer via the USB/serial port.</li>
                 </ul>
 <p>Once plugged in, use the ls /dev/ttyACM* command to find out your connection info:</p>
                 <pre class="CodeRay">$ ls /dev/ttyACM*
@@ -165,27 +137,49 @@ work <span class="keyword">do</span>
                   physical computing (using artoo and ruby) you could be doing:
                 </p>
                 <div class="hardware">
+                  <h2>GPIO Drivers</h2>
                   <div class="devices">
+                    <!-- / TODO: Update drivers list at the top of the page. -->
+                    <!-- /Drivers all -->
+                    <!-- // Analog Sensor -->
                     <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/analog-sensor.jpg"></a>
+                      <img src="/images/devices/analog-sensor.jpg"></a>
+                    <!-- // Button -->
                     <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/button.jpg"></a>
+                      <img src="/images/devices/button.jpg"></a>
+                    <!-- / Continuous Servo -->
+                    <a class="device" href="/documentation/drivers/continuous_servo" title="Button">
+                      <img src="/images/devices/continuous_servo.jpg"></a>
+                    <!-- // LED -->
                     <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/LED.jpg"></a>
+                      <img src="/images/devices/LED.jpg"></a>
+                    <!-- // Makey Button -->
+                    <a class="device" href="/documentation/drivers/makey-button" title="Makey Button">
+                      <img src="/images/devices/makey-button.jpg"></a>
+                    <!-- // Maxbotix -->
                     <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/maxbotix.jpg"></a>
+                      <img src="/images/devices/maxbotix.jpg"></a>
+                    <!-- // Motor -->
                     <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/motor.jpg"></a>
+                      <img src="/images/devices/motor.jpg"></a>
+                    <!-- // Servo -->
                     <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/servo.jpg"></a>
-                    <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
-                      <img src="/images/blinkm.jpg"></a>
+                      <img src="/images/devices/servo.jpg"></a>
+                  </div>
+                  <h2>i2c Drivers</h2>
+                  <div class="devices">
+                    <!-- // Blinkm -->
+                    <a class="device" href="/documentation/drivers/blinkm" title="Blinkm">
+                      <img src="/images/devices/blinkm.jpg"></a>
+                    <!-- // Hmc6352 Compass -->
                     <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
-                      <img src="/images/hmc6352-compass.jpg"></a>
+                      <img src="/images/devices/hmc6352-compass.jpg"></a>
+                    <!-- // Wiichuck -->
                     <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/wii-chuck.jpg"></a>
+                      <img src="/images/devices/wii-chuck.jpg"></a>
+                    <!-- // Wii Classic -->
                     <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
-                      <img src="/images/wii-classic-controller.jpg"></a>
+                      <img src="/images/devices/wii-classic-controller.jpg"></a>
                   </div>
                 </div>
               </section>
@@ -200,14 +194,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

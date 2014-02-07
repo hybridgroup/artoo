@@ -8,31 +8,33 @@
 <meta content="Artoo compatible hardware platforms." name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo Hardware</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,35 +63,56 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><section class="hardware"><div class="devices">
-                <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                  <img src="/images/ardrone.jpg"></a>
-                <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                  <img src="/images/arduino.jpg"></a>
-                <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                  <img src="/images/beaglebone.jpg"></a>
-                <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                  <img src="/images/crazyflie.jpg"></a>
-                <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                  <img src="/images/digispark.jpg"></a>
-                <a class="device" href="/documentation/platforms/joystick" title="Joystick">
-                  <img src="/images/joystick.jpg"></a>
-                <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
-                  <img src="/images/leap_motion.jpg"></a>
-                <a class="device" href="/documentation/platforms/opencv" title="OpenCV">
-                  <img src="/images/opencv.jpg"></a>
-                <a class="device" href="/documentation/platforms/pebble" title="Pebble">
-                  <img src="/images/pebble.jpg"></a>
-                <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                  <img src="/images/raspi.jpg"></a>
-                <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                  <img src="/images/roomba.jpg"></a>
-                <a class="device" href="/documentation/platforms/spark" title="Spark">
-                  <img src="/images/spark.jpg"></a>
-                <a class="device" href="/documentation/platforms/sphero" title="Sphero">
-                  <img src="/images/sphero.jpg"></a>
-              </div>
-            </section></section>
+          <section class="content full"><div class="documentation">
+              <section class="hardware"><div class="devices">
+                  <!-- /Platforms All -->
+                  <!-- //Ardrone -->
+                  <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
+                    <img src="/images/devices/ardrone.jpg"></a>
+                  <!-- // Arduino -->
+                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                    <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Beaglebone -->
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/devices/beaglebone.jpg"></a>
+                  <!-- // Crazylie -->
+                  <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
+                    <img src="/images/devices/crazyflie.jpg"></a>
+                  <!-- // Digispark -->
+                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Joystick -->
+                  <a class="device" href="/documentation/platforms/joystick" title="Joystick">
+                    <img src="/images/devices/joystick.jpg"></a>
+                  <!-- // Keyboard -->
+                  <a class="device" href="/documentation/platforms/keyboard" title="Joystick">
+                    <img src="/images/devices/keyboard.jpg"></a>
+                  <!-- // Leap Motion -->
+                  <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
+                    <img src="/images/devices/leap_motion.jpg"></a>
+                  <!-- // Open CV -->
+                  <a class="device" href="/documentation/platforms/opencv" title="OpenCV">
+                    <img src="/images/devices/opencv.jpg"></a>
+                  <!-- // Pebble -->
+                  <a class="device" href="/documentation/platforms/pebble" title="Pebble">
+                    <img src="/images/devices/pebble.jpg"></a>
+                  <!-- // Raspberry Pi -->
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/devices/raspi.jpg"></a>
+                  <!-- // Roomba -->
+                  <a class="device" href="/documentation/platforms/roomba" title="Roomba">
+                    <img src="/images/devices/roomba.jpg"></a>
+                  <!-- // Spark -->
+                  <a class="device" href="/documentation/platforms/spark" title="Spark">
+                    <img src="/images/devices/spark.jpg"></a>
+                  <!-- // Sphero -->
+                  <a class="device" href="/documentation/platforms/sphero" title="Sphero">
+                    <img src="/images/devices/sphero.jpg"></a>
+                  <!-- /Platforms Parts -->
+                </div>
+              </section>
+</div>
+          </section>
 </div>
       </div>
     </div>
@@ -103,14 +122,6 @@
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Pebble with Artoo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -67,23 +65,17 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/pebble.jpg"><p>
-                  The Pebble is a smart watch, that connects via bluetooth.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/pebble.jpg"><p>The Pebble is a smart watch, that connects via bluetooth.</p>
                 <p>
                   For more info about the Pebble platform click
                   <a target="blank" href="http://getpebble.com/">here</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>
-                  Installing artoo with pebble support is pretty easy using ruby gems.
-                </p>
+                <p>Installing artoo with pebble support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-pebble
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program receives button press events from a Pebble smart watch.
-                </p>
+                <p>This small program receives button press events from a Pebble smart watch.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
@@ -131,13 +123,13 @@ work <span class="keyword">do</span>
                 <pre class="CodeRay">artoo connect socat pebble 4567
 </pre>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>
-                  There is only one driver for the Pebble platform, as listed below.
-                </p>
+                <p>There is only one driver for the Pebble platform, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
+                    
+                    <!-- // Pebble -->
                     <a class="device" href="/documentation/drivers/pebble" title="Pebble">
-                      <img src="/images/pebble.jpg"></a>
+                      <img src="/images/devices/pebble.jpg"></a>
                   </div>
                 </div>
               </section>
@@ -152,14 +144,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

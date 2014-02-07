@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo - Continuous Servo Driver</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Continuous Servo</h1>
+          <h2 class="subtitle">Driver</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <section class="intro"><img class="display" src="/images/devices/continuous_servo.jpg"><p>Provides an interface for making servos easy to work and interact with from Artoo.</p>
+              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+                <h3>For Arduino:</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:servo</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:servo</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">3</span> <span class="comment"># pin must be a PWM pin</span>
+</pre>
+                <h3>For Digispark:</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
+device <span class="symbol">:servo</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:servo</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">3</span> <span class="comment"># pin must be a PWM pin</span>
+</pre>
+              </section><section class="how-to"><h2>How to use</h2>
+                <h3>Example moves a servo from angle 0 to 90 to 180.</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Circuit and schematic here: http://arduino.cc/en/Tutorial/Sweep</span>
+
+<span class="comment">#connection :arduino, :adaptor =&gt; :firmata, :port =&gt; '/dev/tty*'</span>
+connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
+device <span class="symbol">:board</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:device_info</span>
+device <span class="symbol">:servo</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:servo</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">3</span> <span class="comment"># pin must be a PWM pin</span>
+
+work <span class="keyword">do</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmware name: </span><span class="inline"><span class="inline-delimiter">#{</span>board.firmware_name<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Firmata version: </span><span class="inline"><span class="inline-delimiter">#{</span>board.version<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+
+  servo.move(<span class="integer">0</span>) <span class="comment"># reset the position of the sweep (same as servo.min)</span>
+
+  every(<span class="integer">2</span>) <span class="keyword">do</span>
+    <span class="keyword">case</span> servo.current_angle
+    <span class="keyword">when</span> <span class="integer">0</span> <span class="keyword">then</span> servo.center
+    <span class="keyword">when</span> <span class="integer">90</span> <span class="keyword">then</span> servo.max
+    <span class="keyword">when</span> <span class="integer">180</span> <span class="keyword">then</span> servo.min
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="clockwise">clockwise</h2>
+                  
+                  <p>Turns the servo to go clockwise, if the driver is continuous.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="counterclockwise">counter_clockwise</h2>
+                  
+                  <p>Turns the servo to go counter clockwise, if the driver is continuous.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Stops the driver.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                </div>
+              </section><section class="circuit"><h2>Circuit and Schematic</h2>
+                <p>
+                  <a href="http://arduino.cc/en/Tutorial/Sweep">http://arduino.cc/en/Tutorial/Sweep</a>
+                </p>
+              </section><section class="compatability hardware"><h2>Works with:</h2>
+                <p>
+                  <b>Important Note:</b>
+                  You need to install
+                  <a target="blank" href="https://github.com/sarfata/pi-blaster">pi-blaster</a>
+                  in the
+                  <b>raspberry-pi,</b>
+                  this project enables PWM in the GPIO pins .
+                </p>
+                <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Arduino -->
+                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                    <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Analog Sensor -->
+                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Raspberry Pi -->
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/devices/raspi.jpg"></a>
+                  <!-- // Spark -->
+                  <a class="device" href="/documentation/platforms/spark" title="Spark">
+                    <img src="/images/devices/spark.jpg"></a>
+                </div>
+              </section>
+</div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Leap Motion Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,30 +63,17 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/leap_motion.jpg"><p>
-                  Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger actions or control hardware.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/leap_motion.jpg"><p>Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger actions or control hardware.</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
 device <span class="symbol">:leapmotion</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
 </pre>
-              </section><section class="public-methods"><h2>Events:</h2>
-                <dl class="methods">
-<dt>hand</dt>
-                  <dd>Gets triggered when doing a hand motion, makes hand input available.</dd>
-                  <dt>gesture</dt>
-                  <dd>Gets triggered when doing a gesture motion, makes hand input available.</dd>
-                  <dt>pointable</dt>
-                  <dd>Gets triggered when doing a pointable motion, makes hand input available.</dd>
-                  <dt>frame</dt>
-                  <dd>Gets triggered with every motion detected, makes frame input available.</dd>
-                </dl>
-<h3>How to use events and call them on your drivers</h3>
+              </section><section class="how-to"><h2>How to use</h2>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on leapmotion, <span class="symbol">:hand</span> =&gt; proc { |sender, hand| puts hand.inspect }
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example receiving hand motion events from a Leap Motion.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -103,10 +88,59 @@ work <span class="keyword">do</span>
   puts hand.inspect
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="startdriver">start_driver</h2>
+                  
+                  <p>Starts the driver.</p>
+                  
+                  <h2 id="onopen">on_open</h2>
+                  
+                  <p>Gets triggered when the leapmotion is opened.</p>
+                  
+                  <h2 id="onmessagedata">on_message(data)</h2>
+                  
+                  <p>Gets triggered when the leapmotion have a message.</p>
+                  
+                  <ul>
+<li>
+<strong>data</strong> - params</li>
+                  </ul>
+<h2 id="onclosecode-reason">on_close(code, reason)</h2>
+                  
+                  <p>Gets triggered when the leapmotion is closed.</p>
+                  
+                  <ul>
+<li>
+<strong>code</strong> - params</li>
+                    <li>
+<strong>reason</strong> - params</li>
+                  </ul>
+<h2 id="hand">hand</h2>
+                  
+                  <p>Gets triggered when doing a hand motion, makes hand input available.</p>
+                  
+                  <h2 id="gesture">gesture</h2>
+                  
+                  <p>Gets triggered when doing a gesture motion, makes hand input available.</p>
+                  
+                  <h2 id="pointable">pointable</h2>
+                  
+                  <p>Gets triggered when doing a pointable motion, makes hand input available.</p>
+                  
+                  <h2 id="frame">frame</h2>
+                  
+                  <p>Gets triggered with every motion detected, makes frame input available.</p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Leap Motion -->
                   <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
-                    <img src="/images/leap_motion.jpg"></a>
+                    <img src="/images/devices/leap_motion.jpg"></a>
                 </div>
               </section>
 </div>
@@ -120,14 +154,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

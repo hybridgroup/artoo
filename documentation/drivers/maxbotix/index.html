@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Maxbotix Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,9 +63,7 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/maxbotix.jpg"><p>
-                  Provides tools to use maxbotix sonar (range finder).
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/maxbotix.jpg"><p>Provides tools to use maxbotix sonar (range finder).</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
@@ -79,25 +75,11 @@ device <span class="symbol">:sonar</span>, <span class="symbol">:driver</span> =
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
 device <span class="symbol">:sonar</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:maxbotix</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">0</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.5</span>
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>range → distance_in_inches(float)</dt>
-                  <dd>Returns the distance measured by the sonar in inches.</dd>
-                  <dt>range_cm → distance_in_cm(float)</dt>
-                  <dd>Returns the distance measured by the sonar in cm.</dd>
-                </dl></section><section class="public-events"><h2>Events:</h2>
-                <p>The events will be triggered when the amount of time specified by the param <code>:interval</code>, when setting up the driver, passes.</p>
-                <dl class="methods">
-<dt>:range</dt>
-                  <dd>
-                    <p>Gets triggered after <code>:interval</code> amount of time passes, everytime the range will be read and the event triggered.</p>
-                  </dd>
-                </dl>
-<h3>How to use events and call them on your drivers</h3>
+              </section><section class="how-to"><h2>How to use</h2>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on sonar, <span class="symbol">:range</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">range </span><span class="inline"><span class="inline-delimiter">#{</span> sonar.range <span class="inline-delimiter">}</span></span><span class="content">!</span><span class="delimiter">"</span></span> }
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -120,19 +102,62 @@ work <span class="keyword">do</span>
   puts args
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="range">range</h2>
+                  
+                  <p>Returns the distance measured by the sonar in inches.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>distance_in_inches(float)</code></p>
+                  
+                  <h2 id="rangecm">range_cm</h2>
+                  
+                  <p>Returns the distance measured by the sonar in cm.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>distance_in_cm(float)</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <p>The events will be triggered when the amount of time specified by the param <code>:interval</code>, when setting up the driver, passes.</p>
+                  
+                  <h2 id="startdriver">start_driver</h2>
+                  
+                  <p>Starts the driver.</p>
+                  
+                  <h2 id="range">:range</h2>
+                  
+                  <p>Gets triggered after <code>:interval</code> amount of time passes, everytime the range will be read and the event triggered.</p>
+                </div>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
-                <p>
-                  <a href="http://www.electrojoystick.com/tutorial/?page_id=285">http://www.electrojoystick.com/tutorial/?page_id=285</a>
-                </p>
+                <p><a href="http://www.electrojoystick.com/tutorial/?page_id=285">http://www.electrojoystick.com/tutorial/?page_id=285</a></p>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 
                 <div class="devices">
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Arduino -->
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
+                    <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Analog Sensor -->
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Spark -->
                   <a class="device" href="/documentation/platforms/spark" title="Spark">
-                    <img src="/images/spark.jpg"></a>
+                    <img src="/images/devices/spark.jpg"></a>
                 </div>
               </section>
 </div>
@@ -146,14 +171,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

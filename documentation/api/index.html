@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo API</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -64,51 +62,44 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><h2 id="how-to-connect">How To Connect</h2>
-            
-            <p>Now that you are ready to write your own code you can access a running Artoo API server.</p>
-            
-            <h3 id="running-your-robot">Running your robot:</h3>
-            
-            <p>To test your code you can type this on your console:</p>
-            
-            <pre class="CodeRay">artoo start myrobot.rb
+          <section class="content full"><div class="documentation">
+              <h2>How To Connect</h2>
+              <p>Now that you are ready to write your own code you can access a running Artoo API server.</p>
+              <h3>Running your robot:</h3>
+              <p>To test your code you can type this on your console:
+                  :::ruby
+              	artoo start myrobot.rb</p>
+              
+              <p>or</p>
+              
+              <pre class="CodeRay">ruby myrobot.rb
 </pre>
-            
-            <p>or</p>
-            
-            <pre class="CodeRay">ruby myrobot.rb
-</pre>
-            
-            <p>For example, on this code:</p>
-            
-            <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+              
+              <p>For example, on this code:</p>
+              
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection :loop
-device :passthru
-api :host =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, :port =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:loop</span>
+device <span class="symbol">:passthru</span>
+api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
 
 work <span class="keyword">do</span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at #{api_host}:#{api_port}...</span><span class="delimiter">"</span></span>
-end
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
 </pre>
-            
-            <p>artoo automatically, starts the server.</p>
-            
-            <h2 id="how-to-configure">How To Configure</h2>
-            
-            <p>The Artoo API server, allows a configuration for your robots.</p>
-            
-            <p>You can set it up like this:</p>
-            
-            <pre class="CodeRay">  api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
+              <p>artoo automatically, starts the server.</p>
+              <h2>How To Configure</h2>
+              <p>The Artoo API server, allows a configuration for your robots.</p>
+              <p>You can set it up like this:</p>
+              
+              <pre class="CodeRay">  api <span class="symbol">:host</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1</span><span class="delimiter">'</span></span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">4321</span><span class="delimiter">'</span></span>
 </pre>
-            
-            <p>Now you can run the server on the curl : <code>http://127.0.0.1:4321</code>.</p>
-            
-            <p>For example:</p>
-            
-            <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+              
+              <p>Now you can run the server on the curl : <code>http://127.0.0.1:4321</code>.</p>
+              
+              <p>For example:</p>
+              
+              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:loop</span>
 device <span class="symbol">:passthru</span>
@@ -118,15 +109,12 @@ work <span class="keyword">do</span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
 <span class="keyword">end</span>        
 </pre>
-            
-            <h2 id="routes">Routes</h2>
-            
-            <h3 id="get-robots">GET /robots</h3>
-            
-            <p>Our first route returns all the Robots the master class knows about in JSON
-            format.</p>
-            
-            <pre class="CodeRay">[
+              <h2>Routes</h2>
+              <h3>GET /robots</h3>
+              <p>Our first route returns all the Robots the master class knows about in JSON
+              format.</p>
+              
+              <pre class="CodeRay">[
   {
     "name": "SpheroBot",
     "connections": [
@@ -160,12 +148,10 @@ work <span class="keyword">do</span>
   }
 ]
 </pre>
-            
-            <h3 id="get-robotsrobotid">GET /robots/:robotid</h3>
-            
-            <p>Given a robot's name, returns JSON information about the requested Robot:</p>
-            
-            <pre class="CodeRay">{
+              <h3>GET /robots/:robotid</h3>
+              <p>Given a robot's name, returns JSON information about the requested Robot:</p>
+              
+              <pre class="CodeRay">{
   "name": "SpheroBot",
   "connections": [
     {
@@ -197,13 +183,11 @@ work <span class="keyword">do</span>
   ]
 }
 </pre>
-            
-            <h3 id="get-robotsrobotiddevices">GET /robots/:robotid/devices</h3>
-            
-            <p>Given a robot's name, returns JSON information about the devices belonging to
-            the requested Robot:</p>
-            
-            <pre class="CodeRay">[
+              <h3>GET /robots/:robotid/devices</h3>
+              <p>Given a robot's name, returns JSON information about the devices belonging to
+              the requested Robot:</p>
+              
+              <pre class="CodeRay">[
   {
     "name": "sphero",
     "driver": "Sphero",
@@ -224,13 +208,11 @@ work <span class="keyword">do</span>
   }
 ]
 </pre>
-            
-            <h3 id="get-robotsrobotiddevicesdeviceid">GET /robots/:robotid/devices/:deviceid</h3>
-            
-            <p>Given the names of a device and the robot it belongs to, returns data on the
-            specified device.</p>
-            
-            <pre class="CodeRay">{
+              <h3>GET /robots/:robotid/devices/:deviceid</h3>
+              <p>Given the names of a device and the robot it belongs to, returns data on the
+              specified device.</p>
+              
+              <pre class="CodeRay">{
   "name": "sphero",
   "driver": "Sphero",
   "pin": null,
@@ -249,13 +231,11 @@ work <span class="keyword">do</span>
   ]
 }
 </pre>
-            
-            <h3 id="get-robotsrobotiddevicesdeviceidcommands">GET /robots/:robotid/devices/:deviceid/commands</h3>
-            
-            <p>Given the names of a device and the robot it belongs to, returns all commands
-            available for the specified device.</p>
-            
-            <pre class="CodeRay">[
+              <h3>GET /robots/:robotid/devices/:deviceid/commands</h3>
+              <p>Given the names of a device and the robot it belongs to, returns all commands
+              available for the specified device.</p>
+              
+              <pre class="CodeRay">[
   "detect_collisions",
   "roll",
   "set_color",
@@ -263,21 +243,17 @@ work <span class="keyword">do</span>
   "stop"
 ]
 </pre>
-            
-            <h3 id="post-robotsrobotiddevicesdeviceidcommandscommandid">POST /robots/:robotid/devices/:deviceid/commands/:commandid</h3>
-            
-            <p>Given a robot name, device name, and command name, executes a robot's command
-            and returns the result.</p>
-            
-            <pre class="CodeRay">// example pending
+              <h3>POST /robots/:robotid/devices/:deviceid/commands/:commandid</h3>
+              <p>Given a robot name, device name, and command name, executes a robot's command
+              and returns the result.</p>
+              
+              <pre class="CodeRay">// example pending
 </pre>
-            
-            <h3 id="get-robotsrobotidconnections">GET /robots/:robotid/connections</h3>
-            
-            <p>Given a robot's name, returns JSON information about the connections belonging
-            to the requested Robot:</p>
-            
-            <pre class="CodeRay">[
+              <h3>GET /robots/:robotid/connections</h3>
+              <p>Given a robot's name, returns JSON information about the connections belonging
+              to the requested Robot:</p>
+              
+              <pre class="CodeRay">[
   {
     "name": "sphero",
     "port": "/dev/rfcomm0",
@@ -286,29 +262,22 @@ work <span class="keyword">do</span>
   }
 ]
 </pre>
-            
-            <h3 id="get-robotsrobotidconnectionsconnectionid">GET /robots/:robotid/connections/:connectionid</h3>
-            
-            <p>Given a robot's name, returns JSON information about the connections belonging
-            to the requested Robot:</p>
-            
-            <pre class="CodeRay">{
+              <h3>GET /robots/:robotid/connections/:connectionid</h3>
+              <p>Given a robot's name, returns JSON information about the connections belonging
+              to the requested Robot:</p>
+              
+              <pre class="CodeRay">{
   "name": "sphero",
   "port": "/dev/rfcomm0",
   "adaptor": "Sphero",
   "connection_id": 2778
 }
 </pre>
-            
-            <h3 id="get-robotsrobotiddevicesdeviceidevents">GET /robots/:robotid/devices/:deviceid/events</h3>
-            
-            <p>Routes to a Reel route to handle WebSockets connections requesting updates
-            on device events.</p>
-            
-            <h3 id="wsget-events">WS_GET /events</h3>
-            
-            <p>A Reel route to handle updating clients whenever a device sends
-            an 'update' event.</p>
+              <h3>GET /robots/:robotid/devices/:deviceid/events</h3>
+              <p>Routes to a Reel route to handle WebSockets connections requesting updates on device events.</p>
+              <h3>WS_GET /events</h3>
+              <p>A Reel route to handle updating clients whenever a device sends an 'update' event.</p>
+            </div>
           </section>
 </div>
       </div>
@@ -319,14 +288,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

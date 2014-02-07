@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Motor Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,11 +63,8 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/motor.jpg"><p>
-                  Provides motor manipulation tools for artoo like on/off, speed modulation using PWM,
-                  use of bidirectional motors using forward/backward pins.
-                </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              <section class="intro"><img class="display" src="/images/devices/motor.jpg"><p>
+              </p></section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -80,43 +75,7 @@ device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
 device <span class="symbol">:motor</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:motor</span>, <span class="symbol">:speed_pin</span> =&gt; <span class="integer">3</span> <span class="comment"># Use a PWM pin</span>
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>stop → true | nil</dt>
-                  <dd>Stops the motor.</dd>
-                  <dt>start → true | nil</dt>
-                  <dd>Starts the motor.</dd>
-                  <dt>on? → true | false</dt>
-                  <dd>Returns true if the motor is on, otherwise returns false.</dd>
-                  <dt>off? → true | false</dt>
-                  <dd>Returns true if the motor is off, otherwise returns false.</dd>
-                  <dt>toggle → true | nil</dt>
-                  <dd>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</dd>
-                  <dt>speed(speed_value) → true | nil</dt>
-                  <dd>
-                    <p>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between <code>0</code> and <code>255</code>.  </p>
-                  </dd>
-                  <dt>min → true | nil</dt>
-                  <dd>
-                    <p>Stops the motor, sets the speed to <code>0</code>.</p>
-                  </dd>
-                  <dt>max → true | nil</dt>
-                  <dd>
-                    <p>Starts the motor at max speed, sets the speed to <code>255</code>.</p>
-                  </dd>
-                  <dt>forward(speed) → true | nil</dt>
-                  <dd>Starts the motor in forward direction at the provided speed.</dd>
-                  <dt>backward(speed) → true | nil</dt>
-                  <dd>Starts the motor in backward direction at the provided speed.</dd>
-                  <dt>forward? → true | false</dt>
-                  <dd>Returns true if the motor is direction is set to forward, otherwise false.</dd>
-                  <dt>backward? → true | false</dt>
-                  <dd>Returns true if the motor is direction is set to backward, otherwise false.</dd>
-                  <dt>current_speed → speed</dt>
-                  <dd>
-                    <p>Returns the current speed of the motor as an integer between <code>0</code> and <code>255</code>.</p>
-                  </dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example of a dc motor with speed changes using PWM.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -150,7 +109,7 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
-                <h2>Example of a dc motor with direction and speed change.</h2>
+                <h3>Example of a dc motor with direction and speed change.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment">#Circuit's breadboard layout for the L293D: http://www.electrojoystick.com/tutorial/?p=759</span>
@@ -190,10 +149,173 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                    
+                    <h2 id="stop">stop</h2>
+                    
+                    <p>Stops the motor.</p>
+                    
+                    <h5 id="params">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="start">start</h2>
+                    
+                    <p>Starts the motor.</p>
+                    
+                    <h5 id="params-1">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-1">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="on">on?</h2>
+                    
+                    <p>Returns true if the motor is on, otherwise returns false.</p>
+                    
+                    <h5 id="params-2">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-2">Returns</h5>
+                    
+                    <p><code>true or false</code></p>
+                    
+                    <h2 id="off">off?</h2>
+                    
+                    <p>Returns true if the motor is off, otherwise returns false.</p>
+                    
+                    <h5 id="params-3">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-3">Returns</h5>
+                    
+                    <p><code>true or false</code></p>
+                    
+                    <h2 id="toggle">toggle</h2>
+                    
+                    <p>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</p>
+                    
+                    <h5 id="params-4">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-4">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="speedspeedvalue">speed(speed_value)</h2>
+                    
+                    <p>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between <code>0</code> and <code>255</code>.</p>
+                    
+                    <h5 id="params-5">Params</h5>
+                    
+                    <ul>
+<li>
+<strong>speed_value</strong> - params, the speed value</li>
+                    </ul>
+<h5 id="returns-5">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="min">min</h2>
+                    
+                    <p>Stops the motor, sets the speed to <code>0</code>.</p>
+                    
+                    <h5 id="params-6">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-6">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="max">max</h2>
+                    
+                    <p>Starts the motor at max speed, sets the speed to <code>255</code>.</p>
+                    
+                    <h5 id="params-7">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-7">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="forwardspeed">forward(speed)</h2>
+                    
+                    <p>Starts the motor in forward direction at the provided speed.</p>
+                    
+                    <h5 id="params-8">Params</h5>
+                    
+                    <ul>
+<li>
+<strong>speed</strong> - params, the speed value</li>
+                    </ul>
+<h5 id="returns-8">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="backwardspeed">backward(speed)</h2>
+                    
+                    <p>Starts the motor in backward direction at the provided speed.</p>
+                    
+                    <h5 id="params-9">Params</h5>
+                    
+                    <ul>
+<li>
+<strong>speed</strong> - params, the speed value</li>
+                    </ul>
+<h5 id="returns-9">Returns</h5>
+                    
+                    <p><code>true or nil</code></p>
+                    
+                    <h2 id="forward">forward?</h2>
+                    
+                    <p>Returns true if the motor is direction is set to forward, otherwise false.</p>
+                    
+                    <h5 id="params-10">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-10">Returns</h5>
+                    
+                    <p><code>true or false</code></p>
+                    
+                    <h2 id="backward">backward?</h2>
+                    
+                    <p>Returns true if the motor is direction is set to backward, otherwise false.</p>
+                    
+                    <h5 id="params-11">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-11">Returns</h5>
+                    
+                    <p><code>true or false</code></p>
+                    
+                    <h2 id="currentspeed">current_speed</h2>
+                    
+                    <p>Returns the current speed of the motor as an integer between <code>0</code> and <code>255</code>.</p>
+                    
+                    <h5 id="params-12">Params</h5>
+                    
+                    <p><code>no params</code></p>
+                    
+                    <h5 id="returns-12">Returns</h5>
+                    
+                    <p><code>speed</code></p>
+                </div>
                 <h2>Circuit and Schematic</h2>
-                <p>
-                  <a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
-                </p>
+                <p><a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a></p>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <p>
                   <b>Important Note:</b>
@@ -203,18 +325,25 @@ work <span class="keyword">do</span>
                   <b>raspberry-pi,</b>
                   this project enables PWM in the GPIO pins .
                 </p>
-                <!-- / TODO: Update platform list with all that work with this driver in artoo. -->
+                
                 <div class="devices">
-                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
-                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg"></a>
-                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
-                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg"></a>
-                  <a class="device" href="/documentation/platforms/spark" title="Spark">
-                    <img src="/images/spark.jpg"></a>
+                  <!-- /Platforms All -->
+                    <!-- /Platforms Parts -->
+                    <!-- // Arduino -->
+                    <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                      <img src="/images/devices/arduino.jpg"></a>
+                    <!-- // Beaglebone -->
+                    <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                      <img src="/images/devices/beaglebone.jpg"></a>
+                    <!-- // Analog Sensor -->
+                    <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                      <img src="/images/devices/digispark.jpg"></a>
+                    <!-- // Raspberry Pi -->
+                    <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                      <img src="/images/devices/raspi.jpg"></a>
+                    <!-- // Spark -->
+                    <a class="device" href="/documentation/platforms/spark" title="Spark">
+                      <img src="/images/devices/spark.jpg"></a>
                 </div>
               </section>
 </div>
@@ -228,14 +357,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

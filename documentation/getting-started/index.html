@@ -8,31 +8,33 @@
 <meta content="Artoo Platforms" name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo Platforms</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -64,112 +62,103 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><section class="intro"><h2>What is artoo?</h2>
-              <p>
-                Artoo is a micro-framework for robotics. It provides a simple, but powerful Domain-Specific Language (DSL) for robots and physical computing.
-              </p>
-              <p>
-                With Artoo, you can easily connect multiple, different hardware devices together at the same time into a single solution.
-                Artoo makes telling robots what to do incredibly simple and fun.
-              </p>
-              <p>
-                Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0
-                Artoo is conceptualy influenced by Sinatra (
-                <a href="https://github.com/sinatra/sinatra">Sinatra</a>
-                ) as well as borrowing some code from it.
-                Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
-                operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
-              </p>
-              <p>
-                This means you will need to use JRuby or Rubinius for maximum concurrency.
-                To a large extent, this is due to being built on top of Celluloid (
-                <a href="https://github.com/celluloid/celluloid">Celluloid</a>
-                ), Celluloid::IO (
-                <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
-                ), and Reel (
-                <a href="https://github.com/celluloid/reel">Reel</a>
-                ).
-              </p>
-            </section><section class="how-to"><h2>How to setup your ruby environment</h2>
-              <p>
-                First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above,
-                we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
-              </p>
-              <h3>How to install RVM</h3>
-              <p>
-                First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
-                <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
-              </p>
-              <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable
+          <section class="content full"><div class="documentation">
+              <section class="intro"><h2>What is artoo?</h2>
+                <p>Artoo is a micro-framework for robotics. It provides a simple, but powerful Domain-Specific Language (DSL) for robots and physical computing.</p>
+                <p>With Artoo, you can easily connect multiple, different hardware devices together at the same time into a single solution. Artoo makes telling robots what to do incredibly simple and fun.</p>
+                <p>
+                  Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0
+                  Artoo is conceptualy influenced by Sinatra (
+                  <a href="https://github.com/sinatra/sinatra">Sinatra</a>
+                  ) as well as borrowing some code from it.
+                  Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
+                  operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
+                </p>
+                <p>
+                  This means you will need to use JRuby or Rubinius for maximum concurrency.
+                  To a large extent, this is due to being built on top of Celluloid (
+                  <a href="https://github.com/celluloid/celluloid">Celluloid</a>
+                  ), Celluloid::IO (
+                  <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
+                  ), and Reel (
+                  <a href="https://github.com/celluloid/reel">Reel</a>
+                  ).
+                </p>
+              </section><section class="how-to"><h2>How to setup your ruby environment</h2>
+                <p>First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above, we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.</p>
+                <h3>How to install RVM</h3>
+                <p>
+                  First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
+                  <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
+                </p>
+                <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable
 </pre>
-              <p>
-                Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed
-                correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
-              </p>
-              <pre class="CodeRay">type rvm | head -n 1
+                <p>Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.</p>
+                <pre class="CodeRay">type rvm | head -n 1
 rvm is a function
 </pre>
-              <h3>How to install ruby 2.0</h3>
-              <p>
-                Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
-              </p>
-              <pre class="CodeRay">rvm install 2.0.0
+                <h3>How to install ruby 2.0</h3>
+                <p>Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0</p>
+                <pre class="CodeRay">rvm install 2.0.0
 </pre>
-              <h3>How to install rubinius 2.1.1</h3>
-              <p>
-                If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.1.1
-                or higher. It is pretty easy to install using
-                <a href="https://rvm.io/">RVM.</a>
-              </p>
-              <pre class="CodeRay">rvm install rbx-2.1.1
-</pre>
-              <section class="hardware"><div class="devices">
-                  <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg"></a>
-                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
-                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg"></a>
-                  <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                    <img src="/images/crazyflie.jpg"></a>
-                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
-                  <a class="device" href="/documentation/platforms/joystick" title="Joystick">
-                    <img src="/images/joystick.jpg"></a>
-                  <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
-                    <img src="/images/leap_motion.jpg"></a>
-                  <a class="device" href="/documentation/platforms/opencv" title="OpenCV">
-                    <img src="/images/opencv.jpg"></a>
-                  <a class="device" href="/documentation/platforms/pebble" title="Pebble">
-                    <img src="/images/pebble.jpg"></a>
-                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg"></a>
-                  <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                    <img src="/images/roomba.jpg"></a>
-                  <a class="device" href="/documentation/platforms/spark" title="Spark">
-                    <img src="/images/spark.jpg"></a>
-                  <a class="device" href="/documentation/platforms/sphero" title="Sphero">
-                    <img src="/images/sphero.jpg"></a>
-                </div>
-              </section><p>
-                Artoo also has support for devices that can work across multiple hardware platforms.
+                <h3>How to install rubinius 2.1.1</h3>
+                <p>
+                  If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.1.1
+                  or higher. It is pretty easy to install using
+                  <a href="https://rvm.io/">RVM.</a>
                 </p>
-<ul>
-<li>
-                    General Purpose Input/Output (GPIO) devices &lt;==&gt;
-                    <a href="/documentation/drivers/">Drivers</a>
-                  </li>
-                  <li>
-                    i2c devices &lt;==&gt;
-                    <a href="/documentation/drivers/">Drivers</a>
-                  </li>
-                </ul>
-<p>
-                Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-              </p>
-            </section><section class="artoo-code"><h2>Code to control robots with Artoo</h2>
-              <h3>Example: Arduino with LED and a button</h3>
-              <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
+                <pre class="CodeRay">rvm install rbx-2.1.1
+</pre>
+                <section class="hardware"><div class="devices">
+                    <!-- /Platforms All -->
+                    <!-- //Ardrone -->
+                    <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
+                      <img src="/images/devices/ardrone.jpg"></a>
+                    <!-- // Arduino -->
+                    <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                      <img src="/images/devices/arduino.jpg"></a>
+                    <!-- // Beaglebone -->
+                    <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                      <img src="/images/devices/beaglebone.jpg"></a>
+                    <!-- // Crazylie -->
+                    <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
+                      <img src="/images/devices/crazyflie.jpg"></a>
+                    <!-- // Digispark -->
+                    <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                      <img src="/images/devices/digispark.jpg"></a>
+                    <!-- // Joystick -->
+                    <a class="device" href="/documentation/platforms/joystick" title="Joystick">
+                      <img src="/images/devices/joystick.jpg"></a>
+                    <!-- // Keyboard -->
+                    <a class="device" href="/documentation/platforms/keyboard" title="Joystick">
+                      <img src="/images/devices/keyboard.jpg"></a>
+                    <!-- // Leap Motion -->
+                    <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
+                      <img src="/images/devices/leap_motion.jpg"></a>
+                    <!-- // Open CV -->
+                    <a class="device" href="/documentation/platforms/opencv" title="OpenCV">
+                      <img src="/images/devices/opencv.jpg"></a>
+                    <!-- // Pebble -->
+                    <a class="device" href="/documentation/platforms/pebble" title="Pebble">
+                      <img src="/images/devices/pebble.jpg"></a>
+                    <!-- // Raspberry Pi -->
+                    <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                      <img src="/images/devices/raspi.jpg"></a>
+                    <!-- // Roomba -->
+                    <a class="device" href="/documentation/platforms/roomba" title="Roomba">
+                      <img src="/images/devices/roomba.jpg"></a>
+                    <!-- // Spark -->
+                    <a class="device" href="/documentation/platforms/spark" title="Spark">
+                      <img src="/images/devices/spark.jpg"></a>
+                    <!-- // Sphero -->
+                    <a class="device" href="/documentation/platforms/sphero" title="Sphero">
+                      <img src="/images/devices/sphero.jpg"></a>
+                    <!-- /Platforms Parts -->
+                  </div>
+                </section><p>Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...</p>
+              </section><section class="artoo-code"><h2>Code to control robots with Artoo</h2>
+                <h3>Example: Arduino with LED and a button</h3>
+                <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
 require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 <span class="comment"># Circuit and schematic here: http://arduino.cc/en/tutorial/button</span>
@@ -181,8 +170,8 @@ work <span class="keyword">do</span>
   on button, <span class="symbol">:push</span> =&gt; proc {led.toggle}
 <span class="keyword">end</span>
 </pre>
-              <h3>Parrot ARDrone 2.0</h3>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+                <h3>Parrot ARDrone 2.0</h3>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
 device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>
@@ -195,9 +184,9 @@ work <span class="keyword">do</span>
   after(<span class="integer">30</span>.seconds) { drone.stop }
 <span class="keyword">end</span>
 </pre>
-              <h3>Modular</h3>
-              <p>You can also write more modular class-oriented code, that allows you to control swarms of robots:</p>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo/robot</span><span class="delimiter">'</span></span>
+                <h3>Modular</h3>
+                <p>You can also write more modular class-oriented code, that allows you to control swarms of robots:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo/robot</span><span class="delimiter">'</span></span>
 
 <span class="constant">SPHEROS</span> = [<span class="string"><span class="delimiter">"</span><span class="content">4567</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4568</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4569</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4570</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">4571</span><span class="delimiter">"</span></span>]
 
@@ -221,43 +210,40 @@ robots = []
 
 <span class="constant">SpheroRobot</span>.work!(robots)
 </pre>
-              <p>Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+</p>
-              <p>Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm</p>
-              <pre class="CodeRay">rvm get head &amp;&amp; rvm install rbx-2.1.1 --1.9
+                <p>Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+</p>
+                <p>Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm</p>
+                <pre class="CodeRay">rvm get head &amp;&amp; rvm install rbx-2.1.1 --1.9
 </pre>
-              <p>
-                Artoo is conceptualy influenced by
-                <a href="https://github.com/sinatra/sinatra">Sinatra</a>
-                as well as borrowing some code from it.
-              </p>
-              <p>Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency.</p>
-              <p>
-                To a large extent, this is due to being built on top of
-                <a href="https://github.com/celluloid/celluloid">Celluloid</a>
-                ,
-                <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
-                , and
-                <a href="https://github.com/celluloid/reel">Reel.</a>
-              </p>
-            </section><section class="installation"><h3>Installation</h3>
-              <pre class="CodeRay">gem install artoo
+                <p>
+                  Artoo is conceptualy influenced by
+                  <a href="https://github.com/sinatra/sinatra">Sinatra</a>
+                  as well as borrowing some code from it.
+                </p>
+                <p>Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency.</p>
+                <p>
+                  To a large extent, this is due to being built on top of
+                  <a href="https://github.com/celluloid/celluloid">Celluloid</a>
+                  ,
+                  <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
+                  , and
+                  <a href="https://github.com/celluloid/reel">Reel.</a>
+                </p>
+              </section><section class="installation"><h3>Installation</h3>
+                <pre class="CodeRay">gem install artoo
 </pre>
-              <p>
-                Then install the gems required by the hardware you want to use. For
-                example, if you wanted to use an XBox360 controller to fly your ARDrone:
-              </p>
-              <pre class="CodeRay">gem install artoo-joystick
+                <p>Then install the gems required by the hardware you want to use. For example, if you wanted to use an XBox360 controller to fly your ARDrone:</p>
+                <pre class="CodeRay">gem install artoo-joystick
 gem install artoo-ardrone
 </pre>
-              <h3>Writing your robot code:</h3>
-              <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
-              <h3>Running your robot:</h3>
-              <pre class="CodeRay">ruby myrobot.rb
+                <h3>Writing your robot code:</h3>
+                <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
+                <h3>Running your robot:</h3>
+                <pre class="CodeRay">ruby myrobot.rb
 </pre>
-              <h3>API:</h3>
-              <p>Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.</p>
-              <p>To activate the API, use the <code>api</code> command like this:</p>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+                <h3>API:</h3>
+                <p>Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.</p>
+                <p>To activate the API, use the <code>api</code> command like this:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:loop</span>
 device <span class="symbol">:passthru</span>
@@ -267,11 +253,11 @@ work <span class="keyword">do</span>
   puts <span class="string"><span class="delimiter">"</span><span class="content">Hello from the API running at </span><span class="inline"><span class="inline-delimiter">#{</span>api_host<span class="inline-delimiter">}</span></span><span class="content">:</span><span class="inline"><span class="inline-delimiter">#{</span>api_port<span class="inline-delimiter">}</span></span><span class="content">...</span><span class="delimiter">"</span></span>
 <span class="keyword">end</span>
 </pre>
-              <p>Once the robot or group is working, you can view the main API page at the host and port specified.</p>
-              <h3>Test-Driven Robotics:</h3>
-              <p>Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.</p>
-              <p>Here is an example that uses Minitest, Mocha, and Timecop:</p>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">./test_helper</span><span class="delimiter">'</span></span>
+                <p>Once the robot or group is working, you can view the main API page at the host and port specified.</p>
+                <h3>Test-Driven Robotics:</h3>
+                <p>Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.</p>
+                <p>Here is an example that uses Minitest, Mocha, and Timecop:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">./test_helper</span><span class="delimiter">'</span></span>
 require <span class="string"><span class="delimiter">'</span><span class="content">./test_robot</span><span class="delimiter">'</span></span>
 
 describe <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
@@ -309,8 +295,8 @@ describe <span class="string"><span class="delimiter">'</span><span class="conte
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
-              <p>to describe the following Sphero robot:</p>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+                <p>to describe the following Sphero robot:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4560</span><span class="delimiter">'</span></span>
 device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
@@ -329,13 +315,11 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
-              <p>The repo with full example of using Artoo for test driven robotics is located at</p>
-              <p>
-                <a href="https://github.com/hybridgroup/artoo-test-example">https://github.com/hybridgroup/artoo-test-example</a>
-              </p>
-              <h3>CLI</h3>
-              <p>Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
-              <pre class="CodeRay">$ artoo
+                <p>The repo with full example of using Artoo for test driven robotics is located at</p>
+                <p><a href="https://github.com/hybridgroup/artoo-test-example">https://github.com/hybridgroup/artoo-test-example</a></p>
+                <h3>CLI</h3>
+                <p>Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
+                <pre class="CodeRay">$ artoo
 Commands:
   artoo connect SUBCOMMAND ...ARGS   # Connects to device
   artoo console ROBOT                # Run a robot using the Robi console
@@ -345,23 +329,23 @@ Commands:
   artoo start ROBOT                  # Run a robot
   artoo version                      # Displays the current version
 </pre>
-              <h3>Connect:</h3>
-              <p>Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:</p>
-              <pre class="CodeRay">$ artoo connect
+                <h3>Connect:</h3>
+                <p>Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:</p>
+                <pre class="CodeRay">$ artoo connect
 connect commands:
   artoo connect bind [ADDRESS] [NAME]  # Binds a Bluetooth device to some connected hardware
   artoo connect help [COMMAND]         # Describe subcommands or one specific subcommand
   artoo connect scan                   # Scan for connected devices
   artoo connect serial [NAME] [PORT]   # Connect a serial device to a TCP socket using socat
 </pre>
-              <p>You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!</p>
-              <h3>Console:</h3>
-              <p>
-                Artoo includes Robi, a console based on
-                <a href="http://pryrepl.org/">Pry</a>
-                to allow you to interactively debug and control your robot.
-              </p>
-              <pre class="CodeRay">$ artoo console ./examples/hello.rb 
+                <p>You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!</p>
+                <h3>Console:</h3>
+                <p>
+                  Artoo includes Robi, a console based on
+                  <a href="http://pryrepl.org/">Pry</a>
+                  to allow you to interactively debug and control your robot.
+                </p>
+                <pre class="CodeRay">$ artoo console ./examples/hello.rb 
  run  robi ./examples/hello.rb from "."
 I, [2013-07-03T17:11:35.793913 #5527]  INFO -- : Registering connection 'loop'...
 I, [2013-07-03T17:11:35.794939 #5527]  INFO -- : Preparing work...
@@ -381,9 +365,9 @@ robi&gt; exit
 D, [2013-07-03T17:12:04.413060 #5527] DEBUG -- : Terminating 7 actors...
 D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
 </pre>
-              <h3>Generator</h3>
-              <p>Want to integrate a hardware device we don't have Artoo support for yet? There's a generator for that! You can easily generate a new skeleton Artoo adaptor to help you get started. Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.</p>
-              <pre class="CodeRay">$ artoo generate adaptor awesome_device
+                <h3>Generator</h3>
+                <p>Want to integrate a hardware device we don't have Artoo support for yet? There's a generator for that! You can easily generate a new skeleton Artoo adaptor to help you get started. Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.</p>
+                <pre class="CodeRay">$ artoo generate adaptor awesome_device
 Creating artoo-awesome_device adaptor...
       create  artoo-awesome_device
        exist  artoo-awesome_device
@@ -401,18 +385,20 @@ Creating artoo-awesome_device adaptor...
       create  artoo-awesome_device/test/test_helper.rb
 Done!
 </pre>
-            </section><section class="contributing"><h2>Contributing</h2>
-              <p>
-                You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
-                <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
-              </p>
-              <ul>
+              </section><section class="contributing"><h2>Contributing</h2>
+                <p>
+                  You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
+                  <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
+                </p>
+                <ul>
 <li>Fork it</li>
-                <li>Create your feature branch (git checkout -b my-new-feature)</li>
-                <li>Commit your changes (git commit -am 'Add some feature')</li>
-                <li>Push to the branch (git push origin my-new-feature)</li>
-                <li>Create new Pull Request</li>
-              </ul></section><section class="footer"></section></section>
+                  <li>Create your feature branch (git checkout -b my-new-feature)</li>
+                  <li>Commit your changes (git commit -am 'Add some feature')</li>
+                  <li>Push to the branch (git push origin my-new-feature)</li>
+                  <li>Create new Pull Request</li>
+                </ul></section>
+</div>
+          </section>
 </div>
       </div>
     </div>
@@ -422,14 +408,6 @@ Done!
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

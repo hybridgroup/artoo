@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Crazyflie Flight Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,48 +63,14 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/crazyflie-driver.jpg"><p>
-                  Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/crazyflie-driver.jpg"><p>Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
-                <p>
-                  Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.
-                </p>
+                <p>Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
 device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>start</dt>
-                  <dd>Starts the crazyfly's motors and controls.</dd>
-                  <dt>stop</dt>
-                  <dd>Stops the crazyfly's motors.</dd>
-                  <dt>hover</dt>
-                  <dd>Makes the crazyflie hover in a position.</dd>
-                  <dt>land</dt>
-                  <dd>Initiates a landing sequence.</dd>
-                  <dt>take_off</dt>
-                  <dd>Initiates take off sequence.</dd>
-                  <dt>up</dt>
-                  <dd>Orders crazy flie to go up.</dd>
-                  <dt>down</dt>
-                  <dd>Orders crazy flie to go down.</dd>
-                  <dt>left(deg)</dt>
-                  <dd>Orders crazyflie to go left the amount specified by deg (roll left).</dd>
-                  <dt>right(deg)</dt>
-                  <dd>Orders crazyflie to go right the amount specified by deg (roll right).</dd>
-                  <dt>forward(deg)</dt>
-                  <dd>Orders crazyflie to go forward the amount specified by deg (pitch forward).</dd>
-                  <dt>backward(deg)</dt>
-                  <dd>Orders crazyflie to go backward the amount specified by deg (pitch backward).</dd>
-                  <dt>turn_left(deg)</dt>
-                  <dd>Orders crazyflie to turn left the amount specified by deg (yaw left).</dd>
-                  <dt>turn_right(deg)</dt>
-                  <dd>Orders crazyflie to turn right the amount specified by deg (yaw right).</dd>
-                  <dt>power(deg)</dt>
-                  <dd>Sets thrust power to deg.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example of controlling a Crazyflie.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -119,10 +83,178 @@ work <span class="keyword">do</span>
   after(<span class="integer">1</span>.seconds) {drone.stop}
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Starts the crazyfly's motors and controls.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Stops the crazyfly's motors.</p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="hover">hover</h2>
+                  
+                  <p>Makes the crazyflie hover in a position.</p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="land">land</h2>
+                  
+                  <p>Initiates a landing sequence.</p>
+                  
+                  <h5 id="returns-3">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="takeoff">take_off</h2>
+                  
+                  <p>Initiates take off sequence.</p>
+                  
+                  <h5 id="returns-4">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="up">up</h2>
+                  
+                  <p>Orders crazy flie to go up.</p>
+                  
+                  <h5 id="returns-5">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="down">down</h2>
+                  
+                  <p>Orders crazy flie to go down.</p>
+                  
+                  <h5 id="returns-6">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="leftdeg">left(deg)</h2>
+                  
+                  <p>Orders crazyflie to go left the amount specified by deg (roll left).</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-7">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="rightdeg">right(deg)</h2>
+                  
+                  <p>Orders crazyflie to go right the amount specified by deg (roll right).</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-8">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="forwarddeg">forward(deg)</h2>
+                  
+                  <p>Orders crazyflie to go forward the amount specified by deg (pitch forward).</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-9">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="backwarddeg">backward(deg)</h2>
+                  
+                  <p>Orders crazyflie to go backward the amount specified by deg (pitch backward).</p>
+                  
+                  <h5 id="params-3">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-10">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="turnleftdeg">turn_left(deg)</h2>
+                  
+                  <p>Orders crazyflie to turn left the amount specified by deg (yaw left).</p>
+                  
+                  <h5 id="params-4">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-11">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="turnrightdeg">turn_right(deg)</h2>
+                  
+                  <p>Orders crazyflie to turn right the amount specified by deg (yaw right).</p>
+                  
+                  <h5 id="params-5">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-12">Returns</h5>
+                  
+                  <p><code>nil</code> </p>
+                  
+                  <h2 id="powerdeg">power(deg)</h2>
+                  
+                  <p>Sets thrust power to deg.</p>
+                  
+                  <h5 id="params-6">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>deg</strong> - params </li>
+                  </ul>
+<h5 id="returns-13">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="startdriver">start_driver</h2>
+                  
+                  <p>Starts the driver</p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Crazylie -->
                   <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                    <img src="/images/crazyflie.jpg"></a>
+                    <img src="/images/devices/crazyflie.jpg"></a>
                 </div>
               </section>
 </div>
@@ -136,14 +268,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

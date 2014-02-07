@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Pebble Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,41 +63,63 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/pebble.jpg"><p>
-                  Allows user to interact with Artoo devices using a Pebble smart watch.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/pebble.jpg"><p>Allows user to interact with Artoo devices using a Pebble smart watch.</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
+connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>
 device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <p>
-                  We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
-                </p>
-                <h2>Events:</h2>
-                <p>
-                  We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
-                </p>
               </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example receiving button events from a Pebble smart watch.</h3>
+                <h3>Example communicating with Pebble smart watch.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
+connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>
 device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
 
 work <span class="keyword">do</span>
-  on watch, <span class="symbol">:media_control</span> =&gt; <span class="symbol">:button_push</span>
-<span class="keyword">end</span>
-
-<span class="keyword">def</span> <span class="function">button_push</span>(caller, data)
-  puts data.button <span class="keyword">unless</span> data.nil?
+  c = <span class="integer">100</span>
+  every <span class="integer">1</span>.second <span class="keyword">do</span>
+    c++
+    str = <span class="string"><span class="delimiter">"</span><span class="content">c: </span><span class="inline"><span class="inline-delimiter">#{</span>c<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+    pebble.message_queue.push(str)
+    <span class="constant">Logger</span>.info(pebble.last_message)
+  <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="messagequeue">message_queue</h2>
+                  
+                  <p>Used to add or access the queue of strings being passed to the Pebble watch.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>Array</code> with all message strings</p>
+                  
+                  <h2 id="lastmessage">last_message</h2>
+                  
+                  <p>Returns and removes the string with the last message from the queue of messages being passed with the Pebble watch.</p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>String</code> with the last message on the queue.</p>
+                </div>
+                <div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <h2 id="startdriver">start_driver</h2>
+                  
+                  <p>Starts the driver.</p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Pebble -->
                   <a class="device" href="/documentation/platforms/pebble" title="Pebble">
-                    <img src="/images/pebble.jpg"></a>
+                    <img src="/images/devices/pebble.jpg"></a>
                 </div>
               </section>
 </div>
@@ -113,14 +133,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

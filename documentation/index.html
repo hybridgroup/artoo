@@ -8,31 +8,33 @@
 <meta name="description">
 <meta name="author">
 <title>Documentation</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,33 +63,34 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <ol class="index">
-<li>
-                  <div class="link"><a href="/documentation/getting-started">Getting Started</a></div>
-                  <div class="description">The best way to get going with Artoo.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/platforms">Platforms</a></div>
-                  <div class="description">Artoo has a extensible system for connecting to multiple hardware platforms such as Arduino &amp; ARDrone.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/drivers">Drivers</a></div>
-                  <div class="description">Artoo supports many different hardware devices, from LEDs to ultrasonic rangefinders, to drone flight control.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="http://rubydoc.info/gems/artoo/frames">Generated Documentation</a></div>
-                  <div class="description">YARD Generated Documentation.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/examples">Examples</a></div>
-                  <div class="description">Examples of how to use Artoo with a number of hardware configurations.</div>
-                </li>
-                <li>
-                  <div class="link"><a href="/documentation/api">API Server</a></div>
-                  <div class="description">The Artoo API Server makes it easy to communicate with your robots using a REST and Websockets-based interface. You can access the Artoo master class and retrieve information about the robots being controlled, and even send them commands.</div>
-                </li>
-              </ol>
+              <div class="index">
+                <section><a href="/documentation/getting-started">
+                    <div class="title">Getting Started</div>
+                    <div class="description">The best way to get started with Artoo.</div>
+                  </a>
+                </section><section><a href="/documentation/examples">
+                    <div class="title">Examples</div>
+                    <div class="description">How to use Artoo with a number of hardware configurations.</div>
+                  </a>
+                </section><section><a href="/documentation/platforms">
+                    <div class="title">Platforms</div>
+                    <div class="description">Artoo has a extensible system for connecting to hardware.</div>
+                  </a>
+                </section><section><a href="/documentation/drivers">
+                    <div class="title">Drivers</div>
+                    <div class="description">Artoo supports many different hardware devices.</div>
+                  </a>
+                </section><section><a href="http://rubydoc.info/gems/artoo/frames">
+                    <div class="title">Generated Documentation</div>
+                    <div class="description">YARD-generated documentation</div>
+                  </a>
+                </section><section><a href="/documentation/api">
+                    <div class="title">API Server</div>
+                    <div class="description">The Artoo WebSockets API Server</div>
+                  </a>
+                </section>
 </div>
+            </div>
           </section>
 </div>
       </div>
@@ -102,14 +101,6 @@
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

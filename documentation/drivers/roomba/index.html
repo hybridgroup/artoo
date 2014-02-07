@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Roomba Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,57 +63,13 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/roomba.jpg"><p>
-                  Allows user to control a Roomba iRobot Create using Artoo.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/roomba.jpg"><p>Allows user to control a Roomba iRobot Create using Artoo.</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
 </pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>start</dt>
-                  <dd>Puts roomba in start mode.</dd>
-                  <dt>safe_mode</dt>
-                  <dd>Puts roomba in safe mode.</dd>
-                  <dt>full_mode</dt>
-                  <dd>Puts roomba in full mode.</dd>
-                  <dt>forward(seconds, speed=slow) → nil</dt>
-                  <dd>
-                    <p>Moves roomba forward for <code>seconds</code> amount of time at <code>speed</code> (speed(int) between <code>0</code> and <code>500</code>).</p>
-                  </dd>
-                  <dt>fast_forward(seconds) → nil</dt>
-                  <dd>
-                    <p>Moves roomba forward for <code>seconds</code> amount of time at max speed.</p>
-                  </dd>
-                  <dt>stop</dt>
-                  <dd>Stops the roomba.</dd>
-                  <dt>backwards(seconds) → nil</dt>
-                  <dd>
-                    <p>Moves roomba backwards for <code>seconds</code> amount of time at default speed.</p>
-                  </dd>
-                  <dt>nudge_left</dt>
-                  <dd>Turns roomba a little bit to the left.</dd>
-                  <dt>nudge_right</dt>
-                  <dd>Turns roomba a little bit to the right.</dd>
-                  <dt>turn_left(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the left the specefied amount of seconds.</dd>
-                  <dt>turn_right(seconds=1) → nil</dt>
-                  <dd>Turns roomba to the right the specefied amount of seconds.</dd>
-                  <dt>turn_around</dt>
-                  <dd>Turns roomba 180 degrees.</dd>
-                  <dt>drive(speed, direction, seconds = 0)  → nil</dt>
-                  <dd>
-                    <p>Drives the roomba at speed (from <code>0</code> to <code>500</code>) and direction (<code>straight=32768</code>, <code>clockwise=65535</code>, <code>counterclockwise=1</code>) for the specefied amount of time (seconds). </p>
-                  </dd>
-                  <dt>play(song_number)  → nil</dt>
-                  <dd>Plays the song specified by song_numer.</dd>
-                  <dt>song(notes[Collection], song_number[Integer])  → nil</dt>
-                  <dd>Stores a song in the roomba.</dd>
-                  <dt>beep</dt>
-                  <dd>Makes roomba beep.</dd>
-                </dl></section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example controlling a Roomba.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -130,10 +84,201 @@ work <span class="keyword">do</span>
   roomba.nudge_left
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Puts roomba in start mode.</p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="safemode">safe_mode</h2>
+                  
+                  <p>Puts roomba in safe mode.</p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="fullmode">full_mode</h2>
+                  
+                  <p>Puts roomba in full mode.</p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="forwardseconds-speedslow">forward(seconds, speed=slow)</h2>
+                  
+                  <p>Moves roomba forward for seconds amount of time at speed (speed(int) between 0 and 500).</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>seconds</strong> - params</li>
+                    <li>
+<strong>speed=slow</strong> - params</li>
+                  </ul>
+<h5 id="returns-3">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="fastforwardseconds">fast_forward(seconds)</h2>
+                  
+                  <p>Moves roomba forward for seconds amount of time at max speed.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>seconds</strong> - params</li>
+                  </ul>
+<h5 id="returns-4">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Stops the roomba.</p>
+                  
+                  <h5 id="returns-5">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="backwardsseconds">backwards(seconds)</h2>
+                  
+                  <p>Moves roomba backwards for seconds amount of time at default speed.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>seconds</strong> - params</li>
+                  </ul>
+<h5 id="returns-6">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="nudgeleft">nudge_left</h2>
+                  
+                  <p>Turns roomba a little bit to the left.</p>
+                  
+                  <h5 id="returns-7">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="nudgeright">nudge_right</h2>
+                  
+                  <p>Turns roomba a little bit to the right.</p>
+                  
+                  <h5 id="returns-8">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="turnleftseconds1--nil">turn_left(seconds=1) → nil</h2>
+                  
+                  <p>Turns roomba to the left the specefied amount of seconds.</p>
+                  
+                  <h5 id="params-3">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>seconds</strong> - params</li>
+                  </ul>
+<h5 id="returns-9">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="turnrightseconds1--nil">turn_right(seconds=1) → nil</h2>
+                  
+                  <p>Turns roomba to the right the specefied amount of seconds.</p>
+                  
+                  <h5 id="params-4">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>seconds</strong> - params</li>
+                  </ul>
+<h5 id="returns-10">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="turnaround">turn_around</h2>
+                  
+                  <p>Turns roomba 180 degrees.</p>
+                  
+                  <h5 id="returns-11">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="drivespeed-direction-seconds--0--nil">drive(speed, direction, seconds = 0) → nil</h2>
+                  
+                  <p>Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).</p>
+                  
+                  <h5 id="params-5">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>speed</strong> - params</li>
+                    <li>
+<strong>direction</strong> - params</li>
+                    <li>
+<strong>seconds</strong> - params</li>
+                  </ul>
+<h5 id="returns-12">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="playsongnumber">play(song_number)</h2>
+                  
+                  <p>Plays the song specified by song_numer.</p>
+                  
+                  <h5 id="params-6">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>song_number</strong> - params</li>
+                  </ul>
+<h5 id="returns-13">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="songnotescollection-songnumberinteger">song(notes[Collection], song_number[Integer])</h2>
+                  
+                  <p>Stores a song in the roomba.</p>
+                  
+                  <h5 id="params-7">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>notes[Collection]</strong> - params</li>
+                    <li>
+<strong>song_number[Integer]</strong> - params</li>
+                  </ul>
+<h5 id="returns-14">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                  
+                  <h2 id="beep">beep</h2>
+                  
+                  <p>Makes roomba beep.</p>
+                  
+                  <h5 id="returns-15">Returns</h5>
+                  
+                  <p><code>nil</code></p>
+                </div>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Roomba -->
                   <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                    <img src="/images/roomba.jpg"></a>
+                    <img src="/images/devices/roomba.jpg"></a>
                 </div>
               </section>
 </div>
@@ -147,14 +292,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

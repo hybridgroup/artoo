@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Crazyflie with Artoo</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -67,23 +65,17 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/crazyflie.jpg"><p>
-                  You can use Artoo with the Crazyflie micro-quadcopter.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/crazyflie.jpg"><p>You can use Artoo with the Crazyflie micro-quadcopter.</p>
                 <p>
                   For more info about Crazyflie click
                   <a target="blank" href="http://www.bitcraze.se/">here</a>.
                 </p>
               </section><section class="how_to"><h2>How to install</h2>
-                <p>
-                  Installing artoo with arduino support is pretty easy using ruby gems.
-                </p>
+                <p>Installing artoo with arduino support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-crazyflie
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program causes the Crazyflie to 'hop' up in the air for 1 second.
-                </p>
+                <p>This small program causes the Crazyflie to 'hop' up in the air for 1 second.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
@@ -96,10 +88,7 @@ work <span class="keyword">do</span>
 <span class="keyword">end</span>
 </pre>
                 <h2>How to connect</h2>
-                <p>
-                  The Crazyflie uses a 2.4 GHz radio to communicate. There is a
-                  USB dongle called the Crazyradio that is required to control the Crazyflie quadcopter.
-                </p>
+                <p>The Crazyflie uses a 2.4 GHz radio to communicate. There is a USB dongle called the Crazyradio that is required to control the Crazyflie quadcopter.</p>
                 <p>
                   If you are have a USB 3.0 port, you might run into this issue
                   <br><a href="http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability">http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability</a>
@@ -113,24 +102,21 @@ work <span class="keyword">do</span>
                   <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin">https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin</a>
                   and then use the Crazyflie PC tools to update the Crazyflie firmware.
                 </p>
-                <p>
-                  Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Artoo code to use it:
-                </p>
+                <p>Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Artoo code to use it:</p>
                 <pre class="CodeRay">connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
 </pre>
-                <p>
-                  If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...
-                </p>
+                <p>If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...</p>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>
-                  There is currently only one driver for the Crazyflie, as listed below.
-                </p>
+                <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
+                    
+                    <!-- // Crazyflie Flight -->
                     <a class="device" href="/documentation/drivers/crazyflie" title="Crazyflie Flight Control">
-                      <img src="/images/crazyflie-driver.jpg"></a>
+                      <img src="/images/devices/crazyflie-driver.jpg"></a>
+                    <!-- // Crazyflie Navigation -->
                     <a class="device" href="/documentation/drivers/crazyflie-nav" title="Crazyflie Navigation Control">
-                      <img src="/images/crazyflie-nav.jpg"></a>
+                      <img src="/images/devices/crazyflie-nav.jpg"></a>
                   </div>
                 </div>
               </section>
@@ -145,14 +131,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

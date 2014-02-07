@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - XBox360 Controller Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,64 +63,17 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/xbox360.jpg"><p>
-                  Allows user to interact with Artoo devices using a XBox360 game controller.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/xbox360.jpg"><p>Allows user to interact with Artoo devices using a XBox360 game controller.</p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
 device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
 </pre>
-              </section><section class="public-methods"><h2>Public driver events</h2>
-                <h3>button_a</h3>
-                <p>
-                  Get's triggered every interval amount of time if the a button is pressed.
-                </p>
-                <h3>button_b</h3>
-                <p>
-                  Get's triggered every interval amount of time if the b button is pressed.
-                </p>
-                <h3>button_x</h3>
-                <p>
-                  Get's triggered every interval amount of time if the x button is pressed.
-                </p>
-                <h3>button_y</h3>
-                <p>
-                  Get's triggered every interval amount of time if the y button is pressed.
-                </p>
-                <h3>button_lb</h3>
-                <p>
-                  Get's triggered every interval amount of time if the left bumper button is pressed.
-                </p>
-                <h3>button_rb</h3>
-                <p>
-                  Get's triggered every interval amount of time if the right bumper button is pressed.
-                </p>
-                <h3>button_start</h3>
-                <p>
-                  Get's triggered every interval amount of time if the start button is pressed.
-                </p>
-                <h3>button_back</h3>
-                <p>
-                  Get's triggered every interval amount of time if the back button is pressed.
-                </p>
-                <h3>joystick</h3>
-                <p>
-                  Get's triggered every interval amount of time if a joystick event occured, you can access values x, y, s(joystick number, 0 and 1 for left and right).
-                </p>
-                <h3>joystick_0</h3>
-                <p>
-                  Get's triggered every interval amount of time if a joystick_0 event occured, you can access values x, y.
-                </p>
-                <h3>joystick_1</h3>
-                <p>
-                  Get's triggered every interval amount of time if a joystick_1 event occured, you can access values x, y.
-                </p>
+              </section><section class="how-to"><h2>How to use</h2>
                 <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value| puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span> }
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example receiving button events from XBox360 controller joystick.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -150,10 +101,60 @@ work <span class="keyword">do</span>
   }
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><div class="commands_api"></div>
+                <h1 id="events">Events</h1>
+                
+                <h2 id="buttona">button_a</h2>
+                
+                <p>Gets triggered every interval amount of time if the a button is pressed.</p>
+                
+                <h2 id="buttonb">button_b</h2>
+                
+                <p>Gets triggered every interval amount of time if the b button is pressed.</p>
+                
+                <h2 id="buttonx">button_x</h2>
+                
+                <p>Gets triggered every interval amount of time if the x button is pressed.</p>
+                
+                <h2 id="buttony">button_y</h2>
+                
+                <p>Gets triggered every interval amount of time if the y button is pressed.</p>
+                
+                <h2 id="buttonlb">button_lb</h2>
+                
+                <p>Gets triggered every interval amount of time if the left bumper button is pressed.</p>
+                
+                <h2 id="buttonrb">button_rb</h2>
+                
+                <p>Gets triggered every interval amount of time if the right bumper button is pressed.</p>
+                
+                <h2 id="buttonstart">button_start</h2>
+                
+                <p>Gets triggered every interval amount of time if the start button is pressed.</p>
+                
+                <h2 id="buttonback">button_back</h2>
+                
+                <p>Gets triggered every interval amount of time if the back button is pressed.</p>
+                
+                <h2 id="joystick">joystick</h2>
+                
+                <p>Gets triggered every interval amount of time if a joystick event occured, you can access values x, y, s(joystick number, 0 and 1 for left and right).</p>
+                
+                <h2 id="joystick0">joystick_0</h2>
+                
+                <p>Get's triggered every interval amount of time if a joystick_0 event occured, you can access values x, y.</p>
+                
+                <h2 id="joystick1">joystick_1</h2>
+                
+                <p>Gets triggered every interval amount of time if a joystick_1 event occured, you can access values x, y.</p>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Joystick -->
                   <a class="device" href="/documentation/platforms/joystick" title="Joystick">
-                    <img src="/images/joystick.jpg"></a>
+                    <img src="/images/devices/joystick.jpg"></a>
                 </div>
               </section>
 </div>
@@ -167,14 +168,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

@@ -8,31 +8,33 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Analog Sensor Driver</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      function heart() {
-        var $heart = $(".heart");
-        if($heart.is(":visible")) {
-          $heart.animate({
-            fontSize: $heart.css('fontSize') == '20px' ? '30px' : '20px'
-          }, 500, heart);
-        }
-      }
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-          heart();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
@@ -41,10 +43,6 @@
             </h1>
             <span class="subtitle">
               <div class="main">Ruby on Robots</div>
-              <div class="easter">
-                <div class="heart">♥</div>
-                <a href="http://rubini.us/">Rubinius</a>
-              </div>
             </span>
           </div>
           <span class="menu">
@@ -65,7 +63,7 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/analog-sensor.jpg"><p>
+              <section class="intro"><img class="display" src="/images/devices/analog-sensor.jpg"><p>
                   Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
                   The value received from an analog input read from the sensor goes from 0 to 1027.
                 </p>
@@ -79,32 +77,6 @@ device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <sp
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
 device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <span class="symbol">:analog_sensor</span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">interval</span>: <span class="float">0.25</span>, <span class="key">upper</span>: <span class="integer">900</span>, <span class="key">lower</span>: <span class="integer">200</span>
-</pre>
-              </section><section class="public-methods"><h2>Commands:</h2>
-                <dl class="methods">
-<dt>pin → integer_value</dt>
-                  <dd>Returns the pin number set up when creating the sensor.</dd>
-                  <dt>upper → integer_value</dt>
-                  <dd>Returns the upper limit set up when creating the sensor.</dd>
-                  <dt>lower → integer_value</dt>
-                  <dd>Returns the lower limit set up when creating the sensor.</dd>
-                  <dt>analog_read(pin_number) →  integer_value (from 0 to 1027)</dt>
-                  <dd>Returns an integer value that represents the analog read from the sensor, the value goes from 0 to 1027.</dd>
-                </dl></section><section class="public-events"><h2>Events:</h2>
-                <p>The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ),
-                there are <code>:upper</code> and <code>:lower</code> limits, as well as an <code>:interval</code> param that defines how often the sensor should be read;
-                when the specified amount of time passes the sensor is read, if one of the limits stablished is reached
-                the corresponging event will be triggered.</p>
-                <dl class="methods">
-<dt>:upper</dt>
-                  <dd>Gets triggered if the value read by the sensor is greater or equal to :upper (value passed when setting up the sensor).</dd>
-                  <dt>:lower</dt>
-                  <dd>Gets triggered if the value read by the sensor is less or equal to :lower (value passed when setting up the sensor).</dd>
-                </dl>
-<h3>How to use events and call them on your drivers</h3>
-                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
-                <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
-on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 </pre>
               </section><section class="how-to"><h2>How to use</h2>
                 <h3>Example using a photoresistor sensor to turn a LED on and off.</h3>
@@ -135,6 +107,81 @@ work <span class="keyword">do</span>
   }
 <span class="keyword">end</span>
 </pre>
+              </section><section class="public-methods"><h3>How to use events and call them on your drivers</h3>
+                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
+                <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
+on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
+</pre>
+                <div class="commands_api">
+                  <h1 id="commands">Commands</h1>
+                  
+                  <h2 id="pin">pin</h2>
+                  
+                  <p>Returns the pin number set up when creating the sensor.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="upper">upper</h2>
+                  
+                  <p>Returns the upper limit set up when creating the sensor.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="lower">lower</h2>
+                  
+                  <p>Returns the lower limit set up when creating the sensor.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>integer</code></p>
+                  
+                  <h2 id="analogreadpinnumber">analog_read(pin_number)</h2>
+                  
+                  <p>Returns an integer value that represents the analog read from the sensor, the value goes from <code>0</code> to <code>1027</code>.</p>
+                  
+                  <h5 id="params-3">Params</h5>
+                  
+                  <ul>
+<li>
+<strong>pin_number</strong> -  params, the pin value</li>
+                  </ul>
+<h5 id="returns-3">Returns</h5>
+                  
+                  <p><code>integer (from 0 to 1027)</code></p>
+                </div>
+              </section><section class="public-events"><div class="commands_api">
+                  <h1 id="events">Events</h1>
+                  
+                  <p>The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ), there are <code>:upper</code> and <code>:lower</code> limits, as well as an <code>:interval</code> param that defines how often the sensor should be read; when the specified amount of time passes the sensor is read, if one of the limits stablished is reached the corresponging event will be triggered.</p>
+                  
+                  <h2 id="startdriver">start_driver</h2>
+                  
+                  <p>Starts the driver.</p>
+                  
+                  <h2 id="upper">:upper</h2>
+                  
+                  <p>Gets triggered if the value read by the sensor is greater or equal to <code>:upper</code> (value passed when setting up the sensor).</p>
+                  
+                  <h2 id="lower">:lower</h2>
+                  
+                  <p>Gets triggered if the value read by the sensor is less or equal to <code>:lower</code> (value passed when setting up the sensor).</p>
+                </div>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <p>
                   Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
@@ -146,14 +193,19 @@ work <span class="keyword">do</span>
                   <br><a href="http://arduino.cc/en/Tutorial/SwitchCase">http://arduino.cc/en/Tutorial/SwitchCase</a>
                 </p>
               </section><section class="compatibility hardware"><h2>Works with:</h2>
-                
                 <div class="devices">
+                  
+                  <!-- /Platforms All -->
+                  <!-- /Platforms Parts -->
+                  <!-- // Arduino -->
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
+                    <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Analog Sensor -->
                   <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Spark -->
                   <a class="device" href="/documentation/platforms/spark" title="Spark">
-                    <img src="/images/spark.jpg"></a>
+                    <img src="/images/devices/spark.jpg"></a>
                 </div>
               </section>
 </div>
@@ -167,14 +219,6 @@ work <span class="keyword">do</span>
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-1', 'artoo.io');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>
