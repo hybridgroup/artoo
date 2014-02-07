@@ -2068,23 +2068,28 @@
           font-size: 12pt;
           margin: 20px 0 0 0; }
         /* line 82, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        .commands_api h4 {
+          background: transparent;
+          font-size: 11pt;
+          font-weight: normal; }
+        /* line 87, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api h5 {
           background: white;
           padding: 10px;
           margin: 0;
           font-size: 11pt; }
-        /* line 88, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 93, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api p, .commands_api ul {
           background: white;
           font-size: 10.5pt;
           margin: 0;
           padding: 10px;
           font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace; }
-        /* line 95, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 100, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api li {
           margin-left: 20px; }
         
-        /* line 101, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 106, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods dt {
           font-weight: bold;
           background: white;
@@ -2094,15 +2099,15 @@
           font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
           font-size: 17px;
           border: aliceblue; }
-        /* line 111, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 116, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods dd {
           margin-bottom: 29px;
           padding-left: 10px; }
-        /* line 115, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 120, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods li {
           font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
         
-        /* line 120, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 125, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .colors {
           float: left;
           display: block;
@@ -2112,7 +2117,7 @@
           .colors:last-child {
             margin-right: 0; }
           @media only screen and (min-width: 767px) and (max-width: 964px) {
-            /* line 120, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 125, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors {
               float: left;
               display: block;
@@ -2121,11 +2126,11 @@
               /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .colors:last-child {
                 margin-right: 0; }
-              /* line 124, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+              /* line 129, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
               .colors p {
                 font-size: 10px; } }
           @media only screen and (max-width: 767px) {
-            /* line 120, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 125, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors {
               float: left;
               display: block;
@@ -2134,7 +2139,7 @@
               /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .colors:last-child {
                 margin-right: 0; } }
-          /* line 133, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 138, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .colors dt {
             font-weight: bold;
             padding: 5px;
@@ -2143,11 +2148,11 @@
             font-size: 15px;
             border: aliceblue;
             margin-top: 15px; }
-          /* line 142, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 147, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .colors dd {
             margin-bottom: 20px;
             display: block; }
-            /* line 145, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 150, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors dd p {
               margin: 0;
               line-height: 50px; }
