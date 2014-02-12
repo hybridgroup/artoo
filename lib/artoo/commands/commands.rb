@@ -1,5 +1,6 @@
 require 'thor'
 require 'thor/group'
+require 'etc'
 
 module Artoo
   module Commands
@@ -12,13 +13,11 @@ module Artoo
       end
 
       def self.install_dir
-        if ENV['GEM_HOME']
-          "#{ ENV['GEM_HOME'] }/.artoo/commands"
-        elsif ENV['RBENV_ROOT']
-          "#{ ENV['RBENV_ROOT'] }/.artoo/commands"
-        else
-          "~/.artoo/commands"
-        end
+        "#{ install_path }/.artoo/commands"
+      end
+
+      def self.install_path
+        ENV["GEM_HOME"] || ENV["RBENV_ROOT"] || Dir.home(Etc.getlogin)
       end
     end
   end
