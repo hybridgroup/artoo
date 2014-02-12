@@ -1831,12 +1831,11 @@
               margin-right: 0; } }
           /* line 10, ../hybridpages/assets/stylesheets/elements/_blog.scss */
           .articles .article {
-            display: inline-block;
             margin-bottom: 30px; }
-            /* line 13, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 12, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article h3, .articles .article h4, .articles .article a {
               color: #cc3300; }
-            /* line 16, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 15, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article h3 {
               display: inline-block;
               font-size: 24px;
@@ -1844,61 +1843,64 @@
               vertical-align: top;
               margin: 0px;
               max-width: 80%; }
-            /* line 24, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 23, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article p {
               text-align: justify; }
-            /* line 27, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 26, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            .articles .article img {
+              width: 100%; }
+            /* line 29, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article .data {
               padding-left: 71px; }
-            /* line 30, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 32, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article .date {
               color: white;
               width: 50px;
               text-align: center;
               margin-right: 20px;
               float: left; }
-              /* line 36, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+              /* line 38, ../hybridpages/assets/stylesheets/elements/_blog.scss */
               .articles .article .date .blue {
                 padding: 5px;
                 background-color: #79bee8; }
-                /* line 39, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+                /* line 41, ../hybridpages/assets/stylesheets/elements/_blog.scss */
                 .articles .article .date .blue .month {
                   text-transform: uppercase;
                   font-size: 12px;
                   line-height: 12px; }
-                /* line 44, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+                /* line 46, ../hybridpages/assets/stylesheets/elements/_blog.scss */
                 .articles .article .date .blue .day {
                   font-size: 16px;
                   line-height: 16px; }
-              /* line 49, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+              /* line 51, ../hybridpages/assets/stylesheets/elements/_blog.scss */
               .articles .article .date .red {
                 padding: 2px;
                 background-color: #cc3300; }
-                /* line 52, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+                /* line 54, ../hybridpages/assets/stylesheets/elements/_blog.scss */
                 .articles .article .date .red .year {
                   font-size: 10px;
                   line-height: 10px; }
-            /* line 58, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 60, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article .comments, .articles .article .tags {
               display: inline-block; }
-              /* line 60, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+              /* line 62, ../hybridpages/assets/stylesheets/elements/_blog.scss */
               .articles .article .comments .img, .articles .article .tags .img {
                 vertical-align: top;
                 display: inline-block;
                 width: 24px;
                 height: 24px; }
-              /* line 66, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+              /* line 68, ../hybridpages/assets/stylesheets/elements/_blog.scss */
               .articles .article .comments a, .articles .article .tags a {
                 vertical-align: top;
                 text-decoration: underline; }
-              /* line 70, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+              /* line 72, ../hybridpages/assets/stylesheets/elements/_blog.scss */
               .articles .article .comments img, .articles .article .tags img {
                 margin-right: 4px; }
-            /* line 74, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 76, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .articles .article .comments {
               margin-right: 60px; }
         
-        /* line 80, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 82, ../hybridpages/assets/stylesheets/elements/_blog.scss */
         .categories, .network, .tweets {
           vertical-align: top;
           margin-bottom: 40px;
@@ -1910,7 +1912,7 @@
           .categories:last-child, .network:last-child, .tweets:last-child {
             margin-right: 0; }
           @media only screen and (max-width: 767px) {
-            /* line 80, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 82, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .categories, .network, .tweets {
               float: left;
               display: block;
@@ -1919,31 +1921,31 @@
               /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .categories:last-child, .network:last-child, .tweets:last-child {
                 margin-right: 0; } }
-          /* line 87, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+          /* line 89, ../hybridpages/assets/stylesheets/elements/_blog.scss */
           .categories a, .network a, .tweets a {
             color: black; }
-            /* line 89, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 91, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .categories a:hover, .network a:hover, .tweets a:hover {
               text-decoration: underline; }
-          /* line 93, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+          /* line 95, ../hybridpages/assets/stylesheets/elements/_blog.scss */
           .categories h4, .network h4, .tweets h4 {
             color: #cc3300;
             font-size: 20px;
             line-height: 24px; }
         
-        /* line 101, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 103, ../hybridpages/assets/stylesheets/elements/_blog.scss */
         .categories ul {
           margin: 0;
           list-style: none; }
-          /* line 104, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+          /* line 106, ../hybridpages/assets/stylesheets/elements/_blog.scss */
           .categories ul a {
             color: black; }
-            /* line 106, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+            /* line 108, ../hybridpages/assets/stylesheets/elements/_blog.scss */
             .categories ul a:hover {
               text-decoration: underline; }
         
         @media only screen and (max-width: 400) {
-          /* line 114, ../hybridpages/assets/stylesheets/elements/_blog.scss */
+          /* line 116, ../hybridpages/assets/stylesheets/elements/_blog.scss */
           .twitter-share-button {
             margin-bottom: 10px; } }
         /* line 1, ../hybridpages/assets/stylesheets/elements/_page.scss */

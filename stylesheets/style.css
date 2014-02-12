@@ -1794,12 +1794,11 @@ a:hover, a:focus {
       margin-right: 0; } }
   /* line 10, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
   .articles .article {
-    display: inline-block;
     margin-bottom: 30px; }
-    /* line 13, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 12, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article h3, .articles .article h4, .articles .article a {
       color: #cc3300; }
-    /* line 16, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 15, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article h3 {
       display: inline-block;
       font-size: 24px;
@@ -1807,61 +1806,64 @@ a:hover, a:focus {
       vertical-align: top;
       margin: 0px;
       max-width: 80%; }
-    /* line 24, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 23, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article p {
       text-align: justify; }
-    /* line 27, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 26, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    .articles .article img {
+      width: 100%; }
+    /* line 29, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .data {
       padding-left: 71px; }
-    /* line 30, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 32, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .date {
       color: white;
       width: 50px;
       text-align: center;
       margin-right: 20px;
       float: left; }
-      /* line 36, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 38, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .date .blue {
         padding: 5px;
         background-color: #79bee8; }
-        /* line 39, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 41, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .blue .month {
           text-transform: uppercase;
           font-size: 12px;
           line-height: 12px; }
-        /* line 44, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 46, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .blue .day {
           font-size: 16px;
           line-height: 16px; }
-      /* line 49, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 51, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .date .red {
         padding: 2px;
         background-color: #cc3300; }
-        /* line 52, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+        /* line 54, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
         .articles .article .date .red .year {
           font-size: 10px;
           line-height: 10px; }
-    /* line 58, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 60, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .comments, .articles .article .tags {
       display: inline-block; }
-      /* line 60, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 62, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments .img, .articles .article .tags .img {
         vertical-align: top;
         display: inline-block;
         width: 24px;
         height: 24px; }
-      /* line 66, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 68, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments a, .articles .article .tags a {
         vertical-align: top;
         text-decoration: underline; }
-      /* line 70, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+      /* line 72, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
       .articles .article .comments img, .articles .article .tags img {
         margin-right: 4px; }
-    /* line 74, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 76, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .articles .article .comments {
       margin-right: 60px; }
 
-/* line 80, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+/* line 82, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
 .categories, .network, .tweets {
   vertical-align: top;
   margin-bottom: 40px;
@@ -1873,7 +1875,7 @@ a:hover, a:focus {
   .categories:last-child, .network:last-child, .tweets:last-child {
     margin-right: 0; }
   @media only screen and (max-width: 767px) {
-    /* line 80, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 82, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .categories, .network, .tweets {
       float: left;
       display: block;
@@ -1882,31 +1884,31 @@ a:hover, a:focus {
       /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
       .categories:last-child, .network:last-child, .tweets:last-child {
         margin-right: 0; } }
-  /* line 87, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 89, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
   .categories a, .network a, .tweets a {
     color: black; }
-    /* line 89, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 91, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .categories a:hover, .network a:hover, .tweets a:hover {
       text-decoration: underline; }
-  /* line 93, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 95, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
   .categories h4, .network h4, .tweets h4 {
     color: #cc3300;
     font-size: 20px;
     line-height: 24px; }
 
-/* line 101, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+/* line 103, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
 .categories ul {
   margin: 0;
   list-style: none; }
-  /* line 104, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 106, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
   .categories ul a {
     color: black; }
-    /* line 106, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+    /* line 108, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
     .categories ul a:hover {
       text-decoration: underline; }
 
 @media only screen and (max-width: 400) {
-  /* line 114, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
+  /* line 116, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_blog.scss */
   .twitter-share-button {
     margin-bottom: 10px; } }
 /* line 1, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
