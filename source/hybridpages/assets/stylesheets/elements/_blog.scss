@@ -8,7 +8,6 @@
   }
 
   .article {
-    display: inline-block;
     margin-bottom: 30px;
     h3, h4, a {
       color: $blog-title-color;
@@ -23,6 +22,9 @@
     }
     p {
       text-align: justify;
+    }
+    img {
+      width: 100%;
     }
     .data {
       padding-left: 71px;
