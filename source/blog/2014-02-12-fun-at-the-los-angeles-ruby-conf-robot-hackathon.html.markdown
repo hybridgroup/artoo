@@ -13,9 +13,9 @@ As usual, we had brought with us several gigantic flight cases of gear, and robo
 
 Please follow us on Twitter at [@artooio](http://twitter.com/artooio) for our latest news, which might even be that we're bringing our robot road show to your part of the world.
 
-<img src="/images/blog/photo_4.jpg" alt="" style="width:50%;">
-<img src="/images/blog/photo_5.jpg" alt="" style="width:50%;">
-<img src="/images/blog/photo_1.jpg" alt="" style="margin: 10px 0;">
-<img src="/images/blog/photo_2.jpg" alt="" style="width:50%;">
-<img src="/images/blog/photo_3.jpg" alt="" style="width:50%;">
+<img src="/images/blog/2014-02-12/photo_4.jpg" alt="" style="width:50%;">
+<img src="/images/blog/2014-02-12/photo_5.jpg" alt="" style="width:50%;">
+<img src="/images/blog/2014-02-12/photo_1.jpg" alt="" style="margin: 10px 0;">
+<img src="/images/blog/2014-02-12/photo_2.jpg" alt="" style="width:50%;">
+<img src="/images/blog/2014-02-12/photo_3.jpg" alt="" style="width:50%;">
 
