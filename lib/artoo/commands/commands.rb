@@ -12,10 +12,12 @@ module Artoo
       end
 
       def self.install_dir
-        if ENV['GEM_HOME'].nil?
+        if ENV['GEM_HOME']
+          "#{ ENV['GEM_HOME'] }/.artoo/commands"
+        elsif ENV['RBENV_ROOT']
           "#{ ENV['RBENV_ROOT'] }/.artoo/commands"
         else
-          "#{ ENV['GEM_HOME'] }/.artoo/commands"
+          "~/.artoo/commands"
         end
       end
     end
