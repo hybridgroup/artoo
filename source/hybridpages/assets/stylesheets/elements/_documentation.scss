@@ -27,6 +27,20 @@
   }
 }
 
+.circuit {
+  .image_circuit {
+    width: 50%;
+    float: left;
+    img {
+      height: 300px;
+    }
+  }
+  .description_circuit {
+    width: 50%;
+    float: right;
+  }
+}
+
 .commands {
   background: white;
   font-size: 10.5pt;
