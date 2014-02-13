@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Analog Sensor Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -60,14 +60,24 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Circuit">Circuit</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/analog-sensor.jpg"><p>
                   Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
                   The value received from an analog input read from the sensor goes from 0 to 1027.
                 </p>
-              </section><section class="how_to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -78,7 +88,7 @@ device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <sp
 connection <span class="symbol">:digispark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:littlewire</span>, <span class="symbol">:vendor</span> =&gt; <span class="integer">0x1781</span>, <span class="symbol">:product</span> =&gt; <span class="integer">0x0c9f</span>
 device <span class="symbol">:sensor</span>, <span class="key">driver</span>: <span class="symbol">:analog_sensor</span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">interval</span>: <span class="float">0.25</span>, <span class="key">upper</span>: <span class="integer">900</span>, <span class="key">lower</span>: <span class="integer">200</span>
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <h3>Example using a photoresistor sensor to turn a LED on and off.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -107,12 +117,12 @@ work <span class="keyword">do</span>
   }
 <span class="keyword">end</span>
 </pre>
-              </section><section class="public-methods"><h3>How to use events and call them on your drivers</h3>
+                <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 </pre>
-                <div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="pin">pin</h2>
@@ -165,7 +175,7 @@ on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="str
                   
                   <p><code>integer (from 0 to 1027)</code></p>
                 </div>
-              </section><section class="public-events"><div class="commands_api">
+                <div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h4 id="the-limits-that-trigger-the-events-are-setup-when-creating-the-sensor-see-above-in-the-section-titled-how-to-stablish-a-connection-and-driver--there-are-upper-and-lower-limits-as-well-as-an-interval-param-that-defines-how-often-the-sensor-should-be-read-when-the-specified-amount-of-time-passes-the-sensor-is-read-if-one-of-the-limits-stablished-is-reached-the-corresponging-event-will-be-triggered">The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ), there are <code>:upper</code> and <code>:lower</code> limits, as well as an <code>:interval</code> param that defines how often the sensor should be read; when the specified amount of time passes the sensor is read, if one of the limits stablished is reached the corresponging event will be triggered.</h4>
@@ -182,17 +192,15 @@ on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="str
                   
                   <p>Gets triggered if the value read by the sensor is less or equal to <code>:lower</code> (value passed when setting up the sensor).</p>
                 </div>
-              </section><section class="circuit"><h2>Circuit and Schematic</h2>
-                <p>
-                  Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
-                  the button for a photoresistor.
-                  <br><a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
-                </p>
-                <p>
-                  It should look like the circuit in this example.
-                  <br><a href="http://arduino.cc/en/Tutorial/SwitchCase">http://arduino.cc/en/Tutorial/SwitchCase</a>
-                </p>
-              </section><section class="compatibility hardware"><h2>Works with:</h2>
+              </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
+                <div class="description_circuit">
+                  <p></p>
+                </div>
+                <div class="image_circuit">
+                  <img alt="" src="/documentation/drivers/breadboards/gpio/analog_sensor_bb.png">
+</div>
+                <div class="clear"></div>
+              </section><section class="compatibility hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   
                   <!-- /Platforms All -->

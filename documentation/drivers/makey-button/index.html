@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Makey Button Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -60,17 +60,27 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Circuit">Circuit</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/makey-button.jpg"><p>Inspired by the awesome MakeyMakey (http://makeymakey.com), this GPIO driver allows you to connect a 10 MOhm resistor to a digital pin on your Arduino or Raspberry Pi to control your robots with bananas, clay, or drawable circuitry.</p>
-              </section><section class="how_to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
 device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:makey_button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:arduino</span>, <span class="key">adaptor</span>: <span class="symbol">:firmata</span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -84,7 +94,7 @@ work <span class="keyword">do</span>
   on button, <span class="symbol">:release</span> =&gt; proc { led.off }
 <span class="keyword">end</span>
 </pre>
-              </section><section class="public-methods"><div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="ispressed">is_pressed?</h2>
@@ -99,7 +109,7 @@ work <span class="keyword">do</span>
                   
                   <p><code>Returns true or false</code></p>
                 </div>
-                <div class="commands_api">
+                <div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h2 id="startdriver">start_driver</h2>
@@ -114,7 +124,15 @@ work <span class="keyword">do</span>
                   
                   <p>This event gets triggered when the button changes state from pushed to released.</p>
                 </div>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
+                <div class="description_circuit">
+                  <p></p>
+                </div>
+                <div class="image_circuit">
+                  <img alt="" src="/documentation/drivers/breadboards/gpio/makey_button_bb.png">
+</div>
+                <div class="clear"></div>
+              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 
                 <div class="devices">
                   <!-- /Platforms All -->
@@ -122,6 +140,18 @@ work <span class="keyword">do</span>
                   <!-- // Arduino -->
                   <a class="device" href="/documentation/platforms/arduino" title="Arduino">
                     <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Beaglebone -->
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/devices/beaglebone.jpg"></a>
+                  <!-- // Analog Sensor -->
+                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Raspberry Pi -->
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/devices/raspi.jpg"></a>
+                  <!-- // Spark -->
+                  <a class="device" href="/documentation/platforms/spark" title="Spark">
+                    <img src="/images/devices/spark.jpg"></a>
                 </div>
               </section>
 </div>

@@ -1538,6 +1538,7 @@ a:hover, a:focus {
 /* line 12, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
 .main[role="main"] {
   padding-bottom: 50px;
+  margin-top: 20px;
   *zoom: 1;
   max-width: 68em;
   margin-left: auto;
@@ -1549,7 +1550,7 @@ a:hover, a:focus {
   /* line 23, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
   .main[role="main"]:after {
     clear: both; }
-  /* line 16, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 17, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .videos .video {
     float: left;
     display: block;
@@ -1559,19 +1560,19 @@ a:hover, a:focus {
     /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .videos .video:last-child {
       margin-right: 0; }
-    /* line 19, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 20, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video h3 {
       font-size: 16px; }
-    /* line 22, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 23, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
       width: 100%;
       height: 300px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 27, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 28, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
         height: 240px; } }
     @media only screen and (max-width: 767px) {
-      /* line 16, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 17, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video {
         float: left;
         display: block;
@@ -1580,10 +1581,10 @@ a:hover, a:focus {
         /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
         .main[role="main"] .videos .video:last-child {
           margin-right: 0; }
-        /* line 33, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+        /* line 34, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
         .main[role="main"] .videos .video iframe, .main[role="main"] .videos .video object {
           height: 240px; } }
-  /* line 38, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 39, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .videos .video_index {
     float: left;
     display: block;
@@ -1592,30 +1593,30 @@ a:hover, a:focus {
     /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .videos .video_index:last-child {
       margin-right: 0; }
-    /* line 40, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 41, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .videos .video_index iframe, .main[role="main"] .videos .video_index object {
       width: 100%;
       height: 400px; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 45, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 46, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video_index iframe, .main[role="main"] .videos .video_index object {
         height: 300px; } }
     @media only screen and (max-width: 767px) {
-      /* line 50, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+      /* line 51, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
       .main[role="main"] .videos .video_index iframe, .main[role="main"] .videos .video_index object {
         height: 180px; } }
-  /* line 58, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 59, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .content.full {
     width: 100%;
     clear: both; }
-  /* line 62, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 63, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .content h1, .main[role="main"] .content h2 {
     color: #bc2a1b; }
-  /* line 65, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 66, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .content h1 {
     font-size: 1.9em;
     padding: 10px 0; }
-  /* line 70, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 71, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] .aside.right {
     float: left;
     display: block;
@@ -1626,11 +1627,11 @@ a:hover, a:focus {
     /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
     .main[role="main"] .aside.right:last-child {
       margin-right: 0; }
-    /* line 74, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+    /* line 75, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
     .main[role="main"] .aside.right img {
       width: 100%;
       margin-top: 20px; }
-  /* line 80, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
+  /* line 81, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/layouts/_home.scss */
   .main[role="main"] section.content .index_content {
     float: left;
     display: block;
@@ -1915,7 +1916,7 @@ a:hover, a:focus {
 .page-title {
   background: #277dac;
   padding: 25px 0;
-  margin: 10px 0 25px 0; }
+  margin: 10px 0 0 0; }
   /* line 5, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
   .page-title .title {
     font-family: "Montserrat", sans-serif;
@@ -1938,6 +1939,40 @@ a:hover, a:focus {
     line-height: 21px;
     margin-top: 7px; }
 
+/* line 31, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+.subNavfixed {
+  width: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 99; }
+
+/* line 39, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+.marginTopSubnav {
+  padding-top: 65px; }
+
+/* line 44, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+.subnav_drivers {
+  background: #bfd5e2;
+  padding: 20px 0; }
+  @media only screen and (max-width: 767px) {
+    /* line 44, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+    .subnav_drivers {
+      display: none; } }
+  /* line 51, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+  .subnav_drivers nav a {
+    padding: 5px 10px;
+    margin: 20px 10px;
+    color: #277dac; }
+    /* line 55, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+    .subnav_drivers nav a:hover {
+      color: white;
+      background: #277dac; }
+  /* line 60, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_page.scss */
+  .subnav_drivers nav .active {
+    color: white;
+    background: #277dac; }
+
 /* line 1, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_hardware.scss */
 .more {
   text-align: center;
@@ -1955,7 +1990,62 @@ a:hover, a:focus {
 .repository {
   margin-right: 10px; }
 
-/* line 5, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 6, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+.documentation .index {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px; }
+  /* line 18, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  .documentation .index:before, .documentation .index:after {
+    content: " ";
+    display: table; }
+  /* line 23, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  .documentation .index:after {
+    clear: both; }
+  /* line 10, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  .documentation .index section {
+    margin: 0 auto;
+    float: left;
+    display: block;
+    margin-right: 2.99668%;
+    width: 29.52859%;
+    background: #027CAF;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 5px; }
+    /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+    .documentation .index section:last-child {
+      margin-right: 0; }
+    @media only screen and (max-width: 767px) {
+      /* line 10, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+      .documentation .index section {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+        .documentation .index section:last-child {
+          margin-right: 0; } }
+    /* line 20, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    .documentation .index section a {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      display: block; }
+    /* line 27, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    .documentation .index section:hover {
+      background: #026a96; }
+    /* line 31, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    .documentation .index section .title {
+      color: #E0EFF5;
+      font-weight: bold; }
+    /* line 36, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    .documentation .index section .description {
+      color: #A7C6D5; }
+
+/* line 44, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .documentation {
   float: left;
   display: block;
@@ -1964,33 +2054,45 @@ a:hover, a:focus {
   /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
   .documentation:last-child {
     margin-right: 0; }
-  /* line 7, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 46, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .index {
     padding: 0 0 0 8px; }
-    /* line 9, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 48, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .documentation .index li {
       margin: 8px 0; }
-  /* line 13, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 52, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .link {
     font-size: 20px; }
-  /* line 16, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 55, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .description {
     color: gray;
     font-size: 14px;
     line-height: 21px;
     margin: 10px; }
-  /* line 22, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 61, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .documentation .display {
     width: 300px;
     float: right;
     border: 1px solid rgba(39, 125, 172, 0.14);
     margin: 0 0 19px 20px; }
 
-/* line 30, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 70, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+.circuit .image_circuit {
+  width: 50%;
+  float: left; }
+  /* line 73, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  .circuit .image_circuit img {
+    height: 300px; }
+/* line 77, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+.circuit .description_circuit {
+  width: 50%;
+  float: right; }
+
+/* line 83, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands {
   background: white;
   font-size: 10.5pt; }
-  /* line 33, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 86, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands span {
     font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
     font-size: 14px;
@@ -1999,62 +2101,62 @@ a:hover, a:focus {
     border: 1px solid #ccc;
     color: #444;
     padding: 5px; }
-  /* line 42, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 95, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands th {
     background: #bc2a1b;
     color: white; }
-  /* line 46, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 99, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands td {
     border-bottom: 1px solid #d4d4d4; }
-  /* line 49, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 102, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .command {
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
     font-weight: bold;
     font-size: 11pt; }
-  /* line 56, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 109, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .commands .param .markdown span {
     background: none;
     border: none;
     padding: 0; }
 
-/* line 65, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 118, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .clear {
   clear: both; }
 
-/* line 69, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 122, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .image-size-300 {
   width: 200px; }
 
-/* line 74, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 127, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h2 {
   background: #bc2a1b;
   color: white !important;
   padding: 5px 10px;
   font-size: 12pt;
   margin: 20px 0 0 0; }
-/* line 82, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 135, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h4 {
   background: transparent;
   font-size: 11pt;
   font-weight: normal; }
-/* line 87, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 140, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api h5 {
   background: white;
   padding: 10px;
   margin: 0;
   font-size: 11pt; }
-/* line 93, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 146, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api p, .commands_api ul {
   background: white;
   font-size: 10.5pt;
   margin: 0;
   padding: 10px;
   font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace; }
-/* line 100, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 153, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .commands_api li {
   margin-left: 20px; }
 
-/* line 106, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 159, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dt {
   font-weight: bold;
   background: white;
@@ -2064,15 +2166,15 @@ a:hover, a:focus {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
   font-size: 17px;
   border: aliceblue; }
-/* line 116, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 169, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods dd {
   margin-bottom: 29px;
   padding-left: 10px; }
-/* line 120, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 173, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .methods li {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
 
-/* line 125, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+/* line 178, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
 .colors {
   float: left;
   display: block;
@@ -2082,7 +2184,7 @@ a:hover, a:focus {
   .colors:last-child {
     margin-right: 0; }
   @media only screen and (min-width: 767px) and (max-width: 964px) {
-    /* line 125, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 178, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2091,11 +2193,11 @@ a:hover, a:focus {
       /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; }
-      /* line 129, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+      /* line 182, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
       .colors p {
         font-size: 10px; } }
   @media only screen and (max-width: 767px) {
-    /* line 125, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 178, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors {
       float: left;
       display: block;
@@ -2104,7 +2206,7 @@ a:hover, a:focus {
       /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
       .colors:last-child {
         margin-right: 0; } }
-  /* line 138, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 191, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dt {
     font-weight: bold;
     padding: 5px;
@@ -2113,11 +2215,11 @@ a:hover, a:focus {
     font-size: 15px;
     border: aliceblue;
     margin-top: 15px; }
-  /* line 147, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+  /* line 200, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
   .colors dd {
     margin-bottom: 20px;
     display: block; }
-    /* line 150, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
+    /* line 203, /home/ron/Development/artoo/artoo.io/source/stylesheets/../hybridpages/assets/stylesheets/elements/_documentation.scss */
     .colors dd p {
       margin: 0;
       line-height: 50px; }
@@ -2694,48 +2796,3 @@ a:hover, a:focus {
 .app-logo a {
   font-size: 56px;
   font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-/* line 10, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-.documentation .index {
-  *zoom: 1;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 30px; }
-  /* line 18, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
-  .documentation .index:before, .documentation .index:after {
-    content: " ";
-    display: table; }
-  /* line 23, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
-  .documentation .index:after {
-    clear: both; }
-  /* line 14, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-  .documentation .index section {
-    margin: 0 auto;
-    float: left;
-    display: block;
-    margin-right: 2.99668%;
-    width: 29.52859%;
-    background: #027CAF;
-    height: 100px;
-    margin-bottom: 20px;
-    border-radius: 5px; }
-    /* line 40, /home/ron/.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
-    .documentation .index section:last-child {
-      margin-right: 0; }
-    /* line 22, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-    .documentation .index section a {
-      width: 100%;
-      height: 100%;
-      padding: 10px;
-      display: block; }
-    /* line 29, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-    .documentation .index section:hover {
-      background: #026a96; }
-    /* line 33, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-    .documentation .index section .title {
-      color: #E0EFF5;
-      font-weight: bold; }
-    /* line 38, /home/ron/Development/artoo/artoo.io/source/stylesheets/style.css.scss */
-    .documentation .index section .description {
-      color: #A7C6D5; }

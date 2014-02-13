@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>OpenCV with Artoo</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -62,7 +62,15 @@
 </h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToInstall">How To Install</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#HowToConnect">How To Connect</a>
+            <a href="#Drivers">Drivers</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/opencv.jpg"><p>OpenCV is a real-time computer vision library.</p>
@@ -70,7 +78,7 @@
                   For more info about OpenCV click
                   <a target="blank" href="http://opencv.org/">here</a>.
                 </p>
-              </section><section class="how-to"><h2>How to install</h2>
+              </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing artoo with OpenCV support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-opencv
 </pre>
@@ -117,7 +125,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make
 sudo make install
 </pre>
-                <h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>This program displays your webcam video through OpenCV</p>
                 <pre class="CodeRay">  require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 

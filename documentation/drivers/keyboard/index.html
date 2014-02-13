@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Keyboard Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -60,11 +60,20 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/keyboard.jpg"><p>The Artoo adaptor for keyboard input.</p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -72,7 +81,7 @@ connection <span class="symbol">:keyboard</span>, <span class="key">adaptor</spa
 device <span class="symbol">:keyboard</span>, <span class="key">driver</span>: <span class="symbol">:keyboard</span>, <span class="key">connection</span>: <span class="symbol">:keyboard</span>
 ...
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <h3>Example using a Key.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -87,7 +96,7 @@ work <span class="keyword">do</span>
   puts key
 <span class="keyword">end</span>
 </pre>
-              </section><section class="public-methods"><div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h2 id="startdriver">start_driver</h2>
@@ -103,7 +112,7 @@ work <span class="keyword">do</span>
 <strong>keys supported</strong> - up arrow, down arrow, left arrow, right arrow, esc and any alphanumeric characters.</li>
                   </ul>
 </div>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   
                   <!-- /Platforms All -->

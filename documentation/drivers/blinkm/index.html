@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - BlinkM Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -60,19 +60,29 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Circuit">Circuit</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/blinkm.jpg"><p>
                   Allows user to control BlinkM RGB LED via i2c interface.
                 </p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
 device <span class="symbol">:blink_m</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:blink_m</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:arduino</span>
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <h3>Example using a BlinkM.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -91,7 +101,7 @@ work <span class="keyword">do</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
 </pre>
-              </section><section class="public-events"><div class="commands_api">
+              </section><section class="public-events"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="rgbred0-green0-blue0">rgb(red=0, green=0, blue=0)</h2>
@@ -154,9 +164,15 @@ work <span class="keyword">do</span>
                   
                   <p><code>[red, green, blue] (integer)</code></p>
                 </div>
-              </section><section class="circuit"><h2>Circuit and Schematic</h2>
-                <p>Coming soon...</p>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
+                <div class="description_circuit">
+                  <p></p>
+                </div>
+                <div class="image_circuit">
+                  <img alt="" src="/documentation/drivers/breadboards/i2c/blinkm_bb.png">
+</div>
+                <div class="clear"></div>
+              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   
                   <!-- /Platforms All -->

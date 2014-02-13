@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Artoo - Leap Motion Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -60,16 +60,25 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToConnect">How to Connect</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#Commands">Commands</a>
+            <a href="#Events">Events</a>
+            <a href="#Compatability">Compatibility</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/leap_motion.jpg"><p>Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger actions or control hardware.</p>
-              </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:leapmotion</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
 device <span class="symbol">:leapmotion</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:leapmotion</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:leapmotion</span>
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">on leapmotion, <span class="symbol">:hand</span> =&gt; proc { |sender, hand| puts hand.inspect }
@@ -88,7 +97,7 @@ work <span class="keyword">do</span>
   puts hand.inspect
 <span class="keyword">end</span>
 </pre>
-              </section><section class="public-methods"><div class="commands_api">
+              </section><section class="public-methods"><div class="commands_api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h2 id="startdriver">start_driver</h2>
@@ -133,7 +142,7 @@ work <span class="keyword">do</span>
                   
                   <p>Gets triggered with every motion detected, makes frame input available.</p>
                 </div>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+              </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   
                   <!-- /Platforms All -->

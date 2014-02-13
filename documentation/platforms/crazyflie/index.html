@@ -9,7 +9,7 @@
 <meta content="The Hybrid Group" name="author">
 <title>Crazyflie with Artoo</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
 <script type="text/javascript">
 
@@ -62,7 +62,15 @@
 </h2>
         </div>
       </div>
-      <div class="container">
+      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+          <nav><a href="#HowToInstall">How To Install</a>
+            <a href="#HowToUse">How To Use</a>
+            <a href="#HowToConnect">How To Connect</a>
+            <a href="#Drivers">Drivers</a>
+            <a href="#top">Top</a>
+          </nav>
+</div>
+      </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/devices/crazyflie.jpg"><p>You can use Artoo with the Crazyflie micro-quadcopter.</p>
@@ -70,11 +78,11 @@
                   For more info about Crazyflie click
                   <a target="blank" href="http://www.bitcraze.se/">here</a>.
                 </p>
-              </section><section class="how_to"><h2>How to install</h2>
+              </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing artoo with arduino support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-crazyflie
 </pre>
-                <h2>How to use</h2>
+              </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
                 <p>This small program causes the Crazyflie to 'hop' up in the air for 1 second.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
@@ -87,7 +95,7 @@ work <span class="keyword">do</span>
   after(<span class="integer">1</span>.seconds) {drone.stop}
 <span class="keyword">end</span>
 </pre>
-                <h2>How to connect</h2>
+              </section><section class="how-to" id="HowToConnect"><h2>How To Connect</h2>
                 <p>The Crazyflie uses a 2.4 GHz radio to communicate. There is a USB dongle called the Crazyradio that is required to control the Crazyflie quadcopter.</p>
                 <p>
                   If you are have a USB 3.0 port, you might run into this issue
@@ -106,7 +114,7 @@ work <span class="keyword">do</span>
                 <pre class="CodeRay">connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
 </pre>
                 <p>If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...</p>
-              </section><section class="drivers"><h2>Drivers</h2>
+              </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                 <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
