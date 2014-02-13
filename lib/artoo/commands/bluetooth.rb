@@ -3,32 +3,15 @@ require 'thor/group'
 
 module Artoo
   module Commands
-    class Connect < Commands
-      package_name "connect"
+    class Bluetooth < Commands
+      package_name "bluetooth"
 
-      desc "scan", "Scan for connected devices"
-      option :type, :aliases => "-t", :default => "bluetooth", :desc => "type of scan [bluetooth, serial]"
+      desc "scan", "Scan for bluetooth devices"
       def scan
-        case os
-        when :linux
-          case options[:type]
-          when 'bluetooth'
-            run("hcitool scan")
-          when 'serial'
-            run("ls /dev/tty*")
-          when 'usb'
-            run("lsusb")
-          else
-            say "ERROR: scan type '#{options[:type]}' not supported!"
-          end
-        when :macosx
-          run("ls /dev/tty*")
-        else
-          say "OS not yet supported..."
-        end
+        Artoo.Commands.Scan.new().bluetooth()
       end
 
-      desc "bind [ADDRESS] [NAME]", "Binds a Bluetooth device to some connected hardware"
+      desc "bind [ADDRESS] [NAME]", "Binds a Bluetooth device to a serial port"
       option :comm, :aliases => "-c", :default => 0, :desc => "Comm number"
       option :radio, :aliases => "-r", :default => "hci0", :desc => "Bluetooth radio address"
       def bind(address, name)
