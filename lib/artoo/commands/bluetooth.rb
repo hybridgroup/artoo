@@ -88,7 +88,7 @@ module Artoo
       end
 
       desc "unpair [ADDRESS]", "Unpairs a Bluetooth device"
-      def pair(address)
+      def unpair(address)
         case os
         when :linux
           run("bluez-simple-agent hci0 #{ address } remove")
