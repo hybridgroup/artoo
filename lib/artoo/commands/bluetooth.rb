@@ -27,12 +27,10 @@ module Artoo
       end
 
       desc "unbind [ADDRESS] [NAME]", "Unbinds a Bluetooth device from a serial port"
-      option :comm, :aliases => "-c", :default => 0, :desc => "Comm number"
-      option :radio, :aliases => "-r", :default => "hci0", :desc => "Bluetooth radio address"
       def bind(address, name)
         case os
         when :linux
-          run("sudo rfcomm -i #{options[:radio]} unbind /dev/rfcomm#{options[:comm]} #{address} 1")
+          run("sudo rfcomm unbind #{address}")
           run("sudo rm /dev/#{name}")
         when :macosx
           say "OSX binds devices on its own volition."
