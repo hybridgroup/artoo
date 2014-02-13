@@ -27,7 +27,7 @@ module Artoo
       end
 
       desc "unbind [ADDRESS] [NAME]", "Unbinds a Bluetooth device from a serial port"
-      def bind(address, name)
+      def unbind(address, name)
         case os
         when :linux
           run("sudo rfcomm unbind #{address}")
