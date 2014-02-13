@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Wii Classic Controller
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 beaglebone_platform: true
@@ -17,8 +19,8 @@ raspberry_platform: true
   %p
     Allows user to use a Nintendo Wii Classic Controller via i2c interface
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -33,8 +35,9 @@ raspberry_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :wiiclassic, :driver => :wiiclassic, :connection :digispark
 
-%section.how-to
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -57,15 +60,15 @@ raspberry_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/i2c/events_wiiclassic"
 
-%section.circuit
+%section.circuit#Circuit
   %h2 Circuit 
   %p Coming soon...
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

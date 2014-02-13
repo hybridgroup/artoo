@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Keyboard 
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
 
 keyboard_platform: true
 ---
@@ -12,8 +13,8 @@ keyboard_platform: true
   =image_tag "/images/devices/keyboard.jpg", class: "display"
   %p The Artoo adaptor for keyboard input.
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -23,8 +24,8 @@ keyboard_platform: true
         device :keyboard, driver: :keyboard, connection: :keyboard
         ...
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example using a Key.
   :markdown
         :::ruby
@@ -42,11 +43,11 @@ keyboard_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/keyboard/events"
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

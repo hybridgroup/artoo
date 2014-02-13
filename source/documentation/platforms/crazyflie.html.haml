@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Crazyflie
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-crazyflie/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 crazyflie_drivers: true
 ---
@@ -16,14 +17,16 @@ crazyflie_drivers: true
     = succeed "." do
       = link_to "here", "http://www.bitcraze.se/", target: :blank
 
-%section.how_to
-  %h2 How to install
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-crazyflie
 
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This small program causes the Crazyflie to 'hop' up in the air for 1 second.
   :markdown
         :::ruby
@@ -38,7 +41,8 @@ crazyflie_drivers: true
           after(1.seconds) {drone.stop}
         end
 
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %p The Crazyflie uses a 2.4 GHz radio to communicate. There is a USB dongle called the Crazyradio that is required to control the Crazyflie quadcopter.
   %p
     If you are have a USB 3.0 port, you might run into this issue
@@ -59,7 +63,7 @@ crazyflie_drivers: true
 
   %p If you do not add :supports_hover => true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned... 
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p There is currently only one driver for the Crazyflie, as listed below.
 

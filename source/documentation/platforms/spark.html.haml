@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Spark
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-spark' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-spark/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 analog_sensor_driver: true
 button_driver: true
@@ -25,12 +26,15 @@ makey_driver: true
     =link_to "(http://spark.io) ", "http://spark.io", target: :blank 
     using the built-in Tinker protocol.
 
-%section.how-to
-  %h2 How to install
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p  Installing artoo with spark support is pretty easy.
   :markdown
         :::bash
         gem install artoo-spark
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p You will need to have a Spark device, and an access token from a registered Spark account.
   %h2 Using
   %p This small program lets you turn on or off a LED for every 1 sec.
@@ -46,10 +50,11 @@ makey_driver: true
             led.toggle
           end
         end
-  %h2 Connecting to Spark
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %p Once your Spark is connected via Wifi, you're done. It should keep itself connected, and your Artoo program should be able to connect to it via the Internet, using the access token that Spark has given you.
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kind physical computing (using artoo and ruby) you could be doing:
 

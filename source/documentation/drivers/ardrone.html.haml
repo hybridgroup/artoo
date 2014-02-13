@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: ARDrone
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+
 
 ardrone_platform: true
 ---
@@ -13,8 +15,8 @@ ardrone_platform: true
   =image_tag "/images/devices/ardrone-flight.jpg", class: "display"
   %p
     Allows user to send flight control commands to an ARDrone. Flight control commands are those used to tell the ARDrone to take off, land, and or any number of other autonomous flight manuvers.
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %p
     Communication with the ARDrone's flight control interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
   :markdown
@@ -23,8 +25,8 @@ ardrone_platform: true
         connection :ardrone, :adaptor => :ardrone, :port => '192.168.1.1:5556'
         device :drone, :driver => :ardrone, :connection => :ardrone
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example of controlling an ARDrone.
   :markdown
         :::ruby
@@ -65,13 +67,15 @@ ardrone_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/ardrone/commands_flight"
+  .commands_api#Events
+    = partial "/documentation/drivers/partials/ardrone/events_flight"
 
 
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

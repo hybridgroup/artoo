@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Sphero
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+sphero_colors_driver: true
 
 sphero_platform: true
 ---
@@ -12,8 +14,8 @@ sphero_platform: true
   =image_tag "/images/devices/sphero.jpg", class: "display"
   %p Allows user to interact with the Sphero robotic sphero using Artoo.
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %p
     That is pretty simple once the Sphero is ready (connected and listening), you just need three lines of code and you are set,
     Artoo and the Sphero driver take care of the rest.
@@ -23,8 +25,8 @@ sphero_platform: true
         connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:8023'
         device :sphero, :driver => :sphero
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example to roll the sphero in a random direction and change direction every 3 seconds.
   :markdown
         :::ruby
@@ -48,7 +50,6 @@ sphero_platform: true
           end
         end
 
-%section.public-methods
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on the sphero driver as follows:
   :markdown
@@ -56,15 +57,14 @@ sphero_platform: true
         # :contact is the name of a previously defined method containing the code to execute.
         on sphero, :collision => :contact
 
-  .commands_api
+%section.public-methods
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/sphero/commands"
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/sphero/events"
 
 
-  
-
-%section 
+%section#SpheroColors
   %h2 Sphero Colors (R,G,B)
   %table.commands 
     %tr 
@@ -847,8 +847,8 @@ sphero_platform: true
       
 
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

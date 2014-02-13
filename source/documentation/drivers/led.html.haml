@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: LED
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 beaglebone_platform: true
@@ -16,8 +18,8 @@ spark_platform: true
   =image_tag "/images/devices/LED.jpg", class: "display"
   %p  Allows user to interact with LEDs through digital output and PWM (Pulse Width Modulation)
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -32,8 +34,9 @@ spark_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :led, :driver => :led, :pin => 13
 
-%section.how-to
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example using a button to turn a LED on and off.
   :markdown
         :::ruby
@@ -50,7 +53,7 @@ spark_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/gpio/commands_led"
 
 %section.circuit#Circuit
@@ -61,8 +64,8 @@ spark_platform: true
     %img{:src => "/documentation/drivers/breadboards/gpio/led_bb.png", :alt => ""}/ 
   .clear
   
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   %p 
     %b Important Note:
     You need to install
