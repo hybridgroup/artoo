@@ -5,8 +5,9 @@ require 'thor/group'
 require 'artoo/robot'
 require 'artoo/commands/commands'
 require 'artoo/commands/generate'
-require 'artoo/commands/connect'
+require 'artoo/commands/bluetooth'
 require 'artoo/commands/install'
+require 'artoo/commands/scan'
 
 Celluloid.logger = nil
 
@@ -34,15 +35,17 @@ module CLI
       run("ruby #{robot}")
     end
 
-    desc "generate SUBCOMMAND ...ARGS", "Generates a new robot or adaptor"
+    desc "generate <SUBCOMMAND> ...ARGS", "Generates a new robot or adaptor"
     subcommand "generate", Artoo::Commands::Generate
 
-    desc "connect SUBCOMMAND ...ARGS", "Connects to device"
-    subcommand "connect", Artoo::Commands::Connect
+    desc "bluetooth <SUBCOMMAND> ...ARGS", "Connects to device"
+    subcommand "bluetooth", Artoo::Commands::Bluetooth
 
-    desc "install SUBCOMMAND ...ARGS", "Installs utility programs"
+    desc "install <SUBCOMMAND> ...ARGS", "Installs utility programs"
     subcommand "install", Artoo::Commands::Install
 
+    desc "scan <type> ...ARGS", "Installs utility programs"
+    subcommand "scan", Artoo::Commands::Scan
   end
 end
 
