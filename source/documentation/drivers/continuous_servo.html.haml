@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Continuous Servo
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 digispark_platform: true
@@ -15,8 +17,8 @@ raspberry_platform: true
   = image_tag "/images/devices/continuous_servo.jpg", class: "display"
   %p Provides an interface for making servos easy to work and interact with from Artoo.
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -31,8 +33,8 @@ raspberry_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example moves a servo from angle 0 to 90 to 180.
   :markdown
         :::ruby
@@ -62,7 +64,7 @@ raspberry_platform: true
 
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/gpio/commands_continuous_servo"
 
 
@@ -74,8 +76,8 @@ raspberry_platform: true
     %img{:src => "/documentation/drivers/breadboards/gpio/servo_bb.png", :alt => ""}/ 
   .clear 
   
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   %p 
     %b Important Note:
     You need to install
