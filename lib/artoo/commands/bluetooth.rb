@@ -26,10 +26,10 @@ module Artoo
         end
       end
 
-      desc "serial [NAME] [PORT]", "Connect a serial device to a TCP socket using socat"
+      desc "connect [NAME] [PORT]", "Connect a serial device to a TCP socket using socat"
       option :retries, :aliases => "-r", :default => 0, :desc => "Number of times to retry connecting on failure"
       option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
-      def serial(name, port)
+      def connect(name, port)
         attempts = 1 + options[:retries].to_i
 
         # check that Socat is installed
