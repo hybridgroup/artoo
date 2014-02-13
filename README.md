@@ -77,7 +77,7 @@ SPHEROS.each {|p|
 SpheroRobot.work!(robots)
 ```
 
-Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+
+Ruby versions supported: Ruby 2.1, Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.1+
 
 Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm
 
