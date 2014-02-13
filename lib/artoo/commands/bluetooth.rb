@@ -26,6 +26,19 @@ module Artoo
         end
       end
 
+      desc "unbind [ADDRESS] [NAME]", "Unbinds a Bluetooth device from a serial port"
+      def unbind(address, name)
+        case os
+        when :linux
+          run("sudo rfcomm unbind #{address}")
+          run("sudo rm /dev/#{name}")
+        when :macosx
+          say "OSX binds devices on its own volition."
+        else
+          say "OS not yet supported..."
+        end
+      end
+
       desc "connect [NAME] [PORT]", "Connect a serial device to a TCP socket using socat"
       option :retries, :aliases => "-r", :default => 0, :desc => "Number of times to retry connecting on failure"
       option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
@@ -57,6 +70,30 @@ module Artoo
             attempts -= 1
           end
 
+        else
+          say "OS not yet supported..."
+        end
+      end
+
+      desc "pair [ADDRESS]", "Pairs a Bluetooth device"
+      def pair(address)
+        case os
+        when :linux
+          run("bluez-simple-agent hci0 #{ address }")
+        when :macosx
+          say "OS X manages Bluetooth pairing itself."
+        else
+          say "OS not yet supported..."
+        end
+      end
+
+      desc "unpair [ADDRESS]", "Unpairs a Bluetooth device"
+      def unpair(address)
+        case os
+        when :linux
+          run("bluez-simple-agent hci0 #{ address } remove")
+        when :macosx
+          say "OS X manages Bluetooth unpairing itself."
         else
           say "OS not yet supported..."
         end
