@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Digispark
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-digispark' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-digispark/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 analog_sensor_driver: true
 continuous_servo_driver: true
@@ -27,13 +28,15 @@ makey_driver: true
     = succeed "." do
       = link_to "here", "http://digistump.com/category/1", target: :blank
 
-%section.how-to
-  %h2 How to install
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with digispark support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-digispark
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This small program lets you toggle an LED on and off.
   :markdown
         :::ruby
@@ -52,7 +55,8 @@ makey_driver: true
           end
         end
 
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %p
     It is very easy to setup and connect to the Digispark using Artoo CLI commands.
   %p
@@ -156,7 +160,7 @@ makey_driver: true
 
   %p We are currently working with the Celluloid team to add Windows support. Please check back soon!
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p
     Thanks to

@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Arduino
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-arduino/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 gpio_drivers: true
 i2c_drivers: true
@@ -17,14 +18,15 @@ i2c_drivers: true
     = succeed "." do
       = link_to "here", "http://arduino.cc/", target: :blank
 
-%section.how_to
-  %h2 How to install
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-arduino
 
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This small program lets you push a button on the arduino board to turn a LED on or off.
   %p In less than 10 lines of code using Artoo.
   :markdown
@@ -42,7 +44,8 @@ i2c_drivers: true
           on button, :release => proc { led.off }
         end
 
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %h3 OSX
 
   %p The main steps are:
@@ -152,7 +155,8 @@ i2c_drivers: true
 
   %p We are currently working with the Celluloid team to add Windows support. Please check back soon!
 
-%section.drivers
+
+%section.drivers#Drivers
   %h2 Drivers
   %p
     Thanks to

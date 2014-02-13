@@ -10,7 +10,7 @@
     section {
       margin: 0 auto;
       @include span-columns(3 of 9.5);
-      background: #620020;
+      background: #027CAF;
       height: 100px;
       margin-bottom: 20px;
       border-radius: 5px;
@@ -25,20 +25,21 @@
       }
 
       &:hover {
-        background: darken(#620020, 5);
+        background: darken(#027CAF, 5);
       }
 
       .title {
-        color: #EFECE5;
+        color: #E0EFF5;
         font-weight: bold;
       }
 
       .description {
-        color: #b39f89;
+        color: #A7C6D5;
       }
     }
   }
 }
+
 
 .documentation {
   @include span-columns(12);

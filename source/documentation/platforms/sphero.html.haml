@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Sphero
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-sphero' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-sphero/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
+
 
 sphero_driver: true
 ---
@@ -18,8 +20,8 @@ sphero_driver: true
     You can do it by following this link
     = link_to "GoSphero.", "http://www.gosphero.com/"
 
-%section.how-to
-  %h2 How to install
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with sphero support is pretty easy using ruby gems.
   :markdown
         :::bash
@@ -28,7 +30,9 @@ sphero_driver: true
   :markdown
         :::bash
         artoo install socat
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p Example of a simple program that makes the Sphero roll and change colors.
   :markdown
         :::ruby
@@ -46,7 +50,8 @@ sphero_driver: true
           end
         end
 
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %h3 OSX
   %p The main steps are:
   %ul
@@ -85,7 +90,7 @@ sphero_driver: true
         :::bash
         artoo connect serial Sphero-WRW 8023
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p There is only one driver for the Sphero.
 
