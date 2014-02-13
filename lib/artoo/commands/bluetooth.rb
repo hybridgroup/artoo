@@ -8,7 +8,7 @@ module Artoo
 
       desc "scan", "Scan for bluetooth devices"
       def scan
-        Artoo.Commands.Scan.new().bluetooth()
+        Artoo::Commands::Scan.new().bluetooth()
       end
 
       desc "bind [ADDRESS] [NAME]", "Binds a Bluetooth device to a serial port"
