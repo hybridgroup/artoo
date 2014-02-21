@@ -9,12 +9,14 @@ subnav_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/opencv.jpg", class: "display"
-  %p OpenCV is a real-time computer vision library.
-  %p
-    For more info about OpenCV click
-    = succeed "." do
-      = link_to "here", "http://opencv.org/", target: :blank
-
+  .info_intro
+    %p OpenCV is a real-time computer vision library.
+    %p
+      For more info about OpenCV click
+      = succeed "." do
+        = link_to "here", "http://opencv.org/", target: :blank
+  .clear
+  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p Installing artoo with OpenCV support is pretty easy using ruby gems.

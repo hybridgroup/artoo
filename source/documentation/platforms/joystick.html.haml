@@ -13,12 +13,14 @@ xbox360_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/joystick.jpg", class: "display"
-  %p You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
-  %p
-    For more info about Simple DirectMedia Layer (SDL) go to
-    = succeed "." do
-      = link_to "http://www.libsdl.org/", "http://www.libsdl.org/", target: :blank
-
+  .info_intro
+    %p You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
+    %p
+      For more info about Simple DirectMedia Layer (SDL) go to
+      = succeed "." do
+        = link_to "http://www.libsdl.org/", "http://www.libsdl.org/", target: :blank
+  .clear
+  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.

@@ -11,12 +11,14 @@ roomba_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/roomba.jpg", class: "display"
-  %p The Roomba is a simple robot that usually cleans floors.
-  %p
-    For more info about the Roomba platform click
-    = succeed "." do
-      = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
-
+  .info_intro
+    %p The Roomba is a simple robot that usually cleans floors.
+    %p
+      For more info about the Roomba platform click
+      = succeed "." do
+        = link_to "here", "http://www.irobot.com/us/learn/Educators/Create.aspx", target: :blank
+  .clear
+  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p  Installing artoo with roomba support is pretty easy using ruby gems.
