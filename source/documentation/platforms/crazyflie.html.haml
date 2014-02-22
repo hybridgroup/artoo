@@ -11,12 +11,14 @@ crazyflie_drivers: true
 ---
 %section.intro
   = image_tag "/images/devices/crazyflie.jpg", class: "display"
-  %p  You can use Artoo with the Crazyflie micro-quadcopter.
-  %p
-    For more info about Crazyflie click
-    = succeed "." do
-      = link_to "here", "http://www.bitcraze.se/", target: :blank
-
+  .info_intro
+    %p  You can use Artoo with the Crazyflie micro-quadcopter.
+    %p
+      For more info about Crazyflie click
+      = succeed "." do
+        = link_to "here", "http://www.bitcraze.se/", target: :blank
+  .clear
+  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.
