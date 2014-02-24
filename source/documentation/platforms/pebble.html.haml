@@ -11,12 +11,14 @@ pebble_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/pebble.jpg", class: "display"
-  %p  The Pebble is a smart watch, that connects via bluetooth.
-  %p
-    For more info about the Pebble platform click
-    = succeed "." do
-      = link_to "here", "http://getpebble.com/", target: :blank
-
+  .info_intro
+    %p  The Pebble is a smart watch, that connects via bluetooth.
+    %p
+      For more info about the Pebble platform click
+      = succeed "." do
+        = link_to "here", "http://getpebble.com/", target: :blank
+  .clear
+  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p Installing artoo with pebble support is pretty easy using ruby gems.
