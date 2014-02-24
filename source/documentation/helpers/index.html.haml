@@ -1,0 +1,77 @@
+---
+page_title_show: true
+title: Artoo Helpers
+author: The Hybrid Group
+description: Artoo Helpers
+layout: documentation
+
+page_title: Helpers
+page_subtitle: A Guide by Humans, for Humans.
+platforms: true
+---
+
+%section.public-methods
+  .commands_api
+    %h1 class Integer -> Numeric
+    
+    %h2 def : seconds
+    %p Plain number, actually does nothing.
+    %h5 Example
+    %p 
+      %span 20.seconds => 20
+    %h5 Returns
+    %p 
+      %span iteger
+
+    %h2 def : second
+    %p Plain number, actually does nothing.
+    %h5 Example
+    %p 
+      %span 1.second => 1
+    %h5 Returns
+    %p 
+      %span iteger
+
+    %h1 class Fixnum
+
+    %h2 def : to_pwm
+    %p Convert to PWM value from analog reading.
+    %h5 Returns
+    %p 
+      %span iteger
+    %h2 def : to_pwm_reverse
+    %p Convert to PWM value from analog reading.
+    %h5 Returns
+    %p 
+      %span iteger
+
+    %h1 class : Numeric
+
+    %h2 def : from_scale(range)
+    %p Convert value from old scale (min to max) to (0..1) scale.
+    %h5 Params
+    %p 
+      %span range
+      the range value to return 
+    %h5 Returns
+    %p 
+      %span iteger
+    %h2 def : to_scale(range)
+    %p Convert value from (0..1) scale to new (min to max) scale.
+    %h5 Params
+    %p 
+      %span range
+      the range value to return
+    %h5 Returns
+    %p 
+      %span iteger
+
+    %h2 def : within(range)
+    %p Keep returned value absolutely within range.
+    %h5 Params
+    %p 
+      %span range
+      the range value to return
+    %h5 Returns
+    %p 
+      %span iteger
