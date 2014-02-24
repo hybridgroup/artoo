@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Analog Sensor
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 digispark_platform: true
@@ -12,11 +14,14 @@ spark_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/analog-sensor.jpg", class: "display"
-  %p
-    Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
-    The value received from an analog input read from the sensor goes from 0 to 1027.
-%section.how_to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p
+      Makes it possible to interact with analog inputs on your device and obtain values that represent the analog input send by the sensors.
+      The value received from an analog input read from the sensor goes from 0 to 1027.
+  .clear
+
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -30,8 +35,9 @@ spark_platform: true
         require 'artoo'
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0.25, upper: 900, lower: 200
-%section.how-to
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example using a photoresistor sensor to turn a LED on and off.
   :markdown
         :::ruby
@@ -62,7 +68,7 @@ spark_platform: true
           }
         end
 
-%section.public-methods
+
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -70,30 +76,23 @@ spark_platform: true
         on sensor, :upper => proc { puts "UPPER LIMIT REACHED!" }
         on sensor, :lower => proc { puts "LOWER LIMIT REACHED!" }
 
-  .commands_api
+%section.public-methods
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/gpio/commands_analog_sensor"
-
-
-
-%section.public-events
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/gpio/events_analog_sensor"
 
 
-%section.circuit
-  %h2 Circuit and Schematic
-  %p
-    Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
-    the button for a photoresistor.
-    <br />
-    =link_to "http://arduino.cc/en/tutorial/button", "http://arduino.cc/en/tutorial/button"
-  %p
-    It should look like the circuit in this example.
-    <br />
-    =link_to "http://arduino.cc/en/Tutorial/SwitchCase", "http://arduino.cc/en/Tutorial/SwitchCase"
-
-%section.compatibility.hardware
-  %h2 Works with:
+%section.circuit#Circuit
+  %h2 Circuit 
+  .description_circuit
+    %p
+  .image_circuit
+    %img{:src => "/documentation/drivers/breadboards/gpio/analog_sensor_bb.png", :alt => ""}/ 
+  .clear 
+  
+%section.compatibility.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

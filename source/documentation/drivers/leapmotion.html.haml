@@ -5,23 +5,26 @@ author: The Hybrid Group
 page_title: Leap Motion
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
 
 leapmotion_platform: true
 ---
 %section.intro
   =image_tag "/images/devices/leap_motion.jpg", class: "display"
-  %p Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger actions or control hardware.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Allows user to interact with Artoo devices using a Leap Motion controller. The Leap Motion uses its built in cameras to track the user's hand motions, and translations those to events that Artoo can use to trigger  actions or control hardware.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   :markdown
         :::ruby
         require 'artoo'
         connection :leapmotion, :adaptor => :leapmotion, :port => '127.0.0.1:6437'
         device :leapmotion, :connection => :leapmotion, :driver => :leapmotion
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -44,15 +47,12 @@ leapmotion_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/leapmotion/events"
 
-  
 
-
-
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

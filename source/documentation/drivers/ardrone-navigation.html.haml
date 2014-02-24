@@ -5,16 +5,21 @@ author: The Hybrid Group
 page_title: ARDrone Navigation
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+
 ardrone_platform: true
+
 ---
 
 %section.intro
   =image_tag "/images/devices/ardrone-navigation.jpg", class: "display"
-  %p
-    Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements.
+  .info_intro
+    %p
+      Allows user to receive in-flight navgation data from an ARDrone. Navigation data includes such information as the ARDrone's current pitch and yaw, along with many other data elements.
+  .clear
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %p
     Communication with the ARDrone's navigation data interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
 
@@ -23,8 +28,9 @@ ardrone_platform: true
         require 'artoo'
         connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
         device :nav, :driver => :ardrone_navigation, :connection => :navigation
-%section.how-to
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -57,15 +63,15 @@ ardrone_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/ardrone/commands_nav"
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/ardrone/events_nav"
 
 
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

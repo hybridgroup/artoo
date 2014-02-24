@@ -5,15 +5,23 @@ author: The Hybrid Group
 page_title: Makey Button
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
+beaglebone_platform: true
+digispark_platform: true
+raspberry_platform: true
+spark_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/makey-button.jpg", class: "display"
-  %p Inspired by the awesome MakeyMakey (http://makeymakey.com), this GPIO driver allows you to connect a 10 MOhm resistor to a digital pin on your Arduino or Raspberry Pi to control your robots with bananas, clay, or drawable circuitry.
-
-%section.how_to
-  %h2 How to establish a connection and setup the driver 
+  .info_intro
+    %p Inspired by the awesome MakeyMakey (http://makeymakey.com), this GPIO driver allows you to connect a 10 MOhm resistor to a digital pin on your Arduino or Raspberry Pi to control your robots with bananas, clay, or drawable circuitry.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -21,8 +29,8 @@ arduino_platform: true
         connection :arduino, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :button, :driver => :makey_button, :pin => 2
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   :markdown
         :::ruby
         require 'artoo'
@@ -39,17 +47,23 @@ arduino_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/gpio/commands_makey_button"
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/gpio/events_makey_button"
   
 
+%section.circuit#Circuit
+  %h2 Circuit
+  .description_circuit
+    %p  
+  .image_circuit
+    %img{:src => "/documentation/drivers/breadboards/gpio/makey_button_bb.png", :alt => ""}/ 
+  .clear 
 
 
-
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   =# TODO: Update platform list at the top of the page.
   .devices
     = partial "documentation/partials/devices_platforms"

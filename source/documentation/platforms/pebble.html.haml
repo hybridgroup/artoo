@@ -5,24 +5,29 @@ author: The Hybrid Group
 page_title: Pebble
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-pebble' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-pebble/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 pebble_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/pebble.jpg", class: "display"
-  %p  The Pebble is a smart watch, that connects via bluetooth.
-  %p
-    For more info about the Pebble platform click
-    = succeed "." do
-      = link_to "here", "http://getpebble.com/", target: :blank
-
-%section.how-to
-  %h2 How to install
+  .info_intro
+    %p  The Pebble is a smart watch, that connects via bluetooth.
+    %p
+      For more info about the Pebble platform click
+      = succeed "." do
+        = link_to "here", "http://getpebble.com/", target: :blank
+  .clear
+  
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with pebble support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-pebble
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This small program receives button press events from a Pebble smart watch.
   :markdown
         :::ruby
@@ -38,7 +43,8 @@ pebble_driver: true
         def button_push(caller, data)
           puts data.button unless data.nil?
         end
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %p This software requires version 1.12.0 of the Pebble watch firmware.
   %h3 OSX
   %p The main steps are:
@@ -75,7 +81,7 @@ pebble_driver: true
         :::bash
         artoo connect socat pebble 4567
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p There is only one driver for the Pebble platform, as listed below.
 

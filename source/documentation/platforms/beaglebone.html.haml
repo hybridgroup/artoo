@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: BeagleBone
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-beaglebone' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-beaglebone/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 button_driver: true
 led_driver: true
@@ -16,18 +17,20 @@ makey_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/beaglebone.jpg", class: "display"
-  %p The BeagleBone is an ARM based single board computer, with many different GPIO interfaces built in.
-  %p
-    For more info about the BeagleBone platform click
-    = succeed "." do
-      = link_to "here", "http://beagleboard.org/Products/BeagleBone", target: :blank
-  %p
-    We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
-    = succeed "." do
-      = link_to "here", "https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz", target: :blank
-
-%section.how-to
-  %h2 How to install
+  .info_intro
+    %p The BeagleBone is an ARM based single board computer, with many different GPIO interfaces built in.
+    %p
+      For more info about the BeagleBone platform click
+      = succeed "." do
+        = link_to "here", "http://beagleboard.org/Products/BeagleBone", target: :blank
+    %p
+      We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
+      = succeed "." do
+        = link_to "here", "https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz", target: :blank
+  .clear
+  
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo for beaglebone is pretty easy using ruby gems.
   :markdown
         :::bash
@@ -48,7 +51,7 @@ makey_driver: true
           end
         end
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p All Artoo digital GPIO and i2c drivers listed below should work with the BeagleBone:
 

@@ -5,17 +5,20 @@ author: The Hybrid Group
 page_title: OpenCV
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-opencv' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-opencv/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/opencv.jpg", class: "display"
-  %p OpenCV is a real-time computer vision library.
-  %p
-    For more info about OpenCV click
-    = succeed "." do
-      = link_to "here", "http://opencv.org/", target: :blank
-
-%section.how-to
-  %h2 How to install
+  .info_intro
+    %p OpenCV is a real-time computer vision library.
+    %p
+      For more info about OpenCV click
+      = succeed "." do
+        = link_to "here", "http://opencv.org/", target: :blank
+  .clear
+  
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with OpenCV support is pretty easy using ruby gems.
   :markdown
         :::bash
@@ -64,7 +67,8 @@ layout: documentation
         cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
         make
         sudo make install
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This program displays your webcam video through OpenCV
   :markdown
         :::ruby

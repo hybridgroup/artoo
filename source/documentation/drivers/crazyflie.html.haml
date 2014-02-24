@@ -5,15 +5,17 @@ author: The Hybrid Group
 page_title: Crazyflie
 page_subtitle: Flight
 layout: documentation
+subnav_driver: true
 
 crazyflie_platform: true
 ---
 %section.intro
   =image_tag "/images/devices/crazyflie-driver.jpg", class: "display"
-  %p Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
+  .clear
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %p Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device. 
   :markdown
         :::ruby
@@ -21,8 +23,9 @@ crazyflie_platform: true
         connection :crazyflie, :adaptor => :crazyflie
         device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
 
-%section.how-to
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example of controlling a Crazyflie.
   :markdown
         :::ruby
@@ -38,16 +41,14 @@ crazyflie_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/crazyflie/commands_flight"
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/crazyflie/events_flight"
 
 
-
-
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

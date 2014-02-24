@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Servo
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 digispark_platform: true
@@ -13,10 +15,12 @@ raspberry_platform: true
 ---
 %section.intro
   = image_tag "/images/devices/servo.jpg", class: "display"
-  %p Provides an interface for making servos easy to work and interact with from Artoo.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Provides an interface for making servos easy to work and interact with from Artoo.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -31,8 +35,8 @@ raspberry_platform: true
         connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
         device :servo, :driver => :servo, :pin => 3 # pin must be a PWM pin
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example moves a servo from angle 0 to 90 to 180.
   :markdown
         :::ruby
@@ -61,17 +65,19 @@ raspberry_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/gpio/commands_servo"
 
-
-%section.circuit
-  %h2 Circuit and Schematic
-  %p
-    =link_to "http://arduino.cc/en/Tutorial/Sweep", "http://arduino.cc/en/Tutorial/Sweep"
-
-%section.compatability.hardware
-  %h2 Works with:
+%section.circuit#Circuit
+  %h2 Circuit
+  .description_circuit
+    %p 
+  .image_circuit 
+    %img{:src => "/documentation/drivers/breadboards/gpio/servo_bb.png", :alt => ""}/ 
+  .clear 
+  
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   %p 
     %b Important Note:
     You need to install

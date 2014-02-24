@@ -5,23 +5,26 @@ author: The Hybrid Group
 page_title: Roomba
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
 
 roomba_platform: true
 ---
 %section.intro
   =image_tag "/images/devices/roomba.jpg", class: "display"
-  %p Allows user to control a Roomba iRobot Create using Artoo.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Allows user to control a Roomba iRobot Create using Artoo.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   :markdown
         :::ruby
         require 'artoo'
         connection :roomba, :adaptor => :roomba, :port => '/dev/ttyUSB0'
         device :roomba, :driver => :roomba, :connection => :roomba
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example controlling a Roomba.
   :markdown
         :::ruby
@@ -39,11 +42,11 @@ roomba_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/roomba/commands"
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

@@ -5,6 +5,8 @@ author: The Hybrid Group
 page_title: Wii Nunchuk
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+subnav_circuit_driver: true
 
 arduino_platform: true
 beaglebone_platform: true
@@ -12,11 +14,13 @@ digispark_platform: true
 raspberry_platform: true
 ---
 %section.intro
-  =image_tag "/images/devices/wii-chuck.jpg", class: "display"
-  %p Allows user to use a Nintendo Wii Nunchuck controller via i2c interface
+  =image_tag "/images/devices/wiichuck.jpg", class: "display"
+  .info_intro
+    %p Allows user to use a Nintendo Wii Nunchuck controller via i2c interface
+  .clear
 
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %h3 For Arduino:
   :markdown
         :::ruby
@@ -24,8 +28,8 @@ raspberry_platform: true
         connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
         device :wiichuck, :driver => :wiichuck, :connection :arduino
 
-%section.how_to
-  %h2 How to use 
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 How to use events and call them on your drivers
   %p Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:
   :markdown
@@ -48,15 +52,15 @@ raspberry_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/i2c/events_wiichuck"
 
-%section.circuit
-  %h2 Circuit and Schematic
+%section.circuit#Circuit
+  %h2 Circuit
   %p Coming soon...
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

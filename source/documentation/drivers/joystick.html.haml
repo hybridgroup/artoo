@@ -5,23 +5,26 @@ author: The Hybrid Group
 page_title: Generic Joystick
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
 
 joystick_platfrom: true
 ---
 %section.intro
   =image_tag "/images/devices/joystick.jpg", class: "display"
-  %p Allows user to interact with Artoo devices using any joystick or game controller that is compatible with SDL.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Allows user to interact with Artoo devices using any joystick or game controller that is compatible with   SDL.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   :markdown
         :::ruby
         require 'artoo'
         connection :joystick, :adaptor => :joystick
         device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example receiving button events from a generic joystick.
   :markdown
         :::ruby
@@ -40,12 +43,12 @@ joystick_platfrom: true
         end
 
 %section.public-events
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/joystick/events_joystick"
 
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

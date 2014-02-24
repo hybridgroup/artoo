@@ -5,6 +5,7 @@ author: The Hybrid Group
 page_title: Joysticks
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-joystick' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-joystick/issues'>Issues</a>"
 layout: documentation
+subnav_platform: true
 
 joystick_driver: true
 ps3_driver: true
@@ -12,19 +13,23 @@ xbox360_driver: true
 ---
 %section.intro
   = image_tag "/images/devices/joystick.jpg", class: "display"
-  %p You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
-  %p
-    For more info about Simple DirectMedia Layer (SDL) go to
-    = succeed "." do
-      = link_to "http://www.libsdl.org/", "http://www.libsdl.org/", target: :blank
-
-%section.how-to
-  %h2 How to install
+  .info_intro
+    %p You can use Artoo with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
+    %p
+      For more info about Simple DirectMedia Layer (SDL) go to
+      = succeed "." do
+        = link_to "http://www.libsdl.org/", "http://www.libsdl.org/", target: :blank
+  .clear
+  
+%section.how-to#HowToInstall
+  %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.
   :markdown
         :::bash
         gem install artoo-joystick
-  %h2 How to use
+
+%section.how-to#HowToUse
+  %h2 How To Use
   %p This small program receives joystick and button press events from an XBox 360 game controller.
   :markdown
         :::ruby
@@ -51,10 +56,11 @@ xbox360_driver: true
           }
         end
 
-  %h2 How to connect
+%section.how-to#HowToConnect
+  %h2 How To Connect
   %p Plug your USB joystick or game controller into your USB port. If your device is supported by SDL, you are now ready.
 
-%section.drivers
+%section.drivers#Drivers
   %h2 Drivers
   %p There are 3 driver for different joysticks, as listed below:
 

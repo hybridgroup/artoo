@@ -5,16 +5,21 @@ author: The Hybrid Group
 page_title: ARDrone Video
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
+
 
 ardrone_platform: true
 ---
 
 %section.intro
   =image_tag "/images/devices/ardrone-video.jpg", class: "display"
-  %p
-    Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras.
-
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p
+      Allows user to receive in-flight video data from an ARDrone. Video data from the ARDrone is returned from either the front-facing, or the bottom-facing cameras.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   %p
     Communication with the ARDrone's video interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
 
@@ -24,8 +29,8 @@ ardrone_platform: true
         connection :videodrone, :adaptor => :ardrone_video, :port => '192.168.1.1:5555'
         device :video, :driver => :ardrone_video, :connection => :videodrone
         
-%section.example
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example of receiving video data from an ARDrone.
   :markdown
         :::ruby
@@ -46,14 +51,11 @@ ardrone_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/ardrone/events_video"
 
- 
-
-
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"

@@ -5,23 +5,26 @@ author: The Hybrid Group
 page_title: Pebble
 page_subtitle: Driver
 layout: documentation
+subnav_driver: true
 
 pebble_platform: true
 ---
 %section.intro
   =image_tag "/images/devices/pebble.jpg", class: "display"
-  %p Allows user to interact with Artoo devices using a Pebble smart watch.
-
-%section.how-to
-  %h2 How to establish a connection and setup the driver
+  .info_intro
+    %p Allows user to interact with Artoo devices using a Pebble smart watch.
+  .clear
+  
+%section.how_to#HowToConnect
+  %h2 How To Connect
   :markdown
         :::ruby
         require 'artoo'
         connection :pebble, :adaptor => :pebble
         device :watch, :driver => :pebble
 
-%section.how-to
-  %h2 How to use
+%section.how-to#HowToUse
+  %h2 How To Use
   %h3 Example communicating with Pebble smart watch.
   :markdown
         :::ruby
@@ -41,15 +44,15 @@ pebble_platform: true
         end
 
 %section.public-methods
-  .commands_api
+  .commands_api#Commands
     = partial "/documentation/drivers/partials/pebble/commands"
-  .commands_api
+  .commands_api#Events
     = partial "/documentation/drivers/partials/pebble/events"
 
 
 
-%section.compatability.hardware
-  %h2 Works with:
+%section.compatability.hardware#Compatability
+  %h2 Compatibility
   .devices
     =# TODO: Update platform list at the top of the page.
     = partial "documentation/partials/devices_platforms"
