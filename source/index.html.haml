@@ -63,19 +63,20 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
   Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
   %ul
     %li
+      = link_to "Ardrone", "http://ardrone2.parrot.com/", target:"_blank" 
+      &lt;==&gt;
+      = link_to "Adaptor", "/documentation/platforms/ardrone", target:"_blank" 
+      (
+      = link_to "repo", "https://github.com/hybridgroup/artoo-ardrone", target:"_blank"
+      ) 
+    %li
       = link_to "Arduino", "http://www.arduino.cc/", target:"_blank" 
       &lt;==&gt;
       = link_to "Adaptor", "/documentation/platforms/arduino", target:"_blank"
       (
       = link_to "repo", "https://github.com/hybridgroup/artoo-arduino", target:"_blank"
       ) 
-    %li
-      = link_to "ARDrone", "http://ardrone2.parrot.com/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/ardrone", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-ardrone", target:"_blank"
-      ) 
+    
     %li
       = link_to "BeagleBone Black", "http://beagleboard.org/", target:"_blank" 
       &lt;==&gt;
@@ -191,8 +192,9 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
       %ul 
         %li= link_to "BlinkM", "/documentation/drivers/blinkm", target:"_blank"  
         %li= link_to "HMC6352 Digital Compass", "/documentation/drivers/hmc6352-compass", target:"_blank"   
-        %li= link_to "Wii Nunchuk", "/documentation/drivers/wiichuck", target:"_blank"   
         %li= link_to "Wii Classic Controller", "/documentation/drivers/wiiclassic", target:"_blank"  
+        %li= link_to "Wii Nunchuk", "/documentation/drivers/wiichuck", target:"_blank"   
+        
 
 %p More platforms are coming soon!
 
