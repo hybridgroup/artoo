@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -72,7 +72,10 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/crazyflie-driver.jpg"><p>Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.</p>
+              <section class="intro"><img class="display" src="/images/devices/crazyflie-driver.jpg"><div class="info_intro">
+                  <p>Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.</p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <p>Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>

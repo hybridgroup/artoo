@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo.io CLI</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">CLI</h1>
+          <h2 class="subtitle">Artoo CLI (Command Line Interface) provides several tools to make RobotOps easier.</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <div class="cli">
+                <h2>What is it?</h2>
+                <p>
+                  Artoo CLI is a powerful command line interface tool that provides several tools to make RobotOps and
+                  setting up your devices to work with Artoo a lot easier.
+                </p>
+                <h2>How to install</h2>
+                <p>
+                  Installing Artoo CLI is very easy, it is included with the artoo gem and more commands are added to it when
+                  you install other Artoo gems like artoo-arduino and artoo-digispark.
+                </p>
+                <pre class="CodeRay">$ gem install artoo
+</pre>
+                <h2>How can I use it?</h2>
+                <p>
+                  The Artoo command line interface tools are pretty easy to use and designed to be intuitive, they also
+                  provide contextual help regarding the commands you are using. After you have installed the `artoo` gem,
+                  you just need to call the `artoo` command and a list of available commands (this list may vary if you have
+                  installed any of those other artoo gems we mentioned) will be printed to the terminal.
+                </p>
+                <h3>Printing a list of available commands</h3>
+                <pre class="CodeRay">$ artoo
+Commands:
+  artoo bluetooth &lt;SUBCOMMAND&gt; ...ARGS    # Scans, pairs and Connects to a bluetooth device
+  artoo console ROBOT                     # Run a robot using the Robi console
+  artoo generate &lt;SUBCOMMAND&gt; ...ARGS     # Generates a new robot or adaptor
+  artoo help [COMMAND]                    # Describe available commands or one specific command
+  artoo install &lt;SUBCOMMAND&gt; ...ARGS      # Installs utility programs, like socat
+  artoo scan &lt;type&gt; ...ARGS               # Installs utility programs
+  artoo start ROBOT                       # Run a robot
+  artoo version                           # Displays the current version
+</pre>
+                <h3>Scanning serial port for connected devices</h3>
+                <pre class="CodeRay">$ artoo scan serial
+[    0.000000] console [tty0] enabled
+[    0.526190] 00:08: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[27425.430589] cdc_acm 3-4:1.0: ttyACM0: USB ACM device
+</pre>
+                <h2>What Artoo CLI commands are available?</h2>
+                <p>
+                  If you have only installed Artoo, the list of available commands is the one printed in the section above,
+                  let's review them one by one.
+                </p>
+                <h3>artoo scan &lt;type&gt;</h3>
+                <h4>Description</h4>
+                <p>
+                  Scans different types of devices connected to your computer.
+                  The available options for the type param are `serial`, `bluetooth` or `usb`.
+                </p>
+                <pre class="CodeRay">$ artoo scan usb
+run lsusb from "."
+Bus 002 Device 002: ID 8087:8000 Intel Corp.
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 007: ID 08bb:2702 Texas Instruments Speakers
+Bus 003 Device 012: ID 1781:0c9f Multiple Vendors USBtiny
+Bus 003 Device 013: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+</pre>
+                <pre class="CodeRay">$ artoo scan bluetooth
+Scanning ...
+  00:06:66:4A:23:C3        Sphero-RPB
+</pre>
+                <h3>artoo install &lt;utility&gt;</h3>
+                <h4>Description</h4>
+                <p>
+                  Installs socat utility to connect a bluetooth device binded to a serial port
+                  to a TCP socket, enabling communication with Artoo.
+                </p>
+                <pre class="CodeRay">$ artoo install
+install commands:
+  artoo install help [COMMAND]      # Describe subcommands or one specific subcommand
+  artoo install socat               # Install the socat serial to socket utility program
+  artoo install command [FILENAME]  # Installs artoo command extension files
+</pre>
+                <h4>artoo install socat</h4>
+                <p>
+                  <b>Description:</b>
+                  installs socat, socket to serial utility.
+                </p>
+                <pre class="CodeRay">$ artoo install socat
+         run  sudo apt-get update &amp;&amp; sudo apt-get install socat from "."
+Ign http://archive.ubuntu.com saucy-security/universe Translation-en_US
+Fetched 1,257 kB in 20s (60.0 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  socat
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 365 kB of archives.
+After this operation, 897 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ saucy/universe socat amd64 1.7.1.3-1.5ubuntu1 [365 kB]
+Fetched 365 kB in 1s (209 kB/s)
+Selecting previously unselected package socat.
+(Reading database ... 206924 files and directories currently installed.)
+Unpacking socat (from .../socat_1.7.1.3-1.5ubuntu1_amd64.deb) ...
+Processing triggers for doc-base ...
+Processing 1 added doc-base file...
+Processing triggers for man-db ...
+Setting up socat (1.7.1.3-1.5ubuntu1) ...
+</pre>
+                <h3>artoo bluetooth &lt;subcommand&gt; &lt;args&gt;</h3>
+                <h4>Description</h4>
+                <p>
+                  Lets you bind and connect to bluetooth devices by specifying a subcommand and providing
+                  the appropiate arguments, the avilable options for the subcommand are `pair`, `unpair`, `bind` and `connect`.
+                </p>
+                <h4>artoo bluetooth scan</h4>
+                <p>
+                  <b>Description:</b>
+                  scans for available bluetooth devices.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth scan
+Scanning ...
+  00:06:66:4A:23:C3        Sphero-RPB
+</pre>
+                <h4>artoo bluetooth pair &lt;bluetooth_address&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  Pairs a bluetooth device to the computer.<br><b>Notes:</b>
+                  when prompted, answer `yes` to confirm pairing pin.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth pair 00:06:66:4A:23:C3
+RequestConfirmation (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3, 135070)
+Confirm passkey (yes/no): yes
+Release
+New device (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3)
+</pre>
+                <h4>artoo bluetooth unpair &lt;bluetooth_address&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  Unpairs a bluetooth device.<br><b>Notes:</b>
+                  when prompted answer `no` to deny pairing pin.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth unpair 00:06:66:4A:23:C3
+RequestConfirmation (/org/bluez/630/hci0/dev_00_06_66_4A_23_C3, 761422)
+Confirm passkey (yes/no): no
+Creating device failed: org.bluez.Error.AuthenticationFailed: Authentication Failed
+</pre>
+                <h4>artoo bluetooth bind &lt;bluetooth_address&gt; &lt;name&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  binds a bluetooth device to a serial port.
+                  <b>Notes:</b>
+                  You might need to provide root access.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth bind 00:06:66:4A:23:C3 Sphero-RPB
+         run  sudo rfcomm -i hci0 bind /dev/rfcomm0 00:06:66:4A:23:C3 1 from "."
+         run  sudo ln -s /dev/rfcomm0 /dev/Sphero-RPB from "."
+</pre>
+                <h4>artoo bluetooth unbind &lt;bluetooth_address&gt; &lt;name&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  unbinds a bluetooth device from a serial port.
+                  <b>Notes:</b>
+                  You might need to provide root access.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth unbind 00:06:66:4A:23:C3 Sphero-RPB
+</pre>
+                <h4>artoo bluetooth connect &lt;name&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  connects a bluetooth device, that has been binded to a serial port, to a TCP socket using socat.
+                  <b>Notes:</b>
+                  You need to run `artoo bluetooth bind` before trying to connect using this command.
+                  Use the same name you use running `artoo bluetooth bind`.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth connect Sphero-RPB 6550
+         run  sudo chmod a+rw /dev/Sphero-RPB from "."
+socat by Gerhard Rieger - see www.dest-unreach.org
+socat version 1.7.1.3 on Jul 18 2013 09:16:59
+   running on Linux version #25-Ubuntu SMP Thu Jan 30 17:22:01 UTC 2014, release 3.11.0-15-generic, machine x86_64
+features:
+  #define WITH_STDIO 1
+  #define WITH_FDNUM 1
+  #define WITH_FILE 1
+  #define WITH_CREAT 1
+  #define WITH_GOPEN 1
+  #define WITH_TERMIOS 1
+  #define WITH_PIPE 1
+  #define WITH_UNIX 1
+  #define WITH_ABSTRACT_UNIXSOCKET 1
+  #define WITH_IP4 1
+  #define WITH_IP6 1
+  #define WITH_RAWIP 1
+  #define WITH_GENERICSOCKET 1
+  #define WITH_INTERFACE 1
+  #define WITH_TCP 1
+  #define WITH_UDP 1
+  #define WITH_SCTP 1
+  #define WITH_LISTEN 1
+  #define WITH_SOCKS4 1
+  #define WITH_SOCKS4A 1
+  #define WITH_PROXY 1
+  #define WITH_SYSTEM 1
+  #define WITH_EXEC 1
+  #undef WITH_READLINE
+  #define WITH_TUN 1
+  #define WITH_PTY 1
+  #define WITH_OPENSSL 1
+  #undef WITH_FIPS
+  #define WITH_LIBWRAP 1
+  #define WITH_SYCLS 1
+  #define WITH_FILAN 1
+  #define WITH_RETRY 1
+  #define WITH_MSGLEVEL 0 /*debug*/
+         run  socat -d -d FILE:/dev/Sphero-RPB,nonblock,raw,b57600,echo=0 TCP-LISTEN:6550,fork from "."
+2014/02/13 15:54:07 socat[6547] N opening character device "/dev/Sphero-RPB" for reading and writing
+2014/02/13 15:54:07 socat[6547] N listening on AF=2 0.0.0.0:6550
+</pre>
+                <h2>That's ok, but... are those all the commands available?</h2>
+                <p>
+                  Good you ask, and the answer is NO! Other Artoo modules include more commands that will prove very usuful and make your life
+                  easier when working in RobotOps, these will be made available for you when you install other Artoo gems, no
+                  extra work needed.
+                </p>
+                <h3>Ok, then show me more Artoo CLI commands.</h3>
+                <p>
+                  The following is a list of commands available to you when you install the artoo-arduino and artoo-digispark
+                  gems, after installing, run the `artoo` command again (the list also includes the default Artoo CLI commands).
+                </p>
+                <pre class="CodeRay">$ artoo
+Commands:
+  artoo bluetooth &lt;SUBCOMMAND&gt; ...ARGS    # Scans, pairs and Connects to a bluetooth device
+  artoo console ROBOT                     # Run a robot using the Robi console
+  artoo firmata SUBCOMMAND &lt;serial_port&gt;  # Installs avrdude and uploads firmata to the arduino
+  artoo generate &lt;SUBCOMMAND&gt; ...ARGS     # Generates a new robot or adaptor
+  artoo help [COMMAND]                    # Describe available commands or one specific command
+  artoo install &lt;SUBCOMMAND&gt; ...ARGS      # Installs utility programs, like socat
+  artoo littlewire SUBCOMMAND             # Uploads littlewire protocol to digispark
+  artoo scan &lt;type&gt; ...ARGS               # Installs utility programs
+  artoo start ROBOT                       # Run a robot
+  artoo version                           # Displays the current version
+</pre>
+                <h2>artoo-arudino CLI commands</h2>
+                <h3>artoo firmata &lt;subcommand&gt; [address]</h3>
+                <p>
+                  This command lets you install avrdude (needed to upload firmata to arduino)
+                  and upload the firmata protocol to arduino, that way you can connect and communicate
+                  with the arduino using Artoo.
+                </p>
+                <pre class="CodeRay">$ artoo firmata
+firmata commands:
+  artoo firmata help [COMMAND]    # Describe subcommands or one specific subcommand
+  artoo firmata install           # Install avrdude in order to be able to upload firmata to the arduino
+  artoo firmata upload [address]  # Uploads firmata to the arduino using avrdude
+</pre>
+                <h4>artoo firmata install</h4>
+                <p>
+                  <b>Description:</b>
+                  Installs avrdude so you can upload firmata to the arduino (sudo authorization might be needed).
+                </p>
+                <pre class="CodeRay">$ artoo firmata install
+Reading package lists...
+Building dependency tree...
+Reading state information...
+avrdude is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+</pre>
+                <h4>artoo firmata upload &lt;serial_port_address&gt;</h4>
+                <p>
+                  <b>Description:</b>
+                  Uploads the firmata protocol to the arduino.<br><b>Notes:</b>
+                  you must run `artoo firmata install` first.
+                  The serial port must have the correct permissions for your
+                  user to read and write, or run it as root (sudo it).
+                </p>
+                <pre class="CodeRay">$ artoo firmata upload /dev/ttyACM0
+run  avrdude -patmega328p -carduino -P/dev/ttyACM0 -b115200 -D -Uflash:w:/home/myuser/.rvm/gems/ruby-2.1.0@artoo/.artoo/commands/StandardFirmata.cpp.hex:i from "."
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: reading input file "/home/myuser/.rvm/gems/ruby-2.1.0@artoo/.artoo/commands/StandardFirmata.cpp.hex"
+avrdude: writing flash (11452 bytes):
+
+Writing | ################################################## | 100% 1.84s
+
+avrdude: 11452 bytes of flash written
+avrdude: verifying flash memory against /home/myuser/.rvm/gems/ruby-2.1.0@artoo/.artoo/commands/StandardFirmata.cpp.hex:
+avrdude: load data flash data from input file /home/myuser/.rvm/gems/ruby-2.1.0@artoo/.artoo/commands/StandardFirmata.cpp.hex:
+avrdude: input file /home/myuser/.rvm/gems/ruby-2.1.0@artoo/.artoo/commands/StandardFirmata.cpp.hex contains 11452 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 1.47s
+
+avrdude: verifying ...
+avrdude: 11452 bytes of flash verified
+
+avrdude: safemode: Fuses OK
+
+avrdude done.  Thank you.
+</pre>
+                <h2>artoo-digispark CLI commands</h2>
+                <h3>artoo littlewire &lt;subcommand&gt;</h3>
+                <p>
+                  In the same way that firmata lets you communicate with the arduino using Artoo, littlewire lets you communicate
+                  with the digispark, it is a communication protocol/firmware that can easily be uploaded to the digispark using Artoo.
+                  Let's check the CLI commands.
+                </p>
+                <pre class="CodeRay">$ artoo littlewire
+littlewire commands:
+  artoo littlewire help [COMMAND]  # Describe subcommands or one specific subcommand
+  artoo littlewire set-udev-rules  # Sets necessary udev-rules in linux systems
+  artoo littlewire upload          # Uploads littlewire to Digispark devices
+</pre>
+                <h4>artoo littlewire upload</h4>
+                <p>
+                  <b>Description:</b>
+                  Uploads littlewire to the digispark (also installs the necessary udev-rules, only in linux systems).
+                  <b>Notes:</b>
+                  Do not connect the digispark until prompted to do so.
+                </p>
+                <pre class="CodeRay">$ artoo littlewire upload
+---------------------------------------------------------------------------
+-- Greetings!
+-- This program is customised version of the micronucleus commandline app.
+-- You are about to install Little_Wire_v1.3 to your device!
+---------------------------------------------------------------------------
+
+&gt; Please plug in the device ...
+&gt; Press CTRL+C to terminate the program.
+&gt; Device is found!
+connecting: 40% complete
+&gt; Available space for user application: 6010 bytes
+&gt; Suggested sleep time between sending pages: 8ms
+&gt; Whole page count: 94
+&gt; Erase function sleep duration: 752ms
+parsing: 60% complete
+&gt; Erasing the memory ...
+erasing: 80% complete
+&gt; Starting to upload ...
+writing: 100% complete
+&gt;&gt; Micronucleus done. Thank you!
+&gt;&gt; Press enter to exit program ...
+</pre>
+                <h4>artoo littlewire set-udev-rules</h4>
+                <p>
+                  <b>Description:</b>
+                  Sets the udev-rules necessary to upload littlewire to the digispark in Linux systems.
+                </p>
+                <pre class="CodeRay">$ artoo littlewire set-udev-rules
+</pre>
+              </div>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

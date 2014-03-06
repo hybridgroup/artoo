@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -73,11 +73,14 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/arduino.jpg"><p>Arduino is an open-source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments.</p>
-                <p>
-                  For more info about the arduino platform click
-                  <a target="blank" href="http://arduino.cc/">here</a>.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/arduino.jpg"><div class="info_intro">
+                  <p>Arduino is an open-source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments.</p>
+                  <p>
+                    For more info about the arduino platform click
+                    <a target="blank" href="http://arduino.cc/">here</a>.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing artoo with arduino support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-arduino
@@ -201,46 +204,11 @@ work <span class="keyword">do</span>
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
                     <!-- / TODO: Update drivers list at the top of the page. -->
-                    <!-- /Drivers all -->
-                    <!-- // Analog Sensor -->
-                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/devices/analog-sensor.jpg"></a>
-                    <!-- // Button -->
-                    <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/devices/button.jpg"></a>
-                    <!-- / Continuous Servo -->
-                    <a class="device" href="/documentation/drivers/continuous_servo" title="Button">
-                      <img src="/images/devices/continuous_servo.jpg"></a>
-                    <!-- // LED -->
-                    <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/devices/LED.jpg"></a>
-                    <!-- // Makey Button -->
-                    <a class="device" href="/documentation/drivers/makey-button" title="Makey Button">
-                      <img src="/images/devices/makey-button.jpg"></a>
-                    <!-- // Maxbotix -->
-                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/devices/maxbotix.jpg"></a>
-                    <!-- // Motor -->
-                    <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/devices/motor.jpg"></a>
-                    <!-- // Servo -->
-                    <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/devices/servo.jpg"></a>
+                    
                   </div>
                   <h2>i2c Drivers</h2>
                   <div class="devices">
-                    <!-- // Blinkm -->
-                    <a class="device" href="/documentation/drivers/blinkm" title="Blinkm">
-                      <img src="/images/devices/blinkm.jpg"></a>
-                    <!-- // Hmc6352 Compass -->
-                    <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
-                      <img src="/images/devices/hmc6352-compass.jpg"></a>
-                    <!-- // Wiichuck -->
-                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/devices/wii-chuck.jpg"></a>
-                    <!-- // Wii Classic -->
-                    <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
-                      <img src="/images/devices/wii-classic-controller.jpg"></a>
+                    
                   </div>
                 </div>
               </section>

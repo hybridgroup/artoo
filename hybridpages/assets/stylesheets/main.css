@@ -28,7 +28,7 @@
           </div>
           <span class='menu'>
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -1333,7 +1333,7 @@
         .CodeRay .head .head {
           color: #f4f; }
         
-        /* line 2, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_grid.scss */
+        /* line 2, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_grid.scss */
         * {
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -1403,11 +1403,11 @@
           margin-left: auto;
           margin-right: auto;
           margin: 9px 0 15px 0; }
-          /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 18, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .app-header:before, .app-header:after {
             content: " ";
             display: table; }
-          /* line 23, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 23, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .app-header:after {
             clear: both; }
           /* line 19, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1422,7 +1422,7 @@
             margin-right: 2.35765%;
             width: 40.29137%;
             margin: -1px 0 0 0; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .app-header .display:last-child {
               margin-right: 0; }
           /* line 28, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1451,7 +1451,7 @@
             text-align: right;
             display: inline-block;
             margin: 13px 0 0 0; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .app-header .menu:last-child {
               margin-right: 0; }
             /* line 47, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1477,7 +1477,7 @@
                 margin-right: 2.35765%;
                 width: 48.82117%;
                 padding: 0; }
-                /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+                /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
                 .app-header .menu:last-child {
                   margin-right: 0; }
                 /* line 65, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1491,7 +1491,7 @@
               display: block;
               margin-right: 2.35765%;
               width: 48.82117%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .app-header .display:last-child {
                 margin-right: 0; } }
           @media only screen and (max-width: 767px) {
@@ -1513,7 +1513,7 @@
               width: 100%;
               text-align: center;
               margin: -1px 0 0; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .app-header .display:last-child {
                 margin-right: 0; }
             /* line 92, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1532,7 +1532,7 @@
               display: block;
               margin-right: 2.35765%;
               width: 100%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .app-header .menu:last-child {
                 margin-right: 0; }
               /* line 104, ../hybridpages/assets/stylesheets/shared/_headers.scss */
@@ -1581,11 +1581,11 @@
           max-width: 68em;
           margin-left: auto;
           margin-right: auto; }
-          /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 18, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .main[role="main"]:before, .main[role="main"]:after {
             content: " ";
             display: table; }
-          /* line 23, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 23, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .main[role="main"]:after {
             clear: both; }
           /* line 17, ../hybridpages/assets/stylesheets/layouts/_home.scss */
@@ -1595,7 +1595,7 @@
             margin-right: 2.35765%;
             width: 48.82117%;
             margin: .5%; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .main[role="main"] .videos .video:last-child {
               margin-right: 0; }
             /* line 20, ../hybridpages/assets/stylesheets/layouts/_home.scss */
@@ -1616,7 +1616,7 @@
                 display: block;
                 margin-right: 2.35765%;
                 width: 100%; }
-                /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+                /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
                 .main[role="main"] .videos .video:last-child {
                   margin-right: 0; }
                 /* line 34, ../hybridpages/assets/stylesheets/layouts/_home.scss */
@@ -1628,7 +1628,7 @@
             display: block;
             margin-right: 2.35765%;
             width: 82.94039%; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .main[role="main"] .videos .video_index:last-child {
               margin-right: 0; }
             /* line 41, ../hybridpages/assets/stylesheets/layouts/_home.scss */
@@ -1662,7 +1662,7 @@
             width: 23.23176%;
             padding-top: 0px;
             text-align: right; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .main[role="main"] .aside.right:last-child {
               margin-right: 0; }
             /* line 75, ../hybridpages/assets/stylesheets/layouts/_home.scss */
@@ -1678,7 +1678,7 @@
             /* line 9, ../hybridpages/assets/stylesheets/_mixins.scss */
             .main[role="main"] section.content .index_content:not(:last-child) {
               margin-bottom: 20px; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .main[role="main"] section.content .index_content:last-child {
               margin-right: 0; }
         
@@ -1689,11 +1689,11 @@
           margin-left: auto;
           margin-right: auto;
           text-align: center; }
-          /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 18, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .hardware .devices:before, .hardware .devices:after {
             content: " ";
             display: table; }
-          /* line 23, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 23, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .hardware .devices:after {
             clear: both; }
           /* line 5, ../hybridpages/assets/stylesheets/layouts/_hardware.scss */
@@ -1814,7 +1814,7 @@
           display: block;
           margin-right: 2.35765%;
           width: 74.41059%; }
-          /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+          /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
           .articles:last-child {
             margin-right: 0; }
           @media only screen and (max-width: 767px) {
@@ -1824,7 +1824,7 @@
               display: block;
               margin-right: 2.35765%;
               width: 100%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .articles:last-child {
                 margin-right: 0; } }
           @media only screen and (max-width: 767px) {
@@ -1910,7 +1910,7 @@
           display: block;
           margin-right: 2.35765%;
           width: 14.70196%; }
-          /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+          /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
           .categories:last-child, .network:last-child, .tweets:last-child {
             margin-right: 0; }
           @media only screen and (max-width: 767px) {
@@ -1920,7 +1920,7 @@
               display: block;
               margin-right: 2.35765%;
               width: 100%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .categories:last-child, .network:last-child, .tweets:last-child {
                 margin-right: 0; } }
           /* line 89, ../hybridpages/assets/stylesheets/elements/_blog.scss */
@@ -2028,21 +2028,30 @@
         .repository {
           margin-right: 10px; }
         
-        /* line 6, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 7, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        .documentation .intro .info_intro {
+          float: left;
+          width: 60%;
+          margin: 0; }
+          @media only screen and (max-width: 767px) {
+            /* line 7, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            .documentation .intro .info_intro {
+              width: 100%; } }
+        /* line 16, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .documentation .index {
           *zoom: 1;
           max-width: 68em;
           margin-left: auto;
           margin-right: auto;
           padding-left: 30px; }
-          /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 18, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .documentation .index:before, .documentation .index:after {
             content: " ";
             display: table; }
-          /* line 23, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+          /* line 23, ../../vendor/bundle/ruby/2.0.0/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
           .documentation .index:after {
             clear: both; }
-          /* line 10, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .documentation .index section {
             margin: 0 auto;
             float: left;
@@ -2053,84 +2062,88 @@
             height: 100px;
             margin-bottom: 20px;
             border-radius: 5px; }
-            /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+            /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
             .documentation .index section:last-child {
               margin-right: 0; }
             @media only screen and (max-width: 767px) {
-              /* line 10, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+              /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
               .documentation .index section {
                 float: left;
                 display: block;
                 margin-right: 2.35765%;
                 width: 100%; }
-                /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+                /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
                 .documentation .index section:last-child {
                   margin-right: 0; } }
-            /* line 20, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 30, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .documentation .index section a {
               width: 100%;
               height: 100%;
               padding: 10px;
               display: block; }
-            /* line 27, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 37, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .documentation .index section:hover {
               background: #026a96; }
-            /* line 31, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 41, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .documentation .index section .title {
               color: #E0EFF5;
               font-weight: bold; }
-            /* line 36, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 46, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .documentation .index section .description {
               color: #A7C6D5; }
         
-        /* line 44, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 54, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .documentation {
           float: left;
           display: block;
           margin-right: 2.35765%;
           width: 100%; }
-          /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+          /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
           .documentation:last-child {
             margin-right: 0; }
-          /* line 46, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 56, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .documentation .index {
             padding: 0 0 0 8px; }
-            /* line 48, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 58, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .documentation .index li {
               margin: 8px 0; }
-          /* line 52, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 62, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .documentation .link {
             font-size: 20px; }
-          /* line 55, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 65, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .documentation .description {
             color: gray;
             font-size: 14px;
             line-height: 21px;
             margin: 10px; }
-          /* line 61, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 71, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .documentation .display {
-            width: 300px;
+            width: 35%;
             float: right;
             border: 1px solid rgba(39, 125, 172, 0.14);
             margin: 0 0 19px 20px; }
+            @media only screen and (max-width: 767px) {
+              /* line 71, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+              .documentation .display {
+                width: 100%; } }
         
-        /* line 70, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 83, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .circuit .image_circuit {
           width: 50%;
           float: left; }
-          /* line 73, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 86, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .circuit .image_circuit img {
             height: 300px; }
-        /* line 77, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 90, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .circuit .description_circuit {
           width: 50%;
           float: right; }
         
-        /* line 83, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 96, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands {
           background: white;
           font-size: 10.5pt; }
-          /* line 86, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 99, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .commands span {
             font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
             font-size: 14px;
@@ -2139,62 +2152,83 @@
             border: 1px solid #ccc;
             color: #444;
             padding: 5px; }
-          /* line 95, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 108, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .commands th {
             background: #bc2a1b;
             color: white; }
-          /* line 99, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 112, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .commands td {
             border-bottom: 1px solid #d4d4d4; }
-          /* line 102, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 115, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .commands .command {
             font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
             font-weight: bold;
             font-size: 11pt; }
-          /* line 109, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 122, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .commands .param .markdown span {
             background: none;
             border: none;
             padding: 0; }
         
-        /* line 118, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 131, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .clear {
           clear: both; }
         
-        /* line 122, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 135, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .image-size-300 {
           width: 200px; }
         
-        /* line 127, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 140, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api h2 {
           background: #bc2a1b;
           color: white !important;
           padding: 5px 10px;
           font-size: 12pt;
           margin: 20px 0 0 0; }
-        /* line 135, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 148, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        .commands_api span {
+          font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace;
+          font-size: 14px;
+          line-height: 21px;
+          background: #fafafa;
+          border: 1px solid #ccc;
+          color: #444;
+          padding: 5px;
+          border-radius: 2px; }
+        /* line 158, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api h4 {
           background: transparent;
           font-size: 11pt;
           font-weight: normal; }
-        /* line 140, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 163, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api h5 {
           background: white;
           padding: 10px;
           margin: 0;
           font-size: 11pt; }
-        /* line 146, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 169, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        .commands_api h3 {
+          background: white;
+          padding: 10px;
+          margin: 0;
+          font-size: 11pt;
+          color: #bc2a1b; }
+        /* line 176, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        .commands_api pre {
+          background: white;
+          margin: 0; }
+        /* line 180, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api p, .commands_api ul {
           background: white;
           font-size: 10.5pt;
           margin: 0;
           padding: 10px;
           font-family: Inconsolata,Menlo,Monaco,"Bitstream Vera Sans Mono","Courier New",monospace; }
-        /* line 153, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 187, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .commands_api li {
           margin-left: 20px; }
         
-        /* line 159, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 193, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods dt {
           font-weight: bold;
           background: white;
@@ -2204,47 +2238,47 @@
           font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
           font-size: 17px;
           border: aliceblue; }
-        /* line 169, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 203, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods dd {
           margin-bottom: 29px;
           padding-left: 10px; }
-        /* line 173, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 207, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .methods li {
           font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace; }
         
-        /* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+        /* line 212, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
         .colors {
           float: left;
           display: block;
           margin-right: 2.35765%;
           width: 23.23176%; }
-          /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+          /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
           .colors:last-child {
             margin-right: 0; }
           @media only screen and (min-width: 767px) and (max-width: 964px) {
-            /* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 212, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors {
               float: left;
               display: block;
               margin-right: 2.35765%;
               width: 23.23176%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .colors:last-child {
                 margin-right: 0; }
-              /* line 182, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+              /* line 216, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
               .colors p {
                 font-size: 10px; } }
           @media only screen and (max-width: 767px) {
-            /* line 178, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 212, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors {
               float: left;
               display: block;
               margin-right: 2.35765%;
               width: 100%; }
-              /* line 40, ../../../../../.rvm/gems/ruby-2.0.0-p247@artoo-io/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
+              /* line 40, ../../vendor/bundle/ruby/2.0.0/gems/neat-1.5.0/app/assets/stylesheets/grid/_span-columns.scss */
               .colors:last-child {
                 margin-right: 0; } }
-          /* line 191, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 225, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .colors dt {
             font-weight: bold;
             padding: 5px;
@@ -2253,11 +2287,11 @@
             font-size: 15px;
             border: aliceblue;
             margin-top: 15px; }
-          /* line 200, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+          /* line 234, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
           .colors dd {
             margin-bottom: 20px;
             display: block; }
-            /* line 203, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
+            /* line 237, ../hybridpages/assets/stylesheets/elements/_documentation.scss */
             .colors dd p {
               margin: 0;
               line-height: 50px; }

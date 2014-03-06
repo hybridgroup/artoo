@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -73,11 +73,14 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/raspi.jpg"><p>The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital &amp; PWM GPIO, and i2c interfaces built in.</p>
-                <p>
-                  For more info about the Raspberry Pi platform go to
-                  <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/raspi.jpg"><div class="info_intro">
+                  <p>The Raspberry Pi is an inexpensive and popular ARM based single board computer with digital &amp; PWM GPIO, and i2c interfaces built in.</p>
+                  <p>
+                    For more info about the Raspberry Pi platform go to
+                    <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>If you do not have ruby installed, you'll need to do that first.</p>
                 <p>Then install the artoo-raspi gem:</p>
@@ -129,7 +132,6 @@ i2c-dev
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
                     <!-- / TODO: Update drivers list at the top of the page. -->
-                    <!-- /Drivers all -->
                     <!-- // Button -->
                     <a class="device" href="/documentation/drivers/button" title="Button">
                       <img src="/images/devices/button.jpg"></a>
@@ -157,12 +159,12 @@ i2c-dev
                     <!-- // Hmc6352 Compass -->
                     <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
                       <img src="/images/devices/hmc6352-compass.jpg"></a>
-                    <!-- // Wiichuck -->
-                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/devices/wii-chuck.jpg"></a>
                     <!-- // Wii Classic -->
                     <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
                       <img src="/images/devices/wii-classic-controller.jpg"></a>
+                    <!-- // Wiichuck -->
+                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
+                      <img src="/images/devices/wiichuck.jpg"></a>
                   </div>
                 </div>
               </section>

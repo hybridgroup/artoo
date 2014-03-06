@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -73,24 +73,27 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><p>
-                  This repository contains the Artoo
-                  <a target="blank" href="http://artoo.io/">(http://artoo.io/)</a>
-                  adaptor for the Spark core device
-                  <a target="blank" href="http://spark.io">(http://spark.io) </a>
-                  using the built-in Tinker protocol.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><div class="info_intro">
+                  <p>
+                    This repository contains the Artoo
+                    <a target="blank" href="http://artoo.io/">(http://artoo.io/)</a>
+                    adaptor for the Spark core device
+                    <a target="blank" href="http://spark.io">(http://spark.io) </a>
+                    using the built-in Tinker protocol.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing artoo with spark support is pretty easy.</p>
                 <pre class="CodeRay">gem install artoo-spark
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <p>You will need to have a Spark device, and an access token from a registered Spark account.</p>
+                <p>You will need to have a Spark device, it's device ID (found via the build tool on Spark's website), and an access token from a registered Spark account.</p>
                 <h2>Using</h2>
                 <p>This small program lets you turn on or off a LED for every 1 sec.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:spark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:spark</span>, <span class="symbol">:access_token</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">XYZABC123</span><span class="delimiter">'</span></span>
+connection <span class="symbol">:spark</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:spark</span>, <span class="symbol">:access_token</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">XYZABC123</span><span class="delimiter">'</span></span>, <span class="symbol">:device_id</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">123ABC456</span><span class="delimiter">'</span></span>
 device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">D0</span><span class="delimiter">'</span></span>
 
 work <span class="keyword">do</span>
@@ -107,7 +110,6 @@ work <span class="keyword">do</span>
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
                     
-                    <!-- /Drivers all -->
                     <!-- // Analog Sensor -->
                     <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
                       <img src="/images/devices/analog-sensor.jpg"></a>

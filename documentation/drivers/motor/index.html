@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -73,8 +73,13 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/motor.jpg"><p>
-              </p></section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
+              <section class="intro"><img class="display" src="/images/devices/motor.jpg"><div class="info_intro">
+                  <p>
+                    Provides motor manipulation tools for artoo like on/off, speed modulation using PWM, use of bidirectional motors using forward/backward pins.
+                  </p>
+                </div>
+                <div class="clear"></div>
+              </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
                 <h3>For Arduino:</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
@@ -161,168 +166,168 @@ work <span class="keyword">do</span>
 </pre>
               </section><section class="public-methods"><div class="commands_api" id="Commands">
                   <h1 id="commands">Commands</h1>
-                    
-                    <h2 id="stop">stop</h2>
-                    
-                    <p>Stops the motor.</p>
-                    
-                    <h5 id="params">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="start">start</h2>
-                    
-                    <p>Starts the motor.</p>
-                    
-                    <h5 id="params-1">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-1">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="on">on?</h2>
-                    
-                    <p>Returns true if the motor is on, otherwise returns false.</p>
-                    
-                    <h5 id="params-2">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-2">Returns</h5>
-                    
-                    <p><code>true or false</code></p>
-                    
-                    <h2 id="off">off?</h2>
-                    
-                    <p>Returns true if the motor is off, otherwise returns false.</p>
-                    
-                    <h5 id="params-3">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-3">Returns</h5>
-                    
-                    <p><code>true or false</code></p>
-                    
-                    <h2 id="toggle">toggle</h2>
-                    
-                    <p>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</p>
-                    
-                    <h5 id="params-4">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-4">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="speedspeedvalue">speed(speed_value)</h2>
-                    
-                    <p>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between <code>0</code> and <code>255</code>.</p>
-                    
-                    <h5 id="params-5">Params</h5>
-                    
-                    <ul>
+                  
+                  <h2 id="stop">stop</h2>
+                  
+                  <p>Stops the motor.</p>
+                  
+                  <h5 id="params">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns">Returns</h5>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Starts the motor.</p>
+                  
+                  <h5 id="params-1">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-1">Returns</h5>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="on">on?</h2>
+                  
+                  <p>Returns true if the motor is on, otherwise returns false.</p>
+                  
+                  <h5 id="params-2">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-2">Returns</h5>
+                  
+                  <p><code>true or false</code></p>
+                  
+                  <h2 id="off">off?</h2>
+                  
+                  <p>Returns true if the motor is off, otherwise returns false.</p>
+                  
+                  <h5 id="params-3">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-3">Returns</h5>
+                  
+                  <p><code>true or false</code></p>
+                  
+                  <h2 id="toggle">toggle</h2>
+                  
+                  <p>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</p>
+                  
+                  <h5 id="params-4">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-4">Returns</h5>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="speedspeedvalue">speed(speed_value)</h2>
+                  
+                  <p>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between <code>0</code> and <code>255</code>.</p>
+                  
+                  <h5 id="params-5">Params</h5>
+                  
+                  <ul>
 <li>
 <strong>speed_value</strong> - params, the speed value</li>
-                    </ul>
+                  </ul>
 <h5 id="returns-5">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="min">min</h2>
-                    
-                    <p>Stops the motor, sets the speed to <code>0</code>.</p>
-                    
-                    <h5 id="params-6">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-6">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="max">max</h2>
-                    
-                    <p>Starts the motor at max speed, sets the speed to <code>255</code>.</p>
-                    
-                    <h5 id="params-7">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-7">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="forwardspeed">forward(speed)</h2>
-                    
-                    <p>Starts the motor in forward direction at the provided speed.</p>
-                    
-                    <h5 id="params-8">Params</h5>
-                    
-                    <ul>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="min">min</h2>
+                  
+                  <p>Stops the motor, sets the speed to <code>0</code>.</p>
+                  
+                  <h5 id="params-6">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-6">Returns</h5>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="max">max</h2>
+                  
+                  <p>Starts the motor at max speed, sets the speed to <code>255</code>.</p>
+                  
+                  <h5 id="params-7">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-7">Returns</h5>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="forwardspeed">forward(speed)</h2>
+                  
+                  <p>Starts the motor in forward direction at the provided speed.</p>
+                  
+                  <h5 id="params-8">Params</h5>
+                  
+                  <ul>
 <li>
 <strong>speed</strong> - params, the speed value</li>
-                    </ul>
+                  </ul>
 <h5 id="returns-8">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="backwardspeed">backward(speed)</h2>
-                    
-                    <p>Starts the motor in backward direction at the provided speed.</p>
-                    
-                    <h5 id="params-9">Params</h5>
-                    
-                    <ul>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="backwardspeed">backward(speed)</h2>
+                  
+                  <p>Starts the motor in backward direction at the provided speed.</p>
+                  
+                  <h5 id="params-9">Params</h5>
+                  
+                  <ul>
 <li>
 <strong>speed</strong> - params, the speed value</li>
-                    </ul>
+                  </ul>
 <h5 id="returns-9">Returns</h5>
-                    
-                    <p><code>true or nil</code></p>
-                    
-                    <h2 id="forward">forward?</h2>
-                    
-                    <p>Returns true if the motor is direction is set to forward, otherwise false.</p>
-                    
-                    <h5 id="params-10">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-10">Returns</h5>
-                    
-                    <p><code>true or false</code></p>
-                    
-                    <h2 id="backward">backward?</h2>
-                    
-                    <p>Returns true if the motor is direction is set to backward, otherwise false.</p>
-                    
-                    <h5 id="params-11">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-11">Returns</h5>
-                    
-                    <p><code>true or false</code></p>
-                    
-                    <h2 id="currentspeed">current_speed</h2>
-                    
-                    <p>Returns the current speed of the motor as an integer between <code>0</code> and <code>255</code>.</p>
-                    
-                    <h5 id="params-12">Params</h5>
-                    
-                    <p><code>no params</code></p>
-                    
-                    <h5 id="returns-12">Returns</h5>
-                    
-                    <p><code>speed</code></p>
+                  
+                  <p><code>true or nil</code></p>
+                  
+                  <h2 id="forward">forward?</h2>
+                  
+                  <p>Returns true if the motor is direction is set to forward, otherwise false.</p>
+                  
+                  <h5 id="params-10">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-10">Returns</h5>
+                  
+                  <p><code>true or false</code></p>
+                  
+                  <h2 id="backward">backward?</h2>
+                  
+                  <p>Returns true if the motor is direction is set to backward, otherwise false.</p>
+                  
+                  <h5 id="params-11">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-11">Returns</h5>
+                  
+                  <p><code>true or false</code></p>
+                  
+                  <h2 id="currentspeed">current_speed</h2>
+                  
+                  <p>Returns the current speed of the motor as an integer between <code>0</code> and <code>255</code>.</p>
+                  
+                  <h5 id="params-12">Params</h5>
+                  
+                  <p><code>no params</code></p>
+                  
+                  <h5 id="returns-12">Returns</h5>
+                  
+                  <p><code>speed</code></p>
                 </div>
               </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
                 <div class="description_circuit">
@@ -344,22 +349,22 @@ work <span class="keyword">do</span>
                 
                 <div class="devices">
                   <!-- /Platforms All -->
-                    <!-- /Platforms Parts -->
-                    <!-- // Arduino -->
-                    <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                      <img src="/images/devices/arduino.jpg"></a>
-                    <!-- // Beaglebone -->
-                    <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                      <img src="/images/devices/beaglebone.jpg"></a>
-                    <!-- // Analog Sensor -->
-                    <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                      <img src="/images/devices/digispark.jpg"></a>
-                    <!-- // Raspberry Pi -->
-                    <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                      <img src="/images/devices/raspi.jpg"></a>
-                    <!-- // Spark -->
-                    <a class="device" href="/documentation/platforms/spark" title="Spark">
-                      <img src="/images/devices/spark.jpg"></a>
+                  <!-- /Platforms Parts -->
+                  <!-- // Arduino -->
+                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
+                    <img src="/images/devices/arduino.jpg"></a>
+                  <!-- // Beaglebone -->
+                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
+                    <img src="/images/devices/beaglebone.jpg"></a>
+                  <!-- // Analog Sensor -->
+                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
+                    <img src="/images/devices/digispark.jpg"></a>
+                  <!-- // Raspberry Pi -->
+                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
+                    <img src="/images/devices/raspi.jpg"></a>
+                  <!-- // Spark -->
+                  <a class="device" href="/documentation/platforms/spark" title="Spark">
+                    <img src="/images/devices/spark.jpg"></a>
                 </div>
               </section>
 </div>

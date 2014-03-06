@@ -47,7 +47,7 @@
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
-            <a href="/hardware" class="item">Hardware</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
             <a href="/videos" class="item">Videos</a>
             <a href="/blog" class="item">Blog</a>
             <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
@@ -73,11 +73,14 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/digispark.jpg"><p>The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller, and a bit less powerful. With a whole host of shields to extend its functionality and the ability to use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when an Arduino is too big or too much.</p>
-                <p>
-                  For more info about the Digispark platform click
-                  <a target="blank" href="http://digistump.com/category/1">here</a>.
-                </p>
+              <section class="intro"><img class="display" src="/images/devices/digispark.jpg"><div class="info_intro">
+                  <p>The Digispark is an Attiny85 based microcontroller development board similar to the Arduino line, only cheaper, smaller, and a bit less powerful. With a whole host of shields to extend its functionality and the ability to use the familiar Arduino IDE the Digispark is a great way to jump into electronics, or perfect for when an Arduino is too big or too much.</p>
+                  <p>
+                    For more info about the Digispark platform click
+                    <a target="blank" href="http://digistump.com/category/1">here</a>.
+                  </p>
+                </div>
+                <div class="clear"></div>
               </section><section class="how-to" id="HowToInstall"><h2>How To Install</h2>
                 <p>Installing artoo with digispark support is pretty easy using ruby gems.</p>
                 <pre class="CodeRay">gem install artoo-digispark
@@ -202,7 +205,6 @@ work <span class="keyword">do</span>
                   
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
-                    <!-- /Drivers all -->
                     <!-- // Analog Sensor -->
                     <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
                       <img src="/images/devices/analog-sensor.jpg"></a>
@@ -236,12 +238,12 @@ work <span class="keyword">do</span>
                     <!-- // Hmc6352 Compass -->
                     <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
                       <img src="/images/devices/hmc6352-compass.jpg"></a>
-                    <!-- // Wiichuck -->
-                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/devices/wii-chuck.jpg"></a>
                     <!-- // Wii Classic -->
                     <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
                       <img src="/images/devices/wii-classic-controller.jpg"></a>
+                    <!-- // Wiichuck -->
+                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
+                      <img src="/images/devices/wiichuck.jpg"></a>
                   </div>
                 </div>
               </section>
