@@ -3,11 +3,12 @@ require 'rubygems'
 require 'thor'
 require 'thor/group'
 require 'artoo/robot'
-require 'artoo/commands/commands'
 require 'artoo/commands/generate'
-require 'artoo/commands/bluetooth'
+require 'artoo/commands/commands'
 require 'artoo/commands/install'
 require 'artoo/commands/scan'
+require 'artoo/commands/socket'
+require 'artoo/commands/bluetooth'
 
 Celluloid.logger = nil
 
