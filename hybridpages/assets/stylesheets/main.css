@@ -1705,15 +1705,46 @@
               width: 100%; }
         
         /* line 1, ../hybridpages/assets/stylesheets/elements/_home.scss */
+        .homepage_platform {
+          list-style: none !important;
+          margin: 0; }
+          /* line 4, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          .homepage_platform li {
+            float: left;
+            width: 25%;
+            padding: 10px;
+            text-align: center; }
+            @media only screen and (max-width: 767px) {
+              /* line 4, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              .homepage_platform li {
+                width: 100%;
+                float: none; } }
+            /* line 13, ../hybridpages/assets/stylesheets/elements/_home.scss */
+            .homepage_platform li .title {
+              background: #bc2a1b;
+              padding: 10px;
+              color: #f1f7fa; }
+              /* line 17, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              .homepage_platform li .title a {
+                color: #f1f7fa; }
+            /* line 21, ../hybridpages/assets/stylesheets/elements/_home.scss */
+            .homepage_platform li .repo {
+              background: #bfd5e2;
+              padding: 10px; }
+              /* line 24, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              .homepage_platform li .repo a {
+                color: #f1f7fa; }
+        
+        /* line 32, ../hybridpages/assets/stylesheets/elements/_home.scss */
         .hero {
           margin: 15px 0 0 0;
           background: #277dac;
           padding: 25px 0; }
           @media only screen and (max-width: 767px) {
-            /* line 1, ../hybridpages/assets/stylesheets/elements/_home.scss */
+            /* line 32, ../hybridpages/assets/stylesheets/elements/_home.scss */
             .hero {
               margin-top: -8px; } }
-          /* line 9, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 40, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .hero .title {
             font-family: "Montserrat", sans-serif;
             font-weight: 700;
@@ -1725,20 +1756,20 @@
             opacity: 0.94;
             margin: 0; }
             @media only screen and (max-width: 767px) {
-              /* line 9, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              /* line 40, ../hybridpages/assets/stylesheets/elements/_home.scss */
               .hero .title {
                 font-size: 23px;
                 line-height: 27px;
                 padding: 0; }
-                /* line 20, ../hybridpages/assets/stylesheets/elements/_home.scss */
+                /* line 51, ../hybridpages/assets/stylesheets/elements/_home.scss */
                 .hero .title br {
                   display: none; } }
             @media only screen and (min-width: 767px) and (max-width: 964px) {
-              /* line 9, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              /* line 40, ../hybridpages/assets/stylesheets/elements/_home.scss */
               .hero .title {
                 font-size: 33px;
                 line-height: 42px; } }
-          /* line 30, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 61, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .hero .subtitle {
             font-family: "Montserrat", sans-serif;
             font-weight: 700;
@@ -1750,61 +1781,61 @@
             line-height: 36px;
             margin-top: 3px; }
             @media only screen and (max-width: 767px) {
-              /* line 30, ../hybridpages/assets/stylesheets/elements/_home.scss */
+              /* line 61, ../hybridpages/assets/stylesheets/elements/_home.scss */
               .hero .subtitle {
                 font-size: 18px;
                 line-height: 22px;
                 margin-top: 4px;
                 padding: 0; } }
         
-        /* line 49, ../hybridpages/assets/stylesheets/elements/_home.scss */
+        /* line 80, ../hybridpages/assets/stylesheets/elements/_home.scss */
         .social {
           line-height: 0;
           padding: 10px 0;
           background: #fdfcf5; }
-          /* line 53, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 84, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .social .twitter-follow-button {
             vertical-align: top; }
-          /* line 56, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 87, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .social .splitter {
             display: inline-block;
             height: 21px; }
           @media only screen and (max-width: 767px) {
-            /* line 61, ../hybridpages/assets/stylesheets/elements/_home.scss */
+            /* line 92, ../hybridpages/assets/stylesheets/elements/_home.scss */
             .social .splitter {
               display: block;
               margin-bottom: 5px; } }
         
-        /* line 68, ../hybridpages/assets/stylesheets/elements/_home.scss */
+        /* line 99, ../hybridpages/assets/stylesheets/elements/_home.scss */
         .cta, .hero a.cta {
           padding: 10px 20px;
           display: inline-block;
           margin: 17px 0 0 0;
           font-size: 19px;
           font-weight: bold; }
-          /* line 74, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 105, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .cta, .hero a.cta, .cta:visited, .hero a.cta:visited, .cta:active, .hero a.cta:active {
             background: #7aa75d;
             color: #fffbda; }
-          /* line 78, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 109, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .cta:hover, .hero a.cta:hover, .cta:focus, .hero a.cta:focus {
             background: #5c893f;
             color: white; }
           @media only screen and (max-width: 767px) {
-            /* line 68, ../hybridpages/assets/stylesheets/elements/_home.scss */
+            /* line 99, ../hybridpages/assets/stylesheets/elements/_home.scss */
             .cta, .hero a.cta {
               font-size: 16px;
               padding: 8px 15px; } }
         
-        /* line 94, ../hybridpages/assets/stylesheets/elements/_home.scss */
+        /* line 125, ../hybridpages/assets/stylesheets/elements/_home.scss */
         .catcher {
           margin: 0 0 38px 0;
           background: #fdfcf5;
           padding: 20px; }
-          /* line 98, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 129, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .catcher .phrase {
             margin: 0; }
-          /* line 101, ../hybridpages/assets/stylesheets/elements/_home.scss */
+          /* line 132, ../hybridpages/assets/stylesheets/elements/_home.scss */
           .catcher .cta, .catcher .hero a.cta, .hero .catcher a.cta {
             margin-top: 8px; }
         
