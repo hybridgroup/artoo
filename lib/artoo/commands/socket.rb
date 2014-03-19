@@ -2,8 +2,12 @@ module Artoo
   module Commands
     class Socket < Commands
 
-      def connect(name, port, retries, baudrate)
-        attempts = 1 + retries.to_i
+      desc "connect [NAME] [PORT]", "Connect a serial device to a TCP socket using socat"
+      option :retries, :aliases => "-r", :default => 0, :desc => "Number of times to retry connecting on failure"
+      option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
+      def connect(name, port, retries = nil, baudrate = nil)
+        retries |= (1 + options[:retries].to_i)
+        baudrate |= options[:baudrate].to_i
 
         # check that Socat is installed
         system("socat -V &> /dev/null")
@@ -17,17 +21,17 @@ module Artoo
         when :linux
           run("sudo chmod a+rw /dev/#{name}")
 
-          while(attempts > 0) do
+          while(retries > 0) do
             run("socat -d -d FILE:/dev/#{name},nonblock,raw,b#{ baudrate },echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
-            attempts -= 1
+            retries -= 1
           end
 
         when :macosx
-          while(attempts > 0) do
+          while(retries > 0) do
             run("socat -d -d -b#{ baudrate } FILE:/dev/#{name},nonblock,raw,echo=0 TCP-LISTEN:#{port},fork")
             break unless $? == 1
-            attempts -= 1
+            retries -= 1
           end
 
         else
