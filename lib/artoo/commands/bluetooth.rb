@@ -43,10 +43,7 @@ module Artoo
       option :retries, :aliases => "-r", :default => 0, :desc => "Number of times to retry connecting on failure"
       option :baudrate, :aliases => "-b", :default => 57600, :desc => "Baud rate to use to connect to the serial device"
       def connect(name, port)
-        retries = 1 + options[:retries].to_i
-        baudrate = options[:baudrate].to_i
-
-        Artoo::Commands::Socket.new().connect(name, port, retries, baudrate)
+        Artoo::Commands::Socket.new().connect(name, port, options[:retries], options[:baudrate])
       end
 
       desc "pair [ADDRESS]", "Pairs a Bluetooth device"
