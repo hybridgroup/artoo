@@ -49,16 +49,16 @@ raspberry_platform: true
         end
 
 %section.public-methods
-  .commands_api#Commands
+  .commands-api#Commands
     = partial "/documentation/drivers/partials/i2c/commands_hmc"
-  .commands_api#Events
+  .commands-api#Events
     = partial "/documentation/drivers/partials/i2c/events_hmc"
 
 %section.circuit#Circuit
   %h2 Circuit
-  .description_circuit
+  .description-circuit
     %p 
-  .image_circuit 
+  .image-circuit 
     %img{:src => "/documentation/drivers/breadboards/i2c/hmc6352_bb.png", :alt => ""}/ 
   .clear 
   
