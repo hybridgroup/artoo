@@ -94,12 +94,12 @@ makey_driver: true
         $ artoo littlewire upload
 
   %p
-    Once plugged in, use the `artoo connect scan` command with the  `-t usb`
-    option to verify your connection info:
+    Once plugged in, use the `artoo scan serial` command
+    to verify your connection info:
 
   :markdown
         :::bash
-        $ artoo connect scan -t usb
+        $ artoo scan usb
 
   %p
     Now use the `ID` info returned to find the `product` and `vendor` ID's
@@ -115,7 +115,7 @@ makey_driver: true
     %li
       Add a udev rule to allow access to the Digispark device (Do not worry
       about this, the `artoo littlewire upload` command does it for you if none is detected)
-    %li Plug in the Digispark to the USB port
+    %li Upload the Littlewire protocol to the digispark
     %li Connect to the device via Artoo
 
   %h4 DO NOT plug in the Digispark to your computer's USB port until prompted.
@@ -128,7 +128,7 @@ makey_driver: true
 
   %p
     After installing the artoo-digispark gem run the following command to
-    upload littlewire to the digispark, plug it to a USB port when
+    upload littlewire to the digispark, do NOT plug it to a USB port until
     prompted, you might be asked to enter your sudo password, since
     uploading littlewire to the digispark requires some new udev rules, you
     can check and review them in /etc/udev/rules.d/49-micronucleus.rules
@@ -139,12 +139,12 @@ makey_driver: true
         $ artoo littlewire upload
 
   %p
-    Once plugged in, use the `artoo connect scan` command with the `-t usb`
-    option to verify your connection info:
+    Once plugged in, use the `artoo scan usb` command
+    to verify your connection info:
 
   :markdown
         :::bash
-        $ artoo connect scan -t usb
+        $ artoo scan usb
 
   %p
     Now use the `ID` info returned to find the `product` and `vendor` ID's
