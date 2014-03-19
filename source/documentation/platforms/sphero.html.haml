@@ -64,33 +64,46 @@ sphero_driver: true
   %p Once paired, use the "artoo connect scan" command to find out your connection info:
   :markdown
         :::bash
-        $ artoo connect scan
+        $ artoo bluetooth scan
   %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
   :markdown
         :::bash
-        artoo connect serial Sphero-WRW 8023
+        artoo bluetooth connect Sphero-WRW 8023
   %h3 Ubuntu
   %p The main steps are:
   %ul
+    %li Find out the sphero bluetooth address
     %li Pair your computer and the Sphero
     %li Map your device to a unix port
     %li Use a socket to serial connection to map a TCP socket to the local unix port
     %li Connect to the device via Artoo
-  %p   First pair your computer and Sphero. You might be prompted for a passcode, but you do not need to enter it, sinec the Sphero does not check.
-  %p Once paired, use the artoo connect scan command to find out your connection info:
+  %p
+    First pair your computer and Sphero. We do this by finding the sphero bluetooth address
+    and then running the `artoo bluetooth pair` command, you might be prompted to confirm a passcode,
+    just accept whatever passcode prompted.
   :markdown
         :::bash
-        $ artoo connect scan
+        $ artoo bluetooth scan
         Scanning ...
           00:06:66:4A:14:99 Sphero-WRW
-  %p Next, you need to bind the Sphero to the system port. In the above example, /dev/Sphero-WRW. The easiest way to do this is to use the artoo connect bind command:
+  %p
+    After finding the bluetooth address, we pair the device with the computer.
+    The easiest way to do this is to use the `artoo bluetooth pair` command:
   :markdown
         :::bash
-        artoo connect bind 00:06:66:4A:14:99 Sphero-WRW
+        artoo bluetooth pair 00:06:66:4A:14:99
+
+  %p
+    Next, you need to bind the Sphero to the system serial port. In the above
+    example, /dev/Sphero-WRW. Use the `artoo bluetooth bind` command:
+  :markdown
+        :::bash
+        artoo bluetooth bind 00:06:66:4A:14:99 Sphero-WRW
+
   %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
   :markdown
         :::bash
-        artoo connect serial Sphero-WRW 8023
+        artoo bluetooth connect Sphero-WRW 8023
 
 %section.drivers#Drivers
   %h2 Drivers
