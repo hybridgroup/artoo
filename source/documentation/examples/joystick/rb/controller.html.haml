@@ -1,0 +1,27 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - controller"
+page_title: "Example: controller"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-joystick/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :joystick, :adaptor => :joystick
+        device :controller, :driver => :joystick, :connection => :joystick, :interval => 0.1
+
+        work do
+          on controller, :joystick => proc { |*value|
+            puts "joystick \#{value[1][:s]} x:\#{value[1][:x]} y:\#{value[1][:y]}"
+          }
+          on controller, :button => proc { |*value|
+            puts "button \#{value[1]}"
+          }
+        end
+

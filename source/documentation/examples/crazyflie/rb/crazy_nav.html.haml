@@ -1,0 +1,27 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - crazy_nav"
+page_title: "Example: crazy_nav"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :crazyflie, :adaptor => :crazyflie
+        device :drone, :driver => :crazyflie_nav, :connection => :crazyflie
+
+        work do
+          drone.log_value("stabilizer.pitch")  
+          drone.start_logging
+
+          every(1.seconds) {
+            puts drone.log
+          }
+        end
+

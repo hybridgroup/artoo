@@ -1,0 +1,29 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - hello"
+page_title: "Example: hello"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :loop
+
+        name "Johnny"
+
+        work do
+          every(3.seconds) do
+            puts "Hello. My name is \#{name}."
+          end
+
+          after(10.seconds) do
+            puts "Wow."
+          end
+        end
+

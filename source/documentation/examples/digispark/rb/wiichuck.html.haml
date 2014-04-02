@@ -1,0 +1,32 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - wiichuck"
+page_title: "Example: wiichuck"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-digispark/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'littlewire'
+        require 'artoo'
+
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :board, :driver => :device_info
+        device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
+
+        work do
+          on wiichuck, :c_button => proc { puts "c button pressed!" }
+          on wiichuck, :z_button => proc { puts "z button pressed!" }
+          on wiichuck, :joystick => proc { |*value|
+            puts "joystick x: \#{value[1][:x]}, y: \#{value[1][:y]}"
+          }
+
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmware version: \#{board.version}"
+        end
+
+

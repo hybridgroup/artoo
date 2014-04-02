@@ -1,0 +1,24 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - crazy_hop"
+page_title: "Example: crazy_hop"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :crazyflie, :adaptor => :crazyflie
+        device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
+
+        work do
+          drone.take_off
+          
+          after(1.seconds) {drone.stop}
+        end
+

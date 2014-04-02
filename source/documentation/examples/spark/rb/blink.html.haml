@@ -1,0 +1,24 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - blink"
+page_title: "Example: blink"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-spark/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :spark, :adaptor => :spark, :device_id => "", :access_token => ""
+        device :led, :driver => :led, :pin => "D7"
+
+        work do
+          every 1.second do
+            led.toggle
+          end
+        end
+
