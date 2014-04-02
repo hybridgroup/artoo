@@ -1,0 +1,36 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - dc_motor_switch"
+page_title: "Example: dc_motor_switch"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        #Circuit's breadboard layout here: http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout
+
+        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :board, :driver => :device_info
+        device :motor, :driver => :motor, :switch_pin => 3 # Use a digital or PWM pin
+
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+          puts "Stopping motor..." #just in case
+          motor.stop
+          sleep 3
+
+          every 3.seconds do
+            motor.toggle
+            puts "Motor is \#{motor.on? ? 'on' : 'off'}"
+          end
+
+        end
+

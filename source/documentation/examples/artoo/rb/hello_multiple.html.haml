@@ -1,0 +1,35 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - hello_multiple"
+page_title: "Example: hello_multiple"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo/robot'
+
+        class HelloRobot < Artoo::Robot
+        	connection :loop
+          
+        	work do
+        	  every(3.seconds) do
+        	    puts "Hello from \#{name}"
+        	  end
+        	  after(10.seconds) do
+        	  	puts "\#{name} is alive!" if name == 'Number 5'
+        	  end
+        	end
+        end
+
+        robots = []
+        5.times do |i|
+        	robots << HelloRobot.new(:name => "Number \#{i}")
+        end
+
+        HelloRobot.work!(robots)
+

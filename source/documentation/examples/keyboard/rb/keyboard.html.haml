@@ -1,0 +1,27 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - keyboard"
+page_title: "Example: keyboard"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-keyboard/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :keyboard, adaptor: :keyboard
+        device :keyboard, driver: :keyboard, connection: :keyboard
+
+        work do
+          puts "working now..."
+
+          on keyboard, :key => :keypress
+        end
+
+        def keypress(sender, key)
+          puts key
+        end
