@@ -115,6 +115,7 @@
 
       width: 100%;
       margin-top: 20px;
+      margin-left: 20px;
     }
   }
 
@@ -123,7 +124,7 @@
     .index-content {
     
       @include margin-not-last-child;
-      @include span-columns(9);
+      @include span-columns(8);
     }
   }
 }
