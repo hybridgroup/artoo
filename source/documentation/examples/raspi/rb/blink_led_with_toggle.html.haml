@@ -1,0 +1,28 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - blink_led_with_toggle"
+page_title: "Example: blink_led_with_toggle"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-raspi/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :raspi, :adaptor => :raspi
+        device :board, :driver => :device_info
+        device :led, :driver => :led, :pin => 11
+
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+
+          every 1.second do
+            led.toggle
+          end
+        end
+

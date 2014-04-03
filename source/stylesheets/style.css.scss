@@ -7,4 +7,14 @@
   font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-
+.content {
+  .documentation {
+    .examples {
+      table {
+        tbody tr td:first-child, thead tr th:first-child {
+          width: 580px;
+        }
+      }
+    }
+  }
+}

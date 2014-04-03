@@ -1,0 +1,36 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - leap_hands"
+page_title: "Example: leap_hands"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-leapmotion/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :leapmotion, :adaptor => :leapmotion, :port => '127.0.0.1:6437'
+        device :leapmotion, :driver => :leapmotion
+          
+        work do
+          on leapmotion, :open => :on_open
+          on leapmotion, :hand => :on_hand
+          on leapmotion, :close => :on_close
+        end
+
+        def on_open(*args)
+          puts args
+        end
+
+        def on_hand(sender, hand)
+          puts "\#{hand.palm_x},\#{hand.palm_y},\#{hand.palm_z}" if hand
+        end
+
+        def on_close(*args)
+          puts args
+        end
+

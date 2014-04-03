@@ -1,0 +1,35 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - led_with_button_toggle"
+page_title: "Example: led_with_button_toggle"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        # Circuit and schematic here: http://arduino.cc/en/tutorial/button
+
+        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :led, :driver => :device_info, :pin => 13
+        device :button, :driver => :button, :pin => 2, :interval => 0.01
+
+        work do
+          puts
+          puts "Press the button connected on pin \#{button.pin}..."
+
+          on button, :push => proc {
+            if led.on?
+              led.off
+            else
+              led.on
+            end
+          }
+        end
+

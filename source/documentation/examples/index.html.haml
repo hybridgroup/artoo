@@ -9,101 +9,20 @@ page_subtitle: How you can get started.
 ---
 
 .examples
-  %table
-    %thead
-      %th Example
-      %th.links{:colspan => '1'} Links
-    %tbody
-      %tr
-        %td ardrone
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone'
-      %tr
-        %td ardrone_multi
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_multi'
-      %tr
-        %td ardrone_nav
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_nav'
-      %tr
-        %td ardrone_nav_video
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_nav_video'
-      %tr
-        %td ardrone_nav_video_wii
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_nav_video_wii'
-      %tr
-        %td ardrone_nav_wiiclassic
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_nav_wiiclassic'
-      %tr
-        %td ardrone_video
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_video'
-      %tr
-        %td ardrone_wiiclassic
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/ardrone_wiiclassic'
-      %tr
-        %td christmas_roomba
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/christmas_roomba'
-      %tr
-        %td conway_sphero
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/conway_sphero'
-      %tr
-        %td firmata
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/firmata'
-      %tr
-        %td firmata_button
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/firmata_button'
-      %tr
-        %td hello
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello'
-      %tr
-        %td hello_api
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello_api'
-      %tr
-        %td hello_api_multiple
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello_api_multiple'
-      %tr
-        %td hello_messages
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello_messages'
-      %tr
-        %td hello_modular
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello_modular'
-      %tr
-        %td hello_multiple
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/hello_multiple'
-      %tr
-        %td notifications
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/notifications'
-      %tr
-        %td roomba
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/roomba'
-      %tr
-        %td roomba_wiichuck
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/roomba_wiichuck'
-      %tr
-        %td sphero
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero'
-      %tr
-        %td sphero_color
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_color'
-      %tr
-        %td sphero_color_wiichuck
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_color_wiichuck'
-      %tr
-        %td sphero_cycle
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_cycle'
-      %tr
-        %td sphero_firmata
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_firmata'
-      %tr
-        %td sphero_messages
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_messages'
-      %tr
-        %td sphero_multiple
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_multiple'
-      %tr
-        %td sphero_wiichuck
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/sphero_wiichuck'
-      %tr
-        %td wiichuck
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/wiichuck'
-      %tr
-        %td wiiclassic
-        %td.links= link_to 'Ruby', '/documentation/examples/ruby/wiiclassic'
+  = partial "partials/artoo", locals: { name: "Artoo" }
+  = partial "partials/ardrone", locals: { name: "ARDrone" }
+  = partial "partials/arduino", locals: { name: "Arduino" }
+  = partial "partials/beaglebone", locals: { name: "Beaglebone" }
+  = partial "partials/crazyflie", locals: { name: "Crazyflie" }
+  = partial "partials/digispark", locals: { name: "Digispark" }
+  = partial "partials/force", locals: { name: "SalesForce" }
+  = partial "partials/i2c", locals: { name: "I2C" }
+  = partial "partials/joystick", locals: { name: "Joystick" }
+  = partial "partials/keyboard", locals: { name: "Keyboard" }
+  = partial "partials/leapmotion", locals: { name: "Leap Motion" }
+  = partial "partials/opencv", locals: { name: "OpenCV" }
+  = partial "partials/pebble", locals: { name: "Pebble" }
+  = partial "partials/raspi", locals: { name: "Raspi" }
+  = partial "partials/roomba", locals: { name: "Roomba" }
+  = partial "partials/spark", locals: { name: "Spark" }
+  = partial "partials/sphero", locals: { name: "Sphero" }

@@ -1,0 +1,46 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - dc_motor_speed"
+page_title: "Example: dc_motor_speed"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        #Circuit's breadboard layout here: http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout
+
+        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
+        device :board, :driver => :device_info
+        device :motor, :driver => :motor, :speed_pin => 3 # Use a PWM pin
+
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+          puts "Stopping motor..."
+          motor.min # same as 'motor.stop' or 'motor.speed(0)'
+          sleep 3
+          puts "Setting to maximum speed..."
+          motor.max # same as 'motor.start'
+          sleep 3
+
+          speed = 0
+          step = 50
+
+          every 3.seconds do
+            motor.speed(speed)
+            puts "Current speed: \#{motor.current_speed}"
+            speed += step
+            if [0, 250].include?(speed)
+              step = -step
+            end
+          end
+        end
+
+

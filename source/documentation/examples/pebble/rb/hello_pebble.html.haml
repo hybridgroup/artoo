@@ -1,0 +1,28 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - hello_pebble"
+page_title: "Example: hello_pebble"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-pebble/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :pebble, :adaptor => :pebble
+        device :watch, :driver => :pebble
+
+        work do
+          c = 100
+          every(1.second) do
+            c++
+            str = "c: \#{c}"
+            pebble.message_queue.push(str)
+            Logger.info(pebble.last_message)
+          end
+        end
+

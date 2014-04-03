@@ -1,0 +1,33 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - crazy_hover"
+page_title: "Example: crazy_hover"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-crazyflie/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :crazyflie, :adaptor => :crazyflie
+        device :drone, :driver => :crazyflie, :connection => :crazyflie, :interval => 0.1
+
+        work do
+          drone.start
+          drone.take_off
+          
+          after(1.5) {drone.hover(:start)}
+
+          after(3.seconds) {
+            drone.land
+          }
+
+          after(5.seconds) {
+            drone.stop
+          }
+        end
+
