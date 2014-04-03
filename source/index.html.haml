@@ -17,20 +17,27 @@ catcher_phrase: Ready to build the next big thing with Ruby?
 getting_started_button: "<a href='/documentation/getting-started' class='cta'> Get Started</a>"
 ---
 
-%h2 About
-%p Artoo is a micro-framework for robotics.
 
-%p It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
+.index-content
+  %h2 About
+  %p Artoo is a micro-framework for robotics.
 
-%p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
+  %p It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
 
-%p 
-  Want to use Javascript on Robots? Check out our sister project Cylon 
-  = link_to "(http://cylonjs.com).", "http://cylonjs.com"
+  %p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
 
-%p 
-  Want to use the Go programming language to power your robots? Check out our sister project Gobot 
-  = link_to "(http://gobot.io).", "http://gobot.io"
+  %p 
+    Want to use Javascript on Robots? Check out our sister project Cylon 
+    = link_to "(http://cylonjs.com).", "http://cylonjs.com"
+
+  %p 
+    Want to use the Go programming language to power your robots? Check out our sister project Gobot 
+    = link_to "(http://gobot.io).", "http://gobot.io"    
+  
+.aside.right
+  = current_page.data.img_character
+
+.clear
 
 %h2 Meet The Code
 %p Artoo’s simple code makes telling robots what to do incredibly simple and fun.
@@ -61,6 +68,9 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
 %h2 Hardware Support
 %p 
   Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
+
+  %p.important-title 
+    14 Platforms
 
   %ul.homepage-platform
     %li
@@ -167,7 +177,10 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
 
 %p Artoo also has support for devices that can work across multiple hardware platforms.
 
-%h4= link_to "GPIO", "https://en.wikipedia.org/wiki/General_Purpose_Input/Output" , target:"_blank" 
+%p.important-title
+  8
+  = link_to "GPIO", "https://en.wikipedia.org/wiki/General_Purpose_Input/Output" , target:"_blank" 
+  drivers
 
 %ul.homepage-platform
   %li
@@ -228,7 +241,11 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
       = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"   
   .clear
 
-%h4= link_to "I2C", "https://en.wikipedia.org/wiki/I%C2%B2C", target:"_blank" 
+%p.important-title 
+  4
+  = link_to "I2C", "https://en.wikipedia.org/wiki/I%C2%B2C", target:"_blank" 
+  drivers
+
 %ul.homepage-platform 
   %li  
     .title
@@ -260,7 +277,12 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
     .repo
       = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank"  
   .clear
-  
+
+%p.important-title 
+  See more drivers 
+  = link_to "here", "/documentation/drivers"
+
+
 %p More platforms are coming soon!
 
 %h2 API
