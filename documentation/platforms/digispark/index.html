@@ -62,7 +62,7 @@
 </h2>
         </div>
       </div>
-      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+      <section class="subnav-drivers" id="mainsubnav"><div class="container">
           <nav><a href="#HowToInstall">How To Install</a>
             <a href="#HowToUse">How To Use</a>
             <a href="#HowToConnect">How To Connect</a>
@@ -133,10 +133,10 @@ work <span class="keyword">do</span>
                 <pre class="CodeRay">$ artoo littlewire upload
 </pre>
                 <p>
-                  Once plugged in, use the `artoo connect scan` command with the  `-t usb`
-                  option to verify your connection info:
+                  Once plugged in, use the `artoo scan usb` command
+                  to verify your connection info:
                 </p>
-                <pre class="CodeRay">$ artoo connect scan -t usb
+                <pre class="CodeRay">$ artoo scan usb
 </pre>
                 <p>
                   Now use the `ID` info returned to find the `product` and `vendor` ID's
@@ -151,7 +151,7 @@ work <span class="keyword">do</span>
                     Add a udev rule to allow access to the Digispark device (Do not worry
                     about this, the `artoo littlewire upload` command does it for you if none is detected)
                   </li>
-                  <li>Plug in the Digispark to the USB port</li>
+                  <li>Upload the Littlewire protocol to the digispark</li>
                   <li>Connect to the device via Artoo</li>
                 </ul>
 <h4>DO NOT plug in the Digispark to your computer's USB port until prompted.</h4>
@@ -160,7 +160,7 @@ work <span class="keyword">do</span>
 </pre>
                 <p>
                   After installing the artoo-digispark gem run the following command to
-                  upload littlewire to the digispark, plug it to a USB port when
+                  upload littlewire to the digispark, do NOT plug it to a USB port until
                   prompted, you might be asked to enter your sudo password, since
                   uploading littlewire to the digispark requires some new udev rules, you
                   can check and review them in /etc/udev/rules.d/49-micronucleus.rules
@@ -169,10 +169,10 @@ work <span class="keyword">do</span>
                 <pre class="CodeRay">$ artoo littlewire upload
 </pre>
                 <p>
-                  Once plugged in, use the `artoo connect scan` command with the `-t usb`
-                  option to verify your connection info:
+                  Once plugged in, use the `artoo scan usb` command
+                  to verify your connection info:
                 </p>
-                <pre class="CodeRay">$ artoo connect scan -t usb
+                <pre class="CodeRay">$ artoo scan usb
 </pre>
                 <p>
                   Now use the `ID` info returned to find the `product` and `vendor` ID's
@@ -255,7 +255,8 @@ work <span class="keyword">do</span>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2014
-          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
         </div>
       </div>
     </footer>

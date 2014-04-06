@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - xbox_360_osx</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: xbox_360_osx</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/artoo-joystick/tree/master/examples" target="_blank">View In Repo</a></h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <div class="example">
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
+device <span class="symbol">:controller</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+
+work <span class="keyword">do</span>
+  on controller, <span class="symbol">:joystick_0</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick 0 - x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:joystick_1</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick 1 - x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:trigger_lt</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">left trigger: </span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:trigger_rt</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">right trigger: </span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_b</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">bee!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_x</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">exxx!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_y</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">why!</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_rb</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Right Button down</span><span class="delimiter">"</span></span>
+  }
+  on controller, <span class="symbol">:button_up_rb</span> =&gt; proc { |*value|
+    puts <span class="string"><span class="delimiter">"</span><span class="content">Right Button up</span><span class="delimiter">"</span></span>
+  }
+<span class="keyword">end</span>
+</pre>
+              </div>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

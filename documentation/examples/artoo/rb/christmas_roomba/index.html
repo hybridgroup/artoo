@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - christmas_roomba</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: christmas_roomba</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/artoo/tree/master/examples" target="_blank">View In Repo</a></h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <div class="example">
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">artoo/drivers/roomba</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
+device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
+  
+work <span class="keyword">do</span>
+  roomba.safe_mode
+  roomba.nudge_left
+  roomba.nudge_right
+  roomba.nudge_right
+  roomba.nudge_left
+  play_jingle_bells
+<span class="keyword">end</span>
+
+<span class="keyword">def</span> <span class="function">play_jingle_bells</span>
+  roomba.song(<span class="constant">JingleBells</span>.song0, <span class="integer">0</span>)
+  roomba.song(<span class="constant">JingleBells</span>.song1, <span class="integer">1</span>)
+  roomba.song(<span class="constant">JingleBells</span>.song0, <span class="integer">2</span>)
+  roomba.song(<span class="constant">JingleBells</span>.song2, <span class="integer">3</span>)
+
+  roomba.play(<span class="integer">0</span>)
+  sleep(<span class="integer">7</span>)
+  roomba.play(<span class="integer">1</span>)
+  sleep(<span class="integer">7</span>)
+  roomba.play(<span class="integer">2</span>)
+  sleep(<span class="integer">7</span>)
+  roomba.play(<span class="integer">3</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">class</span> <span class="class">JingleBells</span>
+  extend <span class="constant">Artoo</span>::<span class="constant">Drivers</span>::<span class="constant">Roomba</span>::<span class="constant">Note</span>
+
+  <span class="keyword">class</span> &lt;&lt; <span class="class">self</span>
+    <span class="keyword">def</span> <span class="function">song0</span>
+      [n(<span class="constant">B</span>), n(<span class="constant">B</span>), n(<span class="constant">B</span>, <span class="constant">HALF</span>),
+       n(<span class="constant">B</span>), n(<span class="constant">B</span>), n(<span class="constant">B</span>, <span class="constant">HALF</span>),
+       n(<span class="constant">B</span>), n(<span class="constant">D</span>), n(<span class="constant">G</span>), n(<span class="constant">A</span>),
+       n(<span class="constant">B</span>, <span class="constant">WHOLE</span>)]
+    <span class="keyword">end</span>
+
+    <span class="keyword">def</span> <span class="function">song1</span>
+      [n(<span class="constant">C</span>), n(<span class="constant">C</span>), n(<span class="constant">C</span>), n(<span class="constant">C</span>),
+       n(<span class="constant">C</span>), n(<span class="constant">B</span>), n(<span class="constant">B</span>, <span class="constant">HALF</span>),
+       n(<span class="constant">B</span>), n(<span class="constant">A</span>), n(<span class="constant">A</span>), n(<span class="constant">B</span>),
+       n(<span class="constant">A</span>, <span class="constant">HALF</span>), n(<span class="constant">D</span>, <span class="constant">HALF</span>)]
+    <span class="keyword">end</span>
+
+    <span class="keyword">def</span> <span class="function">song2</span>
+      [n(<span class="constant">C</span>), n(<span class="constant">C</span>), n(<span class="constant">C</span>), n(<span class="constant">C</span>),
+       n(<span class="constant">C</span>), n(<span class="constant">B</span>), n(<span class="constant">B</span>), n(<span class="constant">B</span>),
+       n(<span class="constant">D</span>), n(<span class="constant">D</span>), n(<span class="constant">C</span>), n(<span class="constant">A</span>),
+       n(<span class="constant">G</span>, <span class="constant">WHOLE</span>)]
+    <span class="keyword">end</span>
+
+    <span class="keyword">def</span> <span class="function">n</span>(note, duration=<span class="constant">QUARTER</span>)
+      [note, duration]
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+              </div>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

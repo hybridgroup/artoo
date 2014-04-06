@@ -60,7 +60,7 @@
           <h2 class="subtitle">Driver</h2>
         </div>
       </div>
-      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+      <section class="subnav-drivers" id="mainsubnav"><div class="container">
           <nav><a href="#HowToConnect">How to Connect</a>
             <a href="#HowToUse">How To Use</a>
             <a href="#Commands">Commands</a>
@@ -125,7 +125,7 @@ work <span class="keyword">do</span>
                 <pre class="CodeRay">on sensor, <span class="symbol">:upper</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">UPPER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="string"><span class="delimiter">"</span><span class="content">LOWER LIMIT REACHED!</span><span class="delimiter">"</span></span> }
 </pre>
-              </section><section class="public-methods"><div class="commands_api" id="Commands">
+              </section><section class="public-methods"><div class="commands-api" id="Commands">
                   <h1 id="commands">Commands</h1>
                   
                   <h2 id="pin">pin</h2>
@@ -178,7 +178,7 @@ on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="str
                   
                   <p><code>integer (from 0 to 1027)</code></p>
                 </div>
-                <div class="commands_api" id="Events">
+                <div class="commands-api" id="Events">
                   <h1 id="events">Events</h1>
                   
                   <h4 id="the-limits-that-trigger-the-events-are-setup-when-creating-the-sensor-see-above-in-the-section-titled-how-to-stablish-a-connection-and-driver--there-are-upper-and-lower-limits-as-well-as-an-interval-param-that-defines-how-often-the-sensor-should-be-read-when-the-specified-amount-of-time-passes-the-sensor-is-read-if-one-of-the-limits-stablished-is-reached-the-corresponging-event-will-be-triggered">The limits that trigger the events are setup when creating the sensor (see above in the section titled "How to stablish a connection and driver" ), there are <code>:upper</code> and <code>:lower</code> limits, as well as an <code>:interval</code> param that defines how often the sensor should be read; when the specified amount of time passes the sensor is read, if one of the limits stablished is reached the corresponging event will be triggered.</h4>
@@ -196,10 +196,10 @@ on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="str
                   <p>Gets triggered if the value read by the sensor is less or equal to <code>:lower</code> (value passed when setting up the sensor).</p>
                 </div>
               </section><section class="circuit" id="Circuit"><h2>Circuit</h2>
-                <div class="description_circuit">
+                <div class="description-circuit">
                   <p></p>
                 </div>
-                <div class="image_circuit">
+                <div class="image-circuit">
                   <img alt="" src="/documentation/drivers/breadboards/gpio/analog_sensor_bb.png">
 </div>
                 <div class="clear"></div>
@@ -227,7 +227,8 @@ on sensor, <span class="symbol">:lower</span> =&gt; proc { puts <span class="str
     <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2014
-          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
         </div>
       </div>
     </footer>

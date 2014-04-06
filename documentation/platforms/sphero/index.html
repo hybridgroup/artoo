@@ -62,7 +62,7 @@
 </h2>
         </div>
       </div>
-      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+      <section class="subnav-drivers" id="mainsubnav"><div class="container">
           <nav><a href="#HowToInstall">How To Install</a>
             <a href="#HowToUse">How To Use</a>
             <a href="#HowToConnect">How To Connect</a>
@@ -117,30 +117,43 @@ work <span class="keyword">do</span>
                 </ul>
 <p>First pair your computer and Sphero. You might be prompted for a passcode, but you do not need to enter it, sinec the Sphero does not check.</p>
                 <p>Once paired, use the "artoo connect scan" command to find out your connection info:</p>
-                <pre class="CodeRay">$ artoo connect scan
+                <pre class="CodeRay">$ artoo bluetooth scan
 </pre>
                 <p>Now you are ready to connect to the Sphero using the socket, in this example port 8023:</p>
-                <pre class="CodeRay">artoo connect serial Sphero-WRW 8023
+                <pre class="CodeRay">artoo bluetooth connect Sphero-WRW 8023
 </pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
                 <ul>
-<li>Pair your computer and the Sphero</li>
+<li>Find out the sphero bluetooth address</li>
+                  <li>Pair your computer and the Sphero</li>
                   <li>Map your device to a unix port</li>
                   <li>Use a socket to serial connection to map a TCP socket to the local unix port</li>
                   <li>Connect to the device via Artoo</li>
                 </ul>
-<p>First pair your computer and Sphero. You might be prompted for a passcode, but you do not need to enter it, sinec the Sphero does not check.</p>
-                <p>Once paired, use the artoo connect scan command to find out your connection info:</p>
-                <pre class="CodeRay">$ artoo connect scan
+<p>
+                  First pair your computer and Sphero. We do this by finding the sphero bluetooth address
+                  and then running the `artoo bluetooth pair` command, you might be prompted to confirm a passcode,
+                  just accept whatever passcode prompted.
+                </p>
+                <pre class="CodeRay">$ artoo bluetooth scan
 Scanning ...
   00:06:66:4A:14:99 Sphero-WRW
 </pre>
-                <p>Next, you need to bind the Sphero to the system port. In the above example, /dev/Sphero-WRW. The easiest way to do this is to use the artoo connect bind command:</p>
-                <pre class="CodeRay">artoo connect bind 00:06:66:4A:14:99 Sphero-WRW
+                <p>
+                  After finding the bluetooth address, we pair the device with the computer.
+                  The easiest way to do this is to use the `artoo bluetooth pair` command:
+                </p>
+                <pre class="CodeRay">artoo bluetooth pair 00:06:66:4A:14:99
+</pre>
+                <p>
+                  Next, you need to bind the Sphero to the system serial port. In the above
+                  example, /dev/Sphero-WRW. Use the `artoo bluetooth bind` command:
+                </p>
+                <pre class="CodeRay">artoo bluetooth bind 00:06:66:4A:14:99 Sphero-WRW
 </pre>
                 <p>Now you are ready to connect to the Sphero using the socket, in this example port 8023:</p>
-                <pre class="CodeRay">artoo connect serial Sphero-WRW 8023
+                <pre class="CodeRay">artoo bluetooth connect Sphero-WRW 8023
 </pre>
               </section><section class="drivers" id="Drivers"><h2>Drivers</h2>
                 <p>There is only one driver for the Sphero.</p>
@@ -161,7 +174,8 @@ Scanning ...
     <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2014
-          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
         </div>
       </div>
     </footer>

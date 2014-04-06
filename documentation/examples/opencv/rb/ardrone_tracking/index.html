@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - ardrone_tracking</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: ardrone_tracking</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/artoo-opencv/tree/master/examples" target="_blank">View In Repo</a></h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <div class="example">
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:capture</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:opencv_capture</span>, <span class="symbol">:source</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">tcp://192.168.1.1:5555</span><span class="delimiter">"</span></span>
+device <span class="symbol">:capture</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:opencv_capture</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:capture</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.025</span>
+
+connection <span class="symbol">:video</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:opencv_window</span>
+device <span class="symbol">:video</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:opencv_window</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:video</span>, <span class="symbol">:title</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Video</span><span class="delimiter">"</span></span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.025</span>
+
+connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5556</span><span class="delimiter">'</span></span>
+device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:ardrone</span>
+
+work <span class="keyword">do</span>
+  on capture, <span class="symbol">:frame</span> =&gt; proc { |*value| 
+    <span class="keyword">begin</span>
+    opencv = value[<span class="integer">1</span>]
+    biggest_circle = <span class="integer">0</span>
+    ball = <span class="predefined-constant">nil</span>
+    opencv.detect_circles({<span class="symbol">:r</span> =&gt;<span class="integer">170</span>, <span class="symbol">:g</span> =&gt;<span class="integer">50</span>, <span class="symbol">:b</span> =&gt;<span class="integer">0</span>}, {<span class="symbol">:r</span> =&gt; <span class="integer">256</span>, <span class="symbol">:g</span> =&gt; <span class="integer">180</span>, <span class="symbol">:b</span> =&gt; <span class="integer">10</span>}).each{|circle|
+      <span class="keyword">if</span> circle.radius &gt; biggest_circle
+        biggest_circle = circle.radius
+        ball = circle
+      <span class="keyword">end</span>
+    }
+    <span class="keyword">if</span> !ball.nil?
+      opencv.draw_circles!([ball])
+      centerX = opencv.image.width * <span class="float">0.5</span>
+      turnAmount = -( ball.center.x - centerX ) / centerX
+      turnAmount = [<span class="float">1.0</span>, turnAmount].min
+      turnAmount = [<span class="float">-1.0</span>, turnAmount].max
+      heightAmount = <span class="integer">0</span>
+      puts turnAmount
+      <span class="keyword">if</span>( turnAmount.abs &gt; heightAmount.abs )
+        puts <span class="string"><span class="delimiter">"</span><span class="content">turning </span><span class="delimiter">"</span></span> + turnAmount.to_s
+        <span class="keyword">if</span> turnAmount &lt; <span class="integer">0</span> 
+          drone.turn_right(turnAmount.abs)
+        <span class="keyword">else</span> 
+          drone.turn_left(turnAmount)
+        <span class="keyword">end</span>
+        sleep <span class="float">0.1</span>
+          drone.hover
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    video.image = opencv.image <span class="keyword">if</span> video.alive?
+    <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+      puts e.message
+    <span class="keyword">end</span>
+  }
+  drone.start
+  drone.take_off
+  after(<span class="integer">5</span>.seconds) { drone.hover }
+<span class="keyword">end</span>
+</pre>
+              </div>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -62,7 +62,7 @@
 </h2>
         </div>
       </div>
-      <section class="subnav_drivers" id="mainsubnav"><div class="container">
+      <section class="subnav-drivers" id="mainsubnav"><div class="container">
           <nav><a href="#HowToInstall">How To Install</a>
             <a href="#HowToUse">How To Use</a>
             <a href="#HowToConnect">How To Connect</a>
@@ -123,26 +123,26 @@ work <span class="keyword">do</span>
                   Once plugged in, use the `artoo connect scan -t serial` command to find out your
                   connection info and serial port address:
                 </p>
-                <pre class="CodeRay">$ artoo connect scan -t serial
+                <pre class="CodeRay">$ artoo arduino scan
 </pre>
                 <p>
                   Use the `artoo firmata install` command to install avrdude,
                   this will allow us to upload firmata to the arduino:
                 </p>
-                <pre class="CodeRay">$ artoo firmata install
+                <pre class="CodeRay">$ artoo arduino install
 </pre>
                 <p>
                   Once the avrdude uploader is installed we upload the firmata protocol to
                   the arduino, use the arduino serial port address found when you ran `artoo
                   connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
                 </p>
-                <pre class="CodeRay">$ artoo firmata upload /dev/ttyACM0
+                <pre class="CodeRay">$ artoo arduino upload /dev/ttyACM0
 </pre>
                 <p>
                   Now you are ready to connect to the Arduino using a socket, in this example
                   the socket to serial is set on port 4567 (which is also the default value):
                 </p>
-                <pre class="CodeRay">artoo connect serial ttyACM0 4567
+                <pre class="CodeRay">artoo arduino connect ttyACM0 4567
 </pre>
                 <h3>Ubuntu</h3>
                 <p>The main steps are:</p>
@@ -161,26 +161,26 @@ work <span class="keyword">do</span>
                   Once plugged in, use the `artoo connect scan -t serial` command
                   to find out your connection info and serial port address:
                 </p>
-                <pre class="CodeRay">$ artoo connect scan -t serial
+                <pre class="CodeRay">$ artoo arduino scan
 </pre>
                 <p>
                   Use the `artoo firmata install` command to install avrdude,
                   this will allow us to upload firmata to the arduino:
                 </p>
-                <pre class="CodeRay">$ artoo firmata install
+                <pre class="CodeRay">$ artoo arduino install
 </pre>
                 <p>
                   Once the avrdude uploader is installed we upload the firmata protocol to
                   the arduino, use the arduino serial port address found when you ran `artoo
                   connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
                 </p>
-                <pre class="CodeRay">$ artoo firmata upload /dev/ttyACM0
+                <pre class="CodeRay">$ artoo arduino upload /dev/ttyACM0
 </pre>
                 <p>
                   Now you are ready to connect to the Arduino using a socket, in this example
                   the socket to serial is set on port 4567 (which is also the default value):
                 </p>
-                <pre class="CodeRay">artoo connect serial ttyACM0 4567
+                <pre class="CodeRay">artoo arduino connect ttyACM0 4567
 </pre>
                 <h3>Windows</h3>
                 <p>We are currently working with the Celluloid team to add Windows support. Please check back soon!</p>
@@ -204,11 +204,45 @@ work <span class="keyword">do</span>
                   <h2>GPIO Drivers</h2>
                   <div class="devices">
                     <!-- / TODO: Update drivers list at the top of the page. -->
-                    
+                    <!-- // Analog Sensor -->
+                    <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
+                      <img src="/images/devices/analog-sensor.jpg"></a>
+                    <!-- // Button -->
+                    <a class="device" href="/documentation/drivers/button" title="Button">
+                      <img src="/images/devices/button.jpg"></a>
+                    <!-- / Continuous Servo -->
+                    <a class="device" href="/documentation/drivers/continuous_servo" title="Button">
+                      <img src="/images/devices/continuous_servo.jpg"></a>
+                    <!-- // LED -->
+                    <a class="device" href="/documentation/drivers/led" title="LED">
+                      <img src="/images/devices/LED.jpg"></a>
+                    <!-- // Makey Button -->
+                    <a class="device" href="/documentation/drivers/makey-button" title="Makey Button">
+                      <img src="/images/devices/makey-button.jpg"></a>
+                    <!-- // Maxbotix -->
+                    <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
+                      <img src="/images/devices/maxbotix.jpg"></a>
+                    <!-- // Motor -->
+                    <a class="device" href="/documentation/drivers/motor" title="Motor">
+                      <img src="/images/devices/motor.jpg"></a>
+                    <!-- // Servo -->
+                    <a class="device" href="/documentation/drivers/servo" title="Servo">
+                      <img src="/images/devices/servo.jpg"></a>
                   </div>
                   <h2>i2c Drivers</h2>
                   <div class="devices">
-                    
+                    <!-- // Blinkm -->
+                    <a class="device" href="/documentation/drivers/blinkm" title="Blinkm">
+                      <img src="/images/devices/blinkm.jpg"></a>
+                    <!-- // Hmc6352 Compass -->
+                    <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
+                      <img src="/images/devices/hmc6352-compass.jpg"></a>
+                    <!-- // Wii Classic -->
+                    <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
+                      <img src="/images/devices/wii-classic-controller.jpg"></a>
+                    <!-- // Wiichuck -->
+                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
+                      <img src="/images/devices/wiichuck.jpg"></a>
                   </div>
                 </div>
               </section>
@@ -220,7 +254,8 @@ work <span class="keyword">do</span>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2014
-          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
         </div>
       </div>
     </footer>
