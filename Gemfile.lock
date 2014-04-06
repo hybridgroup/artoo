@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (1.6.2)
+    artoo (1.6.3)
       celluloid (>= 0.16.0.pre)
       celluloid-io (>= 0.16.0.pre)
       multi_json (~> 1.6)
