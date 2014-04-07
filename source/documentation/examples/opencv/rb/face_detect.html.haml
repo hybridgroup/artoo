@@ -1,0 +1,35 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - face_detect"
+page_title: "Example: face_detect"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-opencv/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :capture, :adaptor => :opencv_capture
+        device :capture, :driver => :opencv_capture, :connection => :capture, :interval => 0.01
+
+        connection :video, :adaptor => :opencv_window
+        device :video, :driver => :opencv_window, :connection => :video, :title => "Video", :interval => 0.01
+
+        work do
+          haar = "\#{Dir.pwd}/examples/haarcascade_frontalface_alt.xml"
+          on capture, :frame => proc { |*value| 
+            begin
+              opencv = value[1]
+              faces = opencv.detect_faces(haar)
+              opencv.draw_rectangles!(faces)
+              video.image = opencv.image
+            rescue Exception => e
+              puts e.message
+            end
+          }
+        end
+

@@ -1,0 +1,27 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - sphero_color"
+page_title: "Example: sphero_color"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4569'
+        device :sphero, :driver => :sphero
+
+        work do
+          every(1.seconds) do
+            puts "Rolling..."
+            sphero.set_color(rand(255),rand(255),rand(255))
+            sphero.roll 20, rand(360)
+          end
+        end
+
+

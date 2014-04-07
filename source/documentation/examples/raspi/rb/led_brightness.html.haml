@@ -1,0 +1,36 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - led_brightness"
+page_title: "Example: led_brightness"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-raspi/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :raspi, :adaptor => :raspi
+        device :board, :driver => :device_info
+        device :led, :driver => :led, :pin => 11
+
+        brightness = 0
+        fade_amount = 5
+
+
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+
+          every(0.05) do
+            led.brightness(brightness)
+            brightness = brightness + fade_amount
+            if brightness == 0 or brightness == 255
+              fade_amount = -fade_amount
+            end
+          end
+        end
+

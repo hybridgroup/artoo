@@ -3,13 +3,13 @@ hero: true
 social: true
 catcher: true
 
-title: Artoo
+title: Artoo - Ruby framework for robotics, physical computing, and the Internet of Things
 author: The Hybrid Group
-description: Artoo is a micro-framework for robotics. It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
+description: Artoo is a framework for robotics, physical computing, and the Internet of Things written in the Ruby programming language. It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.
 layout: home
 
 hero_title: "We believe that it's time to bring <br> Ruby and Robots together."
-hero_subtitle: "Artoo makes robotics <a href='/documentation/getting-started'>Simple</a> and <a href='/documentation/platforms'>Extensible</a>."
+hero_subtitle: "Next generation robotics framework with support for <a href='#platforms'>14 different platforms</a>"
 
 img_character: "<img src='images/elements/artoo.png'>"
 
@@ -17,20 +17,27 @@ catcher_phrase: Ready to build the next big thing with Ruby?
 getting_started_button: "<a href='/documentation/getting-started' class='cta'> Get Started</a>"
 ---
 
-%h2 About
-%p Artoo is a micro-framework for robotics.
 
-%p It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing.
+.index-content
+  %h2 About
+  %p Artoo is a framework for robotics, physical computing, and the Internet of Things written in the Ruby programming language.
 
-%p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
+  %p It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.
 
-%p 
-  Want to use Javascript on Robots? Check out our sister project Cylon 
-  =link_to "(http://cylonjs.com).", "http://cylonjs.com"
+  %p With Artoo, you can easily connect multiple, different hardware devices together into a single Ruby-powered robotic solution.
 
-%p 
-  Want to use the Go programming language to power your robots? Check out our sister project Gobot 
-  =link_to "(http://gobot.io).","http://gobot.io"
+  %p 
+    Want to use Javascript on Robots? Check out our sister project Cylon 
+    = link_to "(http://cylonjs.com).", "http://cylonjs.com"
+
+  %p 
+    Want to use the Go programming language to power your robots? Check out our sister project Gobot 
+    = link_to "(http://gobot.io).", "http://gobot.io"    
+  
+.aside.right
+  = current_page.data.img_character
+
+.clear
 
 %h2 Meet The Code
 %p Artoo’s simple code makes telling robots what to do incredibly simple and fun.
@@ -42,7 +49,7 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
 
 %p 
   Then hook it up to your robot (in this case, a 
-  =link_to "Sphero :","http://gosphero.com"
+  =link_to "Sphero :", "http://gosphero.com"
 
 :markdown
       :::ruby
@@ -58,141 +65,224 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
           sphero.roll 60, rand(360)
         end
       end
-%h2 Hardware Support
+
+%h2#platforms Platform Support
 %p 
   Artoo has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
-  %ul
+
+  %p.important-title 
+    14 Platforms
+
+  %ul.homepage-platform
     %li
-      = link_to "Arduino", "http://www.arduino.cc/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/arduino", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-arduino", target:"_blank"
-      ) 
+      .title
+        = link_to "Ardrone", "http://ardrone2.parrot.com/", target:"_blank"  
+      %a{:href => "/documentation/platforms/ardrone"} 
+        %img{src: "/images/devices/ardrone.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-ardrone", target:"_blank"
     %li
-      = link_to "ARDrone", "http://ardrone2.parrot.com/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/ardrone", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-ardrone", target:"_blank"
-      ) 
+      .title
+        = link_to "Arduino", "http://www.arduino.cc/", target:"_blank" 
+      %a{:href => "/documentation/platforms/arduino"} 
+        %img{src: "/images/devices/arduino.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-arduino", target:"_blank"
     %li
-      = link_to "BeagleBone Black", "http://beagleboard.org/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/beaglebone", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-beaglebone", target:"_blank"
-      ) 
+      .title
+        = link_to "BeagleBone Black", "http://beagleboard.org/", target:"_blank" 
+      %a{:href => "/documentation/platforms/beaglebone"} 
+        %img{src: "/images/devices/beaglebone.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-beaglebone", target:"_blank"
     %li
-      = link_to "Crazyflie", "http://www.bitcraze.se/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/crazyflie", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-crazyflie", target:"_blank"
-      )  
+      .title
+        = link_to "Crazyflie", "http://www.bitcraze.se/", target:"_blank" 
+      %a{:href => "/documentation/platforms/crazyflie"} 
+        %img{src: "/images/devices/crazyflie.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-crazyflie", target:"_blank"
     %li
-      = link_to "Digispark", "http://digistump.com/products/1", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/digispark", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-digispark", target:"_blank"
-      )
+      .title
+        = link_to "Digispark", "http://digistump.com/products/1", target:"_blank" 
+      %a{:href => "/documentation/platforms/digispark"} 
+        %img{src: "/images/devices/digispark.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-digispark", target:"_blank"
     %li
-      = link_to "Joystick", "http://www.libsdl.org/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/joystick", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-joystick", target:"_blank"
-      )
+      .title
+        = link_to "Joystick", "http://www.libsdl.org/", target:"_blank" 
+      %a{:href => "/documentation/platforms/joystick"} 
+        %img{src: "/images/devices/joystick.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-joystick", target:"_blank"
     %li
-      = link_to "Keyboard", "http://en.wikipedia.org/wiki/Computer_keyboard", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/keyboard", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-keyboard", target:"_blank"
-      )
+      .title
+        = link_to "Keyboard", "http://en.wikipedia.org/wiki/Computer_keyboard", target:"_blank" 
+      %a{:href => "/documentation/platforms/keyboard"} 
+        %img{src: "/images/devices/keyboard.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-keyboard", target:"_blank"
     %li
-      = link_to "Leap Motion", "https://www.leapmotion.com/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/leapmotion", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-leapmotion", target:"_blank"
-      )
+      .title
+        = link_to "Leap Motion", "https://www.leapmotion.com/", target:"_blank" 
+      %a{:href => "/documentation/platforms/leapmotion"} 
+        %img{src: "/images/devices/leap_motion.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-leapmotion", target:"_blank"
     %li
-      = link_to "OpenCV", "http://opencv.org/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/opencv", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-opencv", target:"_blank"
-      ) 
+      .title
+        = link_to "OpenCV", "http://opencv.org/", target:"_blank" 
+      %a{:href => "/documentation/platforms/opencv"} 
+        %img{src: "/images/devices/opencv.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-opencv", target:"_blank"
     %li
-      = link_to "Pebble", "https://getpebble.com/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/pebble", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-pebble", target:"_blank"
-      )
+      .title
+        = link_to "Pebble", "https://getpebble.com/", target:"_blank" 
+      %a{:href => "/documentation/platforms/pebble"} 
+        %img{src: "/images/devices/pebble.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-pebble", target:"_blank"
     %li
-      = link_to "Raspberry Pi", "http://www.raspberrypi.org/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/raspi", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-raspi", target:"_blank"
-      ) 
+      .title
+        = link_to "Raspberry Pi", "http://www.raspberrypi.org/", target:"_blank" 
+      %a{:href => "/documentation/platforms/raspi"} 
+        %img{src: "/images/devices/raspi.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-raspi", target:"_blank"
     %li
-      = link_to "Roomba", "http://www.irobot.com/us/learn/Educators/Create.aspx", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/roomba", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-roomba", target:"_blank"
-      )
+      .title
+        = link_to "Roomba", "http://www.irobot.com/us/learn/Educators/Create.aspx", target:"_blank" 
+      %a{:href => "/documentation/platforms/roomba"} 
+        %img{src: "/images/devices/roomba.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-roomba", target:"_blank"
     %li
-      = link_to "Spark", "http://spark.io", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/spark", target:"_blank"
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-spark", target:"_blank"
-      )
+      .title
+        = link_to "Spark", "http://spark.io", target:"_blank" 
+      %a{:href => "/documentation/platforms/spark"} 
+        %img{src: "/images/devices/spark.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-spark", target:"_blank"
     %li
-      = link_to "Sphero", "http://www.gosphero.com/", target:"_blank" 
-      &lt;==&gt;
-      = link_to "Adaptor", "/documentation/platforms/sphero", target:"_blank" 
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-sphero", target:"_blank"
-      )
+      .title
+        = link_to "Sphero", "http://www.gosphero.com/", target:"_blank" 
+      %a{:href => "/documentation/platforms/sphero"} 
+        %img{src: "/images/devices/sphero.jpg", style: "width: 90%"}  
+      .repo
+        = link_to "repo", "https://github.com/hybridgroup/artoo-sphero", target:"_blank"
+  .clear
 
 %p More platforms are coming soon!
 
-%p 
-  Artoo also has support for devices that can work across multiple hardware platforms.
-  %ul
-    %li
-      = link_to "GPIO (General Purpose Input/Output) devices", "https://en.wikipedia.org/wiki/General_Purpose_Input/Output", target:"_blank" 
-      &lt;==&gt; Drivers
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank" 
-      )
-      %ul 
-        %li= link_to "Analog Sensor", "/documentation/drivers/analog-sensor", target:"_blank" 
-        %li= link_to "Button", "/documentation/drivers/button", target:"_blank"  
-        %li= link_to "Continuous Servo", "/documentation/drivers/continuous-servo", target:"_blank"   
-        %li= link_to "LED", "/documentation/drivers/continuous-servo", target:"_blank"  
-        %li= link_to "MakeyButton (high-resistance switch inspired by the MakeyMakey)", "/documentation/drivers/makey-button", target:"_blank" 
-        %li= link_to "Motor", "/documentation/drivers/motor", target:"_blank"   
-        %li= link_to "Maxbotix Ultrasonic Range Finder", "/documentation/drivers/maxbotix", target:"_blank"  
-        %li= link_to "Servo", "/documentation/drivers/servo", target:"_blank" 
+%p Artoo also has support for devices that can work across multiple hardware platforms.
 
-    %li
-      = link_to "i2c devices", "https://en.wikipedia.org/wiki/I%C2%B2C", target:"_blank" 
-      &lt;==&gt; Drivers
-      (
-      = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank" 
-      )
-      %ul 
-        %li= link_to "BlinkM", "/documentation/drivers/blinkm", target:"_blank"  
-        %li= link_to "HMC6352 Digital Compass", "/documentation/drivers/hmc6352-compass", target:"_blank"   
-        %li= link_to "Wii Nunchuk", "/documentation/drivers/wiichuck", target:"_blank"   
-        %li= link_to "Wii Classic Controller", "/documentation/drivers/wiiclassic", target:"_blank"  
+%p.important-title
+  8
+  = link_to "GPIO", "https://en.wikipedia.org/wiki/General_Purpose_Input/Output" , target:"_blank" 
+  drivers
+
+%ul.homepage-platform
+  %li
+    .title
+      = link_to "Analog Sensor", "/documentation/drivers/analog-sensor"
+    %a{:href => "/documentation/drivers/analog-sensor"} 
+      %img{src: "/images/devices/analog-sensor.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"
+  %li
+    .title
+      = link_to "Button", "/documentation/drivers/button" 
+    %a{:href => "/documentation/drivers/button"} 
+      %img{src: "/images/devices/button.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"
+  %li
+    .title
+      = link_to "Continuous Servo", "/documentation/drivers/continuous_servo"
+    %a{:href => "/documentation/drivers/continuous_servo"} 
+      %img{src: "/images/devices/continuous_servo.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"   
+  %li
+    .title
+      = link_to "LED", "/documentation/drivers/led"
+    %a{:href => "/documentation/drivers/led"} 
+      %img{src: "/images/devices/LED.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"  
+  %li
+    .title
+      = link_to "MakeyButton", "/documentation/drivers/makey-button"
+    %a{:href => "/documentation/drivers/makey-button"} 
+      %img{src: "/images/devices/makey-button.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank" 
+  %li
+    .title
+      = link_to "Motor", "/documentation/drivers/motor"
+    %a{:href => "/documentation/drivers/motor"} 
+      %img{src: "/images/devices/motor.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"   
+  %li
+    .title
+      = link_to "Maxbotix", "/documentation/drivers/maxbotix"
+    %a{:href => "/documentation/drivers/maxbotix"} 
+      %img{src: "/images/devices/maxbotix.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"  
+  %li
+    .title
+      = link_to "Servo", "/documentation/drivers/servo"
+    %a{:href => "/documentation/drivers/servo"} 
+      %img{src: "/images/devices/servo.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-gpio", target:"_blank"   
+  .clear
+
+%p.important-title 
+  4
+  = link_to "I2C", "https://en.wikipedia.org/wiki/I%C2%B2C", target:"_blank" 
+  drivers
+
+%ul.homepage-platform 
+  %li  
+    .title
+      = link_to "BlinkM", "/documentation/drivers/blinkm"
+    %a{:href => "/documentation/drivers/blinkm"} 
+      %img{src: "/images/devices/blinkm.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank"
+
+  %li
+    .title
+      = link_to "HMC6352", "/documentation/drivers/hmc6352-compass"
+    %a{:href => "/documentation/drivers/hmc6352-compass"} 
+      %img{src: "/images/devices/hmc6352-compass.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank"   
+  %li
+    .title
+      = link_to "Wii Classic", "/documentation/drivers/wiiclassic"
+    %a{:href => "/documentation/drivers/wiiclassic"} 
+      %img{src: "/images/devices/wii-classic-controller.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank"   
+  %li
+    .title
+      = link_to "Wii Nunchuk", "/documentation/drivers/wiichuck"
+    %a{:href => "/documentation/drivers/wiichuck"} 
+      %img{src: "/images/devices/wiichuck.jpg", style: "width: 90%"}  
+    .repo
+      = link_to "repo", "https://github.com/hybridgroup/artoo-i2c", target:"_blank"  
+  .clear
+
+%p.important-title 
+  See more drivers 
+  = link_to "here", "/documentation/drivers"
+
 
 %p More platforms are coming soon!
 
@@ -215,7 +305,7 @@ getting_started_button: "<a href='/documentation/getting-started' class='cta'> G
       end
 
 %section.videos
-  .video_index
+  .video-index
     %h2 Artoo in Action
     %iframe{:src => "http://www.youtube.com/embed/ciSs9x_Ogls", :frameborder => "0", :allowfullscreen => "true"}
 

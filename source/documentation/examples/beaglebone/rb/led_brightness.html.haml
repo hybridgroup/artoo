@@ -1,0 +1,32 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - led_brightness"
+page_title: "Example: led_brightness"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-beaglebone/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :beaglebone, :adaptor => :beaglebone
+        device :led, :driver => :led, :pin => :P9_21
+
+        brightness = 0
+        fade_amount = 5
+
+
+        work do
+          every(0.05) do
+            led.brightness(brightness)
+            brightness = brightness + fade_amount
+            if brightness == 0 or brightness == 60
+              fade_amount = -fade_amount
+            end
+          end
+        end
+

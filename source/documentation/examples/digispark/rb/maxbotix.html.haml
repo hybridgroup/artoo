@@ -1,0 +1,34 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - maxbotix"
+page_title: "Example: maxbotix"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-digispark/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'littlewire'
+        require 'artoo'
+
+        # Circuit and schematic here: http://www.electrojoystick.com/tutorial/?page_id=285
+
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :sonar, :driver => :maxbotix, :pin => 5, :interval => 0.5
+        device :board, :driver => :device_info
+
+        work do
+          on sonar, :range => :sonar_reading
+
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmata version: \#{board.version}"
+          puts "starting sonar..."
+        end
+
+        def sonar_reading(*args)
+          puts args[1]
+        end
+

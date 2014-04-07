@@ -20,14 +20,14 @@ makey_driver: true
 %section.intro
   = image_tag "/images/devices/spark.jpg", class: "display"
   .info_intro
-    %p 
-      This repository contains the Artoo 
-      =link_to "(http://artoo.io/)", "http://artoo.io/", target: :blank 
-      adaptor for the Spark core device 
-      =link_to "(http://spark.io) ", "http://spark.io", target: :blank 
+    %p
+      This repository contains the Artoo
+      =link_to "(http://artoo.io/)", "http://artoo.io/", target: :blank
+      adaptor for the Spark core device
+      =link_to "(http://spark.io) ", "http://spark.io", target: :blank
       using the built-in Tinker protocol.
   .clear
-  
+
 %section.how-to#HowToInstall
   %h2 How To Install
   %p  Installing artoo with spark support is pretty easy.
@@ -37,14 +37,14 @@ makey_driver: true
 
 %section.how-to#HowToUse
   %h2 How To Use
-  %p You will need to have a Spark device, and an access token from a registered Spark account.
+  %p You will need to have a Spark device, it's device ID (found via the build tool on Spark's website), and an access token from a registered Spark account.
   %h2 Using
   %p This small program lets you turn on or off a LED for every 1 sec.
   :markdown
         :::ruby
         require 'artoo'
 
-        connection :spark, :adaptor => :spark, :access_token => 'XYZABC123'
+        connection :spark, :adaptor => :spark, :access_token => 'XYZABC123', :device_id => '123ABC456'
         device :led, :driver => :led, :pin => 'D0'
 
         work do

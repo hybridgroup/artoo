@@ -7,8 +7,19 @@ page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino' class='re
 layout: documentation
 subnav_platform: true
 
-gpio_drivers: true
-i2c_drivers: true
+analog_sensor_driver: true
+button_driver: true
+continuous_servo_driver: true
+led_driver: true
+makey_driver: true
+maxbotix_driver: true
+motor_driver: true
+servo_driver: true
+blinkm_driver: true
+hmc6352_compass_driver: true
+wiiclassic_driver: true
+wiichuck_driver: true
+
 ---
 %section.intro
   = image_tag "/images/devices/arduino.jpg", class: "display"
@@ -20,7 +31,6 @@ i2c_drivers: true
         = link_to "here", "http://arduino.cc/", target: :blank
   .clear
 
-  
 %section.how-to#HowToInstall
   %h2 How To Install
   %p Installing artoo with arduino support is pretty easy using ruby gems.
@@ -76,7 +86,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo connect scan -t serial
+        $ artoo arduino scan
 
   %p
     Use the `artoo firmata install` command to install avrdude,
@@ -84,7 +94,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo firmata install
+        $ artoo arduino install
 
   %p
     Once the avrdude uploader is installed we upload the firmata protocol to
@@ -93,7 +103,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo firmata upload /dev/ttyACM0
+        $ artoo arduino upload /dev/ttyACM0
 
   %p
     Now you are ready to connect to the Arduino using a socket, in this example
@@ -101,7 +111,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        artoo connect serial ttyACM0 4567
+        artoo arduino connect ttyACM0 4567
 
   %h3 Ubuntu
 
@@ -127,7 +137,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo connect scan -t serial
+        $ artoo arduino scan
 
   %p
     Use the `artoo firmata install` command to install avrdude,
@@ -135,7 +145,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo firmata install
+        $ artoo arduino install
 
   %p
     Once the avrdude uploader is installed we upload the firmata protocol to
@@ -144,7 +154,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        $ artoo firmata upload /dev/ttyACM0
+        $ artoo arduino upload /dev/ttyACM0
 
   %p
     Now you are ready to connect to the Arduino using a socket, in this example
@@ -152,7 +162,7 @@ i2c_drivers: true
 
   :markdown
         :::bash
-        artoo connect serial ttyACM0 4567
+        artoo arduino connect ttyACM0 4567
 
   %h3 Windows
 

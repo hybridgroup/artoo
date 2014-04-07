@@ -1,0 +1,26 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - wiichuck"
+page_title: "Example: wiichuck"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-beaglebone/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :beaglebone, :adaptor => :beaglebone
+        device :wiichuck, :driver => :wiichuck, :connection => :beaglebone, :interval => 0.01
+
+        work do
+          on wiichuck, :c_button => proc { puts "c button pressed!" }
+          on wiichuck, :z_button => proc { puts "z button pressed!" }
+          on wiichuck, :joystick => proc { |*value|
+            puts "joystick x: \#{value[1][:x]}, y: \#{value[1][:y]}"
+          }
+        end
+

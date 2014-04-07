@@ -1,18 +1,28 @@
 .articles {
+
   @include span-columns(9);
+
   @media only screen and (max-width: $medium-screen) {
+
     @include span-columns(12);
   }
+
   @include small-screen {
+
     margin-right: 0;
   }
 
   .article {
+
     margin-bottom: 30px;
+
     h3, h4, a {
+
       color: $blog-title-color;
     }
+
     h3 {
+
       display: inline-block;
       font-size: 24px;
       line-height: 26px;
@@ -20,100 +30,186 @@
       margin: 0px;
       max-width: 80%;
     }
+
     p {
+
       text-align: justify;
     }
+
     img {
+
       width: 100%;
     }
+
     .data {
+
       padding-left: 71px;
     }
+
     .date {
+
       color: white;
       width: 50px;
       text-align: center;
       margin-right: 20px;
       float: left;
+
       .blue {
+
         padding: 5px;
         background-color: $blog-date-top-color;
+
         .month {
+
           text-transform: uppercase;
           font-size: 12px;
           line-height: 12px;
         }
+
         .day {
+
           font-size: 16px;
           line-height: 16px;
         }
       }
+
       .red {
+
         padding: 2px;
         background-color: $blog-title-color;
+
         .year {
+
           font-size: 10px;
           line-height: 10px;
         }
       }
     }
+
     .comments, .tags {
+
       display: inline-block;
+
       .img {
+
         vertical-align: top;
         display: inline-block;
         width: 24px;
         height: 24px;
       }
+
       a {
+
         vertical-align: top;
         text-decoration: underline;
       }
+
       img {
+
         margin-right: 4px;
       }
     }
+
     .comments {
+
       margin-right: 60px;
     }
   }
 }
 
-.categories, .network, .tweets {
-  vertical-align: top;
-  margin-bottom: 40px;
-  @include span-columns(2);
+
+.side-column {
+  @include span-columns(3);
+
   @media only screen and (max-width: $medium-screen) {
+
     @include span-columns(12);
   }
-  a {
-    color: black;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  h4 {
-    color: $blog-title-color;
-    font-size: 20px;
-    line-height: 24px;
-  }
-}
 
-.categories {
-  ul {
-    margin: 0;
-    list-style: none;
+  .categories, .network, .tweets, .titles {
+
+    vertical-align: top;
+    margin-bottom: 20px;
+    
     a {
+
       color: black;
+
       &:hover {
+
         text-decoration: underline;
       }
     }
+
+    h4 {
+
+      color: $blog-title-color;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
   }
+
+  .titles {
+    ul {
+
+      list-style: none;
+      margin: 0;
+    } 
+
+    li {
+
+      font-size: .8em;
+      border-bottom: $hero-color 1px solid;
+      padding: 2px 5px;
+
+      &:hover {
+
+        background: $hero-color;
+
+        a {
+
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }    
+  }
+
+  .network {
+
+    img {
+
+      width: 30px;
+    }
+  }
+  .categories {
+
+    ul {
+
+      margin: 0;
+      list-style: none;
+
+      a {
+
+        color: black;
+        font-size: .9em;
+
+        &:hover {
+
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
 }
 
+
 @include tiny-screen {
+
   .twitter-share-button {
+  
     margin-bottom: 10px;
   }
 }

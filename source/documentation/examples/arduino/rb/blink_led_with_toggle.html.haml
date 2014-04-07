@@ -1,0 +1,32 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - blink_led_with_toggle"
+page_title: "Example: blink_led_with_toggle"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-arduino/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        # Circuit and schematic here: http://arduino.cc/en/Tutorial/Blink
+
+        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        device :board, :driver => :device_info
+        device :led, :driver => :led, :pin => 13
+
+        work do
+          puts "Firmware name: \#{board.firmware_name}"
+          puts "Firmware version: \#{board.version}"
+
+          every 1.second do
+            led.toggle
+          end
+        end
+
+

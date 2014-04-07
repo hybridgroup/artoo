@@ -1,0 +1,35 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - blinkm"
+page_title: "Example: blinkm"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup//tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        #connection :firmata, :adaptor => :firmata, :port => '/dev/ttyACM0'
+        connection :digispark, :adaptor => :littlewire, :vendor => 0x1781, :product => 0x0c9f
+        device :blink_m, :driver => :blink_m
+
+        work do
+          puts blink_m.color.inspect
+
+          every 1.second do
+            unless @on
+              blink_m.rgb(0xff, 0xff, 0xff)
+              puts blink_m.color.inspect
+              @on = true
+            else
+              blink_m.rgb(0, 0, 0)
+              puts blink_m.color.inspect
+              @on = false
+            end
+          end
+        end
+
