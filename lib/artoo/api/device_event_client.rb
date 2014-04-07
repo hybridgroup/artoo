@@ -1,3 +1,5 @@
+require 'json'
+
 module Artoo
   module Api
     # The Artoo::Api::DeviceEventClient class is how a websocket client can subscribe
@@ -25,7 +27,7 @@ module Artoo
       # @param [Object] data
       def notify_event(topic, *data)
         # TODO: send which topic sent the notification
-        @socket << data.last.to_s
+        @socket << data.last.to_json
       rescue Reel::SocketError, Errno::EPIPE
         info "Device event notification #{topic} websocket disconnected"
         terminate
