@@ -1,0 +1,116 @@
+---
+page_title_show: true
+title: Neurosky with Artoo
+author: The Hybrid Group
+page_title: Neurosky
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-neurosky' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-neurosky/issues'>Issues</a>"
+layout: documentation
+subnav_platform: true
+
+neurosky_driver: true
+---
+%section.intro
+  = image_tag "/images/devices/neurosky.jpg", class: "display"
+  .info_intro
+    %p  NeuroSky delivers fully integrated, single chip EEG biosensors. NeuroSky enables its partners and developers to bring their brainwave application ideas to market with the shortest amount of time, and lowest end consumer price.
+    %p
+      For more info about the Neurosky platform click
+      = succeed "." do
+        = link_to "here", "http://neurosky.com/products-markets/eeg-biosensors/hardware/", target: :blank
+  .clear
+  
+%section.how-to#HowToInstall
+  %h2 How To Install
+  %p Installing artoo with Neurosky support is pretty easy using ruby gems.
+  :markdown
+        :::bash
+        gem install artoo-neurosky
+
+  %p Afterwards you need to install socat - for this please run the following command (works on both OSX and Linux)
+  :markdown
+        :::bash
+        artoo install socat
+
+%section.how-to#HowToUse
+  %h2 How To Use
+  %p This small program let you get some information of the Neurosky.
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :neurosky, :adaptor => :neurosky, :port => '/dev/rfcomm0'
+        device :neurosky, :driver => :neurosky, :interval => 0.1
+
+        def handle_eeg(sender, data)
+          puts data
+        end
+
+        work do
+          puts "Scanning..."
+          on neurosky, :eeg => :handle_eeg
+        end
+
+%section.how-to#HowToConnect
+  %h2 How To Connect
+  %h3  Connecting to Mindwave
+
+  %h4  OSX
+
+  %p The main steps are:
+  %ul 
+    %li - Pair your computer and the Mindwave
+    %li - Use a socket to serial connection to map a TCP socket to the local unix port
+    %li - Connect to the device via Artoo
+
+  %p First pair your computer and Mindwave. You might be prompted for a passcode, if so enter '0000'.
+
+  %p Once paired, use the `artoo connect scan` command to find out your connection info:
+  :markdown
+        :::bash
+        $ artoo connect scan
+
+  %p Now you are ready to connect to the Mindwave using the socket, in this example port 4567:
+  :markdown
+        :::bash
+        artoo connect serial /dev/rfcomm0 4567
+
+  %h4 Ubuntu
+
+  %p The main steps are:
+  %ul 
+    %li - Pair your computer and the Mindwave
+    %li - Map your device to a unix port
+    %li - Use a socket to serial connection to map a TCP socket to the local unix port
+    %li - Connect to the device via Artoo
+
+  %p First pair your computer and Mindwave. You might be prompted for a passcode, if so enter '0000'.
+
+  %p Once paired, use the `artoo connect scan` command to find out your connection info:
+  :markdown
+        :::bash
+        $ artoo connect scan
+        Scanning ...
+          00:06:66:4A:14:99 Mindwave
+
+  %p Next, you need to bind the Mindawave to the system port. In the above example, /dev/rfcomm0. The easiest way to do this is to use the `artoo connect bind` command:
+  :markdown
+        :::bash
+        artoo connect bind 00:06:66:4A:14:99 /dev/rfcomm0
+
+  %p Now you are ready to connect to the Sphero using the socket, in this example port 4567:
+  :markdown
+        :::bash
+        artoo connect serial /dev/rfcomm0 4567
+
+  %h4 Windows
+
+  %p We are currently working with the Celluloid team to add Windows support. Please check back soon!
+
+%section.drivers#Drivers
+  %h2 Drivers
+  %p There is only one driver for the Pebble platform, as listed below.
+
+  .hardware
+    .devices
+      =# TODO: Update drivers list at the top of the page.
+      = partial "documentation/partials/devices_neurosky_drivers"
