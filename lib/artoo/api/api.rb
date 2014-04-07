@@ -80,8 +80,8 @@ module Artoo
 
       # Subscribte to robot device events
       # @return [nil]
-      get_ws '/robots/:robotid/devices/:deviceid/events' do
-        DeviceEventClient.new(@req.websocket, device(@params['robotid'], @params['deviceid']).event_topic_name('update'))
+      get_ws '/robots/:robotid/devices/:deviceid/events/:eventid' do
+        DeviceEventClient.new(@req.websocket, device(@params['robotid'], @params['deviceid']).event_topic_name(@params['eventid']))
         return nil
       end
 
