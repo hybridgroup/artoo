@@ -20,13 +20,13 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'celluloid', '~> 0.15'
-  s.add_runtime_dependency 'celluloid-io', '~> 0.15'
-  s.add_runtime_dependency 'http', '~> 0.5'  
-  s.add_runtime_dependency 'reel', '~> 0.4'
-  s.add_runtime_dependency 'multi_json', '~> 1.6'
+  s.add_runtime_dependency 'celluloid', '~> 0.15.0'
+  s.add_runtime_dependency 'celluloid-io', '~> 0.15.0'
+  s.add_runtime_dependency 'http', '~> 0.5.0'
+  s.add_runtime_dependency 'reel', '~> 0.4.0'
+  s.add_runtime_dependency 'multi_json', '~> 1.6.0'
   s.add_runtime_dependency 'rake'
-  s.add_runtime_dependency 'pry', '~> 0.9'
+  s.add_runtime_dependency 'pry', '~> 0.9.0'
   s.add_runtime_dependency 'thor', '~> 0.18.1'
   s.add_runtime_dependency 'robeaux', '~> 0.0.4'
 end
