@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Test Driven Robotics</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-1"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">artoo</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main">Ruby on Robots</div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/documentation/platforms" class="item">Platforms</a>
+            <a href="/videos" class="item">Videos</a>
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" href="https://github.com/hybridgroup/artoo/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Test Driven Robotics</h1>
+          <h2 class="subtitle">Test-driven robotics: develop hardware/software solutions guided by tests.</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <div class="test">
+                <p>Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.</p>
+                <p>Here is an example that uses Minitest, Mocha, and Timecop:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">./test_helper</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">./test_robot</span><span class="delimiter">'</span></span>
+
+describe <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+  let(<span class="symbol">:robot</span>) { <span class="constant">Artoo</span>::<span class="constant">MainRobot</span>.new }
+  let (<span class="symbol">:start</span>) { <span class="constant">Time</span>.now }
+
+  before <span class="symbol">:each</span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.travel(start)
+    robot.work
+  <span class="keyword">end</span>
+
+  after <span class="symbol">:each</span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.return
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">has work to do every 3 seconds</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    robot.has_work?(<span class="symbol">:every</span>, <span class="integer">3</span>.seconds).wont_be_nil
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">receives collision event</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    robot.expects(<span class="symbol">:contact</span>)
+    robot.sphero.publish(<span class="string"><span class="delimiter">"</span><span class="content">collision</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">clunk</span><span class="delimiter">"</span></span>)
+    sleep <span class="float">0.05</span>
+  <span class="keyword">end</span>
+
+  it <span class="string"><span class="delimiter">'</span><span class="content">must roll every 3 seconds</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+    <span class="constant">Timecop</span>.travel(start + <span class="integer">3</span>.seconds) <span class="keyword">do</span>
+      robot.sphero.expects(<span class="symbol">:roll</span>)
+      sleep <span class="float">0.05</span>
+    <span class="keyword">end</span>
+    <span class="constant">Timecop</span>.travel(start + <span class="integer">6</span>.seconds) <span class="keyword">do</span>
+      robot.sphero.expects(<span class="symbol">:roll</span>)
+      sleep <span class="float">0.05</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+                <p>to describe the following Sphero robot:</p>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection :sphero, :adaptor =&gt; :sphero, :port =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4560</span><span class="delimiter">'</span></span>
+device :sphero, :driver =&gt; :sphero
+
+def contact(*args)
+  <span class="error">@</span>contacts ||= <span class="integer">0</span>
+  <span class="error">@</span>contacts += <span class="integer">1</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Contact </span><span class="delimiter">"</span></span>
+end
+
+work <span class="keyword">do</span>
+  on sphero, :collision =&gt; :contact
+
+  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
+    sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
+  end
+end
+</pre>
+                <p>
+                  The repo with full example of using Artoo for test driven robotics is located at
+                  <a target="blank" href="https://github.com/hybridgroup/artoo-test-example">https://github.com/hybridgroup/artoo-test-example</a>
+                  .
+                </p>
+              </div>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com" id="THG-logo" target="_blank">
+            <img alt="The Hybrid Group" src="/images/elements/THG_logo.png"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Artoo - Crazyflie Navigation Driver</title>
+<title>Artoo - Neurosky Driver</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -56,8 +56,8 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Crazyflie</h1>
-          <h2 class="subtitle">Navigation</h2>
+          <h1 class="title">Neurosky Mindwave</h1>
+          <h2 class="subtitle">Driver</h2>
         </div>
       </div>
       <section class="subnav-drivers" id="mainsubnav"><div class="container">
@@ -72,99 +72,87 @@
       </section><div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/devices/crazyflie-nav.jpg"><div class="info_intro">
-                  <p>
-                    Allows user to send navigation control commands to a Crazyflie micro-quadcopter.
-                  </p>
+              <section class="intro"><img class="display" src="/images/devices/neurosky.jpg"><div class="info_intro">
+                  <p>The MindWave headset turns your computer into a brain activity monitor. The headset safely measures brainwave signals and monitors the attention levels of individuals as they interact with math, memory and pattern recognition applications.</p>
                 </div>
                 <div class="clear"></div>
               </section><section class="how_to" id="HowToConnect"><h2>How To Connect</h2>
-                <p>Communication with the Crazyflie's navigation control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.</p>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie_nav</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>
+connection <span class="symbol">:neurosky</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>
+device <span class="symbol">:neurosky</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+
+<span class="keyword">def</span> <span class="function">handle_eeg</span>(sender, data)
+  puts data
+<span class="keyword">end</span>
+...
 </pre>
               </section><section class="how-to" id="HowToUse"><h2>How To Use</h2>
-                <h3>Example of controlling a Crazyflie.</h3>
+                <h3>This small program use the Neurosky with the eeg.</h3>
                 <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
 
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie_nav</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>
+connection <span class="symbol">:neurosky</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>
+device <span class="symbol">:neurosky</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+
+<span class="keyword">def</span> <span class="function">handle_eeg</span>(sender, data)
+  puts data
+<span class="keyword">end</span>
 
 work <span class="keyword">do</span>
-  drone.log_value(<span class="string"><span class="delimiter">"</span><span class="content">stabilizer.pitch</span><span class="delimiter">"</span></span>)  
-  drone.start_logging
-
-  every(<span class="integer">1</span>.seconds) {
-    puts drone.log
-  }
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Scanning...</span><span class="delimiter">"</span></span>
+  on neurosky, <span class="symbol">:eeg</span> =&gt; <span class="symbol">:handle_eeg</span>
 <span class="keyword">end</span>
 </pre>
               </section><section class="public-methods"><div class="commands-api" id="Commands">
-                  <h1 id="commands">Commands</h1>
-                  
-                  <h2 id="setvalue">set_value</h2>
-                  
-                  <p>Sets a value for the Crazyflie.</p>
-                  
-                  <h5 id="returns">Returns</h5>
-                  
-                  <p><code>nil</code> </p>
-                  
-                  <h2 id="startgetvalue">start_get_value</h2>
-                  
-                  <p>Gets a value from the Crazyflie.</p>
-                  
-                  <h5 id="returns-1">Returns</h5>
-                  
-                  <p><code>integer</code> </p>
-                  
-                  <h2 id="toc">toc</h2>
-                  
-                  <p>Gets the toc from the Crazyflie.</p>
-                  
-                  <h5 id="returns-2">Returns</h5>
-                  
-                  <p><code>integer</code> </p>
-                  
-                  <h2 id="values">values</h2>
-                  
-                  <p>Gets the values from the Crazyflie.</p>
-                  
-                  <h5 id="returns-3">Returns</h5>
-                  
-                  <p><code>integer</code> </p>
-                  
-                  <h2 id="log">log()</h2>
-                  
-                  <p>Logs a value to the Crazyflie.</p>
-                  
-                  <h5 id="returns-4">Returns</h5>
-                  
-                  <p><code>nil</code> </p>
-                  
-                  <h2 id="startdriver">start_driver()</h2>
-                  
-                  <p>Starts the driver.</p>
-                  
-                  <h5 id="returns-5">Returns</h5>
-                  
-                  <p><code>nil</code></p>
+                  <h1>Commands</h1>
+                  <p>no commands</p>
                 </div>
                 <div class="commands-api" id="Events">
                   <h1 id="events">Events</h1>
                   
-                  <h2 id="startdriver">start_driver</h2>
+                  <h2 id="attentiondata">attention(data)</h2>
                   
-                  <p>Starts the driver</p>
+                  <p>Event with the user's current attention level.</p>
+                  
+                  <h2 id="blinkdata">blink(data)</h2>
+                  
+                  <p>Event with the user's current blink level.</p>
+                  
+                  <h2 id="meditationdata">meditation(data)</h2>
+                  
+                  <p>Event with the user's current meditation level.</p>
+                  
+                  <h2 id="signalqualitydata">signal_quality(data)</h2>
+                  
+                  <p>Event showing signal strength.</p>
+                  
+                  <h2 id="wavedata">wave(data)</h2>
+                  
+                  <p>Event showing wave data.</p>
+                  
+                  <h2 id="eegdata">eeg(data)</h2>
+                  
+                  <p>Event showing EEG data.</p>
+                  
+                  <p>{ :delta=&gt;7023617, 
+                    :theta=&gt;15294464, 
+                    :lo_alpha=&gt;15209472, 
+                    :hi_alpha=&gt;13321984, 
+                    :lo_beta=&gt;4527616, 
+                    :hi_beta=&gt;12073472, 
+                    :lo_gamma=&gt;862464, 
+                    :mid_gamma=&gt;13637632 }</p>
+                  
+                  <h2 id="start">start</h2>
+                  
+                  <p>Gets triggered when the Mindwave is started and ready to be used.</p>
                 </div>
               </section><section class="compatability hardware" id="Compatability"><h2>Compatibility</h2>
                 <div class="devices">
                   
-                  <!-- // Crazylie -->
-                  <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                    <img src="/images/devices/crazyflie.jpg"></a>
+                  <!-- // Neurosky -->
+                  <a class="device" href="/documentation/platforms/neurosky" title="Neurosky">
+                    <img src="/images/devices/neurosky.jpg"></a>
                 </div>
               </section>
 </div>
