@@ -33,6 +33,7 @@ else
     https://github.com/hybridgroup/artoo-roomba.git
     https://github.com/hybridgroup/artoo-spark.git
     https://github.com/hybridgroup/artoo-sphero.git
+    https://github.com/hybridgroup/artoo-neurosky.git
   )
 end
 
