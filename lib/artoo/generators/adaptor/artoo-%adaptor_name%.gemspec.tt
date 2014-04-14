@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Your name here"]
   s.email       = ["your email here"]
   s.homepage    = "Your homepage here"
-  s.license     = "Your License Here"
+  s.license     = "Apache 2.0"
   s.summary     = %q{Artoo adaptor and driver for <%= adaptor_class_name %>}
   s.description = %q{Artoo adaptor and driver for <%= adaptor_class_name %>}
 
