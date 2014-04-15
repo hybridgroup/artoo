@@ -1,0 +1,27 @@
+---
+layout: documentation
+page_title_show: true
+title: "Artoo Example - eeg"
+page_title: "Example: eeg"
+author: The Hybrid Group
+description: A Artoo code example
+page_subtitle: "<a href='https://github.com/hybridgroup/artoo-neurosky/tree/master/examples' target='_blank'>View In Repo</a>"
+---
+
+.example
+  :markdown
+        :::ruby
+        require 'artoo'
+
+        connection :neurosky, :adaptor => :neurosky, :port => '/dev/rfcomm0'
+        device :neurosky, :driver => :neurosky, :interval => 0.1
+
+        def handle_eeg(sender, data)
+          puts data
+        end
+
+        work do
+          puts "Scanning..."
+          on neurosky, :eeg => :handle_eeg
+        end
+
