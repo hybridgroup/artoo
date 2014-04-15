@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta name="description">
-<meta name="author">
-<title>Documentation</title>
+<meta content="A Artoo code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Artoo Example - neuro</title>
 <link href="/stylesheets/style.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><script src="/hybridpages/assets/javascript/subnav.js"></script><link href="//fonts.googleapis.com/css?family=Russo+One%7CInconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -56,52 +56,24 @@
 </div>
       <div class="page-title">
         <div class="w">
-          <h1 class="title">Documentation</h1>
-          <h2 class="subtitle">Made by Humans, for Humans.</h2>
+          <h1 class="title">Example: neuro</h1>
+          <h2 class="subtitle"><a href="https://github.com/hybridgroup/artoo-neurosky/tree/master/examples" target="_blank">View In Repo</a></h2>
         </div>
       </div>
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <div class="index">
-                <section><a href="/documentation/getting-started">
-                    <div class="title">Getting Started</div>
-                    <div class="description">The best way to get started with Artoo.</div>
-                  </a>
-                </section><section><a href="/documentation/platforms">
-                    <div class="title">Platforms</div>
-                    <div class="description">Artoo has a extensible system for connecting to hardware.</div>
-                  </a>
-                </section><section><a href="/documentation/drivers">
-                    <div class="title">Drivers</div>
-                    <div class="description">Artoo supports many different hardware devices.</div>
-                  </a>
-                </section><section><a href="/documentation/examples">
-                    <div class="title">Examples</div>
-                    <div class="description">How to use Artoo with a number of hardware configurations.</div>
-                  </a>
-                </section><section><a href="http://rubydoc.info/gems/artoo/frames">
-                    <div class="title">Generated Documentation</div>
-                    <div class="description">YARD-generated documentation</div>
-                  </a>
-                </section><section><a href="/documentation/api">
-                    <div class="title">API Server</div>
-                    <div class="description">The Artoo WebSockets API Server</div>
-                  </a>
-                </section><section><a href="/documentation/cli">
-                    <div class="title">CLI</div>
-                    <div class="description">Command Line Interface to make RobotOps easier.</div>
-                  </a>
-                </section><section><a href="/documentation/test-driven-robotics">
-                    <div class="title">Test Driven Robotics</div>
-                    <div class="description">Test-driven development of your robotics solutions is built-in.</div>
-                  </a>
-                </section><section><a href="/documentation/helpers">
-                    <div class="title">Helper Methods</div>
-                    <div class="description">The Artoo helper methods</div>
-                  </a>
-                </section>
-</div>
+              <div class="example">
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+
+connection <span class="symbol">:neurosky</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>
+device <span class="symbol">:neurosky</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:neurosky</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.5</span>
+  
+work <span class="keyword">do</span>
+  puts <span class="string"><span class="delimiter">"</span><span class="content">Scanning...</span><span class="delimiter">"</span></span>
+<span class="keyword">end</span>
+</pre>
+              </div>
             </div>
           </section>
 </div>
