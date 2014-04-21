@@ -110,14 +110,21 @@ description: Artoo code snippets for your convinience.
       :::ruby
       require 'artoo'
 
-      connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
-      device :watch, :driver => :pebble
+      connection :pebble, :adaptor => :pebble
+      device     :watch,  :driver  => :pebble, :name => 'pebble'
+
+      api :host => '0.0.0.0', :port => '8080'
+
+      name 'pebble'
+
+      def button_push(*data)
+        unless data[1].nil?
+          p "#{data[1]} button pushed"
+        end
+      end
 
       work do
-        watch.set_nowplaying_metadata("Artoo", "Hello", Time.now.to_s)
-        every(5.seconds) do
-          watch.set_nowplaying_metadata("Artoo", "Update...", Time.now.to_s)
-        end
+        on pebble, :button => :button_push
       end
 
   #### Raspberry Pi : [artoo-raspi](https://github.com/hybridgroup/artoo-raspi)

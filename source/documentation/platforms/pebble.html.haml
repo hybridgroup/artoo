@@ -33,53 +33,33 @@ pebble_driver: true
         :::ruby
         require 'artoo'
 
-        connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
-        device :watch, :driver => :pebble
+        connection :pebble, :adaptor => :pebble
+        device     :watch,  :driver  => :pebble, :name => 'pebble'
+
+        api :host => '0.0.0.0', :port => '8080'
+
+        name 'pebble'
+
+        def button_push(*data)
+          unless data[1].nil?
+            p "#{data[1]} button pushed"
+          end
+        end
 
         work do
-          on watch, :media_control => :button_push
+          on pebble, :button => :button_push
         end
 
-        def button_push(caller, data)
-          puts data.button unless data.nil?
-        end
 %section.how-to#HowToConnect
   %h2 How To Connect
-  %p This software requires version 1.12.0 of the Pebble watch firmware.
-  %h3 OSX
+  %p This software requires version 2.X of the Pebble watch firmware.
+
   %p The main steps are:
   %ul
-    %li Pair your computer and the Pebble
-    %li Use a socket to serial connection to map a TCP socket to the local port
-    %li Connect to the device via Artoo
-    %li To figure out which port your pebble is connected to, use the artoo connect scan command:
-  :markdown
-        :::bash
-        $ artoo connect scan
-  %p Now you are ready to connect to the Sphero using the socket, in this example port 4567:
-  :markdown
-        :::bash
-        artoo connect serial 4567 pebble
-  %h3 Ubuntu
-  %p The main steps are:
-  %ul
-    %li Pair your computer and the Pebble
-    %li Map your device to a port
-    %li Use a socket to serial connection to map a TCP socket to the local port
-    %li Connect to the device via Artoo
-    %li You will need to pair with the Pebble, entering any needed password.
-  %p Then you can find the Bluetooth address, for example 00:18:33:86:37:8B, by using the artoo connect scan command:
-  :markdown
-        :::bash
-        $ artoo connect scan
-  %p Once you know the address, you can use the artoo connect bind command to map a port to the device:
-  :markdown
-        :::bash
-        artoo connect bind 00:18:33:86:37:8B pebble
-  %p Now you are ready to connect to the Pebble using a socket, in this example port 4567:
-  :markdown
-        :::bash
-        artoo connect socat pebble 4567
+    %li Install Pebble 2.0 iOS or Android app. (If you haven't already)
+    %li Install chomps apps by opening this link on your phone: https://github.com/hybridgroup/chomps/raw/master/chomps.pbw
+    %li After app is installed, clock on "Settings" and configure robot name, robot api host, and robot api port
+    %li Configuration settings must match with your program, in this example, api host would be your computer IP, robot name is 'pebble', and robot api port is 8080
 
 %section.drivers#Drivers
   %h2 Drivers
@@ -87,5 +67,4 @@ pebble_driver: true
 
   .hardware
     .devices
-      =# TODO: Update drivers list at the top of the page.
       = partial "documentation/partials/devices_pebble_drivers"
