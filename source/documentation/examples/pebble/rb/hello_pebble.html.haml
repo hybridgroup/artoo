@@ -14,15 +14,19 @@ page_subtitle: "<a href='https://github.com/hybridgroup/artoo-pebble/tree/master
         require 'artoo'
 
         connection :pebble, :adaptor => :pebble
-        device :watch, :driver => :pebble
+        device     :watch,  :driver  => :pebble, :name => 'pebble'
+
+        api :host => '0.0.0.0', :port => '8080'
+
+        name 'pebble'
+
+        def button_push(*data)
+          unless data[1].nil?
+            p "\#{data[1]} button pushed"
+          end
+        end
 
         work do
-          c = 100
-          every(1.second) do
-            c++
-            str = "c: \#{c}"
-            pebble.message_queue.push(str)
-            Logger.info(pebble.last_message)
-          end
+          on pebble, :button => :button_push
         end
 
