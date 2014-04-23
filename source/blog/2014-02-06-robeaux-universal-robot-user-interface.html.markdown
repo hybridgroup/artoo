@@ -5,6 +5,7 @@ page_title: Blog
 date: 2014-02-06
 tags: robots
 author: Ron Evans
+active_menu_blog: true
 ---
 
 We're off to a nice start for 2014 with the release of version 1.6 of Artoo - Ruby on Robots ([http://artoo.io](http://artoo.io)), our first release of the year. We learned a lot from our great experience at RobotsConf ([http://robotsconf.com](http://robotsconf.com)), and this is just the first step forward in a series of new improvements for all of you, our loyal friends. This release adds some powerful new capabilities, as well as support for more hardware. 

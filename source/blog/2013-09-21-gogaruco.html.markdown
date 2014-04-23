@@ -5,6 +5,7 @@ page_title: Blog
 date: 2013-09-21
 tags: events
 author: Damen Evans
+active_menu_blog: true
 ---
 
 The Artoo team has been having a great time at gogaruco here in San Francisco!
