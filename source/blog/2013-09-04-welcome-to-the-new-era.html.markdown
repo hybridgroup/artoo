@@ -5,6 +5,7 @@ page_title: Blog
 date: 2013-09-04
 tags: robots
 author: Ron Evans
+active_menu_blog: true
 ---
 
 Hello, friends, and welcome to the new era of open source robotics! This blog is where we will discuss new and interesting developments on Artoo (http://artoo.io) the cool new Ruby on Robots framework, as well as anything else interesting to the robot community at large.

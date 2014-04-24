@@ -5,6 +5,7 @@ page_title: Blog
 date: 2014-04-08
 tags: events
 author: Ron Evans
+active_menu_blog: true
 ---
 
 In celebration of [National Robotics Week](http://nationalroboticsweek.org), we brought our robot road show to Boston to speak to [BostonRB](http://bostonrb.org/), one of the US's most active Ruby communities. Held at Brightcove's office downtown, the turnout was quite impressive.

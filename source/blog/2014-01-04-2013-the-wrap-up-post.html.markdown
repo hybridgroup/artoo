@@ -5,6 +5,7 @@ page_title: Blog
 date: 2014-01-04
 tags: events
 author: Ron Evans
+active_menu_blog: true
 ---
 
 It was an amazing year for all of us on the [Artoo](http://artoo.io) team. The robot world tour ranged from [Japan](http://rubykaigi.org/2013), to [Mexico](http://magmaconf.com/), and back again. We were genuinely honored to have so many great invitations to present our work with Ruby robotics over 2013. The open source robotics evolution is already here, and we appreciate all the enthusiasm and support we've had the from the community.

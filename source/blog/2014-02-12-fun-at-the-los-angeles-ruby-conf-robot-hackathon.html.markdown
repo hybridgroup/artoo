@@ -5,6 +5,7 @@ page_title: Blog
 date: 2014-02-12
 tags: events
 author: Ron Evans
+active_menu_blog: true
 ---
 
 Our idea of a good time involves a lot of robots, and at the robot hackathon that took place at last week's Los Angeles Ruby Conference ([http://larubyconf.com](http://larubyconf.com)) we definitely optimized for fun. The previous week, Team Artoo just shipped version 1.6 of our open source robotics framework, and we were ready to let loose and enjoy ourselves.
