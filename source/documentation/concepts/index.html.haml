@@ -1,0 +1,42 @@
+---
+page_title_show: true
+title: Artoo Concepts
+author: The Hybrid Group
+page_title: Concepts
+page_subtitle: "This page covers the most important concepts in the artoo context."
+layout: documentation
+active_menu_docs: true
+---
+
+%h2 API
+
+%p When you create an application with artoo, you can use its public interface to monitor robots and receive information from them.
+
+%p 
+	Go to 
+	= link_to "API Usage" , "/documentation/api" 
+	for further information.
+
+%h2 Robot
+
+%p A Robot represents the primary interface for interacting with a collection of physical computing capabilities. A robot has devices plugged into it; you can tell them what to do or receive notifications of events.
+
+%p 
+	Go to 
+	= link_to "Docs" , "/documentation" 
+	for a list of current supported hardware.
+
+%h2 Device-Driver
+
+%p Controls behaviour of a certain device by exposing diferent methods according to its capabilities.
+%p Examples: LED in arduino board or sphero accelerometer.
+
+%h2 Connection-Adaptor
+
+%p Controls how we communicate to the device to establish communication with a robot.
+%p Example: In arduino, we use the Firmata Adaptor for this.
+
+%h2 Integration
+
+%p This is the low-level layer that establishes communication with the hardware.
+%p Current integrations supported: "serial", "serial to socket"
