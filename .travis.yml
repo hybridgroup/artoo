@@ -10,3 +10,4 @@ matrix:
 branches:
   except:
     - artoo.io
+    - /^artoo-.*$/
