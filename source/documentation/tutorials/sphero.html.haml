@@ -1,0 +1,70 @@
+---
+page_title_show: true
+title: Artoo Tutorials
+author: The Hybrid Group
+page_title: "Tutorials: Sphero "
+page_subtitle: "Learn how to use Artoo with Sphero."
+layout: documentation
+active_menu_docs: true
+---
+
+%h2 Sphero
+%h3 Welcome!
+
+%p After completing this tutorial, you will be familiar with the most important concepts needed to play with artoo and sphero. If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
+
+%ul 
+	%li 
+		Before we start, be sure to have 
+		= link_to "ruby and artoo installed." , "/documentation/getting-started", target: :blank
+	%li You should have Bluetooth in your computer.
+	%li 
+		:markdown
+			install artoo sphero gem: `gem install artoo-sphero --pre `
+
+%h3 Pair your sphero device via Bluetooth
+%h4 MacOSX
+
+%ul 
+	%li Turn on your Sphero by shaking it.
+	%li Go to Mac OS Bluetooth preferences, click “Set Up New Device”, and follow the onscreen instructions to set up your sphero.
+
+%h4 Ubuntu
+
+%ul 
+	%li Turn on your Sphero by shaking it,
+	%li Click on the Bluetooth notification icon, make sure Bluetooth is ON, and click "Set Up new Device".
+	%li Select the Sphero from the Bluetooth list of devices and follow the on-screen instructions to connect the Bluetooth device.
+
+%h3 Communicate with your device
+
+%p 
+	Follow the steps defined in 
+	** Communication with Devices Guide
+
+%h3 Run artoo program
+
+%ul 
+	%li 
+		Download 
+		= link_to "color example.","https://github.com/hybridgroup/artoo/blob/master/examples/sphero_color.rb", target: :blank
+	%li Open a new terminal .
+	%li 
+		:markdown
+			Navigate to the directory where you put the example file:
+
+				cd Downloads
+	%li 
+		:markdown
+			If you are running with serproxy on Windows or Mac OS, you will need to change the port from `8023` to `5331` on line 3:
+
+				connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:5331'
+	%li 
+		:markdown
+			run example
+
+				ruby sphero_color.rb 
+
+%h3 Sphero should be changing colors through the rainbow and moving around.
+
+%p Congratulations you have completed succesfully this tutorial.

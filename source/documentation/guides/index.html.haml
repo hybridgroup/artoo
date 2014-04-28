@@ -1,0 +1,112 @@
+---
+page_title_show: true
+title: Artoo Guides
+author: The Hybrid Group
+page_title: Guides
+page_subtitle: "This page covers the most important concepts in the artoo context."
+layout: documentation
+active_menu_docs: true
+---
+%h2 Concepts
+%h3 API
+
+%p When you create an application with artoo, you can use its public interface to monitor robots and receive information from them.
+
+%p 
+	Go to 
+	= link_to "API Usage" , "/documentation/api" 
+	for further information.
+
+%h3 Robot
+
+%p A Robot represents the primary interface for interacting with a collection of physical computing capabilities. A robot has devices plugged into it; you can tell them what to do or receive notifications of events.
+
+%p 
+	Go to 
+	= link_to "Docs" , "/documentation" 
+	for a list of current supported hardware.
+
+%h3 Device-Driver
+
+%p Controls behaviour of a certain device by exposing diferent methods according to its capabilities.
+%p Examples: LED in arduino board or sphero accelerometer.
+
+%h3 Connection-Adaptor
+
+%p Controls how we communicate to the device to establish communication with a robot.
+%p Example: In arduino, we use the Firmata Adaptor for this.
+
+%h3 Integration
+
+%p This is the low-level layer that establishes communication with the hardware.
+%p Current integrations supported: "serial", "serial to socket"
+
+%h2 Communication With Devices
+
+%h3 Socket to serial connection
+
+%p Also known as Serial to network connection
+%p Sometimes, when creating applications, developers are barred from accessing hardware devices such as serial ports, but have the need to access serial ports in order to communicate with interface boards and sensors.
+%p This type of communication solves the problem by connecting on one side to a serial port and on the other side acting as a TCP/IP server.
+%p With the Sphero, the initial connecting process might require a few retries, but once connected performance is fine.
+
+%h3 Any OS
+
+%ul 
+	%li Turn on your bluetooth and device (sphero).
+	%li Connect the sphero to the computer using Bluetooth.
+	%li
+		Run this command to look for it:
+		:markdown
+				artoo connect scan
+	%li 
+		You will see the following output:
+		:markdown
+				Scanning ...
+				00:06:66:44:39:C6   Sphero-YBW
+	%li 
+		Use that output to bind your device by name running this command:
+		:markdown
+				artoo connect bind 00:06:66:44:39:C6 Sphero-YBW
+	%li 
+		Finally, run this command to connect to your device:
+		:markdown
+				artoo connect serial Sphero-YBW 4567
+	%li 
+		You should see this message displayed:
+		:markdown
+				N listening on AF=2 0.0.0.0:4567
+	%li Leave this terminal open with socat running.
+
+%h3 MacOSX
+
+%ul 
+	%li 
+		Download and install 
+		= link_to "Multicom.", "http://members.iinet.net.au/~mgl/MartysPlace/MultiCom.html", target: :blank
+	%li 
+		Open the Multicom application and set the following configuration to Port A and Port B:
+		%img{:src => "/images/elements/porta.png", :alt => "Port A", style: "height: 350px"}/ 
+		%img{:src => "/images/elements/portb.png", :alt => "Port B", style: "height: 350px"}/ 
+	%li NOTE Port B information is very important to make sure that the listen port is the same one that you are using in your Ruby program; you could change this to fit your needs.
+	%li Both ports should be green.
+
+%h3 Serial connection
+%p 
+	:markdown
+		For this to work, install this gem: `hybridgroup-serialport`.
+%h4 MacOSX/Linux
+%ul 
+	%li 
+		To get the serial port identifier for your device, open a terminal and type the following command:
+		:markdown
+			`ls /dev/tty.*`
+	%li 
+		This command should list your device, for example
+		:markdown
+				/dev/tty.Sphero-ORB-RN-SPP.
+	%li 
+		You should change the code to connect to that port, for example:
+		:markdown
+				connection :sphero, :adaptor => :sphero, :port => '/dev/tty.Sphero-ORB-RN-SPP'
+	%li The latency on the initial connection is fairly high on all Bluetooth devices. The best way to get around this is to use a socket to serial utility to establish the connection. 
