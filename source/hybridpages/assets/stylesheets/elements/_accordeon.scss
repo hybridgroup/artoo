@@ -1,0 +1,48 @@
+.side-documentation {
+  @include span-columns(3);
+
+  .accordion-docs { 
+
+    dt, dd {
+        padding: 10px;
+        border-bottom: 0; 
+
+        a {
+          display: block;
+          color: white;
+        }
+    }
+
+    dt {
+      background-color: $title-color;
+      border-bottom: 2px solid $body-bg-color;
+    }
+
+    dd {
+       border-top: 0; 
+       margin-left: 0;
+       background-color: $hero-color;
+       &:last-of-type {
+         border-top: 1px solid white;
+         position: relative;
+         top: -1px;
+       }
+       ul {
+
+        li {
+
+          margin: 5px 0;
+
+          a {
+
+            font-size: 10pt;
+          }
+        }
+       }
+    }
+  }
+}
+
+.container-documentation {
+  @include span-columns(9);
+}
