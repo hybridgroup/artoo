@@ -22,6 +22,7 @@
        border-top: 0; 
        margin-left: 0;
        background-color: $hero-color;
+       color: white;
        &:last-of-type {
          border-top: 1px solid white;
          position: relative;
@@ -36,6 +37,11 @@
           a {
 
             font-size: 10pt;
+
+            span {
+
+              color: darken($body-bg-color,30);
+            }
           }
         }
        }
