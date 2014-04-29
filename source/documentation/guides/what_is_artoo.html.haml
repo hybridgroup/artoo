@@ -30,3 +30,41 @@ platforms: true
   ), and Reel (
   = link_to "Reel","https://github.com/celluloid/reel"
   ).
+
+%h1 Arquitecture 
+
+%h2 Concurrency
+
+%p 
+  Artoo uses 
+  = link_to "Celluloid" , "https://github.com/celluloid/celluloid", taget: "_blank" 
+  to control different hardware devices at the same time. It receives events with 
+  = link_to "Celluloid::IO" , "https://github.com/celluloid/celluloid-io", taget: "_blank" 
+  evented sockets.
+
+%p Artoo works on JRuby or Rubini.us, as we need an actual implementation of Ruby that supports threads.
+
+%h2 How it works
+
+%p A Robot represents the primary interface for interacting with a collection of physical computing capabilities. A robot has devices plugged into it and you can tell them what to do or receive notifications of events from them.
+
+%p Artoo uses the adapter pattern to handle connections to a particular type of machine (similar to Rails handling database connections). This way a single interface for communication is used and the details of getting through the protocol are abstracted. For this purpose, several integrations are used to control the communications with the hardware.
+
+%p Finally, each supported device has a driver to control its behaviour by exposing methods according to its capabilities. A publish and subscribe architecture is used for things happening in the devices.
+
+%p 
+  %img{:src => "/images/elements/artoo_architecture_1.png", :alt => "How it Works"}/ 
+
+%h3 API
+
+%p Applications use the Artoo API to communicate with Artoo Master class. This communication can be make using HTTP Rest requests or WebSockets.
+
+%p The Artoo Master Class then sends messages to the robots and receives feedback from them.
+
+%p 
+  %img{:src => "/images/elements/artoo_architecture_2.png", :alt => "API"}/ 
+
+%p 
+  Go to 
+  = link_to "API Usage" , "/documentation/api" 
+  for further information.
