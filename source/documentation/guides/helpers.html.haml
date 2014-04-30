@@ -10,9 +10,13 @@ page_title: Guides
 page_subtitle: A Guide by Humans, for Humans.
 platforms: true
 ---
-
+:javascript
+  $("#guides-panel").addClass("active-panel");
+  $("#guides-panel ul li:nth-child(7)").addClass("active-link");
+  
 %section.public-methods
   %h2 Helper Methods
+  %p Artoo provides several helper methods that you can use in your programs.
   .commands-api
     %h3 class Integer -> Numeric
     

@@ -22,6 +22,10 @@ wiiclassic_driver: true
 wiichuck_driver: true
 
 ---
+:javascript
+  $("#platform-panel").addClass("active-panel");
+  $("#platform-panel ul li:nth-child(2)").addClass("active-link");
+  
 %section.intro
   = image_tag "/images/devices/arduino.jpg", class: "display"
   .info_intro

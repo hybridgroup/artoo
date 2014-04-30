@@ -1,80 +1,78 @@
-%dl.accordion-docs 
-  %dt 
+%dl.accordion-docs
+  %dt
     %a{:href => ""} Getting Started
-  %dd
-    %ul 
-      %li 
+  %dd#getting-panel
+    %ul
+      %li
         %a{:href => "/documentation/getting-started"} Setup environment
-      %li 
+      %li
         %a{:href => "/documentation/getting-started/tutorials/arduino"} Tutorial - Arduino led blinks
-      %li 
+      %li
         %a{:href => "/documentation/getting-started/tutorials/sphero"} Tutorial - Sphero changes color
-  %dt 
+  %dt
     %a{:href => ""} Guides
-  %dd 
-    %ul 
-      %li 
-        %a{:href => "/documentation/guides/what_is_artoo"} 
-          About artoo 
-      %li 
+  %dd#guides-panel
+    %ul
+      %li
+        %a{:href => "/documentation/guides/what_is_artoo"}
+          About artoo
+      %li
         %a{:href => "/documentation/guides/concepts"} Concepts
-      %li 
-        %a{:href => "/documentation/guides/api"} 
-          API 
-      %li 
-        %a{:href => "/documentation/guides/cli"} 
-          CLI 
-      %li 
-        %a{:href => "/documentation/guides/console"} 
-          Console 
-      %li 
-        %a{:href => "/documentation/guides/test-driven-robotics"} Test Driven Robotics
-      %li 
+      %li
+        %a{:href => "/documentation/guides/api"}
+          API
+      %li
+        %a{:href => "/documentation/guides/cli"}
+          CLI
+      %li
+        %a{:href => "/documentation/guides/console"}
+          Console
+      %li
+        %a{:href => "/documentation/guides/test-driven-robotics"} Test Driven Robotic
+      %li
         %a{:href => "/documentation/guides/helpers"} Helper Methods
-      %li 
-        %a{:href => "/documentation/guides/communication"} Communication with devices
-      %li 
-        %a{:href => "http://rubydoc.info/gems/artoo/frames"} Generated documentation
+      %li
+        %a{:href => "http://rubydoc.info/gems/artoo/frames", :target => '_blank'} Generated documentation
 
-  %dt 
+  %dt
     %a{:href => ""} Platforms
-  %dd
-    %ul 
+  %dd#platform-panel
+    %ul
       %li
         %a{:href => "/documentation/platforms/ardrone"} Ardrone
-      %li 
+      %li
         %a{:href => "/documentation/platforms/arduino"} Arduino
-      %li 
+      %li
         %a{:href => "/documentation/platforms/beaglebone"} Beaglebone
-      %li 
+      %li
         %a{:href => "/documentation/platforms/crazyflie"} Crazyflie
-      %li 
+      %li
         %a{:href => "/documentation/platforms/digispark"} Digispark
-      %li 
+      %li
         %a{:href => "/documentation/platforms/joystick"} Joystick
-      %li 
+      %li
         %a{:href => "/documentation/platforms/keyboard"} Keyboard
-      %li 
+      %li
         %a{:href => "/documentation/platforms/leapmotion"} Leap Motion
-      %li 
+      %li
         %a{:href => "/documentation/platforms/neurosky"} Neurosky Mindware
-      %li 
+      %li
         %a{:href => "/documentation/platforms/opencv"} OpenCV
-      %li 
+      %li
         %a{:href => "/documentation/platforms/pebble"} Pebble
-      %li 
+      %li
         %a{:href => "/documentation/platforms/raspberry-pi"} Raspberry Pi
-      %li 
+      %li
         %a{:href => "/documentation/platforms/roomba"} Roomba
-      %li 
+      %li
         %a{:href => "/documentation/platforms/spark"} Spark
-      %li 
+      %li
         %a{:href => "/documentation/platforms/sphero"} Sphero
-  %dt 
+  %dt
     %a{:href => ""} Drivers
-  %dd 
+  %dd#driver-panel 
     GPIO
-    %ul 
+    %ul#gpio
       %li
         %a{:href => "/documentation/drivers/analog-sensor"} Analog Sensor
       %li
@@ -92,17 +90,17 @@
       %li
         %a{:href => "/documentation/drivers/servo"} Servo
     I2C
-    %ul 
-      %li 
+    %ul#i2c
+      %li
         %a{:href => "/documentation/drivers/blinkm"} Blinkm
-      %li 
+      %li
         %a{:href => "/documentation/drivers/hmc6352-compass"} HMC6352 Compass
-      %li 
+      %li
         %a{:href => "/documentation/drivers/wiiclassic"} Wii Classic Controller
-      %li 
+      %li
         %a{:href => "/documentation/drivers/wiichuck"} Wii Nunchuk Controller 
-    ARDrone 
-    %ul
+    ARDrone
+    %ul#ardrone
       %li
         %a{:href => "/documentation/drivers/ardrone"} Ardrone Flight
       %li
@@ -110,13 +108,13 @@
       %li
         %a{:href => "/documentation/drivers/ardrone-video"} Ardrone Video
     Crazyflie
-    %ul
+    %ul#crazyflie
       %li
         %a{:href => "/documentation/drivers/crazyflie"} Crazyflie Flight
       %li
         %a{:href => "/documentation/drivers/crazyflie-nav"} Crazyflie Navigation 
     Joystick
-    %ul
+    %ul#joystick
       %li
         %a{:href => "/documentation/drivers/joystick"} Generic Joystick
       %li
@@ -124,7 +122,7 @@
       %li
         %a{:href => "/documentation/drivers/xbox360"} XBox360 Controller
     Other Drivers
-    %ul
+    %ul#others
       %li
         %a{:href => "/documentation/drivers/keyboard"} Keyboard 
       %li
@@ -137,22 +135,21 @@
         %a{:href => "/documentation/drivers/roomba"} Roomba
       %li
         %a{:href => "/documentation/drivers/sphero"} Sphero
-  %dt 
+  %dt
     %a{:href => ""} Troubleshooting
-  %dd 
-    %ul 
-      %li 
-        %a{:href => "/documentation/troubleshooting"} Socket to serial proxies - Ubuntu USB To Serial Interface
-  %dt 
-    %a{:href => ""} Contribute
-  %dd 
+  %dd#trouble-panel
     %ul
       %li
-        %a{:href => "/documentation/contribute"} Introduction  
+        %a{:href => "/documentation/troubleshooting/communication"} Communication with devices
+  %dt
+    %a{:href => ""} Contribute
+  %dd#contribute-panel
+    %ul
+      %li
+        %a{:href => "/documentation/contribute"} How to contribute?
       %li
         %a{:href => "/documentation/contribute/code-generator"} Code generator
       %li
         %a{:href => "/documentation/contribute/guidelines"} Guidelines
       %li
-        %a{:href => "/documentation/contribute/contact-us"} Contact us  
-
+        %a{:href => "/documentation/contribute/contact-us"} Contact us

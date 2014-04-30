@@ -11,6 +11,10 @@ active_menu_docs: true
 
 sphero_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#others li:nth-child(6)").addClass("active-link");
+
 %section.intro
   =image_tag "/images/devices/sphero.jpg", class: "display"
   .info_intro

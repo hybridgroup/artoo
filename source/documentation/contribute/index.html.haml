@@ -7,77 +7,55 @@ page_subtitle: "Anyone can contribute to Artoo."
 layout: documentation
 active_menu_docs: true
 ---
+:javascript
+	$("#contribute-panel").addClass("active-panel");
+	$("#contribute-panel li:nth-child(1)").addClass("active-link");
 
-%h2 Introduction
+%h2 How to contribute?
 
-%p Anyone can contribute to Artoo
-
-%ul 
-	%li 
-		Spread the word: visit 
-		= link_to "artoo.io", "http://artoo.io", target: :blank 
-		website or follow 
-		= link_to "@artooio", "https://twitter.com/artooio", target: :blank  
-		twitter.
-	%li 
-		Open a 
+%ul
+	%li
+		Spread the word: visit
+		= link_to "artoo.io", "http://artoo.io", target: :blank
+		website or follow
+		= link_to "@artooio", "https://twitter.com/artooio", target: :blank
+		twitter
+	%li
+		Open a
 		= link_to "new issue", "https://github.com/hybridgroup/artoo/issues/new", target: :blank  
 		if you find a bug or you have problems with our documentation.
-	%li 
+	%li
 		Follow our contribute guidelines if you would like to make a code contribution.
 
-%h2 Setup
-
-%h3 Requirements
-
-%p 
-	See the 
-	= link_to "install", "/documentation/getting-started" 
-	section.
+%h2 Code contribution
 
 %h3 Set up The Library
 
-%ol 
-	%li 
+%ol
+	%li
 		:markdown
-			Clone the repository:  `git clone git@github.com:krainboltgreene/artoo.git`
-	%li 
+			Clone the repository:  `git clone git@github.com:krainboltgreene/artoo.git
+	%li
 		:markdown
-			Optional Create a gemset: `rvm --create --rvmrc 1.9.3@artoo`
-	%li 
+			Optional Create a gemset: `rvm --create --rvmrc 1.9.3@artoo
+	%li
 		:markdown
-			Install all the dependencies: bundle install`
+			Install all the dependencies: bundle install
 
 %h3 Tests
 
-%p 
+%p
 	:markdown
 		Make sure the tests pass: `rake test`
 
-%h2 Guidelines
-
-%h3 Style guidelines
-
-%p This is the way we do things at the Hybrid Group. It's not the best of the best, but it's the best for us and has worked well:
-
-%ul 
-	%li 
-		= link_to "Git", "http://thehybridway.heroku.com/file.Git.html", target: :blank
-	%li 
-		= link_to "Ruby", "http://thehybridway.heroku.com/file.Ruby.html", target: :blank
-
 %h3 Submitting Code
 
-%ul 
+%ul
+	%li= link_to 'Review guidelines', '/documentation/contribute/guidelines'
 	%li Fork the code.
 	%li Create your feature branch (git checkout -b my-new-feature)
 	%li Commit your changes (git commit -am 'Add some feature')
 	%li Push to the branch (git push origin my-new-feature)
-	%li 
-		Create a 
+	%li
+		Create a
 		= link_to "new pull request" , "https://github.com/hybridgroup/artoo/compare?expand=1", target: :blank
-
-%h3 Common pitfalls
-
-%ul 
-	%li TBD

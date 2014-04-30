@@ -10,6 +10,10 @@ active_menu_docs: true
 
 leapmotion_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#others li:nth-child(2)").addClass("active-link");
+  
 %section.intro
   =image_tag "/images/devices/leap_motion.jpg", class: "display"
   .info_intro

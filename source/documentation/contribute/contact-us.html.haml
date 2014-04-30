@@ -7,5 +7,25 @@ page_subtitle: "Anyone can contribute to Artoo."
 layout: documentation
 active_menu_docs: true
 ---
+:javascript
+	$("#contribute-panel").addClass("active-panel");
+	$("#contribute-panel li:nth-child(4)").addClass("active-link");
 
 %h2 Contact Us
+
+%p 
+	To subscribe for announcements of releases, important changes and so on, please follow 
+	= link_to "@artooio", "https://twitter.com/artooio", target: :blank 
+	on Twitter.
+
+%h3 IRC
+
+%p Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
+
+%h3 Open a new issue
+%p 
+	If you need help or you feel we can improve something, let us know! Open a 
+	= link_to "new issue.", "https://github.com/hybridgroup/artoo/issues/new", target: :blank
+
+	
+

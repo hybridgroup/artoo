@@ -13,6 +13,10 @@ arduino_platform: true
 digispark_platform: true
 spark_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#gpio li:nth-child(1)").addClass("active-link");
+
 %section.intro
   = image_tag "/images/devices/analog-sensor.jpg", class: "display"
   .info_intro

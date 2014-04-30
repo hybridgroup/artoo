@@ -10,6 +10,10 @@ active_menu_docs: true
 
 joystick_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#joystick li:nth-child(2)").addClass("active-link");
+
 %section.intro
   =image_tag "/images/devices/ps3.jpg", class: "display"
   .info_intro

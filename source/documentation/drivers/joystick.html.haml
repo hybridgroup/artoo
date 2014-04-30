@@ -10,6 +10,10 @@ active_menu_docs: true
 
 joystick_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#joystick li:nth-child(1)").addClass("active-link");
+
 %section.intro
   =image_tag "/images/devices/joystick.jpg", class: "display"
   .info_intro

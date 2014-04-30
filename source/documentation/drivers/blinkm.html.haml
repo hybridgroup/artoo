@@ -14,6 +14,9 @@ beaglebone_platform: true
 digispark_platform: true
 raspberry_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#i2c li:nth-child(1)").addClass("active-link");
 
 %section.intro
   =image_tag "/images/devices/blinkm.jpg", class: "display"

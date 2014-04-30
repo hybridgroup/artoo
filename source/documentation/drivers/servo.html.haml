@@ -14,6 +14,10 @@ digispark_platform: true
 spark_platform: true
 raspberry_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#gpio li:nth-child(8)").addClass("active-link");
+
 %section.intro
   = image_tag "/images/devices/servo.jpg", class: "display"
   .info_intro

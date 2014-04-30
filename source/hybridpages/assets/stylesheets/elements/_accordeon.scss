@@ -3,6 +3,16 @@
 
   .accordion-docs { 
 
+    ul {
+
+      list-style: none;
+
+      .active-link {
+
+        list-style: square;
+      }
+    }
+
     dt, dd {
         padding: 10px;
         border-bottom: 0; 

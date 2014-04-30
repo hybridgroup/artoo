@@ -15,6 +15,10 @@ digispark_platform: true
 raspberry_platform: true
 spark_platform: true
 ---
+:javascript
+  $("#driver-panel").addClass("active-panel");
+  $("#gpio li:nth-child(2)").addClass("active-link");
+
 %section.intro
   = image_tag "/images/devices/button.jpg", class: "display"
   .info_intro
