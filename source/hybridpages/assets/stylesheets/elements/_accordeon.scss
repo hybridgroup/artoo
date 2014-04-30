@@ -10,6 +10,12 @@
       .active-link {
 
         list-style: square;
+        font-weight: bold;
+
+        a {
+
+          color: $hero-title-color;
+        }
       }
     }
 
@@ -19,20 +25,25 @@
 
         a {
           display: block;
-          color: white;
+          color: $hero-subtitle-color;
         }
     }
 
     dt {
       background-color: $title-color;
       border-bottom: 2px solid $body-bg-color;
+
+      a {
+
+        color: $hero-title-color;
+      }
     }
 
     dd {
        border-top: 0; 
        margin-left: 0;
        background-color: $hero-color;
-       color: white;
+       color: $hero-subtitle-color;
        &:last-of-type {
          border-top: 1px solid white;
          position: relative;

@@ -1,3 +1,14 @@
+.page-title-docs {
+  
+  .w {
+
+    .title {
+
+      font-size: 35pt !important;
+    }
+  }
+}
+
 .page-title {
 
   background: $hero-color;
@@ -42,6 +53,12 @@
   position: fixed;
   top: 0;
   z-index: 99;
+  text-align: right;
+
+  a {
+
+    margin: 20px 10px !important;
+  }
 }
 
 .marginTopSubnav {
@@ -65,7 +82,7 @@
     a {
 
       padding: 5px 10px;
-      margin: 20px 10px;
+      margin: 20px 2px;
       color: $color-text-subnav-drivers;
 
       &:hover {
