@@ -8,4 +8,6 @@ $(document).ready(function(){
     return false;
   });
 
+  $(".active-panel").slideDown();
+
 });
