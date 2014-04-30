@@ -1,6 +1,11 @@
 .side-documentation {
   @include span-columns(3);
 
+  @media only screen and (max-width: $medium-screen) {
+
+    @include span-columns(12);
+  }
+
   .accordion-docs { 
 
     ul {
@@ -72,4 +77,9 @@
 
 .container-documentation {
   @include span-columns(9);
+  
+  @media only screen and (max-width: $medium-screen) {
+
+    @include span-columns(12);
+  }
 }

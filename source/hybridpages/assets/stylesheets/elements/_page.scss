@@ -55,6 +55,18 @@
   top: 0;
   z-index: 99;
   text-align: right;
+  padding: 0 !important;
+
+  .app-logo {
+
+    display: inline-block !important;
+  }
+
+  nav {
+  
+    float: right;
+    margin: 20px 0;
+  }
 
   a {
 
@@ -78,13 +90,30 @@
      display: none;
   }
 
+  .app-logo {
+
+      color: $blog-title-color;
+      font-size: 2em;
+      float: left;
+      font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin-top: 5px;
+      display: none;
+  }
+
   nav {
+
 
     a {
 
       padding: 5px 10px;
       margin: 20px 2px;
       color: $color-text-subnav-drivers;
+      font-size: .9em;
+
+      @media only screen and (min-width: $medium-screen) and (max-width: $big-screen) {
+
+        font-size: .7em;
+      }
 
       &:hover {
 
