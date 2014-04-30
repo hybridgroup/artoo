@@ -8,7 +8,7 @@ layout: documentation
 active_menu_docs: true
 ---
 %h2  How To Connect with the API
-%p Now that you are ready to write your own code you can access a running Artoo API server.
+%p With artoo can access a running API server.
 %h3 Running your robot:
 :markdown	
 	To test your code you can type this on your console:
@@ -58,7 +58,13 @@ active_menu_docs: true
 	      puts "Hello from the API running at \#{api_host}:\#{api_port}..."
 	    end	
 
-%h2  Routes
+%h2 Robeaux
+%p Robeaux (/rō-bō/) is a universal dashboard to your robotic devices. Like a router admin page, but for robots.
+%p Robeaux is powered by AngularJS, and provides a front-end to the API interface offered by Artoo
+%p It can be accessed with a browser in the configured host and port. (Ex. http://127.0.0.1:4321/)
+%p= link_to 'More information about Robeaux', 'https://github.com/hybridgroup/robeaux/blob/master/README.markdown'
+
+%h2 Routes
 %h3  GET /robots
 :markdown	
 	Our first route returns all the Robots the master class knows about in JSON
