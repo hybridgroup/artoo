@@ -19,7 +19,7 @@
 
         a {
 
-          color: $hero-title-color;
+          color: darken($hero-color,30);
         }
       }
     }
@@ -30,30 +30,33 @@
 
         a {
           display: block;
-          color: $hero-subtitle-color;
+          color: $hero-color;
         }
     }
 
     dt {
-      background-color: $title-color;
-      border-bottom: 2px solid $body-bg-color;
 
       a {
 
-        color: $hero-title-color;
+        color: $title-color;
       }
     }
 
     dd {
        border-top: 0; 
        margin-left: 0;
-       background-color: $hero-color;
-       color: $hero-subtitle-color;
+
+       a {
+
+        color: $hero-color;
+       }
+       
+
        &:last-of-type {
-         border-top: 1px solid white;
          position: relative;
          top: -1px;
        }
+
        ul {
 
         li {
@@ -66,7 +69,7 @@
 
             span {
 
-              color: darken($body-bg-color,30);
+              color: darken($hero-color,30);
             }
           }
         }

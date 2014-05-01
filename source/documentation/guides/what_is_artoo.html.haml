@@ -10,9 +10,10 @@ page_title: Guides
 page_subtitle: A Guide by Humans, for Humans.
 platforms: true
 ---
-:javascript
-  $("#guides-panel").addClass("active-panel");
-  $("#guides-panel ul li:nth-child(1)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#guides-panel").addClass("active-panel");
+    $("#guides-panel ul li:nth-child(1)").addClass("active-link");
   
 %h1 About Artoo
 %p

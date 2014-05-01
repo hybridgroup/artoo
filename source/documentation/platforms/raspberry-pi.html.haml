@@ -21,9 +21,10 @@ wiichuck_driver: true
 wiiclassic_driver: true
 makey_driver: true
 ---
-:javascript
-  $("#platform-panel").addClass("active-panel");
-  $("#platform-panel ul li:nth-child(12)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#platform-panel").addClass("active-panel");
+    $("#platform-panel ul li:nth-child(12)").addClass("active-link");
   
 %section.intro
   = image_tag "/images/devices/raspi.jpg", class: "display"

@@ -25,7 +25,8 @@ roomba_platform: true
 spark_platform: true
 sphero_platform: true
 ---
-:javascript
-  $("#platform-panel").addClass("active-panel");
+-content_for :js_accordeon do
+	:javascript
+	  $("#platform-panel").addClass("active-panel");
   
 = partial "../platforms"

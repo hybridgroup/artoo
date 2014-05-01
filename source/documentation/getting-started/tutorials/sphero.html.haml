@@ -7,9 +7,10 @@ page_subtitle: A Guide by Humans, for Humans.
 layout: documentation
 active_menu_docs: true
 ---
-:javascript
-	$("#getting-panel").addClass("active-panel");
-	$("#getting-panel ul li:nth-child(3)").addClass("active-link");
+-content_for :js_accordeon do
+	:javascript
+		$("#getting-panel").addClass("active-panel");
+		$("#getting-panel ul li:nth-child(3)").addClass("active-link");
 
 %section.intro
 	%h1 Tutorial - Sphero changes color

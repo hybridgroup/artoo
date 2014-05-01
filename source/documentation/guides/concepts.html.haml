@@ -7,9 +7,10 @@ page_subtitle: A Guide by Humans, for Humans.
 layout: documentation
 active_menu_docs: true
 ---
-:javascript
-	$("#guides-panel").addClass("active-panel");
-	$("#guides-panel ul li:nth-child(2)").addClass("active-link");
+-content_for :js_accordeon do
+	:javascript
+		$("#guides-panel").addClass("active-panel");
+		$("#guides-panel ul li:nth-child(2)").addClass("active-link");
 
 %h1 Concepts
 %h3 API

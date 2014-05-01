@@ -7,9 +7,10 @@ layout: documentation
 page_title_show: true
 active_menu_docs: true
 ---
-:javascript
-  $("#guides-panel").addClass("active-panel");
-  $("#guides-panel ul li:nth-child(6)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#guides-panel").addClass("active-panel");
+    $("#guides-panel ul li:nth-child(6)").addClass("active-link");
   
 .test
   %h1 Test Driven Robotics

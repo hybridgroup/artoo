@@ -12,9 +12,10 @@ active_menu_docs: true
 
 crazyflie_platform: true
 ---
-:javascript
-  $("#driver-panel").addClass("active-panel");
-  $("#crazyflie li:nth-child(2)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#crazyflie li:nth-child(2)").addClass("active-link");
 
 %section.intro
   =image_tag "/images/devices/crazyflie-nav.jpg", class: "display"

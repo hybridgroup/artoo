@@ -16,9 +16,10 @@ beaglebone_platform: true
 digispark_platform: true
 raspberry_platform: true
 ---
-:javascript
-  $("#driver-panel").addClass("active-panel");
-  $("#i2c li:nth-child(4)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#i2c li:nth-child(4)").addClass("active-link");
 
 %section.intro
   =image_tag "/images/devices/wiichuck.jpg", class: "display"

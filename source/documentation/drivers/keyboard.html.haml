@@ -12,9 +12,10 @@ active_menu_docs: true
 
 keyboard_platform: true
 ---
-:javascript
-  $("#driver-panel").addClass("active-panel");
-  $("#others li:nth-child(1)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#others li:nth-child(1)").addClass("active-link");
 
 %section.intro
   =image_tag "/images/devices/keyboard.jpg", class: "display"

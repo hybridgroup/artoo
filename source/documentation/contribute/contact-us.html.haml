@@ -7,9 +7,10 @@ page_subtitle: "Anyone can contribute to Artoo."
 layout: documentation
 active_menu_docs: true
 ---
-:javascript
-	$("#contribute-panel").addClass("active-panel");
-	$("#contribute-panel li:nth-child(4)").addClass("active-link");
+-content_for :js_accordeon do
+	:javascript
+		$("#contribute-panel").addClass("active-panel");
+		$("#contribute-panel li:nth-child(4)").addClass("active-link");
 
 %h1 Contact Us
 

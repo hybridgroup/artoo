@@ -10,10 +10,10 @@ page_title: Getting Started
 page_subtitle: A Guide by Humans, for Humans.
 platforms: true
 ---
-
-:javascript
-  $("#getting-panel").addClass("active-panel");
-  $("#getting-panel ul li:nth-child(1)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#getting-panel").addClass("active-panel");
+    $("#getting-panel ul li:nth-child(1)").addClass("active-link");
   
 
 %section.intro

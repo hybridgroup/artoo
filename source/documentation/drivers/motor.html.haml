@@ -17,9 +17,10 @@ digispark_platform: true
 raspberry_platform: true
 spark_platform: true
 ---
-:javascript
-  $("#driver-panel").addClass("active-panel");
-  $("#gpio li:nth-child(7)").addClass("active-link");
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#gpio li:nth-child(7)").addClass("active-link");
 
 %section.intro
   =image_tag "/images/devices/motor.jpg", class: "display"
