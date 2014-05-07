@@ -54,7 +54,6 @@
   position: fixed;
   top: 0;
   z-index: 99;
-  text-align: right;
   padding: 0 !important;
 
   .app-logo {
@@ -64,7 +63,7 @@
 
   nav {
   
-    float: right;
+    float: left;
     margin: 20px 0;
   }
 
