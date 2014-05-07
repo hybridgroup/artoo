@@ -3,6 +3,23 @@
   margin-right: 10px;
 }
 
+.back-sidebar {
+  
+  background: white; 
+  position: absolute;
+  width: 33%;
+  right: 0;
+  top: 100px;
+  z-index: -1;
+  bottom:0;
+
+  @media only screen and (max-width: $medium-screen) {
+
+        background: none; 
+  }
+
+}
+
 .documentation {
 
   .intro {
