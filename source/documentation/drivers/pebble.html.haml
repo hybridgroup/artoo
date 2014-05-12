@@ -21,8 +21,10 @@ pebble_platform: true
   :markdown
         :::ruby
         require 'artoo'
+
         connection :pebble, :adaptor => :pebble
-        device :watch, :driver => :pebble
+        device     :watch,  :driver  => :pebble, :name => 'pebble'
+        ...
 
 %section.how-to#HowToUse
   %h2 How To Use
@@ -45,6 +47,7 @@ pebble_platform: true
         end
 
         work do
+          pebble.send_notification("Hello Pebble!")
           on pebble, :button => :button_push
         end
 

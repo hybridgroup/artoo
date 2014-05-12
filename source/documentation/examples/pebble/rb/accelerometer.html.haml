@@ -1,8 +1,8 @@
 ---
 layout: documentation
 page_title_show: true
-title: "Artoo Example - hello_pebble"
-page_title: "Example: hello_pebble"
+title: "Artoo Example - accelerometer"
+page_title: "Example: accelerometer"
 author: The Hybrid Group
 description: A Artoo code example
 page_subtitle: "<a href='https://github.com/hybridgroup/artoo-pebble/tree/master/examples' target='_blank'>View In Repo</a>"
@@ -21,14 +21,13 @@ active_menu_docs: true
 
         name 'pebble'
 
-        def button_push(*data)
-          unless data[1].nil?
-            p "\#{data[1]} button pushed"
-          end
+        def print_data(*data)
+          x, y, z = data[1].split(",")
+
+          p "x: \#{x}, y: \#{y}, z: \#{z}"
         end
 
         work do
-          pebble.send_notification("Hello Pebble!")
-          on pebble, :button => :button_push
+          on pebble, :accel => :print_data
         end
 
