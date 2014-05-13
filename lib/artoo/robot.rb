@@ -134,6 +134,7 @@ module Artoo
       "#<Robot #{object_id}>"
     end
 
+    # @return [Object] whatever result is passed back from the wrapped robot
     def command(method_name, *arguments)
       if known_command?(method_name)
         if arguments.first
