@@ -7,9 +7,73 @@
 
     @include span-columns(12);
     height: auto !important;
+    position: absolute;
+    left: 0;
+  }
+
+  .mobile-menu {
+
+    background: $title-color;
+    text-align: right;
+    display: none;
+
+    @media only screen and (max-width: $medium-screen) {
+
+      display: block;
+    }
+
+    .active {
+
+      background: white;
+
+      .line {
+
+        background: $title-color;
+      }
+    }
+
+    a {
+
+      border: solid 2px white;
+      padding: 10px;
+      width: 55px;
+      display: inline-block;
+
+      &:hover {
+
+        background: white;
+
+        .line {
+
+          background: $title-color;
+        }
+      }
+
+      .line {
+
+        height: 2px;
+        width: 30px;
+        margin: 5px 0;
+        background: white;
+      }
+    }
+    
+  }
+
+  @media only screen and (max-width: $medium-screen) {
+    .hide {
+
+      display: none;
+    }
   }
 
   .accordion-docs { 
+
+    
+    @media only screen and (max-width: $medium-screen) {
+
+      margin: 0;
+    }
 
     ul {
 
@@ -28,12 +92,20 @@
     }
 
     dt, dd {
+
         padding: 10px;
         border-bottom: 0; 
+
+        @media only screen and (max-width: $medium-screen) {
+
+          border-bottom: 2px solid $title-color;   
+        }
+         
 
         a {
           display: block;
           color: $hero-color;
+          
         }
     }
 
@@ -42,6 +114,10 @@
       a {
 
         color: $title-color;
+        @media only screen and (max-width: $medium-screen) {
+
+          font-size: 1.3em;      
+        }
       }
     }
 
@@ -69,6 +145,10 @@
           a {
 
             font-size: 10pt;
+            @media only screen and (max-width: $medium-screen) {
+
+              font-size: 1em;      
+            }
 
             span {
 
@@ -87,5 +167,6 @@
   @media only screen and (max-width: $medium-screen) {
 
     @include span-columns(12);
+    margin-top: 50px;
   }
 }

@@ -1,4 +1,9 @@
-%dl.accordion-docs
+.mobile-menu
+  %a#menu-docs{:href => "#"} 
+    .line 
+    .line
+    .line
+%dl.accordion-docs.hide
   %dt
     %a{:href => ""} Getting Started
   %dd#getting-panel
@@ -153,3 +158,15 @@
         %a{:href => "/documentation/contribute/guidelines"} Guidelines
       %li
         %a{:href => "/documentation/contribute/contact-us"} Contact us
+
+:javascript
+    $(document).ready(function(){
+      var height = $(".container-documentation").height();
+      var totalH = height + 350;
+      $(".side-documentation").css({height:totalH});
+
+      $("#menu-docs").click(function(){
+        $(".accordion-docs").removeClass("hide");
+        $(this).addClass("active");
+      });
+    });
