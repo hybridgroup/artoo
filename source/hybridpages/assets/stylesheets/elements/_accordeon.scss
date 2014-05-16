@@ -6,6 +6,7 @@
   @media only screen and (max-width: $medium-screen) {
 
     @include span-columns(12);
+    height: auto !important;
   }
 
   .accordion-docs { 
