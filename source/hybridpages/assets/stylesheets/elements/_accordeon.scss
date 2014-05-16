@@ -1,6 +1,7 @@
 .side-documentation {
+
   @include span-columns(3);
-  background: white; 
+  background: darken($body-bg-color,2); 
 
   @media only screen and (max-width: $medium-screen) {
 
@@ -81,7 +82,6 @@
 
 .container-documentation {
   @include span-columns(9);
-  background: $body-bg-color;
   
   @media only screen and (max-width: $medium-screen) {
 

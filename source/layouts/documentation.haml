@@ -9,3 +9,10 @@
 				.side-documentation
 					= partial "/documentation/side-bar"
 					= yield_content :js_accordeon
+
+	:javascript
+		$(document).ready(function(){
+			var height = $(".container-documentation").height();
+			var totalH = height + 350;
+			$(".side-documentation").css({height:totalH});
+		});

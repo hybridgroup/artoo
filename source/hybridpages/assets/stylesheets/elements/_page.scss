@@ -61,6 +61,22 @@
     display: inline-block !important;
   }
 
+  .container-subnav {
+
+    width: $big-screen;
+    margin: 0 auto;
+
+    @include medium-screen($medium-screen, "") {
+
+      padding: 0 15px;
+    }
+
+    @include small-screen(100%, "") {
+
+      padding: 0 15px;
+    }
+  }
+
   nav {
   
     float: left;
@@ -80,6 +96,8 @@
 }
 
 .subnav-drivers {
+
+
 
   background: $hero-subtitle-color;
   padding: 20px 0;
@@ -125,6 +143,14 @@
     
       color: white;
       background: $color-text-subnav-drivers;
+    }
+
+    a:last-child {
+
+      &:hover {
+
+        background: none;
+      }
     }
   }
 }
