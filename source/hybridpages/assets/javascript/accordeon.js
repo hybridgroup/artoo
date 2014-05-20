@@ -7,6 +7,7 @@ $(document).ready(function(){
     $(this).parent().next().slideDown();
     $(".accordion-docs > dt > a > img").removeClass("rotate");
     $(this).next().children().addClass("rotate");
+    $(this).children().addClass("rotate");
     return false;
   });
 
