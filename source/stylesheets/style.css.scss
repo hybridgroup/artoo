@@ -7,6 +7,10 @@
   font-family: "Russo One", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 .content {
   .documentation {
     .examples {
