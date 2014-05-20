@@ -105,6 +105,30 @@
       }
     }
 
+    .doc-button {
+
+      padding: 10px;
+      margin: 0;
+      font-size: 1em; 
+
+      @media only screen and (max-width: $medium-screen) {
+
+          border-bottom: 2px solid $title-color;   
+          padding-bottom: 10px;
+      }   
+
+      a {
+
+          display: block;
+          color: $title-color;
+
+          @media only screen and (max-width: $medium-screen) {
+
+            font-size: 1.3em;      
+          }
+        }
+    }
+
 
     dt, dd {
 
