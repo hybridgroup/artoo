@@ -110,7 +110,7 @@ active_menu_docs: true
 -content_for :js_accordeon do
   :javascript
     $("#example-panel").addClass("active-panel");
-    $(".accordion-docs dt:nth-child(13) a:nth-child(2) img").addClass("rotate");
+    $(".accordion-docs dt:nth-child(15) a:nth-child(2) img").addClass("rotate");
 
 :markdown
 #{body}
@@ -144,8 +144,8 @@ active_menu_docs: true
 -content_for :js_accordeon do
   :javascript
     $("#example-panel").addClass("active-panel");
-    $(".accordion-docs dt:nth-child(13) a:nth-child(2) img").addClass("rotate");
-    
+    $(".accordion-docs dt:nth-child(15) a:nth-child(2) img").addClass("rotate");
+
 .example
   :markdown
         :::#{Project.language}

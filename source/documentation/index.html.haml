@@ -8,7 +8,8 @@ active_menu_docs: true
 ---
 -content_for :js_accordeon do
   :javascript
-    $("#getting-panel").addClass("active-panel");
+    $("#docs-panel").addClass("active-panel");
+    $("#docs-panel li:nth-child(1)").addClass("active-link");
     $(".accordion-docs dt:nth-child(1) a:nth-child(2) img").addClass("rotate");
 
 .index
