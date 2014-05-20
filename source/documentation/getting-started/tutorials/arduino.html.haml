@@ -8,145 +8,121 @@ layout: documentation
 active_menu_docs: true
 ---
 -content_for :js_accordeon do
-	:javascript
-		$("#getting-panel").addClass("active-panel");
-		$("#getting-panel ul li:nth-child(2)").addClass("active-link");
+  :javascript
+    $("#getting-panel").addClass("active-panel");
+    $("#getting-panel ul li:nth-child(2)").addClass("active-link");
 
 %section.intro
-	%h1 Tutorial - Arduino LED Blinks 
-	%h3 Welcome!
+  %h1 Tutorial - Arduino LED Blinks
+  %h3 Welcome!
 
-	%p 
-		After completing this tutorial, you will be familiar with the most important concepts needed to play with Artoo
-		and 
-		= link_to "Arduino.", "http://arduino.cc/", target: :blank 
-		If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
+  %p
+    After completing this tutorial, you will be familiar with the most important concepts needed to play with Artoo
+    and
+    = link_to "Arduino.", "http://arduino.cc/", target: :blank
+    If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
 
-	%h3 Requirements
+  %h3 Requirements
 
-	%ul 
-		%li 
-			Before we start, make sure you have 
-			= link_to "Ruby and Artoo installed", "/documentation/getting-started"
-		%li 
-			Make sure your Arduino device supports the 
-			= link_to "Firmata protocol." , "http://www.firmata.org/wiki/Main_Page", target: :blank
+  %ul
+    %li
+      Before we start, make sure you have
+      = link_to "Ruby and Artoo installed", "/documentation/getting-started"
+    %li
+      Make sure your Arduino device supports the 
+      = link_to "Firmata protocol." , "http://www.firmata.org/wiki/Main_Page", target: :blank
 
-	%h3 Installing Arduino
+  %h3 Installing Arduino
 
-	%h4 Windows
-	%p 
-		Follow this guide to 
-		= link_to "Setup Arduino on Windows", "http://arduino.cc/en/Guide/Windows", target: :blank
-	%h4 MacOSX
-	%p 
-		Follow this guide to 
-		= link_to "Setup Arduino on Mac OS X", "http://arduino.cc/en/Guide/MacOSX", target: :blank
-	%h4 Linux
-	%p Open a terminal and run the following command:
-	:markdown
-			sudo apt-get install arduino
-	%p or
-	%ol 
-		%li 
-			Download 
-			= link_to "Arduino IDE." , "http://arduino.cc/en/Main/Software", target: :blank
-		%li Extract the downloaded package.
-		%li Connect your Arduino board using the USB port.
-		%li
-			Make sure your board has a port assigned in your computer by typing this command in terminal:
-			:markdown
-					dmesg 
-		%li 
-			Verify that the USB port has the correct permissions:
-			:markdown
-					ls -al /dev/ttyACM0
-					sudo chmod 666 /dev/ttyACM0
-		%li 
-			:markdown
-				Go to the `Tools > Board` menu and select the entry that corresponds to your Arduino.
-		%li 
-			:markdown
-				Go to the `Tools > Serial Port` menu and select the serial device of the Arduino board.
+  %h4 Windows
+  %p
+    Follow this guide to
+    = link_to "Setup Arduino on Windows", "http://arduino.cc/en/Guide/Windows", target: :blank
+  %h4 MacOS
+  %p
+    Follow this guide to
+    = link_to "Setup Arduino on Mac OS X", "http://arduino.cc/en/Guide/MacOSX", target: :blank
+  %h4 Linux
+  %p Open a terminal and run the following command:
+  :markdown
+    sudo apt-get install arduino
+  %p or
+  %ol
+    %li
+      Download
+      = link_to "Arduino IDE." , "http://arduino.cc/en/Main/Software", target: :blank
+    %li Extract the downloaded package.
 
-	%h3 Uploading the Firmata sketch to Arduino
+  %h3 How to connect
 
-	%p We need to load this program into Arduino board, so that Artoo can communicate.
+  %p
+    First plug the Arduino into your computer via the USB/serial port. A dialog box
+    will appear telling you that a new network interface has been detected. Click
+    "Network Preferences...", and when it opens, simply click "Apply".
 
-	%ul 
-		%li Open the Arduino application. (If asked what to do, choose "Run")
-		%li Open StandardFirmata sketch: File > Examples > Firmata > StandardFirmata
-		%li Click the "Upload" button in the environment. (You should see the RX and TX leds on the board flashing and the message "Done uploading." appear in the status bar.)
-		%li (Note: If you have an Arduino Mini, NG, or other board, you'll need to push its reset button immediately before pressing the upload button)
+  %p Install the artoo-arduino gem:
 
-	%p There are some Arduino boards that doesn't restart your sketch when you open a serial port on the computer. Some of them are:
+  :markdown
+        :::bash
+        $ gem install artoo-arduino
 
-	%ul
-		%li Leonardo
-		%li Micro
-		%li Esplora
+  %p
+    Once plugged in, use the `artoo connect scan -t serial` command to find out your
+    connection info and serial port address:
 
-	:markdown
-		In order for these boards to work, you need to add the following line at the very beginning of the `void setup()` function:
+  :markdown
+        :::bash
+        $ artoo arduino scan
 
-			while (!Serial);
-		
-		So, it should look like this:
+  %p
+    Use the `artoo firmata install` command to install avrdude,
+    this will allow us to upload firmata to the arduino:
 
-			void setup()
-			{
-				while (!Serial);
-		    Firmata.setFirmwareVersion(FIRMATA_MAJOR_VERSION, FIRMATA_MINOR_VERSION);
+  :markdown
+        :::bash
+        $ artoo arduino install
 
-		    Firmata.attach(ANALOG_MESSAGE, analogWriteCallback);
+  %p
+    Once the avrdude uploader is installed we upload the firmata protocol to
+    the arduino, use the arduino serial port address found when you ran `artoo
+    connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
 
-		    ...
+  :markdown
+        :::bash
+        $ artoo arduino upload /dev/ttyACM0
 
-	%p Other Arduino boards don't need this change; some of them are:
+  %p
+    Now you are ready to connect to the Arduino using a socket, in this example
+    the socket to serial is set on port 4567 (which is also the default value):
 
-	%ul 
-		%li Uno
-		%li Mega 2560 and ADK
-		%li Robot
-		%li Duemilanove
-		%li Diecimila
+  :markdown
+        :::bash
+        $ artoo arduino connect ttyACM0 4567
 
-	%p NOTE: If you're using Artoo >= v.1.0.0, your Arduino Leonardo (and derivatives) will work without this change.
+  %h3 Running the examples
 
-	%h3 Opening a socket to serial connection
+  %p
+    If you installed the gem, you'll have to
+    = link_to 'download the "Blink Led" example separately:','https://github.com/hybridgroup/artoo-arduino/blob/master/examples/blink_led.rb'
 
-	%p 
-		You can do this using artoo CLI command "artooo connect serial". Follow the instructions in the README.md file here:
-		= link_to "https://github.com/hybridgroup/artoo-arduino#connecting-to-arduino", "https://github.com/hybridgroup/artoo-arduino#connecting-to-arduino", target: :blank 
+  %p
+    If you cloned the repository, you can access the example in the following folder: examples/blink_led.rb
 
-	%h3 Using the artoo-arduino 
-	%p You can either install it:
-	:markdown
-			$ gem install artoo-arduino
+  %p
+    Change the port from `8023` to `4567` or the correct port used in the example:
 
-		or clone its repository:
+    :markdown
+          :::ruby
+          connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
 
-			$ git clone git@github.com:hybridgroup/artoo-arduino.git
+  %p
+    Now, let's run the example:
 
-	%h3 Running the examples
+    :markdown
+          :::bash
+          $ ruby examples/firmata_blink_led.rb
 
-	:markdown
-		If you installed the gem, you'll have to download the "Blink Led" example separately:
+  %p The LED should be blinking in your arduino board.
 
-			https://github.com/hybridgroup/artoo-arduino/blob/master/examples/blink_led.rb
-
-		If you cloned the repository, you can access the example in the following folder:
-
-			examples/blink_led.rb
-
-		NOTE: If you are using serproxy on Windows or Mac OS, you will need to change the port from `8023` to `4567` or the correct port used in the example: 
-		
-			connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
-
-		Now, let's run the example:
-
-			$ ruby examples/firmata_blink_led.rb
-
-		The LED should be blinking in your arduino board.
-		
-		Congratulations you have successfully completed this tutorial!
+  %p
+    %strong Congratulations you have successfully completed this tutorial!
