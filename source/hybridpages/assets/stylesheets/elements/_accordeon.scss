@@ -75,6 +75,8 @@
       margin: 0;
     }
 
+    
+
     ul {
 
       list-style: none;
@@ -91,6 +93,19 @@
       }
     }
 
+    .arrowDown {
+
+      float: right;
+
+      .rotate {
+
+        transform:rotate(180deg);
+        -ms-transform:rotate(180deg); /* IE 9 */
+        -webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+      }
+    }
+
+
     dt, dd {
 
         padding: 10px;
@@ -103,9 +118,9 @@
          
 
         a {
+
           display: block;
           color: $hero-color;
-          
         }
     }
 
@@ -114,6 +129,12 @@
       a {
 
         color: $title-color;
+        float: left;
+
+        &:hover {
+          cursor: pointer;
+        }
+
         @media only screen and (max-width: $medium-screen) {
 
           font-size: 1.3em;      
@@ -163,6 +184,7 @@
 
 .container-documentation {
   @include span-columns(9);
+  padding-top: 20px;
   
   @media only screen and (max-width: $medium-screen) {
 

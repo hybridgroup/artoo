@@ -5,6 +5,8 @@ $(document).ready(function(){
   $('.accordion-docs > dt > a').click(function() {
     allPanels.slideUp();
     $(this).parent().next().slideDown();
+    $(".accordion-docs > dt > a > img").removeClass("rotate");
+    $(this).next().children().addClass("rotate");
     return false;
   });
 

@@ -6,36 +6,45 @@ page_title: Documentation
 page_subtitle: Made by Humans, for Humans.
 active_menu_docs: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#getting-panel").addClass("active-panel");
+    $(".accordion-docs dt:nth-child(1) a:nth-child(2) img").addClass("rotate");
 
 .index
-  %h1 Welcome!
-  %h4 Getting Started
-  %p
-    If you can't wait to get your hands on artoo, visit "Getting Started" to setup your environment
-    and follow a step-by-step tutorial to start playing with our supported platforms.
-
-  %h4 Guides
-  %p
-    Visit the Guides for more information about Artoo and it's amazing features.
-
-  %h4 Platforms/Drivers
-  %p
-    You can get all the details about our supported devices on this sections.
-
-  %h4 Troubleshooting
-  %p
-    Do you have trouble with something? Maybe you can find here an answer.
-
-  %h4 Contribute
-  %p
-    Artoo exists thanks to the work of wonderful individuals, join us, we'd love your contribution too.
-
-  %h4 Are me missing something?
-  %p
-    We are working hard to keep this documentation updated and relevant. Please
-    %a{href: "https://github.com/hybridgroup/artoo/issues"}let us know
-    if you find an error or if you can't find what you are looking for.
-
+  %section
+    %a{href: '/documentation/getting-started'}
+      .title Getting Started
+      .description The best way to get started with Artoo.
+  %section
+    %a{href: '/documentation/guides/what_is_artoo'}
+      .title Guides
+      .description Visit the Guides for more information about Artoo and it's amazing features.
+  %section
+    %a{href: '/documentation/platforms'}
+      .title Platforms
+      .description Artoo has a extensible system for connecting to hardware.
+  %section
+    %a{href: '/documentation/drivers'}
+      .title Drivers
+      .description Artoo supports many different hardware devices.
+  %section
+    %a{href: '/documentation/troubleshooting/communication'}
+      .title Troubleshooting
+      .description Do you have trouble with something? Maybe you can find here an answer.
+  %section
+    %a{href: '/documentation/troubleshooting/communication'}
+      .title Contribute
+      .description Artoo exists thanks to the work of wonderful individuals, join us, we'd love your contribution too.
+  %section
+    %a{href: '/documentation/examples'}
+      .title Examples
+      .description How to use Artoo with a number of hardware configurations.
+  %section
+    %a{href: 'https://github.com/hybridgroup/artoo/issues'}
+      .title Issues?
+      .description Please let us know if you find an error or if you can't find what you are looking for.
+  
 
 
 
