@@ -14,63 +14,84 @@ active_menu_docs: true
 		$(".accordion-docs dt:nth-child(1) a:nth-child(2) img").addClass("rotate");
 
 %section.intro
-	%h1 Tutorial - Sphero changes color
-	%h3 Welcome!
+  %h1 Tutorial - Sphero changes color
+  %h3 Welcome!
 
-	%p After completing this tutorial, you will be familiar with the most important concepts needed to play with artoo and sphero. If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
+  %p After completing this tutorial, you will be familiar with the most important concepts needed to play with artoo and sphero. If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
 
-	%ul 
-		%li 
-			Before we start, be sure to have 
-			= link_to "ruby and artoo installed." , "/documentation/getting-started", target: :blank
-		%li You should have Bluetooth in your computer.
-		%li 
-			:markdown
-				install artoo sphero gem: `gem install artoo-sphero --pre `
+  %ul 
+    %li 
+      Before we start, be sure to have 
+      = link_to "ruby and artoo installed." , "/documentation/getting-started", target: :blank
+    %li You should have Bluetooth in your computer.
+    %li 
+      :markdown
+        install artoo sphero gem: `gem install artoo-sphero`
 
-	%h3 Pair your sphero device via Bluetooth
-	%h4 MacOSX
+  %h3 Pair your sphero device via Bluetooth
+  %h4 MacOSX
 
-	%ul 
-		%li Turn on your Sphero by shaking it.
-		%li Go to Mac OS Bluetooth preferences, click “Set Up New Device”, and follow the onscreen instructions to set up your sphero.
+  %ul 
+    %li Turn on your Sphero by shaking it.
+    %li Go to Mac OS Bluetooth preferences, click “Set Up New Device”, and follow the onscreen instructions to set up your sphero.
 
-	%h4 Ubuntu
+  %h4 Ubuntu
 
-	%ul 
-		%li Turn on your Sphero by shaking it,
-		%li Click on the Bluetooth notification icon, make sure Bluetooth is ON, and click "Set Up new Device".
-		%li Select the Sphero from the Bluetooth list of devices and follow the on-screen instructions to connect the Bluetooth device.
+  %ul
+    %li Turn on your Sphero by shaking it,
+    %li Click on the Bluetooth notification icon, make sure Bluetooth is ON, and click "Set Up new Device".
+    %li Select the Sphero from the Bluetooth list of devices and follow the on-screen instructions to connect the Bluetooth device.
 
-	%h3 Communicate with your device
+  %h3 Communicate with your device
 
-	%p 
-		Follow the steps defined in 
-		** Communication with Devices Guide
+  %ul
+    %li Turn on your bluetooth and device (sphero).
+    %li Connect the sphero to the computer using Bluetooth.
+    %li
+      Run this command to look for it:
+      :markdown
+            artoo connect scan
+    %li 
+      You will see the following output:
+      :markdown
+            Scanning ...
+            00:06:66:44:39:C6   Sphero-YBW
+    %li 
+      Use that output to bind your device by name running this command:
+      :markdown
+            artoo connect bind 00:06:66:44:39:C6 Sphero-YBW
+    %li 
+      Finally, run this command to connect to your device:
+      :markdown
+            artoo connect serial Sphero-YBW 4567
+    %li 
+      You should see this message displayed:
+      :markdown
+            N listening on AF=2 0.0.0.0:4567
 
-	%h3 Run artoo program
+    %li Leave this terminal open and running.
 
-	%ul 
-		%li 
-			Download 
-			= link_to "color example.","https://github.com/hybridgroup/artoo/blob/master/examples/sphero_color.rb", target: :blank
-		%li Open a new terminal .
-		%li 
-			:markdown
-				Navigate to the directory where you put the example file:
+  %h3 Run artoo program
 
-					cd Downloads
-		%li 
-			:markdown
-				If you are running with serproxy on Windows or Mac OS, you will need to change the port from `8023` to `5331` on line 3:
+  %ul 
+    %li
+      Download
+      = link_to "color example.","https://github.com/hybridgroup/artoo/blob/master/examples/sphero_color.rb", target: :blank
+    %li Open a new terminal .
+    %li 
+      Navigate to the directory where you put the example file:
+      :markdown
+            cd Downloads
+    %li 
+      You will need to change the port from `8023` to `4567` on line 3:
+      :markdown
+            connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4567'
+    %li 
+      run example
+      :markdown
+            ruby sphero_color.rb
 
-					connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:5331'
-		%li 
-			:markdown
-				run example
+  %p Sphero should be changing colors through the rainbow and moving around.
 
-					ruby sphero_color.rb 
-
-	%h3 Sphero should be changing colors through the rainbow and moving around.
-
-	%p Congratulations you have completed succesfully this tutorial.
+  %p
+    %strong Congratulations you have completed succesfully this tutorial.
