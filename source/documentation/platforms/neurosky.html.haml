@@ -2,14 +2,23 @@
 page_title_show: true
 title: Neurosky with Artoo
 author: The Hybrid Group
-page_title: Neurosky
-page_subtitle: "<a href='https://github.com/hybridgroup/artoo-neurosky' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-neurosky/issues'>Issues</a>"
+page_title: Platforms
+page_subtitle: Artoo has a extensible system for connecting to hardware devices.
+page_title_docs: Neurosky Mindware
+page_subtitle_docs: "<a href='https://github.com/hybridgroup/artoo-neurosky' class='repository'>Repository</a> <a class='issues' href='https://github.com/hybridgroup/artoo-neurosky/issues'>Issues</a>"
 layout: documentation
 subnav_platform: true
 active_menu_platforms: true
+subnavjs: true
 
 neurosky_driver: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#platform-panel").addClass("active-panel");
+    $("#platform-panel ul li:nth-child(9)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(7) a:nth-child(2) img").addClass("rotate");
+  
 %section.intro
   = image_tag "/images/devices/neurosky.jpg", class: "display"
   .info_intro

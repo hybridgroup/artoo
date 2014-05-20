@@ -1,0 +1,80 @@
+---
+page_title_show: true
+title: Artoo Platforms
+author: The Hybrid Group
+description: Artoo Platforms
+layout: documentation
+active_menu_docs: true
+
+page_title: Guides
+page_subtitle: A Guide by Humans, for Humans.
+platforms: true
+---
+-content_for :js_accordeon do
+  :javascript
+    $("#guides-panel").addClass("active-panel");
+    $("#guides-panel ul li:nth-child(1)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(5) a:nth-child(2) img").addClass("rotate");
+  
+%h1 About Artoo
+%p
+  Artoo is a micro-framework for robotics. It provides a simple,
+  but powerful Domain-Specific Language (DSL) for robots and physical computing.
+%p
+  With Artoo, you can easily connect multiple, different hardware devices together
+  at the same time into a single solution.
+  Artoo makes telling robots what to do incredibly simple and fun.
+%p
+  Artoo is conceptualy influenced by Sinatra (
+  = link_to "Sinatra", "https://github.com/sinatra/sinatra"
+  ) as well as borrowing some code from it.
+
+%h3 Concurrency
+
+%p
+  Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
+  operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
+%p
+  To a large extent, this is due to being built on top of Celluloid (
+  = link_to "Celluloid", "https://github.com/celluloid/celluloid"
+  ), Celluloid::IO (
+  = link_to "Celluloid::IO", "https://github.com/celluloid/celluloid-io"
+  ), and Reel (
+  = link_to "Reel","https://github.com/celluloid/reel"
+  ).
+
+%h4 Celluloid
+%p
+  Artoo uses Celluloid to control different hardware devices at the same time. It receives events with Celluloid::IO evented sockets.
+
+%h4 Ruby implementations
+%p
+  Artoo works on JRuby or Rubini.us, as we need an actual implementation of Ruby that supports threads.
+
+%h3 How it works
+%p
+  A Robot represents the primary interface for interacting with a collection of physical computing capabilities.
+%p
+  A robot has devices plugged into it and you can tell them what to do or receive notifications of events from them.
+
+%h4 Architecture
+%p
+  Artoo uses the adapter pattern to handle connections to a particular type of machine (similar to Rails handling database connections).
+  This way a single interface for communication is used and the details of getting through the protocol are abstracted.
+%p
+  For this purpose, several integrations are used to control the communications with the hardware and
+  each supported device has a driver to control its behaviour by exposing methods according to its capabilities.
+%p
+  %img{:src => "/images/elements/artoo_architecture_1.png", :alt => "How it Works"}/
+
+%p
+  A publish and subscribe architecture is used for things happening in the devices.
+
+%h4 API
+%p
+  Applications use the Artoo API to communicate with Artoo Master class. This communication can be make using HTTP Rest requests or WebSockets.
+%p
+  The Artoo Master Class then sends messages to the robots and receives feedback from them.
+
+%p
+  %img{:src => "/images/elements/artoo_architecture_2.png", :alt => "API"}/

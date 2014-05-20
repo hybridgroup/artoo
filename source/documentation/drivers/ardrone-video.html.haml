@@ -2,14 +2,22 @@
 page_title_show: true
 title: Artoo - ARDrone Video Driver
 author: The Hybrid Group
-page_title: ARDrone Video
-page_subtitle: Driver
+page_title: Drivers
+page_subtitle: Artoo has a extensible system for connecting to hardware devices.
+page_title_docs: Ardrone Video
+page_subtitle_docs: <a href='https://github.com/hybridgroup/artoo-ardrone' class='repository'>Repository</a>
 layout: documentation
 subnav_driver: true
 active_menu_docs: true
+subnavjs: true
 
 ardrone_platform: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#ardrone li:nth-child(3)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(9) a:nth-child(2) img").addClass("rotate");
 
 %section.intro
   =image_tag "/images/devices/ardrone-video.jpg", class: "display"

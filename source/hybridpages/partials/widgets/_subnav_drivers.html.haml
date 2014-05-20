@@ -1,5 +1,5 @@
 %section.subnav-drivers#mainsubnav
-	.container
+	.container-subnav
 		%nav 
 			%a{:href => "#HowToConnect"} How to Connect
 			%a{:href => "#HowToUse"} How To Use
@@ -10,4 +10,6 @@
 			- if current_page.data.sphero_colors_driver == true
 				%a{:href => "#SpheroColors"} Sphero Colors
 			%a{:href => "#Compatability"} Compatibility
-			%a{:href => "#top"} Top
+			%a{:href => "#top"} 
+				%img{:src => "/images/elements/top-arrow.png", :alt => "Top page", width: "20"}/ 
+%br/ 

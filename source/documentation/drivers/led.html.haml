@@ -2,12 +2,15 @@
 page_title_show: true
 title: Artoo - LED Driver
 author: The Hybrid Group
-page_title: LED
-page_subtitle: Driver
+page_title: Drivers
+page_subtitle: Artoo has a extensible system for connecting to hardware devices.
+page_title_docs: LED
+page_subtitle_docs: <a href='https://github.com/hybridgroup/artoo-gpio' class='repository'>Repository</a>
 layout: documentation
 subnav_driver: true
 subnav_circuit_driver: true
 active_menu_docs: true
+subnavjs: true
 
 arduino_platform: true
 beaglebone_platform: true
@@ -15,6 +18,12 @@ digispark_platform: true
 raspberry_platform: true
 spark_platform: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#gpio li:nth-child(4)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(9) a:nth-child(2) img").addClass("rotate");
+
 %section.intro
   =image_tag "/images/devices/LED.jpg", class: "display"
   .info_intro

@@ -1,4 +1,7 @@
 html {
+
+  min-height:100%;
+  position:relative;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
@@ -36,8 +39,7 @@ html {
 
 .main[role="main"] {
 
-  padding-bottom: 50px;
-  margin-top: 20px;
+  padding-bottom: 40px;
   @include outer-container;
 
   .videos {
@@ -120,7 +122,7 @@ html {
 
     h1 {
 
-      font-size: 1.9em;
+      font-size: 35pt;
       padding: 10px 0;
     }
   }

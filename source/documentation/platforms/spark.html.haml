@@ -2,11 +2,14 @@
 page_title_show: true
 title: Spark with Artoo
 author: The Hybrid Group
-page_title: Spark
-page_subtitle: "<a href='https://github.com/hybridgroup/artoo-spark' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-spark/issues'>Issues</a>"
+page_title: Platforms
+page_subtitle: Artoo has a extensible system for connecting to hardware devices.
+page_title_docs: Spark
+page_subtitle_docs: "<a href='https://github.com/hybridgroup/artoo-spark' class='repository'>Repository</a> <a class+'issues' href='https://github.com/hybridgroup/artoo-spark/issues'>Issues</a>"
 layout: documentation
 subnav_platform: true
 active_menu_platforms: true
+subnavjs: true
 
 analog_sensor_driver: true
 button_driver: true
@@ -17,7 +20,12 @@ servo_driver: true
 continuous_servo_driver: true
 makey_driver: true
 ---
-
+-content_for :js_accordeon do
+  :javascript
+    $("#platform-panel").addClass("active-panel");
+    $("#platform-panel ul li:nth-child(14)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(7) a:nth-child(2) img").addClass("rotate");
+  
 %section.intro
   = image_tag "/images/devices/spark.jpg", class: "display"
   .info_intro

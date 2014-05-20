@@ -1,0 +1,129 @@
+---
+page_title_show: true
+title: Artoo Tutorials
+author: The Hybrid Group
+page_title: Getting Started
+page_subtitle: A Guide by Humans, for Humans.
+layout: documentation
+active_menu_docs: true
+---
+-content_for :js_accordeon do
+  :javascript
+    $("#getting-panel").addClass("active-panel");
+    $("#getting-panel ul li:nth-child(2)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(3) a:nth-child(2) img").addClass("rotate");
+
+%section.intro
+  %h1 Tutorial - Arduino LED Blinks
+  %h3 Welcome!
+
+  %p
+    After completing this tutorial, you will be familiar with the most important concepts needed to play with Artoo
+    and
+    = link_to "Arduino.", "http://arduino.cc/", target: :blank
+    If you are new to this world, don't worry; this tutorial should cover all you need to make it work.
+
+  %h3 Requirements
+
+  %ul
+    %li
+      Before we start, make sure you have
+      = link_to "Ruby and Artoo installed", "/documentation/getting-started"
+    %li
+      Make sure your Arduino device supports the 
+      = link_to "Firmata protocol." , "http://www.firmata.org/wiki/Main_Page", target: :blank
+
+  %h3 Installing Arduino
+
+  %h4 Windows
+  %p
+    Follow this guide to
+    = link_to "Setup Arduino on Windows", "http://arduino.cc/en/Guide/Windows", target: :blank
+  %h4 MacOS
+  %p
+    Follow this guide to
+    = link_to "Setup Arduino on Mac OS X", "http://arduino.cc/en/Guide/MacOSX", target: :blank
+  %h4 Linux
+  %p Open a terminal and run the following command:
+  :markdown
+    sudo apt-get install arduino
+  %p or
+  %ol
+    %li
+      Download
+      = link_to "Arduino IDE." , "http://arduino.cc/en/Main/Software", target: :blank
+    %li Extract the downloaded package.
+
+  %h3 How to connect
+
+  %p
+    First plug the Arduino into your computer via the USB/serial port. A dialog box
+    will appear telling you that a new network interface has been detected. Click
+    "Network Preferences...", and when it opens, simply click "Apply".
+
+  %p Install the artoo-arduino gem:
+
+  :markdown
+        :::bash
+        $ gem install artoo-arduino
+
+  %p
+    Once plugged in, use the `artoo connect scan -t serial` command to find out your
+    connection info and serial port address:
+
+  :markdown
+        :::bash
+        $ artoo arduino scan
+
+  %p
+    Use the `artoo firmata install` command to install avrdude,
+    this will allow us to upload firmata to the arduino:
+
+  :markdown
+        :::bash
+        $ artoo arduino install
+
+  %p
+    Once the avrdude uploader is installed we upload the firmata protocol to
+    the arduino, use the arduino serial port address found when you ran `artoo
+    connect scan -t serial`, or leave it blank to use the default address `/dev/ttyACM0`:
+
+  :markdown
+        :::bash
+        $ artoo arduino upload /dev/ttyACM0
+
+  %p
+    Now you are ready to connect to the Arduino using a socket, in this example
+    the socket to serial is set on port 4567 (which is also the default value):
+
+  :markdown
+        :::bash
+        $ artoo arduino connect ttyACM0 4567
+
+  %h3 Running the examples
+
+  %p
+    If you installed the gem, you'll have to
+    = link_to 'download the "Blink Led" example separately:','https://github.com/hybridgroup/artoo-arduino/blob/master/examples/blink_led.rb'
+
+  %p
+    If you cloned the repository, you can access the example in the following folder: examples/blink_led.rb
+
+  %p
+    Change the port from `8023` to `4567` or the correct port used in the example:
+
+    :markdown
+          :::ruby
+          connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
+
+  %p
+    Now, let's run the example:
+
+    :markdown
+          :::bash
+          $ ruby examples/firmata_blink_led.rb
+
+  %p The LED should be blinking in your arduino board.
+
+  %p
+    %strong Congratulations you have successfully completed this tutorial!

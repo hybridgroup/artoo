@@ -10,127 +10,64 @@ page_title: Getting Started
 page_subtitle: A Guide by Humans, for Humans.
 platforms: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#getting-panel").addClass("active-panel");
+    $("#getting-panel ul li:nth-child(1)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(3) a:nth-child(2) img").addClass("rotate");
+  
+
 %section.intro
-  = partial "../what_is_artoo"
+  %h1 Setup your environment
+  %h2 Ruby
+  %p To be able to run artoo you need to install ruby.
 
-%section.how-to
-  %h2 How to setup your ruby environment
-  %p First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above, we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
-
-  %h3 How to install RVM
+  %h3 Install RVM
   %p
-    First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
+    %b Follow the instructions below
+    or go to
     %a{ href: "https://rvm.io/rvm/install" } https://rvm.io/rvm/install
+    for more detailed instructions.
+  %p
+    Run the following command in a terminal
   :markdown
         :::bash
         \curl -L https://get.rvm.io | bash -s stable
 
-  %p Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
+  %p Once the installation is complete, close your terminal and open a new one.
+  %p To make sure your RVM is installed correctly run the following command
   :markdown
         :::bash
         type rvm | head -n 1
+  %p and you should see the following output:
+  :markdown
+        :::bash
         rvm is a function
 
-  %h3 How to install ruby 2.0
-  %p Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
+  %h3 Install ruby 2.1.1
+  %p If you are a first time user, we recomend you to install this version.
+  %p With RVM installed, just run this command:
   :markdown
         :::bash
-        rvm install 2.0.0
+        rvm install 2.1.1
 
-  %h3 How to install rubinius 2.1.1
+  %h3 Or Install rubinius 2.1.1
+
+  %P For maximum concurrency, like when you need to control multiple robots, microcontrollers or devices at the same time.
+  %p We recommend using Rubinius 2.1.1 or higher
   %p
-    If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.1.1
-    or higher. It is pretty easy to install using
-    %a{ href:"https://rvm.io/" } RVM.
-  :markdown
-        :::bash
-        rvm install rbx-2.1.1
-
-  = partial "../platforms"
-
-  %p Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-
-%section.artoo-code
-  %h2 Code to control robots with Artoo
-  %h3 Example: Arduino with LED and a button
-  :markdown
-        :::ruby
-        # ./my_robot.rb
-        require 'artoo'
-
-        # Circuit and schematic here: http://arduino.cc/en/tutorial/button
-        connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0'
-        device :led, :driver => :led, :pin => 13
-        device :button, :driver => :button, :pin => 2
-
-        work do
-          on button, :push => proc {led.toggle}
-        end
-
-  %h3 Parrot ARDrone 2.0
-  :markdown
-        :::ruby
-        require 'artoo'
-
-        connection :ardrone, :adaptor => :ardrone
-        device :drone, :driver => :ardrone
-
-        work do
-          drone.start
-          drone.take_off
-
-          after(25.seconds) { drone.hover.land }
-          after(30.seconds) { drone.stop }
-        end
-
-  %h3 Modular
-  %p You can also write more modular class-oriented code, that allows you to control swarms of robots:
-  :markdown
-        :::ruby
-        require 'artoo/robot'
-
-        SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
-
-        class SpheroRobot < Artoo::Robot
-          connection :sphero, :adaptor => :sphero
-          device :sphero, :driver => :sphero
-
-          work do
-            every(3.seconds) do
-              sphero.roll 90, rand(360)
-            end
-          end
-        end
-
-        robots = []
-        SPHEROS.each {|p|
-          robots << SpheroRobot.new(:connections => 
-                                      {:sphero => 
-                                        {:port => p}})
-        }
-
-        SpheroRobot.work!(robots)
-
-  %p Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+
-  %p Rubinius requires 1.9 mode, to install Rubinius in 1.9 mode using rvm
+    With RVM installed, just run this command:
   :markdown
         :::bash
         rvm get head && rvm install rbx-2.1.1 --1.9
-  %p 
-    Artoo is conceptualy influenced by 
-    =link_to "Sinatra","https://github.com/sinatra/sinatra" 
-    as well as borrowing some code from it.
-  %p Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency.
-  %p 
-    To a large extent, this is due to being built on top of 
-    =link_to "Celluloid", "https://github.com/celluloid/celluloid"
-    \, 
-    =link_to "Celluloid::IO","https://github.com/celluloid/celluloid-io"
-    \, and 
-    =link_to "Reel.","https://github.com/celluloid/reel"
+        rvm install rbx-2.1.1
+
+  %h3 Other versions supported
+  %p Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4+, and Rubinius 2.0+
 
 %section.installation
-  %h3 Installation
+  %h2 Instal artoo
+  %p Once you have ruby installed, you can install artoo gem with this command:
   :markdown
         :::ruby
         gem install artoo
@@ -139,174 +76,17 @@ platforms: true
         :::ruby
         gem install artoo-joystick
         gem install artoo-ardrone
-  %h3 Writing your robot code:
-  %p Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
-  %h3 Running your robot:
-  :markdown
-        :::ruby
-        ruby myrobot.rb
-  %h3 API:
-  %p Artoo includes a RESTful API to query the status of any robot running within a group, including the connection and device status, and device streaming data via websockets.
-  :markdown
-    To activate the API, use the `api` command like this:
-  :markdown
-        :::ruby
-        require 'artoo'
-
-        connection :loop
-        device :passthru
-        api :host => '127.0.0.1', :port => '4321'
-
-        work do
-          puts "Hello from the API running at \#{api_host}:\#{api_port}..."
-        end
-  %p Once the robot or group is working, you can view the main API page at the host and port specified.
-  %h3 Test-Driven Robotics:
-  %p Artoo makes it easy to do Test Driven Development (TDD) of your robotic devices using your favorite Ruby test and mocking frameworks.
-  %p Here is an example that uses Minitest, Mocha, and Timecop:
-  :markdown
-        :::ruby
-        require './test_helper'
-        require './test_robot'
-
-        describe 'sphero' do
-          let(:robot) { Artoo::MainRobot.new }
-          let (:start) { Time.now }
-
-          before :each do
-            Timecop.travel(start)
-            robot.work
-          end
-
-          after :each do
-            Timecop.return
-          end
-
-          it 'has work to do every 3 seconds' do
-            robot.has_work?(:every, 3.seconds).wont_be_nil
-          end
-
-          it 'receives collision event' do
-            robot.expects(:contact)
-            robot.sphero.publish("collision", "clunk")
-            sleep 0.05
-          end
-
-          it 'must roll every 3 seconds' do
-            Timecop.travel(start + 3.seconds) do
-              robot.sphero.expects(:roll)
-              sleep 0.05
-            end
-            Timecop.travel(start + 6.seconds) do
-              robot.sphero.expects(:roll)
-              sleep 0.05
-            end
-          end
-        end
-  %p to describe the following Sphero robot:
-  :markdown
-        :::ruby
-        require 'artoo'
-
-        connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4560'
-        device :sphero, :driver => :sphero
-
-        def contact(*args)
-          @contacts ||= 0
-          @contacts += 1
-          puts "Contact #{@contacts}"
-        end
-
-        work do
-          on sphero, :collision => :contact
-
-          every(3.seconds) do
-            sphero.roll 90, rand(360)
-          end
-        end
-  %p The repo with full example of using Artoo for test driven robotics is located at
-  %p=link_to "https://github.com/hybridgroup/artoo-test-example", "https://github.com/hybridgroup/artoo-test-example"
-  %h3 CLI
-  %p Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.
-  :markdown
-        :::bash
-        $ artoo
-        Commands:
-          artoo connect SUBCOMMAND ...ARGS   # Connects to device
-          artoo console ROBOT                # Run a robot using the Robi console
-          artoo generate SUBCOMMAND ...ARGS  # Generates a new robot or adaptor
-          artoo help [COMMAND]               # Describe available commands or one specific command
-          artoo install SUBCOMMAND ...ARGS   # Installs utility programs
-          artoo start ROBOT                  # Run a robot
-          artoo version                      # Displays the current version
-  %h3 Connect:
-  %p Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:
-  :markdown
-        :::bash
-        $ artoo connect
-        connect commands:
-          artoo connect bind [ADDRESS] [NAME]  # Binds a Bluetooth device to some connected hardware
-          artoo connect help [COMMAND]         # Describe subcommands or one specific subcommand
-          artoo connect scan                   # Scan for connected devices
-          artoo connect serial [NAME] [PORT]   # Connect a serial device to a TCP socket using socat
-  %p You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!
-  %h3 Console:
-  %p 
-    Artoo includes Robi, a console based on 
-    =link_to "Pry","http://pryrepl.org/" 
-    to allow you to interactively debug and control your robot.
-  :markdown
-        :::bash
-        $ artoo console ./examples/hello.rb 
-         run  robi ./examples/hello.rb from "."
-        I, [2013-07-03T17:11:35.793913 #5527]  INFO -- : Registering connection 'loop'...
-        I, [2013-07-03T17:11:35.794939 #5527]  INFO -- : Preparing work...
-        robi> start
-        Starting main robot...
-        I, [2013-07-03T17:11:48.950888 #5527]  INFO -- : Initializing connection loop...
-        I, [2013-07-03T17:11:48.955804 #5527]  INFO -- : Starting work...
-        I, [2013-07-03T17:11:48.956152 #5527]  INFO -- : Connecting to 'loop' on port '#<Artoo::Port:0xfea0>'...
-        robi> list
-        #<Artoo::MainRobot:0x100c0>
-        robi> hello
-        hello
-        hello
-        robi> stop
-        Stopping robots...
-        robi> exit
-        D, [2013-07-03T17:12:04.413060 #5527] DEBUG -- : Terminating 7 actors...
-        D, [2013-07-03T17:12:04.414300 #5527] DEBUG -- : Shutdown completed cleanly
-  %h3 Generator
-  %p Want to integrate a hardware device we don't have Artoo support for yet? There's a generator for that! You can easily generate a new skeleton Artoo adaptor to help you get started. Simply run the 'artoo generate adaptor' command, and the generator will create a new directory with all of the files in place for your new adaptor gem.
-  :markdown
-        :::bash
-        $ artoo generate adaptor awesome_device
-        Creating artoo-awesome_device adaptor...
-              create  artoo-awesome_device
-               exist  artoo-awesome_device
-              create  artoo-awesome_device/Gemfile
-              create  artoo-awesome_device/LICENSE
-              create  artoo-awesome_device/README.md
-              create  artoo-awesome_device/Rakefile
-              create  artoo-awesome_device/artoo-awesome_device.gemspec
-              create  artoo-awesome_device/lib/artoo-awesome_device.rb
-              create  artoo-awesome_device/lib/artoo-awesome_device/version.rb
-              create  artoo-awesome_device/lib/artoo/adaptors/awesome_device.rb
-              create  artoo-awesome_device/lib/artoo/drivers/awesome_device.rb
-              create  artoo-awesome_device/test/adaptors/awesome_device_adaptor_test.rb
-              create  artoo-awesome_device/test/drivers/awesome_device_driver_test.rb
-              create  artoo-awesome_device/test/test_helper.rb
-        Done!
-
-%section.contributing
-  %h2 Contributing
-  %p 
-    You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
-    = link_to "artoo on github.","https://github.com/hybridgroup/artoo" 
+  %h2 Writing your robot code
+  %p Now you are ready to write your own code.
   %ul
-    %li Fork it
-    %li Create your feature branch (git checkout -b my-new-feature)
-    %li Commit your changes (git commit -am 'Add some feature')
-    %li Push to the branch (git push origin my-new-feature)
-    %li Create new Pull Request
+    %li Follow our Getting Started Tutorials for step-by-step guidance on next steps.
+    %li
+      Visit
+      %a{href: '/documentation/platforms'} platforms section
+      for more information about our supported devices and examples.
+    %li
+      Or visit a repo with full example of using Artoo for test driven robotics located at
+      =link_to "https://github.com/hybridgroup/artoo-test-example", "https://github.com/hybridgroup/artoo-test-example"
 
+
+  

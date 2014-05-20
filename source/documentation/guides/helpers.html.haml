@@ -6,14 +6,21 @@ description: Artoo Helpers
 layout: documentation
 active_menu_docs: true
 
-page_title: Helpers
+page_title: Guides
 page_subtitle: A Guide by Humans, for Humans.
 platforms: true
 ---
-
+-content_for :js_accordeon do
+  :javascript
+    $("#guides-panel").addClass("active-panel");
+    $("#guides-panel ul li:nth-child(7)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(5) a:nth-child(2) img").addClass("rotate");
+  
 %section.public-methods
+  %h1 Helper Methods
+  %p Artoo provides several helper methods that you can use in your programs.
   .commands-api
-    %h1 class Integer -> Numeric
+    %h3 class Integer -> Numeric
     
     %h2 def : seconds
     %p Plain number, actually does nothing.
@@ -32,8 +39,8 @@ platforms: true
     %h5 Returns
     %p 
       %span iteger
-
-    %h1 class Fixnum
+    %br/ 
+    %h3 class Fixnum
 
     %h2 def : to_pwm
     %p Convert to PWM value from analog reading.
@@ -45,8 +52,9 @@ platforms: true
     %h5 Returns
     %p 
       %span iteger
-
-    %h1 class : Numeric
+    
+    %br/ 
+    %h3 class : Numeric
 
     %h2 def : from_scale(range)
     %p Convert value from old scale (min to max) to (0..1) scale.

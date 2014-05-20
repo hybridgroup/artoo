@@ -6,12 +6,21 @@ page_title: Documentation
 page_subtitle: Made by Humans, for Humans.
 active_menu_docs: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#docs-panel").addClass("active-panel");
+    $("#docs-panel li:nth-child(1)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(1) a:nth-child(2) img").addClass("rotate");
 
 .index
   %section
     %a{href: '/documentation/getting-started'}
       .title Getting Started
       .description The best way to get started with Artoo.
+  %section
+    %a{href: '/documentation/guides/what_is_artoo'}
+      .title Guides
+      .description Visit the Guides for more information about Artoo and it's amazing features.
   %section
     %a{href: '/documentation/platforms'}
       .title Platforms
@@ -21,31 +30,22 @@ active_menu_docs: true
       .title Drivers
       .description Artoo supports many different hardware devices.
   %section
+    %a{href: '/documentation/troubleshooting/communication'}
+      .title Troubleshooting
+      .description Do you have trouble with something? Maybe you can find here an answer.
+  %section
+    %a{href: '/documentation/contribute'}
+      .title Contribute
+      .description Artoo exists thanks to the work of wonderful individuals, join us, we'd love your contribution too.
+  %section
     %a{href: '/documentation/examples'}
       .title Examples
       .description How to use Artoo with a number of hardware configurations.
   %section
-    %a{href: 'http://rubydoc.info/gems/artoo/frames'}
-      .title Generated Documentation
-      .description YARD-generated documentation
-  %section
-    %a{href: '/documentation/api'}
-      .title API Server
-      .description The Artoo WebSockets API Server
-  %section
-    %a{href: '/documentation/cli'}
-      .title CLI
-      .description Command Line Interface to make RobotOps easier.
-  %section
-    %a{href: '/documentation/test-driven-robotics'}
-      .title Test Driven Robotics
-      .description Test-driven development of your robotics solutions is built-in.
-  %section
-    %a{href: '/documentation/helpers'}
-      .title Helper Methods
-      .description The Artoo helper methods
-
-
+    %a{href: 'https://github.com/hybridgroup/artoo/issues'}
+      .title Issues?
+      .description Please let us know if you find an error or if you can't find what you are looking for.
+  
 
 
 

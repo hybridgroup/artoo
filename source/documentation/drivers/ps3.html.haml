@@ -2,14 +2,23 @@
 page_title_show: true
 title: Artoo - PS3 Controller Driver
 author: The Hybrid Group
-page_title: PS3 Controller
-page_subtitle: Driver
+page_title: Drivers
+page_subtitle: Artoo has a extensible system for connecting to hardware devices.
+page_title_docs: Playstation3 Controller
+page_subtitle_docs: <a href='https://github.com/hybridgroup/artoo-joystick' class='repository'>Repository</a>
 layout: documentation
 subnav_driver: true
 active_menu_docs: true
+subnavjs: true
 
 joystick_platform: true
 ---
+-content_for :js_accordeon do
+  :javascript
+    $("#driver-panel").addClass("active-panel");
+    $("#joystick li:nth-child(2)").addClass("active-link");
+    $(".accordion-docs dt:nth-child(9) a:nth-child(2) img").addClass("rotate");
+
 %section.intro
   =image_tag "/images/devices/ps3.jpg", class: "display"
   .info_intro
