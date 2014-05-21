@@ -3,7 +3,7 @@ require 'artoo'
 connection :roomba, :adaptor => :roomba, :port => '8023'
 device :roomba, :driver => :roomba, :connection => :roomba
 
-connection :arduino, :adaptor => :firmata, :port => '8024'
+connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0' #linux
 device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
   
 work do

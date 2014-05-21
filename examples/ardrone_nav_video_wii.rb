@@ -9,7 +9,7 @@ device :nav, :driver => :ardrone_navigation, :connection => :navigation
 connection :videodrone, :adaptor => :ardrone_video, :port => '192.168.1.1:5555'
 device :video, :driver => :ardrone_video, :connection => :videodrone
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => "/dev/ttyACM0" # linux
 device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
 api :host => '127.0.0.1', :port => '8080'

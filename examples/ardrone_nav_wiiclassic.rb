@@ -6,7 +6,7 @@ device :drone, :driver => :ardrone, :connection => :ardrone
 connection :navigation, :adaptor => :ardrone_navigation, :port => '192.168.1.1:5554'
 device :nav, :driver => :ardrone_navigation, :connection => :navigation
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => "/dev/ttyACM0" # linux
 device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
 api :host => 'localhost', :port => '8080'
