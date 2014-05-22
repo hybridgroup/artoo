@@ -36,10 +36,10 @@ neurosky_driver: true
         :::bash
         gem install artoo-neurosky
 
-  %p Afterwards you need to install socat - for this please run the following command (works on both OSX and Linux)
+  %p Afterwards you need to install serialport gem
   :markdown
         :::bash
-        artoo install socat
+        gem install hybridgroup-serialport
 
 %section.how-to#HowToUse
   %h2 How To Use
@@ -67,9 +67,8 @@ neurosky_driver: true
   %h4  OSX
 
   %p The main steps are:
-  %ul 
+  %ul
     %li - Pair your computer and the Mindwave
-    %li - Use a socket to serial connection to map a TCP socket to the local unix port
     %li - Connect to the device via Artoo
 
   %p First pair your computer and Mindwave. You might be prompted for a passcode, if so enter '0000'.
@@ -79,10 +78,14 @@ neurosky_driver: true
         :::bash
         $ artoo connect scan
 
-  %p Now you are ready to connect to the Mindwave using the socket, in this example port 4567:
+  %p Now you are ready to connect to the Mindwave
+
+  %p
+    Be sure to update to correct port:
+
   :markdown
-        :::bash
-        artoo connect serial /dev/rfcomm0 4567
+        :::ruby
+        connection :neurosky, :adaptor => :neurosky, :port => '/dev/rfcomm0'
 
   %h4 Ubuntu
 
@@ -90,7 +93,6 @@ neurosky_driver: true
   %ul 
     %li - Pair your computer and the Mindwave
     %li - Map your device to a unix port
-    %li - Use a socket to serial connection to map a TCP socket to the local unix port
     %li - Connect to the device via Artoo
 
   %p First pair your computer and Mindwave. You might be prompted for a passcode, if so enter '0000'.
@@ -107,10 +109,14 @@ neurosky_driver: true
         :::bash
         artoo connect bind 00:06:66:4A:14:99 /dev/rfcomm0
 
-  %p Now you are ready to connect to the Mindwave using the socket, in this example port 4567:
+  %p Now you are ready to connect to the Mindwave
+
+  %p
+    Be sure to update to correct port:
+
   :markdown
-        :::bash
-        artoo connect serial /dev/rfcomm0 4567
+        :::ruby
+        connection :neurosky, :adaptor => :neurosky, :port => '/dev/rfcomm0'
 
   %h4 Windows
 

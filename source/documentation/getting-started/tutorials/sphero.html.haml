@@ -28,6 +28,10 @@ active_menu_docs: true
       :markdown
         install artoo sphero gem: `gem install artoo-sphero`
 
+    %li 
+      :markdown
+        install serialport gem: `gem install hybridgroup-serialport`
+
   %h3 Pair your sphero device via Bluetooth
   %h4 MacOSX
 
@@ -60,16 +64,6 @@ active_menu_docs: true
       Use that output to bind your device by name running this command:
       :markdown
             artoo connect bind 00:06:66:44:39:C6 Sphero-YBW
-    %li 
-      Finally, run this command to connect to your device:
-      :markdown
-            artoo connect serial Sphero-YBW 4567
-    %li 
-      You should see this message displayed:
-      :markdown
-            N listening on AF=2 0.0.0.0:4567
-
-    %li Leave this terminal open and running.
 
   %h3 Run artoo program
 
@@ -83,9 +77,9 @@ active_menu_docs: true
       :markdown
             cd Downloads
     %li 
-      You will need to change the port from `8023` to `4567` on line 3:
+      You will need to change the port to the device port
       :markdown
-            connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4567'
+            connection :sphero, :adaptor => :sphero, :port => '/dev/Sphero-YBW'
     %li 
       run example
       :markdown
