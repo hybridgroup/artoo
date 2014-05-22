@@ -37,10 +37,11 @@ sphero_driver: true
   :markdown
         :::bash
         gem install artoo-sphero
-  %p Afterwards you need to install <em>socat</em> - for this please run the following command (works on both OSX and Linux):
+
+  %p Then you would need to install serial port gem
   :markdown
         :::bash
-        artoo install socat
+        gem install hybridgroup-serialport
 
 %section.how-to#HowToUse
   %h2 How To Use
@@ -49,7 +50,7 @@ sphero_driver: true
         :::ruby
          require 'artoo'
 
-        connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:8023'
+        connection :sphero, :adaptor => :sphero, :port => '/dev/Sphero-WRW'
         device :sphero, :driver => :sphero
 
         work do
@@ -63,22 +64,7 @@ sphero_driver: true
 
 %section.how-to#HowToConnect
   %h2 How To Connect
-  %h3 OSX
-  %p The main steps are:
-  %ul
-    %li Pair your computer and the Sphero
-    %li Use a socket to serial connection to map a TCP socket to the local unix port
-    %li Connect to the device via Artoo
-  %p First pair your computer and Sphero. You might be prompted for a passcode, but you do not need to enter it, sinec the Sphero does not check.
-  %p Once paired, use the "artoo connect scan" command to find out your connection info:
-  :markdown
-        :::bash
-        $ artoo bluetooth scan
-  %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
-  :markdown
-        :::bash
-        artoo bluetooth connect Sphero-WRW 8023
-  %h3 Ubuntu
+  %h3 OSX / Linux
   %p The main steps are:
   %ul
     %li Find out the sphero bluetooth address
@@ -109,10 +95,12 @@ sphero_driver: true
         :::bash
         artoo bluetooth bind 00:06:66:4A:14:99 Sphero-WRW
 
-  %p Now you are ready to connect to the Sphero using the socket, in this example port 8023:
+  %p
+    Now you are ready to run the example code, be sure to update this line with correct port
+
   :markdown
-        :::bash
-        artoo bluetooth connect Sphero-WRW 8023
+        :::ruby
+        connection :sphero, :adaptor => :sphero, :port => '/dev/Sphero-WRW'
 
 %section.drivers#Drivers
   %h2 Drivers

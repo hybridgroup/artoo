@@ -56,7 +56,7 @@ wiichuck_driver: true
         :::ruby
         require 'artoo'
 
-        connection :arduino, adaptor: :firmata, port: '127.0.0.1:8023'
+        connection :arduino, adaptor: :firmata, port: '/dev/ttyACM0' # linux
         device :led, driver: :led, pin: 13
         device :button, driver: :button, pin: 2, interval: 0.01
 
@@ -116,12 +116,18 @@ wiichuck_driver: true
         $ artoo arduino upload /dev/ttyACM0
 
   %p
-    Now you are ready to connect to the Arduino using a socket, in this example
-    the socket to serial is set on port 4567 (which is also the default value):
+    Now you need to install serialportl gem to do the connection:
 
   :markdown
         :::bash
-        artoo arduino connect ttyACM0 4567
+        gem install hybridgroup-serialport
+
+  %p
+    Finally change code to the correct serial port
+
+  :markdown
+        :::bash
+        connection :arduino, adaptor: :firmata, port: '/dev/ttyACM0' # linux
 
   %h3 Ubuntu
 
@@ -130,7 +136,6 @@ wiichuck_driver: true
     %li Install the artoo-arduino gem
     %li Find out what serial port your arduino is connected to
     %li Upload the Firmata protocol to the arduino
-    %li Use a socket to serial connection to map a TCP socket to the local unix port
     %li Connect to the device via Artoo
 
   %p First plug the Arduino into your computer via the USB/serial port.
@@ -167,12 +172,18 @@ wiichuck_driver: true
         $ artoo arduino upload /dev/ttyACM0
 
   %p
-    Now you are ready to connect to the Arduino using a socket, in this example
-    the socket to serial is set on port 4567 (which is also the default value):
+    Now you need to install serialportl gem to do the connection:
 
   :markdown
         :::bash
-        artoo arduino connect ttyACM0 4567
+        gem install hybridgroup-serialport
+
+  %p
+    Finally change code to the correct serial port
+
+  :markdown
+        :::bash
+        connection :arduino, adaptor: :firmata, port: '/dev/ttyACM0' # linux
 
   %h3 Windows
 

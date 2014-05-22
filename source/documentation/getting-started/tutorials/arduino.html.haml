@@ -67,6 +67,12 @@ active_menu_docs: true
         :::bash
         $ gem install artoo-arduino
 
+  %p Install the serialport gem:
+
+  :markdown
+        :::bash
+        $ gem install hybridgroup-serialport
+
   %p
     Once plugged in, use the `artoo connect scan -t serial` command to find out your
     connection info and serial port address:
@@ -93,12 +99,11 @@ active_menu_docs: true
         $ artoo arduino upload /dev/ttyACM0
 
   %p
-    Now you are ready to connect to the Arduino using a socket, in this example
-    the socket to serial is set on port 4567 (which is also the default value):
+    Finally change code to the correct serial port
 
   :markdown
         :::bash
-        $ artoo arduino connect ttyACM0 4567
+        connection :arduino, adaptor: :firmata, port: '/dev/ttyACM0' # linux
 
   %h3 Running the examples
 
@@ -108,13 +113,6 @@ active_menu_docs: true
 
   %p
     If you cloned the repository, you can access the example in the following folder: examples/blink_led.rb
-
-  %p
-    Change the port from `8023` to `4567` or the correct port used in the example:
-
-    :markdown
-          :::ruby
-          connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:4567'
 
   %p
     Now, let's run the example:
