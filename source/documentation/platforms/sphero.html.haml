@@ -64,13 +64,33 @@ sphero_driver: true
 
 %section.how-to#HowToConnect
   %h2 How To Connect
-  %h3 OSX / Linux
+  %h3 OSX
+  %p The main steps are:
+  %ul
+    %li Pair your computer and the Sphero
+    %li Find out the sphero bluetooth address
+    %li Connect to the device via Artoo
+  %p
+    First pair your computer and Sphero. You can do this using bluetooth preferences. (Sphero won't stay connected)
+  %p
+    Find out serial port address by running this command:
+  :markdown
+        :::bash
+        ls /dev/tty.Sphero*
+
+  %p
+    Now you are ready to run the example code, be sure to update this line with correct port
+
+  :markdown
+        :::ruby
+        connection :sphero, :adaptor => :sphero, :port => '/dev/Sphero-WRW-RN-SPP'
+
+  %h3 Linux
   %p The main steps are:
   %ul
     %li Find out the sphero bluetooth address
     %li Pair your computer and the Sphero
     %li Map your device to a unix port
-    %li Use a socket to serial connection to map a TCP socket to the local unix port
     %li Connect to the device via Artoo
   %p
     First pair your computer and Sphero. We do this by finding the sphero bluetooth address

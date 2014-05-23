@@ -22,8 +22,8 @@ active_menu_docs: true
         #Circuit's breadboard layout for the L293D: http://www.electrojoystick.com/tutorial/?p=759
         #For the L239DNE: http://bit.ly/14QdjD5
 
-        #connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
-        connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
+        connection :firmata, :adaptor => :firmata, :port => '/dev/ttyACM0' # linux
+        #connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :board, :driver => :device_info
         device :motor, :driver => :motor, 
                        :forward_pin  => 4, # Digital or PWM pin
