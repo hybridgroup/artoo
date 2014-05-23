@@ -48,9 +48,17 @@ active_menu_docs: true
 
   %h3 Communicate with your device
 
+  %h4 MacOSX
+
   %ul
-    %li Turn on your bluetooth and device (sphero).
-    %li Connect the sphero to the computer using Bluetooth.
+    %li Find out serial port address by running this command:
+    %li
+      :markdown
+            :::bash
+            ls /dev/tty.Sphero*
+
+  %h4 Ubuntu
+  %ul
     %li
       Run this command to look for it:
       :markdown
