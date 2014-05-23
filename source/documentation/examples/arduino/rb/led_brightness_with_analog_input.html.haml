@@ -27,7 +27,7 @@ active_menu_docs: true
         # change to the correct analog input, in this case pin A0.
         # Circuit and schematic here: http://arduino.cc/en/tutorial/button
 
-        connection :firmata, :adaptor => :firmata, :port => '/dev/tty*'
+        connection :firmata, :adaptor => :firmata, :port => '/dev/ttyACM0' # linux
         #connection :firmata, :adaptor => :firmata, :port => '127.0.0.1:8023'
         device :sensor, driver: :analog_sensor, pin: 0, interval: 0
         device :led, :driver => :led, :pin => 3
