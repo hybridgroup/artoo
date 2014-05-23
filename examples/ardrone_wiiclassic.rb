@@ -3,7 +3,7 @@ require 'artoo'
 connection :ardrone, :adaptor => :ardrone, :port => '192.168.0.43:5556'
 device :drone, :driver => :ardrone, :connection => :ardrone
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => "/dev/ttyACM0" #linux
 device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
 OFFSETS = {
