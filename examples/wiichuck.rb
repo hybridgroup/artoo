@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => "/dev/tty.ACM0"
 device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
 
 work do

@@ -1,9 +1,9 @@
 require 'artoo'
 
-connection :sphero, :adaptor => :sphero, :port => '127.0.0.1:4569'
+connection :sphero, :adaptor => :sphero, :port => '/dev/rfcomm0' #linux
 device :sphero, :driver => :sphero
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => '/dev/ttyACM0' #linux
 device :wiichuck, :driver => :wiichuck, :connection => :arduino, :interval => 0.1
   
 work do

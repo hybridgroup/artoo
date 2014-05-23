@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :arduino, :adaptor => :firmata, :port => "8023"
+connection :arduino, :adaptor => :firmata, :port => "/dev/ttyACM0" #linux
 device :classic, :driver => :wiiclassic, :connection => :arduino, :interval => 0.1
 
 work do
