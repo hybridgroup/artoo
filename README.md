@@ -1,4 +1,4 @@
-[![Artoo](https://cdn.rawgit.com/hybridgroup/artoo/artoo.io/source/images/elements/artoo.png)](http://artoo.io)
+[![Artoo](https://cdn.rawgit.com/hybridgroup/artoo-site/master/source/images/elements/artoo.png)](http://artoo.io)
 
 http://artoo.io/
 
