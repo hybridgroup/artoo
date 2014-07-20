@@ -90,6 +90,11 @@ module Artoo
       return nil
     end
 
+    def respond_to_missing?(method_name, include_private = false)
+      # TODO: verify that the adaptor supprts the method we're calling
+      true
+    end
+
     private
 
     def require_adaptor(type, params)
