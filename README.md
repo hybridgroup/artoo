@@ -243,12 +243,13 @@ The repo with full example of using Artoo for test driven robotics is located at
 
 ## CLI
 
-Artoo has a Command Line Interface (CLI) so you can access important features right from the command line.
+Artoo uses the Gort [http://gort.io](http://gort.io) Command Line Interface (CLI) so you can access important features right from the command line. We call it "RobotOps", aka "DevOps For Robotics". You can scan, connect, update device firmware, and more!
+
+Artoo also has its own CLI so you can generate new robots, or use its console.
 
 ```
 $ artoo
 Commands:
-  artoo connect SUBCOMMAND ...ARGS   # Connects to device
   artoo console ROBOT                # Run a robot using the Robi console
   artoo generate SUBCOMMAND ...ARGS  # Generates a new robot or adaptor
   artoo help [COMMAND]               # Describe available commands or one specific command
@@ -257,24 +258,9 @@ Commands:
   artoo version                      # Displays the current version
 ```
 
-### Connect:
-
-Artoo makes it a lot easier to connect TCP Socket to Bluetooth and serial port devices using the command line interface:
-
-```
-$ artoo connect
-connect commands:
-  artoo connect bind [ADDRESS] [NAME]  # Binds a Bluetooth device to some connected hardware
-  artoo connect help [COMMAND]         # Describe subcommands or one specific subcommand
-  artoo connect scan                   # Scan for connected devices
-  artoo connect serial [NAME] [PORT]   # Connect a serial device to a TCP socket using socat
-```
-
-You can scan your computer for paired Bluetooth devices, bind them to unix ports, and connect socket to serial interfaces, easily from the command line!
-
 ### Console:
 
-Artoo includes Robi, a console based on [Pry](http://pryrepl.org/) to allow you to interactively debug and control your robot.
+Artoo includes a console based on [Pry](http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
 $ artoo console ./examples/hello.rb 

@@ -6,9 +6,7 @@ require 'artoo/robot'
 require 'artoo/commands/generate'
 require 'artoo/commands/commands'
 require 'artoo/commands/install'
-require 'artoo/commands/scan'
 require 'artoo/commands/socket'
-require 'artoo/commands/bluetooth'
 
 Celluloid.logger = nil
 
@@ -39,14 +37,8 @@ module CLI
     desc "generate <SUBCOMMAND> ...ARGS", "Generates a new robot or adaptor"
     subcommand "generate", Artoo::Commands::Generate
 
-    desc "bluetooth <SUBCOMMAND> ...ARGS", "Scans, pairs and Connects to a bluetooth device"
-    subcommand "bluetooth", Artoo::Commands::Bluetooth
-
     desc "install <SUBCOMMAND> ...ARGS", "Installs utility programs, like socat"
     subcommand "install", Artoo::Commands::Install
-
-    desc "scan <type> ...ARGS", "Installs utility programs"
-    subcommand "scan", Artoo::Commands::Scan
   end
 end
 
