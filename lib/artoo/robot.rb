@@ -28,7 +28,7 @@ module Artoo
     include Artoo::Utility
     include Artoo::Events
 
-    attr_reader :connections, :devices, :name, :commands
+    attr_reader :connections, :devices, :name, :commands, :interfaces
 
     exclusive :execute_startup
 
@@ -40,6 +40,7 @@ module Artoo
     def initialize(params={})
       @name = params[:name] || current_class.name || "Robot #{random_string}"
       @commands = params[:commands] || []
+      @interfaces = {}
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})
     end
@@ -154,6 +155,10 @@ module Artoo
       return commands.include?(method_name.intern)
     end
 
+    def add_interface(i)
+      i.robot = current_instance
+      @interfaces[i.name.intern] = i 
+    end
 
     private
 
