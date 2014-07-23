@@ -4,10 +4,10 @@ module Artoo
   module Interfaces
     # The Ping interface.
     class Ping < Interface
-    	COMMANDS = [:ping]
+			COMMANDS = [:ping]
 
-      def ping
-      end
+			def ping
+			end
     end
   end
 end

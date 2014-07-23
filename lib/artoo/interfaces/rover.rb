@@ -9,17 +9,17 @@ module Artoo
       def forward(speed)
       end
 
-    	def backward(speed)
-    	end
+      def backward(speed)
+      end
 
-    	def turn_left(degrees)
-    	end
+      def turn_left(degrees)
+      end
 
-    	def turn_right(degrees)
-    	end
+      def turn_right(degrees)
+      end
 
-    	def stop
-    	end
+      def stop
+      end
     end
   end
 end
