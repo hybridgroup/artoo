@@ -14,6 +14,9 @@ require 'artoo/api/api'
 require 'artoo/master'
 require 'artoo/port'
 require 'artoo/utility'
+require 'artoo/interfaces/interface'
+require 'artoo/interfaces/ping'
+require 'artoo/interfaces/rover'
 
 module Artoo
   # The most important class used by Artoo is Robot. This represents the primary
@@ -156,8 +159,7 @@ module Artoo
     end
 
     def add_interface(i)
-      i.robot = current_instance
-      @interfaces[i.name.intern] = i 
+      @interfaces[i.interface_type.intern] = i
     end
 
     private

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo (1.6.7)
+    artoo (1.7.0)
       celluloid (>= 0.16.0.pre)
       celluloid-io (>= 0.16.0.pre)
       http (~> 0.5.0)

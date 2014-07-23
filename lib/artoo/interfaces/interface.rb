@@ -12,6 +12,10 @@ module Artoo
 
       attr_accessor :name, :robot, :device
 
+      def interface_type
+        :raw
+      end
+
       COMMANDS = [].freeze
 
       # Create new interface
