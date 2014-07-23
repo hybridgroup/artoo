@@ -138,12 +138,7 @@ module Artoo
 
     # @return [Object] whatever result is passed back from the wrapped robot
     def command(method_name, *arguments, &block)
-      t = nil
-      if own_command?(method_name)
-        t = self
-      else
-        t = interface_for_command(method_name)
-      end
+      t = interface_for_command(method_name)
       if t
         if arguments.first
           t.send(method_name, *arguments)
@@ -170,6 +165,7 @@ module Artoo
 
     # @return [Boolean] True if command exists in any of the robot's interfaces
     def interface_for_command(method_name)
+      return self if own_command?(method_name)
       @interfaces.each_value {|i|
         return i if i.commands.include?(method_name.intern)
       }
