@@ -27,6 +27,11 @@ module Artoo
         @robot = params[:robot]
         @device = params[:device]
       end
+
+      # @return [Collection] commands
+      def commands
+        self.class.const_get('COMMANDS')
+      end
     end
   end
 end

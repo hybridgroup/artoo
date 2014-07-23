@@ -137,12 +137,18 @@ module Artoo
     end
 
     # @return [Object] whatever result is passed back from the wrapped robot
-    def command(method_name, *arguments)
-      if known_command?(method_name)
+    def command(method_name, *arguments, &block)
+      t = nil
+      if own_command?(method_name)
+        t = self
+      else
+        t = interface_for_command(method_name)
+      end
+      if t
         if arguments.first
-          self.send(method_name, *arguments)
+          t.send(method_name, *arguments)
         else
-          self.send(method_name)
+          t.send(method_name)
         end
       else
         "Unknown Command"
@@ -154,12 +160,29 @@ module Artoo
     end
 
     # @return [Boolean] True if command exists
-    def known_command?(method_name)
+    def own_command?(method_name)
       return commands.include?(method_name.intern)
     end
 
     def add_interface(i)
       @interfaces[i.interface_type.intern] = i
+    end
+
+    # @return [Boolean] True if command exists in any of the robot's interfaces
+    def interface_for_command(method_name)
+      @interfaces.each_value {|i|
+        return i if i.commands.include?(method_name.intern)
+      }
+      return nil
+    end
+
+    # Sends missing methods to command
+    def method_missing(method_name, *arguments, &block)
+      command(method_name, *arguments, &block)
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      own_command?(method_name)|| interface_for_command(method_name)
     end
 
     private

@@ -97,7 +97,6 @@ module Artoo
     end
 
     def add_interface(i)
-      Logger.info i
       @parent.add_interface(i)  
     end
 
