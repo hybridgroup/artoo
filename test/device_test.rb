@@ -48,5 +48,6 @@ describe Artoo::Device do
     @device = @robot.devices[:test_device_1]
     @device.require_interface(:ping)
     @device.interface.name.must_equal 'ping'
+    @robot.interfaces[:ping].name.must_equal 'ping'
   end
 end
