@@ -319,7 +319,7 @@ If you want to help us with some documentation on the site, you can go to [artoo
 Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
 
 ## Contributing
-
+* All active development is in the dev branch. New or updated features must be added to the dev branch. Hotfixes will be considered on the master branch in situations where it does not alter behaviour or features, only fixes a bug.
 * All patches must be provided under the Apache 2.0 License
 * Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
 * Submit a Github Pull Request to the appropriate branch and ideally discuss the changes with us in IRC.
