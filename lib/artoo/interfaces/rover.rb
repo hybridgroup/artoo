@@ -8,12 +8,18 @@ module Artoo
         :rover
       end
 
-      COMMANDS = [:forward, :backward, :turn_left, :turn_right, :stop]
+      COMMANDS = [:forward, :backward, :left, :right, :turn_left, :turn_right, :stop]
 
       def forward(speed)
       end
 
       def backward(speed)
+      end
+
+      def left(speed)
+      end
+
+      def right(speed)
       end
 
       def turn_left(degrees)
