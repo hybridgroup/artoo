@@ -6,7 +6,7 @@ module Artoo
     include Celluloid
     include Artoo::Utility
 
-    attr_reader :parent, :name, :driver, :pin, :connection, :interval
+    attr_reader :parent, :name, :driver, :pin, :connection, :interval, :interface
 
     # Create new device
     # @param  [Hash] params
@@ -94,6 +94,17 @@ module Artoo
     # @return [String] pretty inspect
     def inspect
       "#<Device @id=#{object_id}, @name='name', @driver='#{driver.class.name}'>"
+    end
+
+    def add_interface(i)
+      @parent.add_interface(i)  
+    end
+
+    def require_interface(i)
+      Logger.info "Require interface #{i}"
+      require "artoo/interfaces/#{i.to_s}"
+      @interface = constantize("Artoo::Interfaces::#{classify(i.to_s)}").new(:name => i.to_s, :robot => parent, :device => current_instance)      
+      add_interface(@interface)
     end
 
     private

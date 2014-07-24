@@ -77,6 +77,10 @@ module Artoo
         return false
       end
 
+      def require_interface(i)
+        parent.require_interface(i)
+      end
+
       # Sends missing methods to connection
       def method_missing(method_name, *arguments, &block)
         connection.send(method_name, *arguments, &block)

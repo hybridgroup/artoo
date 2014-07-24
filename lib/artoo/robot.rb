@@ -14,6 +14,9 @@ require 'artoo/api/api'
 require 'artoo/master'
 require 'artoo/port'
 require 'artoo/utility'
+require 'artoo/interfaces/interface'
+require 'artoo/interfaces/ping'
+require 'artoo/interfaces/rover'
 
 module Artoo
   # The most important class used by Artoo is Robot. This represents the primary
@@ -28,7 +31,7 @@ module Artoo
     include Artoo::Utility
     include Artoo::Events
 
-    attr_reader :connections, :devices, :name, :commands
+    attr_reader :connections, :devices, :name, :commands, :interfaces
 
     exclusive :execute_startup
 
@@ -40,6 +43,7 @@ module Artoo
     def initialize(params={})
       @name = params[:name] || current_class.name || "Robot #{random_string}"
       @commands = params[:commands] || []
+      @interfaces = {}
       initialize_connections(params[:connections] || {})
       initialize_devices(params[:devices] || {})
     end
@@ -133,12 +137,13 @@ module Artoo
     end
 
     # @return [Object] whatever result is passed back from the wrapped robot
-    def command(method_name, *arguments)
-      if known_command?(method_name)
+    def command(method_name, *arguments, &block)
+      t = interface_for_command(method_name)
+      if t
         if arguments.first
-          self.send(method_name, *arguments)
+          t.send(method_name, *arguments)
         else
-          self.send(method_name)
+          t.send(method_name)
         end
       else
         "Unknown Command"
@@ -150,10 +155,31 @@ module Artoo
     end
 
     # @return [Boolean] True if command exists
-    def known_command?(method_name)
+    def own_command?(method_name)
       return commands.include?(method_name.intern)
     end
 
+    def add_interface(i)
+      @interfaces[i.interface_type.intern] = i
+    end
+
+    # @return [Boolean] True if command exists in any of the robot's interfaces
+    def interface_for_command(method_name)
+      return self if own_command?(method_name)
+      @interfaces.each_value {|i|
+        return i if i.commands.include?(method_name.intern)
+      }
+      return nil
+    end
+
+    # Sends missing methods to command
+    def method_missing(method_name, *arguments, &block)
+      command(method_name, *arguments, &block)
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      own_command?(method_name)|| interface_for_command(method_name)
+    end
 
     private
 
