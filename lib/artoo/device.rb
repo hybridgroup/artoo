@@ -87,9 +87,13 @@ module Artoo
       command(method_name, *arguments, &block)
     end
 
+    def respond_to_missing?(method_name, include_private = false)
+      commands.include?(method_name) || super
+    end
+
     # @return [String] pretty inspect
     def inspect
-      "#<Device @id=#{object_id}, @name='name', @driver='driver'>"
+      "#<Device @id=#{object_id}, @name='name', @driver='#{driver.class.name}'>"
     end
 
     private

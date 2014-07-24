@@ -2,24 +2,24 @@ PATH
   remote: .
   specs:
     artoo (1.6.7)
-      celluloid (~> 0.15.0)
-      celluloid-io (~> 0.15.0)
+      celluloid (>= 0.16.0.pre)
+      celluloid-io (>= 0.16.0.pre)
       http (~> 0.5.0)
       multi_json (~> 1.6.0)
       pry (~> 0.9.0)
       rake
       reel (~> 0.4.0)
-      robeaux (~> 0.0.4)
+      robeaux (~> 0.1.0)
       thor (~> 0.18.1)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    celluloid (0.15.2)
-      timers (~> 1.1.0)
-    celluloid-io (0.15.0)
-      celluloid (>= 0.15.0)
-      nio4r (>= 0.5.0)
+    celluloid (0.16.0.pre2)
+      timers (~> 3.0.0)
+    celluloid-io (0.16.0.pre2)
+      celluloid (>= 0.16.0.pre)
+      nio4r (>= 1.0.0)
     coderay (1.1.0)
     dotenv (0.9.0)
     foreman (0.63.0)
@@ -28,7 +28,8 @@ GEM
     foreman (0.63.0-java)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
-    http (0.5.0)
+    hitimes (1.2.2)
+    http (0.5.1)
       http_parser.rb
     http_parser.rb (0.6.0)
     json (1.7.7)
@@ -47,7 +48,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    rake (10.2.2)
+    rake (10.3.2)
     reel (0.4.0)
       celluloid (>= 0.15.1)
       celluloid-io (>= 0.15.0)
@@ -55,8 +56,8 @@ GEM
       http_parser.rb (>= 0.6.0.beta.2)
       websocket_parser (>= 0.1.4)
     ref (1.0.5)
-    robeaux (0.0.4)
-    slop (3.5.0)
+    robeaux (0.1.1)
+    slop (3.6.0)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -64,7 +65,8 @@ GEM
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
     thor (0.18.1)
-    timers (1.1.0)
+    timers (3.0.1)
+      hitimes
     websocket_parser (0.1.6)
     yard (0.8.7.2)
     yard-sinatra (1.0.0)
