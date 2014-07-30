@@ -149,7 +149,7 @@ module Artoo
             status, body = resp
 
             begin
-              req.respond status, body 
+              req.respond status, {'Content-Type' => 'application/json'}, body
             rescue Errno::EAGAIN
               retry
             end
