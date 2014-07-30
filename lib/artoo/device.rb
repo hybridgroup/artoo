@@ -6,7 +6,7 @@ module Artoo
     include Celluloid
     include Artoo::Utility
 
-    attr_reader :parent, :name, :driver, :pin, :connection, :interval, :interface
+    attr_reader :parent, :name, :driver, :pin, :connection, :interval, :interface, :details
 
     # Create new device
     # @param  [Hash] params
@@ -17,11 +17,15 @@ module Artoo
     # @option params :interval   [String]
     # @option params :driver     [String]
     def initialize(params={})
-      @name = params[:name].to_s
-      @pin = params[:pin]
-      @parent = params[:parent]
-      @connection = determine_connection(params[:connection]) || default_connection
-      @interval = params[:interval] || 0.5
+      @name       = params[:name].to_s
+      @pin        = params[:pin]
+      @parent     = params[:parent]
+      @connection = determine_connection(params[:connection]) ||
+        default_connection
+      @interval   = params[:interval] || 0.5
+
+      @details = remove_keys(params, :name, :parent, :connection,
+                             :passthru, :driver)
 
       require_driver(params[:driver] || :passthru, params)
     end
@@ -60,10 +64,9 @@ module Artoo
       {
         :name => name,
         :driver => driver.class.name.to_s.gsub(/^.*::/, ''),
-        :pin => pin.to_s,
-        :connection => connection.to_hash,
-        :interval => interval,
-        :commands => driver.commands
+        :connection => connection.name,
+        :commands => driver.commands,
+        :details => @details
       }
     end
 

@@ -85,5 +85,15 @@ module Artoo
         end
       )
     end
+
+    # Removes selected keys from hash
+    # @example {one: 'one', two: 'two'} => {two: 'two'}
+    # @return [Hash] new object without selected keys
+    def remove_keys(h, *keys)
+      hash = h.dup
+      keys.each { |key| hash.delete(key)  }
+      hash
+    end
+
   end
 end
