@@ -141,13 +141,19 @@ module Artoo
 
     # execute master command
     def command(name, params)
-      command = @commands.find{ |c| c[:name].to_s == name }
-      command[:behaviour].call(params) if command
+      command = @commands.find{ |c| c[:name] == name.to_sym }
+      if command
+        if params.nil?
+          command[:behaviour].call
+        else
+          command[:behaviour].call(params)
+        end
+      end
     end
 
     # add command to master
     def add_command(name, behaviour)
-      @commands << { name: name, behaviour: behaviour }
+      @commands << { name: name.to_sym, behaviour: behaviour }
     end
   end
 end
