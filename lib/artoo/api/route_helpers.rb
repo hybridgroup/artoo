@@ -154,7 +154,8 @@ module Artoo
               retry
             end
           else
-            req.respond :not_found, "NOT FOUND"
+            @error ||= "NOT FOUND"
+            req.respond :not_found, {'Content-Type' => 'application/json'}, {error: @error}.to_json
           end
         end
 
