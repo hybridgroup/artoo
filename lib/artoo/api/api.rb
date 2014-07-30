@@ -28,52 +28,88 @@ module Artoo
         end
       end
 
+      # Retrieve api index
+      # @return [JSON] MCP index
+      get '/api' do
+        robots   = master.robots.collect { |r| r.to_hash }
+        response = {MCP: {robots: robots, commands: master.commands}}
+        MultiJson.dump(response)
+      end
+
+      # Retrieve list of master commands
+      # @return [JSON] commands
+      get '/api/commands' do
+        MultiJson.dump({commands: master.commands})
+      end
+
+      # Execute master command
+      # @return [JSON] result
+      any '/api/commands/:commandid' do
+        result = master.command(@params['commandid'], *command_params)
+        MultiJson.dump({result: result})
+      end
+
       # Retrieve list of robots
       # @return [JSON] robots
-      get '/robots' do
-        MultiJson.dump(master.robots.collect {|r|r.to_hash})
+      get '/api/robots' do
+        robots = master.robots.collect {|r|r.to_hash}
+        response = {robots: robots}
+        MultiJson.dump(response)
       end
 
       # Retrieve robot by id
       # @return [JSON] robot
-      get '/robots/:robotid' do
-        master.robot(@params['robotid']).as_json
+      get '/api/robots/:robotid' do
+        validate_robot!
+        robot = master.robot(@params['robotid'])
+        response = {robot: robot.to_hash}
+        MultiJson.dump(response)
       end
 
       # Retrieve robot commands
       # @return [JSON] commands
-      get '/robots/:robotid/commands' do
-        MultiJson.dump(master.robot(@params['robotid']).commands)
+      get '/api/robots/:robotid/commands' do
+        validate_robot!
+        commands = master.robot(@params['robotid']).commands
+        MultiJson.dump({commands: commands})
       end
 
       # Execute robot command
       # @return [JSON] command
-      any '/robots/:robotid/commands/:commandid' do
+      any '/api/robots/:robotid/commands/:commandid' do
+        validate_robot!
         result = master.robot(@params['robotid']).command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
 
       # Retrieve robot devices
       # @return [JSON] devices
-      get '/robots/:robotid/devices' do
-        MultiJson.dump(master.robot_devices(@params['robotid']).each_value.collect {|d| d.to_hash})
+      get '/api/robots/:robotid/devices' do
+        validate_robot!
+        devices = master.robot_devices(@params['robotid']).each_value.collect {|d| d.to_hash}
+        MultiJson.dump({devices: devices})
       end
 
       # Retrieve robot device
       # @return [JSON] device
-      get '/robots/:robotid/devices/:deviceid' do
-        device(@params['robotid'], @params['deviceid']).as_json
+      get '/api/robots/:robotid/devices/:deviceid' do
+        validate_robot!
+        device = device(@params['robotid'], @params['deviceid']).to_hash
+        MultiJson.dump({device: device})
       end
 
       # Retrieve robot commands
       # @return [JSON] commands
-      get '/robots/:robotid/devices/:deviceid/commands' do
-        MultiJson.dump(device(@params['robotid'], @params['deviceid']).commands)
+      get '/api/robots/:robotid/devices/:deviceid/commands' do
+        validate_robot!
+        commands = device(@params['robotid'], @params['deviceid']).commands
+        MultiJson.dump({commands: commands})
       end
 
       # Execute robot command
       # @return [JSON] command
-      any '/robots/:robotid/devices/:deviceid/commands/:commandid' do
+      any '/api/robots/:robotid/devices/:deviceid/commands/:commandid' do
+        validate_robot!
         result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
@@ -87,14 +123,19 @@ module Artoo
 
       # Retrieve robot connections
       # @return [JSON] connections
-      get '/robots/:robotid/connections' do
-        MultiJson.dump(master.robot_connections(@params['robotid']).each_value.collect {|c| c.to_hash})
+      get '/api/robots/:robotid/connections' do
+        validate_robot!
+        connections = master.robot_connections(@params['robotid']).each_value.collect {|c| c.to_hash}
+        MultiJson.dump({connections: connections})
       end
 
       # Retrieve robot connection
       # @return [JSON] connection
-      get '/robots/:robotid/connections/:connectionid' do
-        master.robot_connection(@params['robotid'], @params['connectionid']).as_json
+      get '/api/robots/:robotid/connections/:connectionid' do
+        validate_robot!
+        connection = master.robot_connection(@params['robotid'], @params['connectionid']).to_hash
+
+        MultiJson.dump({connection: connection})
       end
 
       protected
@@ -107,12 +148,20 @@ module Artoo
         master.robot_device(robot_id, device_id)
       end
 
+      def validate_robot!
+        unless master.robot?(@params['robotid'])
+          @error = "No Robot found with the name #{@params['robotid']}"
+          raise RobotNotFound
+        end
+      end
+
       def command_params
         if @req.body.to_s != ""
           data = MultiJson.load(@req.body.to_s, :symbolize_keys => true)
           data.values
         end
       end
+
     end
   end
 end
