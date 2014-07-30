@@ -2,6 +2,25 @@ require 'json'
 
 module Artoo
   module Api
+
+    class SSE
+      def initialize(io)
+        @io = io
+      end
+
+      def write(object, options={})
+        options.each do |k,v|
+          @io.write "#{k}: #{v}\n"
+        end
+
+        @io.write "data: #{JSON.dump(object)}\n\n"
+      end
+
+      def close
+        @io.close
+      end
+    end
+
     # The Artoo::Api::DeviceEventClient class is how a websocket client can subscribe
     # to event notifications for a specific device.
     # Example: ardrone nav data
@@ -15,22 +34,20 @@ module Artoo
       # Create new event client
       # @param [Socket] websocket
       # @param [String] topic
-      def initialize(websocket, topic)
-        @topic = topic
-        info "Streaming #{@topic} to websocket..."
-        @socket = websocket
-        subscribe(@topic, :notify_event)
+      def initialize(connection, topic)
+        headers = {'Content-Type' => 'text/event-stream', 'Transfer-Encoding' => 'chunked'}
+        @sse = SSE.new(connection)
+
+        connection.detach
+        connection.respond(:ok, headers)
+        subscribe(topic, :notify_event)
       end
 
       # Event notification
       # @param [String] topic
       # @param [Object] data
       def notify_event(topic, *data)
-        # TODO: send which topic sent the notification
-        @socket << data.last.to_json
-      rescue Reel::SocketError, Errno::EPIPE
-        info "Device event notification #{topic} websocket disconnected"
-        terminate
+        @sse.write({:data => data}, :event => topic)
       end
     end
   end

@@ -139,9 +139,15 @@ module Artoo
             try_static! connection, req
             route!      connection, req
           end
+
+          if @event
+            @event = false
+            return
+          end
+
           if resp && !resp.nil?
-            return if req.websocket?
             status, body = resp
+
             begin
               req.respond status, body 
             rescue Errno::EAGAIN

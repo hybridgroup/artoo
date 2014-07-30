@@ -21,10 +21,6 @@ module Artoo
       def on_connection(connection)
         while request = connection.request
           dispatch!(connection, request)
-          if request.websocket?
-            connection.detach
-            return 
-          end
         end
       end
 
@@ -116,9 +112,13 @@ module Artoo
 
       # Subscribte to robot device events
       # @return [nil]
-      get_ws '/robots/:robotid/devices/:deviceid/events/:eventid' do
-        DeviceEventClient.new(@req.websocket, device(@params['robotid'], @params['deviceid']).event_topic_name(@params['eventid']))
-        return nil
+      get '/api/robots/:robotid/devices/:deviceid/events/:eventid' do
+        @event = true
+        device = device(@params['robotid'], @params['deviceid'])
+        topic  = device.event_topic_name(@params['eventid'])
+
+        DeviceEventClient.new(@connection, topic)
+        return
       end
 
       # Retrieve robot connections
