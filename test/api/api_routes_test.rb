@@ -5,13 +5,14 @@ describe "API routes" do
   let(:base) { 'http://localhost:8080' }
 
   def validate_route(relative_path, status=200)
-    res = HTTP.get(base + relative_path).response
+    res = HTTP.get(base + relative_path)
     res.status.must_equal status
   end
 
   def validate_form(relative_path, params)
     res = HTTP.post base + '/api/commands/echo', :body => JSON.dump(params)
-    res['result'].wont_be_nil
+
+    res.status.must_equal 200
   end
 
   before :all do
