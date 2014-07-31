@@ -15,10 +15,6 @@ module Artoo
 
         @io.write "data: #{JSON.dump(object)}\n\n"
       end
-
-      def close
-        @io.close
-      end
     end
 
     # The Artoo::Api::DeviceEventClient class is how a websocket client can subscribe
@@ -36,7 +32,7 @@ module Artoo
       # @param [String] topic
       def initialize(connection, topic)
         headers = {'Content-Type' => 'text/event-stream', 'Transfer-Encoding' => 'chunked'}
-        @sse = SSE.new(connection)
+        @sse = SSE.new(Reel::Response::Writer.new(connection.socket))
 
         connection.detach
         connection.respond(:ok, headers)

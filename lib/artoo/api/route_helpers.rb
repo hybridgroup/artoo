@@ -140,10 +140,7 @@ module Artoo
             route!      connection, req
           end
 
-          if @event
-            @event = false
-            return
-          end
+          return unless connection.response_state == :headers
 
           if resp && !resp.nil?
             status, body = resp

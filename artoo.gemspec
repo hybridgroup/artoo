@@ -22,8 +22,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'celluloid', '>= 0.16.0.pre'
   s.add_runtime_dependency 'celluloid-io', '>= 0.16.0.pre'
-  s.add_runtime_dependency 'http', '~> 0.5.0'
-  s.add_runtime_dependency 'reel', '~> 0.4.0'
+  s.add_runtime_dependency 'http', '~> 0.6.1'
+  s.add_runtime_dependency 'reel', '~> 0.5.0'
   s.add_runtime_dependency 'multi_json', '~> 1.6.0'
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'pry', '~> 0.9.0'

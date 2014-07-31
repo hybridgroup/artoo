@@ -7,7 +7,7 @@ module Artoo
     # Artoo API Server provides an interface to communicate with
     # master class and retrieve information about robots being
     # controlled
-    class Server < Reel::Server
+    class Server < Reel::Server::HTTP
       include RouteHelpers
 
       # Create new API server
@@ -19,7 +19,7 @@ module Artoo
 
       # Dispatches connection requests
       def on_connection(connection)
-        while request = connection.request
+        while !connection.current_request && request = connection.request
           dispatch!(connection, request)
         end
       end
@@ -113,7 +113,6 @@ module Artoo
       # Subscribte to robot device events
       # @return [nil]
       get '/api/robots/:robotid/devices/:deviceid/events/:eventid' do
-        @event = true
         device = device(@params['robotid'], @params['deviceid'])
         topic  = device.event_topic_name(@params['eventid'])
 
