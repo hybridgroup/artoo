@@ -108,8 +108,8 @@ module Artoo
       # Subscribe to robot device events
       # @return [nil]
       get '/api/robots/:robotid/devices/:deviceid/events/:eventid' do
-        topic  = @device.event_topic_name(@params['eventid'])
-
+        validate_params!
+        topic = @device.event_topic_name(@params['eventid'])
         DeviceEventClient.new(@connection, topic)
         return
       end
