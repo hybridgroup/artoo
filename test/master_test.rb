@@ -36,15 +36,7 @@ describe Artoo::Master do
   end
 
   it 'Artoo::Master#robot with invalid robot name' do
-    proc {@master.robot("robotno")}.must_raise(Artoo::RobotNotFound)
-  end
-
-  it 'Artoo::Master#robot_devices' do
-    @master.robot_devices("robot2").first.must_equal "robot2-device1"
-  end
-
-  it 'Artoo::Master#robot_connections' do
-    @master.robot_connections("robot2").last.must_equal "robot2-connection3"
+    @master.robot("robotno").must_equal(nil)
   end
 
   it 'Artoo::Master::#commands' do
@@ -60,5 +52,4 @@ describe Artoo::Master do
     @master.add_command :test, lambda{'test'}
     @master.command(:test, nil).must_equal 'test'
   end
-
 end
