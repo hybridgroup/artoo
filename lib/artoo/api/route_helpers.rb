@@ -153,6 +153,7 @@ module Artoo
           else
             @error ||= "NOT FOUND"
             req.respond :not_found, {'Content-Type' => 'application/json'}, {error: @error}.to_json
+            @error = nil
           end
         end
 
