@@ -146,7 +146,11 @@ module Artoo
             status, body = resp
 
             begin
-              req.respond status, {'Content-Type' => 'application/json'}, body
+              if @is_static
+                req.respond status, body
+              else
+                req.respond status, {'Content-Type' => 'application/json'}, body
+              end
             rescue Errno::EAGAIN
               retry
             end
@@ -170,8 +174,10 @@ module Artoo
           if File.file?(filepath)
             # TODO: stream this?
             data = open(filepath).read
+            @is_static = true
             halt :ok, data
           end
+          @is_static = false
         end
 
         def route!(connection, req)
