@@ -22,10 +22,6 @@ module Artoo
         current.robot(name)
       end
 
-      def robot?(name)
-        current.robot?(name)
-      end
-
       def start_work
         current.start_work
       end
@@ -75,36 +71,6 @@ module Artoo
     # @return [Robot]  robot
     def robot(name)
       robots.find {|r| r.name == name}
-    end
-
-    def robot?(name)
-      robots.find {|r| r.name == name}
-    end
-
-    # @param  [String]     name
-    # @return [Collection] robot devices
-    def robot_devices(name)
-      robot(name).devices
-    end
-
-    # @param  [String] name
-    # @param  [String] device_id
-    # @return [Device] robot device
-    def robot_device(name, device_id)
-      robot_devices(name)[device_id.intern]
-    end
-
-    # @param  [String]     name
-    # @return [Collection] robot connections
-    def robot_connections(name)
-      robot(name).connections
-    end
-
-    # @param  [String] robot_id
-    # @param  [String] connection_id
-    # @return [Device] robot connection
-    def robot_connection(robot_id, connection_id)
-      robot_connections(robot_id)[connection_id.intern]
     end
 
     # Do asynchronous work for each robot
