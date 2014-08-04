@@ -4,7 +4,7 @@ class HelloRobot < Artoo::Robot
 	connection :loopback1
 	connection :loopback2
 	connection :loopback3
-	device :pinger, :driver => :pinger
+	device :pinger, :driver => :ping
 	device :counter, :driver => :counter
 	device :random, :driver => :random
 	device :passthru1

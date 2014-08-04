@@ -139,16 +139,25 @@ module Artoo
             try_static! connection, req
             route!      connection, req
           end
+
+          return unless connection.response_state == :headers
+
           if resp && !resp.nil?
-            return if req.websocket?
             status, body = resp
+
             begin
-              req.respond status, body 
+              if @is_static
+                req.respond status, body
+              else
+                req.respond status, {'Content-Type' => 'application/json'}, body
+              end
             rescue Errno::EAGAIN
               retry
             end
           else
-            req.respond :not_found, "NOT FOUND"
+            @error ||= "NOT FOUND"
+            req.respond :not_found, {'Content-Type' => 'application/json'}, {error: @error}.to_json
+            @error = nil
           end
         end
 
@@ -165,8 +174,10 @@ module Artoo
           if File.file?(filepath)
             # TODO: stream this?
             data = open(filepath).read
+            @is_static = true
             halt :ok, data
           end
+          @is_static = false
         end
 
         def route!(connection, req)

@@ -9,7 +9,7 @@ module Artoo
     include Artoo::Utility
     include Comparable
 
-    attr_reader :parent, :name, :port, :adaptor, :connection_id
+    attr_reader :parent, :name, :port, :adaptor, :connection_id, :details
 
     # Create new connection
     # @param [Hash] params
@@ -23,6 +23,7 @@ module Artoo
       @name = params[:name].to_s
       @port = Port.new(params[:port])
       @parent = params[:parent]
+      @details = remove_keys(params, :name, :parent, :id, :loopback)
 
       require_adaptor(params[:adaptor] || :loopback, params)
     end
@@ -58,10 +59,8 @@ module Artoo
     def to_hash
       {
         :name => name,
-        :connection_id => connection_id,
-        :port => port.to_s,
         :adaptor => adaptor_name.to_s.gsub(/^.*::/, ''),
-        :connected => connected?
+        :details => @details
       }
     end
 
@@ -99,7 +98,6 @@ module Artoo
 
     def require_adaptor(type, params)
       if Artoo::Robot.test?
-        original_type = type
         type = :test
       end
 

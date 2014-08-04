@@ -23,7 +23,7 @@ describe Artoo::Connection do
 
   it 'Artoo::Connection#as_json' do
     MultiJson.load(@connection.as_json, :symbolize_keys => true)[:name].must_equal "my_test_connection"
-    MultiJson.load(@connection.as_json, :symbolize_keys => true)[:connected].must_equal false
+    MultiJson.load(@connection.as_json, :symbolize_keys => true)[:adaptor].must_equal "Loopback"
   end
 
   it 'Artoo::Connection#additional_params' do

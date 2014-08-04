@@ -7,7 +7,7 @@ module Artoo
     # Artoo API Server provides an interface to communicate with
     # master class and retrieve information about robots being
     # controlled
-    class Server < Reel::Server
+    class Server < Reel::Server::HTTP
       include RouteHelpers
 
       # Create new API server
@@ -19,82 +19,114 @@ module Artoo
 
       # Dispatches connection requests
       def on_connection(connection)
-        while request = connection.request
+        while !connection.current_request && request = connection.request
           dispatch!(connection, request)
-          if request.websocket?
-            connection.detach
-            return 
-          end
         end
+      end
+
+      # Retrieve api index
+      # @return [JSON] MCP index
+      get '/api' do
+        robots   = master.robots.collect { |r| r.to_hash }
+        response = {MCP: {robots: robots, commands: master.commands}}
+        MultiJson.dump(response)
+      end
+
+      # Retrieve list of master commands
+      # @return [JSON] commands
+      get '/api/commands' do
+        MultiJson.dump({commands: master.commands})
+      end
+
+      # Execute master command
+      # @return [JSON] result
+      any '/api/commands/:commandid' do
+        result = master.command(@params['commandid'], *command_params)
+        MultiJson.dump({result: result})
       end
 
       # Retrieve list of robots
       # @return [JSON] robots
-      get '/robots' do
-        MultiJson.dump(master.robots.collect {|r|r.to_hash})
+      get '/api/robots' do
+        robots = master.robots.collect {|r|r.to_hash}
+        response = {robots: robots}
+        MultiJson.dump(response)
       end
 
       # Retrieve robot by id
       # @return [JSON] robot
-      get '/robots/:robotid' do
-        master.robot(@params['robotid']).as_json
+      get '/api/robots/:robotid' do
+        validate_params!
+        MultiJson.dump({robot: @robot.to_hash})
       end
 
       # Retrieve robot commands
       # @return [JSON] commands
-      get '/robots/:robotid/commands' do
-        MultiJson.dump(master.robot(@params['robotid']).commands)
+      get '/api/robots/:robotid/commands' do
+        validate_params!
+        MultiJson.dump({commands: @robot.commands})
       end
 
       # Execute robot command
       # @return [JSON] command
-      any '/robots/:robotid/commands/:commandid' do
-        result = master.robot(@params['robotid']).command(@params['commandid'], *command_params)
+      any '/api/robots/:robotid/commands/:commandid' do
+        validate_params!
+        result = @robot.command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
 
       # Retrieve robot devices
       # @return [JSON] devices
-      get '/robots/:robotid/devices' do
-        MultiJson.dump(master.robot_devices(@params['robotid']).each_value.collect {|d| d.to_hash})
+      get '/api/robots/:robotid/devices' do
+        validate_params!
+        devices = @robot.devices.each_value.collect {|d| d.to_hash}
+        MultiJson.dump({devices: devices})
       end
 
       # Retrieve robot device
       # @return [JSON] device
-      get '/robots/:robotid/devices/:deviceid' do
-        device(@params['robotid'], @params['deviceid']).as_json
+      get '/api/robots/:robotid/devices/:deviceid' do
+        validate_params!
+        MultiJson.dump({device: @device.to_hash})
       end
 
       # Retrieve robot commands
       # @return [JSON] commands
-      get '/robots/:robotid/devices/:deviceid/commands' do
-        MultiJson.dump(device(@params['robotid'], @params['deviceid']).commands)
+      get '/api/robots/:robotid/devices/:deviceid/commands' do
+        validate_params!
+        MultiJson.dump({commands: @device.commands})
       end
 
       # Execute robot command
       # @return [JSON] command
-      any '/robots/:robotid/devices/:deviceid/commands/:commandid' do
-        result = device(@params['robotid'], @params['deviceid']).command(@params['commandid'], *command_params)
+      any '/api/robots/:robotid/devices/:deviceid/commands/:commandid' do
+        validate_params!
+        result = @device.command(@params['commandid'], *command_params)
         return MultiJson.dump({'result' => result})
       end
 
-      # Subscribte to robot device events
+      # Subscribe to robot device events
       # @return [nil]
-      get_ws '/robots/:robotid/devices/:deviceid/events/:eventid' do
-        DeviceEventClient.new(@req.websocket, device(@params['robotid'], @params['deviceid']).event_topic_name(@params['eventid']))
-        return nil
+      get '/api/robots/:robotid/devices/:deviceid/events/:eventid' do
+        validate_params!
+        topic = @device.event_topic_name(@params['eventid'])
+        DeviceEventClient.new(@connection, topic)
+        return
       end
 
       # Retrieve robot connections
       # @return [JSON] connections
-      get '/robots/:robotid/connections' do
-        MultiJson.dump(master.robot_connections(@params['robotid']).each_value.collect {|c| c.to_hash})
+      get '/api/robots/:robotid/connections' do
+        validate_params!
+        connections = @robot.connections.each_value.collect {|c| c.to_hash}
+        MultiJson.dump({connections: connections})
       end
 
       # Retrieve robot connection
       # @return [JSON] connection
-      get '/robots/:robotid/connections/:connectionid' do
-        master.robot_connection(@params['robotid'], @params['connectionid']).as_json
+      get '/api/robots/:robotid/connections/:connectionid' do
+        validate_params!
+        MultiJson.dump({connection: @conn.to_hash})
       end
 
       protected
@@ -105,6 +137,37 @@ module Artoo
 
       def device(robot_id, device_id)
         master.robot_device(robot_id, device_id)
+      end
+
+      def validate_params!
+        robot = @params['robotid']
+        device = @params['deviceid']
+        connection = @params['connectionid']
+
+
+        if robot
+          @robot = master.robot(robot)
+          unless @robot
+            @error = "No Robot found with the name #{robot}"
+            raise RobotNotFound
+          end
+        end
+
+        if device
+          @device = @robot.devices[device.intern]
+          unless @device
+            @error = "No device found with the name #{device}"
+            raise RobotNotFound
+          end
+        end
+
+        if connection
+          @conn = @robot.connections[connection.intern]
+          unless @conn
+            @error = "No connection found with the name #{connection}"
+            raise RobotNotFound
+          end
+        end
       end
 
       def command_params

@@ -22,6 +22,10 @@ module Artoo
         current.robot(name)
       end
 
+      def robot?(name)
+        current.robot?(name)
+      end
+
       def start_work
         current.start_work
       end
@@ -37,12 +41,26 @@ module Artoo
       def continue_work
         current.continue_work
       end
+
+      def command(name, params)
+        current.command(name, params)
+      end
+
+      def add_command(name, behaviour)
+        current.add_command(name, behaviour)
+      end
+
+      def commands
+        current.commands
+      end
+
     end
 
     # Create new master
     # @param [Collection] robots
     def initialize(bots=[])
       @robots = []
+      @commands = []
       assign(bots)
     end
 
@@ -56,9 +74,11 @@ module Artoo
     # @param  [String] name
     # @return [Robot]  robot
     def robot(name)
-      r = robots.find {|r| r.name == name}
-      raise RobotNotFound if r.nil?
-      r
+      robots.find {|r| r.name == name}
+    end
+
+    def robot?(name)
+      robots.find {|r| r.name == name}
     end
 
     # @param  [String]     name
@@ -110,6 +130,28 @@ module Artoo
     def stop_work
       robots.each {|r| r.terminate} unless !Artoo::Robot.is_running?
       Artoo::Robot.stopped!
+    end
+
+    # return list of master command names
+    def commands
+      @commands.map{ |c| c[:name] }
+    end
+
+    # execute master command
+    def command(name, params)
+      command = @commands.find{ |c| c[:name] == name.to_sym }
+      if command
+        if params.nil?
+          command[:behaviour].call
+        else
+          command[:behaviour].call(params)
+        end
+      end
+    end
+
+    # add command to master
+    def add_command(name, behaviour)
+      @commands << { name: name.to_sym, behaviour: behaviour }
     end
   end
 end
