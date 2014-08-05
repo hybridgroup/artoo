@@ -39,17 +39,20 @@ describe Artoo::Master do
     @master.robot("robotno").must_equal(nil)
   end
 
-  it 'Artoo::Master::#commands' do
-    @master.commands.must_equal []
+  describe "#commands" do
+    it "returns all Master commands" do
+      command = lambda { |e| e }
+      @master.commands.must_equal({})
+      @master.instance_variable_set(:@commands, { 'hello' => command })
+      @master.commands.must_equal({ 'hello' => command })
+    end
   end
 
-  it 'Artoo::Master::#add_command' do
-    @master.add_command :test, lambda{}
-    @master.commands.must_equal [:test]
-  end
-
-  it 'Artoo::Master::#command' do
-    @master.add_command :test, lambda{'test'}
-    @master.command(:test, nil).must_equal 'test'
+  describe "#add_command" do
+    it "adds a command to the Master" do
+      echo = lambda { |e| e }
+      @master.add_command(:echo, echo)
+      @master.commands.must_equal({ 'echo' => echo })
+    end
   end
 end

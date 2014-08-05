@@ -38,25 +38,20 @@ module Artoo
         current.continue_work
       end
 
-      def command(name, params)
-        current.command(name, params)
-      end
-
-      def add_command(name, behaviour)
-        current.add_command(name, behaviour)
-      end
-
       def commands
         current.commands
       end
 
+      def add_command(name, method)
+        current.add_command(name, method)
+      end
     end
 
     # Create new master
     # @param [Collection] robots
     def initialize(bots=[])
       @robots = []
-      @commands = []
+      @commands = {}
       assign(bots)
     end
 
@@ -98,26 +93,14 @@ module Artoo
       Artoo::Robot.stopped!
     end
 
-    # return list of master command names
+    # Return all commands
     def commands
-      @commands.map{ |c| c[:name] }
-    end
-
-    # execute master command
-    def command(name, params)
-      command = @commands.find{ |c| c[:name] == name.to_sym }
-      if command
-        if params.nil?
-          command[:behaviour].call
-        else
-          command[:behaviour].call(params)
-        end
-      end
+      @commands
     end
 
     # add command to master
-    def add_command(name, behaviour)
-      @commands << { name: name.to_sym, behaviour: behaviour }
+    def add_command(name, method)
+      commands[name.to_s] = method
     end
   end
 end
