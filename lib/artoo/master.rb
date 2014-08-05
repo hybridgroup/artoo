@@ -50,7 +50,7 @@ module Artoo
     # Create new master
     # @param [Collection] robots
     def initialize(bots=[])
-      @robots = []
+      @robots = {}
       @commands = {}
       assign(bots)
     end
@@ -58,38 +58,40 @@ module Artoo
     # Assign robots to Master controller
     # @param [Collection] robots
     def assign(bots=[])
-      robots.concat(bots)
-      bots.each {|r| r.async.work} if Artoo::Robot.is_running?
+      bots.each do |bot|
+        robots[bot.name] = bot
+        bot.async.work if Artoo::Robot.is_running?
+      end
     end
 
     # @param  [String] name
     # @return [Robot]  robot
     def robot(name)
-      robots.find {|r| r.name == name}
+      robots[name]
     end
 
     # Do asynchronous work for each robot
     def start_work
-      robots.each {|r| r.async.work} unless Artoo::Robot.is_running?
+      robots.each_value { |bot| bot.async.work } unless Artoo::Robot.is_running?
       Artoo::Robot.running!
     end
 
     # Pause work for each robot
     def pause_work
-      robots.each {|r|
-        Logger.info "pausing #{r.name}"
-        r.async.pause_work
-      }
+      robots.each_value do |bot|
+        Logger.info "pausing #{bot.name}"
+        bot.async.pause_work
+      end
     end
 
     # Continue work for each robot
     def continue_work
-      robots.each {|r| r.async.continue_work}
+      robots.each_balue { |bot| bot.async.continue_work }
     end
 
     # terminate all robots
     def stop_work
-      robots.each {|r| r.terminate} unless !Artoo::Robot.is_running?
+      robots.each_value { |bot| bot.terminate } if Artoo::Robot.is_running?
       Artoo::Robot.stopped!
     end
 
