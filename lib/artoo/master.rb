@@ -22,10 +22,6 @@ module Artoo
         current.robot(name)
       end
 
-      def robot?(name)
-        current.robot?(name)
-      end
-
       def start_work
         current.start_work
       end
@@ -42,116 +38,71 @@ module Artoo
         current.continue_work
       end
 
-      def command(name, params)
-        current.command(name, params)
-      end
-
-      def add_command(name, behaviour)
-        current.add_command(name, behaviour)
-      end
-
       def commands
         current.commands
       end
 
+      def add_command(name, method)
+        current.add_command(name, method)
+      end
     end
 
     # Create new master
     # @param [Collection] robots
     def initialize(bots=[])
-      @robots = []
-      @commands = []
+      @robots = {}
+      @commands = {}
       assign(bots)
     end
 
     # Assign robots to Master controller
     # @param [Collection] robots
     def assign(bots=[])
-      robots.concat(bots)
-      bots.each {|r| r.async.work} if Artoo::Robot.is_running?
+      bots.each do |bot|
+        robots[bot.name] = bot
+        bot.async.work if Artoo::Robot.is_running?
+      end
     end
 
     # @param  [String] name
     # @return [Robot]  robot
     def robot(name)
-      robots.find {|r| r.name == name}
-    end
-
-    def robot?(name)
-      robots.find {|r| r.name == name}
-    end
-
-    # @param  [String]     name
-    # @return [Collection] robot devices
-    def robot_devices(name)
-      robot(name).devices
-    end
-
-    # @param  [String] name
-    # @param  [String] device_id
-    # @return [Device] robot device
-    def robot_device(name, device_id)
-      robot_devices(name)[device_id.intern]
-    end
-
-    # @param  [String]     name
-    # @return [Collection] robot connections
-    def robot_connections(name)
-      robot(name).connections
-    end
-
-    # @param  [String] robot_id
-    # @param  [String] connection_id
-    # @return [Device] robot connection
-    def robot_connection(robot_id, connection_id)
-      robot_connections(robot_id)[connection_id.intern]
+      robots[name]
     end
 
     # Do asynchronous work for each robot
     def start_work
-      robots.each {|r| r.async.work} unless Artoo::Robot.is_running?
+      robots.each_value { |bot| bot.async.work } unless Artoo::Robot.is_running?
       Artoo::Robot.running!
     end
 
     # Pause work for each robot
     def pause_work
-      robots.each {|r|
-        Logger.info "pausing #{r.name}"
-        r.async.pause_work
-      }
+      robots.each_value do |bot|
+        Logger.info "pausing #{bot.name}"
+        bot.async.pause_work
+      end
     end
 
     # Continue work for each robot
     def continue_work
-      robots.each {|r| r.async.continue_work}
+      robots.each_balue { |bot| bot.async.continue_work }
     end
 
     # terminate all robots
     def stop_work
-      robots.each {|r| r.terminate} unless !Artoo::Robot.is_running?
+      robots.each_value { |bot| bot.terminate } if Artoo::Robot.is_running?
       Artoo::Robot.stopped!
     end
 
-    # return list of master command names
+    # Return all commands
     def commands
-      @commands.map{ |c| c[:name] }
-    end
-
-    # execute master command
-    def command(name, params)
-      command = @commands.find{ |c| c[:name] == name.to_sym }
-      if command
-        if params.nil?
-          command[:behaviour].call
-        else
-          command[:behaviour].call(params)
-        end
-      end
+      @commands
     end
 
     # add command to master
-    def add_command(name, behaviour)
-      @commands << { name: name.to_sym, behaviour: behaviour }
+    def add_command(name, method)
+      commands[name.to_s] = method
     end
   end
 end
