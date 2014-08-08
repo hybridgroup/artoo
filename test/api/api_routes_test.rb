@@ -1,46 +1,36 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
+require File.expand_path(File.dirname(__FILE__) + "/../../lib/artoo/api/api")
 
-describe "API routes" do
+describe "API" do
+  Server = Artoo::Api::Server
 
-  let(:base) { 'http://localhost:8080' }
+  describe "routes" do
+    routes = [
+      ["GET",  "/api"],
+      ["GET",  "/api/commands"],
+      ["POST", "/api/commands/command"],
+      ["GET",  "/api/robots"],
+      ["GET",  "/api/robots/TestBot"],
+      ["GET",  "/api/robots/TestBot/commands"],
+      ["POST", "/api/robots/TestBot/commands/cmd"],
+      ["GET",  "/api/robots/TestBot/devices"],
+      ["GET",  "/api/robots/TestBot/devices/ping"],
+      ["GET",  "/api/robots/TestBot/devices/ping/commands"],
+      ["POST", "/api/robots/TestBot/devices/ping/commands/ping"],
+      ["GET",  "/api/robots/TestBot/connections"],
+      ["GET",  "/api/robots/TestBot/connections/loopback"]
+    ]
 
-  def validate_route(relative_path, status=200)
-    res = HTTP.get(base + relative_path)
-    res.status.must_equal status
+    it "should have a hash of routes" do
+      Server.routes.class.must_equal Hash
+    end
+
+    routes.each do |method, uri|
+      it "should resolve a #{method} request to #{uri}" do
+        Server.routes[method].any? do |route|
+          route.first =~ uri
+        end.must_equal true
+      end
+    end
   end
-
-  def validate_form(relative_path, params)
-    res = HTTP.post base + '/api/commands/echo', :body => JSON.dump(params)
-
-    res.status.must_equal 200
-  end
-
-  before :all do
-    @pid = fork { require_relative '../../examples/test_bot' }
-    sleep 1
-  end
-
-  after (:all) { system("kill -9 #{@pid}") }
-
-  it 'must respond to expected routes' do
-    validate_route('/api')
-    validate_route('/api/commands')
-    validate_route('/api/robots')
-    validate_route('/api/robots/TestBot')
-    validate_route('/api/robots/NonExistentBot', 404)
-    validate_route('/api/robots/TestBot/commands')
-    validate_route('/api/robots/TestBot/commands/hello')
-    validate_route('/api/robots/TestBot/devices')
-    validate_route('/api/robots/TestBot/devices/ping')
-    validate_route('/api/robots/TestBot/devices/ping/commands')
-    validate_route('/api/robots/TestBot/connections')
-    validate_route('/api/robots/TestBot/connections/loopback')
-  end
-
-  it 'must respond to command calls' do
-    validate_form('/api/commands/echo', { param: 'pong' })
-    validate_form('/api/robots/TestBot/devices/ping/commands/ping',
-                  { name: 'bot' })
-  end
-
 end
