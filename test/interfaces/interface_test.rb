@@ -25,5 +25,5 @@ describe Artoo::Interfaces::Interface do
 
   it 'Interface#commands' do
     @interface.commands.first.must_equal :awesome
-  end  
+  end
 end

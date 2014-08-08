@@ -100,13 +100,13 @@ module Artoo
     end
 
     def add_interface(i)
-      @parent.add_interface(i)  
+      @parent.add_interface(i)
     end
 
     def require_interface(i)
       Logger.info "Require interface #{i}"
       require "artoo/interfaces/#{i.to_s}"
-      @interface = constantize("Artoo::Interfaces::#{classify(i.to_s)}").new(:name => i.to_s, :robot => parent, :device => current_instance)      
+      @interface = constantize("Artoo::Interfaces::#{classify(i.to_s)}").new(:name => i.to_s, :robot => parent, :device => current_instance)
       add_interface(@interface)
     end
 

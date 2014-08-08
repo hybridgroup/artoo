@@ -35,27 +35,26 @@ class ExampleRequest
 end
 
 describe Artoo::Api::Server do
-	describe Artoo::Api::RouteHelpers do
+  describe Artoo::Api::RouteHelpers do
 
-		class DummyClass
-			include Artoo::Api::RouteHelpers
-		end
+    class DummyClass
+      include Artoo::Api::RouteHelpers
+    end
 
-		it "should have a list of routes" do
-			DummyClass.routes.class.must_equal Hash
-		end
+    it "should have a list of routes" do
+      DummyClass.routes.class.must_equal Hash
+    end
 
-		it "should be able to define methods" do
-			DummyClass.instance_eval <<-EOE
-				get '/' do
-				end
+    it "should be able to define methods" do
+      DummyClass.instance_eval <<-EOE
+        get '/' do
+        end
 
         get_ws '/sock' do
         end
-			EOE
+      EOE
 
-			DummyClass.routes['GET'].length.must_equal 2
-		end
-	end
-
+      DummyClass.routes['GET'].length.must_equal 2
+    end
+  end
 end

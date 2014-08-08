@@ -4,7 +4,7 @@ module Artoo
     # implement behavior for a specific category of robot. Examples
     # would be a Rover or Copter.
     #
-    # Derive a class from this class, in order to implement higher-order 
+    # Derive a class from this class, in order to implement higher-order
     # behavior for a new category of robot.
     class Interface
       include Celluloid
