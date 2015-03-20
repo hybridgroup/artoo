@@ -333,4 +333,4 @@ Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
 
-(c) 2012-2014 The Hybrid Group
+(c) 2012-2015 The Hybrid Group
