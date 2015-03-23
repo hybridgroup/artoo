@@ -78,6 +78,7 @@ module Artoo
 
         # Unexports the pin in GPIO to leave it free
         def close
+          off! if @mode == 'w'
           File.open("#{ GPIO_PATH }/unexport", "w") { |f| f.write("#{pin_num}") }
         end
       end

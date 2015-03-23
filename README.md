@@ -106,7 +106,7 @@ Artoo has a extensible system for connecting to hardware devices. The following 
   - [OpenCV](http://opencv.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-opencv)
   - [Pebble](http://getpebble.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-pebble)
   - [Raspberry Pi](http://www.raspberrypi.org/) <=> [Adaptor](https://github.com/hybridgroup/artoo-raspi)
-  - [Roomba](http://www.irobot.com/us/robots/Educators/Create.aspx) <=> [Adaptor](https://github.com/hybridgroup/artoo-roomba)
+  - [Roomba](http://www.irobot.com/About-iRobot/STEM.aspx) <=> [Adaptor](https://github.com/hybridgroup/artoo-roomba)
   - [Spark Core](http://www.spark.io/) <=> [Adaptor](https://github.com/hybridgroup/artoo-spark)
   - [Sphero](http://www.gosphero.com/) <=> [Adaptor](https://github.com/hybridgroup/artoo-sphero)
 
@@ -333,4 +333,4 @@ Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
 
-(c) 2012-2014 The Hybrid Group
+(c) 2012-2015 The Hybrid Group
