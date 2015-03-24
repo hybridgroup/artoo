@@ -186,23 +186,29 @@ module Artoo
 
     def initialize_connections(params={})
       @connections = {}
-      connection_types.each {|ct|
-        Logger.info "Initializing connection #{ct[:name].to_s}..."
-        cp = params[ct[:name]] || {}
-        c = Connection.new(ct.merge(cp).merge(:parent => current_instance))
-        @connections[ct[:name]] = c
-      }
+      connection_types.each {|type| initialize_connection(params, type, @connections)}
     end
 
     def initialize_devices(params={})
       @devices = {}
-      device_types.each {|d|
-        Logger.info "Initializing device #{d[:name].to_s}..."
-        dp = params[d[:name]] || {}
-        d = Device.new(d.merge(dp).merge(:parent => current_instance))
-        instance_eval("def #{d.name}; return devices[:#{d.name}]; end")
-        @devices[d.name.intern] = d
-      }
+      device_types.each {|type| initialize_device(params, type, @devices)}
+    end
+
+    def initialize_connection(params, type, connections)
+      connection = initialize_object(Connection, params, type)
+      @connections[type[:name]] = connection
+    end
+
+    def initialize_device(params, type, devices)
+      type = initialize_object(Device, params, type)
+      instance_eval("def #{type.name}; return devices[:#{type.name}]; end")
+      @devices[type.name.intern] = type
+    end
+
+    def initialize_object(klass, params, type)
+      Logger.info "Initializing #{klass.to_s.downcase} #{type[:name].to_s}..."
+      param = params[type[:name]] || {}
+      klass.new(type.merge(param).merge(:parent => current_instance))
     end
 
     def execute_startup(things, &block)
