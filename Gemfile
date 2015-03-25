@@ -13,7 +13,7 @@ gem "minitest", "~> 5.0.1"
 gem "minitest-happy"
 gem "mocha", '~> 0.14.0', :require => false
 
-gem 'json', '~> 1.7.7'
+gem 'json', '~> 1.8.2'
 gem "foreman"
 
 platforms :jruby do
