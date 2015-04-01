@@ -50,12 +50,15 @@ module Artoo
           @mode = mode
 
           if mode == 'w'
-            File.open("#{ GPIO_PATH }/gpio#{ pin_num }/direction", "w") { |f| f.write(GPIO_DIRECTION_WRITE) }
-            @pin_file = File.open("#{ GPIO_PATH }/gpio#{ pin_num }/value", "w")
+            set_pin(mode: 'w', direction: GPIO_DIRECTION_WRITE)
           elsif mode =='r'
-            File.open("#{ GPIO_PATH }/gpio#{ pin_num }/direction", "w") { |f| f.write(GPIO_DIRECTION_READ) }
-            @pin_file = File.open("#{ GPIO_PATH }/gpio#{pin_num}/value", "r")
+            set_pin(mode: 'r', direction: GPIO_DIRECTION_READ)
           end
+        end
+
+        def set_pin(mode:, direction:)
+          File.open("#{ GPIO_PATH }/gpio#{ pin_num }/direction", "w") { |f| f.write(direction) }
+          @pin_file = File.open("#{ GPIO_PATH }/gpio#{ pin_num }/value", mode)
         end
 
         def on?
