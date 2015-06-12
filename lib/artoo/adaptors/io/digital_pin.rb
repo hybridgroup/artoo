@@ -56,7 +56,9 @@ module Artoo
           end
         end
 
-        def set_pin(mode:, direction:)
+        def set_pin(settings)
+          mode = settings[:mode]
+          direction = settings[:direction]
           File.open("#{ GPIO_PATH }/gpio#{ pin_num }/direction", "w") { |f| f.write(direction) }
           @pin_file = File.open("#{ GPIO_PATH }/gpio#{ pin_num }/value", mode)
         end
