@@ -37,11 +37,11 @@ require 'artoo'
 
 connection :ardrone, :adaptor => :ardrone
 device :drone, :driver => :ardrone
-  
+
 work do
   drone.start
   drone.take_off
-  
+
   after(25.seconds) { drone.hover.land }
   after(30.seconds) { drone.stop }
 end
@@ -59,7 +59,7 @@ SPHEROS = ["4567", "4568", "4569", "4570", "4571"]
 class SpheroRobot < Artoo::Robot
   connection :sphero, :adaptor => :sphero
   device :sphero, :driver => :sphero
-  
+
   work do
     every(3.seconds) do
       sphero.roll 90, rand(360)
@@ -69,8 +69,8 @@ end
 
 robots = []
 SPHEROS.each {|p|
-  robots << SpheroRobot.new(:connections => 
-                              {:sphero => 
+  robots << SpheroRobot.new(:connections =>
+                              {:sphero =>
                                 {:port => p}})
 }
 
@@ -87,7 +87,7 @@ rvm get head && rvm install rbx-2.1.1 --1.9
 
 Artoo is conceptualy influenced by [Sinatra](https://github.com/sinatra/sinatra) as well as borrowing some code from it.
 
-Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency. 
+Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing. This means you will need to use JRuby or Rubinius for maximum concurrency.
 
 To a large extent, this is due to being built on top of [Celluloid](https://github.com/celluloid/celluloid), [Celluloid::IO](https://github.com/celluloid/celluloid-io), and [Reel](https://github.com/celluloid/reel).
 
@@ -133,7 +133,7 @@ gem install artoo-joystick
 gem install artoo-ardrone
 ```
 
-If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware. 
+If you will be using socket to serial commuication (required if you will use JRuby or Rubinius), you are ready to start programming your hardware.
 
 If you want to connect via serial port directly, and are using MRI, install the hybridgroup-serialport gem:
 
@@ -263,7 +263,7 @@ Commands:
 Artoo includes a console based on [Pry](http://pryrepl.org/) to allow you to interactively debug and control your robot.
 
 ```
-$ artoo console ./examples/hello.rb 
+$ artoo console ./examples/hello.rb
          run  robi ./examples/hello.rb from "."
 I, [2013-07-03T17:11:35.793913 #5527]  INFO -- : Registering connection 'loop'...
 I, [2013-07-03T17:11:35.794939 #5527]  INFO -- : Preparing work...
@@ -332,4 +332,4 @@ Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
 
-(c) 2012-2015 The Hybrid Group
+(c) 2012-2016 The Hybrid Group
