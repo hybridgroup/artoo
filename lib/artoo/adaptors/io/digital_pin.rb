@@ -14,7 +14,7 @@ module Artoo
           @pin_num = pin_num
 
           File.open("#{ GPIO_PATH }/export", "w") { |f| f.write("#{ pin_num }") }
-
+          File.close
           # Sets the pin for read or write
           set_mode(mode)
         end
@@ -60,6 +60,7 @@ module Artoo
           mode = settings[:mode]
           direction = settings[:direction]
           File.open("#{ GPIO_PATH }/gpio#{ pin_num }/direction", "w") { |f| f.write(direction) }
+          File.close
           @pin_file = File.open("#{ GPIO_PATH }/gpio#{ pin_num }/value", mode)
         end
 
@@ -85,6 +86,8 @@ module Artoo
         def close
           off! if @mode == 'w'
           File.open("#{ GPIO_PATH }/unexport", "w") { |f| f.write("#{pin_num}") }
+          File.close
+          @pin_file.close
         end
       end
     end
