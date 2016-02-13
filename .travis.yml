@@ -16,7 +16,7 @@ matrix:
     - rvm: rbx
 
 before_install:
-  - gem update --system
+  - gem update --system 2.4.8
   - gem --version
 
 branches:
