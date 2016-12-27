@@ -27,28 +27,29 @@ module Artoo
       # Retrieve api index
       # @return [JSON] MCP index
       get '/api' do
-        robots   = master.robots.collect { |r| r.to_hash }
-        response = {MCP: {robots: robots, commands: master.commands}}
+        robots = master.robots.collect { |_, bot| bot.to_hash }
+        response = {MCP: {robots: robots, commands: master.commands.keys }}
         MultiJson.dump(response)
       end
 
       # Retrieve list of master commands
       # @return [JSON] commands
       get '/api/commands' do
-        MultiJson.dump({commands: master.commands})
+        MultiJson.dump({commands: master.commands.keys})
       end
 
       # Execute master command
       # @return [JSON] result
       any '/api/commands/:commandid' do
-        result = master.command(@params['commandid'], *command_params)
+        command = master.commands[@params['commandid']]
+        result = command.call(*command_params)
         MultiJson.dump({result: result})
       end
 
       # Retrieve list of robots
       # @return [JSON] robots
       get '/api/robots' do
-        robots = master.robots.collect {|r|r.to_hash}
+        robots = master.robots.collect { |_, bot| bot.to_hash }
         response = {robots: robots}
         MultiJson.dump(response)
       end
