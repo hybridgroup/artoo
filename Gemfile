@@ -21,5 +21,5 @@ platforms :jruby do
 end
 
 platforms :ruby do
-  gem 'therubyracer'
+  gem 'mini_racer'
 end
